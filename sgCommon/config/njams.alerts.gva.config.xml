@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration mqttAddress="tcp://127.0.0.1:1883" mqttClientId="nJams-driver-alerts" separator=";"
+               dataTopic="ch/skyguide/isup/mqdriver/data" dataQos="0"
+               commandTopic="ch/skyguide/isup/mqdriver/command" commandQos="0"
+               reduTopic="ch/skyguide/isup/mqdriver/monitoring/redundancy" reduQos="0"
+               heartbeatTopic="ch/skyguide/isup/mqdriver/monitoring/heartbeat" heartbeatQos="0"
+               statusTopic="ch/skyguide/isup/mqdriver/monitoring/status" statusQos="0"
+               heartbeatPolling="5000">
+    <agent url="http://zsnjapmoa01:8443/njams/api/" polling="5000">
+        <request name="alerts" path="metrics/alerts" method="GET">
+            <!--<parameter name = "severity" value="error" />-->
+            <property name = "Content-Type" value="application/json" />
+            <action type="CheckCode" code="200"/>
+            <action type="OtherwiseDo" code="200">
+                <request name="authentication" path="usermanagement/authentication" method="POST">
+                    <property name = "Content-Type" value="application/json" />
+                    <property name = "Accept" value="text/plain" />
+                    <action type="SendOutput">
+                        <data>{"username": "smc_gva", "password": "smc_gva"}</data>
+                    </action>
+                </request>
+            </action>
+            <action type="ParseJson">
+	            <item type="Array">
+	                <item memberName="id" />
+	                <item memberName="status" />
+	                <item memberName="message" />
+	                <item type="Timestamp"
+	                     name="time" memberName="created" format="yyyy/MM/dd HH:mm:ss.SSS" />
+                </item>
+            </action>
+        </request>
+    </agent>
+</Configuration>

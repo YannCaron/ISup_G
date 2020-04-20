@@ -1,0 +1,2097 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,261 165 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+
+	string DPEditNames = \"AFPS.GlobalStatus;\";
+	idispatch curr_node;
+	int curr_node_id;
+	string histories_str, ae_table, dp_to_load, curr_node_text;
+	bool generate_events, generate_alarms;
+	dyn_string checked_histories, dpe_names;	
+	dyn_anytype dp_data;
+	int check_hists_count = 1;
+	
+	data_point_elements =  makeDynString(
+																					AETABLE_POSTFIX, 
+																					DESCRIPTION_TEXT,
+																					EVENT_TEXT_POSTFIX,
+																					EVENT_GENERATE_EVENT_POSTFIX,
+																					EVENT_HISTORIES_POSTFIX,
+																					HIDDEN_POSTFIX ,
+																					LOGIC_INPUTS_POSTFIX,	
+																					LOGIC_ENABLED_POSTFIX,
+																					LOGIC_RULE_POSTFIX,
+																					SGFWSYTEM_PARAMS_POSTFIX,
+																					STATUS_DELAY_POSTFIX,
+																					GENERATE_ALARMS_POSTFIX,
+																					ALARM_PANEL,			 //
+																					ALARM_PANEL_PARAM, //these 4 are the 'special case' items
+																					ALARM_TEXT,				 //
+																					SGFWSYSTEM_ALARM_CLASS //
+																					);
+	
+	//set up the what's changed table, to know which things to eventually save back (or not)
+	for (int i = 1; i<= dynlen(data_point_elements); i++)
+	{
+		changed_elements[i] = false;
+	}
+	
+	//load the information into the boxes from the first data point supplied (maybe average or default values if more than 1 in the end ...?)	
+	
+	//set up what dpes to fetch
+	data_points = strsplit($DPEditNames, \";\"); //change to $ when no longer testing ***************
+	dp_to_load = data_points[1];
+	
+	for (int i = 1; i<= dynlen(data_point_elements); i++)
+	{
+		dpe_names[i] = dp_to_load + data_point_elements[i];
+	}
+	//DebugN(dpe_names);
+	
+	for (int b = 1; b<=dynlen(dpe_names)-4;b++) //the -4 means don't get the last 4 things in the list, that is the alarms config
+	{																				//because if alarms are not enabled, the alarms config does not exist
+		if (b == dpe_index(DESCRIPTION_TEXT))
+	{
+		strreplace(dpe_names[b],DESCRIPTION_TEXT,\"\");
+		DebugTN(dpe_names[b]);
+		dp_data[b] = dpGetDescription(dpe_names[b]);
+	}
+	else
+		dpGet(dpe_names[b], dp_data[b]); //yes, it is a dpGet in a for loop, but it is only really getting a few points so it's still fast
+	}
+		 
+	//dpGet(dpe_names, dp_data); replaced with the for :( cause of special cases
+	//DebugN(dp_data);
+	
+	//DebugN(dp_to_load + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\");
+	dpGet(dp_to_load + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\", start_alert_handling_enabled);
+	//DebugN(start_alert_handling_enabled);
+	for (int b = dynlen(dpe_names)-4; b<=dynlen(dpe_names);b++) 
+	{
+		dpGet(dpe_names[b], dp_data[b]);
+	}
+
+	//display the data
+	SetDataToDisplay(dp_data);
+	dpGet(data_points[1] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._type\", alert_handling_type_int);
+
+}//end event initialise of panel
+" 0
+"main()
+{
+
+	//DebugN(\"entering event terminate for sgFwSystem editor\");
+	//EndingDebugs();
+	
+	validateSgFwSystemConfig();
+	SavingChangesBack();
+	
+	//would really love to have
+	//if (dynlen(validateSgFwSystemConfig()) > 0)
+	//	{
+	//	-- \"the panel configuration contains errors:\" + validateSgFwSystemConfig()
+	//	\"would you like to save the panel anyway or go back and fix the problems --
+	//	if !(--go back and fix--)
+	//		{
+	//		SavingChangesBack();
+	//		}
+	//	else
+	//		{
+	//		-- do not close panel --
+	//		}
+	//	}
+	//else
+	//	{
+	//	SavingChangesBack();
+	//	}
+
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"const string PVSS_PANEL_DIRECTORY_NAME = \"panels\";
+const string DESCRIPTION_TEXT = \"descriptionText_instead_of_componentText\";
+dyn_string data_point_elements;
+
+
+//global variables
+dyn_string data_points;
+dyn_bool changed_elements;
+string start_panel_params_text, start_logic_configs_text = \"\";
+dyn_string histories, alarm_event_tables, truth_tables, systems, params, alert_classes, alert_class_name_split;
+bool start_alert_handling_enabled;
+int alert_handling_type_int;
+
+
+int dpe_index(string dpe_name)
+{
+	return dynContains(data_point_elements, dpe_name);
+}
+
+void SetDataToDisplay(dyn_anytype dp_data)
+{
+	//DebugN(data_point_elements, dp_data);
+	PopulateLists();
+	sgTree_CreateCheckList(getShape(\"HistoriesCheckList\"), histories, dp_data[dpe_index(EVENT_HISTORIES_POSTFIX)]);
+	sgTree_CreateRadioList(getShape(\"AlarmsEventsRadioButtonList\"), alarm_event_tables, dp_data[dpe_index(AETABLE_POSTFIX)]);
+	sgTree_CreateRadioList(getShape(\"TruthTableRadioButtonList\"), truth_tables, dp_data[dpe_index(LOGIC_RULE_POSTFIX)]);
+	sgTree_InsertDynAsNodes(systems, getShape(\"LogicInputsTree\"));
+	AlertClassComboBox.items = alert_classes;
+	ParamsTableComboBox.items = params;
+	
+	//check the checkboxes generate alarms, events, logic and set visibility
+	AlarmEventTableEnableCheckBox.state(0) = dp_data[dpe_index(GENERATE_ALARMS_POSTFIX)];
+	SetAlarmEventItemsEnable(dp_data[dpe_index(GENERATE_ALARMS_POSTFIX)]);
+	
+	EventsEnableCheckBox.state(0) = dp_data[dpe_index(EVENT_GENERATE_EVENT_POSTFIX)];
+	SetEventItemsEnable(dp_data[dpe_index(EVENT_GENERATE_EVENT_POSTFIX)]);
+	
+	LogicEnableCheckBox.state(0) = dp_data[dpe_index(LOGIC_ENABLED_POSTFIX)];
+	SetLogicItemsEnable(dp_data[dpe_index(LOGIC_ENABLED_POSTFIX)]);
+	
+	//put in all the other info
+	PanelTextField.text = dp_data[dpe_index(ALARM_PANEL)];
+	PanelParamsEdit.Text = ConcatDynStringWithChar(dp_data[dpe_index(ALARM_PANEL_PARAM)], \"\\n\");
+	start_panel_params_text = dp_data[dpe_index(ALARM_PANEL_PARAM)];
+	AlarmTextField.text = dp_data[dpe_index(ALARM_TEXT)];
+	ComponentTextField.text = dp_data[dpe_index(DESCRIPTION_TEXT)];
+	EventTextEdit.text = dp_data[dpe_index(EVENT_TEXT_POSTFIX)];
+	HiddenCheckBox.state(0) = dp_data[dpe_index(HIDDEN_POSTFIX)];
+	LogicInputsEdit.Text = ConcatDynStringWithChar(dp_data[dpe_index(LOGIC_INPUTS_POSTFIX)], \"\\n\");
+	start_logic_configs_text = dp_data[dpe_index(LOGIC_INPUTS_POSTFIX)];
+	ParamsTableComboBox.text = dp_data[dpe_index(SGFWSYTEM_PARAMS_POSTFIX)];
+	
+	alert_class_name_split[1] = dp_data[dpe_index(SGFWSYSTEM_ALARM_CLASS)];
+	if (alert_class_name_split[1] != \"\")
+	{
+		alert_class_name_split = strsplit(alert_class_name_split[1], \":\");
+		AlertClassComboBox.text = alert_class_name_split[2];
+	}
+	else
+	{
+		AlertClassComboBox.text = \"\";
+	}
+	
+	bool params_disabled = (dp_data[dpe_index(SGFWSYTEM_PARAMS_POSTFIX)] == \"\");
+	SetParametersEnable(params_disabled);
+	UseParamsTableCheckBox.state(0) = !params_disabled;
+	
+	DelaySpin.text = dp_data[dpe_index(STATUS_DELAY_POSTFIX)];
+}
+
+
+string GetPanelParamsEdit()
+{
+	return PanelParamsEdit.Text;
+}
+
+string GetLogicInputsEdit()
+{
+	return LogicInputsEdit.Text;
+}
+
+dyn_anytype GetDataFromDisplay()
+{
+	dyn_anytype dpe_values;
+	
+	//get the histories
+	dpe_values[dpe_index(EVENT_HISTORIES_POSTFIX)] = sgTree_CheckedItemsInCheckList(getShape(\"HistoriesCheckList\"));
+	
+	//get the radio list values
+	
+	dpe_values[dpe_index(AETABLE_POSTFIX)] = sgTree_SelectedItemInRadioButtonList(getShape(\"AlarmsEventsRadioButtonList\"));
+	dpe_values[dpe_index(LOGIC_RULE_POSTFIX)] = sgTree_SelectedItemInRadioButtonList(getShape(\"TruthTableRadioButtonList\"));
+	
+	//get the checkboxes generate alarms, events, logic
+	dpe_values[dpe_index(GENERATE_ALARMS_POSTFIX)] = AlarmEventTableEnableCheckBox.state(0);
+	
+	dpe_values[dpe_index(EVENT_GENERATE_EVENT_POSTFIX)] = EventsEnableCheckBox.state(0);
+	
+	dpe_values[dpe_index(LOGIC_ENABLED_POSTFIX)] = LogicEnableCheckBox.state(0);
+	
+	//get all other info
+	dpe_values[dpe_index(ALARM_PANEL)] = PanelTextField.text;
+	
+	langString AlarmText = AlarmTextField.text;
+	dpe_values[dpe_index(ALARM_TEXT)] = AlarmText;
+	dpe_values[dpe_index(SGFWSYSTEM_ALARM_CLASS)] = getSystemName() + AlertClassComboBox.text;
+	dpe_values[dpe_index(DESCRIPTION_TEXT)] = ComponentTextField.text;
+	dpe_values[dpe_index(EVENT_TEXT_POSTFIX)] = EventTextEdit.text;
+	dpe_values[dpe_index(HIDDEN_POSTFIX)] = HiddenCheckBox.state(0); 
+	dpe_values[dpe_index(SGFWSYTEM_PARAMS_POSTFIX)] = ParamsTableComboBox.text;
+	dpe_values[dpe_index(STATUS_DELAY_POSTFIX)] = DelaySpin.text;
+	
+	dpe_values[dpe_index(ALARM_PANEL_PARAM)] = dynPatternMatch(\"?*\", (strsplit(GetPanelParamsEdit(), \"\\r\\n\")));
+	dpe_values[dpe_index(LOGIC_INPUTS_POSTFIX)] = dynPatternMatch(\"?*\", (strsplit(GetLogicInputsEdit(), \"\\r\\n\")));
+	
+	return dpe_values;
+}
+
+
+
+
+
+//##################### saving changes back ########################3
+void SavingChangesBack()
+{
+	//DebugN(\"entering procedure for saving changes back in sgFwSystem\");	
+	//this is where you save back to the database
+	
+	//but only save back if saving is enabled:
+	//DebugN(SaveChangesOnCloseCheckBox.state(0));
+	
+	if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+		//DebugN(\"Saving changes back\");
+		idispatch curr_node;
+		dyn_anytype dpe_values;
+		dyn_dyn_anytype to_write;
+		int curr_node_state_index, x;
+		dyn_string empty;
+		to_write[2] = empty;
+		
+		dpe_values = GetDataFromDisplay();
+		
+		//because Stupid text edit boxes do not have OnChange or OnClick events
+		changed_elements[dpe_index(ALARM_PANEL_PARAM)] = (start_panel_params_text != dpe_values[dpe_index(ALARM_PANEL_PARAM)]);
+		changed_elements[dpe_index(LOGIC_INPUTS_POSTFIX)] = (start_logic_configs_text != dpe_values[dpe_index(LOGIC_INPUTS_POSTFIX)]);
+		
+		//ok from below here (template)
+		
+		bool alarm_active_start, alarm_elements_changed;
+		
+		//make a list of what has changed and therefore what needs to be saved back
+		for (int i = 1; i<= dynlen(data_points); i++)
+		{
+			//special for sgFwSystem
+			if (dpe_values[dpe_index(GENERATE_ALARMS_POSTFIX)]) //if alarms are generated at all...
+		{
+			//if the special cases need to be written,
+			//	DebugN(data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\");
+			//	dpGet(
+			//	delay(1);
+				
+			//	dpGet(data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\", alarm_active_start);
+			alarm_active_start = start_alert_handling_enabled;
+			//	DebugN(alarm_active_start);
+			alarm_elements_changed = (
+																changed_elements[dpe_index(ALARM_PANEL)] || 
+																changed_elements[dpe_index(ALARM_PANEL_PARAM)] || 
+																changed_elements[dpe_index(ALARM_TEXT)] || 
+																changed_elements[dpe_index(SGFWSYSTEM_ALARM_CLASS)]
+															 );
+			if (alarm_elements_changed) //if anything changes, you have to write the whole lot, otherwise the non-written values are lost
+			{
+				changed_elements[dpe_index(ALARM_PANEL)] = true;
+				changed_elements[dpe_index(ALARM_PANEL_PARAM)] = true;
+				changed_elements[dpe_index(ALARM_TEXT)] = true;
+				changed_elements[dpe_index(SGFWSYSTEM_ALARM_CLASS)] = true;
+			}
+			
+			if (alarm_elements_changed && !alarm_active_start)
+			{
+				DebugN(\"warning: Writing values into an alarm when the alarm is not activated!\");
+			}
+			
+			if (alarm_elements_changed)
+			{
+				//DebugN(alert_handling_type_int);
+				if (alert_handling_type_int != 0) //check the DP exists before trying to disable it!
+				{
+					dpSet(data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2); //acknowledge pending alarms
+					dpSet(data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\", false); // de activate alarm
+				}
+	
+				if (dpe_values[dpe_index(GENERATE_ALARMS_POSTFIX)])
+				{
+				  dyn_anytype extras_names = makeDynAnytype(
+																								    data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._type\",
+																									 	data_points[i] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._orig_hdl\"
+																								 	 );
+					dyn_anytype extras_values = makeDynAnytype(
+																										 DPCONFIG_ALERT_BINARYSIGNAL,
+																										 true
+																							  	 	);
+					dynAppend(to_write[1], extras_names);
+					dynAppend(to_write[2], extras_values);		
+	
+				}
+		
+			}
+		
+		}
+		//end special		
+			
+		for (int j = 1; j<= dynlen(data_point_elements); j++) 
+			{
+			if (changed_elements[j])
+				{
+				dynAppend(to_write[1], (data_points[i] + data_point_elements[j]));
+				x = dynlen(to_write[2])+1;
+				to_write[2][x] = dpe_values[j];
+				}
+			}
+		}
+		
+		//DebugN(\"writing back : \");
+		//DebugN(to_write);
+		
+		dyn_string writenames = to_write[1];
+		
+		if (dynlen(writenames) > 0)
+		{
+		//	DebugN(\"dpSetting type sgFwSystem\");
+		//	DebugN(to_write);
+			
+			//set the new data back into the database. 
+			for (int p = 1; p<=dynlen(writenames); p++)
+			{
+				//DebugN(\"Setting:\", writenames[p], to_write[2][p]);
+				string tmp = writenames[p];
+				strreplace(writenames[p], DESCRIPTION_TEXT, \"\");
+				if (tmp == writenames[p])
+					dpSet(writenames[p], to_write[2][p]);
+				else
+					dpSetDescription(writenames[p], to_write[2][p]);
+			}
+			// DebugN(writenames, to_write[2]);
+			// dpSet(writenames, to_write[2]);
+		 
+			 //reactivate if necessary - special for sgFwSystem
+			 //	if (alarm_elements_changed && alarm_active_start && dpe_values[dpe_index(GENERATE_ALARMS_POSTFIX)])
+		 	if (alarm_elements_changed)
+			{
+	 			//DebugN(data_points[1] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\", true);
+	 			dpSet(data_points[1] + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._active\", dpe_values[dpe_index(GENERATE_ALARMS_POSTFIX)]);
+			}
+		}
+	}
+	else
+	{
+		//DebugN(\"discarding changes\");
+	}
+	
+	//PanelOff();
+}
+
+
+void SetLogicItemsEnable(bool value)
+{
+
+	TruthTableRadioButtonList.enabled = value;
+	LogicInputsTree.Enabled = value;
+	LogicAddToInputListBtn.enabled = value;
+	LogicInputsEdit.enabled = value;
+	LogicViewEvalPatternsBtn.enabled = value;
+	TruthTableRadioButtonList.Enabled = value;
+	
+	if (value)
+	{
+		LogicInputsEdit.visible = false;
+		LogicInputsEdit.BackColor = OLEColor(\"white\"); 
+		LogicInputsEdit.visible = true;
+	}
+	else
+	{
+		LogicInputsEdit.visible = false;
+		LogicInputsEdit.BackColor = OLEColor(\"_3DFace\"); 
+		LogicInputsEdit.visible = true;
+	}
+
+}
+
+void SetAlarmEventItemsEnable(bool value)
+{
+
+	AlarmTextField.enabled = value;
+	PanelBrowseButton.enabled = value;
+	PanelTextField.enabled = value;
+	PanelParamsEdit.enabled = value;
+	AlarmsEventsRadioButtonList.Enabled = (value || EventsEnableCheckBox.state(0));
+	AlertClassComboBox.enabled = value;
+	
+	if (value) //this turns the back colour to either white if editable or _3DFace if not
+	{
+		PanelParamsEdit.visible = false; //they have to be made invisible and then visible in order to force
+		PanelParamsEdit.BackColor = OLEColor(\"white\"); //\"white\"; //(\"white\"); //white //a re-paint of the panel (otherwise the colour doesn't display)
+		PanelParamsEdit.visible = true;
+	}
+	else
+	{
+		PanelParamsEdit.visible = false;
+		PanelParamsEdit.BackColor = OLEColor(\"_3DFace\"); //3d face
+		PanelParamsEdit.visible = true;
+	}
+
+}
+
+void SetEventItemsEnable(bool value)
+{
+	HistoriesCheckList.Enabled = value;
+	AlarmsEventsRadioButtonList.Enabled = (value || AlarmEventTableEnableCheckBox.state(0));
+}
+
+void SetParametersEnable(bool value)
+{
+	AlarmEventTableEnableCheckBox.enabled = value;
+	EventsEnableCheckBox.enabled = value;
+	DelaySpin.enabled = value;
+	ParamsTableComboBox.enabled = !value;
+	if (!value)
+	{
+		SetEventItemsEnable(false);
+		SetAlarmEventItemsEnable(false);
+	}
+	else
+	{
+		SetEventItemsEnable(EventsEnableCheckBox.state(0));
+		SetAlarmEventItemsEnable(AlarmEventTableEnableCheckBox.state(0));
+	}
+}
+
+void PopulateLists()
+{
+	histories = getPointsOfType(\"sgFwHistory\");
+	alarm_event_tables = getPointsOfType(\"sgAETable\");
+	truth_tables = getPointsOfType(\"sgFwTruthTable\");
+	systems = getPointsOfType(\"sgFwSystem\");
+	params = getPointsOfType(\"sgParams\");
+	alert_classes = getPointsOfType(\"_AlertClass\");
+	
+	for (int i = 1; i<=dynlen(alert_classes);i++)
+	{
+		alert_classes[i] = alert_classes[i] + \".\";
+	}
+}
+
+bool panelFileExists(string filename)
+{
+	bool result = false;
+	dyn_string possible_paths;
+	
+	paCfgReadValueList(PROJ_PATH + \"config/config\", \"general\", \"proj_path\", possible_paths);
+	for (int i = 1; i<=dynlen(possible_paths);i++)
+	{
+		//DebugN(\"testing if panel exists:\"+possible_paths[i]+\"/panels/\"+filename);
+		result = result || (0 == access(possible_paths[i]+\"/panels/\"+filename, F_OK));
+	}
+	return result;
+}
+
+dyn_string validateSgFwSystemConfig()
+{
+
+	dyn_string result;
+	if (UseParamsTableCheckBox.state(0))
+	{
+		if (ParamsTableComboBox.text == \"\")
+		{
+			dynAppend(result, \"Use of params selected, but no params table defined\");
+		}
+		if (AlarmEventTableEnableCheckBox.state(0))
+		{
+			dynAppend(result, \"params table set, but alarms still enabled\");
+		}
+		if (EventsEnableCheckBox.state(0))
+		{
+			dynAppend(result, \"params table set, but events still enabled\");
+		}
+	}
+	if (LogicEnableCheckBox.state(0))
+	{
+		string logicinputsedittext = GetLogicInputsEdit();
+	//	DebugN(logicinputsedittext);
+		if (logicinputsedittext == \"\")
+		{
+			dynAppend(result, \"Logic enabled, but no inputs defined\");
+		}
+		if (sgTree_SelectedItemInRadioButtonList(getShape(\"TruthTableRadioButtonList\")) == \"\")
+		{
+			dynAppend(result, \"Logic enabled, but no truth table defined\");
+		}	
+	}
+	if (AlarmEventTableEnableCheckBox.state(0))
+	{
+		if ((PanelTextField.text == \"\") || (!(panelFileExists(PanelTextField.text))))
+		{
+			dynAppend(result, \"alarms enabled and panel file defined, but panel file cannot be found\");
+		}
+		if (AlertClassComboBox.text == \"\")
+		{
+			dynAppend(result, \"alarms enabled but alert class not defined\");
+		}
+	}
+	
+	for (int i = 1; i<= dynlen(result);i++)
+	{
+		result[i] = \"sgFwSystem Panel Warning: \" + result[i];
+	}	
+		
+	if (dynlen(result)>0)
+	{
+		DebugN(result);
+	}
+	
+	return result;
+}
+
+
+void EndingDebugs()
+{
+	DebugN(\"ending debugs:\");
+	DebugN(TruthTableRadioButtonList.Items.Item(1).text);
+	DebugN(sgTree_SelectedItemInRadioButtonList(getShape(\"TruthTableRadioButtonList\")));
+}
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 74
+"Frame2"
+""
+1 670 800 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+74 0 0 0 0 0
+EE E
+2
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 670 383 960 800
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Frame2
+2 27
+"AETableLabel"
+""
+1 410 108 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 412 110 514 126
+0 2 0 "s" 0 0 0 192 0 0  412 110
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 16 Choose AE Table:
+30 28
+"ParamsFrame"
+""
+1 10 385 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+29 0 0 0 0 0
+EE E
+2
+1
+LANG:5 0 
+0
+"main()
+{
+}" 0
+ E 0 1 1 0 1 E U  0 E 10 54 960 390
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 12  Parameters 
+2 31
+"DelayLabel"
+""
+1 20 70 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+32 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 210 72 395 88
+0 2 0 "s" 0 0 0 194 0 0  210 72
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 32 PreStatus -> Status delay (sec):
+2 38
+"ComponentTextLabel"
+""
+1 18 20 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+38 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E "main()
+{
+	PopulateLists();
+}" 0
+ 0 1 1 0 1 E U  0 E 20 22 119 38
+0 2 0 "s" 0 0 0 192 0 0  20 22
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 15 Component Text:
+30 39
+"GeneralFrame"
+""
+1 10 50 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+39 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 3 957 52
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 11  Specifics 
+30 51
+"AlarmEventFrame"
+""
+1 18 378 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+51 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 18 96 668 380
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 25  Alarms and Events Table 
+2 54
+"HistoriesLabel"
+""
+1 690 154 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+54 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+}" 0
+ "main()
+{
+	EventTextEdit.text = sgTree_CheckedItemsInCheckList(getShape(\"HistoriesCheckList\"));
+}" 0
+ 0 1 1 0 1 E U  0 E 692 156 746 172
+0 2 0 "s" 0 0 0 192 0 0  692 156
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 10 Histories:
+2 61
+"AlarmTextLabel"
+""
+1 28 137 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+61 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 30 139 98 155
+0 2 0 "s" 0 0 0 192 0 0  30 139
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 11 Alarm Text:
+2 62
+"PanelLabel"
+""
+1 31 194 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+62 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 33 196 69 212
+0 2 0 "s" 0 0 0 192 0 0  33 196
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Panel:
+2 63
+"PanelParamsLabel"
+""
+1 31 248 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+63 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 33 250 139 266
+0 2 0 "s" 0 0 0 192 0 0  33 250
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 17 Panel Parameters:
+30 64
+"LogicFrame"
+""
+1 10 796 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+64 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 392 660 800
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 7  Logic 
+2 68
+"SelectTruthTableLabel"
+""
+1 20 440 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+68 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 22 442 218 458
+0 2 0 "s" 0 0 0 64 0 0  22 442
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 19 Select Truth Table:
+2 71
+"EventTextLabel"
+""
+1 690 108 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 692 110 757 126
+0 2 0 "s" 0 0 0 192 0 0  692 110
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 11 Event Text:
+6 73
+"Border1"
+""
+1 671 400 E E E 1 E 1 E N "_Transparent" E N "_3DFace" E E
+ E E
+73 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 671 379 958 400
+30 53
+"EventsFrame"
+""
+1 680 780 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+53 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 680 70 950 790
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 8  Events 
+2 75
+"SelectInputLabel"
+""
+1 193 405 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+75 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 195 407 268 423
+0 2 0 "s" 0 0 0 192 0 0  195 407
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 13 Select Input:
+2 76
+"LogicInputsLabel"
+""
+1 275 645 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+76 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 277 647 317 663
+0 2 0 "s" 0 0 0 192 0 0  277 647
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 7 Inputs:
+4 77
+"Line1"
+""
+1 620 645 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+77 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  620 667 620 645
+4 78
+"Line2"
+""
+1 620 667 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+78 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  620 667 610 657
+4 79
+"Line3"
+""
+1 620 667 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+79 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  620 667 630 657
+4 80
+"Line4"
+""
+1 958 360 E E E 1 E 1 E N "_3DFace" E N "_Transparent" E E
+ E E
+80 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  958 360 958 440
+2 94
+"Text1"
+""
+1 159 130 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+93 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 161 132 227 148
+0 2 0 "s" 0 0 0 192 0 0  161 132
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 12 Alert Class:
+13 70
+"LogicAddToInputListBtn"
+""
+1 480 640 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ "main()
+{
+}" 0
+ "main()
+{
+
+}" 0
+
+70 0 0 0 0 0
+EE E
+0
+1
+LANG:5 30 Double Click to add explicitly
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+478 638 602 672
+T 
+1
+LANG:5 17 Add to Input List
+"main()
+{
+	string new_input;
+	idispatch curr_node;
+	dyn_int sel_node_ids;
+	//curr_node = LogicInputsTree.ExtractNode(LogicInputsTree.Selected);
+	
+	sel_node_ids = sgTree_SelectedNodeIDsInFlyTree(getShape(\"LogicInputsTree\"));
+	
+	for (int i = 1; i<=dynlen(sel_node_ids);i++)
+	{
+		curr_node = LogicInputsTree.ExtractNode(sel_node_ids[i]);
+		if (curr_node.HasChildren)
+		{
+			new_input = curr_node.data+\".*\";
+		}
+		else
+		{
+			new_input = curr_node.data;
+		}
+	
+		if (LogicInputsEdit.Text == \"\")
+		{
+			LogicInputsEdit.Text = new_input;
+		}
+		else
+		{
+			LogicInputsEdit.Text = LogicInputsEdit.Text + \"\\n\" + new_input;
+		}
+	}
+}" 0
+ E E E
+29 21
+"HistoriesCheckList"
+""
+1 690 176 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+22 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+690 176 940 780
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"	changed_elements[dpe_index(EVENT_HISTORIES_POSTFIX)] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"	sgTree_CheckListMouseDown(getShape(\"HistoriesCheckList\"), X);
+	//changed_elements[1] = true;"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 22
+"AlarmsEventsRadioButtonList"
+""
+1 376 108 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+23 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+410 130 655 370
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"	sgTree_RadioBtnClick(getShape(\"AlarmsEventsRadioButtonList\"));
+	changed_elements[dpe_index(AETABLE_POSTFIX)] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+21 30
+"DelaySpin"
+""
+1 215 68 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+31 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+213 66 277 93
+0
+E
+"main()
+{
+	changed_elements[dpe_index(STATUS_DELAY_POSTFIX)] = true;
+}" 0
+
+E
+
+N 0 1000 1 999 1 1
+20 36
+"HiddenCheckBox"
+""
+1 420 20 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+418 18 482 42
+1
+T 
+1
+LANG:5 6 Hidden
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	changed_elements[dpe_index(HIDDEN_POSTFIX)] = true;
+}" 0
+14 37
+"ComponentTextField"
+""
+1 121 19 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+37 0 0 0 0 0
+E"main()
+{
+//AlarmTextField.text = \"Alarm on \"+ComponentTextField.text;
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+119 17 402 44
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+	changed_elements[dpe_index(DESCRIPTION_TEXT)] = true;
+}" 0
+
+E
+"main()
+{
+	dyn_string alert_string;
+	if (AlarmEventTableEnableCheckBox.state(0))
+	{
+		if (AlarmTextField.text != \"\")
+		{
+			alert_string = strsplit(AlarmTextField.text, \" \");
+			alert_string[dynlen(alert_string)] = ComponentTextField.text;
+			AlarmTextField.text = ConcatDynStringWithChar(alert_string, \" \");
+		}
+		else
+		{
+			AlarmTextField.text = ComponentTextField.text;
+		}
+		changed_elements[dpe_index(ALARM_TEXT)] = true;
+	}
+}" 0
+
+20 49
+"UseParamsTableCheckBox"
+""
+1 502 20 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+49 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+500 18 644 42
+1
+T 
+1
+LANG:5 16 Use Params Table
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	SetParametersEnable(!state);
+	ParamsTableComboBox.text = \"\";
+	changed_elements[dpe_index(SGFWSYTEM_PARAMS_POSTFIX)] = true;
+}" 0
+22 50
+"ParamsTableComboBox"
+""
+1 645 18 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+50 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+643 16 952 43
+0
+"main()
+{
+
+}" 0
+
+"main()
+{
+	changed_elements[dpe_index(SGFWSYTEM_PARAMS_POSTFIX)] = true;
+}" 0
+
+E
+ 0 0
+20 52
+"AlarmEventTableEnableCheckBox"
+""
+1 30 110 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+52 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+28 108 102 142
+1
+T 
+1
+LANG:5 6 Enable
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	SetAlarmEventItemsEnable(state);
+	changed_elements[dpe_index(GENERATE_ALARMS_POSTFIX)] = true;
+}" 0
+14 55
+"EventTextEdit"
+""
+1 690 129 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+55 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+688 127 932 154
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+	changed_elements[dpe_index(EVENT_TEXT_POSTFIX)] = true;
+}" 0
+
+E
+E
+20 56
+"EventsEnableCheckBox"
+""
+1 690 83 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+56 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+688 81 762 108
+1
+T 
+1
+LANG:5 6 Enable
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	SetEventItemsEnable(state);
+	changed_elements[dpe_index(EVENT_GENERATE_EVENT_POSTFIX)] = true;
+}" 0
+14 57
+"PanelTextField"
+""
+1 30 222 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+57 0 0 0 0 0
+E"main()
+{
+	if (!panelFileExists(PanelTextField.text))
+	{
+		DebugN(\"Panel File \"+PanelTextField.text+\" cannot be found within known paths!!\");
+	}
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+28 220 402 247
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+	changed_elements[dpe_index(ALARM_PANEL)] = true;
+	changed_elements[dpe_index(ALARM_TEXT)] = true;
+}" 0
+
+E
+E
+14 60
+"AlarmTextField"
+""
+1 27 160 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+60 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+25 158 402 185
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+	changed_elements[dpe_index(ALARM_TEXT)] = true;
+	changed_elements[dpe_index(ALARM_PANEL)] = true;
+}" 0
+
+E
+E
+20 65
+"LogicEnableCheckBox"
+""
+1 20 417 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+65 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+18 415 92 442
+1
+T 
+1
+LANG:5 6 Enable
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	SetLogicItemsEnable(state);
+	changed_elements[dpe_index(LOGIC_ENABLED_POSTFIX)] = true;
+}" 0
+29 67
+"TruthTableRadioButtonList"
+""
+1 -270 247 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+67 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+20 460 260 790
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"	sgTree_RadioBtnClick(getShape(\"TruthTableRadioButtonList\"));
+	changed_elements[dpe_index(LOGIC_RULE_POSTFIX)] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+13 72
+"PanelBrowseButton"
+""
+1 80 190 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+72 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+78 188 202 217
+T 
+1
+LANG:5 16 Browse For Panel
+"main()
+{
+	string fileName;
+	dyn_string split_file_name;
+	fileSelector(fileName, \"D:/\", false, \"*.pnl\");
+	if (fileName != \"\")
+	{
+		split_file_name = strsplit(fileName, \"/\");
+		for (int i = 1; i <= dynlen(split_file_name); i++)
+		{
+			if (strtolower(split_file_name[i]) == PVSS_PANEL_DIRECTORY_NAME)
+			{
+				PanelTextField.text = ConcatDynStringWithChar(dynSubrange(split_file_name, i+1, dynlen(split_file_name)), \"/\");
+			}
+		}
+	}
+}" 0
+ E E E
+13 81
+"LogicViewEvalPatternsBtn"
+""
+1 270 760 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+81 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+268 758 652 792
+T 
+1
+LANG:5 42 Click to view and close evaluated patterns
+"main()
+{
+
+	if (!SelectionList1.visible)
+	{
+
+		dyn_string EvalPatterns, Patterns;
+		//DebugN(LogicInputsEdit.Text);
+		Patterns = strsplit(LogicInputsEdit.Text, \"\\r\\n\");
+		Patterns = dynPatternMatch(\"?*\", Patterns);
+		//DebugN(dynlen(Patterns));
+		for (int i = 1; i<= dynlen(Patterns); i++)
+			{
+			dynAppend(EvalPatterns, dynPatternMatch(Patterns[i], systems));
+			}
+		dynSortAsc(EvalPatterns);
+		SelectionList1.items = EvalPatterns;
+	
+	}
+
+	SelectionList1.visible = !SelectionList1.visible;
+
+}" 0
+ E E "main()
+{
+
+}" 0
+
+29 82
+"LogicInputsTree"
+""
+1 -433 240 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+82 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+270 400 650 639
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+22 93
+"AlertClassComboBox"
+""
+1 230 130 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+92 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+228 128 402 155
+0
+E
+"main()
+{
+	changed_elements[dpe_index(SGFWSYSTEM_ALARM_CLASS)] = true;
+}" 0
+
+E
+ 0 0
+29 98
+"PanelParamsEdit"
+""
+1 30 270 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+94 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+30 270 400 370
+15 PVSS.TextEdit.1
+0
+E
+29 99
+"LogicInputsEdit"
+""
+1 229 456 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+94 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+270 680 650 760
+15 PVSS.TextEdit.1
+0
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+17 84
+"SelectionList1"
+""
+1 270 0 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+84 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+268 -2 962 762
+0
+E
+E
+E
+
+3 1
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

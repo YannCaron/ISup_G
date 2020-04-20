@@ -1,0 +1,358 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 460 N "_3DFace" 2
+"$StationName"
+"$SystemName"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 1976
+"LINE73"
+""
+1 680.0000000000032 390 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+406 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  680 390 410 390
+4 1975
+"LINE72"
+""
+1 640 400.0000000000032 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+405 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  640 400 640 145
+4 1897
+"LINE71"
+""
+1 460 370.0000000000035 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+378 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  460 370 460 85
+2 6
+"PageLabel"
+""
+1 13 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 15 10 1101 46
+1 2 0 "0s" 0 0 0 65 0 0  15 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 10 Infra: BNA
+LANG:1 4 AFPS
+1 2042 71 "" 11
+0
+4 57
+"LINE21"
+""
+1 1190 164.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+249 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1204 165 1190 165
+4 58
+"LINE22"
+""
+1 1190 104.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+250 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1209 105 1190 105
+30 1916
+"FRAME3"
+""
+1 15 74 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+397 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 3.663366336633664 0 5.423728813559321 315.049504950495 -296.3559322033897 0 E 15 74 117 134
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 BUS 09
+1 2046 166 "0" 46
+0
+1 2047 166 "1" 46
+0
+1 2043 165 "" 46
+0
+1 2052 167 "0" 46
+0
+1 2053 167 "1" 46
+0
+1 2058 168 "0" 46
+0
+1 2059 168 "1" 46
+0
+1 2070 170 "0" 46
+0
+1 2071 170 "1" 46
+0
+1 2076 171 "0" 46
+0
+1 2077 171 "1" 46
+0
+1 2082 172 "0" 46
+0
+1 2083 172 "1" 46
+0
+1 2088 173 "0" 46
+0
+1 2089 173 "1" 46
+0
+1 2094 174 "0" 46
+0
+1 2095 174 "1" 46
+0
+1 2106 176 "0" 46
+0
+1 2107 176 "1" 46
+0
+1 2100 175 "0" 46
+0
+1 2101 175 "1" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 2048 166 "0" 51
+0
+1 2049 166 "0" 52
+0
+1 2050 166 "1" 51
+0
+1 2051 166 "1" 52
+0
+1 2044 165 "" 51
+0
+1 2045 165 "" 52
+0
+1 2054 167 "0" 51
+0
+1 2055 167 "0" 52
+0
+1 2056 167 "1" 51
+0
+1 2057 167 "1" 52
+0
+1 2060 168 "0" 51
+0
+1 2061 168 "0" 52
+0
+1 2062 168 "1" 51
+0
+1 2063 168 "1" 52
+0
+1 2072 170 "0" 51
+0
+1 2073 170 "0" 52
+0
+1 2074 170 "1" 51
+0
+1 2075 170 "1" 52
+0
+1 2078 171 "0" 51
+0
+1 2079 171 "0" 52
+0
+1 2080 171 "1" 51
+0
+1 2081 171 "1" 52
+0
+1 2084 172 "0" 51
+0
+1 2085 172 "0" 52
+0
+1 2086 172 "1" 51
+0
+1 2087 172 "1" 52
+0
+1 2090 173 "0" 51
+0
+1 2091 173 "0" 52
+0
+1 2092 173 "1" 51
+0
+1 2093 173 "1" 52
+0
+1 2096 174 "0" 51
+0
+1 2097 174 "0" 52
+0
+1 2098 174 "1" 51
+0
+1 2099 174 "1" 52
+0
+1 2108 176 "0" 51
+0
+1 2109 176 "0" 52
+0
+1 2110 176 "1" 51
+0
+1 2111 176 "1" 52
+0
+1 2102 175 "0" 51
+0
+1 2103 175 "0" 52
+0
+1 2104 175 "1" 51
+0
+1 2105 175 "1" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 71 "Group28" -1
+"objects\\sgFwHistory.pnl" 10 710 T 118 1 0 1 -15 -10
+2
+"$SystemHistory""StationBNA.History"
+"$SystemName""$SystemName"
+3 165 "PANEL_REF165" -1
+"objects\\sgFwBlock.pnl" 550 390 T 395 1.3375 0 0.15 -445.625 -3.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""StationBNA.MOXA.GlobalStatus"
+3 166 "PANEL_REF187" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 396 0.85 0 1 125 15
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNAB51VO01"
+3 167 "PANEL_REF167" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 398 0.85 0 1 125 -44.99999999999999
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNAB51VO02"
+3 168 "PANEL_REF168" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 399 0.85 0 1 125 -105
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNAA60VO01"
+3 170 "PANEL_REF170" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 400 0.85 0 1 125 75.00000000000003
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNA271VO01"
+3 171 "PANEL_REF171" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 401 0.85 0 1 125 135
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNA250VO01"
+3 172 "PANEL_REF172" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 402 0.85 0 1 305 135
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNA251VO01"
+3 173 "PANEL_REF173" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 403 0.85 0 1 305 75.00000000000009
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNA268VO01"
+3 174 "PANEL_REF174" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 404 0.85 0 1 305 15.00000000000003
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNAA60VO02"
+3 175 "PANEL_REF175" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 407 0.85 0 1 305 -45
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""PBBRS02ASY01"
+3 176 "PANEL_REF176" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 408 0.85 0 1 305 -105
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""BNA452ASY01"
+0

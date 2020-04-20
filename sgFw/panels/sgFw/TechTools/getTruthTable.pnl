@@ -1,0 +1,182 @@
+V 10
+1
+LANG:5 0 
+PANEL,-1 -1 500 400 N "_3DFace" 0
+E E E E E 1 -1 -1 0  85 100
+""0  1
+E "void Btn_GetSystemsTT_Clicked()
+{
+  dyn_string sgFwDps;
+  sgFwDps = getPointsOfType(\"sgFwSystem\");
+//  DebugTN(\"sgFwDps: \" + sgFwDps);
+  
+  for (int i = 1; i <= dynlen(sgFwDps); i++)
+  {
+    bool logicEnabled;
+    dpGet(sgFwDps[i] + LOGIC_ENABLED_POSTFIX, logicEnabled);
+    if (logicEnabled)
+    {
+      string truthTable;
+      dpGet(sgFwDps[i] + LOGIC_RULE_POSTFIX, truthTable);
+      DebugTN(sgFwDps[i] + \" truthTable: \" + truthTable);  
+    }
+  }
+}
+
+void Btn_GetTTContents_Clicked()
+{
+  dyn_string truthTables = getPointsOfType(\"sgFwTruthTable\");
+  DebugTN(\"TruthTables: \" + truthTables);
+  
+  for (int i = 1 ; i <= dynlen(truthTables); i++)
+  {
+    string TTContent;
+    dpGet(truthTables[i] + \".Table\", TTContent);
+    DebugTN(truthTables[i] + \"= \" + TTContent);
+
+  }  
+} 
+
+void Btn_GetGlobalStatusInputs()
+{
+  dyn_string sgFwSystem = getPointsOfType(\"sgFwSystem\");
+  DebugTN (\"TruthTable Request Start\");
+  
+  for (int i = 1 ; i <= dynlen(sgFwSystem); i++)
+  {
+    bool logicEnabled;
+    dpGet(sgFwSystem[i] + LOGIC_ENABLED_POSTFIX, logicEnabled);
+    if(logicEnabled)
+    {
+      dyn_string logicRule;
+			dpGet(sgFwSystem[i] + LOGIC_RULE_POSTFIX, logicRule); 
+	//		DebugN(sgFwSystem[i] + \": logic rule: \" + logicRule);       
+      
+      dyn_string logicInputsPattern;
+			dpGet(sgFwSystem[i] + LOGIC_INPUTS_POSTFIX, logicInputsPattern); 
+	    DebugN(sgFwSystem[i] + \": logic rule: \" + logicRule + \"|| Inputs (pattern): \" + logicInputsPattern);            
+      
+      dyn_string logicInputs;
+      for (int j = 1 ; j <= dynlen(logicInputsPattern); j++)
+      {
+            // dynAppend(logicInputs, getPointsFromPattern(logicInputsPattern[j]));
+	    	DebugN(getPointsFromPattern(logicInputsPattern[j]));
+      }
+//	    DebugN(\"\\t\" + sgFwSystem[i] + \": Inputs: \" + logicInputs);            
+
+    }    
+  }  
+} " 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"GetSystemTruthTablesBtn"
+""
+1 150 25 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 101 -*-MS Shell Dlg-bold-r-normal-*-16-*-100-100-*-*-iso8859-1|-16,0,0,0,758,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 148 23 422 112
+
+T 
+1
+LANG:5 23 Get Systems TruthTables
+"main()
+{
+  Btn_GetSystemsTT_Clicked();
+}" 0
+ E E E
+13 1
+"getTruthTablesContentsBtn"
+""
+1 150 130 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 101 -*-MS Shell Dlg-bold-r-normal-*-16-*-100-100-*-*-iso8859-1|-16,0,0,0,758,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 148 128 422 217
+
+T 
+1
+LANG:5 24 Get TruthTables Contents
+"main()
+{
+  Btn_GetTTContents_Clicked();
+}" 0
+ E E E
+13 2
+"PUSH_BUTTON1"
+""
+1 150 240 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 101 -*-MS Shell Dlg-bold-r-normal-*-16-*-100-100-*-*-iso8859-1|-16,0,0,0,758,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 148 238 422 327
+
+T 
+1
+LANG:5 23 Get GlobalStatus inputs
+"main()
+{
+  Btn_GetGlobalStatusInputs();
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

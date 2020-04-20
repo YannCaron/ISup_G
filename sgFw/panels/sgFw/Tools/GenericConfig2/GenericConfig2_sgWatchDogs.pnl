@@ -1,0 +1,1179 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values, rules_configs;
+string DPEditNames = \"EMDIS.WatchDogsConfig;\";
+data_point_elements = makeDynString(REFERENCES_POSTFIX,
+																		TIME_OUTS_POSTFIX,
+																		OUTPUTS_POSTFIX,
+																		DEFAULT_VALUES_POSTFIX
+																	 );				
+																																									
+data_points = strsplit($DPEditNames, \";\"); //change to $ when finished testing
+dpe_values = sgEditPanel_LoadData($DPEditNames, data_point_elements); //change to $ when finished testing
+
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	all_values[i] = dpe_values[i];
+	}
+
+if (dynlen(all_values[1]) > 0)
+	{
+	UpdateWatchdogsList();
+	DisplayWatchdog(1);
+	}
+else
+	{
+	sgTree_CreateRadioList(getShape(\"RuleRadioList\"), rules_names, \"\");
+	UpdateWatchdogsList();
+	DisplayWatchdog(1);
+	}
+	
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+
+}
+" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgWatchDogsConfig editor\");
+SavingChangesBack();
+}" 0
+"main()
+{
+
+}" 0
+ E E 1 -1 -1 0  35 25
+"" 0 1
+E"dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+dyn_dyn_string all_values;
+int last_selected_watchdog = 1;
+
+dyn_string RemoveInternalPoints(dyn_string all_points)
+//removes the internal points (ie those that start with an underscore) from a list
+{
+dyn_string result;
+dyn_string curr_point_name;
+for (int i = 1; i <= dynlen(all_points); i++)
+	{
+	curr_point_name = strsplit(all_points[i], \":\");
+	if (!(patternMatch(\"_*\", curr_point_name[2])))
+		{
+		if (!(patternMatch(\"_*\", dpTypeName(curr_point_name[2]))))
+			{
+			dynAppend(result, curr_point_name[2]);			
+			}
+		}
+	}
+return result;
+}
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+dyn_string validate()
+{
+dyn_string result;
+
+int table_length = dynlen(all_values[1]);
+bool table_right_length;
+table_right_length = ((table_length == dynlen(all_values[2])) &&
+											(table_length == dynlen(all_values[3])) &&
+											(table_length == dynlen(all_values[4]))
+										 );
+if (!(table_right_length))
+	{
+	dynAppend(result, \"the lengths of the individual dyn_strings do not match\");
+	}
+else
+	{
+	for (int i = 1; i <= dynlen(all_values[1]);i++)
+		{
+		if (all_values[dpe_index(REFERENCES_POSTFIX)][i] == \"\")	
+			{
+			dynAppend(result, \"no input specified for watchdog number \"+i);
+			if (dynlen(dpNames(all_values[dpe_index(REFERENCES_POSTFIX)][i])) == 0)
+				{
+				dynAppend(result, \"reference string matches no real references for watchdog number \"+i);
+				}
+			}
+		if (all_values[dpe_index(OUTPUTS_POSTFIX)][i] == \"\")	
+			{
+			dynAppend(result, \"no output specified for watchdog number \"+i);
+			if (dynlen(dpNames(all_values[dpe_index(OUTPUTS_POSTFIX)][i])) == 0)
+				{
+				dynAppend(result, \"output string matches no real outputs for watchdog number \"+i);
+				}
+			}
+		if ((all_values[dpe_index(TIME_OUTS_POSTFIX)][i] == 0) || (all_values[dpe_index(TIME_OUTS_POSTFIX)][i] == \"\"))
+			{
+			dynAppend(result, \"invalid timeout for watchdog number \"+i);
+			}
+		}
+	}
+
+if (dynlen(result) > 0)
+	{
+	for (int j = 1; j<=dynlen(result);j++)
+		{
+		result[j] = \"sgWatchDogsConfig error:\" + result[j];
+		}
+	DebugN(result);
+	}
+return result;
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+//DebugN(\"entering procedure for saving changes back in sgWatchDogsConfig\");	
+//this is where you save back to the database
+
+//to make sure than when you are closing it really does get the info off the panel
+all_values[dpe_index(REFERENCES_POSTFIX)][last_selected_watchdog] = ReferenceText.text;
+all_values[dpe_index(TIME_OUTS_POSTFIX)][last_selected_watchdog] = TimeoutSpin.text;
+all_values[dpe_index(OUTPUTS_POSTFIX)][last_selected_watchdog] = OutputText.text;
+all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][last_selected_watchdog] = DefaultValText.text;
+
+
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+	//would be nice to have option to see if any errors produced in validation, whether to not close...
+	
+	////DebugN(changed_elements);
+	//if anything has changed, save it all back... (to avoid the possibility of out-of-sync columns)
+	bool anything_changed = ((changed_elements[1]) ||
+													 (changed_elements[2]) ||
+													 (changed_elements[3]) ||
+													 (changed_elements[4])
+													);
+	changed_elements[1] = anything_changed;
+	changed_elements[2] = anything_changed;
+	changed_elements[3] = anything_changed;
+	changed_elements[4] = anything_changed;	
+//	//DebugN(data_points, data_point_elements, all_values, changed_elements);
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+string TreeDynamicExpand(shape Tree)
+{
+
+idispatch curr_node;
+curr_node = Tree.ExtractNode(Tree.Selected);
+dyn_string new_items;
+dyn_string new_item_split;
+
+if (!(curr_node.HasChildren))
+	{
+	new_items = RemoveInternalPoints(dpNames(curr_node.Path+\".*\"));
+	if (dynlen(new_items) > 0)
+		{
+	
+	for (int i = 1;i<=dynlen(new_items);i++)
+		{
+		new_item_split = strsplit(new_items[i], \".\");
+		curr_node.Add(new_item_split[dynlen(new_item_split)]);		
+		}
+		}
+	}
+curr_node.Expand(false);
+}
+
+void UpdateWatchdogsList()
+{
+
+dyn_string watchdogs_list_items;
+int wd_list_selected;
+if (dynlen(all_values[1])>0)
+	{
+	
+	for(int i = 1; i <= dynlen(all_values[1]); i++)
+		{
+			dynAppend(watchdogs_list_items, i + \". \" +
+																				\"If (\"+
+																				all_values[dpe_index(REFERENCES_POSTFIX)][i] +
+																				\") value is older than \" + 
+																				all_values[dpe_index(TIME_OUTS_POSTFIX)][i] + 
+																				\" sec, set (\" + 
+																				all_values[dpe_index(OUTPUTS_POSTFIX)][i] + 
+																				\") to '\" + 
+																				all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][i] +
+																				\"'\"
+							 );
+		}
+	wd_list_selected = WatchdogsList.selectedPos;
+	WatchdogsList.items = watchdogs_list_items;
+	WatchdogsList.selectedPos = wd_list_selected;
+	}
+else
+	{
+	watchdogs_list_items = makeDynString(\"    ----------- No Watchdogs Defined (Add Some) ------------        \");
+	WatchdogsList.items = watchdogs_list_items;
+	}
+
+
+}
+
+void DisplayPartialTree(string node_path, shape InOutTree)
+{
+bool still_going_deeper = true;
+if (node_path != \"\")
+{
+	dyn_string selected_names = RemoveInternalPoints(dpNames(node_path));
+	dyn_string node_path_split;
+	dyn_string tree_names;
+
+	if (dynlen(selected_names) > 0)
+		{
+		for (int i = 1;i<= dynlen(selected_names);i++)
+			{
+			node_path_split = strsplit(selected_names[i], \".\");
+			//fill the necessary parts of the tree.
+			for (int i = 0; i<= dynlen(node_path_split);i++)
+				{
+				if (i == 0)
+					{
+					dynAppend(tree_names, RemoveInternalPoints(dpNames(\"*\")));
+					}
+				else
+					{
+					still_going_deeper = ((strpos(node_path_split[i], \"*\") == -1) && still_going_deeper);
+					if (still_going_deeper)
+						{
+					//	//DebugN(ConcatDynStringWithChar(dynSubrange(input_path, 1, i), \".\")+\".*\");
+						dynAppend(tree_names, RemoveInternalPoints(dpNames(ConcatDynStringWithChar(dynSubrange(node_path_split, 1, i), \".\")+\".*\")));
+					//	//DebugN(tree_names);
+						}
+					}
+				}
+			}
+		dynSortAsc(tree_names);	
+		dynUnique(tree_names);
+		tree_names = RemoveNonLeaves(tree_names);
+		////DebugN(tree_names);
+		sgTree_CreateTree(InOutTree, tree_names);
+
+		////DebugN(selected_names);
+		idispatch curr_node;
+		for (int j = 1;j<=dynlen(selected_names);j++)
+			{
+		//	//DebugN(\"selecting node\", selected_names[j]);
+			curr_node = InOutTree.ExtractNode(InOutTree.Items.FindNodeOnPath(selected_names[j]));
+			curr_node.Selected = true;
+			}
+		}
+	else
+		{
+		sgTree_CreateTree(InOutTree, RemoveInternalPoints(dpNames(\"*\")));
+		}
+	}
+else
+	{
+	sgTree_CreateTree(InOutTree, RemoveInternalPoints(dpNames(\"*\")));
+	}
+}
+
+void DisplayWatchdog(int WdIndex)
+{
+if (dynlen(all_values[1]) > 0)
+{
+
+DisplayPartialTree(all_values[dpe_index(REFERENCES_POSTFIX)][WdIndex], getShape(\"ReferenceTree\"));
+DisplayPartialTree(all_values[dpe_index(OUTPUTS_POSTFIX)][WdIndex], getShape(\"OutputTree\"));
+
+ReferenceText.text = all_values[dpe_index(REFERENCES_POSTFIX)][WdIndex];
+OutputText.text = all_values[dpe_index(OUTPUTS_POSTFIX)][WdIndex];
+
+TimeoutSpin.text = all_values[dpe_index(TIME_OUTS_POSTFIX)][WdIndex];
+DefaultValText.text = all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][WdIndex];
+
+}
+else
+	{
+	ReferencesTree.Items.Clear;
+	OutputTree.Items.Clear;
+	ReferenceText.text = \"\";
+	OutputText.text = \"\";
+	TimeoutSpin.text = \"\";
+	DefaultValText.text = \"\";
+	}
+}
+
+
+dyn_string RemoveNonLeaves(dyn_string StringList)
+{
+dyn_string result;
+//dynSortAsc(StringList);
+for (int i = 1; i<dynlen(StringList);i++)
+	{	if (strlen(StringList[i]) < strlen(StringList[i+1]))
+		{
+		if (StringList[i] != (substr(StringList[i+1], 0, strlen(StringList[i]))))
+			{
+			dynAppend(result, StringList[i]);
+			}
+		}
+	else
+		{
+		dynAppend(result, StringList[i]);
+		}	
+	}
+	dynAppend(result, StringList[dynlen(StringList)]);
+return result;
+}
+" 0
+ 2
+"CBRef""1"
+"EClose""main()
+{
+
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 42
+"Text3"
+""
+1 10 13 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+42 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 15 77 31
+0 2 0 "s" 0 0 0 192 0 0  12 15
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 9 Reference
+2 43
+"Text4"
+""
+1 430 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+43 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 432 12 474 28
+0 2 0 "s" 0 0 0 192 0 0  432 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Output
+2 44
+"Text5"
+""
+1 318 190 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+44 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 320 192 413 208
+0 2 0 "s" 0 0 0 192 0 0  320 192
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 15 Timeout (sec) :
+4 60
+"Line9"
+""
+1 170 487 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+59 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 507 170 487
+4 61
+"Line10"
+""
+1 170 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+60 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 510 160 500
+4 62
+"Line11"
+""
+1 180 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+61 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 510 180 500
+4 67
+"Line15"
+""
+1 600 480 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+66 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  600 500 600 480
+4 68
+"Line16"
+""
+1 600 493 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+67 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  600 503 590 493
+4 69
+"Line17"
+""
+1 610 493 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+68 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  600 503 610 493
+30 73
+"Frame1"
+""
+1 0 550 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 0 0 960 550
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 17  Single Watchdog 
+30 74
+"Frame2"
+""
+1 0 800 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 0 555 960 800
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 24  All watchdogs in point 
+2 75
+"Text1"
+""
+1 750 190 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+73 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 752 192 924 208
+0 2 0 "s" 0 0 0 192 0 0  752 192
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 26 Value if timeout exceeded:
+29 33
+"ReferenceTree"
+""
+1 10 33 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+33 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+10 33 300 473
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"TreeDynamicExpand(getShape(\"ReferenceTree\"));"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 36
+"OutputTree"
+""
+1 419 -38 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+440 30 730 470
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"TreeDynamicExpand(getShape(\"OutputTree\"));"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+14 56
+"ReferenceText"
+""
+1 10 517 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+55 0 0 0 0 0
+E"main()
+{
+all_values[dpe_index(REFERENCES_POSTFIX)][last_selected_watchdog] = ReferenceText.text;
+UpdateWatchdogsList();
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 515 422 542
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(REFERENCES_POSTFIX)] = true;
+}" 0
+
+E
+"main()
+{
+all_values[dpe_index(REFERENCES_POSTFIX)][WatchdogsList.selectedPos] = ReferenceText.text;
+UpdateWatchdogsList();
+DisplayPartialTree(ReferenceText.text, getShape(\"ReferenceTree\"));
+changed_elements[dpe_index(REFERENCES_POSTFIX)] = true;
+}" 0
+
+13 58
+"InputCopyBtn"
+""
+1 10 483 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+57 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 481 142 512
+T 
+1
+LANG:5 16 Change Reference
+"main()
+{
+if (sgTree_SelectedNodeHasChildren(getShape(\"ReferenceTree\")))
+	{
+	ReferenceText.text = sgTree_SelectedNodePath(getShape(\"ReferenceTree\")) + \".*\";
+	}
+else
+	{
+	ReferenceText.text = sgTree_SelectedNodePath(getShape(\"ReferenceTree\"));
+	}
+	
+all_values[dpe_index(REFERENCES_POSTFIX)][WatchdogsList.selectedPos] = ReferenceText.text;
+UpdateWatchdogsList();
+changed_elements[dpe_index(REFERENCES_POSTFIX)] = true;
+
+}" 0
+ E E E
+13 59
+"OutputCopyBtn"
+""
+1 440 480 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+58 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+438 478 572 509
+T 
+1
+LANG:5 13 Change Output
+"main()
+{
+if (sgTree_SelectedNodeHasChildren(getShape(\"OutputTree\")))
+	{
+	OutputText.text = sgTree_SelectedNodePath(getShape(\"OutputTree\")) + \".*\";
+	}
+else
+	{
+	OutputText.text = sgTree_SelectedNodePath(getShape(\"OutputTree\"));
+	}
+all_values[dpe_index(OUTPUTS_POSTFIX)][WatchdogsList.selectedPos] = OutputText.text;
+UpdateWatchdogsList();
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+14 66
+"OutputText"
+""
+1 440 517 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+65 0 0 0 0 0
+E"main()
+{
+all_values[dpe_index(OUTPUTS_POSTFIX)][last_selected_watchdog] = OutputText.text;
+UpdateWatchdogsList();
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+438 515 852 542
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+}" 0
+
+E
+"main()
+{
+all_values[dpe_index(OUTPUTS_POSTFIX)][WatchdogsList.selectedPos] = OutputText.text;
+UpdateWatchdogsList();
+DisplayPartialTree(OutputText.text, getShape(\"OutputTree\"));
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+}" 0
+
+17 70
+"WatchdogsList"
+""
+1 10 570 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+69 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 568 952 752
+0
+E
+"main()
+{
+WatchdogsList.enabled = false;
+//to make sure than when you change points it really does get the info off the panel
+all_values[dpe_index(REFERENCES_POSTFIX)][last_selected_watchdog] = ReferenceText.text;
+all_values[dpe_index(TIME_OUTS_POSTFIX)][last_selected_watchdog] = TimeoutSpin.text;
+all_values[dpe_index(OUTPUTS_POSTFIX)][last_selected_watchdog] = OutputText.text;
+all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][last_selected_watchdog] = DefaultValText.text;
+
+last_selected_watchdog = WatchdogsList.selectedPos;
+
+DisplayWatchdog(WatchdogsList.selectedPos);
+WatchdogsList.enabled = true;
+}" 0
+
+E
+
+3 1
+13 71
+"NewWatchdogBtn"
+""
+1 10 760 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+70 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 758 182 792
+T 
+1
+LANG:5 16 Add New Watchdog
+"main()
+{
+dynAppend(all_values[1], \"\");
+dynAppend(all_values[2], \"\");
+dynAppend(all_values[3], \"\");
+dynAppend(all_values[4], \"\");
+UpdateWatchdogsList();
+DisplayWatchdog(dynlen(all_values[1]));
+WatchdogsList.selectedPos = dynlen(all_values[1]);
+last_selected_watchdog = WatchdogsList.selectedPos;
+changed_elements[1] = true;
+changed_elements[2] = true;
+changed_elements[3] = true;
+changed_elements[4] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+13 72
+"RemoveWatchdogBtn"
+""
+1 200 760 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+71 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+198 758 392 792
+T 
+1
+LANG:5 24 Remove Selected Watchdog
+"main()
+{
+dynRemove(all_values[1], WatchdogsList.selectedPos);
+dynRemove(all_values[2], WatchdogsList.selectedPos);
+dynRemove(all_values[3], WatchdogsList.selectedPos);
+dynRemove(all_values[4], WatchdogsList.selectedPos);
+WatchdogsList.selectedPos = 1;
+last_selected_watchdog = WatchdogsList.selectedPos;
+UpdateWatchdogsList();
+DisplayWatchdog(1);
+changed_elements[1] = true;
+changed_elements[2] = true;
+changed_elements[3] = true;
+changed_elements[4] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+14 77
+"DefaultValText"
+""
+1 750 210 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+75 0 0 0 0 0
+E"main()
+{
+all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][last_selected_watchdog] = DefaultValText.text;
+UpdateWatchdogsList();
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+748 208 942 235
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(DEFAULT_VALUES_POSTFIX)] = true;
+}" 0
+
+E
+"main()
+{
+all_values[dpe_index(DEFAULT_VALUES_POSTFIX)][last_selected_watchdog] = DefaultValText.text;
+UpdateWatchdogsList();
+}" 0
+
+21 78
+"TimeoutSpin"
+""
+1 320 210 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+76 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+318 208 432 235
+0
+E
+"main()
+{
+all_values[dpe_index(TIME_OUTS_POSTFIX)][last_selected_watchdog] = TimeoutSpin.text;
+UpdateWatchdogsList();
+changed_elements[dpe_index(TIME_OUTS_POSTFIX)] = true;
+}" 0
+
+E
+
+N 0 99999 1 0 1 1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

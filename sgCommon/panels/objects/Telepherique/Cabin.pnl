@@ -1,0 +1,130 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 329 159 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 23 0 "" 46
+0
+4 4
+"Line1"
+""
+1 145 105 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  145 105 145 30
+7 14
+"Ellipse1"
+""
+1 145 20 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E U  0 E 145 20 10 10
+2 15
+"Altitud"
+""
+1 155 70 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 157 72 238 93
+0 2 0 "0s" 0 0 0 64 0 0  157 72 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 8 Altitude
+2 22
+"Description"
+""
+1 18.00000000000001 108 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  string description = dpGetDescription(\"Infra_G:DoleTelepherique.Components.TechnicalPresenceCabin\");
+  Description.text = description;
+}" 0
+ E 0 1 1 0 1 E U  0 E 20.00000000000001 100 265 125
+0 2 0 "0s" 0 0 0 64 0 0  20.00000000000001 100 1
+1
+LANG:5 27 Tahoma,-1,21,5,50,0,0,0,0,0
+0 1
+LANG:5 5 Text1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 24 0 "" 51
+0
+1 25 0 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 0 "Group2" -1
+"objects\\sgFwBlock.pnl" 290 400 T 1 0.6625 0 0.125 -180.349544817927 51.9374999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""DoleTelepherique.Components.TechnicalPresenceCabin"
+0

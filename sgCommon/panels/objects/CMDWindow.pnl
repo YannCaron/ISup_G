@@ -1,0 +1,168 @@
+V 10
+2
+LANG:5 14 Command Window
+LANG:1 14 Command Window
+PANEL,371 100 420 330 N "_3DFace" 16
+"$Command1"
+"$Command2"
+"$Command3"
+"$Command4"
+"$ConfirmationText1"
+"$ConfirmationText2"
+"$ConfirmationText3"
+"$ConfirmationText4"
+"$HistoryName"
+"$Label1"
+"$Label2"
+"$Label3"
+"$Label4"
+"$LabelWindowCmd"
+"$NavaidNr"
+"$StationName"
+"main()
+{
+	int res;
+
+	LabelWindowCmd.text = $LabelWindowCmd;	
+	
+	res = setInputFocus(\"\", \"Command Window\", \"Close\");	
+	
+}" 0
+EE E E 1 -1 -1 0  10 20
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 4
+"LabelWindowCmd"
+""
+1 0 20 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 22 418 48
+0 2 0 "s" 0 0 0 65 0 0  2 22
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 14 LabelWindowCmd
+LANG:1 14 LabelWindowCmd
+13 5
+"Close"
+""
+1 310 280 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+308 278 412 322
+T 
+2
+LANG:5 5 Close
+LANG:1 5 Close
+"main()
+{
+//	Close Command window at Click this button
+	PanelOffPanel(\"Command Window\");	
+}" 0
+ E E E
+1 6 4 "" 0
+0
+1 7 5 "" 0
+0
+1 8 6 "" 0
+0
+1 9 7 "" 0
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 4 ""
+"objects\\CMDButton.pnl" 98 281 T 6 2.857142857142857 0 1.333333333333333  -270 -314.6666666666666  
+7
+"$Command""$Command1"
+"$ConfirmationText""$ConfirmationText1"
+"$HistoryName""$HistoryName"
+"$Label""$Label1"
+"$NavaidName"""
+"$NavaidNr""$NavaidNr"
+"$StationName""$StationName"
+3 5 "Group4"
+"objects\\CMDButton.pnl" 30 65 T 6 2.857142857142856 0 1.333333333333333  -75.97701149425282 23.33333333333333  
+7
+"$Command""$Command2"
+"$ConfirmationText""$ConfirmationText2"
+"$HistoryName""$HistoryName"
+"$Label""$Label2"
+"$NavaidName"""
+"$NavaidNr""$NavaidNr"
+"$StationName""$StationName"
+3 6 "Group6"
+"objects\\CMDButton.pnl" 30 65 T 7 2.857142857142857 0 1.333333333333333  -75.97701149425288 73.33333333333334  
+7
+"$Command""$Command3"
+"$ConfirmationText""$ConfirmationText3"
+"$HistoryName""$HistoryName"
+"$Label""$Label3"
+"$NavaidName"""
+"$NavaidNr""$NavaidNr"
+"$StationName""$StationName"
+3 7 "Group8"
+"objects\\CMDButton.pnl" 30 170 T 8 2.857142857142857 0 1.333333333333333  -75.97701149425288 -16.66666666666666  
+7
+"$Command""$Command4"
+"$ConfirmationText""$ConfirmationText4"
+"$HistoryName""$HistoryName"
+"$Label""$Label4"
+"$NavaidName"""
+"$NavaidNr""$NavaidNr"
+"$StationName""$StationName"
+0

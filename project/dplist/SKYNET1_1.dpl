@@ -1,0 +1,84 @@
+# ascii dump of database
+
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SKYNET1	sgLAN	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SKYNET1.Components.ErrorsList.GlobalStatus	""	lt:1 LANG:5 "Network objects@@"
+SKYNET1.Components.CriticalEventsStatus	""	lt:1 LANG:5 "Critical events@@"
+SKYNET1.Components.TimeoutRef	""	lt:1 LANG:5 "Link to NMS@@"
+SKYNET1.Components.GlobalStatus	""	lt:1 LANG:5 "SKYNET1@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SKYNET1.SystemHistory.HistorySize	sgLAN	1	0x101	20.06.2016 10:07:41.474
+SKYNET1.Components.ErrorsList.GlobalStatus.Alarms.AlarmActive	sgLAN	0	0x101	24.10.2016 08:30:44.690
+SKYNET1.Components.ErrorsList.GlobalStatus.Params	sgLAN	"SKYNET1.ComponentsParams"	0x101	20.06.2016 10:07:41.476
+SKYNET1.Components.ErrorsList.History.HistorySize	sgLAN	100	0x101	20.06.2016 10:07:41.477
+SKYNET1.Components.ErrorsList.Delay	sgLAN	1	0x101	20.06.2016 10:07:41.478
+SKYNET1.Components.ErrorsList.ConvTables.StatusConvTable.Input	sgLAN	"OPS", "SBY", "DEG", "U/S", "UKN", "manually removed by the user"	0x101	20.06.2016 10:07:41.480
+SKYNET1.Components.ErrorsList.ConvTables.StatusConvTable.Output	sgLAN	"TRUE", "TRUE", "FALSE", "FALSE", "FALSE", "TRUE"	0x101	20.06.2016 10:07:41.482
+SKYNET1.Components.CriticalEventsStatus.Alarms.AlarmActive	sgLAN	0	0x101	20.06.2016 10:07:41.483
+SKYNET1.Components.CriticalEventsStatus.Params	sgLAN	"SKYNET1.ComponentsParams"	0x101	20.06.2016 10:07:41.484
+SKYNET1.Components.TimeoutRef.Alarms.AlarmActive	sgLAN	0	0x101	28.09.2016 13:43:01.373
+SKYNET1.Components.TimeoutRef.Params	sgLAN	"SKYNET1.ComponentsParams"	0x101	20.06.2016 10:07:41.486
+SKYNET1.Components.GlobalStatus.Alarms.GenerateAlarms	sgLAN	1	0x101	20.06.2016 10:07:41.487
+SKYNET1.Components.GlobalStatus.Alarms.AlarmActive	sgLAN	1	0x200101	18.05.2018 12:15:18.633
+SKYNET1.Components.GlobalStatus.LogicConfig.LogicEnabled	sgLAN	1	0x101	20.06.2016 10:07:41.491
+SKYNET1.Components.GlobalStatus.LogicConfig.Rule	sgLAN	"SKYNET1.TruthTables.TTGlobal"	0x101	20.06.2016 10:07:41.493
+SKYNET1.Components.GlobalStatus.LogicConfig.Inputs	sgLAN	"SKYNET1.Components.TimeoutRef", "SKYNET1.Components.ErrorsList.GlobalStatus"	0x101	20.06.2016 10:07:41.494
+SKYNET1.Components.GlobalStatus.AETable	sgLAN	"AETable01"	0x101	20.06.2016 10:07:41.495
+SKYNET1.ComponentsParams.Histories	sgLAN	"SKYNET1.Components.ErrorsList.History"	0x101	20.06.2016 10:07:41.496
+SKYNET1.ComponentsParams.AETable	sgLAN	"AETable01"	0x101	20.06.2016 10:07:41.496
+SKYNET1.ComponentsParams.GenerateEvents	sgLAN	1	0x101	20.06.2016 10:07:41.498
+SKYNET1.WatchDogsConfig.References	sgLAN	"SKYNET1.Components.TimeoutRef.PreStatus"	0x101	20.06.2016 10:07:41.499
+SKYNET1.WatchDogsConfig.DefaultValues	sgLAN	"UKN"	0x101	20.06.2016 10:07:41.500
+SKYNET1.WatchDogsConfig.Outputs	sgLAN	"SKYNET1.Components.TimeoutRef.PreStatus"	0x101	20.06.2016 10:07:41.501
+SKYNET1.WatchDogsConfig.Timeouts	sgLAN	150	0x101	20.06.2016 10:07:41.502
+SKYNET1.Components.ErrorsList.Change.FullText	sgLAN	"For config ONLY ! SKYNET1"	0x200101	01.02.2017 09:38:35.403
+SKYNET1.Components.ErrorsList.ShortDelay	sgLAN	1	0x101	20.06.2016 10:07:41.503
+SKYNET1.Components.ErrorsList.LongDelay	sgLAN	5	0x101	20.06.2016 10:07:41.504
+SKYNET1.TruthTables.TTGlobal.Table	sgLAN	"OPS_---_OPS_0", "---_---_UKN_2_U/S+_ANY+", "---_---_UKN_2_UKN+_ANY+", "---_DEG_DEG_0", "---_OPS_DEG_0", "---_U/S_U/S_0"	0x101	20.06.2016 10:07:41.505
+SKYNET1.Components.MenuEntry.Name	sgLAN	"SKYNET1"	0x101	02.09.2016 08:00:04.906
+SKYNET1.Components.MenuEntry.Group	sgLAN	"NET"	0x200101	02.09.2016 08:00:04.908
+SKYNET1.Components.MenuEntry.Panel	sgLAN	"LAN/sgGenericLANMainPanel.pnl"	0x101	02.09.2016 08:00:04.909
+SKYNET1.Components.MenuEntry.Params	sgLAN	"LANSystemName:SKYNET1"	0x101	02.09.2016 08:00:04.910
+SKYNET1.Components.MenuEntry.Hidden	sgLAN	0	0x100101	02.09.2016 08:01:28.475
+SKYNET1.Components.MenuEntry.GlobalStatusPoint	sgLAN	"SKYNET1.Components.GlobalStatus"	0x101	02.09.2016 08:00:04.911
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+SKYNET1.Components.GlobalStatus.Alarms.AlarmActive	sgLAN		12					"LAN/sgGenericLANMainPanel.pnl"	"$LANSystemName:SKYNET1"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SKYNET1"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+SKYNET1.Components.TimeoutRef.PreStatus	sgLAN	56	\3
+SKYNET1.Components.TimeoutRef.Label1	sgLAN	56	\3
+SKYNET1.Components.TimeoutRef.Label2	sgLAN	56	\3
+SKYNET1.Components.TimeoutRef.Label3	sgLAN	56	\3
+SKYNET1.Components.TimeoutRef.Label4	sgLAN	56	\3
+SKYNET1.Components.TimeoutRef.Message	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.PreStatus	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.Label1	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.Label2	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.Label3	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.Label4	sgLAN	56	\3
+SKYNET1.XMLDispatcher.Objects.Message	sgLAN	56	\3
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+SKYNET1.Components.TimeoutRef.PreStatus	sgLAN	16	"201_SKYNET1.HEARTBEAT.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1501	"TCPCOMM"
+SKYNET1.Components.TimeoutRef.Label1	sgLAN	16	"201_SKYNET1.HEARTBEAT.Label1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.Components.TimeoutRef.Label2	sgLAN	16	"201_SKYNET1.HEARTBEAT.Label2"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.Components.TimeoutRef.Label3	sgLAN	16	"201_SKYNET1.HEARTBEAT.Label3"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.Components.TimeoutRef.Label4	sgLAN	16	"201_SKYNET1.HEARTBEAT.Label4"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.Components.TimeoutRef.Message	sgLAN	16	"201_SKYNET1.HEARTBEAT.Message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.PreStatus	sgLAN	16	"201_SKYNET1.OBJECT*.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1501	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.Label1	sgLAN	16	"201_SKYNET1.OBJECT*.Label1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.Label2	sgLAN	16	"201_SKYNET1.OBJECT*.Label2"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.Label3	sgLAN	16	"201_SKYNET1.OBJECT*.Label3"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.Label4	sgLAN	16	"201_SKYNET1.OBJECT*.Label4"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SKYNET1.XMLDispatcher.Objects.Message	sgLAN	16	"201_SKYNET1.OBJECT*.Message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"

@@ -1,0 +1,98 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 320 81 N "_3DFace" 3
+"$CategoryName"
+"$InterfaceName"
+"$SystemName"
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+1 1 0 "" 46
+0
+1 4 1 "" 46
+0
+1 7 2 "" 46
+0
+1 10 4 "" 0
+0
+0
+LAYER, 1 
+1
+LANG:5 0 
+1 2 0 "" 51
+0
+1 3 0 "" 52
+0
+1 5 1 "" 51
+0
+1 6 1 "" 52
+0
+1 8 2 "" 51
+0
+1 9 2 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+3 0 "PANEL_REF114" -1
+"objects\\sgFwBlock.pnl" 60 105 T 0 0.75 0 0.1408333333333348 -37.53021978022 -7.954166666667128
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$SystemName + \".Components.\" + $CategoryName + \".\" + $InterfaceName +\".GlobalStatus\""
+3 1 "PANEL_REF115" -1
+"objects\\sgFwBlock.pnl" 520 110 T 1 0.2375 0 0.125 -116.067048229548 28.291666666667
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$SystemName + \".Components.\" + $CategoryName + \".\" + $InterfaceName +\".Instance1\""
+3 2 "PANEL_REF116" -1
+"objects\\sgFwBlock.pnl" 625 110 T 2 0.2375 0 0.125 63.599618437118 28.291666666667
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$SystemName + \".Components.\" + $CategoryName + \".\" + $InterfaceName +\".Instance2\""
+3 4 "PANEL_REF5" -1
+"objects\\sgFwBtnCommand.pnl" 140 40 T 4 1.66666666666667 0 0.625 -126.333333333333 17
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$SystemName + \".Components.\" + $CategoryName + \".\" + $InterfaceName + \".GlobalStatus\""
+0

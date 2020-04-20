@@ -1,0 +1,476 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main() {
+  frame_initialized();
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "private const int STATUS_DEFAULT_VALUE = -1;
+private const string DEFAULT_VALUE = \"-\";
+
+private const string SYSTEM_NAME = \"EMSup_G:EMRADIO\";
+
+private const string QUERY_IDENT = \"ident\";
+private const string ENABLED_BACKCOLOR = \"_Window\";
+private const string DISABLED_BACKCOLOR = \"STD_grey_light\";
+
+private const string ENABLED_FORECOLOR = \"_3DText\";
+private const string DISABLED_FORECOLOR = \"STD_grey_dark\";
+
+private const string COLUMN_DP_NAME = \"dp\";
+private dyn_string RADIO_ACTIVE_TEXTS = makeDynString(\"Enabled\", \"Disabled\");
+
+mapping RadioType;
+mapping tableRows;
+mapping tableDPs;
+
+void frame_initialized() {
+  RadioType[\"SU4200 RADIO\"] = \"TX\";
+  RadioType[\"SD4200 RADIO\"] = \"TX\";
+  RadioType[\"EU4200C RADIO\"] = \"RX\";
+  RadioType[\"ED4200C RADIO\"] = \"RX\";
+  prepareTable();
+	connect();
+}
+
+private void prepareTable() {
+  RadioTable.selectByClick(TABLE_SELECT_LINE);
+}
+
+private void connect() {
+  string query = \"SELECT '_original.._value' FROM 'EMRADIO.Components.EMRADIO_*.{LocalInfo, Station, Frequency, RadioID, OpStatus.Disabled, OpStatus.Status, OpStatus.Comment}' REMOTE 'EMSup_G'\";
+  dpQueryConnectAll(\"connectRadioQuery\", true, QUERY_IDENT + \"Status\", query, 20);
+}
+
+private void disconnect() {
+  int res = dpQueryDisconnect(\"connectRadioQuery\", QUERY_IDENT);
+  RadioTable.clear();
+}
+private string dpRadio(string dp) {
+  int ri = strpos(dp, \"EMRADIO_\");
+  int pos = strpos(dp, \".\", ri);
+  dp = substr(dp, 0, pos);
+  return dp;  
+}
+
+private void tryAddRow(string dp) {
+  dp = dpRadio(dp); 
+  
+  if (!mappingHasKey(tableRows, dp)) {
+    tableRows[dp] = RadioTable.lineCount();
+    RadioTable.appendLine(COLUMN_DP_NAME, dp);
+    int row = tableRows[dp];
+    tableDPs[row] = dp;
+  }
+}
+
+private void matchColumn(string dp, string column, string value) {
+  if (patternMatch(\"*.\" + column, dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+    
+    RadioTable.cellValueRC(row, column, value);
+  }
+}
+
+private void matchColumnLocalInfo(string dp, string value) {
+  if (patternMatch(\"*.\" + \"LocalInfo\", dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+    
+    strreplace(value, \"\\\"\", \"\");
+    dyn_string values = strsplit(value, \",\");
+    
+    if (dynlen(values) >= 5) {
+      RadioTable.cellValueRC(row, \"Service\", values[3]);
+      RadioTable.cellValueRC(row, \"Function\", values[4]);
+      RadioTable.cellValueRC(row, \"Responsible\", values[5]);
+    } else {
+      RadioTable.cellValueRC(row, \"Service\", DEFAULT_VALUE);
+      RadioTable.cellValueRC(row, \"Function\", DEFAULT_VALUE);
+      RadioTable.cellValueRC(row, \"Responsible\", DEFAULT_VALUE);
+    }
+  }
+}
+
+private void matchColumnFrequency(string dp, string value) {
+  if (patternMatch(\"*.\" + \"Frequency\", dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+
+    int freq = ((int)value) / 1000;
+    string t = (string)freq;
+    if (freq == 0) t = DEFAULT_VALUE;
+    RadioTable.cellValueRC(row, \"Frequency\", t);
+  }
+}
+
+
+private void matchColumnStation(string dp, string value) {
+  if (patternMatch(\"*.\" + \"Station\", dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+
+    strreplace(value, \"\\\"\", \"\");
+    if (value == \"\") value = DEFAULT_VALUE;
+    RadioTable.cellValueRC(row, \"Station\", value);
+  }
+}
+
+private void matchColumnRadioID(string dp, string value) {
+  if (patternMatch(\"*.\" + \"RadioID\", dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+    
+    strreplace(value, \"\\\"\", \"\");
+    dyn_string values = strsplit(value, \",\");
+    
+    if (dynlen(values) >= 2) {
+      string v = strrtrim(strltrim(values[2]));
+      
+      if (mappingHasKey(RadioType, v)) {
+        string type = RadioType[v];
+        RadioTable.cellValueRC(row, \"Type\", type);
+      } else {
+        RadioTable.cellValueRC(row, \"Type\", DEFAULT_VALUE);
+      }
+    } else {
+      RadioTable.cellValueRC(row, \"Type\", DEFAULT_VALUE);
+    }
+  }
+}
+
+private void matchColumnColor(string dp, string column, string value) {
+  if (patternMatch(\"*.\" + column, dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+    
+    if (value == \"U_S\") value = \"U/S\";
+    string color = \"sgStd\" + value + \"Color\";
+    RadioTable.cellBackColRC(row, column, color);
+  }
+  
+}
+
+private void colorLine(int row, string forecolor, string backcolor) {
+  for (int c = 0; c < RadioTable.columnCount(); c++) {
+    string column = RadioTable.columnToName(c);
+    
+    if (column != \"OpStatus.Status\") {
+      RadioTable.cellForeColRC(row, column, forecolor);
+      RadioTable.cellBackColRC(row, column, backcolor);
+    }
+  }
+}
+
+private void matchColumnDisabled(string dp, string column, string value) {
+  if (patternMatch(\"*.\" + column, dp)) {
+    dp = dpRadio(dp); 
+    int row = tableRows[dp];
+    
+    string text = RADIO_ACTIVE_TEXTS[((bool)value) + 1];
+    RadioTable.cellValueRC(row, column, text);
+    
+    if (value == false) {
+      colorLine(row, ENABLED_FORECOLOR, ENABLED_BACKCOLOR);
+    } else {
+      colorLine(row, DISABLED_FORECOLOR, DISABLED_BACKCOLOR);
+    }
+  }
+  
+}
+
+private void connectRadioQuery(string ident, dyn_dyn_anytype data) {
+  for (int i = 2; i<=dynlen(data); i++) {
+    string dp = data[i][1];
+    string value = data[i][2];
+    
+    tryAddRow(dp);
+    matchColumnLocalInfo(dp, value);
+    matchColumnFrequency(dp, value);
+    matchColumnStation(dp, value);
+    matchColumnRadioID(dp, value);
+    matchColumn(dp, \"OpStatus.Status\", value);
+    matchColumnColor(dp, \"OpStatus.Status\", value);
+    matchColumnDisabled(dp, \"OpStatus.Disabled\", value);
+    matchColumn(dp, \"OpStatus.Comment\", value);
+  }
+
+}
+
+protected void radioTableOnRightClick(int row, int column) {
+  toggleActivation(row);
+}
+
+protected void radioTableOnDoubleClick(int row, int column) {
+  commentDialog(row);
+}
+
+private void toggleActivation(int row) {
+  string dp = tableDPs[row];
+  bool disabled;
+  string deactivationMessage;
+  string params, message;
+  string dpName = dp + \".OpStatus\";
+  string name = dpGetDescription(dpName);
+  string clientName = getHostname();
+  dyn_string df, ds;
+  
+	dpGet(dpName + DISABLED_POSTFIX, disabled,
+        dpName+ PARAMS_POSTFIX, params,
+        dpName+ MESSAGE_POSTFIX, message);
+  
+  if(disabled)
+		deactivationMessage = \"enable\";
+	else
+		deactivationMessage = \"disable\";
+
+	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+					makeDynString(\"$1:Do you really want to \" + deactivationMessage + \" the radio: \"+ \"\\n\" + name + \": \" + \"\\n\" + \"<<\" + message + \">> ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+
+	if(ds[1] == \"true\") {  // button ok
+    bool disableResult = !disabled;
+		dpSet(dpName + DISABLED_POSTFIX, disableResult);
+		
+   	if(disableResult)
+			sgHistoryAddEvent(SYSTEM_NAME + \".History\", SEVERITY_DISABLE, name + \" \" + deactivationMessage + \"d by Client: \" + clientName, message);			
+		else
+			sgHistoryAddEvent(SYSTEM_NAME + \".History\", SEVERITY_ENABLE, name + \" \" + deactivationMessage + \"d by Client: \" + clientName, message);			  
+	}
+}
+
+private void commentDialog(int row) {
+  string dp = tableDPs[row];
+  string ip = dpGetDescription(dp + \".OpStatus\");
+
+  ChildPanelOnModal(\"objects\\\\sgFwCommentWindow.pnl\", \"Comment Panel\", 
+                    makeDynString(\"$SystemStatus:\" + \".OpStatus\", \"$SystemName:\" + dp), 100, 100);
+}
+
+void forceRefresh_onClicked() {
+  
+	ForceToUnknownDistributedSystem(\"EMSup_G:\", \"EMRADIO\", makeDynString(\"Watchdog\"), \"History\");
+
+}
+
+
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 8 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 10 1096 46
+1 2 0 "0s" 0 0 0 65 0 0  10 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 7 EMRADIO
+LANG:1 4 AFPS
+1 113 16 "" 46
+0
+1 116 19 "" 11
+0
+13 107
+"PUSH_BUTTON1"
+""
+1 20 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+0  18 663 167 692
+
+T 
+1
+LANG:5 13 Force Refresh
+"main()
+{
+  forceRefresh_onClicked();
+}" 0
+ E E E
+30 95
+"Frame1"
+""
+1 10 350 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+50 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 2.469879518072291 0 -156.987951807229 0 E 10 100 1100 350
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 6 Radios
+25 112
+"RadioTable"
+""
+1 15.00000000000001 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ "main(int row, string column)
+{
+  radioTableOnRightClick(row, column);
+}" 0
+ "main(int row, string column)
+{
+  radioTableOnDoubleClick(row, column);
+}" 0
+
+60 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0  13 108 1092 662
+EE 1 0 1 10 0 "dp" 0 0 0 "s" 1
+LANG:5 2 dp
+E
+1
+LANG:5 0 
+
+0 "Service" 7 1 0 "s" 1
+LANG:5 7 Service
+E
+1
+LANG:5 0 
+
+100 "Function" 7 1 0 "s" 1
+LANG:5 8 Function
+E
+1
+LANG:5 0 
+
+100 "Frequency" 7 1 0 "s" 1
+LANG:5 6 Frequ.
+E
+1
+LANG:5 0 
+
+100 "Station" 5 1 0 "s" 1
+LANG:5 7 Station
+E
+1
+LANG:5 0 
+
+75 "Type" 5 1 0 "s" 1
+LANG:5 4 Type
+E
+1
+LANG:5 0 
+
+75 "Responsible" 7 1 0 "s" 1
+LANG:5 8 Respons.
+E
+1
+LANG:5 0 
+
+100 "OpStatus.Status" 4 1 0 "s" 1
+LANG:5 6 Status
+E
+1
+LANG:5 0 
+
+60 "OpStatus.Disabled" 6 1 0 "s" 1
+LANG:5 6 Activ.
+E
+1
+LANG:5 0 
+
+80 "OpStatus.Comment" 31 1 0 "s" 1
+LANG:5 7 Comment
+E
+1
+LANG:5 0 
+
+382 
+25 25 10 10
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 114 16 "" 51
+0
+1 115 16 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 16 "Group3" -1
+"objects/sgFwBlock.pnl" 230 300 T 45 0.6 0 0.15 712 15
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMRADIO.GlobalStatus"
+3 19 "" -1
+"objects/sgFwHistory.pnl" 80 695 T 51 1 0 1 -80 5
+2
+"$SystemHistory""EMRADIO.History"
+"$SystemName""EMSup_G:"
+0

@@ -1,0 +1,1346 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,258 160 707 688 N "_3DFace" 0
+"main()
+{
+exporter_config_file_path = getPath(DPLIST_REL_PATH)+ \"ExporterConfig.txt\";
+InitPanel();
+}" 0
+EE E E 1 -1 -1 0  30 30
+"" 0 1
+E"
+//global variables and constants
+dyn_dyn_string all_possible_elements, enabled_elements, dependent_elements;
+dyn_bool all_types_configurable;
+mapping type_name_to_index;
+dyn_string internal_points_to_keep;// = makeDynString(\"_SNMPAgent\", \"_Ui\"); in init
+const int TREE_STATE_RADIO_SELECTED = 4;
+const int TREE_STATE_RADIO_UNSELECTED = 5;
+const int TREE_STATE_TICKED = 2;
+const int TREE_STATE_UNTICKED = 1;
+string exporter_config_file_path; //= getPath(DPLIST_REL_PATH)+ \"ExporterConfig.txt\";
+
+
+
+//########################## Update Element List ##########################
+void updateElementList()
+//this formats and lists all the elements for the selected type
+{
+idispatch selected_type_node;
+string sel_str;
+dyn_string disabled_elems, all_poss_type_elems;
+
+//find the currently selected type
+selected_type_node = TypeList.ExtractNode(TypeList.Selected);
+sel_str = selected_type_node.Text;
+
+//get the list of all possible elements using the mapping
+all_poss_type_elems = all_possible_elements[type_name_to_index[sel_str]];
+
+//disable the reference types
+for (int i = 1; i<= dynlen(all_poss_type_elems); i++)
+	{
+	if (patternMatch(\"Ref:*\", all_poss_type_elems[i]))
+		{
+		dynAppend(disabled_elems, all_poss_type_elems[i]);
+		}
+	}
+
+//create the selectable checklist
+sgTree_CreateSelectableCheckList(getShape(\"ElementList\"),   
+																 all_poss_type_elems,
+																 enabled_elements[type_name_to_index[sel_str]],
+																 disabled_elems
+																);
+																
+//update the dependency display
+DisplayDependency();
+}
+
+//########################## Selected Type ##########################
+string SelectedType()
+//returns a string containing the name of the selected type
+{
+return sgTree_SelectedNodeText(getShape(\"TypeList\"));
+}
+//########################## Selected Element ##########################
+string SelectedElement()
+//returns a string containing the node of the selected element
+{
+return sgTree_SelectedNodeText(getShape(\"ElementList\"));
+}
+
+//########################## Initialise Panel ##########################
+void InitPanel()
+//this initialises the panel
+//it finds out all the possible types, and removes the internal types from the list
+//then the mapping from the type name to an element index is created (useful for the parallel arrays)
+//the config file is then loaded to fill the parallel arrays (all_possible_elements, enabled_elements, dependent_elements)
+//the data is then displayed through the panel objects
+{
+bool has_non_ref_elements;
+string this_type;
+dyn_string all_types_list, types_list, empty, exporter_config, this_line, unselected_types, types_to_disable;
+
+//generate a list of all types. most internal types are not useful to configure - however,
+//a few types are, these are stored in the global list internal_points_to_keep.
+//initialise internal_points_to_keep
+internal_points_to_keep = makeDynString(\"_SNMPAgent\", \"_Ui\");
+
+//get the list of all types in this database
+all_types_list = dpTypes();
+
+//sort out the mappings and the initialisation of global variables
+for (int j = 1; j <= dynlen(all_types_list); j++)
+	{
+	if (
+			(!patternMatch(\"_*\", all_types_list[j]))											//if the type is not an internal type
+				||
+			(dynContains(internal_points_to_keep, all_types_list[j]) > 0)	//or it isn't in the internal points to keep list
+		 )
+		{
+		this_type = all_types_list[j]; //store the type in a local var
+		dynAppend(types_list, this_type); //fill the mapping of index numbers to type names - this means ordering never has to be a problem
+		int end_id = dynlen(types_list);
+		type_name_to_index[this_type] = end_id; 
+		all_possible_elements[type_name_to_index[this_type]] = sgExporter_ElementListForType(this_type); //fill the line corresponding to this type in all_visible_elements with all the elements for this type
+		
+		//initialise to empty the other parallel arrays (so they are the right length, even if empty)
+		dependent_elements[end_id] = empty;
+		enabled_elements[end_id] = empty;
+		}
+	}
+
+//set up the type list as a selectable checklist
+sgTree_CreateSelectableCheckList(getShape(\"TypeList\"), types_list, types_list);
+
+//fill the types list with the types
+sgTree_FillList(getShape(\"TypeList\"), types_list, TREE_STATE_TICKED);
+
+//load the config file 
+exporter_config = sgExporter_readTextFileToDynString(exporter_config_file_path);
+
+//store the items from the file (the enabled items) into a list
+for (int conf_line = 1; conf_line <= dynlen(exporter_config); conf_line++)
+	{
+	this_line = strsplit(exporter_config[conf_line], \":\");
+	dynAppend(enabled_elements[type_name_to_index[this_line[1]]], this_line[2]);
+	if (dynlen(this_line) > 2) //if there is a dependency specified
+		{
+		dynAppend(dependent_elements[type_name_to_index[this_line[1]]], this_line[2]+\":\" + this_line[3]);		
+		}	
+	}
+
+//find any types that have no items of theirs selected, and de-select these in the main type list
+for (int i = 1; i<=dynlen(enabled_elements); i++)
+	{
+	if (dynlen(enabled_elements[i]) == 0)
+		{
+		string bob = mappingGetKey(type_name_to_index, i);
+		dynAppend(unselected_types, bob);
+		}
+	}
+sgTree_SetNamedItemsTo(getShape(\"TypeList\"), unselected_types, TREE_STATE_UNTICKED);
+
+//find if there are any types in the list with only reference elements (or even no elements at all)
+for (int x = 1; x<= dynlen(all_possible_elements); x++)
+	{
+	has_non_ref_elements = false;
+	for (int y = 1; y<= dynlen(all_possible_elements[x]); y++)
+		{
+		has_non_ref_elements = has_non_ref_elements || (!patternMatch(\"Ref:*\", all_possible_elements[x][y]));
+		}	
+	if (!has_non_ref_elements)
+		{
+		all_types_configurable[x] = false; //mark another parrallel array with if the type is configurable or not
+		dynAppend(types_to_disable, mappingGetKey(type_name_to_index, x));
+		}
+	else
+		{
+		all_types_configurable[x] = true; //mark another parrallel array with if the type is configurable or not
+		}
+	}
+sgTree_SetNamedItemsTo(getShape(\"TypeList\"), types_to_disable, TREE_STATE_UNTICKABLE);
+
+
+//select the first item in the types list, and update the elements list accordingly
+updateElementList();
+
+//output the exporter file being used (exporter_config_file_path is inited in the actual init, not here, because then you can reload with a different value if necessary)
+ExportFilePathTextField.text = exporter_config_file_path;
+}
+
+//########################## Depedency exists for selected element ##########################
+bool dependencyExistsForSelectedElement(int &dependent_index)
+//looks at the global lists to determine if a dependency is set for the selected element
+{
+bool dep_exists = false;
+int type_index = type_name_to_index[SelectedType()];
+for (int i = 1; i<= dynlen(dependent_elements[type_index]); i++)
+	{
+	if (patternMatch(SelectedElement()+\":*\", dependent_elements[type_index][i]))
+		{
+		dep_exists = true;
+		dependent_index = i;
+		}
+	}
+return dep_exists;
+}
+
+//########################## Save Depedency State ##########################
+void SaveDepState()
+//this reads the value for the dependency state off the panel and writes it into the global lists
+{
+int type_index, dependent_index;
+bool dep_exists, dep_checked;
+string SelEl, dep_string;
+
+type_index = type_name_to_index[SelectedType()];
+dependent_index = 0;
+SelEl = SelectedElement();
+dep_checked = CheckButton1.state(0);
+
+//does a setting for this dependency already exist
+dep_exists = dependencyExistsForSelectedElement(dependent_index);
+
+if (dep_checked) //if the dependency is selected
+	{
+	dep_string = SelEl+ \":\"+ConcatDynStringWithChar(DependentOnList.items, \",\")+\";\"+TextField1.text;	//generate the new string
+	if (dep_exists) //if there's already a dependency saved for this point, remove it
+		{
+		dynRemove(dependent_elements[type_index], dependent_index);		
+		}
+	dynAppend(dependent_elements[type_index], dep_string);	//save the new dependency config into the list
+	}
+else //the dependency is un-selected
+	{
+	if (dep_exists) //if there is a depenency, delete it
+		{
+		dynRemove(dependent_elements[type_index], dependent_index);
+		}	
+	}
+}
+
+//########################## Display Dependency ##########################
+void DisplayDependency()
+//finds the selected point, displays the dependency settings for it on the panel
+{
+int dep_index;
+dyn_string dep_conts, dep_points;
+	
+if (dependencyExistsForSelectedElement(dep_index))
+	{
+	//display the dependency
+	dep_conts = strsplit(dependent_elements[type_name_to_index[SelectedType()]][dep_index], \":\");
+	dep_conts = strsplit(dep_conts[2], \";\");
+	CheckButton1.state(0) = true;
+	DependentOnList.enabled = true;
+	DependentOnList.backCol = \"White\";
+	TextField1.enabled = true;
+	CopyNameDownBtn.enabled = true;
+	DelDepBtn.enabled = true;
+	ComboBox1.enabled = true;
+	ComboBox1.items = nonRefElementsForSelType();
+	CheckBoolSyntaxBtn.enabled = true;
+	AutoListBtn.enabled = true;
+	
+	dep_points = strsplit(dep_conts[1], \",\");
+	DependentOnList.items = dep_points;
+	ComboBox1.text = dep_points[1];
+	TextField1.text = dep_conts[2];
+
+	}
+else
+	{
+	//clear the dependency fields
+	CopyNameDownBtn.enabled = false;
+		DelDepBtn.enabled = false;
+	CheckButton1.state(0) = false;
+	DependentOnList.deleteAllItems();
+	DependentOnList.enabled = false;
+	DependentOnList.backCol = \"_3DFace\";
+	TextField1.enabled = false;
+	TextField1.text = \"\";
+	ComboBox1.enabled = false;
+	ComboBox1.text = \"\";
+				CheckBoolSyntaxBtn.enabled = false;
+				AutoListBtn.enabled = false;
+	}
+}
+
+//########################## Non-Reference elements for the selected type ##########################
+dyn_string nonRefElementsForSelType()
+//returns a list of non-reference elements for the selected type
+{
+dyn_string non_ref_elems, all_poss_type_elems;
+
+all_poss_type_elems = all_possible_elements[type_name_to_index[SelectedType()]]; //find all possible elements for the selected type
+
+//traverse the list removing the reference elements
+for (int i = 1; i<= dynlen(all_poss_type_elems); i++)
+	{
+	if (!patternMatch(\"Ref:*\", all_poss_type_elems[i]))
+		{
+		dynAppend(non_ref_elems, all_poss_type_elems[i]);
+		}
+	}
+	
+return non_ref_elems;
+}
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 28
+"Frame4"
+""
+1 10 586 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+27 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 34 350 588
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 28                             
+30 27
+"Frame3"
+""
+1 348 417 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+26 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 348 34 698 418
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 24                         
+2 4
+"TypesLabel"
+""
+1 18 30 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 20 32 216 48
+0 2 0 "s" 0 0 0 64 0 0  20 32
+ 1
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 17 Data Point Types:
+2 5
+"ElementsLabel"
+""
+1 358 30 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 360 32 556 48
+0 2 0 "s" 0 0 0 64 0 0  360 32
+ 1
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 14 Type Elements:
+2 10
+"Text1"
+""
+1 18 595 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+11 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 20 597 116 623
+0 2 0 "s" 0 0 0 64 0 0  20 597
+ 1
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 17 Config File Path:
+6 11
+"Border1"
+""
+1 10 30 E E E 1 E 1 E N "_WindowText" E N {204,204,204} E E
+ E E
+12 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 0 698 30
+2 12
+"Text2"
+""
+1 26 0 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+13 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 28 2 204 28
+0 2 0 "s" 0 0 0 64 0 0  28 2
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 19 Exporter Configurer
+2 13
+"Text3"
+""
+1 12 630 E E E 1 E 1 E N "_WindowText" E N {239,239,239} E E
+ E E
+14 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 14 632 418 678
+0 2 0 "s" 0 0 0 64 0 0  14 632
+ 2
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 64   This panel lets you select which types and which values within
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 65   these types should be exported in the #Datapoint Values section
+2 18
+"Text5"
+""
+1 358 533 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 360 535 596 561
+0 2 0 "s" 0 0 0 64 0 0  360 535
+ 1
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 27 Where (boolean Expression):
+2 16
+"Text4"
+""
+1 358 439 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 360 441 606 467
+0 2 0 "s" 0 0 0 64 0 0  360 441
+ 1
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 37 Output of this point is dependent on:
+30 25
+"Frame1"
+""
+1 348 586 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+24 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 348 410 698 588
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 0 
+30 26
+"Frame2"
+""
+1 10 630 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+25 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 580 698 630
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 0 
+30 29
+"Frame5"
+""
+1 420 680 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 420 622 698 680
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 0 
+30 30
+"Frame6"
+""
+1 10 680 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+29 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 622 422 680
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+1
+LANG:5 0 
+20 14
+"CheckButton1"
+""
+1 359 419 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+14 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+357 417 551 444
+1
+T 
+1
+LANG:5 18 Dependency Enabled
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+//when clicking the checkbox to enable or disable a dependency
+if (dynlen(all_possible_elements[type_name_to_index[SelectedType()]]) > 0) //check the list isn't empty
+	{ 
+	if (!patternMatch(\"Ref:*\", SelectedElement())) //check it's not a reference element
+		{
+		if (state)
+			{
+			//enable the visual stuff (dont save it yet - it's empty!)
+			CheckBoolSyntaxBtn.enabled = true;
+			AutoListBtn.enabled = true;
+			DependentOnList.enabled = true;
+			DependentOnList.backCol = \"White\";
+			TextField1.enabled = true;
+			CopyNameDownBtn.enabled = true;
+				DelDepBtn.enabled = true;
+			ComboBox1.enabled = true;
+			dyn_string els = nonRefElementsForSelType();
+			ComboBox1.items = els;
+			ComboBox1.text = els[1];
+			}
+		else
+			{
+			//otherwise save the state (remove the saved dep)
+			SaveDepState();
+			DisplayDependency();
+			}
+		}
+	else
+		{
+		CheckButton1.state(0) = false;
+		}
+	}
+else
+	{
+	CheckButton1.state(0) = false;
+	}
+}" 0
+29 2
+"TypeList"
+""
+1 18 50 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+3 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+18 50 338 580
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"updateElementList();"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"const int ACTIVE_AREA_CUTOFF = 41; //coord 41 is the cut-off between the checkbox and the text areas. (relative to activeX control, not panel, so can be absolute)
+dyn_string without_refs;
+
+if (X < ACTIVE_AREA_CUTOFF)
+	{
+	idispatch curr_node;
+	curr_node = TypeList.ExtractNode(TypeList.Selected);
+	int nodestate = curr_node.StateIndex;
+	int type_index = type_name_to_index[curr_node.text];
+	
+	if (nodestate == TREE_STATE_TICKED)
+		{
+		//if selected node is now checked (just come from unchecked)
+		//enable all non-reference elements (copy all non-ref elements into corresponding list)
+
+		for (int i = 1; i <= dynlen(all_possible_elements[type_index]); i++)
+			{
+			if (!patternMatch(\"Ref:*\", all_possible_elements[type_index][i]))
+				{
+				dynAppend(without_refs, all_possible_elements[type_index][i]);
+				}
+			}
+		enabled_elements[type_index] = without_refs;
+		}
+	if (nodestate == TREE_STATE_UNTICKED)
+		{
+		//if selected node is now unchecked (just come from checked)
+		//disable all elements (empty corresponding list)
+		dyn_string empty;
+		enabled_elements[type_index] = empty;
+		}
+	//update element list - don't need to here because it is triggered in eventClick
+	//updateElementList();
+	}"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+"updateElementList();"
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+"SaveDepState();"
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 3
+"ElementList"
+""
+1 358 50 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+358 50 688 410
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"
+dyn_string system_valid_elements = sgTree_CheckedItemsInCheckList(getShape(\"ElementList\"));
+
+enabled_elements[type_name_to_index[SelectedType()]] = system_valid_elements;
+
+if (dynlen(system_valid_elements) > 0)
+	{
+	sgTree_SetNamedItemsTo(getShape(\"TypeList\"), makeDynString(SelectedType()), TREE_STATE_TICKED);
+	}
+		//check to see if it can ever be unticked or if it should be grey
+else if (all_types_configurable[type_name_to_index[SelectedType()]])
+	{
+	sgTree_SetNamedItemsTo(getShape(\"TypeList\"), makeDynString(SelectedType()), TREE_STATE_UNTICKED);
+	}
+//else //its not got any ticked, it's not configurable, hence its greyed. though of course its already greyed so dont change anything
+//	{
+//		sgTree_SetNamedItemsTo(getShape(\"TypeList\"), makeDynString(SelectedType()), TREE_STATE_UNTICKABLE)
+//	}
+"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+"DisplayDependency();"
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+"SaveDepState();"
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+13 6
+"CloseWithoutSavingBtn"
+""
+1 453 634 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+7 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+451 632 535 676
+T 
+1
+LANG:5 5 Close
+"main()
+{
+PanelOff();
+}" 0
+ E E E
+13 7
+"SaveAndCloseBtn"
+""
+1 550 634 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+8 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+548 632 689 676
+T 
+1
+LANG:5 14 Save and Close
+"main()
+//this saves the config file to disk
+//note - you can have dependencies set for elements that are not enabled. these will be lost when the file is saved
+{
+dyn_string configs_to_save;
+string line_type_name;
+bool dependent = false;
+int dep_index = 0;
+
+//save the last state of the dependency editing
+SaveDepState();
+
+for (int x = 1; x<= dynlen(enabled_elements); x++) //for all the enabled elements (type axis)
+	{
+	line_type_name = mappingGetKey(type_name_to_index, x); //get the type name
+	
+	for (int y = 1; y<= dynlen(enabled_elements[x]); y++) //for all the enabled elements (elements axis)
+		{
+		dependent = false;
+		dep_index = 0;
+		//find out if it's dependent
+		for (int z = 1; z<= dynlen(dependent_elements[x]); z++) //for all the dependent elements
+			{
+			if (patternMatch(enabled_elements[x][y]+\":*\", dependent_elements[x][z])) //see if it contains this element
+				{
+				dependent = true;
+				dep_index = z;
+				}
+			}
+		if (dependent)
+			{
+			dynAppend(configs_to_save, line_type_name + \":\" + dependent_elements[x][dep_index]); //save with dep config
+			}
+		else
+			{
+			dynAppend(configs_to_save, line_type_name + \":\" + enabled_elements[x][y]); //just save the name
+			}
+		}	
+	}
+
+//write to file
+sgExporter_writeDynStringToTextFile(configs_to_save, ExportFilePathTextField.text);
+
+//close panel
+PanelOff();
+
+}" 0
+ E E E
+14 8
+"ExportFilePathTextField"
+""
+1 120 595 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+118 593 532 620
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+13 9
+"ChangeExportFilePathBtn"
+""
+1 540 595 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+538 593 602 622
+T 
+1
+LANG:5 6 Change
+"main()
+{
+string newfilepath, folder_path;
+folder_path = strrtrim(ExportFilePathTextField.text, \".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYY0123456789!+-,_\");
+
+fileSelector(newfilepath, folder_path, false);
+
+if (newfilepath != \"\")
+	{
+	ExportFilePathTextField.text = newfilepath;
+	}
+}" 0
+ E E E
+22 15
+"ComboBox1"
+""
+1 358 460 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+356 458 690 485
+0
+E
+E
+E
+ 0 0
+14 17
+"TextField1"
+""
+1 358 558 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+17 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+356 556 690 583
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+13 19
+"CheckBoolSyntaxBtn"
+""
+1 608 535 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-110-100-100-*-*-iso8859-1|-11,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+606 533 690 558
+T 
+1
+LANG:5 12 Check Syntax
+"main()
+//a very rough-and-ready syntax checker for the boolean string. it forces nothing, it will just serve to advise you
+//if your string is valid. however, it does not perform scanning to see if variable names are defined or not
+//it does, however, check that the element name that it is dependent on appears in the string somewhere
+{
+string syntax_string;
+bool syntax_valid, names_used_valid;
+syntax_string = \"bool bobxyz = (\" + TextField1.text +\");\"; //hopefully no-one will ever call their variable bobxyz, not that it really matters
+syntax_valid = checkScript(syntax_string);
+dyn_string dependent_list = DependentOnList.items;
+
+names_used_valid = true;
+for (int i = 1; i <= dynlen(dependent_list); i++)
+	{
+	names_used_valid = names_used_valid && (0 <= (strpos(TextField1.text, dependent_list[i])));
+	}
+
+if (syntax_valid && names_used_valid) //if pvss thinks the syntax is valid and the boolean expression contains the element name it is meant to be dependent on...
+	{
+	TextField1.backCol = \"Green\";
+	}
+else
+	{
+	TextField1.backCol = \"Red\";
+	}
+
+delay(2); //so it'll flash
+TextField1.backCol = \"White\";
+
+}" 0
+ E E E
+13 20
+"LoadOtherConfigBtn"
+""
+1 610 595 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+608 593 692 622
+T 
+1
+LANG:5 10 Load Other
+"main()
+{
+//reload the data from another config file - a bit fudged because i'm using InitPanel again, but hey it's easy
+
+string newfilepath, folder_path;
+string oldfilepath;
+folder_path = getPath(DPLIST_REL_PATH);
+
+fileSelector(newfilepath, folder_path, false);
+
+if (newfilepath != \"\")
+	{
+	oldfilepath = exporter_config_file_path;
+	exporter_config_file_path = newfilepath;
+	InitPanel();
+	exporter_config_file_path = oldfilepath;
+	ExportFilePathTextField.text = exporter_config_file_path;
+	}
+}
+" 0
+ E E E
+17 21
+"DependentOnList"
+""
+1 358 490 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+356 488 670 532
+0
+E
+E
+E
+
+3 1
+13 23
+"CopyNameDownBtn"
+""
+1 668 490 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+22 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 117 -microsoft windows-Wingdings 3-bold-r-normal-*-*-130-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,2,3,2,1,18,Wingdings 3
+0 ""
+666 488 690 512
+T 
+1
+LANG:5 1 8
+"main()
+{
+dyn_string list_items = DependentOnList.items;
+dynAppend(list_items, ComboBox1.text);
+DependentOnList.items = list_items;
+
+if (!(strpos(TextField1.text, ComboBox1.text) >= 0)) //if the boolean exp doesn't contain the name of this element
+	{
+	//concat this name onto the end of the string (as the user is probably about to use it!
+	
+	TextField1.text = TextField1.text + \" \" + ComboBox1.text;
+	
+	}
+
+
+
+}" 0
+ E E E
+13 24
+"DelDepBtn"
+""
+1 668 510 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+23 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Verdana-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Verdana
+0 ""
+666 508 690 532
+T 
+1
+LANG:5 1 X
+"main()
+{
+DependentOnList.deletePos(DependentOnList.selectedPos);
+}" 0
+ E E E
+13 31
+"AutoListBtn"
+""
+1 544 535 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+30 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-110-100-100-*-*-iso8859-1|-11,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+542 533 606 558
+T 
+1
+LANG:5 9 Auto List
+"main()
+{
+dyn_string possible_elements, dep_list_items;
+possible_elements = nonRefElementsForSelType();
+
+for (int i = 1; i <= dynlen(possible_elements); i++)
+	{
+	if (strpos(TextField1.text, possible_elements[i]) >= 0) //if the boolean exp contains the name of an element
+		{
+		if (!(dynContains(dep_list_items, possible_elements[i]))) //if the list doesn't contain this element
+			{
+			dynAppend(dep_list_items, possible_elements[i]);
+			}
+		}	
+	}
+DependentOnList.items = dep_list_items;
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

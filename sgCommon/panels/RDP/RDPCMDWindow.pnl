@@ -1,0 +1,217 @@
+V 10
+2
+LANG:5 14 Command Window
+LANG:1 14 Command Window
+PANEL,0 0 490 335 N "_3DFace" 13
+"$Command1"
+"$Command2"
+"$Command3"
+"$Command4"
+"$ConfirmationText1"
+"$ConfirmationText2"
+"$ConfirmationText3"
+"$ConfirmationText4"
+"$Label1"
+"$Label2"
+"$Label3"
+"$Label4"
+"$LabelWindowCmd"
+"main()
+{
+	int res;
+
+	LabelWindowCmd.text = $LabelWindowCmd;	
+	
+	res = setInputFocus(\"RDPModule\", \"Command Window\", \"Close\");	
+//	DebugN(\"res = \" + res);
+}" 0
+EE E E 1 -1 -1 0  10 20
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+2
+LANG:5 6 Layer1
+LANG:1 6 Layer1
+2 4
+"LabelWindowCmd"
+""
+1 0 20 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U 1 E 2 22 488 48
+0 2 0 "s" 0 0 0 65 0 0  2 22
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 14 LabelWindowCmd
+LANG:1 14 LabelWindowCmd
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+13 5
+"Close"
+""
+1 380 280 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+378 278 462 312
+T 
+2
+LANG:5 5 Close
+LANG:1 5 Close
+"main()
+{
+//	Close Command window at Click this button
+	PanelOffPanel(\"Command Window\");	
+}" 0
+ E E E
+0
+LAYER, 1 
+2
+LANG:5 6 Layer2
+LANG:1 6 Layer2
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 2 
+2
+LANG:5 6 Layer3
+LANG:1 6 Layer3
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 3 
+2
+LANG:5 6 Layer4
+LANG:1 6 Layer4
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 4 
+2
+LANG:5 6 Layer5
+LANG:1 6 Layer5
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 5 
+2
+LANG:5 6 Layer6
+LANG:1 6 Layer6
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 6 
+2
+LANG:5 6 Layer7
+LANG:1 6 Layer7
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+LAYER, 7 
+2
+LANG:5 6 Layer8
+LANG:1 6 Layer8
+1 0 0 "" -1
+0
+1 0 1 "" -1
+0
+1 0 2 "" -1
+0
+1 0 3 "" -1
+0
+0
+3 0 "Button1"
+"RDP\\RDPCMDButton.pnl" 30 40 T 1 3.071428571428571 0 1  -62.14285714285711 40  
+4
+"$Command""$Command1"
+"$ConfirmationText""$ConfirmationText1"
+"$HistoryName""RDP.History"
+"$Label""$Label1"
+3 1 "Button2"
+"RDP\\RDPCMDButton.pnl" 10 10 T 2 3.071428571428571 0 1  -0.7142857142856931 120  
+4
+"$Command""$Command2"
+"$ConfirmationText""$ConfirmationText2"
+"$HistoryName""RDP.History"
+"$Label""$Label2"
+3 2 "Button3"
+"RDP\\RDPCMDButton.pnl" 10 50 T 3 3.071428571428571 0 1  -0.7142857142856514 130  
+4
+"$Command""$Command3"
+"$ConfirmationText""$ConfirmationText3"
+"$HistoryName""RDP.History"
+"$Label""$Label3"
+3 3 "Button4"
+"RDP\\RDPCMDButton.pnl" 10 90 T 4 3.071428571428571 0 1  -0.7142857142856571 140  
+4
+"$Command""$Command4"
+"$ConfirmationText""$ConfirmationText4"
+"$HistoryName""RDP.History"
+"$Label""$Label4"
+0

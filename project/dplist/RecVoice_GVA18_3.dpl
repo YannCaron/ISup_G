@@ -1,0 +1,187 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRecVoiceCoreServerCompChain.sgRecVoiceCoreServerCompChain	1#1
+	ConnectivityCaptureApiService	41#1:sgFwSystem
+	CyberTechContentManagerArchivingService	41#1:sgFwSystem
+	CyberTechContentManagerStorageService	41#1:sgFwSystem
+	CybertechRecorderControllerService	41#1:sgFwSystem
+	CyberTechCoreApiService	41#1:sgFwSystem
+	CyberTechDatabaseInterfaceServer	41#1:sgFwSystem
+	DSC-server	41#1:sgFwSystem
+	FaultManagerService	41#1:sgFwSystem
+	CyberTechLicenseService	41#1:sgFwSystem
+	NR_LogfileManager	41#1:sgFwSystem
+	CyberTechMediaManager	41#1:sgFwSystem
+	CyberTechSystemManager	41#1:sgFwSystem
+	CyberTechUserManager	41#1:sgFwSystem
+	MySQL	41#1:sgFwSystem
+	W3SVC	41#1:sgFwSystem
+
+sgRecVoiceCoreServerRawDataChain.sgRecVoiceCoreServerRawDataChain	1#1
+	ConnectivityCaptureApiService	25#1
+	CyberTechContentManagerArchivingService	25#1
+	CyberTechContentManagerStorageService	25#1
+	CybertechRecorderControllerService	25#1
+	CyberTechCoreApiService	25#1
+	CyberTechDatabaseInterfaceServer	25#1
+	DSC-server	25#1
+	FaultManagerService	25#1
+	CyberTechLicenseService	25#1
+	NR_LogfileManager	25#1
+	CyberTechMediaManager	25#1
+	CyberTechSystemManager	25#1
+	CyberTechUserManager	25#1
+	MySQL	25#1
+	W3SVC	25#1
+
+sgRecVoice.sgRecVoice	1#1
+	MenuEntry	41#12:sgFwMenuEntry
+	Config	1#1
+		Site	25#1
+	GlobalStatus	41#1:sgFwSystem
+	RawData	1#1
+		CoreServerA	41#1:sgRecVoiceCoreServerRawDataChain
+	Components	1#1
+		CoreServerA	1#1
+			GlobalStatus	41#1:sgFwSystem
+			Components	41#1:sgRecVoiceCoreServerCompChain
+	Connections	41#1:sgFwConnections
+	WatchDogs	41#1:sgWatchDogs
+	History	41#1:sgFwHistory
+	Params	41#1:sgParams
+	TruthTables	1#1
+		GlobalTT	41#1:sgFwTruthTable
+	ConvTableStatus	41#1:sgConnectWithConvertTable
+
+# Datapoint/DpId
+DpName	TypeName	ID
+RecVoice	sgRecVoice	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+RecVoice.GlobalStatus	""	lt:1 LANG:5 "RecVoice GVA 18@@"
+
+RecVoice.Components.CoreServerA.GlobalStatus	""	lt:1 LANG:5 "Core A@@"
+RecVoice.Components.CoreServerA.Components.ConnectivityCaptureApiService	""	lt:1 LANG:5 "Connectivity Capture API@@"
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerArchivingService	""	lt:1 LANG:5 "Content Manager Archiving@@"
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerStorageService	""	lt:1 LANG:5 "Content Manager Storage@@"
+RecVoice.Components.CoreServerA.Components.CybertechRecorderControllerService	""	lt:1 LANG:5 "Controller Service@@"
+RecVoice.Components.CoreServerA.Components.CyberTechCoreApiService	""	lt:1 LANG:5 "Core API@@"
+RecVoice.Components.CoreServerA.Components.CyberTechDatabaseInterfaceServer	""	lt:1 LANG:5 "Database Interface Server@@"
+RecVoice.Components.CoreServerA.Components.DSC-server	""	lt:1 LANG:5 "DSC server@@"
+RecVoice.Components.CoreServerA.Components.FaultManagerService	""	lt:1 LANG:5 "Fault Manager@@"
+RecVoice.Components.CoreServerA.Components.CyberTechLicenseService	""	lt:1 LANG:5 "License Service@@"
+RecVoice.Components.CoreServerA.Components.NR_LogfileManager	""	lt:1 LANG:5 "Logfile Manager@@"
+RecVoice.Components.CoreServerA.Components.CyberTechMediaManager	""	lt:1 LANG:5 "Media Manager@@"
+RecVoice.Components.CoreServerA.Components.CyberTechSystemManager	""	lt:1 LANG:5 "System Manager@@"
+RecVoice.Components.CoreServerA.Components.CyberTechUserManager	""	lt:1 LANG:5 "User Manager@@"
+RecVoice.Components.CoreServerA.Components.MySQL	""	lt:1 LANG:5 "MySQL@@"
+RecVoice.Components.CoreServerA.Components.W3SVC	""	lt:1 LANG:5 "W3SVC@@"
+
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+RecVoice.MenuEntry.Name	sgRecVoice	"RECVOICE GVA 18"	0x200101	02.09.2016 08:08:42.933
+RecVoice.MenuEntry.Group	sgRecVoice	"REC"	0x101	02.09.2016 08:08:42.934
+RecVoice.MenuEntry.Panel	sgRecVoice	"RecVoice/sgRecVoice18MainPanel.pnl"	0x101	02.09.2016 08:08:42.935
+RecVoice.MenuEntry.Params	sgRecVoice	"Site:GVA;SystemName:ISup_G:"	0x200101	23.01.2017 14:34:22.659
+RecVoice.MenuEntry.GlobalStatusPoint	sgRecVoice	"RecVoice.GlobalStatus"	0x300101	22.06.2017 17:07:35.113
+
+RecVoice.GlobalStatus.Alarms.GenerateAlarms	sgRecVoice	1	0x101	18.04.2018 09:06:33.429
+RecVoice.GlobalStatus.Alarms.AlarmActive	sgRecVoice	1	0x200101	23.04.2018 08:50:10.034
+RecVoice.GlobalStatus.LogicConfig.LogicEnabled	sgRecVoice	1	0x101	18.04.2018 09:06:33.432
+RecVoice.GlobalStatus.LogicConfig.Rule	sgRecVoice	"RecVoice.TruthTables.GlobalTT"	0x101	18.04.2018 09:06:33.433
+RecVoice.GlobalStatus.LogicConfig.Inputs	sgRecVoice	"RecVoice.Components.*.GlobalStatus"	0x101	18.04.2018 09:06:33.435
+RecVoice.GlobalStatus.AETable	sgRecVoice	"AETable01"	0x101	18.04.2018 09:06:33.435
+
+RecVoice.Connections.Inputs	sgRecVoice	"RecVoice.RawData.CoreServerA.Components.*"	0x101	18.04.2018 09:06:33.450
+RecVoice.Connections.Outputs	sgRecVoice	"RecVoice.Components.CoreServerA.Components.*.PreStatus"	0x101	18.04.2018 09:06:33.451
+RecVoice.Connections.Rules	sgRecVoice	"ConnectWithConvertTable"	0x101	18.04.2018 09:06:33.452
+RecVoice.Connections.Params	sgRecVoice	"RecVoice.ConvTableStatus"	0x101	18.04.2018 09:06:33.452
+RecVoice.WatchDogs.References	sgRecVoice	"RecVoice.RawData.CoreServerA.Components.*"	0x101	18.04.2018 09:06:33.460
+RecVoice.WatchDogs.DefaultValues	sgRecVoice	"Unknown"	0x101	18.04.2018 13:54:08.209
+RecVoice.WatchDogs.Outputs	sgRecVoice	"RecVoice.RawData.CoreServerA.Components.*"	0x101	18.04.2018 09:06:33.461
+RecVoice.WatchDogs.Timeouts	sgRecVoice	25	0x101	18.04.2018 09:06:33.462
+RecVoice.History.HistorySize	sgRecVoice	100	0x101	18.04.2018 09:06:33.429
+RecVoice.Params.Histories	sgRecVoice	"RecVoice.History"	0x101	18.04.2018 09:06:33.454
+RecVoice.Params.AETable	sgRecVoice	"AETable02"	0x300101	18.04.2018 13:55:37.710
+RecVoice.Params.GenerateEvents	sgRecVoice	1	0x101	18.04.2018 09:06:33.456
+RecVoice.ConvTableStatus.Input	sgRecVoice	"Unknown", "OK", "Error", "Degraded", "Pred Fail", "Starting", "Stopping", "Service", "Stressed", "NonRecover", "No Contact", "Lost Comm"	0x101	18.04.2018 13:52:53.467
+RecVoice.ConvTableStatus.Output	sgRecVoice	"UKN", "OPS", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S"	0x101	18.04.2018 13:53:04.856
+RecVoice.TruthTables.GlobalTT.Table	sgRecVoice	"OPS_---_OPS_0", "UKN_---_UKN_0", "U/S_---_U/S_0", "---_---_DEG_8_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+", "---_---_DEG_8_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+", "---_---_DEG_8_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+", "---_---_DEG_8_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+", "---_---_DEG_8_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+", "---_---_DEG_8_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+", "---_---_DEG_8_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+", "---_---_DEG_8_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+", "---_---_DEG_8_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+", "---_---_DEG_8_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+", "---_---_DEG_8_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+", "---_---_DEG_8_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+", "---_---_DEG_8_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+", "---_---_DEG_8_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+", "---_---_DEG_8_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+", "---_---_DEG_8_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_ANY_UKN_0"	0x101	24.04.2018 06:26:23.275
+
+RecVoice.Components.CoreServerA.GlobalStatus.Events.EventText	sgRecVoice	"Core A: GlobalStatus"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.GlobalStatus.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.GlobalStatus.LogicConfig.LogicEnabled	sgRecVoice	1	0x101	18.04.2018 09:06:33.432
+RecVoice.Components.CoreServerA.GlobalStatus.LogicConfig.Rule	sgRecVoice	"TruthTable01"	0x101	18.04.2018 09:06:33.433
+RecVoice.Components.CoreServerA.GlobalStatus.LogicConfig.Inputs	sgRecVoice	"RecVoice.Components.CoreServerA.Components.*"	0x101	18.04.2018 09:06:33.435
+
+RecVoice.Components.CoreServerA.Components.ConnectivityCaptureApiService.Events.EventText	sgRecVoice	"Core A: Connectivity Capture API"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.ConnectivityCaptureApiService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerArchivingService.Events.EventText	sgRecVoice	"Core A: Content Manager Archiving"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerArchivingService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerStorageService.Events.EventText	sgRecVoice	"Core A: Content Manager Storage "	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechContentManagerStorageService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CybertechRecorderControllerService.Events.EventText	sgRecVoice	"Core A: Recorder Controller"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CybertechRecorderControllerService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechCoreApiService.Events.EventText	sgRecVoice	"Core A: Core API"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechCoreApiService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechDatabaseInterfaceServer.Events.EventText	sgRecVoice	"Core A: Database Interface Server"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechDatabaseInterfaceServer.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.DSC-server.Events.EventText	sgRecVoice	"Core A: DSC server"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.DSC-server.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.FaultManagerService.Events.EventText	sgRecVoice	"Core A: Fault Manager"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.FaultManagerService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechLicenseService.Events.EventText	sgRecVoice	"Core A: License Service"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechLicenseService.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.NR_LogfileManager.Events.EventText	sgRecVoice	"Core A: Logfile Manager"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.NR_LogfileManager.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechMediaManager.Events.EventText	sgRecVoice	"Core A: Media Manager"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechMediaManager.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechSystemManager.Events.EventText	sgRecVoice	"Core A: System Manager"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechSystemManager.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.CyberTechUserManager.Events.EventText	sgRecVoice	"Core A: User Manager"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.CyberTechUserManager.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.MySQL.Events.EventText	sgRecVoice	"Core A: MySQL"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.MySQL.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+RecVoice.Components.CoreServerA.Components.W3SVC.Events.EventText	sgRecVoice	"Core A: W3SVC"	0x101	18.04.2018 09:06:33.436
+RecVoice.Components.CoreServerA.Components.W3SVC.Params	sgRecVoice	"RecVoice.Params"	0x101	18.04.2018 09:06:33.437
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+RecVoice.RawData.CoreServerA.ConnectivityCaptureApiService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechContentManagerArchivingService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechContentManagerStorageService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CybertechRecorderControllerService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechCoreApiService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechDatabaseInterfaceServer	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.DSC-server	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.FaultManagerService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechLicenseService	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.NR_LogfileManager	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechMediaManager	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechSystemManager	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.CyberTechUserManager	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.MySQL	sgSPHINX	56	\5
+RecVoice.RawData.CoreServerA.W3SVC	sgSPHINX	56	\5
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+RecVoice.RawData.CoreServerA.ConnectivityCaptureApiService	sgSPHINX	16	"RecVoice_A_Core.Services.ConnectivityCaptureApiService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechContentManagerArchivingService	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechContentManagerArchivingService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechContentManagerStorageService	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechContentManagerStorageService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CybertechRecorderControllerService	sgSPHINX	16	"RecVoice_A_Core.Services.CybertechRecorderControllerService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechCoreApiService	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechCoreApiService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechDatabaseInterfaceServer	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechDatabaseInterfaceServer.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.DSC-server	sgSPHINX	16	"RecVoice_A_Core.Services.DSC-server.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.FaultManagerService	sgSPHINX	16	"RecVoice_A_Core.Services.FaultManagerService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechLicenseService	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechLicenseService.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.NR_LogfileManager	sgSPHINX	16	"RecVoice_A_Core.Services.NR_LogfileManager.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechMediaManager	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechMediaManager.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechSystemManager	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechSystemManager.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.CyberTechUserManager	sgSPHINX	16	"RecVoice_A_Core.Services.CyberTechUserManager.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.MySQL	sgSPHINX	16	"RecVoice_A_Core.Services.MySQL.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+RecVoice.RawData.CoreServerA.W3SVC	sgSPHINX	16	"RecVoice_A_Core.Services.W3SVC.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+

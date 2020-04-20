@@ -1,0 +1,433 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 567
+"FRAME3"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+340 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E 0.8392857142857142 0 1.202783300198807 682.0535714285714 -63.25049701789264 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 18 SkyBriefing Core 2
+30 485
+"FRAME1"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+324 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E 0.8571428571428571 0 1.202783300198807 60.71428571428572 -63.25049701789264 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 18 SkyBriefing Core 1
+2 10
+"PageLabel"
+""
+1 8 3 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 5 1095 41
+1 2 0 "0s" 0 0 0 65 0 0  10 5 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 16 SkyBriefing Core
+LANG:1 5 T-Box
+13 373
+"Button1"
+""
+1 10 705 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 703 212 737
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  ForceToUnknown(\"\", \"SkyBriefing\");
+}
+" 0
+ E E E
+1 568 76 "" 11
+0
+1 569 130 "" 46
+0
+1 572 132 "" 46
+0
+1 575 133 "" 46
+0
+1 578 136 "" 46
+0
+30 486
+"FRAME2"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+326 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.285714285714286 0 0.2982107355864811 278.5714285714286 18.1610337972167 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 23 SkyBriefing Core Common
+1 581 144 "" 46
+0
+1 584 146 "" 46
+0
+1 587 147 "" 46
+0
+1 590 148 "" 46
+0
+1 593 154 "" 46
+0
+1 596 156 "" 46
+0
+1 602 158 "" 46
+0
+1 608 160 "" 46
+0
+1 599 157 "" 46
+0
+1 611 161 "" 46
+0
+1 614 162 "" 46
+0
+1 617 163 "" 46
+0
+1 605 159 "" 46
+0
+1 620 166 "" 46
+0
+1 623 167 "" 46
+0
+1 626 168 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 570 130 "" 51
+0
+1 571 130 "" 52
+0
+1 573 132 "" 51
+0
+1 574 132 "" 52
+0
+1 576 133 "" 51
+0
+1 577 133 "" 52
+0
+1 579 136 "" 51
+0
+1 580 136 "" 52
+0
+1 582 144 "" 51
+0
+1 583 144 "" 52
+0
+1 585 146 "" 51
+0
+1 586 146 "" 52
+0
+1 588 147 "" 51
+0
+1 589 147 "" 52
+0
+1 591 148 "" 51
+0
+1 592 148 "" 52
+0
+1 594 154 "" 51
+0
+1 595 154 "" 52
+0
+1 597 156 "" 51
+0
+1 598 156 "" 52
+0
+1 603 158 "" 51
+0
+1 604 158 "" 52
+0
+1 609 160 "" 51
+0
+1 610 160 "" 52
+0
+1 600 157 "" 51
+0
+1 601 157 "" 52
+0
+1 612 161 "" 51
+0
+1 613 161 "" 52
+0
+1 615 162 "" 51
+0
+1 616 162 "" 52
+0
+1 618 163 "" 51
+0
+1 619 163 "" 52
+0
+1 606 159 "" 51
+0
+1 607 159 "" 52
+0
+1 621 166 "" 51
+0
+1 622 166 "" 52
+0
+1 624 167 "" 51
+0
+1 625 167 "" 52
+0
+1 627 168 "" 51
+0
+1 628 168 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "" -1
+"objects\\sgFwHistory.pnl" 35 320 T 153 1 0 0.75 -35 497.5000000000001
+2
+"$SystemHistory""SkyBriefing.History"
+"$SystemName"""
+3 130 "PANEL_REF131" -1
+"objects\\sgFwBlock.pnl" 430 270 T 300 0.5874999999999999 0 0.4250000000000001 -242.625 45.25000000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.ESB1"
+3 132 "PANEL_REF144" -1
+"objects\\sgFwBlock.pnl" 430 270 T 304 0.8750000000000001 0 0.2748465369088911 3.749999999999925 -4.208564965400597
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.PORTAL_DB"
+3 133 "PANEL_REF134" -1
+"objects\\sgFwBlock.pnl" 430 270 T 305 0.5873185888528637 0 0.425 -2.546993206731399 405.25
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.SKYMAN1"
+3 136 "PANEL_REF143" -1
+"objects\\sgFwBlock.pnl" 430 270 T 310 0.5874999999999999 0 0.4249999999999998 -242.625 225.2500000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.TX1"
+3 144 "PANEL_REF144" -1
+"objects\\sgFwBlock.pnl" 430 270 T 329 0.5873185888528637 0 0.425 -242.5469932067314 -44.75000000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.Portal1"
+3 146 "PANEL_REF146" -1
+"objects\\sgFwBlock.pnl" 430 270 T 331 0.5873185888528637 0 0.4271299291292244 -242.5469932067314 314.6749191351093
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.ASD1"
+3 147 "PANEL_REF147" -1
+"objects\\sgFwBlock.pnl" 430 270 T 332 0.5873185888528637 0 0.4271299291292244 -242.5469932067314 404.6749191351092
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.LB1"
+3 148 "PANEL_REF148" -1
+"objects\\sgFwBlock.pnl" 430 270 T 333 0.5874999999999999 0 0.4271299291292244 -242.625 494.6749191351094
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.SCONE1"
+3 154 "PANEL_REF154" -1
+"objects\\sgFwBlock.pnl" 430 270 T 339 0.5875000000000001 0 0.4271299291292244 -2.625000000000069 494.6749191351094
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.DOC1"
+3 156 "PANEL_REF156" -1
+"objects\\sgFwBlock.pnl" 430 270 T 342 0.5874999999999999 0 0.4249999999999998 -242.625 135.2500000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.MET1"
+3 157 "PANEL_REF157" -1
+"objects\\sgFwBlock.pnl" 430 270 T 344 0.5873185888528637 0 0.425 612.4530067932686 -44.75000000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.Portal2"
+3 158 "PANEL_REF158" -1
+"objects\\sgFwBlock.pnl" 430 270 T 345 0.5874999999999999 0 0.4250000000000001 612.375 45.25
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.ESB2"
+3 159 "PANEL_REF159" -1
+"objects\\sgFwBlock.pnl" 430 270 T 346 0.5874999999999999 0 0.4249999999999998 612.375 135.2500000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.MET2"
+3 160 "PANEL_REF160" -1
+"objects\\sgFwBlock.pnl" 430 270 T 347 0.5874999999999999 0 0.4249999999999998 612.375 225.2500000000001
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.TX2"
+3 161 "PANEL_REF161" -1
+"objects\\sgFwBlock.pnl" 430 270 T 348 0.5873185888528637 0 0.4271299291292244 612.4530067932686 314.6749191351094
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.ASD2"
+3 162 "PANEL_REF162" -1
+"objects\\sgFwBlock.pnl" 430 270 T 349 0.5873185888528637 0 0.4271299291292244 612.4530067932686 404.6749191351092
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.LB2"
+3 163 "PANEL_REF163" -1
+"objects\\sgFwBlock.pnl" 430 270 T 350 0.5874999999999999 0 0.4271299291292244 612.375 494.6749191351092
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.SCONE2"
+3 166 "PANEL_REF166" -1
+"objects\\sgFwBlock.pnl" 430 270 T 353 0.5873185888528637 0 0.425 372.4530067932686 405.25
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.SKYMAN2"
+3 167 "PANEL_REF167" -1
+"objects\\sgFwBlock.pnl" 430 270 T 354 0.5875000000000001 0 0.4271299291292244 372.375 494.6749191351091
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.DOC2"
+3 168 "PANEL_REF168" -1
+"objects\\sgFwBlock.pnl" 430 270 T 355 0.8750000000000001 0 0.2748465369088911 3.749999999999961 55.79143503459939
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Core.Components.ESB_CRM_QUEUE"
+0

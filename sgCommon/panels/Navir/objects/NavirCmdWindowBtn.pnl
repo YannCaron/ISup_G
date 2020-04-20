@@ -1,0 +1,162 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 120 64 N "_3DFace" 6
+"$ButtonIsVisible"
+"$HistoryName"
+"$LabelButtonCmd"
+"$NavaidNr"
+"$StationName"
+"$SystemName"
+"main()
+{
+  setCmdBtn();
+}
+	" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string labelWindowCmd;
+string navaidType;
+
+void setCmdBtn()
+{
+  bool commandsAvailable;
+  string navName;
+  string site;	
+  
+  if ($NavaidNr != 0)        
+  {
+    dpGet($SystemName + $StationName + \".General.StationCommandsAvailable\", commandsAvailable,
+              $SystemName + $StationName + \".General.Site\", site,
+              $SystemName + $StationName + \".Structured.Navaid_\" + $NavaidNr + \".Name\", navName, 
+              $SystemName + $StationName + \".Structured.Navaid_\" + $NavaidNr + \".Type\", navaidType);              
+
+  	labelWindowCmd = site + \" \" + navName + \" Commands\";
+		
+	  ButtonCmd.toolTipText =  \"Open \" + site + \" \" + $StationName + \" \" + navName + \" Commands window\";  ;
+
+	if($LabelButtonCmd != \"\")
+		ButtonCmd.text = $LabelButtonCmd; 
+  
+    enableDisableCmdBtn(commandsAvailable, $ButtonIsVisible);
+  } 
+  else
+    enableDisableCmdBtn(false, false);
+}
+
+void btn_Clicked()
+{
+  dyn_string cmdValues;
+  dyn_string cmdConfirmationsTexts;
+  dyn_string cmdLabels;
+	dyn_float df;
+	dyn_float ds;
+	
+	dpGet($SystemName + navaidType + \".Values\", cmdValues,
+              $SystemName + navaidType + \".Labels\", cmdLabels, 
+      				$SystemName + navaidType + \".ConfirmationTexts\", cmdConfirmationsTexts);
+
+  ChildPanelOnModal(\"Navir/Objects/NavirCmdWindow.pnl\",\"Navaid command Window\",
+      makeDynString(\"$HistoryName:\" + $HistoryName, \"$ConfirmationText1:\" + cmdConfirmationsTexts[1], \"$ConfirmationText2:\" + cmdConfirmationsTexts[2], 
+      \"$ConfirmationText3:\" + cmdConfirmationsTexts[3], \"$ConfirmationText4:\" + cmdConfirmationsTexts[4], 
+      \"$Command1:\" + cmdValues[1], \"$Command2:\" + cmdValues[2], 
+      \"$Command3:\" + cmdValues[3], \"$Command4:\" + cmdValues[4], 
+      \"$Label1:\" + cmdLabels[1], \"$Label2:\" + cmdLabels[2], 
+      \"$Label3:\" + cmdLabels[3], \"$Label4:\" + cmdLabels[4], 
+      \"$LabelWindowCmd:\" + labelWindowCmd , \"$NavaidNr:\" + $NavaidNr, 
+      \"$SystemName:\" + $SystemName, \"$StationName:\" + $StationName, 
+      \"$NavaidName:\" + navaidType), 340, 260);
+	     
+	ButtonCmd.enabled = false;
+	
+//Delay to re-enable the button
+	delay(10);
+	ButtonCmd.enabled = true;
+}
+
+void enableDisableCmdBtn(bool stationCommandsAvailable, bool isVisible)
+{
+ 	if(isVisible)
+	{
+		ButtonCmd.visible = true;
+
+    if(stationCommandsAvailable)
+  		ButtonCmd.enabled = true;
+	  else
+		  ButtonCmd.enabled = false;
+	}
+	else
+	{
+		ButtonCmd.visible = false;
+	}
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"ButtonCmd"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+ 8 8 77 57
+
+P 
+13434828
+"pictures/CmdIcon.bmp"
+1
+LANG:5 0 
+"main()
+{
+  btn_Clicked();
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

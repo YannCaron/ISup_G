@@ -1,0 +1,141 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 733 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1 115 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 LOC 24
+ 
+0
+1 2 115 "" 1
+0
+1 3 116 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 24
+ 
+0
+1 4 116 "" 1
+0
+1 5 117 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links EPL
+ 
+0
+1 6 117 "" 1
+0
+1 7 118 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 10 NavSup EPL
+ 
+0
+1 8 118 "" 1
+0
+1 9 119 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 7 NDB EPL
+ 
+0
+1 10 119 "" 1
+0
+1 11 120 "" 0
+0
+1 12 120 "" 1
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 115 "Group17" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 135 1.22222222222222 0 1.21779032109044 -1.33333333333334 -94.7472637366707
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""LOC 24"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_E:;StationName:LOC24;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_E:LOC24.Structured.Station"
+3 116 "Group18" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 136 1.22222222222222 0 1.18421052631579 -1.1111111111111 -87.1052631578948
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""GP 24"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_E:;StationName:GP24;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_E:GP24.Structured.Station"
+3 117 "Group19" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 370 T 137 1.22222222222222 0 1.19318181818182 -1.1111111111111 -266.477272727273
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links EPL"
+"$PanelName""Navir/Links/LinksInfosEPL.pnl"
+"$PanelParams""SystemName:Navir_E:"
+"$isVisible""1"
+"$system""Navir_E:LinksInfosEPL"
+3 118 "Group20" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 405 T 138 1.22222222222222 0 1.24289772727273 -1.33333333333334 -288.877840909091
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSup EPL"
+"$PanelName""Navir/NavSup/Navir_E_NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_E:"
+"$isVisible""1"
+"$system""Navir_E:NavSup"
+3 119 "Group6" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 55 T 138 1.22222222222222 0 1.18421052631579 -1.1111111111111 29.8684210526315
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NDB EPL"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_E:;StationName:NDBEPL;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_E:NDBEPL.Structured.Station"
+3 120 "PANEL_REF121" -1
+"Navir\\objects\\HeartBeatChecker.pnl" -5.0000000000004 470 T 142 1 0 1 4.9999999999996 210
+1
+"$SystemName""Navir_E:"
+0

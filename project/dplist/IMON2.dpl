@@ -1,0 +1,102 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgIMON.sgIMON	1#1
+	MenuEntry	41#2:sgFwMenuEntry
+	Heartbeats	1#3
+		Driver	23#122
+		AlertConnection	23#123
+		Alerts	23#137
+	SystemHistory	41#52:sgFwHistory
+	History	41#47:sgFwHistory
+	ComponentsParams	41#130:sgParams
+	WatchDogsConfig	41#124:sgWatchDogs
+	GlobalStatus	41#8:sgFwSystem
+	Components	1#9
+		Driver	41#57:sgFwSystem
+		AlertConnection	41#58:sgFwSystem
+		Alerts	41#138:sgFwSystem
+	Data	1#117
+		Alerts	1#118
+			Message	25#119
+			Id	25#120
+			Status	25#121
+			ComponentName	25#168
+			Time	25#169
+
+# Datapoint/DpId
+DpName	TypeName	ID
+IMON	sgIMON	29379
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+IMON.GlobalStatus	""	lt:1 LANG:5 "IMON@%s@"
+IMON.Components.Driver	""	lt:1 LANG:5 "nJams API Driver@%s@"
+IMON.Components.AlertConnection	""	lt:1 LANG:5 "Alert HTTP Request@%s@"
+IMON.Components.Alerts	""	lt:1 LANG:5 "Alerts@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+IMON.Data.Alerts.Id	sgIMON	"UKN"	0x200101	12.11.2018 13:43:04.820
+IMON.Heartbeats.Driver	sgIMON	1	0x101	08.11.2018 12:27:43.954
+IMON.Heartbeats.AlertConnection	sgIMON	1	0x101	02.11.2018 12:54:23.007
+IMON.Heartbeats.Alerts	sgIMON	1	0x101	02.11.2018 12:54:23.014
+IMON.Data.Alerts.ComponentName	sgIMON	"UKN"	0x200101	12.11.2018 13:43:04.820
+IMON.Data.Alerts.Time	sgIMON	"UKN"	0x200101	12.11.2018 13:43:04.820
+IMON.MenuEntry.Name	sgIMON	"IMON"	0x300101	02.11.2018 14:41:15.486
+IMON.MenuEntry.Group	sgIMON	"VC"	0x300101	02.11.2018 14:41:07.788
+IMON.MenuEntry.Panel	sgIMON	"IMON/IMONMainPanel.pnl"	0x101	02.11.2018 12:54:22.995
+IMON.MenuEntry.Params	sgIMON	"Site:"	0x101	02.11.2018 12:54:22.996
+IMON.MenuEntry.Separator	sgIMON	0	0x101	02.11.2018 14:44:06.760
+IMON.SystemHistory.HistorySize	sgIMON	100	0x101	02.11.2018 12:54:23.004
+IMON.SystemHistory.ShortHistory	sgIMON		0x101	12.11.2018 13:29:45.986
+IMON.History.HistorySize	sgIMON	100	0x101	02.11.2018 12:54:23.003
+IMON.ComponentsParams.Histories	sgIMON	"IMON.History"	0x101	02.11.2018 12:54:23.011
+IMON.ComponentsParams.AETable	sgIMON	"AETable02"	0x101	02.11.2018 12:54:23.011
+IMON.ComponentsParams.GenerateEvents	sgIMON	1	0x101	02.11.2018 12:54:23.013
+IMON.WatchDogsConfig.References	sgIMON	"IMON.Heartbeats.Driver", "IMON.Heartbeats.AlertConnection", "IMON.Heartbeats.Alerts", "IMON.Heartbeats.Alerts"	0x101	02.11.2018 12:54:23.007
+IMON.WatchDogsConfig.DefaultValues	sgIMON	"UKN", "UKN", "UKN", ""	0x101	02.11.2018 12:54:23.009
+IMON.WatchDogsConfig.Outputs	sgIMON	"IMON.Components.Driver.PreStatus", "IMON.Components.AlertConnection.PreStatus", "IMON.Components.Alerts.PreStatus", "IMON.Data.Alerts.*"	0x101	02.11.2018 12:54:23.010
+IMON.WatchDogsConfig.Timeouts	sgIMON	35, 35, 35, 35	0x101	02.11.2018 12:54:23.010
+IMON.GlobalStatus.Alarms.GenerateAlarms	sgIMON	1	0x101	02.11.2018 12:54:22.997
+IMON.GlobalStatus.Alarms.AlarmActive	sgIMON	1	0x200101	12.11.2018 13:42:34.754
+IMON.GlobalStatus.LogicConfig.LogicEnabled	sgIMON	1	0x101	02.11.2018 12:54:22.998
+IMON.GlobalStatus.LogicConfig.Rule	sgIMON	"TruthTable01"	0x101	02.11.2018 12:54:23.000
+IMON.GlobalStatus.LogicConfig.Inputs	sgIMON	"IMON.Components.*"	0x101	02.11.2018 12:54:23.002
+IMON.GlobalStatus.AETable	sgIMON	"AETable01"	0x101	02.11.2018 12:54:23.002
+IMON.Components.Driver.Params	sgIMON	"IMON.ComponentsParams"	0x101	02.11.2018 12:54:23.005
+IMON.Components.AlertConnection.Alarms.AlarmActive	sgIMON	0	0x101	08.11.2018 10:53:34.074
+IMON.Components.AlertConnection.Params	sgIMON	"IMON.ComponentsParams"	0x101	02.11.2018 12:54:23.006
+IMON.Components.Alerts.Alarms.AlarmActive	sgIMON	0	0x101	08.11.2018 10:53:35.405
+IMON.Components.Alerts.Params	sgIMON	"IMON.ComponentsParams"	0x101	02.11.2018 12:54:23.015
+
+# AlertValue
+StampSec	StampMSec	ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+1541163263	19	IMON.GlobalStatus.Alarms.AlarmActive	sgIMON		12					""		lt:1 LANG:5 ""	\0			0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 ""	lt:1 LANG:5 ""												0								
+1541163263	21	IMON.GlobalStatus.Alarms.AlarmActive	sgIMON		12					"IMON/IMONMainPanel.pnl"	"$Site:"	lt:1 LANG:5 ""	\0	alert.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on IMON"	lt:1 LANG:5 ""												0								
+1541163263	22	IMON.GlobalStatus.Alarms.AlarmActive	sgIMON		12					"IMON/IMONMainPanel.pnl"	"$Site:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on IMON"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+StampSec	StampMSec	ElementName	TypeName	_distrib.._type	_distrib.._driver
+1541163263	35	IMON.Data.Alerts.Message	sgIMON	56	\7
+1541163263	39	IMON.Data.Alerts.Id	sgIMON	56	\7
+1541163263	44	IMON.Data.Alerts.Status	sgIMON	56	\7
+1541163263	49	IMON.Heartbeats.Driver	sgIMON	56	\7
+1541163263	52	IMON.Heartbeats.AlertConnection	sgIMON	56	\7
+1541163263	73	IMON.Heartbeats.Alerts	sgIMON	56	\7
+1541163263	78	IMON.Data.Alerts.Time	sgIMON	56	\7
+1541163263	27	IMON.Components.Driver.PreStatus	sgIMON	56	\7
+1541163263	29	IMON.Components.AlertConnection.PreStatus	sgIMON	56	\7
+
+# PeriphAddrMain
+StampSec	StampMSec	ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+1541163263	87	IMON.Data.Alerts.Message	sgIMON	16	"njams.data.alerts.message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1541163263	89	IMON.Data.Alerts.Id	sgIMON	16	"njams.data.alerts.id"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1541163263	90	IMON.Data.Alerts.Status	sgIMON	16	"njams.data.alerts.status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1541163263	94	IMON.Heartbeats.Driver	sgIMON	16	"njams.heardbeat.driver"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1901	"MQDRIVER"
+1541163263	95	IMON.Heartbeats.AlertConnection	sgIMON	16	"njams.heardbeat.alerts"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1901	"MQDRIVER"
+1541163263	96	IMON.Heartbeats.Alerts	sgIMON	16	"njams.heardbeat.alerts"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1901	"MQDRIVER"
+1541163263	97	IMON.Data.Alerts.Time	sgIMON	16	"njams.data.alerts.time"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1541163263	85	IMON.Components.Driver.PreStatus	sgIMON	16	"njams.status.driver"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1541163263	86	IMON.Components.AlertConnection.PreStatus	sgIMON	16	"njams.status.alerts"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"

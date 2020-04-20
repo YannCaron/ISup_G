@@ -1,0 +1,127 @@
+V 10
+1
+LANG:1 8 (NoName)
+PANEL,306 148 224 26 N "_3DFace" 2
+"$SystemStatus"
+"$ValueVisible"
+"main()
+{
+/*	
+// Control if Arrow/Line is dynamic these 3 $Parameters = 0 --> Static Arrow/Line
+	if(($SystemStatus == \"\") && ($OPSValue == \"\") && ($SBYValue == \"\")){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+	 	OPSHead.color = \"black\";
+		OPSLine.color = \"black\";	
+		return;	
+	}
+
+// if only systemStatus is = 0 --> unknown status
+	else{
+		if($SystemStatus == \"\"){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"sgStdUKNColor\";
+		OPSLine.color = \"sgStdUKNColor\";	
+		return;
+		}
+		else{
+
+*/
+// dpConnect only with valid DP 
+			dpConnect(\"LineThick\", $SystemStatus);
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"main()
+{}
+//void updateStatus(string dpName, string value)	
+void LineThick(string dpName, string value)
+{
+
+//	DebugN(\"Headvisible: \" + HeadVisible);
+
+	if(value == $ValueVisible) {
+		ThickLine.visible =  true;	
+	}
+	else{
+		ThickLine.visible =  false;	
+	}
+	/*else if((value == $OPSValue) && ($OPSValue != \"\") && ($SBYValue != \"\") && ($OPSValue != $SBYValue)){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"black\";
+		OPSLine.color = \"black\";	
+	}
+	else{
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"sgStdUKNColor\";
+		OPSLine.color = \"sgStdUKNColor\";	
+	}
+	*/
+}" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 6 Layer1
+4 7
+"ThinLine"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+8 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  210 10 10 10
+4 9
+"ThickLine"
+""
+1 10 11 E E E 1 E 0 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 1 0 1 E  210 10 10 10
+0
+LAYER, 1 
+1
+LANG:1 6 Layer2
+0
+LAYER, 2 
+1
+LANG:1 6 Layer3
+0
+LAYER, 3 
+1
+LANG:1 6 Layer4
+0
+LAYER, 4 
+1
+LANG:1 6 Layer5
+0
+LAYER, 5 
+1
+LANG:1 6 Layer6
+0
+LAYER, 6 
+1
+LANG:1 6 Layer7
+0
+LAYER, 7 
+1
+LANG:1 6 Layer8
+0
+0

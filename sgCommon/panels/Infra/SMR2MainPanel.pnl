@@ -1,0 +1,175 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 460 N "_3DFace" 2
+"$StationName"
+"$SystemName"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 1897
+"LINE71"
+""
+1 555 160.0000000000009 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+378 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  555 160 555 85
+2 6
+"PageLabel"
+""
+1 13 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 15 10 1101 46
+1 2 0 "0s" 0 0 0 65 0 0  15 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 46 Infra: Station Surface Movement Radar 2 (SMR2)
+LANG:1 4 AFPS
+4 57
+"LINE21"
+""
+1 1190 164.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+249 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1204 165 1190 165
+4 58
+"LINE22"
+""
+1 1190 104.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+250 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1209 105 1190 105
+1 1909 152 "" 46
+0
+1 1912 161 "" 46
+0
+30 1908
+"FRAME3"
+""
+1 15 74 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+387 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.732673267326733 0 1.35593220338983 444.009900990099 19.66101694915258 0 E 15 74 117 134
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 BUS 31
+1 1915 162 "0" 46
+0
+1 1916 162 "1" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1910 152 "" 51
+0
+1 1911 152 "" 52
+0
+1 1913 161 "" 51
+0
+1 1914 161 "" 52
+0
+1 1917 162 "0" 51
+0
+1 1918 162 "0" 52
+0
+1 1919 162 "1" 51
+0
+1 1920 162 "1" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 152 "PANEL_REF152" -1
+"objects\\sgFwBlock.pnl" 550 390 T 361 0.7750000000000001 0 0.15 -26.25000000000011 11.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""StationSMR2.MOXA.GlobalStatus"
+3 161 "PANEL_REF161" -1
+"objects\\sgFwBlock.pnl" 650 340 T 385 0.5375 0 0.15 535.625 19.00000000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""StationSMR2.TechnicalPresence.GlobalStatus"
+3 162 "PANEL_REF168" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 386 0.825 0 1 227.5 -85
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""SMR20000VO01"
+0

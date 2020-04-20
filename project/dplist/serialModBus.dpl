@@ -1,0 +1,57 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_SerialModbus._SerialModbus	1#1
+	Address	1#11
+		Mode	20#25
+		Port	25#26
+		BaudRate	20#27
+		DataBits	20#18
+		StopBits	20#19
+		Parity	20#20
+		Polling	20#28
+		Bus	5#30
+		Timeout	20#32
+		Retry	20#33
+		PollDelay	20#34
+	Status	1#21
+		Status_1	20#22
+		Status_2	20#23
+		Heartbeat	23#24
+		Bus	4#31
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_SerialModbus_11	_SerialModbus	1
+_SerialModbus_12	_SerialModbus	1
+_SerialModbus_13	_SerialModbus	1
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+_SerialModbus_11.Address.DataBits	_SerialModbus	8	0x101	08.04.2015 13:50:09.255
+_SerialModbus_11.Address.StopBits	_SerialModbus	1	0x101	08.04.2015 13:50:09.257
+_SerialModbus_11.Address.Port	_SerialModbus	"COM11"	0x200101	16.04.2015 11:29:46.562
+_SerialModbus_11.Address.BaudRate	_SerialModbus	19200	0x101	08.04.2015 13:50:09.259
+_SerialModbus_11.Address.Polling	_SerialModbus	5000	0x101	08.04.2015 13:50:09.260
+_SerialModbus_11.Address.Bus	_SerialModbus	1	0x101	08.04.2015 13:50:09.261
+_SerialModbus_11.Address.Timeout	_SerialModbus	500	0x101	08.04.2015 13:50:09.262
+_SerialModbus_11.Address.Retry	_SerialModbus	2	0x101	08.04.2015 13:50:09.262
+
+_SerialModbus_12.Address.DataBits	_SerialModbus	8	0x101	08.04.2015 13:50:09.255
+_SerialModbus_12.Address.StopBits	_SerialModbus	1	0x101	08.04.2015 13:50:09.257
+_SerialModbus_12.Address.Port	_SerialModbus	"COM12"	0x200101	16.04.2015 11:29:46.562
+_SerialModbus_12.Address.BaudRate	_SerialModbus	19200	0x101	08.04.2015 13:50:09.259
+_SerialModbus_12.Address.Polling	_SerialModbus	5000	0x101	08.04.2015 13:50:09.260
+_SerialModbus_12.Address.Bus	_SerialModbus	1	0x101	08.04.2015 13:50:09.261
+_SerialModbus_12.Address.Timeout	_SerialModbus	500	0x101	08.04.2015 13:50:09.262
+_SerialModbus_12.Address.Retry	_SerialModbus	2	0x101	08.04.2015 13:50:09.262
+
+_SerialModbus_13.Address.DataBits	_SerialModbus	8	0x101	08.04.2015 13:50:09.255
+_SerialModbus_13.Address.StopBits	_SerialModbus	1	0x101	08.04.2015 13:50:09.257
+_SerialModbus_13.Address.Port	_SerialModbus	"COM13"	0x200101	16.04.2015 11:29:46.562
+_SerialModbus_13.Address.BaudRate	_SerialModbus	19200	0x101	08.04.2015 13:50:09.259
+_SerialModbus_13.Address.Polling	_SerialModbus	5000	0x101	08.04.2015 13:50:09.260
+_SerialModbus_13.Address.Bus	_SerialModbus	1	0x101	08.04.2015 13:50:09.261
+_SerialModbus_13.Address.Timeout	_SerialModbus	500	0x101	08.04.2015 13:50:09.262
+_SerialModbus_13.Address.Retry	_SerialModbus	2	0x101	08.04.2015 13:50:09.262

@@ -1,0 +1,113 @@
+V 10
+1
+LANG:5 0 
+PANEL,-1 -1 645 388 N "_3DFace" 0
+"main()
+{
+  btGo_clicked();
+}" 0
+ E E E E 1 -1 -1 0  170 60
+""0  1
+E "void btGo_clicked() {
+
+  dyn_string snmps, systems;
+  dpGet (\"CTC.Connections.Inputs\", snmps, \"CTC.Connections.Outputs\", systems);
+  
+  for (int i=1; i<=dynlen(systems); i++) {
+    dyn_string systemDPs, snmpDPs, aliases;
+	  systemDPs = dpNames (systems[i]);
+    snmpDPs = dpNames (snmps[i]);
+	  
+    DebugTN(snmps[i], systems[i]);
+
+  	DebugTN(snmpDPs, systemDPs);
+    dpGetAllAliases(systemDPs, aliases);
+    DebugTN(aliases);
+          
+  }
+  
+  /*
+  dyn_string allDPs;
+  allDPs = dpNames (\"CTC.Components.*.Raw*.Slot_*\");
+  
+  string table = \"\";
+  for (int i=1; i<=dynlen(allDPs); i++) {
+    string oid;
+    int agent;
+    dpGet(allDPs[i] + \":_address.._reference\", oid);
+    
+    agent = strsplit(oid, \"_\")[1];
+    oid = strsplit(oid, \"_\")[2];
+    
+		string row = \"\";
+    row += oid;
+    row += \"\\n\";
+    
+    table += row;
+  }*/
+  
+  DebugTN(\"\\n\" + table);
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"btGo"
+""
+1 90 50 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 88 48 287 177
+
+T 
+1
+LANG:5 6 SWALCH
+"main()
+{
+  btGo_clicked();
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

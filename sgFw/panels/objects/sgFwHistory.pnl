@@ -1,0 +1,367 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 1110 160 N "_3DFace" 2
+"$SystemHistory"
+"$SystemName"
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E "const string EVENT_COLUMN_DATE = \"c_date\";
+const string EVENT_COLUMN_TIME = \"c_time\";
+const string EVENT_COLUMN_SEVERITY = \"c_severity\";
+const string EVENT_COLUMN_EVENTTEXT = \"c_eventText\";
+const string EVENT_COLUMN_MESSAGE = \"c_message\";
+
+const string EVENT_COLOR_INFO = \"sgStdInfo\";
+const string EVENT_COLOR_WARNING = \"sgStdWarning\";
+const string EVENT_COLOR_CRITICAL = \"sgStdU/SColor\";
+const string EVENT_COLOR_SOLVED = \"sgStdOPSColor\";
+const string EVENT_COLOR_COMMAND = \"sgStdCommand\";
+const string EVENT_COLOR_SYSTEM = \"sgStdSystem\";
+
+const string EVENT_COLOR_DISABLED = \"sgStdDisabled\";
+const string EVENT_COLOR_DISABLE = \"sgStdEnableDisable\";
+const string EVENT_COLOR_ENABLE = \"sgStdEnableDisable\";
+
+const string EVENT_COLOR_SEVERITY_NOT_DEFINED = \"sgStdUKNColor\";
+
+const string EVENT_STD_BACKCOLOR = \"sgStdHistoryBackColor\";
+
+bool initialized = FALSE;
+
+void updateEventTable(string dpName, string rawEventsText)
+{
+	dyn_string rawEventsTexts;
+	dyn_string dates;
+	dyn_string times;
+	dyn_string severities;
+	dyn_string eventsTexts;
+	dyn_string messages;
+	dyn_string forColors;
+
+// PW August 2006, if severity Disabled -> italic on grey back color
+	dyn_string backColors;
+	dyn_int fontTypes;
+
+  // if initialising, get all messages
+  if (!initialized)
+  {
+  	t_Events.deleteAllLines();
+  	dpGet($SystemName + $SystemHistory + SHORT_HISTORY_POSTFIX,rawEventsTexts);
+  	initialized = TRUE;
+  }
+  else
+  	rawEventsTexts[1] = rawEventsText;
+
+	// update table
+	for(int i = 1; i <= dynlen(rawEventsTexts); i++)
+	{
+		dyn_string splittedEventText;
+		splittedEventText = strsplit(rawEventsTexts[i], EVENTTEXT_DELIMITER);	
+	
+		dynAppend(dates, splittedEventText[1]);
+		dynAppend(times, splittedEventText[2]);
+		dynAppend(severities, splittedEventText[3]);
+		dynAppend(eventsTexts, splittedEventText[4]);
+		
+		// get foreColor from severity
+		string foreColor;
+		foreColor = returnEventForeColor(splittedEventText[3]);
+		dynAppend(forColors, foreColor);
+
+		// get BackColor from severity Disabled
+		string backColor;
+		backColor = returnEventBackColor(splittedEventText[3]);
+		dynAppend(backColors, backColor);
+
+		// get font Type from severity 
+		int fontType;
+		fontType = returnFontType(splittedEventText[3]);
+		dynAppend(fontTypes, fontType);
+	
+		// if message, ok else set an empty position
+		if(dynlen(splittedEventText) == 5) // no message
+		{
+			dynAppend(messages, splittedEventText[5]);
+		}
+		else
+		{
+			dynAppend(messages, \" \");
+		}	
+	}
+
+	// write Table
+	t_Events.appendLines(dynlen(dates),  // length is necessary
+			EVENT_COLUMN_DATE, dates,
+			EVENT_COLUMN_TIME, times,
+			EVENT_COLUMN_SEVERITY, severities,
+			EVENT_COLUMN_EVENTTEXT, eventsTexts,
+			EVENT_COLUMN_MESSAGE, messages);
+	
+	int row;
+	// column begins at 0
+	if (dynlen(forColors) == 1)
+	{
+		row = t_Events.lineCount -1;
+		t_Events.cellForeColRC (row, EVENT_COLUMN_DATE, forColors[1]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_TIME, forColors[1]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_SEVERITY, forColors[1]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_EVENTTEXT, forColors[1]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_MESSAGE, forColors[1]);
+
+	}
+	else
+	{
+		for(int i = 1; i <= dynlen(forColors); i++)
+		{
+			row = i - 1;
+			t_Events.cellForeColRC (row, EVENT_COLUMN_DATE, forColors[i]);
+			t_Events.cellForeColRC (row, EVENT_COLUMN_TIME, forColors[i]);
+			t_Events.cellForeColRC (row, EVENT_COLUMN_SEVERITY, forColors[i]);
+			t_Events.cellForeColRC (row, EVENT_COLUMN_EVENTTEXT, forColors[i]);
+			t_Events.cellForeColRC (row, EVENT_COLUMN_MESSAGE, forColors[i]);
+		}
+	}
+	
+	if (dynlen(backColors) == 1)
+	{
+		row = t_Events.lineCount -1;
+		t_Events.cellBackColRC (row, EVENT_COLUMN_DATE, backColors[1]);
+		t_Events.cellBackColRC (row, EVENT_COLUMN_TIME, backColors[1]);
+		t_Events.cellBackColRC (row, EVENT_COLUMN_SEVERITY, backColors[1]);
+		t_Events.cellBackColRC (row, EVENT_COLUMN_EVENTTEXT, backColors[1]);
+		t_Events.cellBackColRC (row, EVENT_COLUMN_MESSAGE, backColors[1]);
+
+	}
+	else
+	{
+		for(int i = 1; i <= dynlen(backColors); i++)
+		{
+			row = i - 1;
+			t_Events.cellBackColRC (row, EVENT_COLUMN_DATE, backColors[i]);
+			t_Events.cellBackColRC (row, EVENT_COLUMN_TIME, backColors[i]);
+			t_Events.cellBackColRC (row, EVENT_COLUMN_SEVERITY, backColors[i]);
+			t_Events.cellBackColRC (row, EVENT_COLUMN_EVENTTEXT, backColors[i]);
+			t_Events.cellBackColRC (row, EVENT_COLUMN_MESSAGE, backColors[i]);
+		}
+	}
+
+if (dynlen(fontTypes) == 1)
+	{
+		row = t_Events.lineCount -1;
+		t_Events.rowFontType (row, fontTypes[1]);
+		t_Events.rowFontType (row, fontTypes[1]);
+		t_Events.rowFontType (row, fontTypes[1]);
+		t_Events.rowFontType (row, fontTypes[1]);
+		t_Events.rowFontType (row, fontTypes[1]);
+
+	}
+	else
+	{
+		for(int i = 1; i <= dynlen(fontTypes); i++)
+		{
+			row = i - 1;
+			t_Events.rowFontType (row, fontTypes[i]);
+			t_Events.rowFontType (row, fontTypes[i]);
+			t_Events.rowFontType (row, fontTypes[i]);
+			t_Events.rowFontType (row, fontTypes[i]);
+			t_Events.rowFontType (row, fontTypes[i]);
+		}
+	}
+
+}
+
+string returnEventForeColor(string severityString)
+{
+	if(strpos(severityString, SEVERITY_CRITICAL) >= 0)
+		return EVENT_COLOR_CRITICAL;
+
+	if(strpos(severityString, SEVERITY_WARNING) >= 0)
+		return EVENT_COLOR_WARNING;
+
+	if(strpos(severityString, SEVERITY_SOLVED) >= 0)
+		return EVENT_COLOR_SOLVED;
+
+	if(strpos(severityString, SEVERITY_INFO) >= 0)
+		return EVENT_COLOR_INFO;
+
+	if(strpos(severityString, SEVERITY_COMMAND) >= 0)
+		return EVENT_COLOR_COMMAND;
+
+	if(strpos(severityString, SEVERITY_SYSTEM) >= 0)
+		return EVENT_COLOR_SYSTEM;
+		
+	if(strpos(severityString, SEVERITY_DISABLED) >= 0)
+		return EVENT_COLOR_DISABLED;
+
+	if(strpos(severityString, SEVERITY_ENABLE) >= 0)
+		return EVENT_COLOR_ENABLE;
+
+	if(strpos(severityString, SEVERITY_DISABLE) >= 0)
+		return EVENT_COLOR_DISABLE;
+
+	return EVENT_COLOR_SEVERITY_NOT_DEFINED;
+} 
+
+string returnEventBackColor(string severityString)
+{
+	if(strpos(severityString, SEVERITY_CRITICAL) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_WARNING) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_SOLVED) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_INFO) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_COMMAND) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_SYSTEM) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_DISABLED) >= 0)
+		return EVENT_STD_BACKCOLOR;
+	
+	if(strpos(severityString, SEVERITY_ENABLE) >= 0)
+		return EVENT_STD_BACKCOLOR;
+
+	if(strpos(severityString, SEVERITY_DISABLE) >= 0)
+		return EVENT_STD_BACKCOLOR;
+	
+	return EVENT_STD_BACKCOLOR;
+} 
+
+int returnFontType(string severityString)
+{
+	if(strpos(severityString, SEVERITY_CRITICAL) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_WARNING) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_SOLVED) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_INFO) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_COMMAND) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_SYSTEM) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_DISABLED) >= 0)
+		return 3; // italic bold
+
+	if(strpos(severityString, SEVERITY_ENABLE) >= 0)
+		return 0; // standard
+
+	if(strpos(severityString, SEVERITY_DISABLE) >= 0)
+		return 3; // italic bold
+	
+	return 0; // standard
+} 
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+25 11
+"t_Events"
+""
+1 0 0 E E E 1 E 1 E N {255,255,255} E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  8 8 1102 152
+"main()
+{
+//	dpConnect(\"updateEventTable\", $SystemName + $SystemHistory + SHORT_HISTORY_POSTFIX) ;
+	dpConnect(\"updateEventTable\", $SystemName + $SystemHistory + MESSAGE_POSTFIX) ;
+}
+
+" 0
+E 0 0 1 5 1 "c_date" 5 1 0 "s" 1
+LANG:5 4 Date
+E
+1
+LANG:5 0 
+
+88 "c_time" 5 1 0 "s" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+88 "c_severity" 6 1 0 "s" 1
+LANG:5 8 Severity
+E
+1
+LANG:5 0 
+
+105 "c_eventText" 53 1 0 "s" 1
+LANG:5 9 EventText
+E
+1
+LANG:5 0 
+
+750 "c_message" 42 1 0 "s" 1
+LANG:5 7 Message
+E
+1
+LANG:5 0 
+
+600 
+20 20 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0 0 1 1 0 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,153 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 338 27 N "_3DFace" 5
+"$CommutationCommand"
+"$CommutationName"
+"$StatusFrom"
+"$StatusTo"
+"$SystemName"
+"main()
+{
+  panel_onInitialize();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "private const string UNDEFINED_CHAIN = \"n/a\";
+
+private string chain1 = $SystemName + \"1\";
+private string chain2 = $SystemName + \"2\";
+private string chain3 = $SystemName + \"3\";
+private string chainFrom;
+private string chainTo;
+
+void panel_onInitialize() {
+  btCommand.text = $StatusFrom + \" <-> \" + $StatusTo;
+  
+  dpConnect(\"onDataChanged\", true, 
+            $SystemName + \".\" + $CommutationName + \".Status:_online.._value\",
+            $SystemName + \".\" + chain1 + \".ServerStatus.Status:_online.._value\",
+            $SystemName + \".\" + chain2 + \".ServerStatus.Status:_online.._value\",
+            $SystemName + \".\" + chain3 + \".ServerStatus.Status:_online.._value\");
+}
+
+void onDataChanged(string commutDP, string commutStatus,
+                   string chain1DP, string chain1Status,
+                   string chain2DP, string chain2Status,
+                   string chain3DP, string chain3Status) {
+  
+  if (chain1Status == $StatusFrom) chainFrom = chain1;
+  else if (chain2Status == $StatusFrom) chainFrom = chain2;
+  else if (chain3Status == $StatusFrom) chainFrom = chain3;
+  else chainFrom = UNDEFINED_CHAIN;
+
+  if (chain1Status == $StatusTo) chainTo = chain1;
+  else if (chain2Status == $StatusTo) chainTo = chain2;
+  else if (chain3Status == $StatusTo) chainTo = chain3;
+  else chainTo = UNDEFINED_CHAIN;
+  
+  evalEnabled(commutStatus);
+}
+
+void evalEnabled(string commutStatus) {
+  if (commutStatus != OPS_STATUS || chainTo == UNDEFINED_CHAIN) {
+    btCommand.enabled = false;
+  } else {
+    btCommand.enabled = true;
+  }
+}
+
+void btCommand_onClicked() {
+  dyn_float df;
+  dyn_string ds;  
+  
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+      makeDynString(\"$1:Do you really want to execute a \" + $CommutationCommand + \" of:\\n\" + $StatusFrom + \" ( \" + chainFrom + \" ) <-> \" + $StatusTo + \" ( \" + chainTo + \" )\" + \" ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+  
+  if(ds[1] == \"true\")
+  {
+    if (chainFrom != UNDEFINED_CHAIN) {
+      dpSet($SystemName + \".\" + chainFrom + \".ServerStatus.PreStatus\", UKN_STATUS);
+    }
+    dpSet($SystemName + \".\" + chainTo + \".ServerStatus.PreStatus\", UKN_STATUS, 
+					  $SystemName + \".\" + chainTo + \".ServerStatus.CommandOut\", $CommutationCommand);
+  }
+  
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"btCommand"
+""
+1 170 0 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+0  168 -2 337 27
+
+T 
+1
+LANG:5 11 Commutation
+"main()
+{
+  btCommand_onClicked();
+}" 0
+ E E E
+1 1 0 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 0 
+1 2 0 "" 51
+0
+1 3 0 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+3 0 "blStatus" -1
+"objects\\sgFwBlock.pnl" 10 90 T 1 0.4124999999999999 0 0.125 -4.124999999999999 -11.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$SystemName + \".\" + $CommutationName"
+0

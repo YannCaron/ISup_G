@@ -1,0 +1,50 @@
+QTreeView {
+	qproperty-headerHidden:1;
+	qproperty-animated:1;
+	qproperty-rootIsDecorated:0;
+
+	qproperty-separatorColor: #696969;
+	qproperty-iconSize: 35;
+	qproperty-separatorSize: 9;
+	qproperty-separatorLineSize: 1;
+
+	qproperty-alarmColor: red;
+	qproperty-indentation:10;
+
+	outline:0;
+	show-decoration-selected: 0;
+	border: 0px;
+	background: transparent;
+	color: #000000;
+
+	font-size: 14px;
+	font: bold large "Tahoma";
+}
+
+QTreeView::item {
+	padding:1px;
+	margin:1px;
+}
+
+QTreeView::item:has-children {
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0.45 transparent, stop: 0.55 #e0e0e0);
+	border-radius: 2px;
+	border: 1px solid #707070;
+}
+
+QTreeView::item:!has-children {
+	border-radius: 2px;
+	border-left: 1px solid transparent;
+}
+
+QTreeView::item:has-children:hover {
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0.45 transparent, stop: 0.55 #e7e7e7);
+}
+
+QTreeView::item:!has-children:hover {
+	background: #e7e7e7;
+}
+
+QTreeView::item:!has-children:selected {
+	background: #e7e7e7;
+}

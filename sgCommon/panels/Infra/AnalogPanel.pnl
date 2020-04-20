@@ -1,0 +1,702 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  1 E 12 12 1097 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 25 Infra Analog Inputs Panel
+LANG:1 12 Alarms panel
+1 477 1 "" 1
+0
+1 478 1 "" 2
+0
+1 479 1 "" 3
+0
+1 480 1 "" 4
+0
+1 481 4 "" 1
+0
+1 482 4 "" 2
+0
+1 483 4 "" 3
+0
+1 484 4 "" 4
+0
+1 485 5 "" 1
+0
+1 486 5 "" 2
+0
+1 487 5 "" 3
+0
+1 488 5 "" 4
+0
+30 21
+"FRAME1"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+8 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.6121045392022008 -7.333333333333329 19.16460339293901 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 3 TWR
+30 22
+"FRAME2"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.1788170563961485 227 359.6286107290234 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 3 RX2
+30 27
+"FRAME3"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+13 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.95 0 0.6121045392022008 -731 19.49793672627237 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 3 NAG
+1 489 7 "" 1
+0
+1 490 7 "" 2
+0
+1 491 7 "" 3
+0
+1 492 7 "" 4
+0
+30 36
+"FRAME4"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+17 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.7152682255845942 462.0000000000001 13.51444291609358 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 3 CUN
+1 493 24 "" 1
+0
+1 494 24 "" 2
+0
+1 495 24 "" 3
+0
+1 496 24 "" 4
+0
+1 497 34 "" 1
+0
+1 498 34 "" 2
+0
+1 499 34 "" 3
+0
+1 500 34 "" 4
+0
+1 501 35 "" 1
+0
+1 502 35 "" 2
+0
+1 503 35 "" 3
+0
+1 504 35 "" 4
+0
+1 505 36 "" 1
+0
+1 506 36 "" 2
+0
+1 507 36 "" 3
+0
+1 508 36 "" 4
+0
+1 509 37 "" 1
+0
+1 510 37 "" 2
+0
+1 511 37 "" 3
+0
+1 512 37 "" 4
+0
+1 513 38 "" 1
+0
+1 514 38 "" 2
+0
+1 515 38 "" 3
+0
+1 516 38 "" 4
+0
+1 517 39 "" 1
+0
+1 518 39 "" 2
+0
+1 519 39 "" 3
+0
+1 520 39 "" 4
+0
+1 521 40 "" 1
+0
+1 522 40 "" 2
+0
+1 523 40 "" 3
+0
+1 524 40 "" 4
+0
+1 525 42 "" 1
+0
+1 526 42 "" 2
+0
+1 527 42 "" 3
+0
+1 528 42 "" 4
+0
+1 529 43 "" 1
+0
+1 530 43 "" 2
+0
+1 531 43 "" 3
+0
+1 532 43 "" 4
+0
+1 533 44 "" 1
+0
+1 534 44 "" 2
+0
+1 535 44 "" 3
+0
+1 536 44 "" 4
+0
+1 537 45 "" 1
+0
+1 538 45 "" 2
+0
+1 539 45 "" 3
+0
+1 540 45 "" 4
+0
+1 541 47 "" 1
+0
+1 542 47 "" 2
+0
+1 543 47 "" 3
+0
+1 544 47 "" 4
+0
+1 545 48 "" 1
+0
+1 546 48 "" 2
+0
+1 547 48 "" 3
+0
+1 548 48 "" 4
+0
+1 549 49 "" 1
+0
+1 550 49 "" 2
+0
+1 551 49 "" 3
+0
+1 552 49 "" 4
+0
+30 128
+"FRAME5"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+119 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.4332874828060522 227 29.86932599724897 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 3 RXC
+1 553 51 "" 1
+0
+1 554 51 "" 2
+0
+1 555 51 "" 3
+0
+1 556 51 "" 4
+0
+1 557 54 "" 1
+0
+1 558 54 "" 2
+0
+1 559 54 "" 3
+0
+1 560 54 "" 4
+0
+1 561 55 "" 1
+0
+1 562 55 "" 2
+0
+1 563 55 "" 3
+0
+1 564 55 "" 4
+0
+1 565 56 "" 1
+0
+1 566 56 "" 2
+0
+1 567 56 "" 3
+0
+1 568 56 "" 4
+0
+1 569 57 "" 1
+0
+1 570 57 "" 2
+0
+1 571 57 "" 3
+0
+1 572 57 "" 4
+0
+1 573 58 "" 1
+0
+1 574 58 "" 2
+0
+1 575 58 "" 3
+0
+1 576 58 "" 4
+0
+1 577 59 "" 1
+0
+1 578 59 "" 2
+0
+1 579 59 "" 3
+0
+1 580 59 "" 4
+0
+1 581 60 "" 1
+0
+1 582 60 "" 2
+0
+1 583 60 "" 3
+0
+1 584 60 "" 4
+0
+23 241
+"trend"
+""
+1 11 504.9895411605938 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  9 503 867 847
+5 E E E 1 853 N {0,0,0} 0 0 1 0 1 0 0 1 1 "%H:%M:%S" "%x" 0 1 0 0 
+E 1 1 1 0 25 1 20 43200
+1
+LANG:5 27 Tahoma,14,-1,5,75,0,0,0,0,0
+0  1
+LANG:5 26 Tahoma,8,-1,5,50,0,0,0,0,0
+0  1
+LANG:5 26 Tahoma,8,-1,5,50,0,0,0,0,0
+0  100 
+N {0,0,0} 0 0 1 0 1 150 1 5 5 1 2
+0
+1 588 61 "" 4
+0
+1 585 61 "" 1
+0
+1 586 61 "" 2
+0
+1 587 61 "" 3
+0
+1 592 62 "" 4
+0
+1 589 62 "" 1
+0
+1 590 62 "" 2
+0
+1 591 62 "" 3
+0
+30 358
+"FRAME6"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+132 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.1788170563961485 462 569.6286107290234 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 4 CUN2
+1 596 63 "" 4
+0
+30 476
+"FRAME7"
+""
+1 380 58 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+134 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1 0 0.1788170563961485 462 704.6286107290234 0 E 380 58 581 786
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 4 SMR2
+1 593 63 "" 1
+0
+1 594 63 "" 2
+0
+1 595 63 "" 3
+0
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+3 1 "PANEL_REF2" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 3 1.266666666666667 0 1 508 -100
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSRXP2.Components.SRX0000VO01.AnalogInputs.001.Value"
+"$Name""\"RXC-000-TP60\""
+"$Unit""V"
+"$trend""trend"
+3 4 "PANEL_REF5" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 6 1.266666666666667 0 1 508 230
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSRX2.Components.SRX20000VO01.AnalogInputs.001.Value"
+"$Name""\"RX2-001-BC03\""
+"$Unit""V"
+"$trend""trend"
+3 5 "PANEL_REF6" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 7 1.266666666666667 0 1 508 40.00000000000001
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSRXP2.Components.P20000VO01.AnalogInputs.009.Value"
+"$Name""\"TEMPERATURE P2\""
+"$Unit""°C"
+"$trend""trend"
+3 7 "PANEL_REF8" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 14 1.188679254449697 0 1 67.35848946603636 180
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0108VO01.AnalogInputs.001.Value"
+"$Name""\"NAG-0108-RD01\""
+"$Unit""V"
+"$trend""trend"
+3 24 "PANEL_REF25" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 63 1.266666666666667 0 1 743 -100
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.001.Value"
+"$Name""\"CUN-RD01\""
+"$Unit""V"
+"$trend""trend"
+3 34 "PANEL_REF35" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 75 1.188679254449697 0 1 67.35848946603636 250
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0108VO01.AnalogInputs.002.Value"
+"$Name""\"NAG-0108-RD02\""
+"$Unit""V"
+"$trend""trend"
+3 35 "PANEL_REF36" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 75 1.266666666666667 0 1 743 -29.99999999999999
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.002.Value"
+"$Name""\"CUN-RD02\""
+"$Unit""V"
+"$trend""trend"
+3 36 "PANEL_REF37" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 76 1.266666666666667 0 1 743 40
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.003.Value"
+"$Name""\"CUN-RD03\""
+"$Unit""V"
+"$trend""trend"
+3 37 "PANEL_REF38" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 79 1.266666666666667 0 1 743 110
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.004.Value"
+"$Name""\"CUN-RD04\""
+"$Unit""V"
+"$trend""trend"
+3 38 "PANEL_REF39" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 82 1.266666666666667 0 1 743 180.0000000000001
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.005.Value"
+"$Name""\"CUN-DIESEL BAT\""
+"$Unit""V"
+"$trend""trend"
+3 39 "PANEL_REF40" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 86 1.266666666666667 0 1 743 320
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.010.Value"
+"$Name""\"CUN RINF\""
+"$Unit""°C"
+"$trend""trend"
+3 40 "PANEL_REF41" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 89 1.266666666666667 0 1 743 250
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN1.Components.CUN10000VO01.AnalogInputs.009.Value"
+"$Name""\"CUN REZ LT\""
+"$Unit""°C"
+"$trend""trend"
+3 42 "PANEL_REF45" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 93 1.188679254449697 0 1 -121.7924546176911 -30.7142832571146
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO01.AnalogInputs.002.Value"
+"$Name""\"NAG-0031-BF02\""
+"$Unit""V"
+"$trend""trend"
+3 43 "PANEL_REF45" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 94 1.188679254449697 0 1 -121.7924546176911 39.28571793497833
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO01.AnalogInputs.003.Value"
+"$Name""\"NAG-0031-BF03\""
+"$Unit""V"
+"$trend""trend"
+3 44 "PANEL_REF45" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 97 1.188679254449697 0 1 -121.7924546176911 109.2857191270713
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO01.AnalogInputs.004.Value"
+"$Name""\"NAG-0031-BF04\""
+"$Unit""V"
+"$trend""trend"
+3 45 "PANEL_REF46" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 100 1.188679254449697 0 1 -121.7924546176911 179.2857203191642
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO11.AnalogInputs.001.Value"
+"$Name""\"NAG-0031-BF05\""
+"$Unit""V"
+"$trend""trend"
+3 47 "PANEL_REF48" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 106 1.188679254449697 0 1 -121.3018881674545 250
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO11.AnalogInputs.002.Value"
+"$Name""\"NAG-0031-BF06\""
+"$Unit""V"
+"$trend""trend"
+3 48 "PANEL_REF49" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 109 1.188679254449697 0 1 67.35848946603636 -100
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO11.AnalogInputs.003.Value"
+"$Name""\"NAG-0031-BF07\""
+"$Unit""V"
+"$trend""trend"
+3 49 "PANEL_REF50" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 112 1.188679254449697 0 1 67.35848946603636 -29.99999761581401
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO11.AnalogInputs.004.Value"
+"$Name""\"NAG-0031-BF08\""
+"$Unit""V"
+"$trend""trend"
+3 51 "PANEL_REF52" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 120 1.186666666666664 0 1 67.60000000000031 40
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0108VO01.AnalogInputs.003.Value"
+"$Name""\"NAG-0108-TP11\""
+"$Unit""V"
+"$trend""trend"
+3 54 "PANEL_REF55" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 123 1.186666666666664 0 1 67.60000000000079 109.2857167428854
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0108VO01.AnalogInputs.004.Value"
+"$Name""\"NAG-0108-TP12\""
+"$Unit""V"
+"$trend""trend"
+3 55 "PANEL_REF56" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 124 1.266666666666667 0 1 508 -30.00000000000001
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSRXP2.Components.SRX0000VO01.AnalogInputs.002.Value"
+"$Name""\"RXC-000-TP63\""
+"$Unit""V"
+"$trend""trend"
+3 56 "PANEL_REF57" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 125 1.266666666666667 0 1 508 110
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSRXP2.Components.SRX0000VO01.AnalogInputs.005.Value"
+"$Name""\"RXC TEMP. LT\""
+"$Unit""°C"
+"$trend""trend"
+3 57 "PANEL_REF58" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 126 1.266666666666668 0 1 273.6666666666665 -100.3333333333334
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationTWR.Components.TWR102VO01.AnalogInputs.001.Value"
+"$Name""\"TWR-102-TP-36\""
+"$Unit""V"
+"$trend""trend"
+3 58 "PANEL_REF59" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 127 1.266666666666668 0 1 273.6666666666665 -30.33333333333335
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationTWR.Components.TWR102VO01.AnalogInputs.003.Value"
+"$Name""\"TWR-102-TP-37\""
+"$Unit""V"
+"$trend""trend"
+3 59 "PANEL_REF60" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 128 1.266666666666668 0 1 273.6666666666665 39.66666666666664
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationTWR.Components.TWR102VO01.AnalogInputs.002.Value"
+"$Name""\"TWR-102-TP-30\""
+"$Unit""V"
+"$trend""trend"
+3 60 "PANEL_REF61" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 129 1.266666666666668 0 1 273.6666666666665 109.6666666666666
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationTWR.Components.TWR102VO01.AnalogInputs.004.Value"
+"$Name""\"TWR-102-TP-31\""
+"$Unit""V"
+"$trend""trend"
+3 61 "PANEL_REF61" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 131 1.188679254449697 0 1 -122.6415105339636 -100
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationNAG.Components.NAG0031VO01.AnalogInputs.001.Value"
+"$Name""\"NAG-0031-BF01\""
+"$Unit""V"
+"$trend""trend"
+3 62 "PANEL_REF62" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 131 1.266666666666667 0 1 743 439.9999999999999
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationCUN2.Components.CUN20000VO01.AnalogInputs.005.Value"
+"$Name""\"CUN2 AMB LT\""
+"$Unit""°C"
+"$trend""trend"
+3 63 "PANEL_REF63" -1
+"Infra\\AnalogBlock.pnl" 150 200 T 133 1.266666666666667 0 1 743 574.9999999999999
+5
+"$DistributedSystems""Infra_G:"
+"$DpName""StationSMR2.Components.SMR20000VO01.AnalogInputs.001.Value"
+"$Name""\"SMR2 AMB LT\""
+"$Unit""°C"
+"$trend""trend"
+0

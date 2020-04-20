@@ -1,0 +1,1223 @@
+V 11
+2
+LANG:5 21 sgFwHistoryQueryPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 13
+"$SystemPos"
+"$dayFrom"
+"$dayTo"
+"$havePanelParams"
+"$hourFrom"
+"$hourTo"
+"$maxEventsNumber"
+"$minuteFrom"
+"$minuteTo"
+"$monthFrom"
+"$monthTo"
+"$yearFrom"
+"$yearTo"
+"main()
+{
+	ShowButton.enabled = true;
+
+	// initialize DB variables
+	initSupervisedSystemsLists();
+
+// for the panel
+	setPatientText(\"Click on <<Show events>> to refresh\");
+	
+	MaxEventsNumber.text = 500;
+	
+	sgDBWaitForInit();
+	
+	HistoriesList.items = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_LABELS_LIST);
+	
+// new call of event panel
+	time t;
+	if($havePanelParams == \"No\")
+	{
+		t = getCurrentTime();
+	
+		dayTo.text = day(t);
+		monthTo.text = month(t);
+		yearTo.text = year(t);
+		
+		hourTo.text = hour(t);
+		minuteTo.text = minute(t);
+		
+		dayFrom.text = day(t);
+		monthFrom.text = month(t);
+		yearFrom.text = year(t);
+		
+		hourFrom.text = 0;
+		minuteFrom.text = 0;
+		
+		HistoriesList.selectedPos = 1;
+		HistoriesList.text == \"\";
+		t_Events.visible = false;
+	}
+
+//call of event with Back or Fwd button
+	else if($havePanelParams == \"Yes\")
+	{
+		readLastEventPanelParams();
+		showEvents();
+	}
+	writeCurrentEventPanelParams();
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "const string WindowspanelPath = \"sgFw\\\\sgFwConfirmWindow.pnl\";
+
+dyn_string gEvents;
+
+string lastSystem;
+
+string ghistoryQueryPoint;
+
+void setPatientText(string text)
+{
+	patientText.text = text;
+}
+
+void showEvents()
+{
+	time from, to;	
+		 
+	setPatientText(\"Looking for Events...\");
+	initEventsListAndNumberVisibilities(false);
+	
+	dynClear(gEvents);// initialize global events variable
+	
+	from = makeTime(yearFrom.text, monthFrom.text, dayFrom.text, hourFrom.text, minuteFrom.text);
+	to = makeTime(yearTo.text, monthTo.text, dayTo.text, hourTo.text, minuteTo.text);
+	
+// 08.03.2006 aj not using the text anymore but the number
+// otherwise problems with dist systems if they have same systemnames
+//	string label = HistoriesList.text;
+	string queue;
+	string systemName;
+	
+	dyn_string labels;
+	dyn_string systems;
+	dyn_string queues;
+	
+	labels = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_LABELS_LIST);
+	systems = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_SYSTEMS_LIST);
+	queues = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_HISTORIES_LIST);
+	
+// 08.03.2006 aj not using the text anymore but the number
+// otherwise problems with dist systems if they have same systemnames
+	// retrieve the point name
+	int id;
+	id = HistoriesList.selectedPos;
+//	id = dynContains(labels, label);
+//	DebugTN(id);
+
+	queue = queues[id];
+	systemName = systems[id];
+
+//	DebugTN(queue);
+//	DebugTN(systemName);
+//	DebugTN(\"----\");
+
+	
+	string clientName = getHostname();
+	time localTime;
+	localTime = getCurrentTime();
+	
+	ghistoryQueryPoint = clientName + \"__\" + day(localTime) + \"_\" + month(localTime) + \"_\" + hour(localTime) + \"_\" + minute(localTime);
+	
+	// DebugN(\"sgFwHistoryQueryPanel >> historyQueryPoint: \" + historyQueryPoint);
+	
+	// Create the point in the database (by the server)
+	dpSet(systemName + \"FwUtils.HistoryQuery.Starter\", ghistoryQueryPoint);
+	
+	ghistoryQueryPoint = systemName + ghistoryQueryPoint;
+	
+	// wait for the server 
+	time start;
+	start = getCurrentTime();
+	
+	while (getCurrentTime() - start < 20)
+	{
+		// DebugN(\"sgFwHistoryQueryPanel >> the client is waiting for the server to create the remote point: \" + ghistoryQueryPoint + \".Query.Queue\");
+		if (distributedDpAvailable(ghistoryQueryPoint + \".Query.Queue\") == true)
+			break;
+		
+		delay(0,100);
+	}
+		
+	if (distributedDpAvailable(ghistoryQueryPoint + \".Query.Queue\") == false)
+	{
+		DebugN(\"sgFwHistoryQueryPanel >> The server was unable to create the historyQueryPoint !\");
+		return;
+	}
+	
+	// write the query point
+	int maxEventsNumber;
+	maxEventsNumber = MaxEventsNumber.text;
+	
+	dpSet(ghistoryQueryPoint + \".Query.Queue\", queue);
+	
+	dpSet(ghistoryQueryPoint + \".Query.From\", from,
+				ghistoryQueryPoint + \".Query.To\", to);
+
+	dpGet(ghistoryQueryPoint + \".Query.From\", from);
+	
+	// to be sure this field is the last field			
+	int err;
+	err = dpSet(ghistoryQueryPoint + \".Query.MaxEventsNumber\", maxEventsNumber);
+	dyn_errClass errc;
+	errc = getLastError();
+	if (err != 0 || errc != \"\")
+	{
+		DebugN(\"sgFwHistoryQueryPanel >> the client is unable to set query to the remote point\");
+		if (errc != \"\")
+			DebugN(\"sgFwHistoryQueryPanel >> last error: \" + errc);
+		return;
+	}
+
+	// Create the connection (to display the result when the server is finish
+	dpConnect(\"DisplayQuery\", false, ghistoryQueryPoint + \".Result.Events\");
+	
+	// Create a connection for flashing the \"in progress label
+	dpConnect(\"DisplayPercentCompleted\", false, ghistoryQueryPoint + \".Result.PercentCompleted\");
+}
+
+void writeCurrentEventPanelParams()
+{
+// set the params if the next navigation with the back and fwd buttons
+	string param1 = \"$havePanelParams:Yes\";
+// current settings 
+
+	string param2 = \"$SystemPos:\" + HistoriesList.selectedPos;
+
+	string param3 = \"$dayFrom:\" + dayFrom.text;
+	string param4 = \"$monthFrom:\" + monthFrom.text;
+	string param5 = \"$yearFrom:\" + yearFrom.text;
+	string param6 = \"$hourFrom:\" + hourFrom.text;
+	string param7 = \"$minuteFrom:\" + minuteFrom.text;
+
+	string param8 = \"$dayTo:\" + dayTo.text;
+	string param9 = \"$monthTo:\" + monthTo.text;
+	string param10 = \"$yearTo:\" + yearTo.text;
+	string param11 = \"$hourTo:\" + hourTo.text;
+	string param12 = \"$minuteTo:\" + minuteTo.text;
+	
+	string param13 = \"$maxEventsNumber:\" + MaxEventsNumber.text;
+	
+	dyn_string ds = makeDynString(param1, param2, param3, param4, param5, param6, 
+																param7, param8, param9, param10, param11, param12, param13);
+	naviHistoryParams[naviIndex] = ds;
+	
+	ShowButton.enabled =true;  // reactivate the button
+}
+
+void readLastEventPanelParams()
+{
+	dyn_string ds =	naviHistoryParams[naviIndex];
+
+// collect values from $parameters
+	HistoriesList.selectedPos = $SystemPos;
+
+	dayFrom.text = $dayFrom;
+	monthFrom.text = $monthFrom;
+	yearFrom.text = $yearFrom;
+	hourFrom.text = $hourFrom;
+	minuteFrom.text = $minuteFrom;
+
+	dayTo.text = $dayTo;
+	monthTo.text = $monthTo;
+	yearTo.text = $yearTo;
+	hourTo.text = $hourTo;
+	minuteTo.text = $minuteTo;
+	
+	MaxEventsNumber.text = $maxEventsNumber;
+}
+
+void initEventsListAndNumberVisibilities(bool visibility)
+{
+	t_Events.visible	= visibility;
+	EventsNumberText.visible = visibility;
+	SaveButton.enabled = visibility;
+}
+
+// functions for the panel
+void DisplayQuery(string dpName, dyn_string dpValues)
+{
+	int nbItems, flag;
+	nbItems = dynlen(dpValues);
+	
+	if (nbItems > 1 && dpValues[nbItems] == MAX_EVENTS_NUMBER_REACHED)
+		flag = 1;
+	
+	// when there is a large number of events we add the max.. at the begining of the display	
+	if (nbItems > 29 && dpValues[nbItems] == MAX_EVENTS_NUMBER_REACHED)
+	{
+		dynAppend(gEvents, MAX_EVENTS_NUMBER_REACHED);
+	}
+	
+	dynAppend(gEvents, dpValues);	
+	updateEventTable(gEvents);
+		
+	EventsNumberText.text = \"Total: \" + (nbItems - flag);
+	initEventsListAndNumberVisibilities(true);
+
+	// Disconnect from points	
+	dpDisconnect(\"DisplayQuery\", ghistoryQueryPoint + \".Result.Events\");
+	dpDisconnect(\"DisplayPercentCompleted\", ghistoryQueryPoint + \".Result.PercentCompleted\");
+        
+        // PW/AJ append an empty line to force display to show the last one
+	t_Events.appendLine( 
+			EVENT_COLUMN_DATE, makeDynString(\"\"),
+			EVENT_COLUMN_TIME, makeDynString(\"\"),
+			EVENT_COLUMN_SEVERITY, makeDynString(\"\"),
+			EVENT_COLUMN_EVENTTEXT, makeDynString(\"\"),
+			EVENT_COLUMN_MESSAGE, makeDynString(\"\"));
+        // PW/AJ delete this empty line
+        t_Events.deleteLinesN(dynlen(gEvents), 1);
+     
+} //DisplayQuery
+
+void DisplayPercentCompleted(string dpName, string dpValue)
+{
+	// This function is connectet to the Result.PercentCompleted point
+	// DebugTN(\"HistoryQuery >> dpValue: \" + dpValue);
+	setPatientText(dpValue);
+}
+
+
+const string EVENT_COLUMN_DATE = \"c_date\";
+const string EVENT_COLUMN_TIME = \"c_time\";
+const string EVENT_COLUMN_SEVERITY = \"c_severity\";
+const string EVENT_COLUMN_EVENTTEXT = \"c_eventText\";
+const string EVENT_COLUMN_MESSAGE = \"c_message\";
+
+const string EVENT_COLOR_INFO = \"black\";
+const string EVENT_COLOR_WARNING = \"sgStdWarning\";
+const string EVENT_COLOR_CRITICAL = \"sgStdU/SColor\";
+const string EVENT_COLOR_SOLVED = \"sgStdOPSColor\";
+const string EVENT_COLOR_COMMAND = \"blue\";
+const string EVENT_COLOR_SYSTEM = \"magenta\";
+const string EVENT_COLOR_SEVERITY_NOT_DEFINED = \"sgStdUKNColor\";
+
+void updateEventTable(dyn_string rawEventsTexts)
+{
+	dyn_string dates;
+	dyn_string times;
+	dyn_string severities;
+	dyn_string eventsTexts;
+	dyn_string messages;
+	dyn_string forColors;
+
+// to avaid HMI glitches
+	t_Events.namedColumnVisibility (EVENT_COLUMN_DATE, false);
+	t_Events.namedColumnVisibility (1, EVENT_COLUMN_TIME);
+	t_Events.namedColumnVisibility (2, EVENT_COLUMN_SEVERITY);
+	t_Events.namedColumnVisibility (3, EVENT_COLUMN_EVENTTEXT);
+	t_Events.namedColumnVisibility (4, EVENT_COLUMN_MESSAGE);
+
+	t_Events.deleteAllLines();
+
+	// update table
+	for(int i = 1; i <= dynlen(rawEventsTexts); i++)
+	{
+		dyn_string splittedEventText;
+		splittedEventText = strsplit(rawEventsTexts[i], EVENTTEXT_DELIMITER);
+	
+    if (dynlen(rawEventsTexts) >= 3) {
+    
+  		dynAppend(dates, splittedEventText[1]);
+  		dynAppend(times, splittedEventText[2]);
+  		dynAppend(severities, splittedEventText[3]);
+  		dynAppend(eventsTexts, splittedEventText[4]);
+		
+  		// get foreColor from severity
+  		string foreColor;
+  		foreColor = returnEventForeColor(splittedEventText[3]);
+  		dynAppend(forColors, foreColor);
+	
+  		// if message, ok else set an empty position
+  		if(dynlen(splittedEventText) == 5) // no message
+  		{
+  			dynAppend(messages, splittedEventText[5]);
+  		}
+  		else
+  		{
+  			dynAppend(messages, \" \");
+  		}
+    }
+  	}
+        
+        // save last element
+        string lastDate;
+        string lastTime;
+        string lastSeverity;
+        string lastEventText;
+        string lastMessage;
+        int tablesLength;
+  
+        {// write Table
+  	  t_Events.appendLines(dynlen(dates),  // length is necessary
+  	  		EVENT_COLUMN_DATE, dates,
+  	  		EVENT_COLUMN_TIME, times,
+  			EVENT_COLUMN_SEVERITY, severities,
+  			EVENT_COLUMN_EVENTTEXT, eventsTexts,
+  			EVENT_COLUMN_MESSAGE, messages);
+        }
+        
+	int row;
+	// column beginns at 0
+	for(int i = 1; i <= dynlen(forColors); i++)
+	{
+		row = i - 1;
+		t_Events.cellForeColRC (row, EVENT_COLUMN_DATE, forColors[i]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_TIME, forColors[i]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_SEVERITY, forColors[i]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_EVENTTEXT, forColors[i]);
+		t_Events.cellForeColRC (row, EVENT_COLUMN_MESSAGE, forColors[i]);
+	}
+
+	// to avaid HMI glitches
+	t_Events.namedColumnVisibility (EVENT_COLUMN_DATE, true);
+	t_Events.namedColumnVisibility (EVENT_COLUMN_TIME, true);
+	t_Events.namedColumnVisibility (EVENT_COLUMN_SEVERITY, true);
+	t_Events.namedColumnVisibility (EVENT_COLUMN_EVENTTEXT, true);
+	t_Events.namedColumnVisibility (EVENT_COLUMN_MESSAGE, true);
+}
+
+string returnEventForeColor(string severityString)
+{
+	if(strpos(severityString, SEVERITY_CRITICAL) >= 0)
+		return EVENT_COLOR_CRITICAL;
+
+	if(strpos(severityString, SEVERITY_WARNING) >= 0)
+		return EVENT_COLOR_WARNING;
+
+	if(strpos(severityString, SEVERITY_SOLVED) >= 0)
+		return EVENT_COLOR_SOLVED;
+
+	if(strpos(severityString, SEVERITY_INFO) >= 0)
+		return EVENT_COLOR_INFO;
+
+	if(strpos(severityString, SEVERITY_COMMAND) >= 0)
+		return EVENT_COLOR_COMMAND;
+
+	if(strpos(severityString, SEVERITY_SYSTEM) >= 0)
+		return EVENT_COLOR_SYSTEM;
+
+	return EVENT_COLOR_SEVERITY_NOT_DEFINED;
+
+} 
+
+
+" 0
+ 2
+"CBRef" "0"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 24 Past events consultation
+LANG:1 24 Past events consultation
+2 6
+"from2Points"
+""
+1 400 70 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 402 72 408 91
+0 2 0 "0s" 0 0 0 192 0 0  402 72 1
+3
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 1 :
+LANG:1 1 :
+LANG:0 1 :
+2 17
+"To2Points"
+""
+1 710 70 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 712 72 718 91
+0 2 0 "0s" 0 0 0 192 0 0  712 72 1
+3
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 1 :
+LANG:1 1 :
+LANG:0 1 :
+30 27
+"FrameFrom"
+""
+1 200 100 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+26 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 200 55 480 100
+2
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 From
+LANG:1 4 From
+30 29
+"Frame3"
+""
+1 490 100 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 490 55 770 100
+2
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 2 To
+LANG:1 2 To
+2 33
+"patientText"
+""
+1 -25 400 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E -23 402 1063 438
+0 2 0 "0s" 0 0 0 65 0 0  -23 402 1
+2
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-220-100-100-*-*-iso8859-1|-24,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 35 Click on <<Show events>> to refresh
+LANG:1 33 Click on "show alarms" to refresh
+2 36
+"EventsNumberText"
+""
+1 870 835 E E E 1 E 0 E N {0,0,0} E N "_Transparent" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 872 837 1098 853
+0 2 0 "0s" 0 0 0 66 0 0  872 837 1
+1
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+0 1
+LANG:5 12 Total: xxxxx
+30 40
+"Frame1"
+""
+1 775 100 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+38 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 775 55 870 100
+1
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+0 1
+LANG:5 10 Max events
+30 41
+"Frame2"
+""
+1 10 100 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+39 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 10 55 195 100
+1
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+0 1
+LANG:5 7 Systems
+22 2
+"HistoriesList"
+""
+1 15 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  13 68 192 98
+0
+
+E
+"main()
+{
+	if(lastSystem != HistoriesList.text)
+	{
+		initEventsListAndNumberVisibilities(false);
+		setPatientText(\"Click on <<Show events>> to refresh\");
+	}
+}" 0
+
+E
+ 0 0
+13 3
+"ShowButton"
+""
+1 875 65 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E "main()
+{
+
+}" 0
+
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  873 63 1027 97
+
+T 
+2
+LANG:5 11 Show events
+LANG:1 11 Show Events
+"main()
+{
+	ShowButton.enabled = false;
+	showEvents();
+	writeCurrentEventPanelParams();
+
+}" 0
+ E E E
+21 10
+"minuteFrom"
+""
+1 590 138 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  388 68 427 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 0 59 1 1 1 1
+21 11
+"hourFrom"
+""
+1 548 138 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  348 68 385 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 0 23 1 1 1 1
+21 12
+"yearFrom"
+""
+1 398 151 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  288 68 345 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 2000 2030 1 2000 1 1
+21 13
+"monthFrom"
+""
+1 508 221 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  248 68 286 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 1 12 1 1 1 1
+21 14
+"dayFrom"
+""
+1 442 221 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  208 68 246 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 1 31 1 1 1 1
+21 21
+"minuteTo"
+""
+1 880 138 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  678 68 717 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 0 59 1 1 1 1
+21 22
+"hourTo"
+""
+1 838 138 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  638 68 675 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 0 23 1 1 1 1
+21 23
+"yearTo"
+""
+1 689 151 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  578 68 635 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 2000 2030 1 2000 1 1
+21 24
+"monthTo"
+""
+1 799 221 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  538 68 576 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 1 12 1 1 1 1
+21 25
+"dayTo"
+""
+1 733 221 E E E 1 E 1 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  498 68 536 95
+0
+
+E
+"main()
+{
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+}" 0
+
+E
+
+N 1 31 1 1 1 1
+13 30
+"buttonNowTo"
+""
+1 719 70 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  718 68 762 97
+
+T 
+3
+LANG:5 3 Now
+LANG:1 3 Now
+LANG:0 5 Jetzt
+"main()
+{
+  time t;
+
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+
+  t = getCurrentTime();
+
+	dayTo.text = day(t);
+	monthTo.text = month(t);
+	yearTo.text = year(t);
+	
+	hourTo.text = hour(t);
+	minuteTo.text = minute(t);
+}
+" 0
+ E E E
+13 32
+"buttonNowFrom"
+""
+1 430 64 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  428 63 472 97
+
+T 
+3
+LANG:5 3 Now
+LANG:1 3 Now
+LANG:0 5 Jetzt
+"main()
+{
+  time t;
+
+	initEventsListAndNumberVisibilities(false);
+	setPatientText(\"Click on <<Show events>> to refresh\");
+
+  t = getCurrentTime();
+
+	dayFrom.text = day(t);
+	monthFrom.text = month(t);
+	yearFrom.text = year(t);
+	
+	hourFrom.text = hour(t);
+	minuteFrom.text = minute(t);
+}
+" 0
+ E E E
+13 37
+"SaveButton"
+""
+1 1030 65 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  1028 63 1097 97
+
+T 
+2
+LANG:5 4 Save
+LANG:1 11 Show Events
+"main()
+{
+	file f;
+	string fileName;
+		
+	sprintf(fileName, \"D:\\\\saved events\\\\%s %04d-%02d-%02d %02dh%02d to %04d-%02d-%02d %02dh%02d.txt\", HistoriesList.text, yearFrom.text, monthFrom.text, dayFrom.text, hourFrom.text, minuteFrom.text, yearTo.text, monthTo.text, dayTo.text, hourTo.text, minuteTo.text);
+	
+	
+	f = fopen(fileName, \"w\");
+	if (f > 0)
+	{
+		for(int cpt = 1; cpt <= dynlen(gEvents); cpt++)
+		{
+			fputs(gEvents[cpt] + \"\\n\", f);
+		}
+		fclose(f);
+		
+		ChildPanelOnCentralModal(\"sgFw\\\\EventsSavedPanel.pnl\", \"Confirmation\", makeDynString(\"$FileName:\" + fileName));
+	}
+	else
+		ChildPanelOnModal(WindowspanelPath, \"Warning !!!\", makeDynString(\"$1:\" + \"Unable to create file: \" + fileName, \"$2:OK\", \"$3:\"), 0, 0);				
+		
+
+}
+" 0
+ E E E
+14 39
+"MaxEventsNumber"
+""
+1 780 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  778 68 862 95
+3 "0s" 0 0 0 0 0 -1  E E E
+25 42
+"t_Events"
+""
+1 -28 -3707 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  8 108 1107 832
+"main()
+{
+}" 0
+E 0 0 1 5 1 "c_date" 5 1 0 "s" 1
+LANG:5 4 Date
+E
+1
+LANG:5 0 
+
+88 "c_time" 5 1 0 "s" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+88 "c_severity" 6 1 0 "s" 1
+LANG:5 8 Severity
+E
+1
+LANG:5 0 
+
+105 "c_eventText" 42 1 0 "s" 1
+LANG:5 9 EventText
+E
+1
+LANG:5 0 
+
+750 "c_message" 13 1 0 "s" 1
+LANG:5 7 Message
+E
+1
+LANG:5 0 
+
+200 
+20 20 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0 0 1 1 0 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

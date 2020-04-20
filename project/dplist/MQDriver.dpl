@@ -1,0 +1,19 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_MQDriver._MQDriver	1#1
+	Address	1#2
+	Status	1#3
+		Status_1	20#4
+		Status_2	20#5
+		Heartbeat	23#6
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_MQDriver_1	_MQDriver	29268
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+_MQDriver_1.Status.Status_1	_MQDriver	2	0x200101	07.03.2017 13:50:03.889
+_MQDriver_1.Status.Heartbeat	_MQDriver	1	0x101	07.03.2017 13:50:03.889

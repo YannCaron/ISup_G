@@ -1,0 +1,84 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 640 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1 115 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 GBAS Z
+ 
+0
+1 2 115 "" 2
+0
+1 3 118 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 10 NavSup GBZ
+ 
+31 "transform" 0 0 1 0 1 0 -164.9999999999997
+0
+1 4 118 "" 2
+31 "transform" 0 0 1 0 1 0 -164.9999999999997
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 115 "Group17" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 135 1.22222222222222 0 1.21779032109044 -1.1111111111111 -94.60112889813961
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""GBAS_Z"
+"$PanelName""Navir/GBAS/Navir_GBAS_Generic.pnl"
+"$PanelParams""SystemName:NavGB_Z:"
+"$isVisible""1"
+"$system""NavGB_Z:GBAS_Z"
+3 118 "Group20" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 405 T 138 1.22222222222222 0 1.24289772727273 -1.1111111111111 -278.373579545456
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSup GBZ"
+"$PanelName""Navir/NavSup/NavSupGBASMainPanel.pnl"
+"$PanelParams""SystemName:NavGB_Z:"
+"$isVisible""1"
+"$system""NavGB_Z:NavSup"
+0

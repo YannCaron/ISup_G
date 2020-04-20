@@ -1,0 +1,129 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRadars.sgRadars	1#1
+	Params	41#20:sgParams
+	History	41#21:sgFwHistory
+	GlobalStatus	41#372:sgFwSystem
+	Components	1#537
+		GV2S	1#542
+			FaultOnRadar	41#543:sgFwSystem
+			WarningOnRadar	41#544:sgFwSystem
+		GV1P	1#551
+			FaultOnRadar	41#552:sgFwSystem
+			WarningOnRadar	41#553:sgFwSystem
+			GPSTimeServer	41#554:sgFwSystem
+		GV1S	1#1524
+			FaultOnRadar	41#1858:sgFwSystem
+			WarningOnRadar	41#1859:sgFwSystem
+		DOLS	1#1528
+			FaultOnRadar	41#1860:sgFwSystem
+			WarningOnRadar	41#1861:sgFwSystem
+		MSSR	1#1
+			FaultOnRadar	41#1:sgFwSystem
+			WarningOnRadar	41#1:sgFwSystem
+	RawDatas	1#2338
+		DOLInput006	23#2339
+		DOLInput007	23#2340
+		RXInput015	23#1
+		RXInput016	23#1
+		RXInput017	23#2341
+		RXInput018	23#2342
+		RXInput019	23#2343
+		RXInput020	23#2344
+		RXInput021	23#2345
+		RXInput022	23#2346
+		RXInput023	23#2347
+	WatchDogs	41#2348:sgWatchDogs
+	Connections	41#2349:sgFwConnections
+	MenuEntry	41#2365:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+Radars	sgRadars	28947
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+Radars.Components.GV1S	""	lt:1 LANG:5 "GVA1S@%s@"
+Radars.GlobalStatus	""	lt:1 LANG:5 "RADARS@%s@"
+Radars.Components.GV2S.FaultOnRadar	""	lt:1 LANG:5 "GV2S: Fault On Radar@%s@"
+Radars.Components.GV2S.WarningOnRadar	""	lt:1 LANG:5 "GV2S: Warning On Radar@%s@"
+Radars.Components.GV1P.FaultOnRadar	""	lt:1 LANG:5 "GV1P: Fault On Radar@%s@"
+Radars.Components.GV1P.WarningOnRadar	""	lt:1 LANG:5 "GV1P: Warning On Radar@%s@"
+Radars.Components.GV1P.GPSTimeServer	""	lt:1 LANG:5 "GV1P: GPS Time Server@%s@"
+Radars.Components.GV1S.FaultOnRadar	""	lt:1 LANG:5 "GV1S: Fault On Radar@%s@"
+Radars.Components.GV1S.WarningOnRadar	""	lt:1 LANG:5 "GV1S: Warning On Radar@%s@"
+Radars.Components.DOLS.FaultOnRadar	""	lt:1 LANG:5 "DOLS: Fault On Radar@%s@"
+Radars.Components.DOLS.WarningOnRadar	""	lt:1 LANG:5 "DOLS: Warning On Radar@%s@"
+Radars.Components.MSSR.FaultOnRadar	""	lt:1 LANG:5 "MSSR: Fault On Radar@%s@"
+Radars.Components.MSSR.WarningOnRadar	""	lt:1 LANG:5 "MSSR: Warning On Radar@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+Radars.Params.Histories	sgRadars	"Radars.History"	0x101	07.10.2015 12:01:35.919
+Radars.Params.AETable	sgRadars	"AETable01"	0x101	07.10.2015 12:01:35.920
+Radars.Params.GenerateEvents	sgRadars	1	0x101	07.10.2015 12:01:35.920
+Radars.History.HistorySize	sgRadars	100	0x101	07.10.2015 12:01:35.904
+Radars.GlobalStatus.Alarms.GenerateAlarms	sgRadars	1	0x200101	07.10.2015 12:01:35.880
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars	1	0x200101	06.11.2017 15:00:21.708
+Radars.GlobalStatus.LogicConfig.LogicEnabled	sgRadars	1	0x101	07.10.2015 12:01:35.880
+Radars.GlobalStatus.LogicConfig.Rule	sgRadars	"TTWorstCase"	0x101	07.10.2015 12:01:35.881
+Radars.GlobalStatus.LogicConfig.Inputs	sgRadars	"Radars.Components.*.*"	0x101	07.10.2015 12:01:35.883
+Radars.GlobalStatus.AETable	sgRadars	"AETable02"	0x101	07.10.2015 12:01:35.890
+Radars.Components.GV2S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.900
+Radars.Components.GV2S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.901
+Radars.Components.GV1P.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.896
+Radars.Components.GV1P.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.899
+Radars.Components.GV1P.GPSTimeServer.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.900
+Radars.Components.GV1S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.895
+Radars.Components.GV1S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	07.10.2015 12:01:35.895
+Radars.Components.DOLS.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x200101	07.10.2015 12:01:35.893
+Radars.Components.DOLS.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x200101	07.10.2015 12:01:35.894
+Radars.Components.MSSR.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x200101	07.10.2015 12:01:35.893
+Radars.Components.MSSR.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x200101	07.10.2015 12:01:35.894
+Radars.WatchDogs.References	sgRadars	"_SerialModbus_12.Status.Heartbeat", "_SerialModbus_13.Status.Heartbeat"	0x101	07.12.2015 14:16:20.264
+Radars.WatchDogs.DefaultValues	sgRadars	"1", "1"	0x101	07.12.2015 14:16:28.941
+Radars.WatchDogs.Outputs	sgRadars	"Radars.RawDatas.DOL*:_original.._userbit1", "Radars.RawDatas.RX*:_original.._userbit1"	0x101	07.12.2015 14:16:59.033
+Radars.WatchDogs.Timeouts	sgRadars	12, 12	0x101	07.12.2015 14:17:28.138
+Radars.Connections.Inputs	sgRadars	"Radars.RawDatas.DOLInput006", "Radars.RawDatas.DOLInput007", "Radars.RawDatas.RXInput017", "Radars.RawDatas.RXInput018", "Radars.RawDatas.RXInput019", "Radars.RawDatas.RXInput020", "Radars.RawDatas.RXInput021", "Radars.RawDatas.RXInput022", "Radars.RawDatas.RXInput023", "Radars.RawDatas.RXInput015", "Radars.RawDatas.RXInput016"	0x101	07.10.2015 12:01:35.905
+Radars.Connections.Outputs	sgRadars	"Radars.Components.DOLS.FaultOnRadar.PreStatus", "Radars.Components.DOLS.WarningOnRadar.PreStatus", "Radars.Components.GV1S.FaultOnRadar.PreStatus", "Radars.Components.GV1S.WarningOnRadar.PreStatus", "Radars.Components.GV1P.FaultOnRadar.PreStatus", "Radars.Components.GV1P.WarningOnRadar.PreStatus", "Radars.Components.GV1P.GPSTimeServer.PreStatus", "Radars.Components.GV2S.FaultOnRadar.PreStatus", "Radars.Components.GV2S.WarningOnRadar.PreStatus", "Radars.Components.MSSR.FaultOnRadar.PreStatus", "Radars.Components.MSSR.WarningOnRadar.PreStatus"	0x101	07.10.2015 12:01:35.906
+Radars.Connections.Rules	sgRadars	"ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid"	0x101	07.10.2015 12:01:35.915
+Radars.Connections.Params	sgRadars	"DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString", "InvertedTableString", "InvertedDEGString", "DirectTableString", "DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString"	0x101	05.11.2015 07:59:43.440
+Radars.MenuEntry.Name	sgRadars	"RADARS"	0x200101	02.09.2016 08:08:42.899
+Radars.MenuEntry.Group	sgRadars	"SUR"	0x200101	02.09.2016 08:08:42.900
+Radars.MenuEntry.Panel	sgRadars	"Radars/RadarsMainPanel.pnl"	0x101	02.09.2016 08:08:42.902
+Radars.MenuEntry.Params	sgRadars	"SystemName:ISup_G"	0x101	02.09.2016 08:08:42.903
+Radars.MenuEntry.GlobalStatusPoint	sgRadars	"Radars.GlobalStatus"	0x101	22.06.2017 17:05:20.357
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars		12					"Radars/RadarsMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on Radars"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+Radars.RawDatas.DOLInput006	sgRadars	56	\4
+Radars.RawDatas.DOLInput007	sgRadars	56	\4
+Radars.RawDatas.RXInput017	sgRadars	56	\4
+Radars.RawDatas.RXInput018	sgRadars	56	\4
+Radars.RawDatas.RXInput019	sgRadars	56	\4
+Radars.RawDatas.RXInput020	sgRadars	56	\4
+Radars.RawDatas.RXInput021	sgRadars	56	\4
+Radars.RawDatas.RXInput022	sgRadars	56	\4
+Radars.RawDatas.RXInput023	sgRadars	56	\4
+Radars.RawDatas.RXInput015	sgRadars	56	\4
+Radars.RawDatas.RXInput016	sgRadars	56	\4
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+Radars.RawDatas.DOLInput006	sgRadars	16	"12_1701_1.6"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.DOLInput007	sgRadars	16	"12_1701_1.7"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput017	sgRadars	16	"13_1701_1.17"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput018	sgRadars	16	"13_1701_1.18"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput019	sgRadars	16	"13_1701_1.19"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput020	sgRadars	16	"13_1701_1.20"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput021	sgRadars	16	"13_1701_1.21"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput022	sgRadars	16	"13_1701_1.22"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput023	sgRadars	16	"13_1701_1.23"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput015	sgRadars	16	"13_1701_1.15"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput016	sgRadars	16	"13_1701_1.16"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"

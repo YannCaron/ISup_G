@@ -1,0 +1,125 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgSPHINXCompChain.sgSPHINXCompChain	1#1
+	Netlogon	41#2:sgFwSystem
+	ADDomain	41#3:sgFwSystem
+	Kerberos	41#4:sgFwSystem
+	SecurityAccMgmt	41#5:sgFwSystem
+sgSPHINXRawDataChain.sgSPHINXRawDataChain	1#1
+	Netlogon	25#18
+	ADDomain	25#19
+	Kerberos	25#20
+	SecurityAccMgmt	25#21
+sgSPHINX.sgSPHINX	1#1
+	MenuEntry	41#2:sgFwMenuEntry
+	Config	1#358
+		Site	25#387
+		ServerAName	25#396
+		ServerBName	25#397
+	GlobalStatus	41#3:sgFwSystem
+	RawData	1#4
+		ChainA	41#5:sgSPHINXRawDataChain
+		ChainB	41#6:sgSPHINXRawDataChain
+	Components	1#7
+		ChainA	41#8:sgSPHINXCompChain
+		ChainB	41#9:sgSPHINXCompChain
+	Connections	41#10:sgFwConnections
+	WatchDogs	41#11:sgWatchDogs
+	History	41#12:sgFwHistory
+	Params	41#372:sgParams
+	TruthTables	1#15
+		GlobalTT	41#16:sgFwTruthTable
+	ConvTableStatus	41#368:sgConnectWithConvertTable
+
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SPHINX	sgSPHINX	29350
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SPHINX.GlobalStatus	""	lt:1 LANG:5 "SPHINX@@"
+SPHINX.Components.ChainA.Netlogon	""	lt:1 LANG:5 "Netlogon@@"
+SPHINX.Components.ChainA.ADDomain	""	lt:1 LANG:5 "AD Domain@@"
+SPHINX.Components.ChainA.Kerberos	""	lt:1 LANG:5 "Kerberos@@"
+SPHINX.Components.ChainA.SecurityAccMgmt	""	lt:1 LANG:5 "Security Account Mgmt@@"
+SPHINX.Components.ChainB.Netlogon	""	lt:1 LANG:5 "Netlogon@@"
+SPHINX.Components.ChainB.ADDomain	""	lt:1 LANG:5 "AD Domain@@"
+SPHINX.Components.ChainB.Kerberos	""	lt:1 LANG:5 "Kerberos@@"
+SPHINX.Components.ChainB.SecurityAccMgmt	""	lt:1 LANG:5 "Security Account Mgmt@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SPHINX.Config.Site	sgSPHINX	"GVA"	0x101	18.04.2018 09:06:33.424
+SPHINX.Config.ServerAName	sgSPHINX	"gsadpdc07"	0x101	18.04.2018 09:06:33.424
+SPHINX.Config.ServerBName	sgSPHINX	"gsadpdc08"	0x101	18.04.2018 09:06:33.424
+
+SPHINX.MenuEntry.Name	sgSPHINX	"SPHINX"	0x101	18.04.2018 09:06:33.424
+SPHINX.MenuEntry.Group	sgSPHINX	"EDP"	0x101	18.04.2018 09:06:33.426
+SPHINX.MenuEntry.Panel	sgSPHINX	"SPHINX/SPHINXMainPanel.pnl"	0x200101	23.04.2018 08:12:26.107
+SPHINX.MenuEntry.Params	sgSPHINX	"SystemName:ISup_G:"	0x101	18.04.2018 09:18:33.764
+SPHINX.GlobalStatus.Alarms.GenerateAlarms	sgSPHINX	1	0x101	18.04.2018 09:06:33.429
+SPHINX.GlobalStatus.Alarms.AlarmActive	sgSPHINX	1	0x200101	23.04.2018 08:50:10.034
+SPHINX.GlobalStatus.LogicConfig.LogicEnabled	sgSPHINX	1	0x101	18.04.2018 09:06:33.432
+SPHINX.GlobalStatus.LogicConfig.Rule	sgSPHINX	"SPHINX.TruthTables.GlobalTT"	0x101	18.04.2018 09:06:33.433
+SPHINX.GlobalStatus.LogicConfig.Inputs	sgSPHINX	"SPHINX.Components.ChainA.*", "SPHINX.Components.ChainB.*"	0x101	18.04.2018 09:06:33.435
+SPHINX.GlobalStatus.AETable	sgSPHINX	"AETable01"	0x101	18.04.2018 09:06:33.435
+SPHINX.Components.ChainA.Netlogon.Events.EventText	sgSPHINX	"Netlogon gsadpdc07"	0x101	18.04.2018 09:06:33.436
+SPHINX.Components.ChainA.Netlogon.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.437
+SPHINX.Components.ChainA.ADDomain.Events.EventText	sgSPHINX	"AD Domain gsadpdc07"	0x101	18.04.2018 09:06:33.437
+SPHINX.Components.ChainA.ADDomain.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.438
+SPHINX.Components.ChainA.Kerberos.Events.EventText	sgSPHINX	"Kerberos gsadpdc07"	0x101	18.04.2018 09:06:33.439
+SPHINX.Components.ChainA.Kerberos.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.439
+SPHINX.Components.ChainA.SecurityAccMgmt.Events.EventText	sgSPHINX	"Security Account Mgmt gsadpdc07"	0x101	18.04.2018 09:06:33.441
+SPHINX.Components.ChainA.SecurityAccMgmt.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.441
+SPHINX.Components.ChainB.Netlogon.Events.EventText	sgSPHINX	"Netlogon gsadpdc08"	0x101	18.04.2018 09:06:33.442
+SPHINX.Components.ChainB.Netlogon.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.443
+SPHINX.Components.ChainB.ADDomain.Events.EventText	sgSPHINX	"AD Domain gsadpdc08"	0x101	18.04.2018 09:06:33.444
+SPHINX.Components.ChainB.ADDomain.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.445
+SPHINX.Components.ChainB.Kerberos.Events.EventText	sgSPHINX	"Kerberos gsadpdc08"	0x101	18.04.2018 09:06:33.446
+SPHINX.Components.ChainB.Kerberos.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.447
+SPHINX.Components.ChainB.SecurityAccMgmt.Events.EventText	sgSPHINX	"Security Account Mgmt gsadpdc08"	0x101	18.04.2018 09:06:33.447
+SPHINX.Components.ChainB.SecurityAccMgmt.Params	sgSPHINX	"SPHINX.Params"	0x101	18.04.2018 09:06:33.449
+SPHINX.Connections.Inputs	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	18.04.2018 09:06:33.450
+SPHINX.Connections.Outputs	sgSPHINX	"SPHINX.Components.ChainA.*.PreStatus", "SPHINX.Components.ChainB.*.PreStatus"	0x101	18.04.2018 09:06:33.451
+SPHINX.Connections.Rules	sgSPHINX	"ConnectWithConvertTable", "ConnectWithConvertTable"	0x101	18.04.2018 09:06:33.452
+SPHINX.Connections.Params	sgSPHINX	"SPHINX.ConvTableStatus", "SPHINX.ConvTableStatus"	0x101	18.04.2018 09:06:33.452
+SPHINX.WatchDogs.References	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	18.04.2018 09:06:33.460
+SPHINX.WatchDogs.DefaultValues	sgSPHINX	"Unknown", "Unknown"	0x101	18.04.2018 13:54:08.209
+SPHINX.WatchDogs.Outputs	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	18.04.2018 09:06:33.461
+SPHINX.WatchDogs.Timeouts	sgSPHINX	25, 25	0x101	18.04.2018 09:06:33.462
+SPHINX.History.HistorySize	sgSPHINX	100	0x101	18.04.2018 09:06:33.429
+SPHINX.Params.Histories	sgSPHINX	"SPHINX.History"	0x101	18.04.2018 09:06:33.454
+SPHINX.Params.AETable	sgSPHINX	"AETable02"	0x300101	18.04.2018 13:55:37.710
+SPHINX.Params.GenerateEvents	sgSPHINX	1	0x101	18.04.2018 09:06:33.456
+SPHINX.ConvTableStatus.Input	sgSPHINX	"Unknown", "OK", "Error", "Degraded", "Pred Fail", "Starting", "Stopping", "Service", "Stressed", "NonRecover", "No Contact", "Lost Comm"	0x101	18.04.2018 13:52:53.467
+SPHINX.ConvTableStatus.Output	sgSPHINX	"UKN", "OPS", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S"	0x101	18.04.2018 13:53:04.856
+SPHINX.TruthTables.GlobalTT.Table	sgSPHINX	"OPS_---_OPS_0", "UKN_---_UKN_0", "U/S_---_U/S_0", "---_---_DEG_8_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+", "---_---_DEG_8_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+", "---_---_DEG_8_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+", "---_---_DEG_8_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+", "---_---_DEG_8_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+", "---_---_DEG_8_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+", "---_---_DEG_8_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+", "---_---_DEG_8_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+", "---_---_DEG_8_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+", "---_---_DEG_8_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+", "---_---_DEG_8_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+", "---_---_DEG_8_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+", "---_---_DEG_8_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+", "---_---_DEG_8_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+", "---_---_DEG_8_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+", "---_---_DEG_8_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_ANY_UKN_0"	0x101	24.04.2018 06:26:23.275
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+SPHINX.GlobalStatus.Alarms.AlarmActive	sgSPHINX		12					"SPHINX/SPHINXMainPanel.pnl"	"$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SPHINX"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+SPHINX.RawData.ChainA.Netlogon	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.ADDomain	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.Kerberos	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.SecurityAccMgmt	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.Netlogon	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.ADDomain	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.Kerberos	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.SecurityAccMgmt	sgSPHINX	56	\5
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+SPHINX.RawData.ChainA.Netlogon	sgSPHINX	16	"SphinxA.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.ADDomain	sgSPHINX	16	"SphinxA.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.Kerberos	sgSPHINX	16	"SphinxA.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.SecurityAccMgmt	sgSPHINX	16	"SphinxA.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.Netlogon	sgSPHINX	16	"SphinxB.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.ADDomain	sgSPHINX	16	"SphinxB.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.Kerberos	sgSPHINX	16	"SphinxB.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.SecurityAccMgmt	sgSPHINX	16	"SphinxB.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"

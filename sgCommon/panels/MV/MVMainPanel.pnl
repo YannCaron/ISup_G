@@ -1,0 +1,143 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 2 MV
+LANG:1 4 AFPS
+1 380 76 "" 11
+0
+13 379
+"ForceToUKN"
+""
+1 10 670 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 668 212 702
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	ForceToUnknown(\"\", \"MV\");
+
+}
+" 0
+ E E E
+1 381 89 "" 46
+0
+1 384 90 "" 46
+0
+1 387 91 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 382 89 "" 51
+0
+1 383 89 "" 52
+0
+1 385 90 "" 51
+0
+1 386 90 "" 52
+0
+1 388 91 "" 51
+0
+1 389 91 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "Group7" -1
+"objects\\sgFwHistory.pnl" 10 710 T 108 1 0 1 -10 -15
+2
+"$SystemHistory""MV.History"
+"$SystemName"""
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 340 305 T 130 0.6999999999999998 0 0.325 -182.9999999999999 65.87500000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MV.Components.MV1"
+3 90 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 340 305 T 135 0.6999999999999998 0 0.325 182.0000000000001 65.875
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MV.Components.MV2"
+3 91 "PANEL_REF91" -1
+"objects\\sgFwBlock.pnl" 340 305 T 136 0.6999999999999998 0 0.325 552 65.875
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MV.Components.MV3"
+0

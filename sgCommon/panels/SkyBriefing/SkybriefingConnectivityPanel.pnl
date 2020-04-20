@@ -1,0 +1,223 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 10
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 24 SkyBriefing Connectivity
+LANG:1 5 T-Box
+13 373
+"Button1"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  ForceToUnknown(\"\", \"SkyBriefing\");
+}
+" 0
+ E E E
+1 488 76 "" 11
+0
+1 489 112 "" 46
+0
+1 492 113 "" 46
+0
+1 495 129 "" 46
+0
+30 485
+"FRAME1"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+324 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.07142857142857 0 1.192842942345924 -15.35714285714276 -52.35586481113308 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 26 SkyBriefing Connectivity 1
+30 486
+"FRAME2"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+326 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.07142857142857 0 1.192842942345924 324.6428571428571 -52.35586481113319 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 18 SkyBriefing Common
+30 487
+"FRAME3"
+""
+1 75 90 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+328 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.07142857142857 0 1.192842942345924 664.642857142857 -52.35586481113305 0 E 75 90 356 594
+1
+LANG:5 27 Tahoma,-1,15,5,75,0,0,0,0,0
+0 1
+LANG:5 26 SkyBriefing Connectivity 2
+1 525 141 "" 46
+0
+1 528 142 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 490 112 "" 51
+0
+1 491 112 "" 52
+0
+1 493 113 "" 51
+0
+1 494 113 "" 52
+0
+1 496 129 "" 51
+0
+1 497 129 "" 52
+0
+1 526 141 "" 51
+0
+1 527 141 "" 52
+0
+1 529 142 "" 51
+0
+1 530 142 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "" -1
+"objects\\sgFwHistory.pnl" 35 320 T 153 1 0 1 -35 380
+2
+"$SystemHistory""SkyBriefing.History"
+"$SystemName"""
+3 112 "PANEL_REF144" -1
+"objects\\sgFwBlock.pnl" 430 270 T 270 0.637303149606299 0 0.426943218630932 -189.0403543307086 54.72533096964833
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Connectivity.Components.AFPS1"
+3 113 "PANEL_REF144" -1
+"objects\\sgFwBlock.pnl" 430 270 T 272 0.637303149606299 0 0.428175670720938 490.9596456692915 54.39256890534671
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Connectivity.Components.AFPS2"
+3 129 "PANEL_REF144" -1
+"objects\\sgFwBlock.pnl" 430 270 T 299 0.637303149606299 0 0.429574692677949 150.9596456692915 -40.98516702304624
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Connectivity.Components.Email"
+3 141 "PANEL_REF141" -1
+"objects\\sgFwBlock.pnl" 430 270 T 329 0.637303149606299 0 0.432240629355949 -189.0403543307086 -41.70496992610624
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Connectivity.Components.CRM1"
+3 142 "PANEL_REF142" -1
+"objects\\sgFwBlock.pnl" 430 270 T 330 0.637303149606299 0 0.432240629355949 490.9596456692915 -41.70496992610629
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.Components.Connectivity.Components.CRM2"
+0

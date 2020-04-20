@@ -1,0 +1,2670 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+// To ever enable the switchover button P.W. november 2003
+	SwitchoverButton.enabled = true;
+
+	dpConnect(\"readActiveChain\", ACTIVE_CHAIN);
+	dpConnect(\"basePanelDebugLevelChanged\", false, \"FwUtils.Commands.DebugLevel\");
+	
+	dpGet(\"FwUtils.Commands.DebugLevel\", gHMIDebugLevel);
+}
+
+void readActiveChain(string dpName, string dpValue)
+{	
+	activeChain = dpValue;
+	ActiveChainLabel.text = activeChain;
+	
+	if(activeChain == \"A\")
+	{
+		SwitchoverButton.text = \"Switchover to chain B\";
+	}
+	else
+	{
+		if(activeChain == \"B\")
+		{
+			SwitchoverButton.text = \"Switchover to chain A\";
+		}
+		else
+		{
+			SwitchoverButton.text = \"Switchover\";
+			DebugN(\"ISupMainPanel; Warning: No active chain defined for auto-supervision ISup!\");
+		}
+	}
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "	string activeChain;
+	
+	int gHMIDebugLevel;
+	
+	void forceISupChainToUKN(string chain)
+	{
+		dyn_string ds, ds1;
+		ds = getPointsFromPattern(\"ISup.Server\" + chain + \".Components.*.PreStatus\");
+		dynAppend(ds, \"PRIMUS.Interface\" + chain + \"Status.PreStatus\");
+		ds1 = getPointsFromPattern(\"SYLEX.SYLEX*.Interface\" + chain + \"Status.PreStatus\");
+		dynAppend(ds, ds1);
+		
+		dynClear(ds1);
+		
+		for (int cpt = 1; cpt <= dynlen(ds); cpt++)
+		{
+			dynAppend(ds1, UKN_STATUS);
+		}
+		
+		dpSet(ds, ds1);
+	}
+	
+void basePanelDebugLevelChanged(string dpName, int dpValue)
+{
+	DebugN(\"IsupMainPanel >> new debugLevel: \" + dpValue);
+	gHMIDebugLevel = dpValue;
+	
+	if (gHMIDebugLevel > 0)
+		DebugN(\"HMI >> Will trace event on IsupMainPanel\");	
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 43
+"Line3"
+""
+1 45.01137911781552 435.0000000000002 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+351 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1064 435 45 435
+4 2128
+"LINE36"
+""
+1 19.99999999999927 530 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+613 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 530 20 530
+4 906
+"LINE24"
+""
+1 239.9999999999998 600 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+557 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  870 600 240 600
+4 898
+"LINE19"
+""
+1 19.99999999999948 590 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+555 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 590 20 590
+6 6
+"Border12"
+""
+1 430 569 E E E 1 E 1 E N "_Transparent" E N {153,153,153} E E
+ E E
+427 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.03125 0 -62.8125 1 E 430 90 680 570
+4 376
+"LINE14"
+""
+1 19.99999999999948 220 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+527 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 220 20 220
+4 0
+"Line38"
+""
+1 45.33333333333339 309.6666666666668 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+254 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 310 45 310
+4 2
+"Line64"
+""
+1 1041 369.6666666666667 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+287 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1066 370 1041 370
+4 3
+"Line65"
+""
+1 1040.333333333333 309.6666666666668 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+288 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 310 1040 310
+4 4
+"LINE4"
+""
+1 1040.333333333333 334.9999999999996 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+465 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 335 1040 335
+4 8
+"Line75"
+""
+1 1090 205 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+296 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 730 1090 205
+4 9
+"LINE2"
+""
+1 340.3333333333333 339.9999999999996 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+456 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  770 340 340 340
+4 10
+"Line31"
+""
+1 20.00000000000002 709.6666666666666 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+444 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 710 20 710
+1 2624 158 "" 46
+0
+6 12
+"Border13"
+""
+1 370 568 E E E 1 E 1 E N "_Transparent" E N {153,153,153} E E
+ E E
+442 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.675675675675675 0 2.375 -374.9999999999998 -648.7499999999998 1 E 370 450 740 570
+2 16
+"PageLabel"
+""
+1 8 -18.24553994465337 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 0.8 0 -4 1 E 10 5 1096 41
+1 2 0 "0s" 0 0 0 65 0 0  10 5 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 19 ISup and ISup Links
+LANG:1 9 Top panel
+1 2491 8 "" 46
+0
+1 2494 10 "" 46
+0
+1 2497 12 "" 46
+0
+1 2500 14 "" 46
+0
+1 2506 20 "" 46
+0
+1 2518 29 "" 46
+0
+1 2530 62 "" 46
+0
+1 2536 74 "" 46
+0
+1 2539 75 "" 46
+0
+1 2542 76 "" 46
+0
+1 2545 77 "" 46
+0
+4 31
+"Line12"
+""
+1 20.0000000000001 205 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+240 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  20 730 20 205
+4 32
+"Line16"
+""
+1 44.66666666666676 250 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+242 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  45 480 45 250
+4 33
+"Line24"
+""
+1 45 53.26768774703535 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+244 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  45 215 45 53
+4 34
+"Line26"
+""
+1 18.84788359788357 465.0000000000002 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+246 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  215 465 20 465
+4 36
+"Line37"
+""
+1 46.00000000000009 369.6666666666667 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+253 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  71 370 46 370
+4 37
+"Line48"
+""
+1 20 205 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+256 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  55 205 20 205
+4 38
+"Line53"
+""
+1 20.00000000000009 660 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+261 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  245 660 20 660
+4 39
+"Line54"
+""
+1 1064.666666666667 250 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+278 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 470 1065 250
+4 40
+"Line55"
+""
+1 1065 53.25942577953425 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+279 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 210 1065 53
+4 41
+"Line56"
+""
+1 983.6269005847952 465.0000000000002 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+280 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 465 984 465
+4 42
+"Line68"
+""
+1 1055 205 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+290 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 205 1055 205
+4 44
+"Line11"
+""
+1 340.3333333333333 309.6666666666668 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+359 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  770 310 340 310
+4 48
+"Line41"
+""
+1 341 369.6666666666667 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+373 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  771 370 341 370
+1 2576 125 "" 46
+0
+1 2579 126 "" 46
+0
+6 56
+"Border1"
+""
+1 380 565 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+391 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.771428571428571 0 1.461538461538464 -428.1428571428573 -120.7692307692321 0 E 380 500 730 565
+6 57
+"Border2"
+""
+1 80 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+392 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.212121212121103 33.2380952380953 0 E 80 305 355 340
+6 58
+"Border3"
+""
+1 80 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+393 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.212121212121227 59.28571428571431 0 E 80 345 355 380
+6 60
+"Border6"
+""
+1 755 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+395 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 29.06060606060614 33.2380952380953 0 E 755 305 1030 340
+6 61
+"Border7"
+""
+1 755 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+396 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 29.0606060606058 59.28571428571431 0 E 755 345 1030 380
+4 63
+"Line1"
+""
+1 864.9999999999991 660 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+398 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1090 660 865 660
+1 2582 133 "" 46
+0
+1 2585 134 "" 46
+0
+1 2588 135 "" 46
+0
+6 67
+"Border9"
+""
+1 10 705 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+414 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.56862745098039 0 0.923076923076923 -5.686274509803901 134.2307692307693 0 E 10 640 265 705
+1 2591 145 "" 46
+0
+1 2594 147 "" 46
+0
+6 70
+"Border10"
+""
+1 845 705 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+421 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.54901960784314 0 0.923076923076923 -603.9215686274511 134.2307692307693 0 E 845 640 1100 705
+6 71
+"Border11"
+""
+1 380 490 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+425 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.771428571428571 0 1.866666666666669 -428.1428571428571 -429.3333333333344 0 E 380 455 730 490
+2 72
+"ActiveChainLabel"
+""
+1 508 711 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+426 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 510 713 596 812
+0 2 0 "0s" 0 0 0 65 0 0  510 713 1
+2
+LANG:5 27 Tahoma,30,-1,5,50,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-870-100-100-*-*-iso8859-1|-96,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 1 X
+LANG:1 1 X
+4 73
+"Line22"
+""
+1 45 143.272644927536 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+437 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 143 45 143
+1 2615 154 "" 46
+0
+1 2618 155 "" 46
+0
+1 2621 156 "" 46
+0
+1 2575 121 "" 11
+0
+13 78
+"RestartA"
+""
+1 265 755.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+422 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  263 753 407 782
+
+T 
+2
+LANG:5 15 Restart chain A
+LANG:1 15 Restart chain A
+"main() {
+  pmonRestartConfirm(\"ISup_G:ISup.History\", \"ISup-G-A\");
+}" 0
+ E E E
+13 79
+"RestartB"
+""
+1 710 755.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+423 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  708 753 852 782
+
+T 
+2
+LANG:5 15 Restart chain B
+LANG:1 15 Restart chain B
+"main() {
+  pmonRestartConfirm(\"ISup_G:ISup.History\", \"ISup-G-B\");
+}" 0
+ E E E
+13 80
+"SwitchoverButton"
+""
+1 455 755.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+424 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  453 753 657 787
+
+T 
+1
+LANG:5 23 Switchover to the other
+"main()
+{
+	if(activeChain == \"A\")
+	{
+// if we are on A, we go to B		
+		// dpSet(\"sgDimConfigA.ApiParams.exit\", 1); Th.V 28 sept 2004
+	
+	//	dpSet(\"_ReduManager_2.Command.ActiveSet\", 1);
+	
+		dpSet(ACTIVE_CHAIN_SELECT, \"B\");
+	
+		sgHistoryAddEvent(\"ISup.History\", SEVERITY_COMMAND, \"User: \" + getHostname() + \" request switchover to chain B\");
+		
+		if (gHMIDebugLevel)
+			DebugTN(\"HMI >> User: \" + getHostname() + \" request switchover to chain B\");
+		//DebugN(\"ISupMainPanel; switchover commands to B done!\");
+	}
+	else
+	{
+		if(activeChain == \"B\")
+		{
+// if we are on b, we go to A		
+			// dpSet(\"sgDimConfigB.ApiParams.exit\", 1); Th.V 28 sept 2004
+//			dpSet(\"_ReduManager.Command.ActiveSet\", 1);
+	
+			dpSet(ACTIVE_CHAIN_SELECT, \"A\");
+	
+	//		DebugN(\"ISupMainPanel; switchover commands to A done!\");
+			sgHistoryAddEvent(\"ISup.History\", SEVERITY_COMMAND, \"User: \" + getHostname() + \" request switchover to chain A\");
+			
+			if (gHMIDebugLevel)
+				DebugTN(\"User: \" + getHostname() + \" request switchover to chain A\");
+		}
+		else
+		{
+			DebugN(\"ISupMainPanel; SwitchButton_EventClick from host: \" + hostName +\"; Warning: No active chain defined !\");
+		}
+	}	
+	SwitchoverButton.enabled = false;
+	delay(10);
+	SwitchoverButton.enabled = true;
+	
+}" 0
+ E E E
+1 2627 159 "" 46
+0
+1 2630 160 "" 46
+0
+1 2633 162 "" 46
+0
+4 84
+"LINE1"
+""
+1 45.33333333333343 339.9999999999996 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+454 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 340 45 340
+6 85
+"RECTANGLE1"
+""
+1 80 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+458 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.212121212121229 63.57142857142861 0 E 80 305 355 340
+1 2636 163 "" 46
+0
+1 2639 164 "" 46
+0
+1 2642 165 "" 46
+0
+6 89
+"RECTANGLE2"
+""
+1 80 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+467 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 691.4545454545454 63.57142857142861 0 E 80 305 355 340
+1 2533 67 "" 46
+0
+1 2503 19 "" 46
+0
+1 2524 46 "" 46
+0
+1 2515 25 "" 46
+0
+4 97
+"LINE5"
+""
+1 45 113.272644927536 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+469 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 113 45 113
+4 98
+"LINE6"
+""
+1 45 83.27264492753599 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+471 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 83 45 83
+4 99
+"LINE7"
+""
+1 45 53.272644927536 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+473 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 53 45 53
+1 2521 42 "" 46
+0
+1 2548 92 "" 46
+0
+1 2560 104 "" 46
+0
+1 2566 115 "" 46
+0
+1 2569 119 "" 46
+0
+1 2572 120 "" 46
+0
+1 2597 148 "" 46
+0
+1 2600 149 "" 46
+0
+1 2603 150 "" 46
+0
+1 2606 151 "" 46
+0
+1 2609 152 "" 46
+0
+1 2612 153 "" 46
+0
+1 2509 22 "" 46
+0
+1 2512 23 "" 46
+0
+1 2557 103 "" 46
+0
+1 2551 101 "" 46
+0
+1 2554 102 "" 46
+0
+1 2645 166 "" 46
+0
+1 2648 167 "" 46
+0
+1 2651 168 "" 46
+0
+4 134
+"LINE13"
+""
+1 45 173.272644927536 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+521 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 173 45 173
+1 2654 180 "" 46
+0
+1 2657 181 "" 46
+0
+1 2660 182 "" 46
+0
+1 2663 183 "" 46
+0
+1 2666 185 "" 46
+0
+1 2669 186 "" 46
+0
+1 2672 187 "" 46
+0
+1 2675 188 "" 46
+0
+1 2678 189 "" 46
+0
+1 2681 190 "" 46
+0
+1 2527 49 "" 46
+0
+1 2563 106 "" 46
+0
+6 885
+"RECTANGLE6"
+""
+1 380 490 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+548 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.771428571428571 0 1 -428.142857142857 120 0 E 380 455 730 490
+1 2684 196 "" 46
+0
+1 2687 197 "" 46
+0
+1 2690 199 "" 46
+0
+1 2693 200 "" 46
+0
+1 2696 201 "" 46
+0
+4 907
+"LINE25"
+""
+1 870.0000000000001 599.9999999999996 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+558 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  870 660 870 600
+1 2702 204 "" 46
+0
+1 2705 205 "" 46
+0
+1 2708 206 "" 46
+0
+1 2699 203 "" 46
+0
+1 2717 209 "" 46
+0
+1 2723 211 "" 46
+0
+1 2720 210 "" 46
+0
+1 2726 212 "" 46
+0
+4 1454
+"LINE27"
+""
+1 45.00000000000006 280.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+583 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 280 45 280
+4 1455
+"LINE28"
+""
+1 1040 280.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+584 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 280 1040 280
+1 2729 215 "" 46
+0
+1 2732 216 "" 46
+0
+4 1458
+"LINE29"
+""
+1 340 280.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+585 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  770 280 340 280
+6 1459
+"RECTANGLE7"
+""
+1 80 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+586 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.54545454545439 3.571428571428609 0 E 80 305 355 340
+6 1460
+"RECTANGLE8"
+""
+1 755 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+587 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 28.72727272727252 3.571428571428609 0 E 755 305 1030 340
+1 2735 217 "" 46
+0
+1 2738 218 "" 46
+0
+1 2741 219 "" 46
+0
+1 2744 220 "" 46
+0
+1 2747 221 "" 46
+0
+4 1480
+"LINE30"
+""
+1 45.00000000000006 250.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+595 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 250 45 250
+4 1481
+"LINE31"
+""
+1 1040 250.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+596 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 250 1040 250
+1 2750 222 "" 46
+0
+1 2753 223 "" 46
+0
+4 1484
+"LINE32"
+""
+1 340 250.0000000000001 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+597 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  770 250 340 250
+6 1485
+"RECTANGLE9"
+""
+1 80 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+598 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.54545454545439 -26.42857142857139 0 E 80 305 355 340
+6 1486
+"RECTANGLE10"
+""
+1 755 340 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+599 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 28.72727272727286 -26.42857142857139 0 E 755 305 1030 340
+1 2756 224 "" 46
+0
+1 2759 225 "" 46
+0
+1 2762 226 "" 46
+0
+1 2765 227 "" 46
+0
+1 2768 228 "" 46
+0
+4 1803
+"LINE33"
+""
+1 1040 399.6666666666665 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+605 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1065 400 1040 400
+4 1804
+"LINE34"
+""
+1 340 399.6666666666665 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+606 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  770 400 340 400
+1 2771 229 "" 46
+0
+1 2774 230 "" 46
+0
+1 2777 231 "" 46
+0
+1 2780 232 "" 46
+0
+1 2783 233 "" 46
+0
+4 1810
+"LINE35"
+""
+1 45.00000000000009 399.6666666666665 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+607 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 400 45 400
+6 1811
+"RECTANGLE11"
+""
+1 80 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+608 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 -8.212121212121229 89.28571428571431 0 E 80 345 355 380
+6 1812
+"RECTANGLE12"
+""
+1 755 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+609 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.981818181818182 0 0.857142857142857 29.06060606060579 89.28571428571431 0 E 755 345 1030 380
+6 2123
+"RECTANGLE13"
+""
+1 380 490 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+610 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.771428571428572 0 2.571428571428571 -428.1428571428573 -684.9999999999998 0 E 380 455 730 490
+1 2786 234 "" 46
+0
+1 2789 239 "" 46
+0
+1 2792 240 "" 46
+0
+1 2795 241 "" 46
+0
+1 2798 242 "" 46
+0
+1 2801 243 "" 46
+0
+1 2804 244 "" 46
+0
+1 2807 245 "" 46
+0
+1 2816 248 "" 46
+0
+4 2490
+"LINE40"
+""
+1 240.0000000000001 599.6666666666662 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+644 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  240 660 240 600
+1 2843 257 "" 46
+0
+1 2846 258 "" 46
+0
+1 2849 259 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 2625 158 "" 51
+0
+1 2626 158 "" 52
+0
+1 2492 8 "" 51
+0
+1 2493 8 "" 52
+0
+1 2495 10 "" 51
+0
+1 2496 10 "" 52
+0
+1 2498 12 "" 51
+0
+1 2499 12 "" 52
+0
+1 2501 14 "" 51
+0
+1 2502 14 "" 52
+0
+1 2507 20 "" 51
+0
+1 2508 20 "" 52
+0
+1 2519 29 "" 51
+0
+1 2520 29 "" 52
+0
+1 2531 62 "" 51
+0
+1 2532 62 "" 52
+0
+1 2537 74 "" 51
+0
+1 2538 74 "" 52
+0
+1 2540 75 "" 51
+0
+1 2541 75 "" 52
+0
+1 2543 76 "" 51
+0
+1 2544 76 "" 52
+0
+1 2546 77 "" 51
+0
+1 2547 77 "" 52
+0
+1 2577 125 "" 51
+0
+1 2578 125 "" 52
+0
+1 2580 126 "" 51
+0
+1 2581 126 "" 52
+0
+1 2583 133 "" 51
+0
+1 2584 133 "" 52
+0
+1 2586 134 "" 51
+0
+1 2587 134 "" 52
+0
+1 2589 135 "" 51
+0
+1 2590 135 "" 52
+0
+1 2592 145 "" 51
+0
+1 2593 145 "" 52
+0
+1 2595 147 "" 51
+0
+1 2596 147 "" 52
+0
+1 2616 154 "" 51
+0
+1 2617 154 "" 52
+0
+1 2619 155 "" 51
+0
+1 2620 155 "" 52
+0
+1 2622 156 "" 51
+0
+1 2623 156 "" 52
+0
+1 2628 159 "" 51
+0
+1 2629 159 "" 52
+0
+1 2631 160 "" 51
+0
+1 2632 160 "" 52
+0
+1 2634 162 "" 51
+0
+1 2635 162 "" 52
+0
+1 2637 163 "" 51
+0
+1 2638 163 "" 52
+0
+1 2640 164 "" 51
+0
+1 2641 164 "" 52
+0
+1 2643 165 "" 51
+0
+1 2644 165 "" 52
+0
+1 2534 67 "" 51
+0
+1 2535 67 "" 52
+0
+1 2504 19 "" 51
+0
+1 2505 19 "" 52
+0
+1 2525 46 "" 51
+0
+1 2526 46 "" 52
+0
+1 2516 25 "" 51
+0
+1 2517 25 "" 52
+0
+1 2522 42 "" 51
+0
+1 2523 42 "" 52
+0
+1 2549 92 "" 51
+0
+1 2550 92 "" 52
+0
+1 2561 104 "" 51
+0
+1 2562 104 "" 52
+0
+1 2567 115 "" 51
+0
+1 2568 115 "" 52
+0
+1 2570 119 "" 51
+0
+1 2571 119 "" 52
+0
+1 2573 120 "" 51
+0
+1 2574 120 "" 52
+0
+1 2598 148 "" 51
+0
+1 2599 148 "" 52
+0
+1 2601 149 "" 51
+0
+1 2602 149 "" 52
+0
+1 2604 150 "" 51
+0
+1 2605 150 "" 52
+0
+1 2607 151 "" 51
+0
+1 2608 151 "" 52
+0
+1 2610 152 "" 51
+0
+1 2611 152 "" 52
+0
+1 2613 153 "" 51
+0
+1 2614 153 "" 52
+0
+1 2510 22 "" 51
+0
+1 2511 22 "" 52
+0
+1 2513 23 "" 51
+0
+1 2514 23 "" 52
+0
+1 2558 103 "" 51
+0
+1 2559 103 "" 52
+0
+1 2552 101 "" 51
+0
+1 2553 101 "" 52
+0
+1 2555 102 "" 51
+0
+1 2556 102 "" 52
+0
+1 2646 166 "" 51
+0
+1 2647 166 "" 52
+0
+1 2649 167 "" 51
+0
+1 2650 167 "" 52
+0
+1 2652 168 "" 51
+0
+1 2653 168 "" 52
+0
+1 2655 180 "" 51
+0
+1 2656 180 "" 52
+0
+1 2658 181 "" 51
+0
+1 2659 181 "" 52
+0
+1 2661 182 "" 51
+0
+1 2662 182 "" 52
+0
+1 2664 183 "" 51
+0
+1 2665 183 "" 52
+0
+1 2667 185 "" 51
+0
+1 2668 185 "" 52
+0
+1 2670 186 "" 51
+0
+1 2671 186 "" 52
+0
+1 2673 187 "" 51
+0
+1 2674 187 "" 52
+0
+1 2676 188 "" 51
+0
+1 2677 188 "" 52
+0
+1 2679 189 "" 51
+0
+1 2680 189 "" 52
+0
+1 2682 190 "" 51
+0
+1 2683 190 "" 52
+0
+1 2528 49 "" 51
+0
+1 2529 49 "" 52
+0
+1 2564 106 "" 51
+0
+1 2565 106 "" 52
+0
+1 2685 196 "" 51
+0
+1 2686 196 "" 52
+0
+1 2688 197 "" 51
+0
+1 2689 197 "" 52
+0
+1 2691 199 "" 51
+0
+1 2692 199 "" 52
+0
+1 2694 200 "" 51
+0
+1 2695 200 "" 52
+0
+1 2697 201 "" 51
+0
+1 2698 201 "" 52
+0
+1 2703 204 "" 51
+0
+1 2704 204 "" 52
+0
+1 2706 205 "" 51
+0
+1 2707 205 "" 52
+0
+1 2709 206 "" 51
+0
+1 2710 206 "" 52
+0
+1 2700 203 "" 51
+0
+1 2701 203 "" 52
+0
+1 2718 209 "" 51
+0
+1 2719 209 "" 52
+0
+1 2724 211 "" 51
+0
+1 2725 211 "" 52
+0
+1 2721 210 "" 51
+0
+1 2722 210 "" 52
+0
+1 2727 212 "" 51
+0
+1 2728 212 "" 52
+0
+1 2730 215 "" 51
+0
+1 2731 215 "" 52
+0
+1 2733 216 "" 51
+0
+1 2734 216 "" 52
+0
+1 2736 217 "" 51
+0
+1 2737 217 "" 52
+0
+1 2739 218 "" 51
+0
+1 2740 218 "" 52
+0
+1 2742 219 "" 51
+0
+1 2743 219 "" 52
+0
+1 2745 220 "" 51
+0
+1 2746 220 "" 52
+0
+1 2748 221 "" 51
+0
+1 2749 221 "" 52
+0
+1 2751 222 "" 51
+0
+1 2752 222 "" 52
+0
+1 2754 223 "" 51
+0
+1 2755 223 "" 52
+0
+1 2757 224 "" 51
+0
+1 2758 224 "" 52
+0
+1 2760 225 "" 51
+0
+1 2761 225 "" 52
+0
+1 2763 226 "" 51
+0
+1 2764 226 "" 52
+0
+1 2766 227 "" 51
+0
+1 2767 227 "" 52
+0
+1 2769 228 "" 51
+0
+1 2770 228 "" 52
+0
+1 2772 229 "" 51
+0
+1 2773 229 "" 52
+0
+1 2775 230 "" 51
+0
+1 2776 230 "" 52
+0
+1 2778 231 "" 51
+0
+1 2779 231 "" 52
+0
+1 2781 232 "" 51
+0
+1 2782 232 "" 52
+0
+1 2784 233 "" 51
+0
+1 2785 233 "" 52
+0
+1 2787 234 "" 51
+0
+1 2788 234 "" 52
+0
+1 2790 239 "" 51
+0
+1 2791 239 "" 52
+0
+1 2793 240 "" 51
+0
+1 2794 240 "" 52
+0
+1 2796 241 "" 51
+0
+1 2797 241 "" 52
+0
+1 2799 242 "" 51
+0
+1 2800 242 "" 52
+0
+1 2802 243 "" 51
+0
+1 2803 243 "" 52
+0
+1 2805 244 "" 51
+0
+1 2806 244 "" 52
+0
+1 2808 245 "" 51
+0
+1 2809 245 "" 52
+0
+1 2817 248 "" 51
+0
+1 2818 248 "" 52
+0
+1 2844 257 "" 51
+0
+1 2845 257 "" 52
+0
+1 2847 258 "" 51
+0
+1 2848 258 "" 52
+0
+1 2850 259 "" 51
+0
+1 2851 259 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 8 "Group4" -1
+"objects\\sgFwBlock.pnl" 270 110 T 6 0.2374999999999999 0 0.125139043381535 669.875 601.5680385613647
+5
+"$LabelsNum""0"
+"$PanelName""Recording/RecordingMainPanel.pnl"
+"$PanelParams""RecPoint:RecGVA"
+"$SystemName"""
+"$SystemStatus""Recording.GlobalStatus"
+3 10 "Group6" -1
+"objects\\sgFwBlock.pnl" 430 390 T 6 0.2625000000000002 0 0.129310344827586 522.125 374.5689655172416
+5
+"$LabelsNum""0"
+"$PanelName""MServer/MServerMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.GlobalStatus"
+3 12 "Group8" -1
+"objects\\sgFwBlock.pnl" 484 303 T 6 0.5499999999999989 0 0.125139043381535 67.8000000000005 607.4162031887282
+5
+"$LabelsNum""0"
+"$PanelName""RecVoice/sgRecAVREMainPanel.pnl"
+"$PanelParams""Site:GVA;SystemName:ISup_G:"
+"$SystemName"""
+"$SystemStatus""RecAVREGVA.GlobalStatus"
+3 14 "Group10" -1
+"objects\\sgFwBlock.pnl" 790 120 T 6 0.2744604316546729 0 0.125 432.1762589928083 660.3333333333334
+5
+"$LabelsNum""0"
+"$PanelName""VISTATEL/VISTATELMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VISTATEL.GlobalStatus"
+3 19 "Group12" -1
+"objects\\sgFwBlock.pnl" 710 390 T 6 0.5999999999999999 0 0.129310344827586 9.333333333333389 249.2356321839082
+5
+"$LabelsNum""0"
+"$PanelName""SYLEX/SYLEX_G_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.GlobalStatus"
+3 20 "Group13" -1
+"objects\\sgFwBlock.pnl" 230 485 T 6 0.2125 0 0.125139043381535 205.125 614.640897293289
+5
+"$LabelsNum""0"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:ScNet.scNet.ErrorsList;CriticalEvents:ScNet.scNet.NewCriticalEvents;CriticalEventsStatus:ScNet.scNet.CriticalEventsStatus;HeartbeatStatus:ScNet.scNet.TimeoutRef;PageTitle:scNet"
+"$SystemName"""
+"$SystemStatus""ScNet.scNet.GlobalStatus"
+3 22 "Group15" -1
+"objects\\sgFwBlock.pnl" 680 425 T 8 0.5249999999999999 0 0.125 -331.9999999999999 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Driver03"
+3 23 "Group17" -1
+"objects\\sgFwBlock.pnl" 495 185 T 9 0.5249999999999999 0 0.124336870026525 -235.8749999999999 622.3310123784263
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Driver01"
+3 25 "Group21" -1
+"objects\\sgFwBlock.pnl" 820 385 T 12 0.4125 0 0.125 -263.25 376.875
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerA.Components.XMLServer"
+3 29 "Group29" -1
+"objects\\sgFwBlock.pnl" 10 625 T 16 0.2250000000000001 0 0.125 341.75 597.2083333333334
+5
+"$LabelsNum""0"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:ScNet.SetiNet.ErrorsList;CriticalEvents:ScNet.SetiNet.NewCriticalEvents;CriticalEventsStatus:ScNet.SetiNet.CriticalEventsStatus;HeartbeatStatus:ScNet.SetiNet.TimeoutRef;PageTitle:SetiNet"
+"$SystemName"""
+"$SystemStatus""ScNet.SetiNet.GlobalStatus"
+3 42 "Group55" -1
+"objects\\sgFwBlock.pnl" 200 250 T 29 0.6749999999999999 0 0.125 -65 69.166666666666
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_G.DistributedStatusA"
+3 46 "Group63" -1
+"objects\\sgFwBlock.pnl" 230 485 T 48 0.6 0 0.125 297 144.375
+5
+"$LabelsNum""1"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RDPDefaultPanel.pnl"
+"$SystemName"""
+"$SystemStatus""RDP.GlobalStatus"
+3 49 "Group69" -1
+"objects\\sgFwBlock.pnl" 195 655 T 85 0.4125 0 0.129310344827586 -55.43750000000001 105.3017241379312
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Dist01"
+3 62 "Group32" -1
+"objects\\sgFwBlock.pnl" 635 645 T 176 0.2749999999999969 0 0.125 359.3750000000019 594.7083333333334
+5
+"$LabelsNum""0"
+"$PanelName""VISTARAD/VISTARADMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VISTARAD.GlobalStatus"
+3 67 "Group41" -1
+"objects\\sgFwBlock.pnl" 354 300 T 197 0.5999999999999999 0 0.129310344827586 222.6000000000001 321.2068965517242
+5
+"$LabelsNum""1"
+"$PanelName""INCH/INCH_G_MainPanel.pnl"
+"$PanelParams""Site:"
+"$SystemName"""
+"$SystemStatus""INCH.GlobalStatus"
+3 74 "Group48" -1
+"objects\\sgFwBlock.pnl" 20 525 T 214 0.2169258092103904 0 0.129310344827586 67.88429712297528 228.9523809523817
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX1.InterfaceAStatus"
+3 75 "Group49" -1
+"objects\\sgFwBlock.pnl" 140 525 T 215 0.2166695938524937 0 0.129310344827586 130.9995901939842 228.7787356321841
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX2.InterfaceAStatus"
+3 76 "Group50" -1
+"objects\\sgFwBlock.pnl" 20 560 T 216 0.327425373134328 0 0.129310344827586 65.71834299569531 284.9753694581281
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.INCH1.InterfaceAStatus"
+3 77 "Group51" -1
+"objects\\sgFwBlock.pnl" 200 560 T 217 0.327425373134328 0 0.129310344827586 141.5946756182962 284.9753694581281
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.INCH2.InterfaceAStatus"
+3 92 "Group62" -1
+"objects\\sgFwBlock.pnl" 360 1150 T 232 0.675 0 0.125 -173 -103.75
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EMSup_G.DistributedStatusA"
+3 101 "Group94" -1
+"objects\\sgFwBlock.pnl" 45 1725 T 263 0.524645994320058 0 0.125 851.3909302555975 239.375
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Driver03"
+3 102 "Group95" -1
+"objects\\sgFwBlock.pnl" 45 1125 T 264 0.525 0 0.1249999999999999 850.375 504.7083333333335
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Driver01"
+3 103 "Group96" -1
+"objects\\sgFwBlock.pnl" 80 1685 T 265 0.4125 0 0.125 837 214.375
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerB.Components.XMLServer"
+3 104 "Group97" -1
+"objects\\sgFwBlock.pnl" 80 1245 T 266 0.6750000000000005 0 0.125 716.0000000000001 -55.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_G.DistributedStatusB"
+3 106 "Group99" -1
+"objects\\sgFwBlock.pnl" 45 1325 T 268 0.4124999999999999 0 0.129310344827586 901.4375000000001 18.66379310344853
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Dist01"
+3 115 "Group108" -1
+"objects\\sgFwBlock.pnl" 80 1205 T 277 0.6750000000000005 0 0.125 716.0000000000001 -110.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EMSup_G.DistributedStatusB"
+3 119 "Group116" -1
+"objects\\sgFwBlock.pnl" 421 1300 T 300 0.5997392438070406 0 0.125 182.5097783572359 -122.5
+5
+"$LabelsNum""0"
+"$PanelName""EMSup_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 120 "Group118" -1
+"objects\\sgFwBlock.pnl" 421 1300 T 301 0.5997392438070406 0 0.125 182.5097783572359 -62.5
+5
+"$LabelsNum""0"
+"$PanelName""Navir_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 121 "Group69" -1
+"objects\\sgFwHistory.pnl" 10 710 T 381 1 0 0.4642857142857144 -10 455.7142857142855
+2
+"$SystemHistory""ISup.History"
+"$SystemName"""
+3 125 "Group81" -1
+"objects\\sgFwBlock.pnl" 80 420 T 385 0.327425373134328 0 0.129310344827586 745.8059701492538 302.6896551724139
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.INCH1.InterfaceBStatus"
+3 126 "Group82" -1
+"objects\\sgFwBlock.pnl" 215 420 T 386 0.327425373134328 0 0.132522055827644 836.5573621854608 301.2591510748471
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.INCH2.InterfaceBStatus"
+3 133 "Group95" -1
+"objects\\sgFwBlock.pnl" 20 240 T 402 0.525 0 0.138254310344829 14.5 656.8189655172411
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Redu01"
+3 134 "Group96" -1
+"objects\\sgFwBlock.pnl" 20 170 T 403 0.38961038961039 0 0.131057781919851 4.397031539888699 704.6493476234862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FwUtils.Framework.FwStatusA"
+3 135 "Group97" -1
+"objects\\sgFwBlock.pnl" 200 170 T 404 0.38961038961039 0 0.131057781919851 -66.06679035250457 734.6493476234862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FwUtils.Framework.FwCheckerStatusA"
+3 145 "Group119" -1
+"objects\\sgFwBlock.pnl" 15 615 T 418 0.5245041001005935 0 0.1376077586206878 867.1324384984911 605.3712284482771
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Redu01"
+3 147 "Group121" -1
+"objects\\sgFwBlock.pnl" 185 645 T 420 0.375 0 0.131057781919851 877.2402597402599 672.580382106245
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FwUtils.Framework.FwCheckerStatusB"
+3 148 "Group75" -1
+"objects\\sgFwBlock.pnl" 80 165 T 429 0.675 0 0.125 15.99999999999996 49.16666666666649
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Infra_G.DistributedStatusA"
+3 149 "Group76" -1
+"objects\\sgFwBlock.pnl" 759 165 T 430 0.6749999999999996 0 0.125 257.6750000000001 49.37499999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Infra_G.DistributedStatusB"
+3 150 "Group77" -1
+"objects\\sgFwBlock.pnl" 450 165 T 431 0.5997392438070406 0 0.125 165.1173402868317 49.37499999999999
+5
+"$LabelsNum""0"
+"$PanelName""Infra_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 151 "Group71" -1
+"objects\\sgFwBlock.pnl" 80 155 T 435 0.675 0 0.125 15.99999999999997 110.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_P.DistributedStatusA"
+3 152 "Group73" -1
+"objects\\sgFwBlock.pnl" 759 155 T 436 0.6749999999999996 0 0.125 257.6750000000001 110.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_P.DistributedStatusB"
+3 153 "Group75" -1
+"objects\\sgFwBlock.pnl" 440 155 T 439 0.5997392438070406 0 0.125 171.1147327249021 110.625
+5
+"$LabelsNum""0"
+"$PanelName""Navir_P_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 154 "Group74" -1
+"objects\\sgFwBlock.pnl" 440 460 T 441 0.3999999999999997 0 0.129310344827586 79.00000000000011 365.5172413793106
+5
+"$LabelsNum""0"
+"$PanelName""CPR/CPRMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPR.GlobalStatus"
+3 155 "Group62" -1
+"objects\\sgFwBlock.pnl" 15 645 T 445 0.225 0 0.277278475970444 168.655194805195 548.2817074628049
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerA.Components.LogsDiskSpace"
+3 156 "Group64" -1
+"objects\\sgFwBlock.pnl" 170 645 T 447 0.227393617021277 0 0.277278475970444 813.167484111633 548.2817074628049
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerB.Components.LogsDiskSpace"
+3 158 "Group68" -1
+"objects\\sgFwBlock.pnl" 15 645 T 449 0.375 0 0.126017097999856 941.607142857143 645.75036740985
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FwUtils.Framework.FwStatusB"
+3 159 "PANEL_REF160" -1
+"objects\\sgFwBlock.pnl" 445 505 T 450 0.2474999999999999 0 0.129715706410118 419.8625000000001 359.4935682628906
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:OPSLAN"
+"$SystemName"""
+"$SystemStatus""OPSLAN.Components.GlobalStatus"
+3 160 "PANEL_REF161" -1
+"objects\\sgFwBlock.pnl" 20 525 T 450 0.32729040622299 0 0.129310344827586 65.78752520887353 259.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VASCH.VASCH1.InterfaceAStatus"
+3 162 "PANEL_REF163" -1
+"objects\\sgFwBlock.pnl" 710 390 T 452 0.5999999999999999 0 0.129310344827586 9.333333333333464 279.5689655172415
+5
+"$LabelsNum""0"
+"$PanelName""VASCH/VASCHMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VASCH.GlobalStatus"
+3 163 "PANEL_REF164" -1
+"objects\\sgFwBlock.pnl" 20 525 T 459 0.32729040622299 0 0.129310344827586 200.7875252088736 259.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VASCH.VASCH2.InterfaceAStatus"
+3 164 "PANEL_REF165" -1
+"objects\\sgFwBlock.pnl" 20 525 T 460 0.32729040622299 0 0.129310344827586 765.4541918755401 259.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VASCH.VASCH1.InterfaceBStatus"
+3 165 "PANEL_REF166" -1
+"objects\\sgFwBlock.pnl" 20 525 T 461 0.32729040622299 0 0.129310344827586 900.7875252088736 259.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VASCH.VASCH2.InterfaceBStatus"
+3 166 "PANEL_REF167" -1
+"objects\\sgFwBlock.pnl" 20 170 T 474 0.190788592850448 0 0.131057781919851 263.08102059943 704.6493476234862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerA.Components.SMSProcessor"
+3 167 "PANEL_REF168" -1
+"objects\\sgFwBlock.pnl" 20 170 T 475 0.190788592850449 0 0.131057781919851 768.08102059943 704.6493476234862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerB.Components.SMSProcessor"
+3 168 "PANEL_REF74" -1
+"objects\\sgFwBlock.pnl" 90 395 T 476 0.2125 0 0.125737079431148 249.875 566.0005202913634
+5
+"$LabelsNum""0"
+"$PanelName""AMSCH/sgAMSCHMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""AMSCH.GlobalStatus"
+3 180 "PANEL_REF181" -1
+"objects\\sgFwBlock.pnl" 440 155 T 519 0.5997392438070406 0 0.125 171.1147327249021 140.625
+5
+"$LabelsNum""0"
+"$PanelName""Navir_S_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 181 "PANEL_REF182" -1
+"objects\\sgFwBlock.pnl" 759 155 T 522 0.6775000000000001 0 0.125 255.7774999999999 140.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_S.DistributedStatusB"
+3 182 "PANEL_REF183" -1
+"objects\\sgFwBlock.pnl" 80 155 T 523 0.6749999999999999 0 0.125 16.00000000000001 140.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Navir_S.DistributedStatusA"
+3 183 "PANEL_REF184" -1
+"objects\\sgFwBlock.pnl" 790 120 T 524 0.2244080525053643 0 0.125 587.7176385207608 660.3333333333334
+5
+"$LabelsNum""0"
+"$PanelName""VOLATIS/VOLATISMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VOLATIS.GlobalStatus"
+3 185 "PANEL_REF186" -1
+"objects\\sgFwBlock.pnl" 440 460 T 525 0.275 0 0.129310344827586 624 365.5172413793105
+5
+"$LabelsNum""0"
+"$PanelName""TBox/TBoxMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TBox.GlobalStatus"
+3 186 "PANEL_REF187" -1
+"objects\\sgFwBlock.pnl" 90 395 T 526 0.175 0 0.125737079431148 344.25 565.6671869580299
+5
+"$LabelsNum""0"
+"$PanelName""CPDLC/CPDLCMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.GlobalStatus"
+3 187 "PANEL_REF187" -1
+"objects\\sgFwBlock.pnl" 90 395 T 526 0.2249999999999999 0 0.125737079431148 618.75 565.6671869580299
+5
+"$LabelsNum""0"
+"$PanelName""Optinet/sgOptinetMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""OptiNet.GlobalStatus"
+3 188 "PANEL_REF188" -1
+"objects\\sgFwBlock.pnl" 680 425 T 526 0.3625000000000001 0 0.125 -51.50000000000003 151.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Driver02"
+3 189 "PANEL_REF189" -1
+"objects\\sgFwBlock.pnl" 45 1125 T 528 0.3625 0 0.129310344827586 753.6875 59.52586206896578
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Driver02"
+3 190 "PANEL_REF190" -1
+"objects\\sgFwBlock.pnl" 90 395 T 528 0.1749999999999999 0 0.125737079431148 419.25 565.6671869580299
+5
+"$LabelsNum""0"
+"$PanelName""DCL/DCL_G_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""DCL.GlobalStatus"
+3 196 "PANEL_REF197" -1
+"objects\\sgFwBlock.pnl" 710 390 T 549 0.3125 0 0.129310344827586 402.1250000000001 529.9022988505749
+5
+"$LabelsNum""0"
+"$PanelName""SAMAX/SAMAXMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SAMAX.GlobalStatus"
+3 197 "PANEL_REF198" -1
+"objects\\sgFwBlock.pnl" 710 390 T 550 0.3375000000000002 0 0.129310344827586 114.3749999999999 529.9022988505749
+5
+"$LabelsNum""0"
+"$PanelName""InterComm/InterCommMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""InterComm.GlobalStatus"
+3 199 "PANEL_REF200" -1
+"objects\\sgFwBlock.pnl" 710 390 T 552 0.3125000000000002 0 0.129310344827586 272.1249999999999 529.9022988505749
+5
+"$LabelsNum""0"
+"$PanelName""Radars/RadarsMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Radars.GlobalStatus"
+3 200 "PANEL_REF196" -1
+"objects\\sgFwBlock.pnl" 495 185 T 553 0.5275 0 0.124336870026525 -237.1125 557.3310123784263
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainA.Driver04"
+3 201 "PANEL_REF201" -1
+"objects\\sgFwBlock.pnl" 495 185 T 554 0.525 0 0.124336870026525 614.125 557.3310123784263
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""PVSSStatuses.ChainB.Driver04"
+3 203 "PANEL_REF203" -1
+"objects\\sgFwBlock.pnl" 484 303 T 561 0.3599999999999994 0 0.1249999999999999 540.7600000000003 462.125
+5
+"$LabelsNum""0"
+"$PanelName""SPHINX/SPHINXMainPanel.pnl"
+"$PanelParams""Site:GVA;ServerA:gsadpdc07;ServerB:gsadpdc08;SystemName:ISup_G:"
+"$SystemName"""
+"$SystemStatus""SPHINX.GlobalStatus"
+3 204 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 90 210 T 561 0.2625 0 0.1302631578947369 396.375 397.6447368421054
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:DATACOM"
+"$SystemName"""
+"$SystemStatus""DATACOM.Components.GlobalStatus"
+3 205 "PANEL_REF205" -1
+"objects\\sgFwBlock.pnl" 90 395 T 562 0.1499999999999999 0 0.125737079431148 560.5 565.6671869580299
+5
+"$LabelsNum""0"
+"$PanelName""MV/MVMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MV.GlobalStatus"
+3 206 "PANEL_REF206" -1
+"objects\\sgFwBlock.pnl" 230 485 T 563 0.225 0 0.125139043381535 387.25 614.6408972932888
+5
+"$LabelsNum""0"
+"$PanelName""TELGATE/TELGATEMainPanel.pnl"
+"$PanelParams""Site:GVA;SystemName:ISup_G:"
+"$SystemName"""
+"$SystemStatus""TELGATE.GlobalStatus"
+3 209 "PANEL_REF209" -1
+"objects\\sgFwBlock.pnl" 140 525 T 566 0.2191600489542465 0 0.129310344827586 219.6509264797388 228.778735632184
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX3.InterfaceAStatus"
+3 210 "PANEL_REF210" -1
+"objects\\sgFwBlock.pnl" 140 525 T 571 0.2166695938524937 0 0.129310344827586 830.9995901939841 228.7787356321841
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX2.InterfaceBStatus"
+3 211 "PANEL_REF211" -1
+"objects\\sgFwBlock.pnl" 20 525 T 572 0.2169258092103904 0 0.129310344827586 767.9948171491254 228.7787356321841
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX1.InterfaceBStatus"
+3 212 "PANEL_REF212" -1
+"objects\\sgFwBlock.pnl" 140 525 T 573 0.2191600489542465 0 0.129310344827586 919.6509264797387 228.778735632184
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.SYLEX3.InterfaceBStatus"
+3 215 "PANEL_REF215" -1
+"objects\\sgFwBlock.pnl" 20 525 T 576 0.2169258092103904 0 0.129310344827586 67.55096378964208 199.285714285715
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO1.InterfaceAStatus"
+3 216 "PANEL_REF216" -1
+"objects\\sgFwBlock.pnl" 140 525 T 577 0.2166695938524937 0 0.129310344827586 130.666256860651 199.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO2.InterfaceAStatus"
+3 217 "PANEL_REF217" -1
+"objects\\sgFwBlock.pnl" 710 390 T 578 0.5999999999999999 0 0.129310344827586 9.000000000000114 219.5689655172415
+5
+"$LabelsNum""0"
+"$PanelName""SYCO/SYCO_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.GlobalStatus"
+3 218 "PANEL_REF218" -1
+"objects\\sgFwBlock.pnl" 140 525 T 579 0.2191600489542465 0 0.129310344827586 219.3175931464054 199.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO3.InterfaceAStatus"
+3 219 "PANEL_REF219" -1
+"objects\\sgFwBlock.pnl" 20 525 T 580 0.2169258092103904 0 0.129310344827586 767.6614838157917 199.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO1.InterfaceBStatus"
+3 220 "PANEL_REF220" -1
+"objects\\sgFwBlock.pnl" 140 525 T 581 0.2166695938524937 0 0.129310344827586 830.6662568606504 199.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO2.InterfaceBStatus"
+3 221 "PANEL_REF221" -1
+"objects\\sgFwBlock.pnl" 140 525 T 582 0.2191600489542465 0 0.129310344827586 919.3175931464051 199.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYCO.SYCO3.InterfaceBStatus"
+3 222 "PANEL_REF222" -1
+"objects\\sgFwBlock.pnl" 20 525 T 588 0.2169258092103904 0 0.129310344827586 67.55096378964208 169.285714285715
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS1.InterfaceAStatus"
+3 223 "PANEL_REF223" -1
+"objects\\sgFwBlock.pnl" 140 525 T 589 0.2166695938524937 0 0.129310344827586 130.666256860651 169.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS2.InterfaceAStatus"
+3 224 "PANEL_REF224" -1
+"objects\\sgFwBlock.pnl" 710 390 T 590 0.5999999999999999 0 0.129310344827586 9.000000000000114 189.5689655172415
+5
+"$LabelsNum""0"
+"$PanelName""INIS/INIS_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.GlobalStatus"
+3 225 "PANEL_REF225" -1
+"objects\\sgFwBlock.pnl" 140 525 T 591 0.2191600489542465 0 0.129310344827586 219.3175931464054 169.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS3.InterfaceAStatus"
+3 226 "PANEL_REF226" -1
+"objects\\sgFwBlock.pnl" 20 525 T 592 0.2169258092103904 0 0.129310344827586 767.6614838157921 169.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS1.InterfaceBStatus"
+3 227 "PANEL_REF227" -1
+"objects\\sgFwBlock.pnl" 140 525 T 593 0.2166695938524937 0 0.129310344827586 830.6662568606507 169.1120689655174
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS2.InterfaceBStatus"
+3 228 "PANEL_REF228" -1
+"objects\\sgFwBlock.pnl" 140 525 T 594 0.2191600489542465 0 0.129310344827586 919.3175931464054 169.1120689655173
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INIS.INIS3.InterfaceBStatus"
+3 229 "PANEL_REF229" -1
+"objects\\sgFwBlock.pnl" 20 560 T 600 0.327425373134328 0 0.129310344827586 65.78482587064677 314.5862068965519
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.CRYSTAL1.InterfaceAStatus"
+3 230 "PANEL_REF230" -1
+"objects\\sgFwBlock.pnl" 200 560 T 601 0.327425373134328 0 0.129310344827586 141.8482587064678 314.5862068965519
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.CRYSTAL2.InterfaceAStatus"
+3 231 "PANEL_REF231" -1
+"objects\\sgFwBlock.pnl" 80 420 T 602 0.327425373134328 0 0.129310344827586 746.1393034825871 332.6896551724139
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.CRYSTAL1.InterfaceBStatus"
+3 232 "PANEL_REF232" -1
+"objects\\sgFwBlock.pnl" 215 420 T 603 0.327425373134328 0 0.132522055827644 836.9368781094529 331.3407365523895
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.CRYSTAL2.InterfaceBStatus"
+3 233 "PANEL_REF233" -1
+"objects\\sgFwBlock.pnl" 354 300 T 604 0.5999999999999999 0 0.129310344827586 222.6000000000001 351.2068965517242
+5
+"$LabelsNum""1"
+"$PanelName""CRYSTALEMS/CRYSTALEMSMainPanel.pnl"
+"$PanelParams""Site:"
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.GlobalStatus"
+3 234 "PANEL_REF234" -1
+"objects\\sgFwBlock.pnl" 484 303 T 611 0.3725000000000001 0 0.1249999999999999 379.7100000000002 462.125
+5
+"$LabelsNum""0"
+"$PanelName""SmartRadio/sgSmartRadioMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SmartRadio.GlobalStatus"
+3 239 "PANEL_REF239" -1
+"objects\\sgFwBlock.pnl" 430 390 T 621 0.2625000000000002 0 0.129310344827586 222.125 404.5689655172416
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:SKYNET1"
+"$SystemName"""
+"$SystemStatus""SKYNET1.Components.GlobalStatus"
+3 240 "PANEL_REF240" -1
+"objects\\sgFwBlock.pnl" 430 390 T 622 0.2625000000000002 0 0.129310344827586 332.125 404.5689655172416
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:SKYNET2"
+"$SystemName"""
+"$SystemStatus""SKYNET2.Components.GlobalStatus"
+3 241 "PANEL_REF241" -1
+"objects\\sgFwBlock.pnl" 430 390 T 625 0.2625000000000002 0 0.129310344827586 442.125 404.5689655172416
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:SPINET5"
+"$SystemName"""
+"$SystemStatus""SPINET5.Components.GlobalStatus"
+3 242 "PANEL_REF242" -1
+"objects\\sgFwBlock.pnl" 430 390 T 626 0.2625000000000002 0 0.129310344827586 552.125 404.5689655172416
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMAinPanel.pnl"
+"$PanelParams""LANSystemName:SPINET6"
+"$SystemName"""
+"$SystemStatus""SPINET6.Components.GlobalStatus"
+3 243 "PANEL_REF243" -1
+"objects\\sgFwBlock.pnl" 484 303 T 627 0.5499999999999998 0 0.125139043381535 292.8000000000001 607.4162031887282
+5
+"$LabelsNum""0"
+"$PanelName""RecVoice/sgRecVoice18MainPanel.pnl"
+"$PanelParams""Site:GVA;SystemName:ISup_G:"
+"$SystemName"""
+"$SystemStatus""RecVoice.GlobalStatus"
+3 244 "PANEL_REF244" -1
+"objects\\sgFwBlock.pnl" 484 303 T 628 0.3749999999999999 0 0.1249999999999999 223.5 462.125
+5
+"$LabelsNum""0"
+"$PanelName""IMON/IMONMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IMON.GlobalStatus"
+3 245 "PANEL_REF245" -1
+"objects\\sgFwBlock.pnl" 484 303 T 628 0.3599999999999999 0 0.1249999999999999 80.76000000000006 462.125
+5
+"$LabelsNum""0"
+"$PanelName""nJams/nJamsMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.GlobalStatus"
+3 248 "PANEL_REF248" -1
+"objects\\sgFwBlock.pnl" 90 395 T 631 0.1499999999999999 0 0.125737079431148 495.5 565.6671869580299
+5
+"$LabelsNum""0"
+"$PanelName""EFSS/sgEFSSMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.GlobalStatus"
+3 257 "PANEL_REF257" -1
+"objects\\sgFwBlock.pnl" 484 303 T 645 0.3599999999999999 0 0.1249999999999999 315.7600000000001 497.125
+5
+"$LabelsNum""0"
+"$PanelName""USpace/USpace_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""USpace.GlobalStatus"
+3 258 "PANEL_REF258" -1
+"objects\\sgFwBlock.pnl" 495 185 T 645 0.5275 0 0.3999999999999999 -236.1125 416.0000000000005
+5
+"$LabelsNum""0"
+"$PanelName""ISup_G_MainMQPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerA.Components.MQGlobalStatus"
+3 259 "PANEL_REF259" -1
+"objects\\sgFwBlock.pnl" 495 185 T 646 0.5275 0 0.3999999999999999 613.8875000000001 416.0000000000005
+5
+"$LabelsNum""0"
+"$PanelName""ISup_G_MainMQPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.ServerB.Components.MQGlobalStatus"
+0

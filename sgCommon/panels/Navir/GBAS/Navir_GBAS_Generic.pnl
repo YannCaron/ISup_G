@@ -1,0 +1,379 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 1
+"$SystemName"
+"main()
+{
+  setPageLabelNavirGBASName();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string setPageLabelNavirGBASName()
+{
+  string site;
+  
+  dpGet($SystemName + \"NavirUtils.CurrentSite\", site);
+ 
+  PageLabel.text = \"Navir \" + site;	
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+6 909
+"RECTANGLE2"
+""
+1 15 326 E E E 1 E 1 E N "_Transparent" E N {153,153,153} E E
+ E E
+196 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 2 0 1.147540983606558 -20.00000000000015 221.3114754098359 1 E 15 25 560 330
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 10 Navir GBAS
+LANG:1 4 AFPS
+1 954 106 "" 46
+0
+1 957 113 "" 46
+0
+1 960 114 "" 46
+0
+1 963 116 "" 46
+0
+1 966 117 "" 46
+0
+1 969 118 "" 46
+0
+1 972 119 "" 46
+0
+1 975 122 "" 46
+0
+1 978 126 "" 11
+0
+1 979 127 "" 46
+0
+1 982 128 "" 46
+0
+1 985 129 "" 46
+0
+1 988 130 "" 46
+0
+1 991 131 "" 46
+0
+13 953
+"PUSH_BUTTON1"
+""
+1 10 680 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+197 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 678 212 712
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  sgHistoryAddEvent($SystemName+ \"GBAS_Z.History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+  dyn_string names;
+		
+  names = getPointsFromPattern($SystemName + \"GBAS_Z.RawDatas.*.*1Status\");
+    		
+  for(int cpt = 1; cpt <= dynlen(names); cpt++){
+ 			dpSet(names[cpt], 255);
+  }
+
+  names = getPointsFromPattern($SystemName + \"GBAS_Z.RawDatas.*.*2Status\");
+    		
+  for(int cpt = 1; cpt <= dynlen(names); cpt++){
+ 			dpSet(names[cpt], 255);
+  }
+
+
+}
+" 0
+ E E E
+1 997 133 "" 46
+0
+1 1000 134 "" 46
+0
+1 1006 137 "" 46
+0
+1 1007 136 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 955 106 "" 51
+0
+1 956 106 "" 52
+0
+1 958 113 "" 51
+0
+1 959 113 "" 52
+0
+1 961 114 "" 51
+0
+1 962 114 "" 52
+0
+1 964 116 "" 51
+0
+1 965 116 "" 52
+0
+1 967 117 "" 51
+0
+1 968 117 "" 52
+0
+1 970 118 "" 51
+0
+1 971 118 "" 52
+0
+1 973 119 "" 51
+0
+1 974 119 "" 52
+0
+1 976 122 "" 51
+0
+1 977 122 "" 52
+0
+1 980 127 "" 51
+0
+1 981 127 "" 52
+0
+1 983 128 "" 51
+0
+1 984 128 "" 52
+0
+1 986 129 "" 51
+0
+1 987 129 "" 52
+0
+1 989 130 "" 51
+0
+1 990 130 "" 52
+0
+1 992 131 "" 51
+0
+1 993 131 "" 52
+0
+1 998 133 "" 51
+0
+1 999 133 "" 52
+0
+1 1001 134 "" 51
+0
+1 1002 134 "" 52
+0
+1 1008 137 "" 51
+0
+1 1009 137 "" 52
+0
+1 1010 136 "" 51
+0
+1 1011 136 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 106 "Group17" -1
+"objects\\sgFwBlock.pnl" 530 395 T 141 0.8250000000000001 0 0.25 -417.2500000000001 161.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel1.DCP"
+3 113 "PANEL_REF113" -1
+"objects\\sgFwBlock.pnl" 530 395 T 168 0.8250000000000001 0 0.25 -417.25 231.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel1.TX"
+3 114 "PANEL_REF114" -1
+"objects\\sgFwBlock.pnl" 530 395 T 169 0.8250000000000001 0 0.25 -417.25 301.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel1.RX"
+3 116 "PANEL_REF116" -1
+"objects\\sgFwBlock.pnl" 530 395 T 171 0.8250000000000001 0 0.25 -37.25000000000006 371.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.OtherWarnings"
+3 117 "PANEL_REF117" -1
+"objects\\sgFwBlock.pnl" 530 395 T 172 0.8250000000000001 0 0.25 -37.24999999999996 161.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel2.DCP"
+3 118 "PANEL_REF118" -1
+"objects\\sgFwBlock.pnl" 530 395 T 173 0.8250000000000001 0 0.25 -37.24999999999996 231.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel2.TX"
+3 119 "PANEL_REF119" -1
+"objects\\sgFwBlock.pnl" 530 395 T 174 0.8250000000000001 0 0.25 -37.24999999999996 301.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.Channel2.RX"
+3 122 "PANEL_REF122" -1
+"objects\\sgFwBlock.pnl" 530 395 T 181 0.8250000000000001 0 0.25 -417.2500000000001 371.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.PS"
+3 126 "" -1
+"objects\\sgFwHistory.pnl" 115 595 T 185 1 0 1 -115 110
+2
+"$SystemHistory""GBAS_Z.History"
+"$SystemName""NavGB_Z:"
+3 127 "PANEL_REF127" -1
+"objects\\sgFwBlock.pnl" 530 395 T 187 0.6750000000000002 0 0.25 462.25 161.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.RSMU.RSMU1"
+3 128 "PANEL_REF128" -1
+"objects\\sgFwBlock.pnl" 530 395 T 193 0.6750000000000002 0 0.25 462.25 231.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.RSMU.RSMU2"
+3 129 "PANEL_REF129" -1
+"objects\\sgFwBlock.pnl" 530 395 T 194 0.6750000000000002 0 0.25 462.25 301.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.RSMU.RSMU3"
+3 130 "PANEL_REF130" -1
+"objects\\sgFwBlock.pnl" 530 395 T 195 0.6750000000000002 0 0.25 462.25 371.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.RSMU.RSMU4"
+3 131 "PANEL_REF131" -1
+"objects\\sgFwBlock.pnl" 910 380 T 195 0.9500000000000001 0 0.303125 -494.5000000000001 -25.18749999999994
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.GlobalStatus"
+3 133 "PANEL_REF133" -1
+"objects\\sgFwBlock.pnl" 530 395 T 198 0.8250000000000001 0 0.25 -417.2500000000001 441.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.INCH.PredConstAlertStatus"
+3 134 "PANEL_REF134" -1
+"objects\\sgFwBlock.pnl" 530 395 T 199 0.8250000000000001 0 0.25 -37.25000000000006 441.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GBAS_Z.Structureds.INCH.ConstAlertStatus"
+3 136 "PANEL_REF120" -1
+"objects\\sgFwBlock.pnl" 910 380 T 201 0.4625 0 0.2250000000000001 484.125 4.499999999999989
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""SAT.OperationalStatus"
+3 137 "PANEL_REF137" -1
+"objects\\sgFwBlock.pnl" 910 380 T 202 0.4625 0 0.225 484.1249999999999 59.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GLS_14.OperationalStatus"
+0

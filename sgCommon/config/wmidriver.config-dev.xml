@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Strategy can be default, count, array or map-->
+<WMIDriver 
+	Address="127.0.0.1"
+	StatusTopicName="ch/skyguide/isup/mqdriver/data" StatusTopicQos="0" 
+	CommandTopicName="ch/skyguide/isup/mqdriver/command" CommandTopicQos="0" 
+	ReduTopicName="ch/skyguide/isup/mqdriver/monitoring/redundancy" ReduTopicQos="0" 
+	MonitoringHeartbeatTopicName="ch/skyguide/isup/mqdriver/monitoring/heartbeat" MonitoringHeartbeatTopicQos="0" 
+	MonitoringStatusTopicName="ch/skyguide/isup/mqdriver/monitoring/status" MonitoringStatusTopicQos="0">
+	<WMIAgent Name="SphinxA" Scope="\\localhost\root\cimv2" UserName="" Password="" Domain="" Polling="10">
+		<!-- for service class enums, see https://msdn.microsoft.com/en-us/library/aa394418(v=vs.85).aspx#properties -->
+		<Querie Name="Services" ColumnID="Name" Strategy="map">SELECT Name, State, Status FROM Win32_Service WHERE Name='Netlogon' or Name='NTDS' or Name='Kdc' or Name='SamSs'</Querie>
+	</WMIAgent>
+	<WMIAgent Name="SphinxB" Scope="\\localhost\root\cimv2" UserName="" Password="" Domain="" Polling="10">
+		<!-- for service class enums, see https://msdn.microsoft.com/en-us/library/aa394418(v=vs.85).aspx#properties -->
+		<Querie Name="Services" ColumnID="Name" Strategy="map">SELECT Name, State, Status FROM Win32_Service WHERE Name='Netlogon' or Name='NTDS' or Name='Kdc' or Name='SamSs'</Querie>
+	</WMIAgent>
+</WMIDriver>

@@ -1,0 +1,662 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E "main()
+{
+
+
+}" 0
+ E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 24 Navir Geneva INCH States
+LANG:1 4 AFPS
+30 237
+"Frame1"
+""
+1 10 373 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+78 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 60 1100 380
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir GVA
+30 535
+"Frame2"
+""
+1 270 360 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+123 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 270 85 505 370
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 6 ILS 22
+30 562
+"Frame3"
+""
+1 20 360 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+127 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 20 85 255 370
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 6 ILS 04
+30 646
+"Frame5"
+""
+1 10 618 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+142 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.789473684210526 0 1 2.10526315789474 0 0 E 10 395 505 630
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir SIO
+1 956 113 "" 46
+0
+1 957 114 "" 46
+0
+1 958 131 "" 46
+0
+1 961 133 "" 46
+0
+1 964 134 "" 46
+0
+30 846
+"Frame4"
+""
+1 625 607 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+168 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.5042194092827 0 1 544.862869198312 5 0 E 625 390 1100 625
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir EPL
+1 967 136 "" 46
+0
+1 970 137 "" 46
+0
+1 973 138 "" 46
+0
+1 976 140 "" 46
+0
+1 979 141 "" 46
+0
+1 982 142 "" 46
+0
+1 985 143 "" 46
+0
+1 988 144 "" 46
+0
+1 991 145 "" 46
+0
+1 994 146 "" 46
+0
+1 997 147 "" 46
+0
+1 1000 148 "" 46
+0
+1 1003 149 "" 46
+0
+1 1006 150 "" 46
+0
+1 1009 151 "" 46
+0
+1 1010 152 "" 46
+0
+1 1011 153 "" 46
+0
+1 1014 154 "" 46
+0
+1 1017 155 "" 46
+0
+1 1018 156 "" 46
+0
+1 1019 157 "" 46
+0
+1 1022 158 "" 46
+0
+1 1025 159 "" 46
+0
+1 1028 160 "" 46
+0
+1 1031 161 "" 46
+0
+1 1034 164 "" 46
+0
+30 955
+"FRAME1"
+""
+1 10 618 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+204 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.870445344129555 0 1 406.295546558704 0 0 E 10 395 505 630
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir PAY
+1 1037 172 "" 46
+0
+1 1040 173 "" 46
+0
+1 1043 174 "" 46
+0
+1 1046 175 "" 46
+0
+1 1049 176 "" 46
+0
+1 1052 177 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 959 131 "" 51
+0
+1 960 131 "" 52
+0
+1 962 133 "" 51
+0
+1 963 133 "" 52
+0
+1 965 134 "" 51
+0
+1 966 134 "" 52
+0
+1 968 136 "" 51
+0
+1 969 136 "" 52
+0
+1 971 137 "" 51
+0
+1 972 137 "" 52
+0
+1 974 138 "" 51
+0
+1 975 138 "" 52
+0
+1 977 140 "" 51
+0
+1 978 140 "" 52
+0
+1 980 141 "" 51
+0
+1 981 141 "" 52
+0
+1 983 142 "" 51
+0
+1 984 142 "" 52
+0
+1 986 143 "" 51
+0
+1 987 143 "" 52
+0
+1 989 144 "" 51
+0
+1 990 144 "" 52
+0
+1 992 145 "" 51
+0
+1 993 145 "" 52
+0
+1 995 146 "" 51
+0
+1 996 146 "" 52
+0
+1 998 147 "" 51
+0
+1 999 147 "" 52
+0
+1 1001 148 "" 51
+0
+1 1002 148 "" 52
+0
+1 1004 149 "" 51
+0
+1 1005 149 "" 52
+0
+1 1007 150 "" 51
+0
+1 1008 150 "" 52
+0
+1 1012 153 "" 51
+0
+1 1013 153 "" 52
+0
+1 1015 154 "" 51
+0
+1 1016 154 "" 52
+0
+1 1020 157 "" 51
+0
+1 1021 157 "" 52
+0
+1 1023 158 "" 51
+0
+1 1024 158 "" 52
+0
+1 1026 159 "" 51
+0
+1 1027 159 "" 52
+0
+1 1029 160 "" 51
+0
+1 1030 160 "" 52
+0
+1 1032 161 "" 51
+0
+1 1033 161 "" 52
+0
+1 1035 164 "" 51
+0
+1 1036 164 "" 52
+0
+1 1038 172 "" 51
+0
+1 1039 172 "" 52
+0
+1 1041 173 "" 51
+0
+1 1042 173 "" 52
+0
+1 1044 174 "" 51
+0
+1 1045 174 "" 52
+0
+1 1047 175 "" 51
+0
+1 1048 175 "" 52
+0
+1 1050 176 "" 51
+0
+1 1051 176 "" 52
+0
+1 1053 177 "" 51
+0
+1 1054 177 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 113 "Group23" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 150 550 T 147 0.475 0 0.125 218.75 261.25
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS22.HMIStatuses.LOCDMEStatus"
+3 114 "Group24" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 380 T 147 0.475 0 0.125 149.875 252.5
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS22.HMIStatuses.CATIStatus"
+3 131 "Group36" -1
+"objects\\sgFwBlock.pnl" 760 770 T 163 0.475 0 0.15 526.125 321.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""LOC24.Structured.Navaid_1.OperationalStatus"
+3 133 "Group39" -1
+"objects\\sgFwBlock.pnl" 760 690 T 165 0.475 0 0.15 526 423.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP24.Structured.Navaid_1.OperationalStatus"
+3 134 "Group42" -1
+"objects\\sgFwBlock.pnl" 760 690 T 166 0.475 0 0.15 526 378.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP24.Structured.Navaid_2.OperationalStatus"
+3 136 "Group48" -1
+"objects\\sgFwBlock.pnl" 890 625 T 169 0.475 0 0.15 -382.875 21.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""LOC04.Structured.Navaid_1.OperationalStatus"
+3 137 "Group49" -1
+"objects\\sgFwBlock.pnl" 890 670 T 170 0.475 0 0.15 -382.875 94.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP04.Structured.Navaid_1.OperationalStatus"
+3 138 "Group50" -1
+"objects\\sgFwBlock.pnl" 890 715 T 171 0.475 0 0.15 -382.875 47.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP04.Structured.Navaid_2.OperationalStatus"
+3 140 "Group55" -1
+"objects\\sgFwBlock.pnl" 40 155 T 173 0.475 0 0.15 271 91.75
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""LOC22.Structured.Navaid_1.OperationalStatus"
+3 141 "Group56" -1
+"objects\\sgFwBlock.pnl" 40 235 T 174 0.475 0 0.15 271 159.75
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP22.Structured.Navaid_1.OperationalStatus"
+3 142 "Group57" -1
+"objects\\sgFwBlock.pnl" 40 195 T 175 0.475 0 0.15 271 125.75
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GP22.Structured.Navaid_2.OperationalStatus"
+3 143 "Group60" -1
+"objects\\sgFwBlock.pnl" 290 125 T 176 0.375 0 0.15 421.151315789474 111.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GVA.Structured.Navaid_1.OperationalStatus"
+3 144 "Group61" -1
+"objects\\sgFwBlock.pnl" 290 165 T 177 0.375 0 0.15 421.151315789474 145.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GVA.Structured.Navaid_2.OperationalStatus"
+3 145 "Group64" -1
+"objects\\sgFwBlock.pnl" 525 130 T 178 0.375 0 0.15 333.151315789474 220.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""PAS.Structured.Navaid_1.OperationalStatus"
+3 146 "Group65" -1
+"objects\\sgFwBlock.pnl" 525 170 T 179 0.375 0 0.15 333.151315789474 254.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""PAS.Structured.Navaid_2.OperationalStatus"
+3 147 "Group68" -1
+"objects\\sgFwBlock.pnl" 525 130 T 180 0.375 0 0.15 523.151315789474 110.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SPR.Structured.Navaid_1.OperationalStatus"
+3 148 "Group69" -1
+"objects\\sgFwBlock.pnl" 525 170 T 181 0.375 0 0.15 523.151315789474 144.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SPR.Structured.Navaid_2.OperationalStatus"
+3 149 "Group72" -1
+"objects\\sgFwBlock.pnl" 525 130 T 182 0.375 0 0.15 523.151315789474 220.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""FRI.Structured.Navaid_1.OperationalStatus"
+3 150 "Group73" -1
+"objects\\sgFwBlock.pnl" 525 170 T 183 0.375 0 0.15 523.151315789474 254.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""FRI.Structured.Navaid_2.OperationalStatus"
+3 151 "Group76" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 335 T 184 0.475 0 0.125 149.875 228.125
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS22.HMIStatuses.CATIIStatus"
+3 152 "Group77" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 305 T 185 0.475 0 0.125 149.875 201.875
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS22.HMIStatuses.CATIIIStatus"
+3 153 "Group80" -1
+"objects\\sgFwBlock.pnl" 720 240 T 186 0.375 0 0.15 645.151315789474 134.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""LAP.Structured.Navaid_1.OperationalStatus"
+3 154 "Group81" -1
+"objects\\sgFwBlock.pnl" 720 280 T 187 0.375 0 0.15 645.151315789474 198.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""GLA.Structured.Navaid_1.OperationalStatus"
+3 155 "Group84" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 290 330 T 188 0.475 0 0.125 -97.75 288.75
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS04.HMIStatuses.LOCDMEStatus"
+3 156 "Group85" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 290 300 T 189 0.475 0 0.125 -97.75 262.5
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS04.HMIStatuses.CATIStatus"
+3 157 "Group89" -1
+"objects\\sgFwBlock.pnl" 40 115 T 190 0.475 0 0.15 3.125 419.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""LOC25.Structured.Navaid_1.OperationalStatus"
+3 158 "Group90" -1
+"objects\\sgFwBlock.pnl" 40 195 T 191 0.475 0 0.15 3.125 487.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""GP25.Structured.Navaid_1.OperationalStatus"
+3 159 "Group91" -1
+"objects\\sgFwBlock.pnl" 40 155 T 192 0.475 0 0.15 3.125 453.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""LOC25.Structured.Navaid_2.OperationalStatus"
+3 160 "Group96" -1
+"objects\\sgFwBlock.pnl" 530 130 T 193 0.375 0 0.15 33.151315789474 417.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""SIO.Structured.Navaid_1.OperationalStatus"
+3 161 "Group97" -1
+"objects\\sgFwBlock.pnl" 530 170 T 194 0.375 0 0.15 33.151315789474 451.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""SIO.Structured.Navaid_2.OperationalStatus"
+3 164 "Group35" -1
+"objects\\sgFwBlock.pnl" 645 525 T 196 0.475 0 0.15 580.125 503.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""NDBEPL.Structured.Navaid_1.OperationalStatus"
+3 172 "PANEL_REF173" -1
+"objects\\sgFwBlock.pnl" 890 625 T 205 0.475 0 0.15 4.125 348.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""LOC05.Structured.Navaid_1.OperationalStatus"
+3 173 "PANEL_REF174" -1
+"objects\\sgFwBlock.pnl" 890 715 T 206 0.475 0 0.15 4.125 374.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""LOC05.Structured.Navaid_2.OperationalStatus"
+3 174 "PANEL_REF175" -1
+"objects\\sgFwBlock.pnl" 890 670 T 207 0.475 0 0.15 4.125 421.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""GP05.Structured.Navaid_1.OperationalStatus"
+3 175 "PANEL_REF176" -1
+"objects\\sgFwBlock.pnl" 40 155 T 208 0.475 0 0.15 623.125 418.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""LOC23.Structured.Navaid_1.OperationalStatus"
+3 176 "PANEL_REF177" -1
+"objects\\sgFwBlock.pnl" 40 195 T 209 0.475 0 0.15 623.125 452.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""LOC23.Structured.Navaid_2.OperationalStatus"
+3 177 "PANEL_REF178" -1
+"objects\\sgFwBlock.pnl" 40 235 T 210 0.475 0 0.15 623.125 486.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""GP23.Structured.Navaid_1.OperationalStatus"
+0

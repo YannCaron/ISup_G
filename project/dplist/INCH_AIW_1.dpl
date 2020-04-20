@@ -1,0 +1,217 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgINCH.sgINCH	1#1
+	GlobalStatus	41#2:sgFwSystem
+	History	41#3:sgFwHistory
+	Components	1#7
+		Interfaces	1#8
+			AIMS	41#58:sgINCHInterface
+			RVR	41#163:sgINCHInterface
+			Samax	41#164:sgINCHInterface
+			Wind	41#168:sgINCHInterface
+			Persistency	41#170:sgINCHInterface
+			Monitoring	41#171:sgINCHInterface
+			Volatis	41#6113:sgINCHInterface
+			Sylex	41#11301:sgINCHInterface
+			Milos	41#11503:sgINCHInterface
+			NavirGVA	41#22452:sgINCHInterface
+			NavirSIO	41#22453:sgINCHInterface
+			RecData	41#23022:sgINCHInterface
+			SkyVisu	41#23224:sgINCHInterface
+			QNHBroadcast	41#23325:sgINCHInterface
+			NavirPAY	41#23426:sgINCHInterface
+			Meteo	41#23527:sgINCHInterface
+			AIMSPlus	41#24630:sgINCHInterface
+			Crystal	41#30345:sgINCHInterface
+			InchZRH	41#30621:sgINCHInterface
+			InchBRN	41#30622:sgINCHInterface
+			AIW	41#1:sgINCHInterface
+		Clients	1#1871
+			001	41#1872:sgFwSystem
+			002	41#1904:sgFwSystem
+			003	41#1905:sgFwSystem
+			004	41#1906:sgFwSystem
+			005	41#1907:sgFwSystem
+			006	41#1908:sgFwSystem
+			007	41#1909:sgFwSystem
+			008	41#1910:sgFwSystem
+			009	41#1911:sgFwSystem
+			010	41#1912:sgFwSystem
+			011	41#1913:sgFwSystem
+			012	41#1914:sgFwSystem
+			013	41#1915:sgFwSystem
+			014	41#1916:sgFwSystem
+			015	41#1917:sgFwSystem
+			016	41#1918:sgFwSystem
+			017	41#1919:sgFwSystem
+			018	41#1920:sgFwSystem
+			019	41#1921:sgFwSystem
+			020	41#1922:sgFwSystem
+			021	41#1923:sgFwSystem
+			022	41#1924:sgFwSystem
+			023	41#1925:sgFwSystem
+			024	41#1926:sgFwSystem
+			025	41#1927:sgFwSystem
+			026	41#1928:sgFwSystem
+			027	41#1929:sgFwSystem
+			028	41#1930:sgFwSystem
+			029	41#1931:sgFwSystem
+			030	41#1932:sgFwSystem
+			031	41#1933:sgFwSystem
+			032	41#1934:sgFwSystem
+			033	41#1935:sgFwSystem
+			034	41#1936:sgFwSystem
+			035	41#1937:sgFwSystem
+			036	41#1938:sgFwSystem
+			037	41#1939:sgFwSystem
+			038	41#1940:sgFwSystem
+			039	41#1941:sgFwSystem
+			040	41#1942:sgFwSystem
+			041	41#1943:sgFwSystem
+			042	41#1944:sgFwSystem
+			043	41#1945:sgFwSystem
+			044	41#1946:sgFwSystem
+			045	41#1947:sgFwSystem
+			046	41#1948:sgFwSystem
+			047	41#1949:sgFwSystem
+			048	41#1950:sgFwSystem
+			049	41#1951:sgFwSystem
+			050	41#1952:sgFwSystem
+			051	41#1953:sgFwSystem
+			052	41#1954:sgFwSystem
+			053	41#1955:sgFwSystem
+			054	41#1956:sgFwSystem
+			055	41#1957:sgFwSystem
+			056	41#1958:sgFwSystem
+			057	41#1959:sgFwSystem
+			058	41#1960:sgFwSystem
+			059	41#1961:sgFwSystem
+			060	41#1962:sgFwSystem
+			061	41#1963:sgFwSystem
+			062	41#1964:sgFwSystem
+			063	41#1965:sgFwSystem
+			064	41#1966:sgFwSystem
+			065	41#1967:sgFwSystem
+			066	41#1968:sgFwSystem
+			067	41#1969:sgFwSystem
+			068	41#1970:sgFwSystem
+			069	41#1971:sgFwSystem
+			070	41#1972:sgFwSystem
+			071	41#1973:sgFwSystem
+			072	41#1974:sgFwSystem
+			073	41#1975:sgFwSystem
+			074	41#1976:sgFwSystem
+			075	41#1977:sgFwSystem
+			076	41#1978:sgFwSystem
+			077	41#1979:sgFwSystem
+			078	41#1980:sgFwSystem
+			079	41#1981:sgFwSystem
+			080	41#1982:sgFwSystem
+			081	41#1983:sgFwSystem
+			082	41#1984:sgFwSystem
+			083	41#1985:sgFwSystem
+			084	41#1986:sgFwSystem
+			085	41#1987:sgFwSystem
+			086	41#1988:sgFwSystem
+			087	41#1989:sgFwSystem
+			088	41#1990:sgFwSystem
+			089	41#1991:sgFwSystem
+			090	41#1992:sgFwSystem
+			091	41#1993:sgFwSystem
+			092	41#1994:sgFwSystem
+			093	41#1995:sgFwSystem
+			094	41#1996:sgFwSystem
+			095	41#1997:sgFwSystem
+			096	41#1998:sgFwSystem
+			097	41#1999:sgFwSystem
+			098	41#2000:sgFwSystem
+			099	41#2001:sgFwSystem
+		GlobalClients	1#5072
+			GlobalClients01-33	41#11604:sgFwSystem
+			GlobalClients34-66	41#11605:sgFwSystem
+			GlobalClients67-99	41#11606:sgFwSystem
+		Broker	1#16862
+			BrokerA	41#22754:sgFwSystem
+			BrokerB	41#22755:sgFwSystem
+	Heartbeat	23#24597
+	SystemHistory	41#1734:sgFwHistory
+	INCH1	1#5650
+		InterfaceAStatus	41#5653:sgFwSystem
+		InterfaceBStatus	41#5654:sgFwSystem
+		ServerStatus	41#5873:sgFwSystem
+	INCH2	1#5655
+		InterfaceAStatus	41#5658:sgFwSystem
+		InterfaceBStatus	41#5659:sgFwSystem
+		ServerStatus	41#5874:sgFwSystem
+	ComponentsParams	41#5852:sgParams
+	InterfaceComponentsParams	41#5860:sgParams
+	WatchDogsConfig	41#5867:sgWatchDogs
+	TruthTables	1#6106
+		2Instances	41#6107:sgFwTruthTable
+	Connections	41#24598:sgFwConnections
+	MenuEntry	41#30810:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+INCH	sgINCH	27427
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+INCH.Components.Interfaces.AIW.GlobalStatus	""	lt:1 LANG:5 "AIW Gateway@@"
+INCH.Components.Interfaces.AIW.Instance1	""	lt:1 LANG:5 "1@@"
+INCH.Components.Interfaces.AIW.Instance2	""	lt:1 LANG:5 "2@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+INCH.Components.Interfaces.AIW.GlobalStatus.Events.GenerateEvents	sgINCH	1	0x101	28.04.2014 12:41:27.706
+INCH.Components.Interfaces.AIW.GlobalStatus.Events.EventText	sgINCH	"AIW Gateway Global"	0x101	28.04.2014 12:41:27.707
+INCH.Components.Interfaces.AIW.GlobalStatus.LogicConfig.LogicEnabled	sgINCH	1	0x101	28.04.2014 12:41:27.711
+INCH.Components.Interfaces.AIW.GlobalStatus.LogicConfig.Rule	sgINCH	"INCH.TruthTables.2Instances"	0x101	28.04.2014 12:41:27.712
+INCH.Components.Interfaces.AIW.GlobalStatus.LogicConfig.Inputs	sgINCH	"INCH.Components.Interfaces.AIW.Instance*"	0x101	28.04.2014 12:41:27.713
+INCH.Components.Interfaces.AIW.GlobalStatus.Params	sgINCH	"INCH.InterfaceComponentsParams"	0x101	28.04.2014 12:41:27.714
+INCH.Components.Interfaces.AIW.Instance1.Events.GenerateEvents	sgINCH	1	0x101	28.04.2014 12:41:27.727
+INCH.Components.Interfaces.AIW.Instance1.Events.EventText	sgINCH	"AIW Gateway 1"	0x101	28.04.2014 12:41:27.728
+INCH.Components.Interfaces.AIW.Instance1.Params	sgINCH	"INCH.ComponentsParams"	0x101	28.04.2014 12:41:27.735
+INCH.Components.Interfaces.AIW.Instance2.Events.GenerateEvents	sgINCH	1	0x101	28.04.2014 12:41:27.747
+INCH.Components.Interfaces.AIW.Instance2.Events.EventText	sgINCH	"AIW Gateway 2"	0x101	28.04.2014 12:41:27.748
+INCH.Components.Interfaces.AIW.Instance2.Params	sgINCH	"INCH.ComponentsParams"	0x101	28.04.2014 12:41:27.755
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+INCH.GlobalStatus.Alarms.AlarmActive	sgINCH		12					"INCH/INCH_G_MainPanel.pnl"	"$Site:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on INCH"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+INCH.Components.Interfaces.AIW.Instance1.PreStatus	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.Label1	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.Label2	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.Label3	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.Label4	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.Message	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance1.CommandOut	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.PreStatus	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.Label1	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.Label2	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.Label3	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.Label4	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.Message	sgINCH	56	\3
+INCH.Components.Interfaces.AIW.Instance2.CommandOut	sgINCH	56	\3
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+INCH.Components.Interfaces.AIW.Instance1.PreStatus	sgINCH	16	"3_INCH.aiw_LSGG_1.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1501	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.Label1	sgINCH	16	"3_INCH.aiw_LSGG_1.Label1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.Label2	sgINCH	16	"3_INCH.aiw_LSGG_1.Label2"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.Label3	sgINCH	16	"3_INCH.aiw_LSGG_1.Label3"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.Label4	sgINCH	16	"3_INCH.aiw_LSGG_1.Label4"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.Message	sgINCH	16	"3_INCH.aiw_LSGG_1.Message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.PreStatus	sgINCH	16	"3_INCH.aiw_LSGG_2.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1501	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.Label1	sgINCH	16	"3_INCH.aiw_LSGG_2.Label1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.Label2	sgINCH	16	"3_INCH.aiw_LSGG_2.Label2"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.Label3	sgINCH	16	"3_INCH.aiw_LSGG_2.Label3"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.Label4	sgINCH	16	"3_INCH.aiw_LSGG_2.Label4"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.Message	sgINCH	16	"3_INCH.aiw_LSGG_2.Message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance1.CommandOut	sgINCH	16	"3_INCH.aiw_LSGG_1"	""	0	0	\1	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+INCH.Components.Interfaces.AIW.Instance2.CommandOut	sgINCH	16	"3_INCH.aiw_LSGG_2"	""	0	0	\1	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"

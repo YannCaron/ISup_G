@@ -1,0 +1,872 @@
+V 11
+1
+LANG:5 15 sgFwSystemsView
+PANEL,-1 -1 1090 710 N "_3DFace" 1
+"$TimeoutMode"
+"main()
+{
+
+	tblUnactive.tableMode	(TABLE_SELECT_BROWSE);
+	tblUnactive.selectByClick(TABLE_SELECT_LINE);
+  
+  if ($TimeoutMode == TRUE) {
+    cbAll.visible = false;
+    dpConnect(\"disabledStatusChanged\", false, \"ISupDisabled.GlobalStatus.Status\");
+  }
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "
+// ******* libraries *******
+#uses \"sgDpPatternLib.ctl\"
+#uses \"sgStringLib.ctl\"
+#uses \"sgStringLib.ctl\"
+#uses \"sgDynLib.ctl\"
+#uses \"sgPatternLib.ctl\"
+
+// ******* constants *******
+const char ALARMS_SUBSYSTEM_SEPARATOR = '+';
+const int INDENTATION_LENGTH = 4;
+const char PROGRESS_CHAR = '|';
+const string PROGRESS_SYSTEM = \"Scaning %1\";
+const string PROGRESS_SYSTEM_END = \"Terminated\";
+const string TABLE_STATUS_COLUMN = \"status\";
+const string TABLE_SYSTEM_COLUMN = \"system\";
+const string TABLE_DTIME_COLUMN = \"dtime\";
+const string TABLE_COMMENT_COLUMN = \"comment\";
+const string TABLE_UNACTIVE_SYSTEMCOL_COLOR = \"{240, 240, 240}\";
+const string TABLE_OVERTIME_COLOR = \"{255, 0, 0}\";
+const string TABLE_ACTIVE_COLOR = \"white\";
+const string MESSAGE_CHANGE_PANEL = \"sgFw/sgFwConfirmWindow.pnl\";
+const string MESSAGE_CHANGE_TITLE = \"Confirmation\";
+const string MESSAGE_CHANGE_PARAM1 = \"$1:Do you really want to %1 the point: \\n<<%2>> ?\";
+const string MESSAGE_CHANGE_PARAM2 = \"$2:Yes\";
+const string MESSAGE_CHANGE_PARAM3 = \"$3:No\";
+const string MESSAGE_HISTORY_EVENT = \"Client: %1 %2d %3 (%4)\";
+const string MESSAGE_COMMENT_PANEL = \"objects\\\\sgFwCommentWindow.pnl\";
+const string MESSAGE_COMMENT_TITLE = \"Comment Panel\";
+const string MESSAGE_COMMENT_PARAM1 = \"$SystemStatus:%1\";
+const string MESSAGE_COMMENT_PARAM2 = \"$SystemName:\";
+const string COLOR_STATUS = \"sgStd%1Color\";
+const string COLOR_FORE_DEFAULT = \"grey\";
+const string SELECT_STATUS_STANDBY_REPLACE = \"SBY\";
+const string PATTERN_GLOBALSTATUS_POSTFIX = \".GlobalStatus\";
+const string PATTERN_ALLCOMPONENTS_POSTFIX = \".Components.*\";
+const string COMBOBOX_ALL_SYSTEM = \"All systems\";
+const string STATUS_ENABLE = \"enable\";
+const string STATUS_DISABLE = \"disable\";
+
+// ******* variable *******
+dyn_string systemDPEs;
+dyn_string systemTexts;
+dyn_string systemEventTexts;
+dyn_int systemDepths;
+dyn_bool systemDisableds;
+dyn_time systemDTimes;
+dyn_string cbSystemItemTexts;
+dyn_string cbSystemItemValues;
+
+float progressLength;
+int progressPos = 0;
+
+// ******* PROGRESS *******
+void initProgress(int max)
+{
+	// initialize progress bar
+	progressLength = 100 / (float)max;
+}
+
+void progress()
+{
+
+	// variable
+	string p;
+
+	// increment progress
+	progressPos ++;
+	
+	// calcuate and set progress
+	p = strchar(progressPos * progressLength, PROGRESS_CHAR);
+	tbProgress.text = p;
+	
+}
+
+void terminateProgress()
+{
+	// terminate progress bar
+	progressPos = 0;
+	tbProgress.text	= \"\";
+}
+
+// ******* PROPERTIES ******
+bool getAllVue()
+{
+	return cbAll.state(0);
+}
+
+string getDist()
+{
+
+	return cbDistribution.selectedText;
+
+}
+
+void disableCommand()
+{
+	cbDistribution.enabled = false;
+	cbSystem.enabled = false;
+	cbAll.enabled = false;
+	btLoad.enabled = false;
+}
+
+void enableCommand()
+{
+	cbDistribution.enabled = true;
+	cbSystem.enabled = true;
+	cbAll.enabled = true;
+	btLoad.enabled = true;
+}
+
+// ******* DYN *******
+void appendDPE(string dpID, int depth)
+{
+	// append data point element to global table
+	dynAppend(systemDPEs, dpID);
+	dynAppend(systemDepths, depth);
+
+}
+
+void appendList(string dpID, int depth)
+{
+	// insert data point element to global table
+	dynAppend(systemDPEs, dpID);
+	dynAppend(systemDepths, depth);
+
+}
+
+void insertSystem(string dpID, int depth, int index)
+{
+	// insert data point element to global table
+	dynInsertAt(systemDPEs, dpID, index);
+	dynInsertAt(systemDepths, depth, index);
+
+}
+
+// ******* PATTERN *******
+dyn_string appendPatterns(dyn_string logicInputsValues, dyn_string notLogicInputsValues)
+{
+
+	dyn_string values;
+	
+	dynAppend(values, logicInputsValues);
+	dynAppend(values, notLogicInputsValues);
+	
+	appendDistToPattern(values);
+	
+	return values;
+
+}
+
+void appendDistToPattern(dyn_string &patterns)
+{
+	
+	for (int i=1; i<=dynlen(patterns); i++)
+	{
+		patterns[i] = getDist() + \":\" + patterns[i];
+	}
+	
+}
+
+// ******* GUI *******
+void initializeCBSystem(bool force)
+{
+
+	// variable
+	dyn_string rootDPEs;
+	dyn_string rootDescriptions;
+	
+	// clear
+	dynClear(cbSystemItemTexts);
+	dynClear(cbSystemItemValues);
+	
+	// get datapoints
+	rootDPEs = getRootSystemDPEs();
+	rootDescriptions = dpGetDescription(rootDPEs);
+	
+	// append All systems to combo list
+	dynAppend(cbSystemItemTexts, COMBOBOX_ALL_SYSTEM);
+	dynAppend(cbSystemItemValues, \"\");
+
+	// loop on datapoints
+	for (int i=1; i<=dynlen(rootDPEs); i++)
+	{
+		// append system to combo list
+		dynAppend(cbSystemItemTexts, \"  \" + rootDescriptions[i]);
+		dynAppend(cbSystemItemValues, rootDPEs[i]);
+	}
+
+	if (cbSystem.itemCount != dynlen(cbSystemItemTexts) || force)
+	{
+		cbSystem.items = cbSystemItemTexts; // set systems
+		cbSystem.selectedPos = 1; // default position
+	}
+
+}
+
+// ******* SYSTEMS DP ELEMENTS *******
+dyn_string getRootSystemDPEs()
+{
+
+	// string
+	dyn_string rootDPEs;
+	string systemGlobal = getDist() + \":\" + SYSTEM_GLOBAL + LOGIC_INPUTS_POSTFIX;
+
+	// get all root DPes
+	if (dpExists(systemGlobal))
+		dpGet(systemGlobal, rootDPEs);
+	
+	// remove sub system (separator : \"+\")
+	for (int i=1; i<=dynlen(rootDPEs); i++)
+	{
+		rootDPEs[i] = getDist() + \":\" + strsplit(rootDPEs[i], ALARMS_SUBSYSTEM_SEPARATOR)[1];
+	}
+
+	return rootDPEs;
+
+}
+
+void appendSystem(string rootDPE, string pattern, bool disabledValue, bool subDisabledValue)
+{
+
+	// verify if has sub systems and append system
+	if ((disabledValue || subDisabledValue) || getAllVue())
+		appendList(rootDPE, 0);
+	
+	// verify if has sub systems and get subsystems
+	if (subDisabledValue || getAllVue())
+		appendSubSystems(rootDPE, 1, pattern);
+
+}
+
+int appendSystems()
+{
+
+	// variable
+	dyn_string rootDPEs;
+	dyn_dyn_string logicInputsValues, notLogicInputsValues;
+	dyn_bool disabledValues, subDisabledValues;
+  dyn_time disabledTimeValues;
+
+	// get root and initialize
+	rootDPEs = getRootSystemDPEs();
+  if (dynlen(rootDPEs) == 0) return -1;
+	initProgress(dynlen(rootDPEs) - 1);
+
+	// look sub systems pattern
+	dpGet(dpAppend(rootDPEs, LOGIC_INPUTS_POSTFIX), logicInputsValues,
+				dpAppend(rootDPEs, NOTLOGIC_INPUTS_POSTFIX), notLogicInputsValues,
+				dpAppend(rootDPEs, DISABLED_POSTFIX), disabledValues,
+				dpAppend(rootDPEs, DISABLED_TIME_POSTFIX), disabledTimeValues,
+				dpAppend(rootDPEs, SUB_DISABLED_POSTFIX), subDisabledValues);
+
+	// loop on root system
+	for (int i=1; i<=dynlen(rootDPEs); i++)
+	{
+		appendSystem(rootDPEs[i], patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])), disabledValues[i], subDisabledValues[i]);
+		progress();
+
+	}
+	
+	// end of progress
+	terminateProgress();
+	
+	return dynlen(rootDPEs);
+
+}
+
+void appendSubSystems(string systemDP, int depth, string pattern)
+{
+	
+	// variable
+	dyn_dyn_string logicInputsValues, notLogicInputsValues;
+	dyn_bool disabledValues, subDisabledValues;
+	dyn_string dpes;
+
+	// get dpes of sub systems from pattern
+	dpes = getPointsFromPattern(pattern);
+
+        //DebugTN(dpes,dpAppend(dpes, LOGIC_INPUTS_POSTFIX),\"------------------\");
+        //DebugTN(dpes,dpAppend(dpes, NOTLOGIC_INPUTS_POSTFIX),\"------------------\");
+        //DebugTN(dpes,dpAppend(dpes, DISABLED_POSTFIX),\"------------------\");
+        //DebugTN(dpes,dpAppend(dpes, SUB_DISABLED_POSTFIX),\"------------------\");
+	
+	// get sub systems pattern
+	dpGet(dpAppend(dpes, LOGIC_INPUTS_POSTFIX), logicInputsValues,
+				dpAppend(dpes, NOTLOGIC_INPUTS_POSTFIX), notLogicInputsValues,
+ 				dpAppend(dpes, DISABLED_POSTFIX), disabledValues,
+				dpAppend(dpes, SUB_DISABLED_POSTFIX), subDisabledValues);
+
+        //DebugTN(logicInputsValues,\"------------------\");
+        //DebugTN(notLogicInputsValues,\"------------------\");
+        //DebugTN(disabledValues,\"------------------\");
+        //DebugTN(subDisabledValues,\"------------------\");
+
+	// loop on data point elements
+	for (int i=1; i<=dynlen(dpes); i++)
+	{
+
+		// verify that sub system as sub systems
+		if ((disabledValues[i] || subDisabledValues[i]) || getAllVue())
+		{
+			appendList(dpes[i], depth);
+		}
+	
+		// recursive
+    // 20071015 aj only if subsystems exist!! added \"&& dynlen checks\" otherwise error message
+		if ( (subDisabledValues[i] || getAllVue()) && ((dynlen(logicInputsValues[i]) > 0) || (dynlen(notLogicInputsValues[i]) > 0)) ) {
+			appendSubSystems(dpes[i], depth + 1, patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])));
+		}
+
+	}
+	
+}
+
+// ******* TABLE *******
+void setTblDisable(int lineID)
+{
+	tblUnactive.cellBackColRC(lineID, TABLE_SYSTEM_COLUMN, TABLE_UNACTIVE_SYSTEMCOL_COLOR);
+	tblUnactive.cellBackColRC(lineID, TABLE_DTIME_COLUMN, TABLE_UNACTIVE_SYSTEMCOL_COLOR);
+	tblUnactive.cellBackColRC(lineID, TABLE_COMMENT_COLUMN, TABLE_UNACTIVE_SYSTEMCOL_COLOR);
+}
+
+void setTblEnable(int lineID)
+{
+	tblUnactive.cellBackColRC(lineID, TABLE_SYSTEM_COLUMN, TABLE_ACTIVE_COLOR);
+	tblUnactive.cellBackColRC(lineID, TABLE_DTIME_COLUMN, TABLE_ACTIVE_COLOR);
+	tblUnactive.cellBackColRC(lineID, TABLE_COMMENT_COLUMN, TABLE_ACTIVE_COLOR);
+}
+
+void setTblStatus(int index, string status)
+{
+
+	// variable
+	string statusColor;
+
+	statusColor = strplace(COLOR_STATUS, status);
+
+	tblUnactive.cellBackColRC(index, TABLE_STATUS_COLUMN, statusColor); // Set status color
+
+}
+
+void setTblTime(int index, time disabledTime)
+{
+
+  if (disabledTime > 0 && disabledTime < getCurrentTime()) {  
+  	tblUnactive.cellForeColRC(index, TABLE_DTIME_COLUMN, TABLE_OVERTIME_COLOR); // Set status color
+  }
+
+}
+
+void setTblBold(int index)
+{
+
+		if (systemDepths[index+1] == 0)
+			tblUnactive.rowFontType(makeDynInt(index), makeDynInt(1));
+
+}
+
+void setTblColor(int index, bool systemDisabled)
+{
+	
+		// system & comment columns
+		if (systemDisabled == true) // Set disabled
+			setTblDisable(index);
+			
+}
+
+void setTblDraws(dyn_string systemStatus, dyn_bool systemDisableds)
+{
+
+	// loop on disabled systems
+	for (int i=1; i<=dynlen(systemDisableds); i++)
+	{
+
+		// status column
+		setTblStatus(i-1, systemStatus[i]);
+
+		setTblColor(i-1, systemDisableds[i]);
+
+    setTblTime(i-1, systemDTimes[i]);    
+    
+		// bold root
+		setTblBold(i-1);
+
+	}
+
+}
+
+dyn_string getTblLabels()
+{
+
+	// variable
+	dyn_string systemLabels;
+	string label, indentation;
+
+	// loop on data points to draws in table
+	for (int i=1; i<=dynlen(systemTexts); i++)
+	{
+		indentation = strspace(systemDepths[i] * INDENTATION_LENGTH);
+		
+		if (systemEventTexts[i] == \"\")
+		{
+			systemEventTexts[i] = systemTexts[i];
+		}
+		
+		label = indentation + systemEventTexts[i];
+		
+		dynAppend(systemLabels, label);
+	}
+	
+	return systemLabels;
+	
+}
+
+void setTblUnactive()
+{
+	
+	dyn_string systemLabels, systemComments, systemStatus;
+	
+	// get descriptions & disabled
+	systemTexts = dpGetDescription(systemDPEs);
+
+  if (dynlen (systemDPEs) > 0) {
+  
+  	dpGet(dpAppend(systemDPEs, EVENT_TEXT_POSTFIX), systemEventTexts,
+  			  dpAppend(systemDPEs, DISABLED_POSTFIX), systemDisableds,
+  			  dpAppend(systemDPEs, DISABLED_TIME_POSTFIX), systemDTimes,
+  			  dpAppend(systemDPEs, COMMENT_POSTFIX), systemComments,
+  			  dpAppend(systemDPEs, STATUS_POSTFIX), systemStatus);
+
+  	// create labels
+  	systemLabels = getTblLabels(systemTexts);
+
+  	// add line to table
+  	tblUnactive.appendLines(dynlen(systemLabels), 
+                            TABLE_SYSTEM_COLUMN, systemLabels,
+                            TABLE_DTIME_COLUMN, systemDTimes,
+                            TABLE_COMMENT_COLUMN, systemComments,
+                            TABLE_STATUS_COLUMN, systemStatus);
+
+    // add a line to force display to show the last line
+    tblUnactive.appendLine(TABLE_SYSTEM_COLUMN, makeDynString(\"\"),
+                           TABLE_DTIME_COLUMN, makeDynTime(NULL),
+                           TABLE_COMMENT_COLUMN, makeDynString(\"\"),
+                           TABLE_STATUS_COLUMN, makeDynString(\"\"));
+    // delete this empty line
+    tblUnactive.deleteLinesN(dynlen(systemLabels), 1);
+        	
+  	// set colors
+  	setTblDraws(systemStatus, systemDisableds);
+  }
+	
+}
+
+void clearTable()
+{
+
+	dyn_int rows, styles;
+
+	for (int i=0; i<tblUnactive.lineCount; i++)
+	{
+		dynAppend(rows, i);
+		dynAppend(styles, 0);
+	}
+	
+	tblUnactive.rowFontType(rows, styles);
+	tblUnactive.deleteLinesN(0, tblUnactive.lineCount);
+	
+}
+
+void disabledStatusChanged(string db, string value) {
+  load();
+}
+
+void load() 
+{
+
+	// variable
+	int res = 0;
+
+	// initialize
+	disableCommand();
+	clearTable();
+	dynClear(systemDPEs);
+	dynClear(systemTexts);
+	dynClear(systemEventTexts);
+	dynClear(systemDepths);
+	dynClear(systemTexts);
+	dynClear(systemDisableds);
+  dynClear(systemDTimes);
+	
+	// initialize Systems
+	initializeCBSystem(false);
+	
+	// get systems
+	if (cbSystem.selectedPos <= 1)
+	{
+		res = appendSystems();
+		
+		if (res == 0) 
+    	appendSystem(getDist() + \".DistributedStatus\", \"\", true, true);
+
+	}
+	else
+	{
+	
+		// append system
+		string rootDPE = cbSystemItemValues[cbSystem.selectedPos];
+		dyn_string logicInputsValues, notLogicInputsValues;
+		bool disabledValue, subDisabledValue;
+                
+		dpGet(rootDPE + LOGIC_INPUTS_POSTFIX, logicInputsValues,
+				rootDPE + NOTLOGIC_INPUTS_POSTFIX, notLogicInputsValues,
+				rootDPE + DISABLED_POSTFIX, disabledValue,
+				rootDPE + SUB_DISABLED_POSTFIX, subDisabledValue);
+                
+		appendSystem(rootDPE, patternConcat(appendPatterns(logicInputsValues, notLogicInputsValues)), disabledValue, true);
+	}
+	
+  if (res != -1) {
+   	setTblUnactive();
+		enableCommand();
+  } else {
+    cbDistribution.enabled = true;
+  }
+
+}
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+6 2
+"Border1"
+""
+1 780 30 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 0 5 0 E 780 10 1080 30
+2 3
+"tbProgress"
+""
+1 778 15 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 780 17 1076 33
+0 2 0 "0s" 0 0 0 64 0 0  780 17 1
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 100 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+25 0
+"tblUnactive"
+""
+1 10 50 E E E 1 E 1 E N {0,0,0} E N "_Window" E E
+ "main()
+{
+	dyn_int selected = tblUnactive.getSelectedLines();
+	int select;
+	bool state, sure;
+	string systemDPE, systemEvent;
+	string stateText;
+	dyn_string ds, df;
+	
+	tblUnactive.selectByClick(TABLE_SELECT_LINE);
+	select = selected[1];
+	systemDPE = systemDPEs[select+1];
+	state = systemDisableds[select+1];
+	systemEvent = systemEventTexts[select+1];
+
+	stateText = STATUS_DISABLE;
+	if (state) stateText = STATUS_ENABLE;
+
+	ChildPanelOnCentralModalReturn(
+		MESSAGE_CHANGE_PANEL, 
+		MESSAGE_CHANGE_TITLE, 
+		makeDynString(strplace(MESSAGE_CHANGE_PARAM1, stateText, systemEvent), MESSAGE_CHANGE_PARAM2, MESSAGE_CHANGE_PARAM3), 
+		df, 
+		ds);
+
+	sure = ds[1];
+
+	if (sure)
+	{
+		dpSet(systemDPE + DISABLED_POSTFIX, !state);
+		
+		if(state)
+		{
+			setTblEnable(select);
+		}
+		else
+		{
+			setTblDisable(select);
+			dpSet(systemDPE + ALARM_ACTIVE_POSTFIX, false);
+		}
+		
+		setSelectColor(select);
+		
+		sgHistoryAddEvent(
+			SYSTEM_HISTORY, SEVERITY_COMMAND, 
+			strplace(MESSAGE_HISTORY_EVENT, getHostname(), stateText, systemEvent, systemDPE)
+		);
+
+		systemDisableds[select+1] = !state;
+
+	}
+	
+}" 0
+ "main()
+{
+
+	dyn_int selected = tblUnactive.getSelectedLines();
+	int select;
+	string comment;
+	dyn_string ds, df;
+
+	select = selected[1];
+
+	ChildPanelOnCentralModalReturn(
+		MESSAGE_COMMENT_PANEL, 
+		MESSAGE_COMMENT_TITLE, 
+		makeDynString(strplace(MESSAGE_COMMENT_PARAM1, systemDPEs[select+1]), MESSAGE_COMMENT_PARAM2),
+		df, 
+		ds);
+
+	dpGet(systemDPEs[select+1] + COMMENT_POSTFIX, comment);
+	tblUnactive.cellValueRC(select, TABLE_COMMENT_COLUMN) = comment;
+
+
+}" 0
+
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
+0  8 48 1082 702
+EE 1 0 1 4 1 "status" 3 1 0 "s" 1
+LANG:5 6 Status
+E
+1
+LANG:5 0 
+
+45 "system" 28 1 0 "s" 1
+LANG:5 6 System
+E
+1
+LANG:5 0 
+
+350 "dtime" 9 1 0 "[%y-%m-%d %H:%Mt,True,,ALIGNMENT_BEGINNING]" 1
+LANG:5 14 Disabled Until
+E
+1
+LANG:5 0 
+
+125 "comment" 44 1 0 "s" 1
+LANG:5 7 Comment
+E
+1
+LANG:5 0 
+
+540 
+20 20 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
+0 0 1 1 0 7
+1 0
+20 4
+"cbAll"
+""
+1 380 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
+0  378 8 572 32
+1
+T 
+1
+LANG:5 20 Show enabled systems
+
+0 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+1
+E E
+E"main(int button, bool state)
+{
+	load();
+}" 0
+13 9
+"btLoad"
+""
+1 700 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  698 8 772 42
+
+T 
+1
+LANG:5 7 refresh
+"main()
+{
+
+	// load
+	load();
+}" 0
+ E E E
+22 10
+"cbSystem"
+""
+1 170 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
+0  168 8 352 38
+0
+
+E
+"main()
+{
+	load();
+}" 0
+
+E
+ 0 0
+22 11
+"cbDistribution"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
+0  8 8 162 38
+0
+
+"void initializeCBDistribution()
+{
+
+	if (cbDistribution.itemCount == 0)
+	{
+		cbDistribution.items = getDistributedSystems(true, true); // set systems
+		cbDistribution.selectedPos = 1; // default position
+
+	}
+
+}
+
+main()
+{
+
+	// initialize Distribution
+	initializeCBDistribution();
+
+	// load
+	load();
+
+}" 0
+
+"main()
+{
+
+	load();
+}" 0
+
+E
+ 0 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

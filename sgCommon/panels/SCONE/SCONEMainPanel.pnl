@@ -1,0 +1,188 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 SCONE
+LANG:1 4 AFPS
+1 196 45 "" 46
+0
+1 199 70 "" 46
+0
+1 202 76 "" 46
+0
+13 194
+"Button1"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+87 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+		dyn_string names;
+		
+		names = getPointsFromPattern(\"Scone.Components.*.PreStatus\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"UKN\");
+		}
+
+		names = getPointsFromPattern(\"Scone.Components.*.Label1\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"\");
+		}
+
+		names = getPointsFromPattern(\"Scone.Components.*.Label2\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"\");
+		}
+		names = getPointsFromPattern(\"Scone.Components.*.Label3\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"\");
+		}
+		names = getPointsFromPattern(\"Scone.Components.*.Label4\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"\");
+		}
+		names = getPointsFromPattern(\"Scone.Components.*.Message\");
+		
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			dpSet(names[cpt], \"\");
+		}
+		
+		sgHistoryAddEvent(\"Scone.History\", SEVERITY_COMMAND,\"<<Force to UKN>> sent\");
+		sgXMLPrepareForceToUKN();
+}" 0
+ E E E
+1 195 35 "" 11
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 197 45 "" 51
+0
+1 198 45 "" 52
+0
+1 200 70 "" 51
+0
+1 201 70 "" 52
+0
+1 203 76 "" 51
+0
+1 204 76 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 ""
+"objects\\sgFwHistory.pnl" 165 140 T 97 1 0 1 -165 560
+2
+"$SystemHistory""Scone.History"
+"$SystemName"""
+3 45 "Group25"
+"objects\\sgFwBlock.pnl" 25 365 T 108 0.725 0 0.558981283744164 28.633333333333 107.573703058964
+5
+"$LabelsNum""4"
+"$PanelName""SCONE/SCONEWebServices.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.WebService"
+3 70 "Group74"
+"objects\\sgFwBlock.pnl" 25 70 T 133 0.724966103279799 0 0.552884615384616 388.634098542051 273.509615384616
+5
+"$LabelsNum""4"
+"$PanelName""SCONE/SCONEConnectivity.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.Connectivity"
+3 76 "Group86"
+"objects\\sgFwBlock.pnl" 25 70 T 139 0.725 0 0.552884615384616 748.633333333333 273.509615384616
+5
+"$LabelsNum""4"
+"$PanelName""SCONE/SCONECore.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.Core"
+0

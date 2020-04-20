@@ -1,0 +1,311 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1106 460 N "_3DFace" 2
+"$StationName"
+"$SystemName"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 1878
+"LINE61"
+""
+1 160 235.0000000000015 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+365 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  160 235 160 115
+4 1897
+"LINE71"
+""
+1 555 195.0000000000013 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+378 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  555 195 555 85
+2 6
+"PageLabel"
+""
+1 13 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 15 10 1101 46
+1 2 0 "0s" 0 0 0 65 0 0  15 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 10 Infra: TWR
+LANG:1 4 AFPS
+4 57
+"LINE21"
+""
+1 1190 164.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+249 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1204 165 1190 165
+4 58
+"LINE22"
+""
+1 1190 104.5625000000001 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+250 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  1209 105 1190 105
+4 1885
+"LINE68"
+""
+1 159.9999999999996 115.0000000000002 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+372 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  935 115 160 115
+4 1898
+"LINE72"
+""
+1 935 250.0000000000021 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+379 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  935 250 935 115
+1 1948 4 "" 46
+0
+30 1911
+"FRAME5"
+""
+1 15 74 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+391 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.732673267326733 0 2.457627118644068 824.009900990099 -36.86440677966101 0 E 15 74 117 134
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 BUS 13
+1 1936 2 "0" 46
+0
+1 1937 2 "1" 46
+0
+1 1942 3 "0" 46
+0
+1 1943 3 "1" 46
+0
+30 1928
+"FRAME6"
+""
+1 15 74 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+393 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.732673267326733 0 1.440677966101695 444.009900990099 38.38983050847457 0 E 15 74 117 134
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 BUS 12
+1 1951 5 "0" 46
+0
+1 1952 5 "1" 46
+0
+30 1935
+"FRAME7"
+""
+1 15 74 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+395 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.732673267326733 0 2.457627118644068 49.009900990099 -36.86440677966098 0 E 15 74 117 134
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 BUS 11
+1 1957 6 "0" 46
+0
+1 1958 6 "1" 46
+0
+1 1963 7 "0" 46
+0
+1 1964 7 "1" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1949 4 "" 51
+0
+1 1950 4 "" 52
+0
+1 1938 2 "0" 51
+0
+1 1939 2 "0" 52
+0
+1 1940 2 "1" 51
+0
+1 1941 2 "1" 52
+0
+1 1944 3 "0" 51
+0
+1 1945 3 "0" 52
+0
+1 1946 3 "1" 51
+0
+1 1947 3 "1" 52
+0
+1 1953 5 "0" 51
+0
+1 1954 5 "0" 52
+0
+1 1955 5 "1" 51
+0
+1 1956 5 "1" 52
+0
+1 1959 6 "0" 51
+0
+1 1960 6 "0" 52
+0
+1 1961 6 "1" 51
+0
+1 1962 6 "1" 52
+0
+1 1965 7 "0" 51
+0
+1 1966 7 "0" 52
+0
+1 1967 7 "1" 51
+0
+1 1968 7 "1" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 2 "PANEL_REF166" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 387 0.825 0 1 607.4999999999999 -60
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""TWR201VO11"
+3 3 "PANEL_REF168" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 388 0.825 0 1 607.5 0
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""TWR201VO12"
+3 4 "PANEL_REF163" -1
+"objects\\sgFwBlock.pnl" 550 390 T 389 0.7750000000000001 0 0.15 -26.25000000000006 6.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""StationTWR.MOXA.GlobalStatus"
+3 5 "PANEL_REF5" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 392 0.825 0 1 227.4999999999999 -60.00000000000003
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""TWR201VO01"
+3 6 "PANEL_REF6" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 394 0.825 0 1 -167.5000000000001 -60.00000000000003
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""TWR102VO01"
+3 7 "PANEL_REF7" -1
+"objects\\InfraWAGOBlocks.pnl" 295 225 T 396 0.825 0 1 -167.5 0
+3
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+"$WAGOName""TWR103VO01"
+0

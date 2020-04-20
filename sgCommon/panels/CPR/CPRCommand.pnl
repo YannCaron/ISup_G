@@ -1,0 +1,213 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,394 296 493 335 N "_3DFace" 0
+EEE E E 1 -1 -1 0  10 10
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 6
+"LabelWindowCmd"
+""
+1 10 20 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 22 478 48
+0 2 0 "s" 0 0 0 65 0 0  12 22
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 20 CPR Gateway Commands
+LANG:1 14 LabelWindowCmd
+13 5
+"Close"
+""
+1 405 295 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+403 293 487 327
+T 
+2
+LANG:5 5 Close
+LANG:1 5 Close
+"main()
+{
+//	Close Command window at Click this button
+	PanelOffPanel(\"CPR Command Window\");	
+}" 0
+ E E E
+13 2
+"AttachBtn"
+""
+1 30 150 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+2 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+28 148 462 187
+T 
+1
+LANG:5 18 reboot CPR Gateway
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string cmd;
+	ChildPanelOnCentralModalReturn(\"sgFw\\\\sgFwConfirmWindow.pnl\", \"Warning !!!\", makeDynString(\"$1:\" + \"Do you really want to reboot the CPR Gateway?\", \"$2:\" + \"Yes\", \"$3:\" + \"No\"), df, ds);
+	
+	if(ds[1] == \"true\")
+	{
+		// reboot
+		cmd = \"start /b rsh CPR_GATEWAY -l tbox reboot\";
+		dpSet(\"CPR.Command\",cmd);
+
+		sgHistoryAddEvent(\"CPR.History\", SEVERITY_COMMAND, \"Rebooting CPR Gateway, requested by \" + getHostname());
+		ForceToUnknown (\"ISup_G:\", \"CPR\");
+		PanelOffPanel(\"CPR Command Window\");	
+	}
+	else
+		PanelOffPanel(\"CPR Command Window\");	
+	
+}" 0
+ E E E
+13 3
+"DetachBtn"
+""
+1 30 220 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+3 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+28 218 462 257
+T 
+1
+LANG:5 21 shut down CPR Gateway
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string cmd;
+	ChildPanelOnCentralModalReturn(\"sgFw\\\\sgFwConfirmWindow.pnl\", \"Warning !!!\", makeDynString(\"$1:\" + \"Do you really want to shut down the CPR Gateway?\", \"$2:\" + \"Yes\", \"$3:\" + \"No\"), df, ds);
+	
+	if(ds[1] == \"true\")
+	{
+		// shut down
+		cmd = \"start /b rsh CPR_GATEWAY -l tbox poweroff\";
+		dpSet(\"CPR.Command\",cmd);
+
+		sgHistoryAddEvent(\"CPR.History\", SEVERITY_COMMAND, \"Shutting down CPR Gateway, requested by \" + getHostname());
+		ForceToUnknown (\"ISup_G:\", \"CPR\");
+		PanelOffPanel(\"CPR Command Window\");	
+	}
+	else
+		PanelOffPanel(\"CPR Command Window\");	
+}" 0
+ E E E
+13 7
+"Button1"
+""
+1 30 80 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+28 78 462 117
+T 
+1
+LANG:5 31 restart CPR Gateway application
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string cmd;
+	ChildPanelOnCentralModalReturn(\"sgFw\\\\sgFwConfirmWindow.pnl\", \"Warning !!!\", makeDynString(\"$1:\" + \"Do you really want to restart the CPR Gateway application?\", \"$2:\" + \"Yes\", \"$3:\" + \"No\"), df, ds);
+	
+	if(ds[1] == \"true\")
+	{
+		// restart
+		cmd = \"start /b rsh CPR_GATEWAY -l tbox sudo /usr/bin/killall X\";
+		dpSet(\"CPR.Command\",cmd);
+
+		sgHistoryAddEvent(\"CPR.History\", SEVERITY_COMMAND, \"Restart CPR Gateway application, requested by \" + getHostname());
+		ForceToUnknown (\"ISup_G:\", \"CPR\");
+		PanelOffPanel(\"CPR Command Window\");	
+	}
+	else
+		PanelOffPanel(\"CPR Command Window\");	
+	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

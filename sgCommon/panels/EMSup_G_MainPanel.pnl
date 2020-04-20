@@ -1,0 +1,652 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	dpConnect(\"basePanelDebugLevelChanged\", false, \"FwUtils.Commands.DebugLevel\");
+	
+	dpGet(\"FwUtils.Commands.DebugLevel\", gHMIDebugLevel);
+}
+
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "	string activeChain;
+	
+	int gHMIDebugLevel;
+	
+	void forceISupChainToUKN(string chain)
+	{
+		dyn_string ds, ds1;
+		ds = getPointsFromPattern(\"ISup.Server\" + chain + \".Components.*.PreStatus\");
+		dynAppend(ds, \"PRIMUS.Interface\" + chain + \"Status.PreStatus\");
+		ds1 = getPointsFromPattern(\"SYLEX.SYLEX*.Interface\" + chain + \"Status.PreStatus\");
+		dynAppend(ds, ds1);
+		
+		dynClear(ds1);
+		
+		for (int cpt = 1; cpt <= dynlen(ds); cpt++)
+		{
+			dynAppend(ds1, UKN_STATUS);
+		}
+		
+		dpSet(ds, ds1);
+	}
+	
+void basePanelDebugLevelChanged(string dpName, int dpValue)
+{
+	DebugN(\"IsupMainPanel >> new debugLevel: \" + dpValue);
+	gHMIDebugLevel = dpValue;
+	
+	if (gHMIDebugLevel > 0)
+		DebugN(\"HMI >> Will trace event on IsupMainPanel\");	
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 10
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 21 EMSup and EMSup Links
+LANG:1 4 ISup
+6 758
+"Border12"
+""
+1 440 398 E E E 1 E 1 E N "_Transparent" E N {153,153,153} E E
+ E E
+268 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.307692307692308 0 6.92307692307692 1 E 440 140 695 400
+6 759
+"Border4"
+""
+1 445 225 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+269 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 445 200 690 225
+2 760
+"Text1"
+""
+1 445 197 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+270 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 447 199 688 224
+0 2 0 "0s" 0 0 0 65 0 0  447 199 1
+1
+LANG:5 27 Tahoma,-1,21,5,40,0,0,0,0,0
+0 1
+LANG:5 4 ISup
+4 761
+"Line12"
+""
+1 35 215 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+271 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  35 585 35 215
+4 762
+"Line16"
+""
+1 70 270 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+272 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  70 295 70 270
+4 763
+"Line26"
+""
+1 35 305 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+273 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  55 305 35 305
+4 764
+"Line27"
+""
+1 70 270 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+274 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  95 270 70 270
+4 765
+"Line48"
+""
+1 35 215 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+275 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  55 215 35 215
+4 767
+"Line53"
+""
+1 35 355 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+277 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  55 355 35 355
+4 768
+"Line2"
+""
+1 360 270 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+278 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  445 270 360 270
+4 769
+"Line21"
+""
+1 360 355 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+279 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  445 355 360 355
+6 770
+"Border1"
+""
+1 445 395 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+280 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 2.846153846153848 3.552713678800501e-15 -604.2307692307701 0 E 445 330 690 395
+6 771
+"Border9"
+""
+1 20 595 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+281 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 0 55 0 E 20 530 280 595
+4 773
+"Line20"
+""
+1 360 215 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+283 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  445 215 360 215
+1 904 119 "" 46
+0
+1 907 120 "" 46
+0
+1 910 121 "" 46
+0
+1 913 122 "" 46
+0
+1 916 123 "" 46
+0
+1 919 124 "" 46
+0
+1 925 126 "" 46
+0
+1 928 129 "" 46
+0
+1 931 130 "" 46
+0
+1 937 132 "" 46
+0
+1 940 133 "" 46
+0
+1 943 134 "" 46
+0
+1 946 135 "" 46
+0
+6 842
+"Border3"
+""
+1 445 475 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+284 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 3.552713678800501e-15 135 0 E 445 415 690 475
+4 843
+"Line3"
+""
+1 400 580 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+285 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  445 580 400 580
+4 844
+"Line4"
+""
+1 400 354.9999999999999 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+286 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  400 580 400 355
+1 952 137 "" 46
+0
+13 261
+"RestartA"
+""
+1 285.1560064935065 620 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  283 618 427 652
+
+T 
+2
+LANG:5 15 Restart chain A
+LANG:1 15 Restart chain A
+"main()
+{
+  pmonRestartConfirm(\"EmSup_G:EmSup.History\", \"Emsup-G-A\");
+}" 0
+ E E E
+1 903 116 "" 11
+0
+13 845
+"Button1"
+""
+1 450 555 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+287 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  448 553 572 582
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+		dpSet(\"EMSup_G:EMSup.ServerA.Components.EMSup_UPS.GlobalStatus.PreStatus\", UKN_STATUS);
+		dpSet(\"EMSup_G:EMSup.ServerA.Components.EMSup_UPS.GlobalStatus.Label1\", \" \");
+		dpSet(\"EMSup_G:EMSup.ServerA.Components.EMSup_UPS.ACStatus.PreStatus\", UKN_STATUS);
+		
+		// clear cache
+		dpSet(\"EMSup_G:EMDIS.ClearEMDISCache\",TRUE);
+			
+		sgHistoryAddEvent(\"EMSup_G:EMSup.History\", SEVERITY_COMMAND,\"User push the 'force to UKN' button for EMSup_UPS\");
+}
+" 0
+ E E E
+6 901
+"RECTANGLE1"
+""
+1 445 395 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+290 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 0.538461538461538 0 72.30769230769231 0 E 445 330 690 395
+1 955 139 "" 46
+0
+1 958 140 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 905 119 "" 51
+0
+1 906 119 "" 52
+0
+1 908 120 "" 51
+0
+1 909 120 "" 52
+0
+1 911 121 "" 51
+0
+1 912 121 "" 52
+0
+1 914 122 "" 51
+0
+1 915 122 "" 52
+0
+1 917 123 "" 51
+0
+1 918 123 "" 52
+0
+1 920 124 "" 51
+0
+1 921 124 "" 52
+0
+1 926 126 "" 51
+0
+1 927 126 "" 52
+0
+1 929 129 "" 51
+0
+1 930 129 "" 52
+0
+1 932 130 "" 51
+0
+1 933 130 "" 52
+0
+1 938 132 "" 51
+0
+1 939 132 "" 52
+0
+1 941 133 "" 51
+0
+1 942 133 "" 52
+0
+1 944 134 "" 51
+0
+1 945 134 "" 52
+0
+1 947 135 "" 51
+0
+1 948 135 "" 52
+0
+1 953 137 "" 51
+0
+1 954 137 "" 52
+0
+1 956 139 "" 51
+0
+1 957 139 "" 52
+0
+1 959 140 "" 51
+0
+1 960 140 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 116 "" -1
+"objects/sgFwHistory.pnl" 60 790 T 247 1 0 1 -60 -90
+2
+"$SystemHistory""EMSup.History"
+"$SystemName""EMSup_G:"
+3 119 "Group31" -1
+"objects/sgFwBlock.pnl" 440 370 T 251 0.3 0 0.25 318.496938150643 462.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMSup.ServerA.Components.EMSup_UPS.ACStatus"
+3 120 "Group32" -1
+"objects/sgFwBlock.pnl" 555 370 T 252 0.2875 0 0.25 410.933978873239 462.742424242424
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMSup.ServerA.Components.EMSup_UPS.GlobalStatus"
+3 121 "Group33" -1
+"objects/sgFwBlock.pnl" 440 315 T 253 0.5875 0 0.125 191.5 420.625
+5
+"$LabelsNum""0"
+"$PanelName""EMTEL/EMTELMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMTEL.GlobalStatus"
+3 122 "Group34" -1
+"objects/sgFwBlock.pnl" 555 315 T 254 0.5874999999999999 0 0.125 123.9375 450.625
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:;FileOnMRTSModule:MRTS/MRTSDefaultPanel.pnl"
+"$SystemName""EMSup_G:"
+"$SystemStatus""MRTS.GlobalStatus"
+3 123 "Group35" -1
+"objects/sgFwBlock.pnl" 555 285 T 255 0.5875 0 0.125 123.9375 334.375
+5
+"$LabelsNum""0"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:EMSup_G:EMNet.EMNet.ErrorsList;CriticalEvents:EMSup_G:EMNet.EMNet.NewCriticalEvents;CriticalEventsStatus:EMSup_G:EMNet.EMNet.CriticalEventsStatus;HeartbeatStatus:EMSup_G:EMNet.EMNet.TimeoutRef;PageTitle:EMNet"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMNet.EMNet.GlobalStatus"
+3 124 "Group36" -1
+"objects/sgFwBlock.pnl" 434 220 T 256 0.5897822900692906 0 0.125 194.1193560829163 227.791666666667
+5
+"$LabelsNum""0"
+"$PanelName""EMDIS/EMDISMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMDIS.GlobalStatus"
+3 126 "Group38" -1
+"objects/sgFwBlock.pnl" 440 285 T 258 0.5875 0 0.125 191.5 304.375
+5
+"$LabelsNum""0"
+"$PanelName""EMDIS/EMDISMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMDIS.GlobalStatus"
+3 129 "Group41" -1
+"objects/sgFwBlock.pnl" 45 315 T 261 0.7625 0 0.125 20.68750000000001 300.625
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""PVSSStatuses.ChainA.Driver01"
+3 130 "Group42" -1
+"objects/sgFwBlock.pnl" 45 165 T 262 0.7625 0 0.125 20.6875 179.375
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""PVSSStatuses.ChainA.Dist01"
+3 132 "Group44" -1
+"objects/sgFwBlock.pnl" 85 220 T 264 0.6625 0 0.125 38.68750000000001 227.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""XMLServer.StatusA"
+3 133 "Group45" -1
+"objects/sgFwBlock.pnl" 45 260 T 265 0.7625 0 0.125 20.6875 257.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""ConnectionsManager.InterfaceA.Status"
+3 134 "Group46" -1
+"objects/sgFwBlock.pnl" 15 480 T 266 0.3875 0 0.122602441150828 19.1875 531.1508282476025
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""FwUtils.Framework.FwStatusA"
+3 135 "Group47" -1
+"objects/sgFwBlock.pnl" 185 480 T 267 0.3875 0 0.122602441150828 -46.6875 561.1508282476025
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""FwUtils.Framework.FwCheckerStatusA"
+3 137 "Group20" -1
+"objects/sgFwBlock.pnl" 170 645 T 287 0.225 0 0.272657168037603 146.75 414.136126615746
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMSup.ServerA.Components.LogsDiskSpace"
+3 139 "PANEL_REF139" -1
+"objects/sgFwBlock.pnl" 434 220 T 296 0.5874999999999999 0 0.125 195.025 372.5
+5
+"$LabelsNum""0"
+"$PanelName""EMRADIO/EMRADIOMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMRADIO.GlobalStatus"
+3 140 "PANEL_REF140" -1
+"objects/sgFwBlock.pnl" 434 220 T 297 0.5874999999999999 0 0.125 195.0250000000001 402.5
+5
+"$LabelsNum""0"
+"$PanelName""EMRASWI/EMRASWIMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_G:"
+"$SystemName""EMSup_G:"
+"$SystemStatus""EMRASWI.GlobalStatus"
+0

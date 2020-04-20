@@ -1,0 +1,81 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 294 47 N "_3DFace" 3
+"$CommandDp"
+"$ServiceName"
+"$SystemName"
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"RestartServiceBtn"
+""
+1 5 5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+0  3 3 282 37
+
+T 
+1
+LANG:5 7 Restart
+E "main()
+{
+  dyn_string ds;
+  dyn_float df;
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+    	makeDynString(\"$1:Do you really want to restart \" + $ServiceName + \" Service ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+	
+  if(ds[1] == \"true\")
+  {
+    sgHistoryAddEvent($SystemName + \".History\", SEVERITY_COMMAND, \"Restart \" + $ServiceName + \" Service sent\");
+    dpSet($CommandDp, \"Stop\");   
+  }
+  PanelOffPanel(\"Command Window\");    
+}" 0
+ E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

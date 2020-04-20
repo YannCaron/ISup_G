@@ -1,0 +1,503 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRecVoiceRawDataChain.sgRecVoiceRawDataChain	1#1
+	Status01	21#3
+	Logging01	21#4
+	Capture01	21#5
+	Backup01	21#6
+	LoggerID01	25#7
+	Status02	21#8
+	Logging02	21#9
+	Capture02	21#10
+	Backup02	21#11
+	LoggerID02	25#12
+	Status03	21#13
+	Logging03	21#14
+	Capture03	21#15
+	Backup03	21#16
+	LoggerID03	25#17
+	Status04	21#18
+	Logging04	21#19
+	Capture04	21#20
+	Backup04	21#21
+	LoggerID04	25#22
+	Status05	21#23
+	Logging05	21#24
+	Capture05	21#25
+	Backup05	21#26
+	LoggerID05	25#27
+	CLS01	21#33
+	CLSErrorString01	25#34
+	STC01	21#35
+sgRecVoiceGVA.sgRecVoiceGVA	1#1
+	GlobalStatus	41#3:sgFwSystem
+	RawData	1#4
+		ChainA	41#5:sgRecVoiceRawDataChain
+		ChainB	41#6:sgRecVoiceRawDataChain
+	Components	1#7
+		PairStatus	41#8:sgRecVoiceCompChain
+		ChainA	41#9:sgRecVoiceCompChain
+		ChainB	41#10:sgRecVoiceCompChain
+		LoggerGlobalStatus	41#11:sgFwSystem
+	Connections	41#12:sgFwConnections
+	WatchDog	41#13:sgWatchDogs
+	History	41#14:sgFwHistory
+	ChainParams	41#15:sgParams
+	PairParams	41#16:sgParams
+	TruthTables	1#17
+		GlobalTT	41#18:sgFwTruthTable
+		GlobalLoggerTT	41#19:sgFwTruthTable
+		TTVoiceRecordingLogger	41#20:sgFwTruthTable
+	ConvTableStatus	41#21:sgConnectWithConvertTable
+	ConvTableSTC	41#22:sgConnectWithConvertTable
+	ConvTableCLS	41#23:sgConnectWithConvertTable
+	ConvTableLogging	41#24:sgConnectWithConvertTable
+	ConvTableCapture	41#25:sgConnectWithConvertTable
+	ConvTableBackup	41#26:sgConnectWithConvertTable
+	TemplateStrInsertCLSErrorString	41#27:sgConnectWithStringInsertion
+	MenuEntry	41#1064:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+RecVoiceGVA	sgRecVoiceGVA	28683
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+RecVoiceGVA.GlobalStatus	""	lt:1 LANG:5 "RECVOICE GVA@%s@"
+RecVoiceGVA.Components.PairStatus.Logger01	""	lt:1 LANG:5 "Logger Pair 01@@"
+RecVoiceGVA.Components.PairStatus.Logger02	""	lt:1 LANG:5 "Logger Pair 02@@"
+RecVoiceGVA.Components.PairStatus.Logger03	""	lt:1 LANG:5 "Logger Pair 03@@"
+RecVoiceGVA.Components.PairStatus.Logger04	""	lt:1 LANG:5 "Logger Pair 04@@"
+RecVoiceGVA.Components.PairStatus.Logger05	""	lt:1 LANG:5 "Logger Pair 05@@"
+RecVoiceGVA.Components.PairStatus.STC01	""	lt:1 LANG:5 "Storage Centre Pair@@"
+RecVoiceGVA.Components.PairStatus.CLS01	""	lt:1 LANG:5 "CLS Pair@@"
+RecVoiceGVA.Components.ChainA.Logger01	""	lt:1 LANG:5 "RECGVALOGA01 (0)@@"
+RecVoiceGVA.Components.ChainA.Logger02	""	lt:1 LANG:5 "RECGVALOGA02 (0)@@"
+RecVoiceGVA.Components.ChainA.Logger03	""	lt:1 LANG:5 "RECGVALOGA03 (0)@@"
+RecVoiceGVA.Components.ChainA.Logger04	""	lt:1 LANG:5 "RECGVALOGA04 (0)@@"
+RecVoiceGVA.Components.ChainA.Logger05	""	lt:1 LANG:5 "RECGVALOGA05 (0)@@"
+RecVoiceGVA.Components.ChainA.STC01	""	lt:1 LANG:5 "RECGVASTCA01@@"
+RecVoiceGVA.Components.ChainA.CLS01	""	lt:1 LANG:5 "RECGVACLSA01@@"
+RecVoiceGVA.Components.ChainB.Logger01	""	lt:1 LANG:5 "RECGVALOGB01 (0)@@"
+RecVoiceGVA.Components.ChainB.Logger02	""	lt:1 LANG:5 "RECGVALOGB02 (0)@@"
+RecVoiceGVA.Components.ChainB.Logger03	""	lt:1 LANG:5 "RECGVALOGB03 (0)@@"
+RecVoiceGVA.Components.ChainB.Logger04	""	lt:1 LANG:5 "RECGVALOGB04 (0)@@"
+RecVoiceGVA.Components.ChainB.Logger05	""	lt:1 LANG:5 "RECGVALOGB05 (0)@@"
+RecVoiceGVA.Components.ChainB.STC01	""	lt:1 LANG:5 "RECGVASTCB01@@"
+RecVoiceGVA.Components.ChainB.CLS01	""	lt:1 LANG:5 "RECGVACLSB01@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+RecVoiceGVA.GlobalStatus.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.GlobalStatus.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.GlobalStatus.Disabled	sgRecVoiceGVA	0	0x101	18.04.2019 07:00:36.965
+RecVoiceGVA.GlobalStatus.SubDisabled	sgRecVoiceGVA	0	0x100101	21.01.2016 09:33:55.498
+RecVoiceGVA.GlobalStatus.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.GlobalStatus.Alarms.GenerateAlarms	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:12.531
+RecVoiceGVA.GlobalStatus.Alarms.AlarmActive	sgRecVoiceGVA	1	0x200101	18.04.2019 07:00:38.580
+RecVoiceGVA.GlobalStatus.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:12.594
+RecVoiceGVA.GlobalStatus.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.GlobalTT"	0x101	09.02.2010 08:39:12.625
+RecVoiceGVA.GlobalStatus.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.LoggerGlobalStatus", "RecVoiceGVA.Components.PairStatus.STC01", "RecVoiceGVA.Components.PairStatus.CLS01"	0x101	09.02.2010 08:39:12.656
+RecVoiceGVA.GlobalStatus.AETable	sgRecVoiceGVA	"AETable01"	0x101	09.02.2010 08:39:12.687
+RecVoiceGVA.RawData.ChainA.Status01	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:56.331
+RecVoiceGVA.RawData.ChainA.Logging01	sgRecVoiceGVA	0	0x101	24.04.2019 07:07:58.999
+RecVoiceGVA.RawData.ChainA.Capture01	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.269
+RecVoiceGVA.RawData.ChainA.Backup01	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:23.586
+RecVoiceGVA.RawData.ChainA.LoggerID01	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:08:36.346
+RecVoiceGVA.RawData.ChainA.Status02	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:06.315
+RecVoiceGVA.RawData.ChainA.Logging02	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:26.340
+RecVoiceGVA.RawData.ChainA.Capture02	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.269
+RecVoiceGVA.RawData.ChainA.Backup02	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:23.587
+RecVoiceGVA.RawData.ChainA.LoggerID02	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:46.331
+RecVoiceGVA.RawData.ChainA.Status03	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:06.315
+RecVoiceGVA.RawData.ChainA.Logging03	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:26.340
+RecVoiceGVA.RawData.ChainA.Capture03	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.270
+RecVoiceGVA.RawData.ChainA.Backup03	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:23.587
+RecVoiceGVA.RawData.ChainA.LoggerID03	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:46.330
+RecVoiceGVA.RawData.ChainA.Status04	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:56.331
+RecVoiceGVA.RawData.ChainA.Logging04	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:10.380
+RecVoiceGVA.RawData.ChainA.Capture04	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.271
+RecVoiceGVA.RawData.ChainA.Backup04	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:36.346
+RecVoiceGVA.RawData.ChainA.LoggerID04	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:06:36.306
+RecVoiceGVA.RawData.ChainA.Status05	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:06.315
+RecVoiceGVA.RawData.ChainA.Logging05	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:26.340
+RecVoiceGVA.RawData.ChainA.Capture05	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.271
+RecVoiceGVA.RawData.ChainA.Backup05	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:26.728
+RecVoiceGVA.RawData.ChainA.LoggerID05	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:46.331
+RecVoiceGVA.RawData.ChainA.CLS01	sgRecVoiceGVA	-1	0x141	24.04.2019 07:07:52.274
+RecVoiceGVA.RawData.ChainA.CLSErrorString01	sgRecVoiceGVA	"-"	0x141	24.04.2019 07:07:54.285
+RecVoiceGVA.RawData.ChainA.STC01	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:52.274
+RecVoiceGVA.RawData.ChainB.Status01	sgRecVoiceGVA	0	0x101	24.04.2019 07:07:54.485
+RecVoiceGVA.RawData.ChainB.Logging01	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:16.338
+RecVoiceGVA.RawData.ChainB.Capture01	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:18.394
+RecVoiceGVA.RawData.ChainB.Backup01	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:26.729
+RecVoiceGVA.RawData.ChainB.LoggerID01	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:36.324
+RecVoiceGVA.RawData.ChainB.Status02	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:56.331
+RecVoiceGVA.RawData.ChainB.Logging02	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:16.073
+RecVoiceGVA.RawData.ChainB.Capture02	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:18.394
+RecVoiceGVA.RawData.ChainB.Backup02	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:36.346
+RecVoiceGVA.RawData.ChainB.LoggerID02	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:06:36.306
+RecVoiceGVA.RawData.ChainB.Status03	sgRecVoiceGVA	0	0x101	24.04.2019 07:07:55.741
+RecVoiceGVA.RawData.ChainB.Logging03	sgRecVoiceGVA	0	0x141	24.04.2019 07:08:26.340
+RecVoiceGVA.RawData.ChainB.Capture03	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:18.841
+RecVoiceGVA.RawData.ChainB.Backup03	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:35.023
+RecVoiceGVA.RawData.ChainB.LoggerID03	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:46.331
+RecVoiceGVA.RawData.ChainB.Status04	sgRecVoiceGVA	0	0x101	24.04.2019 07:07:55.742
+RecVoiceGVA.RawData.ChainB.Logging04	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.268
+RecVoiceGVA.RawData.ChainB.Capture04	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:18.842
+RecVoiceGVA.RawData.ChainB.Backup04	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:37.326
+RecVoiceGVA.RawData.ChainB.LoggerID04	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:07:36.324
+RecVoiceGVA.RawData.ChainB.Status05	sgRecVoiceGVA	0	0x101	24.04.2019 07:07:55.743
+RecVoiceGVA.RawData.ChainB.Logging05	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:17.268
+RecVoiceGVA.RawData.ChainB.Capture05	sgRecVoiceGVA	0	0x101	24.04.2019 07:08:23.586
+RecVoiceGVA.RawData.ChainB.Backup05	sgRecVoiceGVA	0	0x141	24.04.2019 07:06:46.310
+RecVoiceGVA.RawData.ChainB.LoggerID05	sgRecVoiceGVA	"0"	0x141	24.04.2019 07:04:46.005
+RecVoiceGVA.RawData.ChainB.CLS01	sgRecVoiceGVA	-1	0x141	24.04.2019 07:07:52.274
+RecVoiceGVA.RawData.ChainB.CLSErrorString01	sgRecVoiceGVA	"-"	0x141	24.04.2019 07:07:54.285
+RecVoiceGVA.RawData.ChainB.STC01	sgRecVoiceGVA	0	0x141	24.04.2019 07:07:52.274
+RecVoiceGVA.Components.PairStatus.Logger01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:48.343
+RecVoiceGVA.Components.PairStatus.Logger01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.Logger01.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:12.734
+RecVoiceGVA.Components.PairStatus.Logger01.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:12.765
+RecVoiceGVA.Components.PairStatus.Logger01.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.Logger01"	0x101	09.02.2010 08:39:12.797
+RecVoiceGVA.Components.PairStatus.Logger01.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:12.828
+RecVoiceGVA.Components.PairStatus.Logger02.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger02.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger02.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:48.343
+RecVoiceGVA.Components.PairStatus.Logger02.SubDisabled	sgRecVoiceGVA	0	0x100101	21.01.2016 09:33:54.755
+RecVoiceGVA.Components.PairStatus.Logger02.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.Logger02.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:12.859
+RecVoiceGVA.Components.PairStatus.Logger02.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:12.890
+RecVoiceGVA.Components.PairStatus.Logger02.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.Logger02"	0x101	09.02.2010 08:39:12.922
+RecVoiceGVA.Components.PairStatus.Logger02.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:12.953
+RecVoiceGVA.Components.PairStatus.Logger03.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger03.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger03.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.917
+RecVoiceGVA.Components.PairStatus.Logger03.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.Logger03.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:12.984
+RecVoiceGVA.Components.PairStatus.Logger03.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:13.015
+RecVoiceGVA.Components.PairStatus.Logger03.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.Logger03"	0x101	09.02.2010 08:39:13.046
+RecVoiceGVA.Components.PairStatus.Logger03.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:13.078
+RecVoiceGVA.Components.PairStatus.Logger04.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger04.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger04.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.917
+RecVoiceGVA.Components.PairStatus.Logger04.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.Logger04.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:13.109
+RecVoiceGVA.Components.PairStatus.Logger04.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:13.140
+RecVoiceGVA.Components.PairStatus.Logger04.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.Logger04"	0x101	09.02.2010 08:39:13.171
+RecVoiceGVA.Components.PairStatus.Logger04.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:13.203
+RecVoiceGVA.Components.PairStatus.Logger05.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger05.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.Logger05.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.917
+RecVoiceGVA.Components.PairStatus.Logger05.SubDisabled	sgRecVoiceGVA	0	0x101	13.09.2011 11:23:08.061
+RecVoiceGVA.Components.PairStatus.Logger05.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.Logger05.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:13.234
+RecVoiceGVA.Components.PairStatus.Logger05.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:13.265
+RecVoiceGVA.Components.PairStatus.Logger05.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.Logger05"	0x101	09.02.2010 08:39:13.296
+RecVoiceGVA.Components.PairStatus.Logger05.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:13.327
+RecVoiceGVA.Components.PairStatus.STC01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.STC01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.STC01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.917
+RecVoiceGVA.Components.PairStatus.STC01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.STC01.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:13.484
+RecVoiceGVA.Components.PairStatus.STC01.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:13.515
+RecVoiceGVA.Components.PairStatus.STC01.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.STC01"	0x101	09.02.2010 08:39:13.546
+RecVoiceGVA.Components.PairStatus.STC01.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:13.577
+RecVoiceGVA.Components.PairStatus.CLS01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.CLS01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.PairStatus.CLS01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.PairStatus.CLS01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.PairStatus.CLS01.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:13.608
+RecVoiceGVA.Components.PairStatus.CLS01.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.TTVoiceRecordingLogger"	0x101	09.02.2010 08:39:13.640
+RecVoiceGVA.Components.PairStatus.CLS01.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.Chain*.CLS01"	0x101	09.02.2010 08:39:13.671
+RecVoiceGVA.Components.PairStatus.CLS01.Params	sgRecVoiceGVA	"RecVoiceGVA.PairParams"	0x101	09.02.2010 08:39:13.702
+RecVoiceGVA.Components.ChainA.Logger01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger01.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger01.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger01.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.Logger01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.Logger01.Events.EventText	sgRecVoiceGVA	"RECGVALOGA01"	0x101	09.02.2010 08:39:13.733
+RecVoiceGVA.Components.ChainA.Logger01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:13.749
+RecVoiceGVA.Components.ChainA.Logger02.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger02.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger02.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger02.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger02.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger02.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.Logger02.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.Logger02.Events.EventText	sgRecVoiceGVA	"RECGVALOGA02"	0x101	09.02.2010 08:39:13.780
+RecVoiceGVA.Components.ChainA.Logger02.Alarms.AlarmActive	sgRecVoiceGVA	0	0x101	25.11.2015 13:37:20.816
+RecVoiceGVA.Components.ChainA.Logger02.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:13.796
+RecVoiceGVA.Components.ChainA.Logger03.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger03.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger03.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger03.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger03.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger03.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.Logger03.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.Logger03.Events.EventText	sgRecVoiceGVA	"RECGVALOGA03"	0x101	09.02.2010 08:39:13.827
+RecVoiceGVA.Components.ChainA.Logger03.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:13.843
+RecVoiceGVA.Components.ChainA.Logger04.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger04.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger04.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger04.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger04.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger04.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.Logger04.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.Logger04.Events.EventText	sgRecVoiceGVA	"RECGVALOGA04"	0x101	09.02.2010 08:39:13.874
+RecVoiceGVA.Components.ChainA.Logger04.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:13.889
+RecVoiceGVA.Components.ChainA.Logger05.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger05.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.Logger05.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger05.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger05.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainA.Logger05.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.Logger05.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.Logger05.Events.EventText	sgRecVoiceGVA	"RECGVALOGA05"	0x101	09.02.2010 08:39:13.921
+RecVoiceGVA.Components.ChainA.Logger05.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:13.936
+RecVoiceGVA.Components.ChainA.STC01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.STC01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.STC01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.STC01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.STC01.Events.EventText	sgRecVoiceGVA	"RECGVASTCA01"	0x101	09.02.2010 08:39:14.014
+RecVoiceGVA.Components.ChainA.STC01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.124
+RecVoiceGVA.Components.ChainA.CLS01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.CLS01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainA.CLS01.Label1	sgRecVoiceGVA	"CLSErrorString: -"	0x100101	13.11.2017 10:27:32.774
+RecVoiceGVA.Components.ChainA.CLS01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainA.CLS01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainA.CLS01.Events.EventText	sgRecVoiceGVA	"RECGVACLSA01"	0x101	09.02.2010 08:39:14.155
+RecVoiceGVA.Components.ChainA.CLS01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.186
+RecVoiceGVA.Components.ChainB.Logger01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger01.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger01.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger01.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.Logger01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.Logger01.Events.EventText	sgRecVoiceGVA	"RECGVALOGB01"	0x101	09.02.2010 08:39:14.217
+RecVoiceGVA.Components.ChainB.Logger01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.233
+RecVoiceGVA.Components.ChainB.Logger02.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger02.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger02.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger02.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger02.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger02.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.Logger02.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.Logger02.Events.EventText	sgRecVoiceGVA	"RECGVALOGB02"	0x101	09.02.2010 08:39:14.264
+RecVoiceGVA.Components.ChainB.Logger02.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.280
+RecVoiceGVA.Components.ChainB.Logger03.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger03.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger03.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger03.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger03.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger03.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.Logger03.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.Logger03.Events.EventText	sgRecVoiceGVA	"RECGVALOGB03"	0x101	09.02.2010 08:39:14.311
+RecVoiceGVA.Components.ChainB.Logger03.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.326
+RecVoiceGVA.Components.ChainB.Logger04.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger04.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger04.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger04.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger04.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger04.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.Logger04.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.Logger04.Events.EventText	sgRecVoiceGVA	"RECGVALOGB04"	0x101	09.02.2010 08:39:14.358
+RecVoiceGVA.Components.ChainB.Logger04.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.373
+RecVoiceGVA.Components.ChainB.Logger05.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger05.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.Logger05.Label1	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger05.Label2	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger05.Label3	sgRecVoiceGVA	"-"	0x100101	21.03.2018 13:12:42.568
+RecVoiceGVA.Components.ChainB.Logger05.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.Logger05.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.Logger05.Events.EventText	sgRecVoiceGVA	"RECGVALOGB05"	0x101	09.02.2010 08:39:14.405
+RecVoiceGVA.Components.ChainB.Logger05.Alarms.AlarmActive	sgRecVoiceGVA	0	0x101	13.09.2011 11:23:05.670
+RecVoiceGVA.Components.ChainB.Logger05.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.420
+RecVoiceGVA.Components.ChainB.STC01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.STC01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.STC01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.STC01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.STC01.Events.EventText	sgRecVoiceGVA	"RECGVASTCB01"	0x101	09.02.2010 08:39:14.498
+RecVoiceGVA.Components.ChainB.STC01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.529
+RecVoiceGVA.Components.ChainB.CLS01.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.CLS01.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.ChainB.CLS01.Label1	sgRecVoiceGVA	"CLSErrorString: -"	0x100101	13.11.2017 10:27:33.341
+RecVoiceGVA.Components.ChainB.CLS01.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.ChainB.CLS01.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.ChainB.CLS01.Events.EventText	sgRecVoiceGVA	"RECGVACLSB01"	0x101	09.02.2010 08:39:14.561
+RecVoiceGVA.Components.ChainB.CLS01.Params	sgRecVoiceGVA	"RecVoiceGVA.ChainParams"	0x101	09.02.2010 08:39:14.592
+RecVoiceGVA.Components.LoggerGlobalStatus.PreStatus	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.LoggerGlobalStatus.Status	sgRecVoiceGVA	"UKN"	0x200101	18.04.2019 07:00:21.033
+RecVoiceGVA.Components.LoggerGlobalStatus.Disabled	sgRecVoiceGVA	0	0x101	02.04.2019 09:04:57.918
+RecVoiceGVA.Components.LoggerGlobalStatus.SubDisabled	sgRecVoiceGVA	0	0x100101	21.01.2016 09:33:55.020
+RecVoiceGVA.Components.LoggerGlobalStatus.Message	sgRecVoiceGVA	""	0x101	18.04.2019 07:00:21.479
+RecVoiceGVA.Components.LoggerGlobalStatus.LogicConfig.LogicEnabled	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:14.623
+RecVoiceGVA.Components.LoggerGlobalStatus.LogicConfig.Rule	sgRecVoiceGVA	"RecVoiceGVA.TruthTables.GlobalLoggerTT"	0x101	09.02.2010 08:39:14.654
+RecVoiceGVA.Components.LoggerGlobalStatus.LogicConfig.Inputs	sgRecVoiceGVA	"RecVoiceGVA.Components.PairStatus.Logger01", "RecVoiceGVA.Components.PairStatus.Logger02", "RecVoiceGVA.Components.PairStatus.Logger03", "RecVoiceGVA.Components.PairStatus.Logger04", "RecVoiceGVA.Components.PairStatus.Logger05"	0x101	09.02.2010 08:39:14.686
+RecVoiceGVA.Connections.Inputs	sgRecVoiceGVA	"RecVoiceGVA.RawData.ChainA.Status*", "RecVoiceGVA.RawData.ChainB.Status*", "RecVoiceGVA.RawData.ChainA.LoggerID*", "RecVoiceGVA.RawData.ChainB.LoggerID*", "RecVoiceGVA.RawData.ChainA.Logging*", "RecVoiceGVA.RawData.ChainB.Logging*", "RecVoiceGVA.RawData.ChainA.Capture*", "RecVoiceGVA.RawData.ChainB.Capture*", "RecVoiceGVA.RawData.ChainA.Backup*", "RecVoiceGVA.RawData.ChainB.Backup*", "RecVoiceGVA.RawData.Chain*.STC01", "RecVoiceGVA.RawData.Chain*.CLS01", "RecVoiceGVA.RawData.Chain*.CLSErrorString01"	0x101	09.02.2010 08:39:14.732
+RecVoiceGVA.Connections.Outputs	sgRecVoiceGVA	"RecVoiceGVA.Components.ChainA.Logger*.PreStatus", "RecVoiceGVA.Components.ChainB.Logger*.PreStatus", "RecVoiceGVA.Components.ChainA.Logger*.Events.EventText", "RecVoiceGVA.Components.ChainB.Logger*.Events.EventText", "RecVoiceGVA.Components.ChainA.Logger*.Label1", "RecVoiceGVA.Components.ChainB.Logger*.Label1", "RecVoiceGVA.Components.ChainA.Logger*.Label2", "RecVoiceGVA.Components.ChainB.Logger*.Label2", "RecVoiceGVA.Components.ChainA.Logger*.Label3", "RecVoiceGVA.Components.ChainB.Logger*.Label3", "RecVoiceGVA.Components.Chain*.STC01.PreStatus", "RecVoiceGVA.Components.Chain*.CLS01.PreStatus", "RecVoiceGVA.Components.Chain*.CLS01.Label1"	0x101	09.02.2010 08:39:14.764
+RecVoiceGVA.Connections.Rules	sgRecVoiceGVA	"ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectRecVoiceLoggerIDToDescription", "ConnectRecVoiceLoggerIDToDescription", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithStringInsertion"	0x101	09.02.2010 08:39:14.795
+RecVoiceGVA.Connections.Params	sgRecVoiceGVA	"RecVoiceGVA.ConvTableStatus", "RecVoiceGVA.ConvTableStatus", "", "", "RecVoiceGVA.ConvTableLogging", "RecVoiceGVA.ConvTableLogging", "RecVoiceGVA.ConvTableCapture", "RecVoiceGVA.ConvTableCapture", "RecVoiceGVA.ConvTableBackup", "RecVoiceGVA.ConvTableBackup", "RecVoiceGVA.ConvTableSTC", "RecVoiceGVA.ConvTableCLS", "RecVoiceGVA.TemplateStrInsertCLSErrorString"	0x101	09.02.2010 08:39:14.826
+RecVoiceGVA.WatchDog.References	sgRecVoiceGVA	"RecVoiceGVA.RawData.ChainA.Status*", "RecVoiceGVA.RawData.ChainB.Status*", "RecVoiceGVA.RawData.ChainA.Logging*", "RecVoiceGVA.RawData.ChainB.Logging*", "RecVoiceGVA.RawData.ChainA.Capture*", "RecVoiceGVA.RawData.ChainB.Capture*", "RecVoiceGVA.RawData.ChainA.Backup*", "RecVoiceGVA.RawData.ChainB.Backup*", "RecVoiceGVA.RawData.ChainA.LoggerID*", "RecVoiceGVA.RawData.ChainB.LoggerID*", "RecVoiceGVA.RawData.Chain*.STC01", "RecVoiceGVA.RawData.Chain*.CLS01", "RecVoiceGVA.RawData.Chain*.CLSErrorString01"	0x101	09.02.2010 08:39:14.873
+RecVoiceGVA.WatchDog.DefaultValues	sgRecVoiceGVA	"0", "-", "-", "-", "-", "-", "-", "-", "0", "0", "0", "-1", "-"	0x101	09.02.2010 08:39:14.904
+RecVoiceGVA.WatchDog.Outputs	sgRecVoiceGVA	"RecVoiceGVA.RawData.ChainA.Status*", "RecVoiceGVA.RawData.ChainB.Status*", "RecVoiceGVA.RawData.ChainA.Logging*", "RecVoiceGVA.RawData.ChainB.Logging*", "RecVoiceGVA.RawData.ChainA.Capture*", "RecVoiceGVA.RawData.ChainB.Capture*", "RecVoiceGVA.RawData.ChainA.Backup*", "RecVoiceGVA.RawData.ChainB.Backup*", "RecVoiceGVA.RawData.ChainA.LoggerID*", "RecVoiceGVA.RawData.ChainB.LoggerID*", "RecVoiceGVA.RawData.Chain*.STC01", "RecVoiceGVA.RawData.Chain*.CLS01", "RecVoiceGVA.RawData.Chain*.CLSErrorString01"	0x101	09.02.2010 08:39:14.935
+RecVoiceGVA.WatchDog.Timeouts	sgRecVoiceGVA	150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150	0x101	09.02.2010 08:39:14.967
+RecVoiceGVA.History.Message	sgRecVoiceGVA	""	0x101	02.04.2019 09:07:54.854
+RecVoiceGVA.History.HistorySize	sgRecVoiceGVA	100	0x101	09.02.2010 08:39:15.013
+RecVoiceGVA.History.ShortHistory	sgRecVoiceGVA		0x101	02.04.2019 09:08:04.980
+RecVoiceGVA.ChainParams.Histories	sgRecVoiceGVA	"RecVoiceGVA.History"	0x101	09.02.2010 08:39:15.045
+RecVoiceGVA.ChainParams.AETable	sgRecVoiceGVA	"AETable01"	0x101	09.02.2010 08:39:15.076
+RecVoiceGVA.ChainParams.GenerateEvents	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:15.107
+RecVoiceGVA.PairParams.Histories	sgRecVoiceGVA	"RecVoiceGVA.History"	0x101	09.02.2010 08:39:15.138
+RecVoiceGVA.PairParams.AETable	sgRecVoiceGVA	"AETable01"	0x101	09.02.2010 08:39:15.169
+RecVoiceGVA.PairParams.GenerateEvents	sgRecVoiceGVA	1	0x101	09.02.2010 08:39:15.201
+RecVoiceGVA.TruthTables.GlobalTT.Table	sgRecVoiceGVA	"OPS_---_OPS_0", "UKN_---_UKN_0", "DEG_---_DEG_0", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_OPS_DEG_0", "---_ANY_UKN_0"	0x101	09.02.2010 08:39:15.232
+RecVoiceGVA.TruthTables.GlobalLoggerTT.Table	sgRecVoiceGVA	"OPS_---_OPS_0", "UKN_---_UKN_0", "DEG_---_U/S_0", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_DEG_DEG_0", "---_ANY_UKN_0"	0x101	09.02.2010 08:39:15.263
+RecVoiceGVA.TruthTables.TTVoiceRecordingLogger.Table	sgRecVoiceGVA	"OPS_---_OPS_0", "DEG_---_OPS_0", "U/S_---_U/S_0", "UKN_---_UKN_0", "---_---_OPS_2_OPS+_DEG+", "---_---_DEG_2_OPS+_U/S+", "---_---_DEG_2_OPS+_UKN+", "---_---_OPS_2_DEG+_OPS+", "---_---_DEG_2_U/S+_OPS+", "---_---_DEG_2_UKN+_OPS+", "---_---_DEG_2_DEG+_U/S+", "---_---_DEG_2_DEG+_UKN+", "---_---_U/S_2_U/S+_UKN+", "---_---_DEG_2_U/S+_DEG+", "---_---_DEG_2_UKN+_DEG+", "---_---_U/S_2_UKN+_U/S+"	0x101	09.02.2010 08:39:15.294
+RecVoiceGVA.ConvTableStatus.Input	sgRecVoiceGVA	"0", "1", "2", "3", "4"	0x101	09.02.2010 08:39:15.326
+RecVoiceGVA.ConvTableStatus.Output	sgRecVoiceGVA	"UKN", "OPS", "DEG", "U/S", "U/S"	0x101	09.02.2010 08:39:15.357
+RecVoiceGVA.ConvTableSTC.Input	sgRecVoiceGVA	"else", "0", "1"	0x101	09.02.2010 08:39:15.388
+RecVoiceGVA.ConvTableSTC.Output	sgRecVoiceGVA	"U/S", "UKN", "OPS"	0x101	09.02.2010 08:39:15.419
+RecVoiceGVA.ConvTableCLS.Input	sgRecVoiceGVA	"else", "-1", "0"	0x101	09.02.2010 08:39:15.450
+RecVoiceGVA.ConvTableCLS.Output	sgRecVoiceGVA	"U/S", "UKN", "OPS"	0x101	09.02.2010 08:39:15.482
+RecVoiceGVA.ConvTableLogging.Input	sgRecVoiceGVA	"0", "1", "2", "3", "4"	0x101	09.02.2010 08:39:15.513
+RecVoiceGVA.ConvTableLogging.Output	sgRecVoiceGVA	"-", "Logging: noError", "Logging: warning", "Logging: error", "Logging: criticalError"	0x101	09.02.2010 08:39:15.544
+RecVoiceGVA.ConvTableCapture.Input	sgRecVoiceGVA	"0", "1", "2", "3", "4"	0x101	09.02.2010 08:39:15.575
+RecVoiceGVA.ConvTableCapture.Output	sgRecVoiceGVA	"-", "Capture: noError", "Capture: warning", "Capture: error", "Capture: criticalError"	0x101	09.02.2010 08:39:15.607
+RecVoiceGVA.ConvTableBackup.Input	sgRecVoiceGVA	"0", "1", "2", "3", "4"	0x101	09.02.2010 08:39:15.638
+RecVoiceGVA.ConvTableBackup.Output	sgRecVoiceGVA	"-", "Backup: noError", "Backup: warning", "Backup: error", "Backup: criticalError"	0x101	09.02.2010 08:39:15.669
+RecVoiceGVA.TemplateStrInsertCLSErrorString.Template	sgRecVoiceGVA	"CLSErrorString: %X"	0x101	09.02.2010 08:39:15.716
+RecVoiceGVA.MenuEntry.Name	sgRecVoiceGVA	"RECVOICE"	0x200101	02.09.2016 08:08:42.933
+RecVoiceGVA.MenuEntry.Group	sgRecVoiceGVA	"REC"	0x101	02.09.2016 08:08:42.934
+RecVoiceGVA.MenuEntry.Panel	sgRecVoiceGVA	"RecVoice/sgRecVoiceMainPanel.pnl"	0x101	02.09.2016 08:08:42.935
+RecVoiceGVA.MenuEntry.Params	sgRecVoiceGVA	"Site:GVA;SystemName:ISup_G:;NLoggers:5"	0x200101	23.01.2017 14:34:22.659
+RecVoiceGVA.MenuEntry.GlobalStatusPoint	sgRecVoiceGVA	"RecVoiceGVA.GlobalStatus"	0x300101	22.06.2017 17:07:35.113
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+RecVoiceGVA.GlobalStatus.Alarms.AlarmActive	sgRecVoiceGVA		12					"RecVoice/sgRecVoiceMainPanel.pnl"	"$Site:GVA", "$SystemName:ISup_G:", "$NLoggers:5"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on Rec Voice GVA"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+RecVoiceGVA.RawData.ChainA.Status01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Logging01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Capture01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Backup01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.LoggerID01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Status02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Logging02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Capture02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Backup02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.LoggerID02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Status03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Logging03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Capture03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Backup03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.LoggerID03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Status04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Logging04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Capture04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Backup04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.LoggerID04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Status05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Logging05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Capture05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.Backup05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.LoggerID05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.CLS01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.CLSErrorString01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainA.STC01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Status01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Logging01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Capture01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Backup01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.LoggerID01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Status02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Logging02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Capture02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Backup02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.LoggerID02	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Status03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Logging03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Capture03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Backup03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.LoggerID03	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Status04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Logging04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Capture04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Backup04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.LoggerID04	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Status05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Logging05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Capture05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.Backup05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.LoggerID05	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.CLS01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.CLSErrorString01	sgRecVoiceGVA	56	\1
+RecVoiceGVA.RawData.ChainB.STC01	sgRecVoiceGVA	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+RecVoiceGVA.RawData.ChainA.Status01	sgRecVoiceGVA	16	"10_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Logging01	sgRecVoiceGVA	16	"10_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Capture01	sgRecVoiceGVA	16	"10_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Backup01	sgRecVoiceGVA	16	"10_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.LoggerID01	sgRecVoiceGVA	16	"10_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.Status02	sgRecVoiceGVA	16	"11_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.02.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Logging02	sgRecVoiceGVA	16	"11_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Capture02	sgRecVoiceGVA	16	"11_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Backup02	sgRecVoiceGVA	16	"11_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.LoggerID02	sgRecVoiceGVA	16	"11_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.Status03	sgRecVoiceGVA	16	"12_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Logging03	sgRecVoiceGVA	16	"12_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Capture03	sgRecVoiceGVA	16	"12_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Backup03	sgRecVoiceGVA	16	"12_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.LoggerID03	sgRecVoiceGVA	16	"12_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.Status04	sgRecVoiceGVA	16	"13_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Logging04	sgRecVoiceGVA	16	"13_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Capture04	sgRecVoiceGVA	16	"13_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Backup04	sgRecVoiceGVA	16	"13_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.LoggerID04	sgRecVoiceGVA	16	"13_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.Status05	sgRecVoiceGVA	16	"14_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Logging05	sgRecVoiceGVA	16	"14_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Capture05	sgRecVoiceGVA	16	"14_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.Backup05	sgRecVoiceGVA	16	"14_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.LoggerID05	sgRecVoiceGVA	16	"14_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.CLS01	sgRecVoiceGVA	16	"24_1.3.6.1.4.1.3167.4.2.1.4.118040"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainA.CLSErrorString01	sgRecVoiceGVA	16	"24_1.3.6.1.4.1.3167.4.2.1.2.118040"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainA.STC01	sgRecVoiceGVA	16	"22_1.3.6.1.4.1.3167.1.6.2"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Status01	sgRecVoiceGVA	16	"16_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Logging01	sgRecVoiceGVA	16	"16_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Capture01	sgRecVoiceGVA	16	"16_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Backup01	sgRecVoiceGVA	16	"16_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.LoggerID01	sgRecVoiceGVA	16	"16_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.Status02	sgRecVoiceGVA	16	"17_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.02.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Logging02	sgRecVoiceGVA	16	"17_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Capture02	sgRecVoiceGVA	16	"17_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Backup02	sgRecVoiceGVA	16	"17_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.LoggerID02	sgRecVoiceGVA	16	"17_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.Status03	sgRecVoiceGVA	16	"18_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Logging03	sgRecVoiceGVA	16	"18_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Capture03	sgRecVoiceGVA	16	"18_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Backup03	sgRecVoiceGVA	16	"18_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.LoggerID03	sgRecVoiceGVA	16	"18_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.Status04	sgRecVoiceGVA	16	"19_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Logging04	sgRecVoiceGVA	16	"19_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Capture04	sgRecVoiceGVA	16	"19_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Backup04	sgRecVoiceGVA	16	"19_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.LoggerID04	sgRecVoiceGVA	16	"19_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.Status05	sgRecVoiceGVA	16	"20_1.3.6.1.4.1.3167.1.3.2.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Logging05	sgRecVoiceGVA	16	"20_1.3.6.1.4.1.3167.1.3.2.3.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Capture05	sgRecVoiceGVA	16	"20_1.3.6.1.4.1.3167.1.3.2.4.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.Backup05	sgRecVoiceGVA	16	"20_1.3.6.1.4.1.3167.1.3.2.5.2.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.LoggerID05	sgRecVoiceGVA	16	"20_1.3.6.1.4.1.3167.1.3.2.1.0"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.CLS01	sgRecVoiceGVA	16	"25_1.3.6.1.4.1.3167.4.2.1.4.186008"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoiceGVA.RawData.ChainB.CLSErrorString01	sgRecVoiceGVA	16	"25_1.3.6.1.4.1.3167.4.2.1.2.186008"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+RecVoiceGVA.RawData.ChainB.STC01	sgRecVoiceGVA	16	"23_1.3.6.1.4.1.3167.1.6.2"	"_RecVoiceGVA"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

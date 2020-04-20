@@ -1,0 +1,291 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 3
+"$Core"
+"$Site"
+"$SystemName"
+"main()
+{
+  PageLabel.text = \"RecVoice \" + $Site + \" 18\";
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1044 83 "" 11
+0
+1 1045 103 "" 46
+0
+2 1022
+"PageLabel"
+""
+1 11 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+195 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 13 12 1099 48
+1 2 0 "0s" 0 0 0 65 0 0  13 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,75,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 8 RecVoice
+LANG:1 4 AFPS
+1 1048 104 "" 46
+0
+1 1051 105 "" 46
+0
+1 1052 106 "" 46
+0
+1 1057 107 "" 46
+0
+1 1058 108 "" 46
+0
+1 1059 109 "" 46
+0
+1 1060 110 "" 46
+0
+1 1069 111 "" 46
+0
+1 1070 112 "" 46
+0
+1 1071 113 "" 46
+0
+1 1072 114 "" 46
+0
+1 1081 115 "" 46
+0
+1 1082 116 "" 46
+0
+1 1083 117 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1046 103 "" 51
+0
+1 1047 103 "" 52
+0
+1 1049 104 "" 51
+0
+1 1050 104 "" 52
+0
+1 1053 105 "" 51
+0
+1 1054 105 "" 52
+0
+1 1055 106 "" 51
+0
+1 1056 106 "" 52
+0
+1 1061 107 "" 51
+0
+1 1062 107 "" 52
+0
+1 1063 108 "" 51
+0
+1 1064 108 "" 52
+0
+1 1065 109 "" 51
+0
+1 1066 109 "" 52
+0
+1 1067 110 "" 51
+0
+1 1068 110 "" 52
+0
+1 1073 111 "" 51
+0
+1 1074 111 "" 52
+0
+1 1075 112 "" 51
+0
+1 1076 112 "" 52
+0
+1 1077 113 "" 51
+0
+1 1078 113 "" 52
+0
+1 1079 114 "" 51
+0
+1 1080 114 "" 52
+0
+1 1084 115 "" 51
+0
+1 1085 115 "" 52
+0
+1 1086 116 "" 51
+0
+1 1087 116 "" 52
+0
+1 1088 117 "" 51
+0
+1 1089 117 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 83 "Group49" -1
+"objects\\sgFwHistory.pnl" 10 710 T 116 1 0 1 -10 -10
+2
+"$SystemHistory""\"RecVoice.History\""
+"$SystemName""$SystemName"
+3 103 "PANEL_REF104" -1
+"objects\\sgFwBlock.pnl" 500 430 T 168 0.6999999999999998 0 0.15 60.00000000000006 15.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.ConnectivityCaptureApiService\""
+3 104 "PANEL_REF104" -1
+"objects\\sgFwBlock.pnl" 500 430 T 200 0.6999999999999998 0 0.15 60.00000000000006 55.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechContentManagerArchivingService\""
+3 105 "PANEL_REF105" -1
+"objects\\sgFwBlock.pnl" 500 430 T 201 0.6999999999999998 0 0.15 60.00000000000006 95.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechContentManagerStorageService\""
+3 106 "PANEL_REF106" -1
+"objects\\sgFwBlock.pnl" 500 430 T 202 0.6999999999999998 0 0.15 60.00000000000006 135.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CybertechRecorderControllerService\""
+3 107 "PANEL_REF107" -1
+"objects\\sgFwBlock.pnl" 500 430 T 203 0.6999999999999998 0 0.15 60.00000000000006 175.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechCoreApiService\""
+3 108 "PANEL_REF108" -1
+"objects\\sgFwBlock.pnl" 500 430 T 204 0.6999999999999998 0 0.15 60.00000000000006 215.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechDatabaseInterfaceServer\""
+3 109 "PANEL_REF109" -1
+"objects\\sgFwBlock.pnl" 500 430 T 205 0.6999999999999998 0 0.15 60.00000000000006 255.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.DSC-server\""
+3 110 "PANEL_REF110" -1
+"objects\\sgFwBlock.pnl" 500 430 T 206 0.6999999999999998 0 0.15 60.00000000000006 295.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.FaultManagerService\""
+3 111 "PANEL_REF111" -1
+"objects\\sgFwBlock.pnl" 500 430 T 207 0.6999999999999998 0 0.15 60.00000000000006 335.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechLicenseService\""
+3 112 "PANEL_REF112" -1
+"objects\\sgFwBlock.pnl" 500 430 T 208 0.6999999999999998 0 0.15 60.00000000000006 375.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.NR_LogfileManager\""
+3 113 "PANEL_REF113" -1
+"objects\\sgFwBlock.pnl" 500 430 T 209 0.6999999999999998 0 0.15 60.00000000000006 415.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechMediaManager\""
+3 114 "PANEL_REF114" -1
+"objects\\sgFwBlock.pnl" 500 430 T 210 0.6999999999999998 0 0.15 60.00000000000006 455.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechSystemManager\""
+3 115 "PANEL_REF115" -1
+"objects\\sgFwBlock.pnl" 500 430 T 211 0.6999999999999998 0 0.15 60.00000000000006 495.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.CyberTechUserManager\""
+3 116 "PANEL_REF116" -1
+"objects\\sgFwBlock.pnl" 500 430 T 212 0.6999999999999998 0 0.15 60.00000000000006 535.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.MySQL\""
+3 117 "PANEL_REF117" -1
+"objects\\sgFwBlock.pnl" 500 430 T 213 0.6999999999999998 0 0.15 60.00000000000006 575.5
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecVoice.Components.\" + $Core + \".Components.W3SVC\""
+0

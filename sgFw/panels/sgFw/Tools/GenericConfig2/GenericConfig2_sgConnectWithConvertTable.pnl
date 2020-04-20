@@ -1,0 +1,550 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values;
+idispatch curr_col;
+const int TABLE_EDITABLE_OPTIONS = 1055;
+DPEditNames = $DPEditNames;
+//DPEditNames = \"EMNet.ConvTables.CallStatusConvTable;\"; //change when finished testing
+
+data_point_elements = makeDynString(INPUT_POSTFIX,
+																		OUTPUT_POSTFIX
+																	 );				
+
+data_points = strsplit(DPEditNames, \";\"); 
+dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+PairTable.Options = TABLE_EDITABLE_OPTIONS; //to make it editable
+sgTree_CreateTable(getShape(\"PairTable\"), dpe_values, makeDynString(\"Inputs\", \"Outputs\"));
+PairTable.FitColumnToClientWidth = true;
+curr_col = PairTable.Columns.Item(0);
+curr_col.Width = 360;
+
+
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+
+}
+" 0
+"main()
+{
+SavingChangesBack();
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+//global variables
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+dyn_anytype all_values;
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+
+dyn_string validate()
+{
+dyn_string result;
+idispatch curr_node;
+for (int i = 1; i<= PairTable.Items.Count; i++)
+	{
+	curr_node = PairTable.GetNodeAtRow(i);
+	if ((curr_node.Text == \"\") || (curr_node.Text == \"(new)\"))
+		{
+		dynAppend(result, \"no input defined for pair number \"+i);
+		}
+	if (curr_node.Cells(1) == \"\")
+		{
+		dynAppend(result, \"blank output defined for pair number \"+i+\", this might be an error\");
+		}
+	}
+
+if (dynlen(result) > 0)
+	{
+	for (int j = 1; j<=dynlen(result);j++)
+		{
+		result[j] = \"sgConnectWithConvertTable error:\" + result[j];
+		}
+	DebugN(result);
+	}
+return result;
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+
+//DebugN(\"entering procedure for saving changes back in sgConnectWithConvertTable\");	
+//this is where you save back to the database
+all_values = sgTree_TableGetValues(getShape(\"PairTable\"));
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+//would be nice to have option to see if any errors produced in validation, whether to not close...
+	////DebugN(data_points, data_point_elements, all_values, changed_elements);
+	////DebugN(all_values, changed_elements);
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 94
+"Frame1"
+""
+1 770 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+91 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 770 10 910 190
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 20  Move Selected Pair 
+2 96
+"Text3"
+""
+1 819 35 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+93 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 821 37 860 53
+0 2 0 "s" 0 0 0 192 0 0  821 37
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 To Top
+2 97
+"Text4"
+""
+1 817 75 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+94 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 819 77 846 93
+0 2 0 "s" 0 0 0 192 0 0  819 77
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 4 Up 1
+2 98
+"Text5"
+""
+1 817 115 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+95 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 819 117 862 133
+0 2 0 "s" 0 0 0 192 0 0  819 117
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Down 1
+2 99
+"Text6"
+""
+1 818 155 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+96 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 820 157 880 173
+0 2 0 "s" 0 0 0 192 0 0  820 157
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 9 To Bottom
+13 89
+"ToTopBtn"
+""
+1 780 30 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+86 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 117 -microsoft windows-Wingdings 3-bold-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,700,0,0,0,2,3,2,1,18,Wingdings 3
+0 ""
+778 28 812 62
+T 
+1
+LANG:5 1 +
+"main()
+{
+sgTree_TableMoveSelectedToTop(getShape(\"PairTable\"));
+}" 0
+ E E E
+13 91
+"UpBtn"
+""
+1 780 70 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+88 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 117 -microsoft windows-Wingdings 3-bold-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,700,0,0,0,2,3,2,1,18,Wingdings 3
+0 ""
+778 68 812 102
+T 
+1
+LANG:5 1 #
+"main()
+{
+sgTree_TableMoveSelectedUpOne(getShape(\"PairTable\"));
+}" 0
+ E E E
+13 92
+"DownBtn"
+""
+1 780 110 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+89 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 117 -microsoft windows-Wingdings 3-bold-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,700,0,0,0,2,3,2,1,18,Wingdings 3
+0 ""
+778 108 812 142
+T 
+1
+LANG:5 1 $
+"main()
+{
+sgTree_TableMoveSelectedDownOne(getShape(\"PairTable\"));
+}" 0
+ E E E
+13 93
+"ToBottomBtn"
+""
+1 780 150 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+90 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 117 -microsoft windows-Wingdings 3-bold-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,700,0,0,0,2,3,2,1,18,Wingdings 3
+0 ""
+778 148 812 182
+T 
+1
+LANG:5 1 ,
+"main()
+{
+sgTree_TableMoveSelectedToBottom(getShape(\"PairTable\"));
+}" 0
+ E E E
+13 100
+"NewPairBtn"
+""
+1 770 210 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+97 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+768 208 912 252
+T 
+1
+LANG:5 12 Add new pair
+"main()
+{
+PairTable.Items.Add(\"(new)\");
+}" 0
+ E E E
+13 101
+"DeletePairBtn"
+""
+1 770 260 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+98 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+768 258 912 302
+T 
+1
+LANG:5 20 Remove selected pair
+"main()
+{
+idispatch curr_node = PairTable.ExtractNode(PairTable.Items.GetFirstSelectedNode());
+curr_node.Delete;
+}" 0
+ E E E
+29 106
+"PairTable"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+102 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+10 10 750 790
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+"long bob;
+bob = PairTable.Selected;
+PairTable.FullExpand;
+PairTable.Selected = bob;
+//PairTable.HideSelection = true
+"
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"changed_elements[dpe_index(INPUT_POSTFIX)] = true;
+changed_elements[dpe_index(OUTPUT_POSTFIX)] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

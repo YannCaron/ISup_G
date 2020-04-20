@@ -1,0 +1,92 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgMV.sgMV	1#1
+	GlobalStatus	41#1:sgFwSystem
+	Components	1#1
+		MV1	41#1:sgFwSystem
+		MV2	41#1:sgFwSystem
+		MV3	41#1:sgFwSystem
+	ConvTables	1#1
+		MVStatus	41#1:sgConnectWithConvertTable
+		MVLabel	41#1:sgConnectWithConvertTable
+	RawData	1#1
+		MV1	21#1
+		MV2	21#1
+		MV3	21#1
+	History	41#10:sgFwHistory
+	ComponentsParams	41#1:sgParams
+	WatchDogsConfig	41#1:sgWatchDogs
+	Connections	41#1:sgFwConnections
+	TruthTables	1#1
+		TTMVGlobalStatus	41#1:sgFwTruthTable
+	MenuEntry	41#1:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+MV	sgMV	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+MV.GlobalStatus	""	lt:1 LANG:5 "MV@%s@"
+MV.Components.MV1	""	lt:1 LANG:5 "MV 1@%s@"
+MV.Components.MV2	""	lt:1 LANG:5 "MV 2@%s@"
+MV.Components.MV3	""	lt:1 LANG:5 "MV 3@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+MV.GlobalStatus.Alarms.GenerateAlarms	sgMV	1	0x101	05.11.2012 14:01:43.814
+MV.GlobalStatus.Alarms.AlarmActive	sgMV	1	0x200101	07.11.2016 13:43:30.127
+MV.GlobalStatus.LogicConfig.LogicEnabled	sgMV	1	0x101	05.11.2012 14:01:43.815
+MV.GlobalStatus.LogicConfig.Rule	sgMV	"MV.TruthTables.TTMVGlobalStatus"	0x101	05.11.2012 14:01:43.817
+MV.GlobalStatus.LogicConfig.Inputs	sgMV	"MV.Components.MV1", "MV.Components.MV2", "MV.Components.MV3"	0x101	08.11.2012 09:27:55.527
+MV.GlobalStatus.AETable	sgMV	"AETable01"	0x101	05.11.2012 14:01:43.820
+MV.Components.MV1.Events.EventText	sgMV	"MV 1"	0x101	05.11.2012 14:01:43.830
+MV.Components.MV1.Params	sgMV	"MV.ComponentsParams"	0x101	05.11.2012 14:01:43.842
+MV.Components.MV2.Events.EventText	sgMV	"MV 2"	0x101	05.11.2012 14:01:43.830
+MV.Components.MV2.Params	sgMV	"MV.ComponentsParams"	0x101	05.11.2012 14:01:43.842
+MV.Components.MV3.Events.EventText	sgMV	"MV 3"	0x101	05.11.2012 14:01:43.830
+MV.Components.MV3.Params	sgMV	"MV.ComponentsParams"	0x101	05.11.2012 14:01:43.842
+MV.ConvTables.MVStatus.Input	sgMV	"Else", "0", "1", "2", "3", "4", "5"	0x101	07.11.2012 06:30:19.376
+MV.ConvTables.MVStatus.Output	sgMV	"UKN", "UKN", "STP", "OPS", "SBY", "DEG", "U/S"	0x101	07.11.2012 06:30:27.266
+MV.ConvTables.MVLabel.Input	sgMV	"Else", "0", "1", "2", "3", "4", "5"	0x101	07.11.2012 06:30:19.376
+MV.ConvTables.MVLabel.Output	sgMV	"Not Defined", "Unknown", "Stopped", "Operational", "Stand-by", "Degraded", "Unserviceable"	0x101	07.11.2012 06:30:27.266
+MV.ComponentsParams.Histories	sgMV	"MV.History"	0x101	05.11.2012 14:01:44.477
+MV.ComponentsParams.AETable	sgMV	"AETable02"	0x200101	05.11.2012 14:01:44.478
+MV.ComponentsParams.GenerateEvents	sgMV	1	0x101	05.11.2012 14:01:44.479
+MV.WatchDogsConfig.References	sgMV	"MV.RawData.*"	0x101	16.04.2015 07:26:36.627
+MV.WatchDogsConfig.DefaultValues	sgMV	"0"	0x101	16.04.2015 07:27:47.967
+MV.WatchDogsConfig.Outputs	sgMV	"MV.RawData.*"	0x101	16.04.2015 07:26:52.746
+MV.WatchDogsConfig.Timeouts	sgMV	12	0x101	16.04.2015 07:28:06.906
+MV.Connections.Inputs	sgMV	"MV.RawData.*", "MV.RawData.*"	0x101	16.04.2015 07:28:52.025
+MV.Connections.Outputs	sgMV	"MV.Components.*.PreStatus", "MV.Components.*.Label1"	0x101	16.04.2015 07:29:16.295
+MV.Connections.Rules	sgMV	"ConnectWithConvertTable", "ConnectWithConvertTable"	0x101	16.04.2015 07:29:58.789
+MV.Connections.Params	sgMV	"MV.ConvTables.MVStatus", "MV.ConvTables.MVLabel"	0x101	16.04.2015 07:30:18.578
+MV.TruthTables.TTMVGlobalStatus.Table	sgMV	"---_---_OPS_3_OPS+_SBY+_STP+", "---_---_OPS_3_OPS+_STP+_SBY+", "---_---_OPS_3_SBY+_OPS+_STP+", "---_---_OPS_3_STP+_OPS+_SBY+", "---_---_OPS_3_STP+_SBY+_OPS+", "---_---_OPS_3_SBY+_STP+_OPS+", "---_---_DEG_3_ANY+_ANY+_OPS+", "---_---_DEG_3_ANY+_OPS+_ANY+", "---_---_DEG_3_OPS+_ANY+_ANY+", "---_---_DEG_3_ANY+_ANY+_DEG+", "---_---_DEG_3_ANY+_DEG+_ANY+", "---_---_DEG_3_DEG+_ANY+_ANY+", "UKN_---_UKN_0", "---_ANY_U/S_0"	0x101	14.11.2016 14:17:23.368
+MV.MenuEntry.Name	sgMV	"MV"	0x101	02.09.2016 08:08:42.821
+MV.MenuEntry.Group	sgMV	"RDP"	0x101	02.09.2016 08:08:42.822
+MV.MenuEntry.Panel	sgMV	"MV/MVMainPanel.pnl"	0x101	02.09.2016 08:08:42.822
+MV.History.HistorySize	sgMV	100	0x101	05.11.2012 14:01:44.470
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+MV.GlobalStatus.Alarms.AlarmActive	sgMV		12					"MV/MVMainPanel.pnl"	"$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on MV"	lt:1 LANG:5 ""												0								
+
+
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+MV.GlobalStatus.Alarms.AlarmActive	sgMV		12					"MV/MVMainPanel.pnl"	"$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on MV"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+MV.RawData.MV1	sgMV	56	\1
+MV.RawData.MV2	sgMV	56	\1
+MV.RawData.MV3	sgMV	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+MV.RawData.MV1	sgMV	16	"5_1.3.6.1.4.1.26307.3.1.2"	"_MV"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+MV.RawData.MV2	sgMV	16	"6_1.3.6.1.4.1.26307.3.1.2"	"_MV"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+MV.RawData.MV3	sgMV	16	"7_1.3.6.1.4.1.26307.3.1.2"	"_MV"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

@@ -1,0 +1,64 @@
+V 10
+1
+LANG:5 0 
+PANEL,-1 -1 319 143 N "_3DFace" 0
+E E E E E 1 -1 -1 0  100 5
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+2 0
+"LabelText"
+""
+1 100 5 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 100 5 101 29
+0 2 2 "0s" 0 0 0 193 0 0  100 5 1
+1
+LANG:5 86 -*-Tahoma-*-i-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,505,1,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 0 
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

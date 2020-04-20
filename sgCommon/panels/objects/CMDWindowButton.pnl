@@ -1,0 +1,183 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,444 100 84 64 N "_3DFace" 5
+"$ButtonIsVisible"
+"$HistoryName"
+"$LabelButtonCmd"
+"$NavaidNr"
+"$StationName"
+"main()
+{
+	string navaidType;
+
+	bool b;
+// Visible or not
+	if($ButtonIsVisible == \"1\"){
+		ButtonCmd.visible = true;}
+	else{
+		if ($ButtonIsVisible == \"0\"){
+			ButtonCmd.visible = false;}
+		else{
+			dpGet($ButtonIsVisible, b);	
+			if(b == 0){
+				ButtonCmd.visible = false;}
+			else{
+				ButtonCmd.visible = true;}
+		}
+	}
+	
+// If authorized site, cmd button is enable else disabled
+	string currentSite;
+	dyn_string authorizedSites;
+
+	dpGet(\"NavirUtils.CurrentSite\", currentSite); //  get the current site of the project
+	dpGet($StationName + \".General.AuthorizedSitesForCommands\", authorizedSites); //  get the authorized site to write commands
+
+	if(dynContains(authorizedSites, currentSite) > 0) // if site in authorized list
+	{
+		ButtonCmd.enabled = true;		
+	}
+	else
+	{
+		ButtonCmd.enabled = false;		
+	}
+
+	// set toolTip for button
+	string toolTipString;
+	string navName;
+	
+	dpGet($StationName + \".Structured.\" + $NavaidNr + \".NavaidName\", navName); //  get the right navaid name in the database
+
+//	DebugN(\"In ButtonCmd_EventInitialize 2. navName: \" + $StationName + \".Structured.\" + $NavaidNr + \".NavaidName\" );
+	labelWindowCmd = navName + \" Commands\";
+	
+	toolTipString = \"Open \" + navName + \" Commands window\";
+	
+	ButtonCmd.toolTipText =  toolTipString;
+
+	if($LabelButtonCmd != \"\")
+		ButtonCmd.text = $LabelButtonCmd; 
+
+// get type to have the right commands for the respective type
+	dpGet($StationName + \".Structured.\" + $NavaidNr + \".NavaidType\", navaidType); //  get the right navaid name in the database
+	if(navaidType == \"\" || navaidType == \"DME\" || navaidType == \"VOR\" || navaidType == \"DVOR\" || navaidType == \"LLZ\"|| 
+				navaidType == \"LOC\"  || navaidType == \"GP\" ) { // commands are standard for these types
+	  command1 = \"1\";
+	  command2 = \"2\"; 
+	  command3 = \"3\"; 
+	  command4 = \"0\"; // -> do nothing if written
+		confirmationText1 = \"switch TX1 ON\";
+		confirmationText2 = \"switch TX2 ON\";
+	  confirmationText3 = \"switch both TX's OFF\";
+	  confirmationText4 = \"spare confirmation text cmd 4\";
+	  label1 = \"TX1 ON\"; 
+	  label2 = \"TX2 ON\";
+	  label3 = \"TX1 && TX2 OFF\"; 
+	  label4 = \"\";	
+	}
+	else if (navaidType == \"NDB\") // commands for an NDB, only TX ON and TX OFF
+	{
+	  command1 = \"1\";
+	  command2 = \"0\"; // -> do nothing if written
+	  command3 = \"3\"; 
+	  command4 = \"0\"; // -> do nothing if written
+		confirmationText1 = \"switch TX ON\";
+		confirmationText2 = \"spare confirmation text cmd 2\";
+	  confirmationText3 = \"switch both TX's OFF\";
+	  confirmationText4 = \"spare confirmation text cmd 4\";
+	  label1 = \"TX ON\"; 
+	  label2 = \"\";
+	  label3 = \"TX OFF\"; 
+	  label4 = \"\";	
+	}
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"//	navaidName
+global string labelWindowCmd;
+global string confirmationText1;
+global string confirmationText2; 
+global string confirmationText3; 
+global string confirmationText4; 
+global string command1;
+global string command2; 
+global string command3; 
+global string command4; 
+global string label1;
+global string label2; 
+global string label3; 
+global string label4;
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"ButtonCmd"
+""
+1 10 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 8 72 52
+P 
+13434828
+"0.bmp"
+1
+LANG:5 0 
+"main()
+{
+  ChildPanelOnCentralModal(\"objects/CMDWindow.pnl\",\"Command Window\",
+      makeDynString(\"$HistoryName:\" + $HistoryName, \"$ConfirmationText1:\" + confirmationText1, \"$ConfirmationText2:\" + confirmationText2, 
+      \"$ConfirmationText3:\" + confirmationText3, \"$ConfirmationText4:\" + confirmationText4, 
+      \"$Command1:\" + command1, \"$Command2:\" + command2, 
+      \"$Command3:\" + command3, \"$Command4:\" + command4, 
+      \"$Label1:\" + label1, \"$Label2:\" + label2, 
+      \"$Label3:\" + label3, \"$Label4:\" + label4, \"$LabelWindowCmd:\" + labelWindowCmd , \"$NavaidNr:\" + $NavaidNr, \"$StationName:\" + $StationName));
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

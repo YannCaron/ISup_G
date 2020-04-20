@@ -1,0 +1,473 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 5
+"$CriticalEvents"
+"$CriticalEventsStatus"
+"$ErrorsList"
+"$HeartbeatStatus"
+"$PageTitle"
+"main()
+{
+	PageLabel.text = $PageTitle;
+
+	int shortDelay;
+	int longDelay;
+	string shortDelayText;
+	string longDelayText;
+
+	dpGet($ErrorsList + \".ShortDelay\", shortDelay,
+				$ErrorsList + \".LongDelay\", longDelay);
+	
+	if (shortDelay == 1)
+		shortDelayText = \"1 second\";
+	else if (shortDelay == 60)
+		shortDelayText = \"1 minute\";
+	else if ( (shortDelay > 60) && ((shortDelay % 60) == 0) )
+		shortDelayText = (shortDelay/60) + \" minutes\";
+	else
+		shortDelayText = shortDelay + \" seconds\";
+
+	if (longDelay == 1)
+		longDelayText = \"1 second\";
+	else if (longDelay == 60)
+		longDelayText = \"1 minute\";
+	else if ( (longDelay > 60) && ((longDelay % 60) == 0) )
+		longDelayText = (longDelay/60) + \" minutes\";
+	else
+		longDelayText = longDelay + \" seconds\";
+
+	
+	DelayTimeCombo.appendItem(shortDelayText);
+	DelayTimeCombo.appendItem(longDelayText);
+	
+		
+	// set the delay to the delayTimeCombo
+	int delayTime;
+	dpGet($ErrorsList + \".Delay\", delayTime);	
+	
+	if (delayTime < longDelay)
+		DelayTimeCombo.selectedPos(1);
+	else
+		DelayTimeCombo.selectedPos(2);	
+		
+	// dpconnect for the panel
+	dpConnect(\"listChangePanel\", $ErrorsList + \".Lists.Texts\");	
+	
+	 //dpConnect for critical events
+	dpConnect(\"criticalEventsChanged\", $CriticalEvents );	
+} // main
+
+void criticalEventsChanged(string point, dyn_string events)
+{
+	CriticalEventsList.items = events;
+}
+
+void listChangePanel(string point, dyn_string texts)
+{
+	FailedObjectsList.items = texts;	
+} // void statusChnagePanel((string point, bool value)
+
+
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 4 AFPS
+2 70
+"Text6"
+""
+1 575 315 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 577 317 633 333
+0 2 0 "0s" 0 0 0 64 0 0  577 317 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 5 Delay
+1 108 16 "" 46
+0
+1 111 17 "" 46
+0
+1 114 18 "" 46
+0
+30 95
+"Frame1"
+""
+1 10 350 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+50 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 100 1100 350
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 14 Failed objects
+30 96
+"Frame2"
+""
+1 10 630 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+51 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 380 1100 630
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 15 Critical events
+17 44
+"FailedObjectsList"
+""
+1 30 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 28 118 1082 302
+0
+
+E
+E
+E
+
+0 0
+13 54
+"RemoveObject"
+""
+1 30 310 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 28 308 262 342
+
+T 
+1
+LANG:5 22 Remove selected object
+"
+main()
+{
+	// Get the obect name and send a \"in operation\" 
+	string text;
+	text = FailedObjectsList.selectedText;
+	
+	dyn_string textsList;
+	dpGet($ErrorsList + \".Lists.Texts\", textsList);
+	
+	int id;
+	id = dynContains(textsList, text);
+	
+	// Assume an object is selected
+	if (id > 0)
+	{
+		dyn_string objects;
+		dpGet($ErrorsList + \".Lists.Objects\", objects);
+		
+		// 2007 09 19 aj add fulltext (deleting it)
+		dpSet($ErrorsList + \".Change.Object\", objects[id],
+	 			  $ErrorsList + \".Change.Status\", \"manually removed by the user\",
+	 			  $ErrorsList + \".Change.FullText\", \"\");
+	}
+}" 0
+ E E E
+22 66
+"DelayTimeCombo"
+""
+1 645 315 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 643 313 777 340
+0
+
+E
+"
+main()
+{
+ // Get the position
+ int pos;
+ string dpe;
+ pos = DelayTimeCombo.selectedPos;
+ 
+ int delayTime;
+ if (pos == 1)
+ 	dpe = $ErrorsList + \".ShortDelay\";
+ else
+ 	dpe = $ErrorsList + \".LongDelay\";
+ 
+ dpGet(dpe,delayTime);	
+ dpSet($ErrorsList + \".Delay\", delayTime); 
+}" 0
+
+E
+ 0 0
+17 71
+"CriticalEventsList"
+""
+1 30 400 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+42 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 28 398 1082 582
+0
+
+E
+E
+E
+
+0 0
+13 73
+"ClearCriticalEventsBtn"
+""
+1 30 590 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 28 588 262 622
+
+T 
+1
+LANG:5 10 Clear list
+"main()
+{
+	dyn_string dummy;
+	dpSet($CriticalEvents, dummy);
+	
+	// add trace on the history
+	string s;
+	//s = sgStripDpName($CriticalEvents, \".NewCriticalEvents\");
+	// 07.03.2006 aj sgStripDpName doesn't work in dist systems!!!!
+	int pos = strpos($CriticalEvents, \".NewCriticalEvents\");
+	if(pos >= 0)
+	 	s= substr($CriticalEvents, 0, pos); 	
+	
+	s += \".ErrorsList.History\";
+	sgHistoryAddEvent(s,  SEVERITY_COMMAND, \"<<Clear list>> sent\");
+	
+	// set the global status of the criticalEventsList to OPS
+	string s;
+	dpSet($CriticalEventsStatus + \".PreStatus\", \"OPS\");	
+}" 0
+ E E E
+1 117 19 "" 11
+0
+13 107
+"PUSH_BUTTON1"
+""
+1 270 310 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 268 308 502 342
+
+T 
+1
+LANG:5 18 Remove all objects
+"
+main()
+{
+        /* 2009.03.27 aj remove all objects as requested by smc
+  	// Get the obect name and send a \"in operation\" 
+	string text;
+	text = FailedObjectsList.selectedText;
+	*/
+  
+	sgHistoryAddEvent($ErrorsList + \".History\", SEVERITY_COMMAND, \"Remove all failed objects\");
+        
+	dyn_string textsList;
+	dpGet($ErrorsList + \".Lists.Texts\", textsList);
+        //DebugTN(\"sgErrorsListPanel\", \"textsList\", textsList);
+	
+        /* 2009.03.27 aj remove all objects as requested by smc
+	int id;
+	id = dynContains(textsList, text);
+
+	
+	// Assume an object is selected
+	if (id > 0)
+	{
+	*/
+       	dyn_string objects;
+	dpGet($ErrorsList + \".Lists.Objects\", objects);
+        //DebugTN(\"sgErrorsListPanel\", \"objects\", objects);
+        for (int i=1; i<=dynlen(textsList); i++)
+        {
+		// 2007 09 19 aj add fulltext (deleting it)
+		dpSet($ErrorsList + \".Change.Object\", objects[i],
+	 			  $ErrorsList + \".Change.Status\", \"manually removed by the user\",
+	 			  $ErrorsList + \".Change.FullText\", \"\");
+                //DebugTN(\"sgErrorsListPanel\", \"objects[i]\", objects[i]);
+	}
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 109 16 "" 51
+0
+1 110 16 "" 52
+0
+1 112 17 "" 51
+0
+1 113 17 "" 52
+0
+1 115 18 "" 51
+0
+1 116 18 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 16 "Group3"
+"objects\\sgFwBlock.pnl" 230 300 T 45 0.6 0 0.15 722.333333333333 14.9000000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$HeartbeatStatus"
+3 17 "Group5"
+"objects\\sgFwBlock.pnl" 230 300 T 46 0.6 0 0.15 702.333333333333 264.9
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$ErrorsList.GlobalStatus"
+3 18 "Group7"
+"objects\\sgFwBlock.pnl" 230 300 T 47 0.6 0 0.15 702.333333333333 544.9
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$CriticalEventsStatus"
+3 19 ""
+"objects\\sgFwHistory.pnl" 80 695 T 51 1 0 1 -80 5
+2
+"$SystemHistory""$ErrorsList.History"
+"$SystemName"""
+0

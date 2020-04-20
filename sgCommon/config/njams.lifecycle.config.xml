@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration mqttAddress="tcp://127.0.0.1:1883" mqttClientId="nJams-driver-lifecycle" separator=";"
+               dataTopic="ch/skyguide/isup/mqdriver/data" dataQos="0"
+               commandTopic="ch/skyguide/isup/mqdriver/command" commandQos="0"
+               reduTopic="ch/skyguide/isup/mqdriver/monitoring/redundancy" reduQos="0"
+               heartbeatTopic="ch/skyguide/isup/mqdriver/monitoring/heartbeat" heartbeatQos="0"
+               statusTopic="ch/skyguide/isup/mqdriver/monitoring/status" statusQos="0"
+               heartbeatPolling="5000">
+    <agent url="http://zsnjapmoa01:8443/njams/api/" polling="5000">
+        <request name="lifecycle" path="lifecycle" method="GET">
+            <property name = "Content-Type" value="application/json" />
+            <action type="CheckCode" code="200"/>
+            <action type="OtherwiseDo" code="200">
+                <request name="authentication" path="usermanagement/authentication" method="POST">
+                    <property name = "Content-Type" value="application/json" />
+                    <property name = "Accept" value="text/plain" />
+                    <action type="SendOutput">
+                        <data>{"username": "isup_service", "password": "isup_service"}</data>
+                    </action>
+                </request>
+            </action>
+            <action type="ParseJson">
+                <item memberName="state" />
+                <item type="Array" memberName="components" key="component">
+                    <item memberName="state" />
+                </item>
+            </action>
+        </request>
+        <request name="dataprovider" path="dataprovider" method="GET">
+            <property name = "Content-Type" value="application/json" />
+            <action type="CheckCode" code="200"/>
+            <action type="ParseJson">
+                <item type="Array" key="name">
+                    <item memberName="state" />
+                </item>
+            </action>
+        </request>
+        <request name="pluginmanagement.hwc" path="pluginmanagement/plugins/hwc" method="GET">
+            <property name = "Content-Type" value="application/json" />
+            <action type="CheckCode" code="200"/>
+            <action type="ParseJson">
+                <item memberName="status" />
+            </action>
+        </request>
+    </agent>
+</Configuration>

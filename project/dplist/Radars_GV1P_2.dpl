@@ -1,0 +1,176 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRadars.sgRadars	1#1
+	Params	41#20:sgParams
+	History	41#21:sgFwHistory
+	GlobalStatus	41#372:sgFwSystem
+	Components	1#537
+		GV2S	1#542
+			FaultOnRadar	41#543:sgFwSystem
+			WarningOnRadar	41#544:sgFwSystem
+		GV1P	1#551
+			FaultOnRadar	41#552:sgFwSystem
+			WarningOnRadar	41#553:sgFwSystem
+			GPSTimeServer	41#554:sgFwSystem
+			RadarStatus	41#2560:sgFwSystem
+		GV1S	1#1524
+			FaultOnRadar	41#1858:sgFwSystem
+			WarningOnRadar	41#1859:sgFwSystem
+		DOLS	1#1528
+			FaultOnRadar	41#1860:sgFwSystem
+			WarningOnRadar	41#1861:sgFwSystem
+		GV1S_N	1#2499
+			FaultOnRadar	41#2500:sgFwSystem
+			WarningOnRadar	41#2501:sgFwSystem
+	SubComponents	1#1
+		GV1P	1#1
+			RMMS1LAN1	41#1:sgFwSystem
+			RMMS1LAN2	41#1:sgFwSystem
+			RMMS2LAN1	41#1:sgFwSystem
+			RMMS2LAN2	41#1:sgFwSystem
+			RMMS3LAN1	41#1:sgFwSystem
+			RMMS3LAN2	41#1:sgFwSystem
+	RawDatas	1#2338
+		DOLInput006	23#2339
+		DOLInput007	23#2340
+		RXInput015	23#2436
+		RXInput016	23#2437
+		RXInput017	23#2341
+		RXInput018	23#2342
+		RXInput019	23#2343
+		RXInput020	23#2344
+		RXInput021	23#2345
+		RXInput022	23#2346
+		RXInput023	23#2347
+		GV1P	1#2561
+			RMMS1LAN1	21#2562
+			RMMS1LAN2	21#1
+			RMMS2LAN1	21#1
+			RMMS2LAN2	21#1
+			RMMS3LAN1	21#1
+			RMMS3LAN2	21#1
+	WatchDogs	41#2348:sgWatchDogs
+	Connections	41#2349:sgFwConnections
+	MenuEntry	41#2365:sgFwMenuEntry
+	ConvertTable	1#1
+		RadarSNMPRMMStatus	41#1:sgConnectWithConvertTable
+	TruthTables	1#1
+		RadarStatusTT	41#1:sgFwTruthTable
+
+# Datapoint/DpId
+DpName	TypeName	ID
+Radars	sgRadars	28947
+_1_SNMPAgent_30	_SNMPAgent	29356
+_1_SNMPAgent_31	_SNMPAgent	1
+_1_SNMPAgent_32	_SNMPAgent	1
+_1_SNMPAgent_33	_SNMPAgent	1
+_1_SNMPAgent_34	_SNMPAgent	1
+_1_SNMPAgent_35	_SNMPAgent	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+Radars.Components.GV1P.RadarStatus	""	lt:1 LANG:5 "GV1P: Radar Status@%s@"
+
+_1_SNMPAgent_30.	""	lt:1 LANG:5 "RMMS1SDCSALanE@@"
+_1_SNMPAgent_31.	""	lt:1 LANG:5 "RMMS1SDCSALanF@@"
+_1_SNMPAgent_32.	""	lt:1 LANG:5 "RMMS2SDCSBLanE@@"
+_1_SNMPAgent_33.	""	lt:1 LANG:5 "RMMS2SDCSBLanF@@"
+_1_SNMPAgent_34.	""	lt:1 LANG:5 "RMMS3SDCSALanE@@"
+_1_SNMPAgent_35.	""	lt:1 LANG:5 "RMMS3SDCSALanF@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+Radars.Components.GV1P.RadarStatus.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.841
+Radars.Components.GV1P.RadarStatus.LogicConfig.LogicEnabled	sgRadars	1	0x101	18.04.2018 09:06:33.432
+Radars.Components.GV1P.RadarStatus.LogicConfig.Rule	sgRadars	"Radars.TruthTables.RadarStatusTT"	0x101	18.04.2018 09:06:33.433
+Radars.Components.GV1P.RadarStatus.LogicConfig.Inputs	sgRadars	"Radars.SubComponents.GV1P.*"	0x101	18.04.2018 09:06:33.435
+
+Radars.WatchDogs.References	sgRadars	"_SerialModbus_12.Status.Heartbeat", "_SerialModbus_13.Status.Heartbeat", "Radars.RawDatas.GV1P.*"	0x101	27.11.2017 10:00:44.849
+Radars.WatchDogs.DefaultValues	sgRadars	"1", "1", "-1"	0x101	27.11.2017 10:00:44.849
+Radars.WatchDogs.Outputs	sgRadars	"Radars.RawDatas.DOL*:_original.._userbit1", "Radars.RawDatas.RX*:_original.._userbit1", "Radars.RawDatas.GV1P.*"	0x101	27.11.2017 10:00:44.851
+Radars.WatchDogs.Timeouts	sgRadars	12, 12, 10	0x101	27.11.2017 10:00:44.852
+
+Radars.Connections.Inputs	sgRadars	"Radars.RawDatas.DOLInput006", "Radars.RawDatas.DOLInput007", "Radars.RawDatas.RXInput017", "Radars.RawDatas.RXInput018", "Radars.RawDatas.RXInput019", "Radars.RawDatas.RXInput020", "Radars.RawDatas.RXInput021", "Radars.RawDatas.RXInput022", "Radars.RawDatas.RXInput023", "Radars.RawDatas.RXInput015", "Radars.RawDatas.RXInput016", "Radars.RawDatas.GV1P.*"	0x101	27.11.2017 10:00:44.852
+Radars.Connections.Outputs	sgRadars	"Radars.Components.DOLS.FaultOnRadar.PreStatus", "Radars.Components.DOLS.WarningOnRadar.PreStatus", "Radars.Components.GV1S.FaultOnRadar.PreStatus", "Radars.Components.GV1S.WarningOnRadar.PreStatus", "Radars.Components.GV1P.FaultOnRadar.PreStatus", "Radars.Components.GV1P.WarningOnRadar.PreStatus", "Radars.Components.GV1P.GPSTimeServer.PreStatus", "Radars.Components.GV2S.FaultOnRadar.PreStatus", "Radars.Components.GV2S.WarningOnRadar.PreStatus", "Radars.Components.GV1S_N.FaultOnRadar.PreStatus", "Radars.Components.GV1S_N.WarningOnRadar.PreStatus", "Radars.SubComponents.GV1P.*.PreStatus"	0x101	27.11.2017 10:00:44.853
+Radars.Connections.Rules	sgRadars	"ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTable"	0x101	27.11.2017 10:00:44.854
+Radars.Connections.Params	sgRadars	"DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString", "InvertedTableString", "InvertedDEGString", "DirectTableString", "DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString", "Radars.ConvertTable.RadarSNMPRMMStatus"	0x101	27.11.2017 10:00:44.857
+
+Radars.ConvertTable.RadarSNMPRMMStatus.Input	sgRadars	"-1", "0", "1", "2"	0x101	18.04.2018 13:52:53.467
+Radars.ConvertTable.RadarSNMPRMMStatus.Output	sgRadars	"UKN", "OPS", "DEG", "U/S"	0x101	18.04.2018 13:53:04.856
+
+Radars.TruthTables.RadarStatusTT.Table	sgRadars	"OPS_---_OPS_0", "UKN_---_UKN_0", "---_U/S_U/S_0", "---_DEG_DEG_0", "---_OPS_OPS_0", "---_UKN_DEG_0"	0x101	24.04.2018 06:26:23.275
+
+_1_SNMPAgent_30.Access.IPAddress	_SNMPAgent	"RMMS1SDCSALanE"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Port	_SNMPAgent	7042	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+_1_SNMPAgent_31.Access.IPAddress	_SNMPAgent	"RMMS1SDCSALanF"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Access.Port	_SNMPAgent	7053	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_31.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+_1_SNMPAgent_32.Access.IPAddress	_SNMPAgent	"RMMS2SDCSBLanE"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Access.Port	_SNMPAgent	7062	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_32.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+_1_SNMPAgent_33.Access.IPAddress	_SNMPAgent	"RMMS2SDCSBLanF"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Access.Port	_SNMPAgent	7073	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_33.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+_1_SNMPAgent_34.Access.IPAddress	_SNMPAgent	"RMMS3SDCSALanE"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Access.Port	_SNMPAgent	7082	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_34.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+_1_SNMPAgent_35.Access.IPAddress	_SNMPAgent	"RMMS3SDCSALanF"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Access.Port	_SNMPAgent	7093	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_35.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+Radars.RawDatas.GV1P.RMMS1LAN1	sgRadars	56	\1
+Radars.RawDatas.GV1P.RMMS1LAN2	sgRadars	56	\1
+Radars.RawDatas.GV1P.RMMS2LAN1	sgRadars	56	\1
+Radars.RawDatas.GV1P.RMMS2LAN2	sgRadars	56	\1
+Radars.RawDatas.GV1P.RMMS3LAN1	sgRadars	56	\1
+Radars.RawDatas.GV1P.RMMS3LAN2	sgRadars	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+Radars.RawDatas.GV1P.RMMS1LAN1	sgRadars	16	"30_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+Radars.RawDatas.GV1P.RMMS1LAN2	sgRadars	16	"31_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+Radars.RawDatas.GV1P.RMMS2LAN1	sgRadars	16	"32_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+Radars.RawDatas.GV1P.RMMS2LAN2	sgRadars	16	"33_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+Radars.RawDatas.GV1P.RMMS3LAN1	sgRadars	16	"34_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+Radars.RawDatas.GV1P.RMMS3LAN2	sgRadars	16	"35_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

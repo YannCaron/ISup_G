@@ -1,0 +1,74 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgSPHINXCompChain.sgSPHINXCompChain	1#1
+	Netlogon	41#2:sgFwSystem
+	ADDomain	41#3:sgFwSystem
+	Kerberos	41#4:sgFwSystem
+	SecurityAccMgmt	41#5:sgFwSystem
+sgSPHINXRawDataChain.sgSPHINXRawDataChain	1#1
+	Netlogon	1#22
+		State	25#23
+		Status	25#24
+	ADDomain	1#25
+		State	25#26
+		Status	25#27
+	Kerberos	1#28
+		State	25#29
+		Status	25#30
+	SecurityAccMgmt	1#31
+		State	25#32
+		Status	25#33
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SPHINX.Connections.Inputs	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	14.05.2018 14:28:25.814
+SPHINX.Connections.Outputs	sgSPHINX	"SPHINX.Components.ChainA.*.PreStatus", "SPHINX.Components.ChainB.*.PreStatus"	0x101	14.05.2018 14:28:25.815
+SPHINX.Connections.Rules	sgSPHINX	"ConnectWMIServiceWithConvertTable", "ConnectWMIServiceWithConvertTable"	0x101	15.05.2018 08:33:42.513
+SPHINX.Connections.Params	sgSPHINX	"SPHINX.ConvTableStatus", "SPHINX.ConvTableStatus"	0x101	14.05.2018 14:28:25.818
+SPHINX.ConvTableStatus.Input	sgSPHINX	"Unknown", "OK", "Error", "Degraded", "Pred Fail", "Starting", "Stopping", "Service", "Stressed", "NonRecover", "No Contact", "Lost Comm", "Stopped", "Start Pending", "Stop Pending", "Continue Pending", "Pause Pending", "Paused"	0x101	15.05.2018 08:35:16.388
+SPHINX.ConvTableStatus.Output	sgSPHINX	"UKN", "OPS", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S"	0x101	15.05.2018 08:35:31.833
+SPHINX.WatchDogs.References	sgSPHINX	"SPHINX.RawData.ChainA.*.State", "SPHINX.RawData.ChainA.*.Status", "SPHINX.RawData.ChainB.*.State", "SPHINX.RawData.ChainB.*.Status"	0x101	09.05.2018 08:12:09.139
+SPHINX.WatchDogs.DefaultValues	sgSPHINX	"Unknown", "Unknown", "Unknown", "Unknown"	0x101	09.05.2018 08:12:09.140
+SPHINX.WatchDogs.Outputs	sgSPHINX	"SPHINX.RawData.ChainA.*.State", "SPHINX.RawData.ChainA.*.Status", "SPHINX.RawData.ChainB.*.State", "SPHINX.RawData.ChainB.*.Status"	0x101	09.05.2018 08:12:09.140
+SPHINX.WatchDogs.Timeouts	sgSPHINX	25, 25, 25, 25	0x101	09.05.2018 08:12:09.141
+
+# DistributionInfo
+StampSec	StampMSec	ElementName	TypeName	_distrib.._type	_distrib.._driver
+1526370805	658	SPHINX.RawData.ChainA.Netlogon.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainA.Netlogon.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainA.ADDomain.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainA.ADDomain.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainA.Kerberos.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainA.Kerberos.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainA.SecurityAccMgmt.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainA.SecurityAccMgmt.Status	sgSPHINX	56	\5
+
+1526370805	658	SPHINX.RawData.ChainB.Netlogon.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainB.Netlogon.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainB.ADDomain.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainB.ADDomain.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainB.Kerberos.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainB.Kerberos.Status	sgSPHINX	56	\5
+1526370805	658	SPHINX.RawData.ChainB.SecurityAccMgmt.State	sgSPHINX	56	\5
+1526370784	200	SPHINX.RawData.ChainB.SecurityAccMgmt.Status	sgSPHINX	56	\5
+
+# PeriphAddrMain
+StampSec	StampMSec	ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+1526370805	672	SPHINX.RawData.ChainA.Netlogon.State	sgSPHINX	16	"SphinxA.Services.Netlogon.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainA.Netlogon.Status	sgSPHINX	16	"SphinxA.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainA.ADDomain.State	sgSPHINX	16	"SphinxA.Services.NTDS.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainA.ADDomain.Status	sgSPHINX	16	"SphinxA.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainA.Kerberos.State	sgSPHINX	16	"SphinxA.Services.Kdc.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainA.Kerberos.Status	sgSPHINX	16	"SphinxA.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainA.SecurityAccMgmt.State	sgSPHINX	16	"SphinxA.Services.SamSs.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainA.SecurityAccMgmt.Status	sgSPHINX	16	"SphinxA.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainB.Netlogon.State	sgSPHINX	16	"SphinxB.Services.Netlogon.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainB.Netlogon.Status	sgSPHINX	16	"SphinxB.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainB.ADDomain.State	sgSPHINX	16	"SphinxB.Services.NTDS.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainB.ADDomain.Status	sgSPHINX	16	"SphinxB.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainB.Kerberos.State	sgSPHINX	16	"SphinxB.Services.Kdc.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainB.Kerberos.Status	sgSPHINX	16	"SphinxB.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370805	672	SPHINX.RawData.ChainB.SecurityAccMgmt.State	sgSPHINX	16	"SphinxB.Services.SamSs.State"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+1526370784	389	SPHINX.RawData.ChainB.SecurityAccMgmt.Status	sgSPHINX	16	"SphinxB.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"

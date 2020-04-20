@@ -1,0 +1,535 @@
+# ascii dump of database
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_1_SNMPAgent_90	_SNMPAgent	1
+_1_SNMPAgent_91	_SNMPAgent	1
+_1_SNMPAgent_92	_SNMPAgent	1
+_1_SNMPAgent_93	_SNMPAgent	1
+_1_SNMPAgent_94	_SNMPAgent	1
+_1_SNMPAgent_95	_SNMPAgent	1
+_1_SNMPAgent_96	_SNMPAgent	1
+_1_SNMPAgent_97	_SNMPAgent	1
+_1_SNMPAgent_98	_SNMPAgent	1
+_1_SNMPAgent_99	_SNMPAgent	1
+_1_SNMPAgent_100	_SNMPAgent	1
+_1_SNMPAgent_101	_SNMPAgent	1
+_1_SNMPAgent_102	_SNMPAgent	1
+_1_SNMPAgent_103	_SNMPAgent	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+_1_SNMPAgent_90.	""	lt:1 LANG:5 "AMSLTAIDANGA@@"
+_1_SNMPAgent_91.	""	lt:1 LANG:5 "AMSLTAIDANGB@@"
+_1_SNMPAgent_92.	""	lt:1 LANG:5 "AMSLTCADASTS1@@"
+_1_SNMPAgent_93.	""	lt:1 LANG:5 "AMSLTCADASTS2@@"
+_1_SNMPAgent_94.	""	lt:1 LANG:5 "AMSLTCADASMH1@@"
+_1_SNMPAgent_95.	""	lt:1 LANG:5 "AMSLTCADASMH2@@"
+_1_SNMPAgent_96.	""	lt:1 LANG:5 "AMSLTEFG@@"
+_1_SNMPAgent_97.	""	lt:1 LANG:5 "AMSTWRAIDANGA@@"
+_1_SNMPAgent_98.	""	lt:1 LANG:5 "AMSTWRAIDANGB@@"
+_1_SNMPAgent_99.	""	lt:1 LANG:5 "AMSTWRCADASTS1@@"
+_1_SNMPAgent_100.	""	lt:1 LANG:5 "AMSTWRCADASTS2@@"
+_1_SNMPAgent_101.	""	lt:1 LANG:5 "AMSTWRCADASMH1@@"
+_1_SNMPAgent_102.	""	lt:1 LANG:5 "AMSTWRCADASMH2@@"
+_1_SNMPAgent_103.	""	lt:1 LANG:5 "AMSTWREFG@@"
+
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+_1_SNMPAgent_90.Access.IPAddress	_SNMPAgent	"AMSLTAIDANGA"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_90.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_91.Access.IPAddress	_SNMPAgent	"AMSLTAIDANGB"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_91.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_92.Access.IPAddress	_SNMPAgent	"AMSLTCADASTS1"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_92.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_93.Access.IPAddress	_SNMPAgent	"AMSLTCADASTS2"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_93.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_94.Access.IPAddress	_SNMPAgent	"AMSLTCADASMH1"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_94.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_95.Access.IPAddress	_SNMPAgent	"AMSLTCADASMH2"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_95.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_96.Access.IPAddress	_SNMPAgent	"AMSLTEFG"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_96.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_97.Access.IPAddress	_SNMPAgent	"AMSTWRAIDANGA"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_97.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_98.Access.IPAddress	_SNMPAgent	"AMSTWRAIDANGB"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_98.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_99.Access.IPAddress	_SNMPAgent	"AMSTWRCADASTS1"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_99.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_100.Access.IPAddress	_SNMPAgent	"AMSTWRCADASTS2"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_100.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_101.Access.IPAddress	_SNMPAgent	"AMSTWRCADASMH1"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_101.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_102.Access.IPAddress	_SNMPAgent	"AMSTWRCADASMH2"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_102.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+_1_SNMPAgent_103.Access.IPAddress	_SNMPAgent	"AMSTWREFG"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.ReadCommunity	_SNMPAgent	"public"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.Timeout	_SNMPAgent	100	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.Retries	_SNMPAgent	1	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.Protocol	_SNMPAgent	2	0x101	27.03.2017 11:49:28.985
+_1_SNMPAgent_103.Access.Port	_SNMPAgent	161	0x101	27.03.2017 11:49:28.985
+
+
+TypeName
+sgAMSCHCadas.sgAMSCHCadas	1#1
+	GlobalStatus	41#2:sgFwSystem
+	Status	41#3:sgFwSystem
+	SysUpTime	41#4:sgFwSystem
+	
+sgAMSCHChain.sgAMSCHChain	1#1
+	RawDatas	1#4
+		CADAS1_TS	21#5
+		CADAS2_TS	21#6
+		CADAS1_MH1	21#7
+		CADAS1_MH2	21#1
+		CADAS2_MH1	21#1
+		CADAS2_MH2	21#1
+		CADAS1_TS_UpTime	21#5140
+		CADAS2_TS_UpTime	21#5141
+		EFG	1#12
+			EFG_UpTime	21#1
+			EFG_N1	21#13
+			EFG_N2	21#14
+			EFG_N3	21#15
+			EFG_N4	21#16
+		CSSAStates	5#5512
+		CSSBStates	5#5513
+		RSSAStates	5#5514
+		RSSBStates	5#5515
+		RSSAIdentifiers	9#1
+		RSSBIdentifiers	9#1
+		CSSA_UpTime	21#5516
+		CSSB_UpTime	21#5517	
+	Structureds	1#1
+		CSS	1#1
+			CSSA	41#1:sgFwSystem
+			CSSB	41#1:sgFwSystem
+		CADAS_TS	1#1
+			Chain1	41#1:sgAMSCHCadas
+			Chain2	41#1:sgAMSCHCadas
+		CADAS_MH	1#1
+			Chain1	1#1
+				GlobalStatus	41#1:sgFwSystem
+			Chain2	1#1
+				GlobalStatus	41#1:sgFwSystem
+		EFG	1#1
+			SysUpTime	41#1:sgFwSystem
+			EFG1	41#1:sgFwSystem
+			EFG1Status	41#1:sgFwSystem
+			EFG2	41#1:sgFwSystem
+			EFG2Status	41#1:sgFwSystem
+			EFG3	41#1:sgFwSystem
+			EFG3Status	41#1:sgFwSystem
+			EFG4	41#1:sgFwSystem
+			EFG4Status	41#1:sgFwSystem
+	
+sgAMSCH.sgAMSCH	1#1
+	GlobalStatus	41#2:sgFwSystem
+	Connections	41#3:sgFwConnections
+	WatchDog	41#4:sgWatchDogs
+	History	41#5:sgFwHistory
+	LT	41#6:sgAMSCHChain
+	TWR	41#7:sgAMSCHChain
+	Structureds	1#1
+		RSS	41#1:sgFwSystem
+		CSSGlobalStatus	41#1:sgFwSystem
+		CADASGlobalStatus	41#1:sgFwSystem
+	Calculated	1#2297
+		LTCSSActive	25#2300
+		LTCSSActiveStates	5#2302
+		RSSActive	25#2301
+		RSSActiveStates	5#2303
+		RSSActiveIdentifiers	9#1
+		TWRCSSActive	25#2308
+		TWRCSSActiveStates	5#2309
+	Params	41#8:sgParams
+	ConvTables	1#9
+		ConvTableRSS	41#10:sgConnectWithConvertTable
+		ConvTableCSS	41#11:sgConnectWithConvertTable
+		ConvTableEFG	41#15:sgConnectWithConvertTable
+		ConvTableSysUpTime	41#16:sgConnectWithConvertTable
+		ConvTableCSSLabel	41#2314:sgConnectWithConvertTable
+		ConvTableRSSLabel	41#1:sgConnectWithConvertTable
+		ConvTableCADAS	41#11:sgConnectWithConvertTable
+	TruthTables	1#1544
+		GlobalAMSCH	41#1:sgFwTruthTable
+		GlobalCSS	41#1:sgFwTruthTable
+		TTCadasUpTime	41#1:sgFwTruthTable
+		TTEFGUpTime	41#1:sgFwTruthTable
+		GlobalCadas	41#1:sgFwTruthTable
+		TTU_S	41#1:sgFwTruthTable
+	MenuEntry	41#17:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+AMSCH	sgAMSCH	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+AMSCH.GlobalStatus	""	lt:1 LANG:5 "AMS-CH@@"
+AMSCH.LT.Structureds.CSS.CSSA	""	lt:1 LANG:5 "CSS A@@"
+AMSCH.LT.Structureds.CSS.CSSB	""	lt:1 LANG:5 "CSS B@@"
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus	""	lt:1 LANG:5 "CADAS 1 TS@%s@"
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus	""	lt:1 LANG:5 "CADAS 2 TS@%s@"
+AMSCH.LT.Structureds.CADAS_MH.Chain1.GlobalStatus	""	lt:1 LANG:5 "CADAS 1 MH@%s@"
+AMSCH.LT.Structureds.CADAS_MH.Chain2.GlobalStatus	""	lt:1 LANG:5 "CADAS 2 MH@%s@"
+AMSCH.LT.Structureds.EFG.EFG1	""	lt:1 LANG:5 "EFG Modem 1@%s@"
+AMSCH.LT.Structureds.EFG.EFG2	""	lt:1 LANG:5 "EFG Modem 2@%s@"
+AMSCH.LT.Structureds.EFG.EFG3	""	lt:1 LANG:5 "EFG Modem 3@%s@"
+AMSCH.LT.Structureds.EFG.EFG4	""	lt:1 LANG:5 "EFG Modem 4@%s@"
+
+AMSCH.TWR.Structureds.CSS.CSSA	""	lt:1 LANG:5 "CSS A@@"
+AMSCH.TWR.Structureds.CSS.CSSB	""	lt:1 LANG:5 "CSS B@@"
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus	""	lt:1 LANG:5 "CADAS 1 TS@%s@"
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus	""	lt:1 LANG:5 "CADAS 2 TS@%s@"
+AMSCH.TWR.Structureds.CADAS_MH.Chain1.GlobalStatus	""	lt:1 LANG:5 "CADAS 1 MH@%s@"
+AMSCH.TWR.Structureds.CADAS_MH.Chain2.GlobalStatus	""	lt:1 LANG:5 "CADAS 2 MH@%s@"
+AMSCH.TWR.Structureds.EFG.EFG1	""	lt:1 LANG:5 "EFG Modem 1@%s@"
+AMSCH.TWR.Structureds.EFG.EFG2	""	lt:1 LANG:5 "EFG Modem 2@%s@"
+AMSCH.TWR.Structureds.EFG.EFG3	""	lt:1 LANG:5 "EFG Modem 3@%s@"
+AMSCH.TWR.Structureds.EFG.EFG4	""	lt:1 LANG:5 "EFG Modem 4@%s@"
+
+AMSCH.Structureds.RSS	""	lt:1 LANG:5 "RSS@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+AMSCH.MenuEntry.Name	sgAMSCH	"AMSCH"	0x101	02.09.2016 08:08:42.840
+AMSCH.MenuEntry.Group	sgAMSCH	"EDP"	0x200101	02.09.2016 08:08:42.842
+AMSCH.MenuEntry.Panel	sgAMSCH	"AMSCH/sgAMSCHMainPanel.pnl"	0x101	02.09.2016 08:08:42.842
+
+AMSCH.GlobalStatus.Alarms.GenerateAlarms	sgAMSCH	1	0x101	16.02.2010 15:04:41.806
+AMSCH.GlobalStatus.Alarms.AlarmActive	sgAMSCH	1	0x200101	20.03.2017 07:29:09.060
+AMSCH.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	16.02.2010 15:04:41.681
+AMSCH.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.GlobalAMSCH"	0x101	29.09.2011 12:16:45.245
+AMSCH.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.Structureds.CSSGlobalStatus", "AMSCH.Structureds.RSS", "AMSCH.Structureds.CADASGlobalStatus", "AMSCH.*.Structureds.EFG.EFG1", "AMSCH.*.Structureds.EFG.EFG2", "AMSCH.*.Structureds.EFG.EFG3", "AMSCH.*.Structureds.EFG.EFG4"	0x101	08.06.2017 12:17:28.406
+
+AMSCH.GlobalStatus.AETable	sgAMSCH	"AETable01"	0x101	16.02.2010 15:04:41.775
+
+AMSCH.Connections.Inputs	sgAMSCH	"AMSCH.Calculated", "AMSCH.Calculated.RSSActiveStates", "AMSCH.LT.RawDatas", "AMSCH.TWR.RawDatas", "AMSCH.Calculated.LTCSSActiveStates", "AMSCH.Calculated.TWRCSSActiveStates", "AMSCH", "AMSCH.*.Structureds.CSS.CSSA.PreStatus", "AMSCH.*.Structureds.CSS.CSSB.PreStatus", "AMSCH.LT.RawDatas.CADAS*_TS", "AMSCH.LT.RawDatas.CADAS*_TS_UpTime", "AMSCH.LT.RawDatas", "AMSCH.LT.RawDatas.EFG.EFG_UpTime", "AMSCH.LT.RawDatas.EFG.EFG_N*", "AMSCH.TWR.RawDatas.CADAS*_TS", "AMSCH.TWR.RawDatas.CADAS*_TS_UpTime", "AMSCH.TWR.RawDatas", "AMSCH.TWR.RawDatas.EFG.EFG_UpTime", "AMSCH.TWR.RawDatas.EFG.EFG_N*"	0x101	07.06.2017 12:28:56.865
+AMSCH.Connections.Outputs	sgAMSCH	"AMSCH.Structureds.RSS.Label1", "AMSCH.Structureds.RSS.PreStatus", "AMSCH.Calculated.LT", "AMSCH.Calculated.TWR", "AMSCH.LT", "AMSCH.TWR", "AMSCH.Calculated", "AMSCH.*.Structureds.CSS.CSSA.Label1", "AMSCH.*.Structureds.CSS.CSSB.Label1", "AMSCH.LT.Structureds.CADAS_TS.Chain*.Status.PreStatus", "AMSCH.LT.Structureds.CADAS_TS.Chain*.SysUpTime.PreStatus", "AMSCH.LT.Structureds.CADAS_MH", "AMSCH.LT.Structureds.EFG.SysUpTime.PreStatus", "AMSCH.LT.Structureds.EFG.EFG*Status.PreStatus", "AMSCH.TWR.Structureds.CADAS_TS.Chain*.Status.PreStatus", "AMSCH.TWR.Structureds.CADAS_TS.Chain*.SysUpTime.PreStatus", "AMSCH.TWR.Structureds.CADAS_MH", "AMSCH.TWR.Structureds.EFG.SysUpTime.PreStatus", "AMSCH.TWR.Structureds.EFG.EFG*Status.PreStatus"	0x101	07.06.2017 12:29:39.868
+AMSCH.Connections.Rules	sgAMSCH	"ConnectAMSCHSetRSSLabel", "ConnectAMSCHSetRSSState", "ConnectAMSCHSelectActiveCSS", "ConnectAMSCHSelectActiveCSS", "ConnectAMSCHSetCSSStatuses", "ConnectAMSCHSetCSSStatuses", "ConnectAMSCHSelectActiveRSS", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectAMSCHSetCADASMH", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectAMSCHSetCADASMH", "ConnectWithConvertTable", "ConnectWithConvertTable"	0x101	07.06.2017 12:08:38.076
+AMSCH.Connections.Params	sgAMSCH	"AMSCH.ConvTables.ConvTableRSSLabel", "", "", "", "AMSCH.ConvTables.ConvTableCSS", "AMSCH.ConvTables.ConvTableCSS", "", "AMSCH.ConvTables.ConvTableCSSLabel", "AMSCH.ConvTables.ConvTableCSSLabel", "AMSCH.ConvTables.ConvTableCADAS", "AMSCH.ConvTables.ConvTableSysUpTime", "", "AMSCH.ConvTables.ConvTableSysUpTime", "AMSCH.ConvTables.ConvTableEFG", "AMSCH.ConvTables.ConvTableCADAS", "AMSCH.ConvTables.ConvTableSysUpTime", "", "AMSCH.ConvTables.ConvTableSysUpTime", "AMSCH.ConvTables.ConvTableEFG"	0x101	07.06.2017 12:08:38.076
+
+AMSCH.WatchDog.References	sgAMSCH	"AMSCH.LT.RawDatas.CSS*", "AMSCH.LT.RawDatas.RSS*", "AMSCH.LT.RawDatas.CADAS*_TS", "AMSCH.LT.RawDatas.CADAS*_TS_UpTime", "AMSCH.LT.RawDatas.CADAS*_MH1", "AMSCH.LT.RawDatas.CADAS*_MH2", "AMSCH.LT.RawDatas.EFG.EFG_UpTime", "AMSCH.LT.RawDatas.EFG.EFG_N*", "AMSCH.TWR.RawDatas.CSS*", "AMSCH.TWR.RawDatas.RSS*", "AMSCH.TWR.RawDatas.CADAS*_TS", "AMSCH.TWR.RawDatas.CADAS*_TS_UpTime", "AMSCH.TWR.RawDatas.CADAS*_MH1", "AMSCH.TWR.RawDatas.CADAS*_MH2", "AMSCH.TWR.RawDatas.EFG.EFG_UpTime", "AMSCH.TWR.RawDatas.EFG.EFG_N*"	0x101	07.06.2017 12:36:35.263
+AMSCH.WatchDog.DefaultValues	sgAMSCH	"0", "0", "0", "-1", "0", "0", "-1", "-1", "0", "0", "0", "-1", "0", "0", "-1", "-1"	0x101	07.06.2017 12:37:39.980
+AMSCH.WatchDog.Outputs	sgAMSCH	"AMSCH.LT.RawDatas.CSS*", "AMSCH.LT.RawDatas.RSS*", "AMSCH.LT.RawDatas.CADAS*_TS", "AMSCH.LT.RawDatas.CADAS*_TS_UpTime", "AMSCH.LT.RawDatas.CADAS*_MH1", "AMSCH.LT.RawDatas.CADAS*_MH2", "AMSCH.LT.RawDatas.EFG.EFG_UpTime", "AMSCH.LT.RawDatas.EFG.EFG_N*", "AMSCH.TWR.RawDatas.CSS*", "AMSCH.TWR.RawDatas.RSS*", "AMSCH.TWR.RawDatas.CADAS*_TS", "AMSCH.TWR.RawDatas.CADAS*_TS_UpTime", "AMSCH.TWR.RawDatas.CADAS*_MH1", "AMSCH.TWR.RawDatas.CADAS*_MH2", "AMSCH.TWR.RawDatas.EFG.EFG_UpTime", "AMSCH.TWR.RawDatas.EFG.EFG_N*"	0x101	07.06.2017 12:39:00.663
+AMSCH.WatchDog.Timeouts	sgAMSCH	25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25	0x101	07.06.2017 12:39:45.144
+
+AMSCH.History.HistorySize	sgAMSCH	100	0x101	16.02.2010 15:04:42.478
+
+AMSCH.ConvTables.ConvTableRSS.Input	sgAMSCH	"0", "1", "2", "3", "4", "5", "6", "7"	0x101	10.04.2017 16:18:03.979
+AMSCH.ConvTables.ConvTableRSS.Output	sgAMSCH	"UKN", "OPS", "DEG", "DEG", "INI", "U/S", "U/S", "U/S"	0x101	10.04.2017 16:18:03.980
+AMSCH.ConvTables.ConvTableRSSLabel.Input	sgAMSCH	"0", "1", "2", "3", "4", "5", "6", "7"	0x101	10.04.2017 16:18:03.979
+AMSCH.ConvTables.ConvTableRSSLabel.Output	sgAMSCH	"-", "OP+", "OP-", "ReadOnly", "UpDating", "UnAvailable", "Disconnected", "Unknown"	0x101	10.04.2017 16:18:03.980
+AMSCH.ConvTables.ConvTableCSS.Input	sgAMSCH	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "99"	0x101	12.04.2017 13:13:10.652
+AMSCH.ConvTables.ConvTableCSS.Output	sgAMSCH	"UKN", "SBY", "OPS", "DEG", "U/S", "U/S", "INI", "U/S", "U/S", "DEG", "DEG", "ABS"	0x101	12.04.2017 13:13:19.415
+AMSCH.ConvTables.ConvTableCADAS.Input	sgAMSCH	"0", "1", "2"	0x101	10.04.2017 16:18:03.983
+AMSCH.ConvTables.ConvTableCADAS.Output	sgAMSCH	"UKN", "OPS", "U/S"	0x101	10.04.2017 16:18:03.985
+AMSCH.ConvTables.ConvTableEFG.Input	sgAMSCH	"-1", "0", "1"	0x101	10.04.2017 16:18:03.987
+AMSCH.ConvTables.ConvTableEFG.Output	sgAMSCH	"UKN", "U/S", "OPS"	0x101	10.04.2017 16:18:03.988
+AMSCH.ConvTables.ConvTableSysUpTime.Input	sgAMSCH	"0", "-1"	0x101	10.04.2017 16:18:03.991
+AMSCH.ConvTables.ConvTableSysUpTime.Output	sgAMSCH	"OPS", "UKN"	0x101	10.04.2017 16:18:03.993
+AMSCH.ConvTables.ConvTableCSSLabel.Input	sgAMSCH	"SBY", "ABS", "OPS", "INI", "DEG", "UKN", "U/S"	0x101	12.04.2017 13:32:28.603
+AMSCH.ConvTables.ConvTableCSSLabel.Output	sgAMSCH	"Hot Stand-by", "Cold Stand-by", "Operational", "Starting", "", "", ""	0x101	12.04.2017 13:32:47.857
+
+
+AMSCH.Params.Histories	sgAMSCH	"AMSCH.History"	0x101	16.02.2010 15:04:42.509
+AMSCH.Params.AETable	sgAMSCH	"AETable02"	0x101	16.02.2010 15:04:42.540
+AMSCH.Params.GenerateEvents	sgAMSCH	1	0x101	16.02.2010 15:04:42.572
+
+AMSCH.LT.Structureds.CSS.CSSA.Events.EventText	sgAMSCH	"LT CSS A"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.CSS.CSSA.Params	sgAMSCH	"AMSCH.Params"	0x101	29.09.2011 12:10:10.370
+AMSCH.LT.Structureds.CSS.CSSB.Events.EventText	sgAMSCH	"LT CSS B"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.CSS.CSSB.Params	sgAMSCH	"AMSCH.Params"	0x101	29.09.2011 12:10:10.432
+
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTCadasUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.CADAS_TS.Chain1.Status", "AMSCH.LT.Structureds.CADAS_TS.Chain1.SysUpTime"	0x101	15.11.2011 08:50:31.041
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTCadasUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.CADAS_TS.Chain2.Status", "AMSCH.LT.Structureds.CADAS_TS.Chain2.SysUpTime"	0x101	15.11.2011 08:50:31.041
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.TWR.Structureds.CADAS_MH.Chain1.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+AMSCH.TWR.Structureds.CADAS_MH.Chain2.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus.Events.EventText	sgAMSCH	"LT CADAS1 TS"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.Events.EventText	sgAMSCH	"LT CADAS2 TS"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.CADAS_MH.Chain1.GlobalStatus.Events.EventText	sgAMSCH	"LT CADAS1 MH"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.CADAS_MH.Chain2.GlobalStatus.Events.EventText	sgAMSCH	"LT CADAS2 MH"	0x101	26.08.2011 12:54:33.224
+
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTCadasUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.CADAS_TS.Chain2.Status", "AMSCH.LT.Structureds.CADAS_TS.Chain2.SysUpTime"	0x101	15.11.2011 08:50:31.041
+AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.Structureds.RSS.Params	sgAMSCH	"AMSCH.Params"	0x101	29.09.2011 12:10:10.557
+AMSCH.Structureds.RSS.Events.EventText	sgAMSCH	"RSS"	0x101	26.08.2011 12:54:33.224
+
+AMSCH.Structureds.CSSGlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	19.10.2011 08:43:36.037
+AMSCH.Structureds.CSSGlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.GlobalCSS"	0x101	29.09.2011 12:29:42.396
+AMSCH.Structureds.CSSGlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.*.Structureds.CSS.*"	0x101	15.11.2011 09:25:00.677
+
+AMSCH.Structureds.CADASGlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	19.10.2011 08:43:36.037
+AMSCH.Structureds.CADASGlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.GlobalCadas"	0x101	29.09.2011 12:29:42.396
+AMSCH.Structureds.CADASGlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.CADAS_TS.Chain1.GlobalStatus", "AMSCH.LT.Structureds.CADAS_TS.Chain2.GlobalStatus", "AMSCH.LT.Structureds.CADAS_MH.Chain1.GlobalStatus", "AMSCH.LT.Structureds.CADAS_MH.Chain2.GlobalStatus", "AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus", "AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus", "AMSCH.TWR.Structureds.CADAS_MH.Chain1.GlobalStatus", "AMSCH.TWR.Structureds.CADAS_MH.Chain2.GlobalStatus"	0x101	08.06.2017 12:14:45.967
+
+AMSCH.LT.Structureds.EFG.EFG1.Events.EventText	sgAMSCH	"LT EFG1"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.EFG.EFG1.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 12:53:59.552
+AMSCH.LT.Structureds.EFG.EFG2.Events.EventText	sgAMSCH	"LT EFG2"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.EFG.EFG2.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.431
+AMSCH.LT.Structureds.EFG.EFG3.Events.EventText	sgAMSCH	"LT EFG3"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.EFG.EFG3.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.493
+AMSCH.LT.Structureds.EFG.EFG4.Events.EventText	sgAMSCH	"LT EFG4"	0x101	26.08.2011 12:54:33.224
+AMSCH.LT.Structureds.EFG.EFG4.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.556
+
+AMSCH.LT.Structureds.EFG.EFG1.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.EFG.EFG1.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.EFG.EFG1.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.EFG.EFG1Status", "AMSCH.LT.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.LT.Structureds.EFG.EFG2.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.EFG.EFG2.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.EFG.EFG2.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.EFG.EFG2Status", "AMSCH.LT.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.LT.Structureds.EFG.EFG3.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.EFG.EFG3.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.EFG.EFG3.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.EFG.EFG3Status", "AMSCH.LT.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.LT.Structureds.EFG.EFG4.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.LT.Structureds.EFG.EFG4.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.LT.Structureds.EFG.EFG4.LogicConfig.Inputs	sgAMSCH	"AMSCH.LT.Structureds.EFG.EFG4Status", "AMSCH.LT.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.TWR.Structureds.CSS.CSSA.Events.EventText	sgAMSCH	"TWR CSS A"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.CSS.CSSA.Params	sgAMSCH	"AMSCH.Params"	0x101	29.09.2011 12:10:10.370
+AMSCH.TWR.Structureds.CSS.CSSB.Events.EventText	sgAMSCH	"TWR CSS B"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.CSS.CSSB.Params	sgAMSCH	"AMSCH.Params"	0x101	29.09.2011 12:10:10.432
+
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTCadasUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.CADAS_TS.Chain1.Status", "AMSCH.TWR.Structureds.CADAS_TS.Chain1.SysUpTime"	0x101	15.11.2011 08:50:31.041
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTCadasUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.CADAS_TS.Chain2.Status", "AMSCH.TWR.Structureds.CADAS_TS.Chain2.SysUpTime"	0x101	15.11.2011 08:50:31.041
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.TWR.Structureds.CADAS_MH.Chain1.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+AMSCH.TWR.Structureds.CADAS_MH.Chain2.GlobalStatus.Params	sgAMSCH	"AMSCH.Params"	0x101	15.11.2011 08:49:41.558
+
+AMSCH.TWR.Structureds.CADAS_TS.Chain1.GlobalStatus.Events.EventText	sgAMSCH	"TWR CADAS1 TS"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.CADAS_TS.Chain2.GlobalStatus.Events.EventText	sgAMSCH	"TWR CADAS2 TS"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.CADAS_MH.Chain1.GlobalStatus.Events.EventText	sgAMSCH	"TWR CADAS1 MH"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.CADAS_MH.Chain2.GlobalStatus.Events.EventText	sgAMSCH	"TWR CADAS2 MH"	0x101	26.08.2011 12:54:33.224
+
+AMSCH.TWR.Structureds.EFG.EFG1.Events.EventText	sgAMSCH	"TWR EFG1"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.EFG.EFG1.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 12:53:59.552
+AMSCH.TWR.Structureds.EFG.EFG2.Events.EventText	sgAMSCH	"TWR EFG2"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.EFG.EFG2.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.431
+AMSCH.TWR.Structureds.EFG.EFG3.Events.EventText	sgAMSCH	"TWR EFG3"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.EFG.EFG3.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.493
+AMSCH.TWR.Structureds.EFG.EFG4.Events.EventText	sgAMSCH	"TWR EFG4"	0x101	26.08.2011 12:54:33.224
+AMSCH.TWR.Structureds.EFG.EFG4.Params	sgAMSCH	"AMSCH.Params"	0x101	26.08.2011 06:18:14.556
+
+AMSCH.TWR.Structureds.EFG.EFG1.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.EFG.EFG1.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.EFG.EFG1.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.EFG.EFG1Status", "AMSCH.TWR.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.TWR.Structureds.EFG.EFG2.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.EFG.EFG2.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.EFG.EFG2.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.EFG.EFG2Status", "AMSCH.TWR.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.TWR.Structureds.EFG.EFG3.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.EFG.EFG3.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.EFG.EFG3.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.EFG.EFG3Status", "AMSCH.TWR.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.TWR.Structureds.EFG.EFG4.LogicConfig.LogicEnabled	sgAMSCH	1	0x101	15.11.2011 08:50:01.276
+AMSCH.TWR.Structureds.EFG.EFG4.LogicConfig.Rule	sgAMSCH	"AMSCH.TruthTables.TTEFGUpTime"	0x101	15.11.2011 08:50:06.073
+AMSCH.TWR.Structureds.EFG.EFG4.LogicConfig.Inputs	sgAMSCH	"AMSCH.TWR.Structureds.EFG.EFG4Status", "AMSCH.TWR.Structureds.EFG.SysUpTime"	0x101	15.11.2011 08:50:31.041
+
+AMSCH.TruthTables.GlobalAMSCH.Table	sgAMSCH	"OPS+ABS_---_OPS_0", "UKN_---_UKN_0", "---_OPS_DEG_0", "---_DEG_DEG_0", "---_ANY_U/S_0"	0x101	15.11.2011 07:29:06.613
+AMSCH.TruthTables.GlobalCSS.Table	sgAMSCH	"UKN_---_UKN_0", "---_---_OPS_4_OPS+_SBY+_ABS+_ABS+", "---_---_OPS_4_SBY+_OPS+_ABS+_ABS+", "---_---_OPS_4_ABS+_ABS+_OPS+_SBY+", "---_---_OPS_4_ABS+_ABS+_SBY+_OPS+", "---_OPS_DEG_0", "---_DEG_DEG_0", "---_ANY_U/S_0"	0x101	15.11.2011 07:45:55.122
+AMSCH.TruthTables.TTCadasUpTime.Table	sgAMSCH	"OPS_---_OPS_0", "UKN_---_UKN_0", "---_---_ABS_2_ANY+_OPS+", "---_U/S_U/S_0"	0x101	15.11.2011 11:04:32.184
+AMSCH.TruthTables.TTEFGUpTime.Table	sgAMSCH	"OPS_---_OPS_0", "UKN_---_UKN_0", "---_---_ABS_2_ANY+_OPS+", "---_U/S_U/S_0"	0x101	15.11.2011 11:04:32.184
+AMSCH.TruthTables.TTU_S.Table	sgAMSCH	"OPS_---_OPS_0", "UKN_---_UKN_0", "---_OPS_DEG_0", "---_DEG_DEG_0", "---_ANY_U/S_0"	0x101	15.11.2011 07:29:06.613
+
+AMSCH.TruthTables.GlobalCadas.Table	sgAMSCH	"UKN_---_UKN_0", "---_---_OPS_8_ABS+_ABS+_OPS+_OPS+_OPS+_OPS+_OPS+_OPS+", "---_---_OPS_8_OPS+_OPS+_ABS+_ABS+_OPS+_OPS+_OPS+_OPS+", "---_---_OPS_8_OPS+_OPS+_OPS+_OPS+_ABS+_ABS+_OPS+_OPS+", "---_---_OPS_8_OPS+_OPS+_OPS+_OPS+_OPS+_OPS+_ABS+_ABS+", "---_OPS_DEG_0", "---_DEG_DEG_0", "---_ANY_U/S_0"	0x101	08.06.2017 11:58:19.290
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+AMSCH.GlobalStatus.Alarms.AlarmActive	sgAMSCH		12					"AMSCH/sgAMSCHMainPanel.pnl"	"$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on AMSCH"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+AMSCH.LT.RawDatas.CSSAStates	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CSSBStates	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.RSSAStates	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.RSSBStates	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS1_TS	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS2_TS	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS1_MH1	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS1_MH2	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS2_MH1	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS2_MH2	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS1_TS_UpTime	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CADAS2_TS_UpTime	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.EFG.EFG_UpTime	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.EFG.EFG_N1	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.EFG.EFG_N2	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.EFG.EFG_N3	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.EFG.EFG_N4	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CSSA_UpTime	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.CSSB_UpTime	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.RSSAIdentifiers	sgAMSCH	56	\1
+AMSCH.LT.RawDatas.RSSBIdentifiers	sgAMSCH	56	\1
+
+AMSCH.TWR.RawDatas.CSSAStates	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CSSBStates	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.RSSAStates	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.RSSBStates	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS1_TS	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS2_TS	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS1_MH1	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS1_MH2	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS2_MH1	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS2_MH2	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS1_TS_UpTime	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CADAS2_TS_UpTime	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.EFG.EFG_UpTime	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.EFG.EFG_N1	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.EFG.EFG_N2	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.EFG.EFG_N3	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.EFG.EFG_N4	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CSSA_UpTime	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.CSSB_UpTime	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.RSSAIdentifiers	sgAMSCH	56	\1
+AMSCH.TWR.RawDatas.RSSBIdentifiers	sgAMSCH	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+AMSCH.LT.RawDatas.CSSAStates	sgAMSCH	16	"90_1.3.6.1.4.1.1504.11.2.1.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CSSBStates	sgAMSCH	16	"91_1.3.6.1.4.1.1504.11.2.1.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.RSSAStates	sgAMSCH	16	"90_1.3.6.1.4.1.1504.11.2.2.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.RSSBStates	sgAMSCH	16	"91_1.3.6.1.4.1.1504.11.2.2.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CSSA_UpTime	sgAMSCH	16	"90_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.CSSB_UpTime	sgAMSCH	16	"91_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.RSSAIdentifiers	sgAMSCH	16	"90_1.3.6.1.4.1.1504.11.2.2.1.2.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+AMSCH.LT.RawDatas.RSSBIdentifiers	sgAMSCH	16	"91_1.3.6.1.4.1.1504.11.2.2.1.2.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+
+AMSCH.TWR.RawDatas.CSSAStates	sgAMSCH	16	"97_1.3.6.1.4.1.1504.11.2.1.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CSSBStates	sgAMSCH	16	"98_1.3.6.1.4.1.1504.11.2.1.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.RSSAStates	sgAMSCH	16	"97_1.3.6.1.4.1.1504.11.2.2.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.RSSBStates	sgAMSCH	16	"98_1.3.6.1.4.1.1504.11.2.2.1.4.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CSSA_UpTime	sgAMSCH	16	"97_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CSSB_UpTime	sgAMSCH	16	"98_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.RSSAIdentifiers	sgAMSCH	16	"97_1.3.6.1.4.1.1504.11.2.2.1.2.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+AMSCH.TWR.RawDatas.RSSBIdentifiers	sgAMSCH	16	"98_1.3.6.1.4.1.1504.11.2.2.1.2.B"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+
+AMSCH.LT.RawDatas.CADAS1_TS	sgAMSCH	16	"92_1.3.6.1.4.1.1504.13.2.1.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS2_TS	sgAMSCH	16	"93_1.3.6.1.4.1.1504.13.2.1.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS1_MH1	sgAMSCH	16	"94_1.3.6.1.4.1.1504.13.1.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS1_MH2	sgAMSCH	16	"94_1.3.6.1.4.1.1504.13.3.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS2_MH1	sgAMSCH	16	"95_1.3.6.1.4.1.1504.13.1.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS2_MH2	sgAMSCH	16	"95_1.3.6.1.4.1.1504.13.3.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.EFG.EFG_UpTime	sgAMSCH	16	"96_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.EFG.EFG_N1	sgAMSCH	16	"96_1.3.6.1.4.1.1504.18.2.1.3.1"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.EFG.EFG_N2	sgAMSCH	16	"96_1.3.6.1.4.1.1504.18.2.1.3.2"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.EFG.EFG_N3	sgAMSCH	16	"96_1.3.6.1.4.1.1504.18.2.1.3.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.EFG.EFG_N4	sgAMSCH	16	"96_1.3.6.1.4.1.1504.18.2.1.3.4"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.LT.RawDatas.CADAS1_TS_UpTime	sgAMSCH	16	"92_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.CADAS2_TS_UpTime	sgAMSCH	16	"93_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+
+AMSCH.TWR.RawDatas.CADAS1_TS	sgAMSCH	16	"99_1.3.6.1.4.1.1504.13.2.1.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS2_TS	sgAMSCH	16	"100_1.3.6.1.4.1.1504.13.2.1.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS1_MH1	sgAMSCH	16	"101_1.3.6.1.4.1.1504.13.1.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS1_MH2	sgAMSCH	16	"101_1.3.6.1.4.1.1504.13.3.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS2_MH1	sgAMSCH	16	"102_1.3.6.1.4.1.1504.13.1.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS2_MH2	sgAMSCH	16	"102_1.3.6.1.4.1.1504.13.3.7.3.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.EFG.EFG_UpTime	sgAMSCH	16	"103_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.EFG.EFG_N1	sgAMSCH	16	"103_1.3.6.1.4.1.1504.18.2.1.3.1"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.EFG.EFG_N2	sgAMSCH	16	"103_1.3.6.1.4.1.1504.18.2.1.3.2"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.EFG.EFG_N3	sgAMSCH	16	"103_1.3.6.1.4.1.1504.18.2.1.3.3"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.EFG.EFG_N4	sgAMSCH	16	"103_1.3.6.1.4.1.1504.18.2.1.3.4"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+AMSCH.TWR.RawDatas.CADAS1_TS_UpTime	sgAMSCH	16	"99_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CADAS2_TS_UpTime	sgAMSCH	16	"100_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"

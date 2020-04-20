@@ -1,0 +1,475 @@
+V 11
+1
+LANG:5 7 NoName)
+PANEL,-1 -1 1078 638 N "_3DFace" 0
+E E E E E 1 -1 -1 0  220 80
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 151
+"LINE11"
+""
+1 60 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+131 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  60 550 60 250
+4 153
+"LINE13"
+""
+1 1020 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+133 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  1020 550 1020 250
+4 147
+"LINE7"
+""
+1 80 549.9999999999999 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+127 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  80 550 80 400
+4 149
+"LINE9"
+""
+1 1000 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+129 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  1000 550 1000 400
+4 145
+"LINE5"
+""
+1 80 400 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+125 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  80 400 160 400
+4 69
+"LINE3"
+""
+1 360.0000000000001 350 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  360 350 710 350
+4 68
+"LINE2"
+""
+1 360.0000000000001 300 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+120 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  360 300 710 300
+2 4
+"Text2"
+""
+1 410 0 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 412 2 648 38
+0 2 0 "0s" 0 0 0 65 0 0  412 2 1
+1
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+0 1
+LANG:5 5 ARTAS
+13 16
+"CMDNode"
+""
+1 39.99999999999993 130 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+101 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  38 128 107 202
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPARTASCommandWindow.pnl\", \"RDP Command Window\", makeDynString(\"$ARTASChain:A\"), 0, 0);
+}" 0
+ E E E
+13 17
+"PUSH_BUTTON1"
+""
+1 975 130 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  973 128 1042 202
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPARTASCommandWindow.pnl\", \"RDP Command Window\", makeDynString(\"$ARTASChain:B\"), 0, 0);
+}" 0
+ E E E
+1 108 39 "" 46
+0
+1 111 41 "" 46
+0
+1 117 44 "" 46
+0
+1 120 45 "" 46
+0
+1 123 46 "" 46
+0
+1 126 47 "" 46
+0
+1 129 48 "" 46
+0
+1 138 51 "" 46
+0
+1 141 52 "" 46
+0
+30 106
+"FRAME1"
+""
+1 20 94 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+122 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.083333333333333 0 0.9855769230769231 -1.666666666666661 7.35576923076922 0 E 20 94 381 511
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 ARTAS Chain A
+30 107
+"FRAME2"
+""
+1 20 94 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+123 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.083333333333333 0 0.9855769230769231 648.3333333333334 7.355769230769234 0 E 20 94 381 511
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 ARTAS Chain B
+4 148
+"LINE8"
+""
+1 1000 400 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+128 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  1000 400 920 400
+1 135 50 "" 46
+0
+4 150
+"LINE10"
+""
+1 60.00000000000006 250 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  60 250 140 250
+4 152
+"LINE12"
+""
+1 1020 250 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+132 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  1020 250 940 250
+1 132 49 "" 46
+0
+1 114 43 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 109 39 "" 51
+0
+1 110 39 "" 52
+0
+1 112 41 "" 51
+0
+1 113 41 "" 52
+0
+1 118 44 "" 51
+0
+1 119 44 "" 52
+0
+1 121 45 "" 51
+0
+1 122 45 "" 52
+0
+1 124 46 "" 51
+0
+1 125 46 "" 52
+0
+1 127 47 "" 51
+0
+1 128 47 "" 52
+0
+1 130 48 "" 51
+0
+1 131 48 "" 52
+0
+1 139 51 "" 51
+0
+1 140 51 "" 52
+0
+1 142 52 "" 51
+0
+1 143 52 "" 52
+0
+1 136 50 "" 51
+0
+1 137 50 "" 52
+0
+1 133 49 "" 51
+0
+1 134 49 "" 52
+0
+1 115 43 "" 51
+0
+1 116 43 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 39 "PANEL_REF39" -1
+"objects\\sgFwBlock.pnl" 460 400 T 103 0.7000000000000001 0 0.2 -212.0000000000002 370
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.Clock"
+3 41 "PANEL_REF41" -1
+"objects\\sgFwBlock.pnl" 100 269 T 105 0.7 0 0.35 39.99999999999992 35.85000000000002
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.ServerStatus"
+3 43 "PANEL_REF43" -1
+"objects\\sgFwBlock.pnl" 100 269 T 107 0.7 0 0.2 39.99999999999992 176.2
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.PrimaryLAN"
+3 44 "PANEL_REF44" -1
+"objects\\sgFwBlock.pnl" 100 269 T 108 0.7 0 0.2 40.00000000000001 326.2
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.SecondaryLAN"
+3 45 "PANEL_REF45" -1
+"objects\\sgFwBlock.pnl" 100 269 T 109 0.7 0 0.2 40.00000000000006 226.2000000000001
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.InternalLAN1"
+3 46 "PANEL_REF46" -1
+"objects\\sgFwBlock.pnl" 100 269 T 111 0.7 0 0.2 40.00000000000001 276.2000000000001
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainA.Components.InternalLAN2"
+3 47 "PANEL_REF47" -1
+"objects\\sgFwBlock.pnl" 460 400 T 112 0.7000000000000001 0 0.2 367.9999999999999 370
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.Clock"
+3 48 "PANEL_REF48" -1
+"objects\\sgFwBlock.pnl" 100 269 T 113 0.7 0 0.35 620 35.85000000000001
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.ServerStatus"
+3 49 "PANEL_REF49" -1
+"objects\\sgFwBlock.pnl" 100 269 T 114 0.7 0 0.2 620 176.2
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.PrimaryLAN"
+3 50 "PANEL_REF50" -1
+"objects\\sgFwBlock.pnl" 100 269 T 115 0.7 0 0.2 620 326.2
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.SecondaryLAN"
+3 51 "PANEL_REF51" -1
+"objects\\sgFwBlock.pnl" 100 269 T 116 0.7 0 0.2 620.0000000000001 226.2
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.InternalLAN1"
+3 52 "PANEL_REF52" -1
+"objects\\sgFwBlock.pnl" 100 269 T 117 0.7 0 0.2 620.0000000000001 276.2000000000001
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.ChainB.Components.InternalLAN2"
+1 53 "SHAPE_GROUP53" -1
+2 0 
+147 145 
+
+1 54 "SHAPE_GROUP54" -1
+2 0 
+149 148 
+
+1 55 "SHAPE_GROUP55" -1
+2 0 
+151 150 
+
+1 56 "SHAPE_GROUP56" -1
+2 0 
+153 152 
+
+0

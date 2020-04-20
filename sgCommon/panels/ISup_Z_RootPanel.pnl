@@ -1,0 +1,989 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "private const string TOP_MENU_ENTRY = \"ISup\";
+private const int NBCOLUMNS = 3;
+private const int LEFT = 125;
+private const int TOP = 100;
+private const int STEP_WIDTH = 350;
+private const int STEP_HEIGHT = 45;
+private const float BLOCK_WIDTH = 0.6;
+private const float BLOCK_HEIGHT = 0.18;
+
+
+
+void component_loaded() {
+	// DebugTN(data);
+  
+  // menu  
+  dyn_string menuEntries = getPointsOfType(\"sgFwMenuEntry\");
+  int pos = 0;
+  
+  for (int i = 1; i <= dynlen(menuEntries); i++) {
+    string menuEntry = menuEntries[i];
+    string dpIdent = dpParent(menuEntry);
+    string name, group, panel, params, globalStatusPoint;
+    bool isHidden, separator;
+    
+    dpGet(menuEntry + \".Group\", group,
+          menuEntry + \".Name\", name,
+          menuEntry + \".Panel\", panel,
+          menuEntry + \".Params\", params,
+          menuEntry + \".Hidden\", isHidden,
+          menuEntry + \".Separator\", separator,
+          menuEntry + \".GlobalStatusPoint\", globalStatusPoint);
+    
+    if (globalStatusPoint == \"\") globalStatusPoint = name + \".GlobalStatus\";
+    
+    if (!isHidden && dpIdent != TOP_MENU_ENTRY) {
+	    if (name == \"\") {
+	      DebugTN(\"Menu entry not configured for [\" + menuEntry + \"]!\");
+	    } else {
+        int x = pos % NBCOLUMNS;
+        int y = pos / NBCOLUMNS;
+        addSymbol(myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"System\" + pos, 
+                  makeDynString(
+                      \"$LabelsNum:0\",
+                      \"$PanelName:\" + panel, 
+                      \"$PanelParams:\" + params,
+                      \"$SystemName:\",
+                      \"$SystemStatus:\" + globalStatusPoint),
+                  LEFT + x * STEP_WIDTH,
+                  TOP + y * STEP_HEIGHT, 
+                  0, BLOCK_WIDTH, BLOCK_HEIGHT);
+
+        pos++;
+	    }
+	  }
+  }  
+
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 8 3 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 5 1096 41
+1 2 0 "0s" 0 0 0 65 0 0  10 5 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 9 Top panel
+LANG:1 9 Top panel
+1 652 7 "" 46
+0
+1 655 8 "" 46
+0
+1 658 11 "" 46
+0
+1 661 14 "" 46
+0
+1 664 19 "" 46
+0
+1 667 20 "" 46
+0
+1 670 23 "" 46
+0
+1 673 24 "" 46
+0
+1 676 29 "" 46
+0
+1 679 30 "" 46
+0
+1 685 35 "" 46
+0
+1 688 36 "" 46
+0
+1 691 39 "" 46
+0
+1 694 42 "" 46
+0
+1 697 43 "" 46
+0
+1 700 44 "" 46
+0
+1 706 51 "" 46
+0
+1 709 52 "" 46
+0
+1 712 53 "" 46
+0
+1 715 54 "" 46
+0
+1 718 56 "" 46
+0
+1 721 57 "" 46
+0
+1 724 58 "" 46
+0
+1 727 59 "" 46
+0
+1 730 60 "" 46
+0
+1 733 62 "" 46
+0
+1 736 63 "" 46
+0
+1 739 64 "" 46
+0
+1 742 65 "" 46
+0
+1 745 66 "" 46
+0
+1 748 67 "" 46
+0
+1 751 68 "" 46
+0
+1 754 69 "" 46
+0
+1 757 71 "" 46
+0
+1 760 72 "" 46
+0
+1 763 73 "" 46
+0
+1 766 74 "" 46
+0
+1 769 75 "" 46
+0
+1 772 76 "" 46
+0
+1 775 78 "" 46
+0
+1 778 79 "" 46
+0
+1 781 80 "" 46
+0
+1 784 81 "" 46
+0
+1 787 82 "" 46
+0
+1 790 83 "" 46
+0
+2 335
+"Text2"
+""
+1 40 70 E E E 1 E 0 E N "_WindowText" E N {255,0,0} E E
+ E E
+96 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main() {
+  this.visible = false;
+//  component_loaded();   // TODO With a Select  and make a library...
+}
+" 0
+ E 0 1 1 0 1 E U  1 E 42 72 275 88
+0 2 0 "0s" 0 0 0 192 0 0  42 72 1
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 40 code to create the sgfwblocks at runtime
+1 793 84 "" 46
+0
+1 796 85 "" 46
+0
+1 799 86 "" 46
+0
+4 489
+"LINE1"
+""
+1 155.0000000000001 760 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+97 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  265 760 155 760
+4 490
+"LINE2"
+""
+1 156.0000000000001 760.9090909090909 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+98 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  265 761 156 761
+4 491
+"LINE3"
+""
+1 500.0000000000001 715 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+99 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 715 500 715
+4 492
+"LINE4"
+""
+1 501.0000000000001 715.9090909090909 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 716 501 716
+4 493
+"LINE5"
+""
+1 840.0000000000001 760 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+101 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  950 760 840 760
+4 494
+"LINE6"
+""
+1 841.0000000000001 760.9090909090909 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  950 761 841 761
+4 648
+"LINE7"
+""
+1 500.0000000000001 760 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+103 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 760 500 760
+4 649
+"LINE8"
+""
+1 501.0000000000001 760.9090909090909 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+104 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 761 501 761
+4 650
+"LINE9"
+""
+1 500.0000000000001 105 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+105 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 105 500 105
+4 651
+"LINE10"
+""
+1 501.0000000000001 105.9090909090909 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+106 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  610 106 501 106
+1 802 88 "" 46
+0
+1 805 89 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 653 7 "" 51
+0
+1 654 7 "" 52
+0
+1 656 8 "" 51
+0
+1 657 8 "" 52
+0
+1 659 11 "" 51
+0
+1 660 11 "" 52
+0
+1 662 14 "" 51
+0
+1 663 14 "" 52
+0
+1 665 19 "" 51
+0
+1 666 19 "" 52
+0
+1 668 20 "" 51
+0
+1 669 20 "" 52
+0
+1 671 23 "" 51
+0
+1 672 23 "" 52
+0
+1 674 24 "" 51
+0
+1 675 24 "" 52
+0
+1 677 29 "" 51
+0
+1 678 29 "" 52
+0
+1 680 30 "" 51
+0
+1 681 30 "" 52
+0
+1 686 35 "" 51
+0
+1 687 35 "" 52
+0
+1 689 36 "" 51
+0
+1 690 36 "" 52
+0
+1 692 39 "" 51
+0
+1 693 39 "" 52
+0
+1 695 42 "" 51
+0
+1 696 42 "" 52
+0
+1 698 43 "" 51
+0
+1 699 43 "" 52
+0
+1 701 44 "" 51
+0
+1 702 44 "" 52
+0
+1 707 51 "" 51
+0
+1 708 51 "" 52
+0
+1 710 52 "" 51
+0
+1 711 52 "" 52
+0
+1 713 53 "" 51
+0
+1 714 53 "" 52
+0
+1 716 54 "" 51
+0
+1 717 54 "" 52
+0
+1 719 56 "" 51
+0
+1 720 56 "" 52
+0
+1 722 57 "" 51
+0
+1 723 57 "" 52
+0
+1 725 58 "" 51
+0
+1 726 58 "" 52
+0
+1 728 59 "" 51
+0
+1 729 59 "" 52
+0
+1 731 60 "" 51
+0
+1 732 60 "" 52
+0
+1 734 62 "" 51
+0
+1 735 62 "" 52
+0
+1 737 63 "" 51
+0
+1 738 63 "" 52
+0
+1 740 64 "" 51
+0
+1 741 64 "" 52
+0
+1 743 65 "" 51
+0
+1 744 65 "" 52
+0
+1 746 66 "" 51
+0
+1 747 66 "" 52
+0
+1 749 67 "" 51
+0
+1 750 67 "" 52
+0
+1 752 68 "" 51
+0
+1 753 68 "" 52
+0
+1 755 69 "" 51
+0
+1 756 69 "" 52
+0
+1 758 71 "" 51
+0
+1 759 71 "" 52
+0
+1 761 72 "" 51
+0
+1 762 72 "" 52
+0
+1 764 73 "" 51
+0
+1 765 73 "" 52
+0
+1 767 74 "" 51
+0
+1 768 74 "" 52
+0
+1 770 75 "" 51
+0
+1 771 75 "" 52
+0
+1 773 76 "" 51
+0
+1 774 76 "" 52
+0
+1 776 78 "" 51
+0
+1 777 78 "" 52
+0
+1 779 79 "" 51
+0
+1 780 79 "" 52
+0
+1 782 80 "" 51
+0
+1 783 80 "" 52
+0
+1 785 81 "" 51
+0
+1 786 81 "" 52
+0
+1 788 82 "" 51
+0
+1 789 82 "" 52
+0
+1 791 83 "" 51
+0
+1 792 83 "" 52
+0
+1 794 84 "" 51
+0
+1 795 84 "" 52
+0
+1 797 85 "" 51
+0
+1 798 85 "" 52
+0
+1 800 86 "" 51
+0
+1 801 86 "" 52
+0
+1 803 88 "" 51
+0
+1 804 88 "" 52
+0
+1 806 89 "" 51
+0
+1 807 89 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 7 "Group8" -1
+"objects\\sgFwBlock.pnl" 370 200 T 6 0.625 0 0.2 198.75 15
+5
+"$LabelsNum""0"
+"$PanelName""ISup_Z_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.GlobalStatus"
+3 8 "Group4" -1
+"objects\\sgFwBlock.pnl" 270 110 T 6 0.6249999999999999 0 0.1490044280382402 -78.74999999999966 378.6095129157936
+5
+"$LabelsNum""0"
+"$PanelName""Recording/RecordingMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Recording.GlobalStatus"
+3 11 "Group9" -1
+"objects\\sgFwBlock.pnl" 430 270 T 6 0.6274999999999997 0 0.1490044280382394 500.1750000000005 154.7688044296754
+5
+"$LabelsNum""0"
+"$PanelName""IDM/IDMMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.GlobalStatus"
+3 14 "Group10" -1
+"objects\\sgFwBlock.pnl" 430 645 T 8 0.625 0 0.1497423777896854 501.2500000000001 178.416166325653
+5
+"$LabelsNum""0"
+"$PanelName""MServer/MServerMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.GlobalStatus"
+3 19 "Group16" -1
+"objects\\sgFwBlock.pnl" 100 200 T 11 0.625 0 0.1486805112025448 367.5000000000002 85.36490786050122
+5
+"$LabelsNum""0"
+"$PanelName""ASC/ASCMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ASC.GlobalStatus"
+3 20 "Group15" -1
+"objects\\sgFwBlock.pnl" 760 600 T 12 0.625 0 0.1490044280382395 -385 145.5973431770564
+5
+"$LabelsNum""0"
+"$PanelName""IMON/IMONMainPanel.pnl"
+"$PanelParams""Site:"
+"$SystemName"""
+"$SystemStatus""IMON.GlobalStatus"
+3 23 "Group17" -1
+"objects\\sgFwBlock.pnl" 100 700 T 13 0.625 0 0.1490044280382377 27.50000000000034 90.69690037323366
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:DATACOM"
+"$SystemName"""
+"$SystemStatus""DATACOM.Components.GlobalStatus"
+3 24 "Group19" -1
+"objects\\sgFwBlock.pnl" 230 570 T 13 0.625 0 0.1490044280382388 -53.74999999999955 350.0674760182046
+5
+"$LabelsNum""0"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:ScNet.scNet.ErrorsList;CriticalEvents:ScNet.scNet.NewCriticalEvents;CriticalEventsStatus:ScNet.scNet.CriticalEventsStatus;HeartbeatStatus:ScNet.scNet.TimeoutRef;PageTitle:scNet"
+"$SystemName"""
+"$SystemStatus""ScNet.scNet.GlobalStatus"
+3 29 "Group22" -1
+"objects\\sgFwBlock.pnl" 105 770 T 17 0.625 0 0.1499999999999998 704.3750000000002 39.50000000000019
+5
+"$LabelsNum""0"
+"$PanelName""CRYSTALEMS/CRYSTALEMSMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CRYSTALEMS.GlobalStatus"
+3 30 "Group24" -1
+"objects\\sgFwBlock.pnl" 430 760 T 20 0.625 0 0.174999999999999 501.25 677.0000000000008
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_Z:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 35 "Group26" -1
+"objects\\sgFwBlock.pnl" 430 755 T 28 0.625 0 0.1750000000000001 501.25 632.8749999999999
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_D:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 36 "Group27" -1
+"objects\\sgFwBlock.pnl" 430 315 T 30 0.6250000000000001 0 0.1490044280382388 501.2500000000001 188.0636051679549
+5
+"$LabelsNum""0"
+"$PanelName""INCH/INCH_L_MainPanel.pnl"
+"$PanelParams""Site:_L"
+"$SystemName"""
+"$SystemStatus""INCH_L.GlobalStatus"
+3 39 "Group27" -1
+"objects\\sgFwBlock.pnl" 90 200 T 45 0.625 0 0.1490044280382387 33.75000000000046 125.1991143923523
+5
+"$LabelsNum""0"
+"$PanelName""ComCluster/ComClusterMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ComCluster.GlobalStatus"
+3 42 "PANEL_REF43" -1
+"objects\\sgFwBlock.pnl" 430 760 T 68 0.625 0 0.1750000000000001 161.25 631.9999999999999
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_B:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 43 "PANEL_REF44" -1
+"objects\\sgFwBlock.pnl" 430 315 T 68 0.6250000000000003 0 0.1497423777896856 161.2499999999999 187.8311509962491
+5
+"$LabelsNum""0"
+"$PanelName""INCH/INCH_B_MainPanel.pnl"
+"$PanelParams""Site:_B"
+"$SystemName"""
+"$SystemStatus""INCH_B.GlobalStatus"
+3 44 "PANEL_REF45" -1
+"objects\\sgFwBlock.pnl" 430 760 T 68 0.625 0 0.1750000000000001 161.25 677.0000000000005
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_L:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 51 "PANEL_REF52" -1
+"objects\\sgFwBlock.pnl" 90 395 T 70 0.6250000000000003 0 0.1490044280382395 713.75 256.1432509248955
+5
+"$LabelsNum""0"
+"$PanelName""OptiNet/sgOptiNetMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""OptiNet.GlobalStatus"
+3 52 "PANEL_REF52" -1
+"objects\\sgFwBlock.pnl" 90 200 T 70 0.6250000000000003 0 0.1497423777896848 373.7500000000001 125.051524442063
+5
+"$LabelsNum""0"
+"$PanelName""CPDLC/CPDLCMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.GlobalStatus"
+3 53 "PANEL_REF53" -1
+"objects\\sgFwBlock.pnl" 430 665 T 70 0.625 0 0.15 501.25 535.25
+5
+"$LabelsNum""0"
+"$PanelName""VOLATIS/VOLATISMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VOLATIS.GlobalStatus"
+3 54 "PANEL_REF54" -1
+"objects\\sgFwBlock.pnl" 430 760 T 70 0.625 0 0.1750000000000001 -178.75 676.9999999999998
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_EM:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 56 "PANEL_REF56" -1
+"objects\\sgFwBlock.pnl" 90 395 T 72 0.625 0 0.1497423777896854 373.7500000000005 215.8517607730746
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:OPSLAN"
+"$SystemName"""
+"$SystemStatus""OPSLAN.Components.GlobalStatus"
+3 57 "PANEL_REF57" -1
+"objects\\sgFwBlock.pnl" 430 665 T 73 0.6250000000000002 0 0.1490044280382387 501.25 495.9120553545709
+5
+"$LabelsNum""0"
+"$PanelName""Trace/TraceMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.GlobalStatus"
+3 58 "PANEL_REF58" -1
+"objects\\sgFwBlock.pnl" 265 755 T 73 0.625 0 0.1750000000000001 264.375 587.8749999999999
+5
+"$LabelsNum""1"
+"$PanelName""EMSup_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""EMSup_Z:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 59 "PANEL_REF59" -1
+"objects\\sgFwBlock.pnl" 430 760 T 76 0.625 0 0.1750000000000001 -178.75 632
+5
+"$LabelsNum""1"
+"$PanelName""Navir_Z_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 60 "PANEL_REF60" -1
+"objects\\sgFwBlock.pnl" 430 420 T 76 0.6250000000000001 0 0.14900442803824 -178.7499999999998 412.4181402239399
+5
+"$LabelsNum""0"
+"$PanelName""SmartRadio/sgSmartRadioMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SmartRadio.GlobalStatus"
+3 62 "PANEL_REF62" -1
+"objects\\sgFwBlock.pnl" 100 700 T 76 0.625 0 0.1505057519531241 367.5000000000001 89.6459736328132
+5
+"$LabelsNum""0"
+"$PanelName""FDPZ/FDPZMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.GlobalStatus"
+3 63 "Group6" -1
+"objects\\sgFwBlock.pnl" 60 290 T 76 0.625 0 0.1497423777896857 52.5 551.5747104409912
+5
+"$LabelsNum""0"
+"$PanelName""TBox/TBoxMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TBox.GlobalStatus"
+3 64 "Group11" -1
+"objects\\sgFwBlock.pnl" 430 420 T 77 0.6250000000000003 0 0.1490044280382397 161.2499999999999 492.4181402239393
+5
+"$LabelsNum""0"
+"$PanelName""SYLEX/SYLEX_Z_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SYLEX.GlobalStatus"
+3 65 "PANEL_REF2" -1
+"objects\\sgFwBlock.pnl" 430 270 T 78 0.625 0 0.1497423777896861 501.2500000000003 314.5695579967848
+5
+"$LabelsNum""0"
+"$PanelName""RecVoice/sgRecAVREMainPanel.pnl"
+"$PanelParams""Site:ZRH;SystemName:ISup_Z:"
+"$SystemName"""
+"$SystemStatus""RecAVREZRH.GlobalStatus"
+3 66 "Group20" -1
+"objects\\sgFwBlock.pnl" 710 570 T 79 0.6249999999999999 0 0.1497423777896846 326.2500000000004 349.64684465988
+5
+"$LabelsNum""0"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:ScNet.SetiNet.ErrorsList;CriticalEvents:ScNet.SetiNet.NewCriticalEvents;CriticalEventsStatus:ScNet.SetiNet.CriticalEventsStatus;HeartbeatStatus:ScNet.SetiNet.TimeoutRef;PageTitle:SetiNet"
+"$SystemName"""
+"$SystemStatus""ScNet.SetiNet.GlobalStatus"
+3 67 "Group28" -1
+"objects\\sgFwBlock.pnl" 430 665 T 80 0.625 0 0.1500000000000003 -178.75 535.2499999999999
+5
+"$LabelsNum""0"
+"$PanelName""VISTARAD/VISTARADMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VISTARAD.GlobalStatus"
+3 68 "Group29" -1
+"objects\\sgFwBlock.pnl" 60 105 T 81 0.6250000000000003 0 0.1490044280382387 392.5000000000002 419.3545350559849
+5
+"$LabelsNum""0"
+"$PanelName""SCONE/SCONEMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.GlobalStatus"
+3 69 "Group5" -1
+"objects\\sgFwBlock.pnl" 60 220 T 82 0.6250000000000003 0 0.1490044280382402 392.5000000000001 322.2190258315873
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RDPDefaultPanel.pnl"
+"$SystemName"""
+"$SystemStatus""RDP.GlobalStatus"
+3 71 "PANEL_REF49" -1
+"objects\\sgFwBlock.pnl" 430 665 T 84 0.625 0 0.1497423777896849 161.25 535.4213187698595
+5
+"$LabelsNum""0"
+"$PanelName""VISTATEL/VISTATELMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""VISTATEL.GlobalStatus"
+3 72 "PANEL_REF61" -1
+"objects\\sgFwBlock.pnl" 765 500 T 85 0.625 0 0.1490044280382388 -48.12499999999989 320.4977859808805
+5
+"$LabelsNum""0"
+"$PanelName""RecVoice/sgRecRegioMainPanel.pnl"
+"$PanelParams""Site:ZRH; SystemName:ISup_Z:"
+"$SystemName"""
+"$SystemStatus""RecRegioZRH.GlobalStatus"
+3 73 "PANEL_REF73" -1
+"objects\\sgFwBlock.pnl" 90 395 T 86 0.6250000000000001 0 0.1490044280382395 33.75 296.1432509248955
+5
+"$LabelsNum""0"
+"$PanelName""Radars/RadarsMainPanelZRH.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RadarsZRH.GlobalStatus"
+3 74 "PANEL_REF242" -1
+"objects\\sgFwBlock.pnl" 785 725 T 87 0.6250000000000003 0 0.15 -400.6250000000003 206.2500000000002
+5
+"$LabelsNum""0"
+"$PanelName""MV/MVMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MV.GlobalStatus"
+3 75 "PANEL_REF75" -1
+"objects\\sgFwBlock.pnl" 430 665 T 88 0.625 0 0.1490044280382387 161.2500000000008 495.9120553545714
+5
+"$LabelsNum""0"
+"$PanelName""TELGATE/TELGATEMainPanel.pnl"
+"$PanelParams""Site:ZRH;SystemName:ISup_Z:"
+"$SystemName"""
+"$SystemStatus""TELGATE.GlobalStatus"
+3 76 "PANEL_REF256" -1
+"objects\\sgFwBlock.pnl" 770 665 T 88 0.6250000000000003 0 0.15 -51.24999999999989 375.2499999999996
+5
+"$LabelsNum""0"
+"$PanelName""SPHINX/SPHINXMainPanel.pnl"
+"$PanelParams""Site:ZRH;SystemName:ISup_Z:"
+"$SystemName"""
+"$SystemStatus""SPHINX.GlobalStatus"
+3 78 "PANEL_REF263" -1
+"objects\\sgFwBlock.pnl" 90 395 T 90 0.625 0 0.1500000000000002 373.7500000000002 455.7499999999997
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:SKYNET2"
+"$SystemName"""
+"$SystemStatus""SKYNET2.Components.GlobalStatus"
+3 79 "PANEL_REF264" -1
+"objects\\sgFwBlock.pnl" 90 395 T 91 0.625 0 0.1500000000000002 713.7500000000001 455.7499999999999
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:SPINET5"
+"$SystemName"""
+"$SystemStatus""SPINET5.Components.GlobalStatus"
+3 80 "PANEL_REF265" -1
+"objects\\sgFwBlock.pnl" 90 395 T 92 0.625 0 0.1500000000000002 33.75000000000046 495.7500000000005
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:SPINET6"
+"$SystemName"""
+"$SystemStatus""SPINET6.Components.GlobalStatus"
+3 81 "PANEL_REF81" -1
+"objects\\sgFwBlock.pnl" 100 200 T 92 0.625 0 0.15 27.50000000000006 85.00000000000003
+5
+"$LabelsNum""0"
+"$PanelName""AFPS/AFPSMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""AFPS.GlobalStatus"
+3 82 "PANEL_REF82" -1
+"objects\\sgFwBlock.pnl" 90 395 T 93 0.625 0 0.1500000000000002 33.75000000000046 455.7500000000002
+5
+"$LabelsNum""0"
+"$PanelName""LAN/sgGenericLANMainPanel.pnl"
+"$PanelParams""LANSystemName:SKYNET1"
+"$SystemName"""
+"$SystemStatus""SKYNET1.Components.GlobalStatus"
+3 83 "PANEL_REF83" -1
+"objects\\sgFwBlock.pnl" 60 105 T 94 0.6250000000000001 0 0.1490044280382382 732.5000000000001 459.3545350559852
+5
+"$LabelsNum""0"
+"$PanelName""SkyBriefing/SkyBriefingMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SkyBriefing.GlobalStatus"
+3 84 "PANEL_REF84" -1
+"objects\\sgFwBlock.pnl" 765 500 T 97 0.625 0 0.1505057519531252 291.8749999999998 319.7471240234377
+5
+"$LabelsNum""0"
+"$PanelName""RecVoice/sgRecVoice18MainPanel.pnl"
+"$PanelParams""Site:ZRH; SystemName:ISup_Z:"
+"$SystemName"""
+"$SystemStatus""RecVoice.GlobalStatus"
+3 85 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 760 600 T 97 0.625 0 0.1490044280382395 -385 185.5973431770564
+5
+"$LabelsNum""0"
+"$PanelName""INCH/INCH_Z_MainPanel.pnl"
+"$PanelParams""Site:"
+"$SystemName"""
+"$SystemStatus""INCH.GlobalStatus"
+3 86 "PANEL_REF86" -1
+"objects\\sgFwBlock.pnl" 770 335 T 97 0.625 0 0.1490044280382388 -51.25000000000006 265.0835166071901
+5
+"$LabelsNum""0"
+"$PanelName""nJams\\nJamsMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.GlobalStatus"
+3 88 "PANEL_REF88" -1
+"objects\\sgFwBlock.pnl" 90 200 T 107 0.625 0 0.1490044280382387 713.75 85.19911439235226
+5
+"$LabelsNum""0"
+"$PanelName""CALM/CALMMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CALM.GlobalStatus"
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 60 290 T 108 0.625 0 0.1497423777896857 732.5000000000001 511.5747104409912
+5
+"$LabelsNum""0"
+"$PanelName""TACO/TACOMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TACO.GlobalStatus"
+0

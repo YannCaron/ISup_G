@@ -1,0 +1,160 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values;
+
+DPEditNames = $DPEditNames;
+// =\"AFPS.History;\"; //change when finished testing
+
+data_point_elements = makeDynString(
+																		//the names of the constants
+																	 );				
+
+data_points = strsplit(DPEditNames, \";\"); 
+dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+
+//using dpe_values, put all the info onto the panel
+	
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	//remember to set changed_elements[ ... ] to true on event click/event change etc. for all objects on panel
+	}
+
+}
+" 0
+"main()
+{
+//SavingChangesBack();
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+//global variables
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+
+//if no dpe name constants defined in the constants lib, define them here
+
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+
+dyn_string validate()
+{
+
+
+if (dynlen(result) > 0)
+	{
+	for (int j = 1; j<=dynlen(result);j++)
+		{
+		result[j] = \"sgTYPENAMEHERE error:\" + result[j];
+		}
+	DebugN(result);
+	}
+return result;
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+dyn_anytype all_values;
+
+//this is where you save back to the database
+
+//get the data off the panel...
+
+//but only save back if saving is enabled:
+//DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+	//would be nice to have option to see if any errors produced in validation, whether to not close...
+	
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+}
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

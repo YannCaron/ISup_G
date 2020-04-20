@@ -1,0 +1,7 @@
+version 1
+
+auth "" ""
+#Manager         | Start  | SecKill | Restart# | ResetMin | Options
+PVSS00pmon       | manual |      30 |       99 |        1 |
+PVSS00ui         | always |      30 |       99 |        1 |-iconBar -menuBar -p sgBasePanel.pnl -m vision:ISup_1,1280x1024+0+0
+PVSS00ui         | always |      30 |       99 |        1 |-iconBar -menuBar -p sgBasePanel.pnl -m vision:ISup_2,1280x1024+1280+0

@@ -1,0 +1,66 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 350 180 N "_3DFace" 5
+"$CommandEnable"
+"$ILSForCAT"
+"$NavaidNr"
+"$StationName"
+"$SystemName"
+"main()
+{
+}" 0
+ E E E E 1 -1 -1 0  10 156
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1 4 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 2 4 "" 51
+0
+1 3 4 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 4 "Group10"
+"objects\\sgFwBlock.pnl" 400 65 T 5 0.775 0 0.5 -290.371507936508 6.97015687366559
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/BitsStates/24BitsStates.pnl;ElementName:\"Navaid_\" + $NavaidNr;SystemName:$SystemName;StationName:$StationName;CommandEnable:$CommandEnable;NavaidNr:$NavaidNr;ILSForCAT:$ILSForCAT"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Navaid_\" + $NavaidNr + \".Status\""
+0

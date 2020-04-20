@@ -1,0 +1,194 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 11 CPDLC - GGR
+LANG:1 4 AFPS
+1 136 76 "" 11
+0
+1 137 78 "" 46
+0
+30 115
+"FRAME1"
+""
+1 125 63 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+138 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.4085365853658536 0 0.928270042194093 78.9329268292683 156.5189873417722 0 E 125 63 946 301
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 GGR-A
+1 140 79 "" 46
+0
+1 143 80 "" 46
+0
+1 152 85 "" 46
+0
+30 135
+"FRAME2"
+""
+1 125 63 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+152 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.4085365853658536 0 0.928270042194093 568.9329268292684 156.5189873417722 0 E 125 63 946 301
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 GGR-B
+1 155 86 "" 46
+0
+1 158 87 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 138 78 "" 51
+0
+1 139 78 "" 52
+0
+1 141 79 "" 51
+0
+1 142 79 "" 52
+0
+1 144 80 "" 51
+0
+1 145 80 "" 52
+0
+1 153 85 "" 51
+0
+1 154 85 "" 52
+0
+1 156 86 "" 51
+0
+1 157 86 "" 52
+0
+1 159 87 "" 51
+0
+1 160 87 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "Group7" -1
+"objects\\sgFwHistory.pnl" 10 710 T 108 1 0 1 -10 -15
+2
+"$SystemHistory""CPDLC.History"
+"$SystemName"""
+3 78 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 340 305 T 137 0.6874999999999999 0 0.2 -73.74999999999992 194
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRA.Components.GGRServerHw"
+3 79 "PANEL_REF79" -1
+"objects\\sgFwBlock.pnl" 340 305 T 139 0.6874999999999999 0 0.2 -73.74999999999989 249
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRA.Components.ATNStack"
+3 80 "PANEL_REF80" -1
+"objects\\sgFwBlock.pnl" 340 305 T 140 0.6874999999999999 0 0.2 -73.74999999999989 304
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRA.Components.SITAConnection"
+3 85 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 340 305 T 145 0.6874999999999999 0 0.2 411.2500000000001 194
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRB.Components.GGRServerHw"
+3 86 "PANEL_REF86" -1
+"objects\\sgFwBlock.pnl" 340 305 T 146 0.6874999999999999 0 0.2 411.2500000000001 249
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRB.Components.ATNStack"
+3 87 "PANEL_REF87" -1
+"objects\\sgFwBlock.pnl" 340 305 T 147 0.6874999999999999 0 0.2 411.2500000000001 304
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""CPDLC.Components.GGRB.Components.SITAConnection"
+0

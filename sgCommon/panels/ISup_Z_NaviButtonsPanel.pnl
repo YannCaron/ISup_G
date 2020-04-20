@@ -1,0 +1,72 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 736 N "_3DFace" 0
+"main()
+{
+  collapsibleMenu_panel_initialize();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+29 620
+"menu"
+""
+1 -2.842170943040401e-014 3.26405569239796e-014 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+145 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"frameShape" "enum 0"
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  0 0 119 735
+19 CollapsibleMenu.ewo
+1
+0 "clicked" "(string group, string name, string data)"
+"  collapsibleMenu_menu_clicked(group, name, data);"
+E0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

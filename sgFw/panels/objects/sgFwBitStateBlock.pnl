@@ -1,0 +1,310 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 640 130 N "_3DFace" 2
+"$BitState"
+"$SystemName"
+"main()
+{
+  int x,y;
+  int w,h;
+  
+  getValue(\"PolylineState\",\"position\",x,y);
+  getValue(\"PolylineState\",\"size\",w,h);
+  
+ // DebugTN(x,y);
+  
+  addSymbol(myModuleName(), myPanelName(),\"objects/componentText.pnl\", \"CT\" + x + y, 
+              \"\",
+              x+(w/2),(y-5),0,1,1);	
+  
+  initSystemName();
+  connectSystemDP();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "
+// Modifications 
+// 13-09-2004 : (PW) Creation for Navir uses
+// 15-09-2004 : (PW) Inversion IsState and not IsWarning
+// 21-09-2004 : (PW) Correction of the toolTiptext
+// 13.12.2005 : (PW) Modified to have .Description. Comments are logged
+// AUG 2007   : (PW) PVSS II v 3.6 adaptations
+
+string systemName;
+string systemStatus;
+string description;
+bool isConnected;
+bool wasHidden; // to know if it was hidden before disconnection
+
+void updateBlock(string fwOkDpName, int fwOkValue,
+                  string stateDpName, bool stateDpValue,
+		  string isStateDpName, bool isStateValue,
+		  string commentDpName, string commentValue,
+		  string hiddenName, bool componentHidden)
+{
+	if(!componentHidden)
+	{
+		wasHidden = false;
+	
+            //aj & pw 07/2007 componenttext is added dynamically as refpanel
+            int x,y;        
+            getValue(\"PolylineState\",\"position\",x,y);
+            setValue(\"CT\"  + x + y + \".ComponentText\",\"visible\",true);
+                
+            PolylineState.visible = true;	
+	    CommentCorner.visible = true;
+
+		if(fwOkValue == 0)
+		{
+			
+		// Define background color and tooltip text according to state
+			if(!isStateValue)  // isWarning : False --> Warning (Red); True --> No warning (BackColor)
+			{
+				if(stateDpValue == \"TRUE\") // no warning
+				{
+					setComponentsColor(\"sgStdABSColor\", commentValue); // sgStdABSColor = back color
+					updateToolTip(\"Normal state\");	
+				}
+				else  // False or else  -> warning
+				{
+					setComponentsColor(\"sgStdU/SColor\", commentValue);  // sgStdU/SColor = red -> warning
+					updateToolTip(\"Warning state\");	
+				}
+			}
+			else  // isStatus bit: False --> not Active (BackColor); True --> Active (Green)
+			{
+				if(stateDpValue == \"TRUE\") // active
+				{
+					setComponentsColor(\"sgStdOPSColor\", commentValue); // sgStdOPSColor = green -> active
+					updateToolTip(\"Active state\");	
+				}
+				else  // false or else  -> not active
+				{
+					setComponentsColor(\"sgStdABSColor\", commentValue);  // sgStdABSColor = back color -> not active
+					updateToolTip(\"Inactive state\");	
+				}
+			}	
+			
+			
+		}
+		else  // case framework isn't ok
+		{
+		//	activeDisconnectedLogicErrorText(\"LOGIC ERROR\");
+			updateToolTip(\"Logic (Framework) error on System: \" + systemName);
+			setComponentsColor(\"sgStdUKNColor\", commentValue);	
+		}// test framework ok
+	}
+	else  // case block hidden
+	{
+		wasHidden = true;
+		PolylineState.visible = false;	
+		CommentCorner.visible = false;	
+                
+                 //aj & pw 07/2007 componenttext is added dynamically as refpanel
+                int x,y;        
+                getValue(\"PolylineState\",\"position\",x,y);
+                setValue(\"CT\"  + x + y + \".ComponentText\",\"visible\",false);
+                
+	}// Hidden test
+}
+
+void setComponentsColor(string statusColor, string commentText)
+{
+	PolylineState.backCol = statusColor;
+
+	if(commentText == \"\")
+		CommentCorner.backCol = statusColor;
+	else
+		CommentCorner.backCol = \"{0,0,0}\";
+}
+
+
+void connectSystemDP()
+{
+         //aj & pw 07/2007 componenttext is added dynamically as refpanel
+        int x,y;        
+        getValue(\"PolylineState\",\"position\",x,y);
+        setValue(\"CT\"  + x + y + \".ComponentText\",\"text\",\"\");
+      
+ 	
+	dpConnect(\"checkSystemConnection\", \"_Connections.Dist.ManNums\", \"_Connections_2.Dist.ManNums\", 
+                                           \"_DistManager.State.SystemNums\",\"_DistManager_2.State.SystemNums\",
+                                            ACTIVE_CHAIN);
+}
+
+void checkSystemConnection(string connDpNameA, dyn_string manNumsA, string connDpNameB, dyn_string manNumsB,
+			    string distManDpA, dyn_string distManNumsA, string distManDpB, dyn_string distManNumsB,
+			    string activeChainDp, string activeChain)
+{
+	int systemId;
+
+	systemId = getSystemId(systemName);
+	
+	string uiSystemName;
+	uiSystemName = getSystemName();
+        
+        description = dpGetDescription(systemName + systemStatus);
+        
+        //aj & pw 07/2007 componenttext is added dynamically as refpanel
+        int x,y;        
+        getValue(\"PolylineState\",\"position\",x,y);
+        setValue(\"CT\"  + x + y + \".ComponentText\",\"text\",description);
+
+	if ( ( ((activeChain == \"A\") && (dynlen(manNumsA) > 0) && (dynContains(distManNumsA, systemId))) 
+		|| ((activeChain == \"B\") && (dynlen(manNumsB) > 0) && (dynContains(distManNumsB, systemId))) 
+		|| (systemName == uiSystemName)	) && (systemId >= 1) )
+	{	
+		if(!isConnected)
+		{
+			dpConnect(\"updateBlock\", true,
+									systemName + ACTIVE_FW_OK + \":_alert_hdl.._act_prior\",
+								  systemName + systemStatus + STATE_POSTFIX,
+								  systemName + systemStatus + IS_STATE_POSTFIX,
+							 	  systemName + systemStatus + COMMENT_POSTFIX,
+								  systemName + systemStatus + HIDDEN_POSTFIX);		  
+	
+			isConnected = TRUE;
+		}
+	}
+	else
+	{
+		activeDisconnectedLogicErrorText(\"DISCONNECTED\");
+		setComponentsColor(\"sgStdUKNColor\", \"\");
+		updateToolTip(\"Connection between \" + getSystemName() + \" and \" + systemName + \" failed\");
+	}
+}
+
+void activeDisconnectedLogicErrorText(string text)
+{
+	if(!wasHidden)
+	{
+	}
+	else
+	{
+	}
+}
+
+
+//  Add to ToolTip the deactivation info
+void updateToolTip(string toolTipText)
+{
+	PolylineState.toolTipText = toolTipText;
+}
+
+// Check if $SystemName is given. If not, strip to have system name from the $BitState
+void initSystemName()
+{					
+	if($SystemName != \"\")
+	{
+		systemName = $SystemName;
+		systemStatus = $BitState;
+	}
+	else
+	{
+		systemName = substr($BitState, 0, strpos($BitState, \":\") + 1);		
+		systemStatus =   substr($BitState, strpos($BitState, \":\") + 1);		
+	}
+	// if empty, get local systemName
+	if(systemName == \"\")
+	{
+		systemName = getSystemName();
+	}
+}
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+10 103
+"PolylineState"
+""
+1 20 30 E E E 1 E 1 E N "_WindowText" E N "sgStdUKNColor" E E
+ E E
+93 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 16 20 30
+30 20
+50 10
+590 10
+610 20
+620 30
+630 50
+630 80
+620 100
+610 110
+590 120
+50 120
+30 110
+20 100
+10 80
+10 50
+ 1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+10 110
+"CommentCorner"
+""
+1 560 50 E E E 1 E 1 E N "_WindowText" E N "Schwarz" E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E "main()
+{
+	ChildPanelOnModal(\"objects\\\\sgFwCommentWindow.pnl\", \"Comment Panel\", makeDynString(\"$SystemStatus:\" + $BitState, 
+										\"$SystemName:\" + $SystemName), 100, 100);
+}
+" 0
+ 0 1 1 0 1 E U  1 E 6 560 120
+590 120
+610 110
+620 100
+630 80
+630 50
+ 1
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

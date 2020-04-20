@@ -1,0 +1,2920 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,354 75 1110 860 N "_3DFace" 0
+"main()
+{
+// dp for this panel
+	globalValidationDp = \"FrameworkValidation.GlobalVariable\";
+	component1ValidationDp = \"FrameworkValidation.Components.Component1\";
+	component2ValidationDp = \"FrameworkValidation.Components.Component2\";
+	component3ValidationDp = \"FrameworkValidation.Components.Component3\";
+	activeStepTestingDp = \"FrameworkValidation.Testing.ActiveStep\";
+	FwValidComments = \"FrameworkValidation.Testing.TestComments\";
+
+// Manage Testing with the step number dp
+	testing();
+// Get all the rules for the logic and for alarms
+	getAllLogicAndAlarmsRules();
+// Get the statuses of the points of this panel
+	updateStatuses();
+// Set the settings for points
+	initPoints();
+// Connect some points to update in Validation
+	connectPoints();
+// Get the Alarms for this validation panel
+	showFwAlarms();
+
+
+//	dpSet(\"FrameworkValidation.Testing.TestComments.ShortHistory\", makeDynString(\"\"));
+}" 0
+"main()
+{
+// all statuses to OPS		
+	dpSet(globalValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component1ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component2ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+// Acknowledge all alarms	
+	dpSet(globalValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component1ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component2ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component3ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+}" 0
+E E E 1 -1 -1 0  60 80
+"" 0 1
+E"
+bool b;
+bool inValidation;
+dyn_string ds;
+int	res;
+string s;
+string name;
+string globalValidationDp;
+string component1ValidationDp;
+string component2ValidationDp;
+string component3ValidationDp;
+string activeStepTestingDp;
+string activeStepTest;
+string FwValidComments;
+
+void testing(){
+	dpSet(activeStepTestingDp, 0);
+	dpConnect(\"updateStepTest\", activeStepTestingDp);
+	//dpSet(activeStepTestingDp, 0);
+}
+
+void updateStepTest(string dpName, string stepActive){
+	string script;
+	
+	ActiveStepText.text = stepActive;
+	activeStepTest = stepActive;	
+
+// Erase histories 
+//	dpSet(\"FrameworkValidation.History.ShortHistory\", makeDynString(\"\"));
+	dpSet(\"FrameworkValidation.Testing.TestComments.ShortHistory\", makeDynString(\"\"));
+// call the step with the script	
+	script = \"void main(){\" +
+	\"testingStep\" + stepActive + \"();\" +
+	\"}\";
+	execScript(script, makeDynString(\"\"));	
+}
+
+void testingStep0(){
+// Only in this step the operator can modify settings
+	inValidation = false;
+	enableManualTest(true);
+	dpSet(\"FrameworkValidation.Testing.TestComments.ShortHistory\", makeDynString(\"\"));
+	ButtonNextStep.enabled = true;
+}
+
+void testingStep1(){
+	inValidation = true;
+// Auto test is started, then the operator can't modify settings
+	fwValidationTestAddComments(\"Auto Test is start up. Now you can't modify settings!\");
+	delay(2);
+	fwValidationTestAddComments(\"To stop this test, click on the <STOP> button!\");
+	delay(1);
+	initValidationSettings();
+	delay(1);
+	enableManualTest(false);
+//	dpSet(\"FrameworkValidation.History.ShortHistory\", makeDynString(\"\"));
+	ButtonNextStep.enabled = true;
+}
+
+void testingStep2(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 SBY <<StandBy>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"SBY\");
+}
+
+void testingStep3(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 INI <<Initializing>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"INI\");
+}
+
+void testingStep4(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 DEG <<Degraded>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"DEG\");
+}
+
+void testingStep5(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 U/S <<Unservicable>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+}
+
+void testingStep6(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 UKN <<Unknown>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"UKN\");
+}
+
+void testingStep7(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 WIP <<Work in progress>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"WIP\");
+}
+
+void testingStep8(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 TEC <<Technical presence>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"TEC\");	
+}
+
+void testingStep9(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 ABS <<Absent>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"ABS\");
+}
+
+void testingStep10(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 STP <<Stopped>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"STP\");
+}
+
+void testingStep11(){
+	fwValidationTestAddComments(\"Check color for Status and ToolTip:\");
+	fwValidationTestAddComments(\"Component 3 OPS <<Operational>>\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+}
+
+void testingStep12(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 3 OPS->UKN : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"UKN\");
+}
+
+void testingStep13(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 3 UKN->OPS : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+}
+
+void testingStep14(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 2 OPS->UKN : Alarm came, no Event\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"UKN\");
+}
+
+void testingStep15(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 2 UKN->OPS : Alarm went, no Event\");
+	fwValidationTestAddComments(\"You can acknowledge this alarm.\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+}
+
+void testingStep16(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 1 OPS->U/S : No Alarm, critical Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+}
+
+void testingStep17(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 1 U/S->UKN : No Alarm, warning Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"UKN\");
+}
+
+void testingStep18(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 1 UKN->SBY : No Alarm, solved Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"SBY\");
+}
+
+void testingStep19(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Component 1 SBY->OPS : No Alarm, info Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+}
+
+void testingStep20(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Global Dp OPS->U/S : Alarm came, critical Event\");
+	fwValidationTestAddComments(\"You can acknowledge this alarm, but it is still present.\");
+	setPointForValidation(globalValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+}
+
+void testingStep21(){
+	fwValidationTestAddComments(\"Check Alarms and Events:\");
+	fwValidationTestAddComments(\"Global Dp U/S->OPS : Alarm went, solved Event\");
+	setPointForValidation(globalValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	// Acknowledge all alarms for the next validation
+
+	dpSet(globalValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component1ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component2ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component3ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+}
+
+void testingStep22(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Logic rule is AllOPS_OneDEG_ElseUS\");
+	LogicRuleComboGlob.enabled = true;
+	delay(1);
+	setPointForValidation(globalValidationDp + LOGIC_RULE_POSTFIX, \"AllOPS_OneDEG_ElseUS\");	
+	delay(1);
+	LogicRuleComboGlob.enabled = false;
+}
+
+void testingStep23(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 3 OPS->SBY : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"SBY\");
+	fwValidationTestAddComments(\" --> Global OPS->DEG : Alarm came, critical Event\");
+}
+
+void testingStep24(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 2 OPS->U/S : Alarm came, no Event\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+	fwValidationTestAddComments(\" --> Global DEG, don't change\");
+}
+
+void testingStep25(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 1 OPS->STP : No Alarm, critical Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"STP\");
+	fwValidationTestAddComments(\" --> Global DEG->U/S : warning Event\");
+}
+
+void testingStep26(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 3 SBY->OPS : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global U/S->DEG : warning Event\");
+}
+
+void testingStep27(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 2 U/S->OPS : Alarm went, no Event\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global DEG : don't change\");
+}
+
+void testingStep28(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 1 STP->OPS : No Alarm, solved Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global DEG->OPS : Alarm went, solved Event\");
+
+// Acknowledge all alarms for the next validation
+	dpSet(globalValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component1ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component2ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component3ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+}
+
+void testingStep29(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Logic rule is AllOPS_SBY_OneDEG_ElseUS\");
+	LogicRuleComboGlob.enabled = true;
+	delay(1);
+	setPointForValidation(globalValidationDp + LOGIC_RULE_POSTFIX, \"AllOPS_SBY_OneDEG_ElseUS\");	
+	delay(1);
+	LogicRuleComboGlob.enabled = false;
+}
+
+void testingStep30(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 3 OPS->SBY : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"SBY\");
+	fwValidationTestAddComments(\" --> Global OPS : don't change\");
+}
+
+void testingStep31(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 2 OPS->U/S : Alarm came, no Event\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+	fwValidationTestAddComments(\" --> Global OPS->DEG : Alarm came, critical Event\");
+}
+
+void testingStep32(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 1 OPS->STP : No Alarm, critical Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"STP\");
+	fwValidationTestAddComments(\" --> Global DEG : don't change\");
+}
+
+void testingStep33(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 3 SBY->UKN : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"UKN\");
+	fwValidationTestAddComments(\" --> Global DEG->U/S : No Alarm, warning Event\");
+}
+
+void testingStep34(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 2 U/S->OPS : Alarm went, no Event\");
+	setPointForValidation(component2ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global U/S->DEG : No Alarm, warning Event\");
+}
+
+void testingStep35(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 1 STP->OPS : No Alarm, solved Event\");
+	setPointForValidation(component1ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global DEG : don't change\");
+}
+void testingStep36(){
+	fwValidationTestAddComments(\"Check Logic rule: Global depend from the 3 components\");
+	fwValidationTestAddComments(\"Component 3 UKN->OPS : No Alarm, no Event\");
+	setPointForValidation(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	fwValidationTestAddComments(\" --> Global DEG->OPS : Alarm went, solved Event\");
+// Acknowledge all alarms for the next validation
+	dpSet(globalValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component1ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component2ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component3ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+}
+
+void testingStep37(){
+	fwValidationTestAddComments(\"Check Dp Disabled: --> no Event and no Alarm\");
+	fwValidationTestAddComments(\"Global Dp is disable\");
+	EnabledComboGlob.enabled = true;
+	delay(1);
+	setPointForValidation(globalValidationDp + DISABLED_POSTFIX, \"true\");	
+	delay(1);
+	EnabledComboGlob.enabled = false;
+}
+
+void testingStep38(){
+	fwValidationTestAddComments(\"Global Dp is Disabled, you have no Alarm and Event\");
+	fwValidationTestAddComments(\"Global OPS->U/S : No Alarm, no Event\");
+	setPointForValidation(globalValidationDp + PRE_STATUS_POSTFIX, \"U/S\");
+}
+
+void testingStep39(){
+	fwValidationTestAddComments(\"Global Dp is  Disabled, you have no Alarm and Event\");
+	fwValidationTestAddComments(\"Global U/S->OPS : No Alarm, no Event\");
+	setPointForValidation(globalValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+}
+
+void testingStep40(){
+// Last step
+	fwValidationTestAddComments(\"Global Dp re-Enabled\");
+	EnabledComboGlob.enabled = true;
+	delay(1);
+	setPointForValidation(globalValidationDp + DISABLED_POSTFIX, \"false\");	
+	delay(1);
+	fwValidationTestAddComments(\"Validation is terminated.\");
+	delay(4);
+	dpSet(activeStepTestingDp, 0);	
+	EnabledComboGlob.enabled = false;
+}
+
+
+void fwValidationTestAddComments(string stepEventText){
+	string eventText;
+	int textLength;
+//	DebugN(\"fwValidationTestAddComments called\");
+	eventText = \"# \" + activeStepTest + \": \" + stepEventText;
+	sgHistoryAddEvent(FwValidComments, SEVERITY_SYSTEM, eventText);
+//	DebugN(\"fwValidationTestAddComments done\");
+}
+void setPointForValidation(string point, string status){
+	int duringDelay = 1;
+	
+	delay(duringDelay);
+	dpSet(point, status);
+	ButtonNextStep.enabled = true;
+}
+
+void initValidationSettings()
+{
+	fwValidationTestAddComments(\"Initializing of all the settings...\");
+	
+// all delay for statuses to 0 [s]		
+	dpSet(globalValidationDp + STATUS_DELAY_POSTFIX, 0);
+	dpSet(component1ValidationDp + STATUS_DELAY_POSTFIX, 0);
+	dpSet(component2ValidationDp + STATUS_DELAY_POSTFIX, 0);
+	dpSet(component3ValidationDp + STATUS_DELAY_POSTFIX, 0);
+// all statuses to OPS		
+	dpSet(globalValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component1ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component2ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	dpSet(component3ValidationDp + PRE_STATUS_POSTFIX, \"OPS\");
+	delay(2);
+// Acknowledge all alarms	
+	dpSet(globalValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component1ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component2ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+	dpSet(component3ValidationDp + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._ack\", 2);
+// All enable
+	EnabledComboCompo1.text = \"No\";
+	dpSet(component1ValidationDp + DISABLED_POSTFIX, false);
+	EnabledComboCompo2.text = \"No\";
+	dpSet(component2ValidationDp + DISABLED_POSTFIX, false);
+	EnabledComboCompo3.text = \"No\";
+	dpSet(component3ValidationDp + DISABLED_POSTFIX, false);
+	EnabledComboGlob.text = \"No\";
+	dpSet(globalValidationDp + DISABLED_POSTFIX, false);
+// All alarms rule to NotOPS
+	dpSet(globalValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+	dpSet(component1ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\");
+	dpSet(component2ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+	dpSet(component3ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+// Logic rule	
+	dpSet(globalValidationDp + LOGIC_RULE_POSTFIX, \"None\");	
+
+	delay(1);
+	fwValidationTestAddComments(\"Initializing done. Click on <START/NEXT> for next step.\"); 
+}
+
+void initPoints(){
+	dyn_string ds;
+	string s;
+// global logic enable
+	LogicEnabledComboGlob.text = \"yes\";
+	LogicEnabledComboGlob.enabled = \"false\";
+	dpSet(globalValidationDp + LOGIC_ENABLED_POSTFIX, true);
+// Logic is set, no manual change
+	ComboBoxGlobalCmd.enabled = false;
+// Compo 1 logic disable
+	LogicEnabledComboCompo1.text = \"No\";
+	LogicEnabledComboCompo1.enabled = \"false\";
+	dpSet(component1ValidationDp + LOGIC_ENABLED_POSTFIX, false);
+	LogicRuleComboCompo1.enabled = false;
+	ComboBoxCompo1Cmd.enabled = true;
+// Events
+	dpSet(globalValidationDp + GENERATE_EVENTS_POSTFIX, true); 
+	dpSet(component1ValidationDp + GENERATE_EVENTS_POSTFIX, true); 
+	dpSet(component2ValidationDp + GENERATE_EVENTS_POSTFIX, false); 
+	dpSet(component3ValidationDp + GENERATE_EVENTS_POSTFIX, false); 
+	GenerateEventsComboGlob.text = \"Yes\";
+	GenerateEventsComboCompo1.text = \"Yes\";
+	GenerateEventsComboCompo2.text = \"No\";
+	GenerateEventsComboCompo3.text = \"No\";
+	GenerateEventsComboGlob.enabled = false;
+	GenerateEventsComboCompo1.enabled = false;
+	GenerateEventsComboCompo2.enabled = false;
+	GenerateEventsComboCompo3.enabled = false;
+// Alarms	
+	dpSet(globalValidationDp + GENERATE_ALARMS_POSTFIX, true); 
+	dpSet(component1ValidationDp + GENERATE_ALARMS_POSTFIX, false);
+	dpSet(component2ValidationDp + GENERATE_ALARMS_POSTFIX, true); 
+	dpSet(component3ValidationDp + GENERATE_ALARMS_POSTFIX, false); 
+	GenerateAlarmsComboGlob.text = \"Yes\";
+	GenerateAlarmsComboCompo1.text = \"No\";
+	GenerateAlarmsComboCompo2.text = \"Yes\";
+	GenerateAlarmsComboCompo3.text = \"No\";
+	GenerateAlarmsComboGlob.enabled = false;
+	GenerateAlarmsComboCompo1.enabled = false;
+	GenerateAlarmsComboCompo2.enabled = false;
+	GenerateAlarmsComboCompo3.enabled = false;	
+	
+	dpSet(globalValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+	dpSet(component1ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\");
+	dpSet(component2ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+	dpSet(component3ValidationDp + ALARM_RULE_POSTFIX, \"NotOPS\"); 
+	
+// Get statuses for components
+	dpGet(component1ValidationDp + STATUS_POSTFIX, s);
+	ComboBoxCompo1Cmd.text = s;
+	dpGet(component2ValidationDp + STATUS_POSTFIX, s);
+	ComboBoxCompo2Cmd.text = s;
+	dpGet(component3ValidationDp + STATUS_POSTFIX, s);
+	ComboBoxCompo3Cmd.text = s;
+}
+
+void enableManualTest(bool isStepZero){
+// Object to disable (during auto tests) or to enable:	
+	AlarmRuleComboCompo1.enabled = isStepZero;
+	AlarmRuleComboCompo2.enabled = isStepZero;
+	AlarmRuleComboCompo3.enabled = isStepZero;
+	AlarmRuleComboGlob.enabled = isStepZero;
+	ComboBoxCompo1Cmd.enabled = isStepZero;
+	ComboBoxCompo2Cmd.enabled = isStepZero;
+	ComboBoxCompo3Cmd.enabled = isStepZero;
+	EnabledComboCompo1.enabled = isStepZero;
+	EnabledComboCompo2.enabled = isStepZero;
+	EnabledComboCompo3.enabled = isStepZero;
+	EnabledComboGlob.enabled = isStepZero;	
+	LogicRuleComboGlob.enabled = isStepZero;	
+
+// Visible text
+	autoValidationText.visible = !isStepZero;	
+}
+
+
+void selectPosComboYesNo(string objName, string Val){
+	if(Val==true)
+		setValue(objName, \"selectedPos\", \"1\");
+	else
+		setValue(objName, \"selectedPos\", \"2\");
+}
+
+void getEventsAlarmsRules(){
+
+// Alarm Rules:
+// Global Alarms Rule
+	dpGet(globalValidationDp + ALARM_RULE_POSTFIX, s);
+	AlarmRuleComboGlob.text = s;
+// Compo 1 Alarms Rule
+	dpGet(component1ValidationDp + ALARM_RULE_POSTFIX, s);
+	AlarmRuleComboCompo1.text = s;
+// Compo 2 Alarms Rule
+	dpGet(component2ValidationDp + ALARM_RULE_POSTFIX, s);
+	AlarmRuleComboCompo2.text = s;
+// Compo 3 Alarms Rule
+	dpGet(component3ValidationDp + ALARM_RULE_POSTFIX, s);
+	AlarmRuleComboCompo3.text = s;
+}
+
+
+void updateEnableGlob(string dpName, string dpVal){
+	selectPosComboYesNo(\"EnabledComboGlob\", dpVal);
+}
+void updateEnableCompo1(string dpName, string dpVal){
+	selectPosComboYesNo(\"EnabledComboCompo1\", dpVal);
+}
+void updateEnableCompo2(string dpName, string dpVal){
+	selectPosComboYesNo(\"EnabledComboCompo2\", dpVal);
+}
+void updateEnableCompo3(string dpName, string dpVal){
+	selectPosComboYesNo(\"EnabledComboCompo3\", dpVal);
+}
+void updateLogicGlobal(string dpName, string dpVal){
+		LogicRuleComboGlob.text = dpVal;
+}
+void updateAlarmRuleGlobal(string dpName, string dpVal){
+		AlarmRuleComboGlob.text = dpVal;
+}
+void updateAlarmRuleCompo1(string dpName, string dpVal){
+		AlarmRuleComboCompo1.text = dpVal;
+}
+void updateAlarmRuleCompo2(string dpName, string dpVal){
+		AlarmRuleComboCompo2.text = dpVal;
+}
+void updateAlarmRuleCompo3(string dpName, string dpVal){
+		AlarmRuleComboCompo3.text = dpVal;
+}
+
+void connectPoints(){
+// Enable Global Dp
+	dpConnect(\"updateEnableGlob\", globalValidationDp + DISABLED_POSTFIX);
+// Enable Compo1 Dp
+	dpConnect(\"updateEnableCompo1\", component1ValidationDp + DISABLED_POSTFIX);
+// Enable Compo2 Dp
+	dpConnect(\"updateEnableCompo2\", component2ValidationDp + DISABLED_POSTFIX);
+// Enable Compo3 Dp
+	dpConnect(\"updateEnableCompo3\", component3ValidationDp + DISABLED_POSTFIX);
+// Global LogicRule	
+	dpConnect(\"updateLogicGlobal\", globalValidationDp + LOGIC_RULE_POSTFIX);
+// Alarme Rules
+	dpConnect(\"updateAlarmRuleGlobal\", globalValidationDp + ALARM_RULE_POSTFIX); 
+	dpConnect(\"updateAlarmRuleCompo1\", component1ValidationDp + ALARM_RULE_POSTFIX);
+	dpConnect(\"updateAlarmRuleCompo2\", component2ValidationDp + ALARM_RULE_POSTFIX); 
+	dpConnect(\"updateAlarmRuleCompo3\", component3ValidationDp + ALARM_RULE_POSTFIX); 
+}
+
+void getAllLogicAndAlarmsRules(){
+// Get choice for LogicRules
+	dpGet(ALL_LOGIC_RULES, ds);
+	LogicRuleComboGlob.items = ds;
+	LogicRuleComboCompo1.items = ds;
+	
+// Get choice for AlarmsRules
+	dpGet(ALL_ALARMS_RULES, ds);
+	AlarmRuleComboGlob.items = ds;
+	AlarmRuleComboCompo1.items = ds;
+	AlarmRuleComboCompo2.items = ds;
+	AlarmRuleComboCompo3.items = ds;
+}
+
+void updateStatuses(){
+// Status Global
+	name = globalValidationDp + STATUS_POSTFIX;
+	dpConnect(\"updateStatusConsolidated\", name);
+// Status Component 1	
+	name = component1ValidationDp + STATUS_POSTFIX;
+	dpConnect(\"updateStatusComponentsDp1\", name);
+// Status Component 2
+	name = component2ValidationDp + STATUS_POSTFIX;
+	dpConnect(\"updateStatusComponentsDp2\", name);
+// Status Component 3	
+	name = component3ValidationDp + STATUS_POSTFIX;
+	dpConnect(\"updateStatusComponentsDp3\", name);
+}
+
+void updateStatusConsolidated(string dpName, string dpVal){
+	ComboBoxGlobalCmd.text = dpVal;	
+}
+
+void updateStatusComponentsDp1(string dpName, string dpVal){
+	if(inValidation){
+		ComboBoxCompo1Cmd.text = dpVal;	
+	}
+}
+void updateStatusComponentsDp2(string dpName, string dpVal){
+	if(inValidation){
+		ComboBoxCompo2Cmd.text = dpVal;	
+	}
+}
+void updateStatusComponentsDp3(string dpName, string dpVal){
+	if(inValidation){
+		ComboBoxCompo3Cmd.text = dpVal;	
+	}
+}
+
+void showFwAlarms()
+{
+	string al_name;
+	dyn_string systems;
+	dyn_string fwValid_AlarmDP;
+	
+	fwValid_AlarmDP = makeDynString(
+		\"FrameworkValidation.GlobalVariable.Alarms.AlarmActive\",
+		\"FrameworkValidation.Components.Component1.Alarms.AlarmActive\",
+		\"FrameworkValidation.Components.Component2.Alarms.AlarmActive\",
+		\"FrameworkValidation.Components.Component3.Alarms.AlarmActive\");
+
+	dpSet(\"_ASProp_\" + myManNum() + \".Settings.Filter.DpList\", fwValid_AlarmDP);
+
+	al_name = \"System1:_ASProp_\" + myManNum() + \".Settings.System.Selections\";
+// to update the alarms, we need to change this datapoint
+	dpGet(al_name, systems);
+  	dpSet(al_name, systems);
+}
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 26
+"FrameConsolidated"
+""
+1 10 294 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+15 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 205 915 295
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 9 Global Dp
+LANG:1 9 Global Dp
+2 37
+"TextFieldConsolidatedDp"
+""
+1 20 225 E E E 1 E 1 E N {0,0,0} E N {204,204,255} E E
+ E E
+26 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 22 227 433 243
+1 2 0 "s" 0 0 0 64 0 0  22 227
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 4 name
+LANG:1 4 name
+2 38
+"TextFieldComponentsDp3"
+""
+1 20 515 E E E 1 E 1 E N {0,0,0} E N {204,204,255} E E
+ E E
+27 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 22 517 433 533
+1 2 0 "s" 0 0 0 64 0 0  22 517
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 4 name
+LANG:1 4 name
+2 39
+"TextFieldComponentsDp2"
+""
+1 20 430 E E E 1 E 1 E N {0,0,0} E N {204,204,255} E E
+ E E
+28 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 22 432 433 448
+1 2 0 "s" 0 0 0 64 0 0  22 432
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 4 name
+LANG:1 4 name
+2 40
+"TextFieldComponentsDp1"
+""
+1 20 325 E E E 1 E 1 E N {0,0,0} E N {204,204,255} E E
+ E E
+29 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 22 327 433 343
+1 2 0 "s" 0 0 0 64 0 0  22 327
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 4 name
+LANG:1 4 name
+1 42 0 "" 25
+0
+1 43 0 "" 24
+0
+1 44 0 "" 29
+0
+1 45 0 "" 30
+0
+1 46 0 "" 32
+0
+1 48 1 "" 25
+0
+1 49 1 "" 24
+0
+1 50 1 "" 29
+0
+1 51 1 "" 30
+0
+1 52 1 "" 32
+0
+1 60 4 "" 25
+0
+1 61 4 "" 24
+0
+1 62 4 "" 29
+0
+1 63 4 "" 30
+0
+1 64 4 "" 32
+0
+1 64 5 "" 25
+0
+1 65 5 "" 24
+0
+1 66 5 "" 29
+0
+1 67 5 "" 30
+0
+1 68 5 "" 32
+0
+2 94
+"Text1"
+""
+1 25 263 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+65 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 27 265 83 283
+0 2 0 "s" 0 0 0 64 0 0  27 265
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 8 Enabled:
+LANG:1 8 Enabled:
+2 96
+"Text2"
+""
+1 155 262 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+67 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 157 264 193 280
+0 2 0 "s" 0 0 0 64 0 0  157 264
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+2 107
+"Text4"
+""
+1 449 227 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+78 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 451 229 537 245
+0 2 0 "s" 0 0 0 64 0 0  451 229
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 12 Dp Disabled:
+LANG:1 12 Dp Disabled:
+2 113
+"Text5"
+""
+1 790 232 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+84 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 792 234 833 250
+0 2 0 "s" 0 0 0 64 0 0  792 234
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Force:
+LANG:1 6 Force:
+30 114
+"Frame2"
+""
+1 785 280 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+85 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 785 220 905 290
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Status
+LANG:1 6 Status
+30 116
+"Frame4"
+""
+1 15 286 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+87 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 15 250 435 290
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Logic 
+LANG:1 6 Logic 
+30 119
+"Frame6"
+""
+1 785 382 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+90 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 785 320 905 390
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Status
+LANG:1 6 Status
+2 121
+"Text7"
+""
+1 790 330 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+92 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 792 332 833 348
+0 2 0 "s" 0 0 0 64 0 0  792 332
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Force
+LANG:1 5 Force
+2 123
+"Text9"
+""
+1 790 415 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+94 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 792 417 833 433
+0 2 0 "s" 0 0 0 64 0 0  792 417
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Force
+LANG:1 5 Force
+2 125
+"Text11"
+""
+1 790 500 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+96 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 792 502 833 518
+0 2 0 "s" 0 0 0 64 0 0  792 502
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Force
+LANG:1 5 Force
+2 131
+"Text15"
+""
+1 449 327 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+102 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 451 329 532 345
+0 2 0 "s" 0 0 0 64 0 0  451 329
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 12 Dp Disabled:
+LANG:1 12 Dp Disabled:
+2 134
+"Text16"
+""
+1 449 412 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+105 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 451 414 532 430
+0 2 0 "s" 0 0 0 64 0 0  451 414
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 12 Dp Disabled:
+LANG:1 12 Dp Disabled:
+2 137
+"Text17"
+""
+1 449 497 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+108 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 451 499 532 515
+0 2 0 "s" 0 0 0 64 0 0  451 499
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 12 Dp Disabled:
+LANG:1 12 Dp Disabled:
+2 145
+"Text20"
+""
+1 610 226 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+116 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 612 228 728 244
+0 2 0 "s" 0 0 0 64 0 0  612 228
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 16 Generate Events:
+LANG:1 16 Generate Events:
+2 147
+"Text21"
+""
+1 610 326 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+118 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 612 328 728 344
+0 2 0 "s" 0 0 0 64 0 0  612 328
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 16 Generate Events:
+LANG:1 16 Generate Events:
+2 150
+"Text22"
+""
+1 610 411 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+121 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 612 413 728 429
+0 2 0 "s" 0 0 0 64 0 0  612 413
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 16 Generate Events:
+LANG:1 16 Generate Events:
+2 153
+"Text23"
+""
+1 610 496 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+124 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 612 498 728 514
+0 2 0 "s" 0 0 0 64 0 0  612 498
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 16 Generate Events:
+LANG:1 16 Generate Events:
+2 163
+"Text27"
+""
+1 456 262 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+134 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 458 264 523 282
+0 2 0 "s" 0 0 0 64 0 0  458 264
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 9 Generate:
+LANG:1 9 Generate:
+30 164
+"Frame19"
+""
+1 450 286 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+135 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 450 250 775 290
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Alarm
+LANG:1 5 Alarm
+2 165
+"Text28"
+""
+1 588 262 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+136 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 590 264 626 280
+0 2 0 "s" 0 0 0 64 0 0  590 264
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+2 168
+"Text19"
+""
+1 589 361 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+139 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 591 363 627 379
+0 2 0 "s" 0 0 0 64 0 0  591 363
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+2 173
+"Text26"
+""
+1 589 446 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+144 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 591 448 627 464
+0 2 0 "s" 0 0 0 64 0 0  591 448
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+2 178
+"Text30"
+""
+1 589 531 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+149 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 591 533 627 549
+0 2 0 "s" 0 0 0 64 0 0  591 533
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+30 183
+"frameNavi"
+""
+1 925 442 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+154 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 925 205 1100 470
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 7 Testing
+LANG:1 7 Testing
+30 184
+"Frame18"
+""
+1 15 563 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+155 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 15 480 910 565
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 0 
+30 185
+"Frame22"
+""
+1 15 478 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 15 395 910 480
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 0 
+30 186
+"Frame23"
+""
+1 15 393 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+157 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 15 310 910 395
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 0 
+2 188
+"Text3"
+""
+1 456 362 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+159 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 458 364 523 382
+0 2 0 "s" 0 0 0 64 0 0  458 364
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 9 Generate:
+LANG:1 9 Generate:
+30 189
+"Frame24"
+""
+1 450 386 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+160 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 450 350 775 390
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Alarm
+LANG:1 5 Alarm
+2 190
+"Text6"
+""
+1 456 447 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+161 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 458 449 523 467
+0 2 0 "s" 0 0 0 64 0 0  458 449
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 9 Generate:
+LANG:1 9 Generate:
+30 191
+"Frame25"
+""
+1 450 471 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+162 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 450 435 775 475
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Alarm
+LANG:1 5 Alarm
+2 192
+"Text8"
+""
+1 456 532 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+163 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 458 534 523 552
+0 2 0 "s" 0 0 0 64 0 0  458 534
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 9 Generate:
+LANG:1 9 Generate:
+30 193
+"Frame26"
+""
+1 450 556 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+164 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 450 520 775 560
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Alarm
+LANG:1 5 Alarm
+30 194
+"Frame27"
+""
+1 785 467 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+165 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 785 405 905 475
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Status
+LANG:1 6 Status
+30 195
+"Frame28"
+""
+1 785 552 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+166 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 785 490 905 560
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Status
+LANG:1 6 Status
+2 248
+"ActiveStepText"
+""
+1 1050 245 E E E 1 E 1 E N "Schwarz" E N {255,255,255} E E
+ E E
+174 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 1052 247 1093 268
+1 2 0 "s" 0 0 0 64 0 0  1052 247
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 3 123
+LANG:1 3 123
+2 249
+"Text12"
+""
+1 930 245 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+175 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 932 247 1048 268
+0 2 0 "s" 0 0 0 64 0 0  932 247
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 11 Active Step
+LANG:1 11 Active Step
+2 250
+"autoValidationText"
+""
+1 935 285 E E E 1 E 1 E N {255,51,0} E N "_3DFace" E E
+ E E
+175 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 937 287 1093 358
+0 2 0 "s" 0 0 0 64 0 0  937 287
+ 3
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 15 Auto FrameWork 
+LANG:1 15 Auto FrameWork 
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 14 validation is 
+LANG:1 14 validation is 
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 10 running...
+LANG:1 10 running...
+30 252
+"Frame1"
+""
+1 10 187 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+177 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 10 60 1100 200
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 8 Comments
+LANG:1 8 Comments
+2 90
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+61 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "s" 0 0 0 65 0 0  12 12
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 33 Skyguide's Framework - Validation
+LANG:1 33 Skyguide's Framework - Validation
+30 97
+"qqFrame1"
+""
+1 10 828 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+68 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 580 1100 850
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Events
+LANG:1 6 Events
+30 27
+"FrameChild"
+""
+1 10 570 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 300 915 570
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 13 Components Dp
+LANG:1 13 Components Dp
+2 254
+"Text10"
+""
+1 25 363 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+179 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 27 365 83 383
+0 2 0 "s" 0 0 0 64 0 0  27 365
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 8 Enabled:
+LANG:1 8 Enabled:
+30 255
+"Frame3"
+""
+1 20 386 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+180 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 20 350 435 390
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 6 Logic 
+LANG:1 6 Logic 
+2 259
+"Text13"
+""
+1 155 360 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+184 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 157 362 193 378
+0 2 0 "s" 0 0 0 64 0 0  157 362
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 5 Rule:
+LANG:1 5 Rule:
+30 261
+"Frame5"
+""
+1 925 559 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+186 0 0 0 0 0
+EE E
+1
+2
+LANG:5 0 
+LANG:1 0 
+0
+E E 0 1 1 0 1 E U  0 E 925 475 1100 570
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 0 
+22 92
+"LogicRuleComboGlob"
+""
+1 200 260 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+63 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+198 258 432 284
+0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(globalValidationDp + LOGIC_RULE_POSTFIX, LogicRuleComboGlob.text);
+	}
+}" 0
+
+E
+ 1 0
+22 95
+"LogicEnabledComboGlob"
+""
+1 85 260 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+66 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+83 258 132 284
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+1 100 6 "" 3
+14 "foreCol" 0 0 N {0,0,0}
+14 "backCol" 0 0 N {255,255,255}
+16 "fill" 0 0 1
+0
+22 106
+"EnabledComboGlob"
+""
+1 535 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+77 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 223 582 249
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		if(EnabledComboGlob.text == \"Yes\")
+			dpSet(globalValidationDp + DISABLED_POSTFIX, true);
+		else
+			dpSet(globalValidationDp + DISABLED_POSTFIX, false);
+	}
+}" 0
+
+E
+ 0 0
+22 108
+"ComboBoxGlobalCmd"
+""
+1 840 230 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+79 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+838 228 897 255
+10
+2
+LANG:5 3 OPS
+LANG:1 3 OPS
+ 0
+2
+LANG:5 3 SBY
+LANG:1 3 SBY
+ 0
+2
+LANG:5 3 INI
+LANG:1 3 INI
+ 0
+2
+LANG:5 3 DEG
+LANG:1 3 DEG
+ 0
+2
+LANG:5 3 U/S
+LANG:1 3 U/S
+ 0
+2
+LANG:5 3 UKN
+LANG:1 3 UKN
+ 0
+2
+LANG:5 3 WIP
+LANG:1 3 WIP
+ 0
+2
+LANG:5 3 TEC
+LANG:1 3 TEC
+ 0
+2
+LANG:5 3 ABS
+LANG:1 3 ABS
+ 0
+2
+LANG:5 3 STP
+LANG:1 3 STP
+ 0
+E
+E
+E
+ 0 0
+22 110
+"ComboBoxCompo3Cmd"
+""
+1 840 500 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+81 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+838 498 897 525
+10
+2
+LANG:5 3 OPS
+LANG:1 3 OPS
+ 0
+2
+LANG:5 3 SBY
+LANG:1 3 SBY
+ 0
+2
+LANG:5 3 INI
+LANG:1 3 INI
+ 0
+2
+LANG:5 3 DEG
+LANG:1 3 DEG
+ 0
+2
+LANG:5 3 U/S
+LANG:1 3 U/S
+ 0
+2
+LANG:5 3 UKN
+LANG:1 3 UKN
+ 0
+2
+LANG:5 3 WIP
+LANG:1 3 WIP
+ 0
+2
+LANG:5 3 TEC
+LANG:1 3 TEC
+ 0
+2
+LANG:5 3 ABS
+LANG:1 3 ABS
+ 0
+2
+LANG:5 3 STP
+LANG:1 3 STP
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component3ValidationDp + PRE_STATUS_POSTFIX, ComboBoxCompo3Cmd.text);
+	}
+}" 0
+
+E
+ 0 0
+22 111
+"ComboBoxCompo2Cmd"
+""
+1 840 415 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+82 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+838 413 897 440
+10
+2
+LANG:5 3 OPS
+LANG:1 3 OPS
+ 0
+2
+LANG:5 3 SBY
+LANG:1 3 SBY
+ 0
+2
+LANG:5 3 INI
+LANG:1 3 INI
+ 0
+2
+LANG:5 3 DEG
+LANG:1 3 DEG
+ 0
+2
+LANG:5 3 U/S
+LANG:1 3 U/S
+ 0
+2
+LANG:5 3 UKN
+LANG:1 3 UKN
+ 0
+2
+LANG:5 3 WIP
+LANG:1 3 WIP
+ 0
+2
+LANG:5 3 TEC
+LANG:1 3 TEC
+ 0
+2
+LANG:5 3 ABS
+LANG:1 3 ABS
+ 0
+2
+LANG:5 3 STP
+LANG:1 3 STP
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component2ValidationDp + PRE_STATUS_POSTFIX, ComboBoxCompo2Cmd.text);
+	}
+}" 0
+
+E
+ 0 0
+22 112
+"ComboBoxCompo1Cmd"
+""
+1 840 330 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+83 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+838 328 897 355
+10
+2
+LANG:5 3 OPS
+LANG:1 3 OPS
+ 0
+2
+LANG:5 3 SBY
+LANG:1 3 SBY
+ 0
+2
+LANG:5 3 INI
+LANG:1 3 INI
+ 0
+2
+LANG:5 3 DEG
+LANG:1 3 DEG
+ 0
+2
+LANG:5 3 U/S
+LANG:1 3 U/S
+ 0
+2
+LANG:5 3 UKN
+LANG:1 3 UKN
+ 0
+2
+LANG:5 3 WIP
+LANG:1 3 WIP
+ 0
+2
+LANG:5 3 TEC
+LANG:1 3 TEC
+ 0
+2
+LANG:5 3 ABS
+LANG:1 3 ABS
+ 0
+2
+LANG:5 3 STP
+LANG:1 3 STP
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component1ValidationDp + PRE_STATUS_POSTFIX, ComboBoxCompo1Cmd.text);
+	}
+}" 0
+
+E
+ 0 0
+22 133
+"EnabledComboCompo1"
+""
+1 535 325 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+104 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 323 582 349
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		if(EnabledComboCompo1.text == \"Yes\")
+			dpSet(component1ValidationDp + DISABLED_POSTFIX, true);
+		else
+			dpSet(component1ValidationDp + DISABLED_POSTFIX, false);
+	}
+}" 0
+
+E
+ 0 0
+22 136
+"EnabledComboCompo2"
+""
+1 535 410 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+107 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 408 582 434
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+"main()
+{
+	if(!inValidation){
+		if(EnabledComboCompo2.text == \"Yes\")
+			dpSet(component2ValidationDp + DISABLED_POSTFIX, true);
+		else
+			dpSet(component2ValidationDp + DISABLED_POSTFIX, false);
+	}
+}" 0
+
+E
+ 0 0
+22 139
+"EnabledComboCompo3"
+""
+1 535 495 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+110 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 493 582 519
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+"main()
+{	if(!inValidation){
+		if(EnabledComboCompo3.text == \"Yes\")
+			dpSet(component3ValidationDp + DISABLED_POSTFIX, true);
+		else
+			dpSet(component3ValidationDp + DISABLED_POSTFIX, false);
+	}
+}" 0
+
+E
+ 0 0
+22 144
+"GenerateEventsComboGlob"
+""
+1 725 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+115 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+723 223 772 249
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 149
+"GenerateEventsComboCompo1"
+""
+1 725 325 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+120 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+723 323 772 349
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 152
+"GenerateEventsComboCompo2"
+""
+1 725 410 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+123 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+723 408 772 434
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 155
+"GenerateEventsComboCompo3"
+""
+1 725 495 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+126 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+723 493 772 519
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 161
+"GenerateAlarmsComboGlob"
+""
+1 535 260 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+132 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 258 582 284
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 162
+"AlarmRuleComboGlob"
+""
+1 625 260 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+133 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+623 258 772 284
+0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(globalValidationDp + ALARM_RULE_POSTFIX, AlarmRuleComboGlob.text);
+	}
+}" 0
+
+E
+ 1 0
+22 169
+"GenerateAlarmsComboCompo1"
+""
+1 535 360 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+140 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 358 582 384
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 170
+"AlarmRuleComboCompo1"
+""
+1 625 360 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+141 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+623 358 772 384
+0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component1ValidationDp + ALARM_RULE_POSTFIX, AlarmRuleComboCompo1.text);
+	}
+}" 0
+
+E
+ 1 0
+22 174
+"GenerateAlarmsComboCompo2"
+""
+1 535 445 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+145 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 443 582 469
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 175
+"AlarmRuleComboCompo2"
+""
+1 625 445 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+146 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+623 443 772 469
+0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component2ValidationDp + ALARM_RULE_POSTFIX, AlarmRuleComboCompo2.text);
+	}
+}" 0
+
+E
+ 1 0
+22 179
+"GenerateAlarmsComboCompo3"
+""
+1 535 530 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+150 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+533 528 582 554
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+22 180
+"AlarmRuleComboCompo3"
+""
+1 625 530 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+151 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+623 528 772 554
+0
+E
+"main()
+{
+	if(!inValidation){
+		dpSet(component3ValidationDp + ALARM_RULE_POSTFIX, AlarmRuleComboCompo3.text);
+	}
+}" 0
+
+E
+ 1 0
+13 246
+"ButtonInitSequence"
+""
+1 935 410 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+172 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+933 408 1092 442
+T 
+2
+LANG:5 4 STOP
+LANG:1 4 STOP
+"main()
+{
+	dpSet(activeStepTestingDp, 0);
+}" 0
+ E E E
+13 247
+"ButtonNextStep"
+""
+1 935 365 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+173 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+933 363 1092 397
+T 
+2
+LANG:5 10 START/NEXT
+LANG:1 10 START/NEXT
+"main()
+{
+	int step;
+	
+	ButtonNextStep.enabled = false;
+
+	dpGet(activeStepTestingDp, step);
+	step = step + 1;
+//	DebugN(\"step: \" + step);
+	dpSet(activeStepTestingDp, step);
+
+}" 0
+ E E E
+1 251 7 "" 3
+14 "foreCol" 0 0 N {0,0,0}
+14 "backCol" 0 0 N {204,255,255}
+16 "fill" 0 0 1
+0
+22 256
+"LogicRuleComboCompo1"
+""
+1 200 360 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+181 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+198 358 432 384
+0
+E
+E
+E
+ 1 0
+22 257
+"LogicEnabledComboCompo1"
+""
+1 85 360 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+182 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+83 358 132 384
+2
+2
+LANG:5 3 Yes
+LANG:1 3 Yes
+ 0
+2
+LANG:5 2 No
+LANG:1 2 No
+ 0
+E
+E
+E
+ 0 0
+13 260
+"ClearEventsButton"
+""
+1 935 530 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+185 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+933 528 1092 557
+T 
+2
+LANG:5 12 Clear Events
+LANG:1 12 Clear Events
+"main()
+{
+	dpSet(\"FrameworkValidation.History.ShortHistory\", makeDynString(\"\"));
+}" 0
+ E E E
+13 262
+"ClearCommentsButton"
+""
+1 935 495 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+187 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+933 493 1092 522
+T 
+2
+LANG:5 14 Clear Comments
+LANG:1 14 Clear Comments
+"main()
+{
+	dpSet(\"FrameworkValidation.Testing.TestComments.ShortHistory\", makeDynString(\"\"));
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 0 ""
+"objects\\sgFwBlock.pnl" 388 9 T 31 0.2500000000000001 0 0.1  720.5000000000003 260.1  
+4
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""FrameworkValidation.GlobalVariable"
+3 1 "Group3"
+"objects\\sgFwBlock.pnl" 430 120 T 34 0.2500000000000001 0 0.1  709.5000000000002 349.1  
+4
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""FrameworkValidation.Components.Component1"
+3 4 "Group9"
+"objects\\sgFwBlock.pnl" 430 180 T 37 0.2500000000000001 0 0.1  710.5000000000003 513.1  
+4
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""FrameworkValidation.Components.Component3"
+3 5 "Group11"
+"objects\\sgFwBlock.pnl" 430 180 T 38 0.2500000000000001 0 0.1  709.5 428.1  
+4
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""FrameworkValidation.Components.Component2"
+3 6 "Group7"
+"objects\\sgFwHistory.pnl" 10 720 T 71 2.571428571428571 0 0.5712150694189307  -10.71428571427994 183.0578347462047  
+1
+"$EventsList""FrameworkValidation.History.ShortHistory"
+3 7 "Group7"
+"objects\\sgFwHistory.pnl" 15 500 T 176 2.571428571428571 0 0.2719172561862019  -23.71428571427994 -60.60222081502976  
+1
+"$EventsList""FrameworkValidation.Testing.TestComments.ShortHistory"
+0

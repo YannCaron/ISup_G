@@ -1,0 +1,108 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1280 1024 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.15596330275229 0 1 -1.55963302752294 0 1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 10 Navir Bern
+LANG:1 4 AFPS
+1 1 142 "" 46
+0
+1 2 143 "" 46
+0
+1 3 144 "" 46
+0
+1 4 145 "" 46
+0
+1 5 146 "" 0
+0
+1 6 146 "" 1
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 142 "Group26"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 235 T 180 0.579225352112676 0 0.232263513513513 205.783810933459 122.779057017544
+3
+"$LabelsNum""1"
+"$SystemName""Navir_B:"
+"$SystemStatus""ILS14.HMIStatuses.LOC"
+3 143 "PANEL_REF144"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 235 T 181 0.576771007400334 0 0.226423231742381 206.288964276961 199.181131019037
+3
+"$LabelsNum""1"
+"$SystemName""Navir_B:"
+"$SystemStatus""ILS14.HMIStatuses.DME"
+3 144 "PANEL_REF145"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 235 T 182 0.579225352112676 0 0.227390852390852 204.783810933459 273.857118758435
+3
+"$LabelsNum""1"
+"$SystemName""Navir_B:"
+"$SystemStatus""ILS14.HMIStatuses.GP"
+3 145 "PANEL_REF146"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 235 T 183 0.579225352112676 0 0.232263513513513 575.783810933459 122.779057017544
+3
+"$LabelsNum""1"
+"$SystemName""Navir_B:"
+"$SystemStatus""NDBBRN.Structured.Navaid_1.OperationalStatus"
+3 146 "PANEL_REF123"
+"Navir/objects/HeartBeatChecker.pnl" -5.0000000000004 430 T 183 1.04545454545455 0 0.888888888888889 39.9999999999996 567.777777777778
+1
+"$SystemName""Navir_B:"
+0

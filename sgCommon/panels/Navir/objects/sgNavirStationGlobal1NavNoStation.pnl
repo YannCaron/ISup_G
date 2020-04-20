@@ -1,0 +1,103 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 200 258 N "_3DFace" 4
+"$CommandEnable"
+"$ILSForCAT"
+"$StationName"
+"$SystemName"
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  10 200
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 12
+"Frame"
+""
+1 10 150 E E E 1 E 1 E N "Schwarz" E N "_Transparent" E E
+ E E
+4 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+	setValue(\"Frame\", \"text\", \" \" + $StationName + \" \");
+}" 0
+ E 0 1 1 0 1 E 1 0 1.0738255033557 0 0 0 E 10 0 190 150
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 7 Station
+1 13 1 "" 46
+0
+1 16 2 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 14 1 "" 51
+0
+1 15 1 "" 52
+0
+1 17 2 "" 51
+0
+1 18 2 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 1 "Group5"
+"objects\\sgFwBlock.pnl" 560 160 T 2 0.390243902439024 0 0.231910946196661 -196.542756250073 -5.36031637535388
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/BitsStates/24BitsStates.pnl;ElementName:Navaid_1;SystemName:$SystemName;StationName:$StationName;CommandEnable:$CommandEnable;NavaidNr:1;ILSForCAT:$ILSForCAT"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Navaid_1.Status\""
+3 2 "PANEL_REF3"
+"objects\\sgFwBlock.pnl" 560 160 T 5 0.390243902439024 0 0.231910946196661 -196.542756250073 64.6396836246461
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/BitsStates/24BitsStates.pnl;ElementName:Navaid_1;SystemName:$SystemName;StationName:$StationName;CommandEnable:$CommandEnable;NavaidNr:2;ILSForCAT:$ILSForCAT"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Navaid_2.Status\""
+0

@@ -1,0 +1,74 @@
+V 10
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,363 160 1110 860 N "_3DFace" 0
+"main()
+{
+	navirModule.ModuleName=\"navirModule\";
+  RootPanelOnModule(\"Navir/NavirEPL.pnl\", \"Navir\", \"navirModule\", makeDynString());
+  
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+29 55
+"navirModule"
+""
+1 47 35 E E E 1 E 1 E N "_3DText" E N {255,255,255} E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+0
+
+0 0 1110 860
+15 Canvas.Canvas.1
+0
+"main()
+{
+
+}" 0
+
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,259 @@
+V 11
+2
+LANG:5 0 
+LANG:1 0 
+PANEL,-1 -1 1280 992 N "_3DFace" 0
+"main()
+{
+  form_initialize();
+}" 0
+ E E E E 1 -1 -1 0  10 4
+""0  1
+E "bool locked = false;
+bool initialize = true;
+
+void form_initialize() {
+  // initialize tree
+  treeView.addColumn(\"Name\");
+  treeView.setColumnWidth(\"Name\", 250);  
+  treeView.addColumn(\"Addr\");
+  treeView.setColumnWidth(\"addr\", 30);  
+  treeView.addColumn(\"Location\");
+  treeView.setColumnWidth(\"Location\", 150); 
+  
+  // connect
+  dpQueryConnectSingle(\"connect_hierarchy\", false, \"connect_hierarchy\", \"SELECT '_online.._value' FROM '{**.Components.*.Name,**.Components.*.Location}'\");  
+  dpQueryConnectSingle(\"connect_hierarchy\", true, \"connect_hierarchy\", \"SELECT '_online.._value' FROM '{*.Name,*.Location}' WHERE _DPT = \\\"sgWAGO\\\" || _DPT = \\\"sgWAGOBus\\\"\");  
+  
+  // init module
+  mainModule.ModuleName = \"mainModule\";
+
+}
+
+void connect_hierarchy(string ident, dyn_dyn_anytype values) {
+  string selectedItem = treeView.selectedItem();  
+
+  locked = !initialize;
+  initialize = false;
+  loadHierarchy();
+
+  if (selectedItem != \"\") {
+    treeView.setSelectedItem(selectedItem, true);
+  }
+ }
+
+void loadHierarchy() {
+  dyn_string dps = getPointsOfType(\"sgWAGO\");
+  dyn_string wagoNames = getDpValues(dps, \".Name\");
+  dyn_string wagoLocations = getDpValues(dps, \".Location\");
+  dyn_string busesDP = getDpValues(dps, \".Bus\");
+
+  mapping busesMap;  
+  treeView.clear();
+  
+  dyn_dyn_anytype busTable;  
+  
+  // for each bus
+  for (int i = 1; i <= dynlen(busesDP); i++) {
+    
+    string busDP = busesDP[i];
+   
+    if (busDP != \"\" && !mappingHasKey(busesMap, busDP)) {
+      string busName, busLocation, modbusAgent, port, busAddress;
+      dpGet(busDP + \".Name\", busName, busDP + \".Location\", busLocation, busDP + \".ModbusAgent\", modbusAgent);
+      
+      dynAppend(busTable, makeDynAnytype(busDP, busName, busLocation));
+        
+      busesMap[busDP] = busName;
+    }
+  }
+
+  // sort
+  dynDynSort(busTable, 2, true);
+
+  for (int i = 1; i <= dynlen(busTable); i++) {
+    // create bus
+    treeView.appendItem(\"\", busTable[i][1], busTable[i][2]);
+    treeView.setText(busTable[i][1], 2, busTable[i][3]);  
+      
+    // select the first by default
+    if (i == 1) treeView.setSelectedItem(busTable[i][1], true);
+  }
+    
+  // for each wago  
+  for (int i = 1; i <= dynlen(dps); i++) {
+    string wagoDP = dps[i];
+    string wagoName = wagoNames[i] != \"\" ? wagoNames[i] : \"<not set>\";
+    string wagoLocation = wagoLocations[i];
+    string busDP = busesDP[i];
+
+    treeView.appendItem(busDP, wagoDP, wagoName);
+    treeView.setText(wagoDP, 2, wagoLocation);  
+    
+    // add logic & analogic
+    treeView.appendItem(wagoDP, \"logical_\" + i, \"Logic inputs\");
+    treeView.appendItem(wagoDP, \"analogic_\" + i, \"Analogic inputs\");
+
+    // open tree
+    // treeView.setOpen(busDP, true);
+    treeView.setOpen(wagoDP, true);
+    
+  }
+  
+}
+
+void treeView_changed(string id) {
+  // format
+  if (!locked && id != \"\") {
+
+    if (dpExists(id)) {
+    
+      // node
+      string type = dpTypeRefName(id);
+      if (type == \"\") type = dpTypeName(id);
+      dyn_string params = makeDynString(\"$id:\" + id);
+      RootPanelOnModule(\"Infra/Admin/Configurator-\" + type + \".pnl\", id, \"mainModule\", params);
+
+    } else {
+      string pnl = id;
+      int pos = strpos(pnl, \"_\");
+      if (pos != -1) {
+        pnl = substr(pnl, 0, pos);  
+      }    
+      
+      // inputs
+      string parent = treeView.parent(id);
+      string type = dpTypeRefName(parent);
+      if (type == \"\") type = dpTypeName(parent);
+      dyn_string params = makeDynString(\"$id:\" + parent);
+      RootPanelOnModule(\"Infra/Admin/Configurator-\" + type + \"-\" + pnl + \".pnl\", parent + \"-\" + id, \"mainModule\", params);
+    
+    }
+  }
+  
+  locked = false;
+  
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+30 0
+"FRAME1"
+""
+1 10 4 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+0 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.014925373134328 0 1.5814696485623 -5.1492537313433 -6.32587859424919 0 E 10 4 346 631
+2
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+LANG:1 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 2
+LANG:5 17 Hierarchical View
+LANG:1 17 Hierarchical View
+29 1
+"treeView"
+""
+1 10 19.99999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"frameShadow" "enum 48"
+2
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+LANG:1 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0  10 20 340 985
+10 TreeWidget
+1
+0 "selectionChanged" "(string id)"
+"  treeView_changed(id);"
+E30 2
+"FRAME2"
+""
+1 10 4 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+2 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 2.761194029850747 0 1.5814696485623 322.3880597014926 -6.325878594249204 0 E 10 4 346 631
+2
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+LANG:1 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 2
+LANG:5 6 Detail
+LANG:1 6 Detail
+29 305
+"mainModule"
+""
+1 349.8560250391237 20 E E E 1 E 1 E N "_3DText" E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"horizontalScrollBarPolicy" "enum 1"
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  357 20 1270 985
+15 Canvas.Canvas.1
+0
+E0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

@@ -1,0 +1,562 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 1100 638 N "_3DFace" 1
+"$RadarName"
+"main()
+{
+  string fullRadarPath;
+  string fullName;
+  string site;
+	
+// Getting the site to add the other site in the remotes texts
+	dpGet(\"FwUtils.Site\", site);
+	if(site == \"GVA\")
+	{
+   ARTASLocalFrame.text = \"ARTAS GVA\";
+		ARTASRemoteText.text = \"ARTAS ZRH\";
+   SDDSLocalText.text = \"SDDS GVA\";
+   SDDSRemoteText.text = \"SDDS ZRH\";
+	}	
+	else 
+	{
+		if(site == \"ZRH\")
+		{
+    ARTASLocalFrame.text = \"ARTAS ZRH\"; 
+    ARTASRemoteText.text = \"ARTAS GVA\";
+    SDDSLocalText.text = \"SDDS ZRH\";
+    SDDSRemoteText.text = \"SDDS GVA\";
+		}	
+		else
+		{
+    ARTASLocalFrame.text = \"ARTAS Local\"; 
+    ARTASRemoteText.text = \"ARTAS Remote\";
+    SDDSLocalText.text = \"SDDS Local\";
+    SDDSRemoteText.text = \"SDDS Remote\";
+
+		}
+  }	
+
+	fullRadarPath = \"RDP.Structured.Radars.\" + $RadarName;
+  dpGet(fullRadarPath + \".FullName\", fullName);
+  RadarLabel.text = fullName;
+  
+  bool channel2Available;
+  dpGet(\"RDP.Structured.Radars.\" + $RadarName + \".Input2Available\", channel2Available);
+  CmdChannel2Btn.visible = channel2Available;
+  CmdChannel4Btn.visible = channel2Available;
+}
+
+" 0
+ E E E E 1 -1 -1 0  130 600
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 271
+"Output2Line"
+""
+1 635 25 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+152 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  840 185 635 25
+1 636 117 "" 7
+0
+1 637 117 "" 9
+0
+1 634 116 "" 7
+0
+1 635 116 "" 9
+0
+4 586
+"LINE1"
+""
+1 865 405 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+199 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  620 320 620 195
+6 604
+"RECTANGLE2"
+""
+1 75 115 E E E 1 E 1 E N {0,0,0} E N "grau" E E
+ E E
+213 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 3.91304347826087 0 1.166666666666667 296.5217391304348 25.83333333333334 1 E 75 115 190 145
+14 601
+"SDDSLocalText"
+""
+1 60 165 E E E 1 E 1 E N "_WindowText" E N "grau" E E
+ E E
+210 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+2
+"hoverfclr" "N \"_3DText\""
+"hoverbclr" "N \"grau\""
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  58 163 502 187
+2 "10s" 10 0 0 1 0 -1  E E E
+1 632 115 "" 7
+0
+1 633 115 "" 9
+0
+1 630 114 "" 7
+0
+1 631 114 "" 9
+0
+1 628 108 "" 7
+0
+1 629 108 "" 9
+0
+1 624 106 "" 7
+0
+1 625 106 "" 9
+0
+1 626 107 "" 7
+0
+1 627 107 "" 9
+0
+1 622 104 "" 7
+0
+1 623 104 "" 9
+0
+1 613 10 "" 46
+0
+4 272
+"Line6"
+""
+1 250 180 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  250 180 445 25
+4 235
+"Line2"
+""
+1 725 421.8000000000002 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+127 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  480 330 480 195
+1 619 12 "" 46
+0
+1 607 8 "" 46
+0
+1 616 11 "" 46
+0
+1 610 9 "" 46
+0
+2 83
+"RadarLabel"
+""
+1 298 3 E E E 1 E 1 E N {0,0,0} E N "STD_param_panel_back" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 300 5 781 31
+1 2 0 "0s" 0 0 0 65 0 0  300 5 1
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 XXXX
+LANG:1 4 XXXX
+13 381
+"CMDNode"
+""
+1 265 535 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+189 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  263 533 307 607
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPRadarConnectWindow.pnl\", \"RDP Command Window\", makeDynString(\"$RadarName:\" + $RadarName), 0, 0);
+}" 0
+ E E E
+13 449
+"CmdChannel3Btn"
+""
+1 785 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+190 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  783 428 827 482
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPRadarAttachWindow.pnl\", \"RDP Command Window\", 
+                           makeDynString(\"$RadarName:\" + $RadarName, \"$Channels:1_3\"), 0, 0);
+}" 0
+ E E E
+13 513
+"CmdChannel4Btn"
+""
+1 1045 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+191 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  1043 428 1087 482
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPRadarAttachWindow.pnl\", \"RDP Command Window\", 
+                           makeDynString(\"$RadarName:\" + $RadarName, \"$Channels:2_4\"), 0, 0);
+}" 0
+ E E E
+13 514
+"CmdChannel1Btn"
+""
+1 10 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+192 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  8 428 52 482
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPRadarAttachWindow.pnl\", \"RDP Command Window\", 
+                           makeDynString(\"$RadarName:\" + $RadarName, \"$Channels:1_3\"), 0, 0);
+}" 0
+ E E E
+13 515
+"CmdChannel2Btn"
+""
+1 270 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+193 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  268 428 312 482
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"RDP/RDPRadarAttachWindow.pnl\", \"RDP Command Window\", 
+                           makeDynString(\"$RadarName:\" + $RadarName, \"$Channels:2_4\"), 0, 0);
+}" 0
+ E E E
+30 579
+"ARTASLocalFrame"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+194 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 5.069767441860464 0 3.208955223880595 -603.3720930232556 267.0149253731344 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 14 ARTAS + $Site 
+6 603
+"RECTANGLE1"
+""
+1 75 115 E E E 1 E 1 E N {0,0,0} E N "grau" E E
+ E E
+212 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 3.91304347826087 0 1.166666666666667 -238.4782608695653 25.83333333333334 1 E 75 115 190 145
+14 602
+"SDDSRemoteText"
+""
+1 595 165 E E E 1 E 1 E N "_WindowText" E N "grau" E E
+ E E
+211 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  593 163 1037 187
+2 "10s" 10 0 0 1 0 -1  E E E
+6 605
+"RECTANGLE3"
+""
+1 75 115 E E E 1 E 1 E N {0,0,0} E N "grau" E E
+ E E
+214 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 1.652173913043478 0 1.166666666666667 331.0869565217391 160.8333333333333 1 E 75 115 190 145
+14 606
+"ARTASRemoteText"
+""
+1 460 300 E E E 1 E 1 E N "_WindowText" E N "grau" E E
+ E E
+215 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  458 298 642 322
+2 "10s" 10 0 0 1 0 -1  E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 614 10 "" 51
+0
+1 615 10 "" 52
+0
+1 620 12 "" 51
+0
+1 621 12 "" 52
+0
+1 608 8 "" 51
+0
+1 609 8 "" 52
+0
+1 617 11 "" 51
+0
+1 618 11 "" 52
+0
+1 611 9 "" 51
+0
+1 612 9 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 8 "Group17" -1
+"objects\\sgFwBlock.pnl" 80 130 T 8 1.2175 0 0.35 212.6 489.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".Radar\""
+3 9 "Group19" -1
+"objects\\sgFwBlock.pnl" 270 50 T 9 0.475 0 0.2492551020408147 -73.25 417.5372448979593
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".Channel1\""
+3 10 "Group21" -1
+"objects\\sgFwBlock.pnl" 750 50 T 10 0.475 0 0.2492551020408147 -41.25 417.5372448979593
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".Channel2\""
+3 11 "Group23" -1
+"objects\\sgFwBlock.pnl" 750 50 T 11 0.475 0 0.2500000000000001 233.75 417.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".Channel3\""
+3 12 "Group25" -1
+"objects\\sgFwBlock.pnl" 750 50 T 12 0.475 0 0.2500000000000001 493.7500000000001 417.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RDP.Structured.Radars.\" +$RadarName + \".Channel4\""
+3 104 "Group34" -1
+"objects\\Thick_Thin_Line_vert.pnl" 415 260 T 181 0.6948381548438855 -0.5464111104132247 0.8069222660849844 0.4705128408313588 -87.01917812060869 578.8375290219622
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel2\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""2"
+3 106 "Group38" -1
+"objects\\Thick_Thin_Line_vert.pnl" 395 460 T 183 0.9461360064172224 -1.116375766663831 2.11248661906456 0.5000000000000007 -1163.217834923209 695.9684278322127
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel1\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""1"
+3 107 "Group40" -1
+"objects\\Thick_Thin_Line_vert.pnl" 173 441 T 184 1.04425519031648 1.128444749558928 -2.21813512792902 0.5312499999999998 1698.08036140201 56.1228083263056
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel4\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""4"
+3 108 "Group42" -1
+"objects\\Thick_Thin_Line_vert.pnl" 395 460 T 185 0.7678679137475095 0.492007300694945 -0.8048272711280905 0.469413292871687 744.5885367465879 74.11526736195454
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel3\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""3"
+3 114 "PANEL_REF114" -1
+"objects\\Thick_Thin_Line_vert.pnl" 395 460 T 200 0 -3.563182841977858 0 1.59587074011202 150 890.2740969319649
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel1\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""1"
+3 115 "PANEL_REF115" -1
+"objects\\Thick_Thin_Line_vert.pnl" 415 260 T 201 0 -1.853157446115042 0 1.59574788627554 410 571.0808474316129
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel2\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""2"
+3 116 "PANEL_REF116" -1
+"objects\\Thick_Thin_Line_vert.pnl" 415 260 T 207 0 -1.853157446115042 0 1.59574788627554 690 571.0808474316129
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel3\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""3"
+3 117 "PANEL_REF117" -1
+"objects\\Thick_Thin_Line_vert.pnl" 415 260 T 208 0 -1.853157446115042 0 1.59574788627554 945 576.0808474316129
+3
+"$Hidden""\"RDP.Structured.Radars.\" + $RadarName + \".Channel4\""
+"$SystemStatus""\"RDP.Structured.Radars.\" + $RadarName + \".ActiveChannel\""
+"$ValueVisible""4"
+0

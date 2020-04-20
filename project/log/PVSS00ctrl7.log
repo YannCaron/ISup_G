@@ -1,0 +1,5 @@
+^C20.03.23 10:41:07.168["Launching [start \"nJamsAPIDriver.jar\" /WAIT java -jar D:/projects/wincc/ISup_G_2.26/sgFw/services/nJamsAPIDriver.jar -a 3 -c D:/projects/wincc/ISup_G_2.26/sgCommon/config/njams.lifecycle.config.xml -l D:/projects/wincc/ISup_G_2.26/sgCommon/config/njams.lifecycle.log4j.properties -m 9907]"]
+2020.03.23 10:41:07.183["Try to establish connection [1] with connectionMonitor at 127.0.0.1:9907"]
+2020.03.23 10:47:30.907["Service stopped"]
+2020.03.23 11:24:32.021["Launching [start \"nJamsAPIDriver.jar\" /WAIT java -jar D:/projects/wincc/ISup_G_2.26/sgFw/services/nJamsAPIDriver.jar -a 3 -c D:/projects/wincc/ISup_G_2.26/sgCommon/config/njams.lifecycle.config.xml -l D:/projects/wincc/ISup_G_2.26/sgCommon/config/njams.lifecycle.log4j.properties -m 9907]"]
+2020.03.23 11:24:32.035["Try to establish connection [1] with connectionMonitor at 127.0.0.1:9907"]

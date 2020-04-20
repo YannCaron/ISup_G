@@ -1,0 +1,656 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 914 966 N "_3DFace" 0
+"main()
+{
+  form_initialize();
+}" 0
+ "main()
+{
+  form_terminate();
+}" 0
+ E E E 1 -1 -1 0  65 75
+""0  1
+E "// const
+const int WAGO_COLUMN_INPUT = 0;
+const int WAGO_COLUMN_DESCRIPTION = 1;
+const int WAGO_COLUMN_WAGO_TYPE = 2;
+const int WAGO_COLUMN_SCALING_Y1 = 3;
+const int WAGO_COLUMN_SCALING_Y2 = 4;
+const int WAGO_COLUMN_ACTIVE = 5;
+const int WAGO_COLUMN_THRESHOLD_VL = 6;
+const int WAGO_COLUMN_THRESHOLD_L = 7;
+const int WAGO_COLUMN_THRESHOLD_H = 8;
+const int WAGO_COLUMN_THRESHOLD_VH = 9;
+const int WAGO_COLUMN_ALARM_TEXT = 10;
+
+const int WAGO_ANALOGIC_TYPE_PT100 = 1;
+const int WAGO_ANALOGIC_TYPE_4_20MA = 2;
+
+// global
+dyn_string dps;
+int len;
+string id, wipDP;
+int threadID;
+bool threadRun;
+bool shouldBeSaved = false;
+dyn_int types;
+
+void loadDps() {
+	id = getOptionalParam(\"$id\", \"StationBNA.Components.BNAB51VO01\");
+	dps = dpNames(id + \".AnalogInputs.*\");
+	len = dynlen(dps);
+
+}
+
+void tickWip() {
+  threadRun = true;
+  while(threadRun) {
+    dpSet(wipDP, true);
+    
+    delay(1, 0);
+  }
+}
+
+// event
+void form_initialize() {
+  loadDps();
+	
+  wipDP = id + \".WorkInProgress\";
+  threadID = startThread(\"tickWip\");
+	
+  load();
+}
+
+void form_terminate() {
+  dpSet(wipDP, false);
+  threadRun = false;
+}
+
+void save_clicked() {
+  if (checkThresholdIntegrities()) {
+  
+	  saveData();
+  	
+	  // reload
+	  load();
+  	}
+}
+
+void refresh_clicked() {
+  detectShouldBeSave();
+  load();
+}
+
+void activate_clicked() {
+	for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+		dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_ACTIVE, true);
+	}
+}
+
+void desactivate_clicked() {
+	for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+		dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_ACTIVE, false);
+	}
+}
+
+void copy_clicked() {
+	dataGrid.copy();
+}
+
+void paste_clicked() {
+	dataGrid.paste();
+}
+
+void detectShouldBeSave() {
+  if (shouldBeSaved && 
+    showDialog(MSGBOX_SAVE, \"Save\", \"Modifications was not saved.\\nWould you like to save it before process?\")) {
+    
+    shouldBeSaved = false;
+    saveData();
+  }
+}
+
+void dataGrid_keyboardFocusedIn() {
+  shouldBeSaved = true;
+}
+
+void dataGrid_cellValueChanged(int row, int column, anytype value) {
+	if (column == WAGO_COLUMN_WAGO_TYPE) {
+		checkTypeIntegrity(row, column, value);
+	}
+
+}
+
+void checkTypeIntegrity(int row, int column, anytype value) {
+	int oldType = types[row + 1];
+  
+	switch (value) {
+    case 0:
+		case WAGO_ANALOGIC_TYPE_PT100:
+    if (oldType != value) {
+  			dataGrid.setValue(row, WAGO_COLUMN_SCALING_Y1, WAGO_DEFAULT_PT100_Y1);
+  			dataGrid.setValue(row, WAGO_COLUMN_SCALING_Y2, WAGO_DEFAULT_PT100_Y2);
+
+      dyn_float th = WAGO_DEFAULT_PT100_THRESHOLDS;    
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_VL, th[1]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_L, th[2]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_H, th[3]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_VH, th[4]);
+      }
+			 
+		break;
+		case WAGO_ANALOGIC_TYPE_4_20MA:
+			if (oldType != value) {
+				dataGrid.setValue(row, WAGO_COLUMN_SCALING_Y1, WAGO_DEFAULT_4_20MA_Y1);
+				dataGrid.setValue(row, WAGO_COLUMN_SCALING_Y2, WAGO_DEFAULT_4_20MA_Y2);
+				
+				dyn_float th = WAGO_DEFAULT_4_20MA_THRESHOLDS;    
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_VL, th[1]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_L, th[2]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_H, th[3]);
+				dataGrid.setValue(row, WAGO_COLUMN_THRESHOLD_VH, th[4]);
+			}
+		break;
+	}
+  
+  types[row + 1] = value;
+}
+
+bool checkThresholdIntegrities() {
+  int h = dataGrid.rowCount;
+  
+  bool alert = false;  
+  
+  for (int row = 0; row < h; row++) {
+    for (int column = 6; column <= 9; column++) {
+      bool result = checkThresholdIntegrity(row, column);
+      if (!result) {
+        dataGrid.setCellForeColor(row, column, \"red\");
+        alert = true;
+      }
+    }
+  }
+  
+  if (alert) {
+    dataGrid.clearSelection();
+    showDialog(MSGBOX_WARNING, \"Threshold error\", \"Threshold out of bounds!\");
+  }
+  
+  return !alert;
+  
+}
+
+bool checkThresholdIntegrity(int row, int column) {
+  float value = dataGrid.getValue(row, column);
+	float lValue = 0 - 1, hValue = 100 + 1;
+	if (column > WAGO_COLUMN_THRESHOLD_VL) lValue= dataGrid.getValue(row, column - 1);
+	if (column < WAGO_COLUMN_THRESHOLD_VH) hValue= dataGrid.getValue(row, column + 1);
+	float mid = (hValue - lValue) / 2 + lValue;
+  		
+	if (value <= lValue || value >= hValue) {
+    dataGrid.setValue(row, column, mid);
+    // dataGrid.setCellForeColor(row, column, \"#ff0000\"); // TODO
+
+    return false;
+	}
+  
+  return true;
+}
+
+// method
+void load() {
+	dataGrid.visible = false;
+	dataGrid.clear();
+	
+	dataModel();
+	loadData();
+	
+	dataGrid.visible = true;
+}
+
+void dataModel() {
+	dataGrid.addReadonlyColumn(\"Name\");
+	dataGrid.addStringColumn(\"Description\");
+	dataGrid.addComboColumn(\"WAGO Type\", makeDynString(\"Pt100\", \"4-20 mA\"), makeDynString(WAGO_ANALOGIC_TYPE_PT100, WAGO_ANALOGIC_TYPE_4_20MA));
+	dataGrid.addStringColumn(\"Sc-Y1\");
+	dataGrid.addStringColumn(\"Sc-Y2\");
+	dataGrid.addBoolColumn(\"Alarm\");
+	dataGrid.addStringColumn(\"Th-VL\");
+	dataGrid.addStringColumn(\"Th-L\");
+	dataGrid.addStringColumn(\"Th-H\");
+	dataGrid.addStringColumn(\"Th-VH\");
+	dataGrid.addStringColumn(\"Alarm Text\");
+}
+
+void loadData() {
+  types = (dyn_int)getDpValues(dps, \".Type:_original.._value\");
+	dataGrid.setColumnValues(WAGO_COLUMN_INPUT, dynFillStringFormat(dynlen(dps), \"Analogic.%03d\"));  
+	
+	dataGrid.setColumnValues(WAGO_COLUMN_WAGO_TYPE, types);
+
+	dataGrid.setColumnValues(WAGO_COLUMN_SCALING_Y1, (dyn_float)getDpValues(dps, \".Y1:_original.._value\"));  
+	dataGrid.setColumnValues(WAGO_COLUMN_SCALING_Y2, (dyn_float)getDpValues(dps, \".Y2:_original.._value\"));  
+	dataGrid.setColumnValues(WAGO_COLUMN_ACTIVE, (dyn_bool)getDpValues(dps, \".Value:_alert_hdl.._active\"));  
+
+	dataGrid.setColumnValues(WAGO_COLUMN_DESCRIPTION, (dyn_string)getDpValues(dps, \".Value:_alert_hdl.._help\"));  
+	
+	dataGrid.setColumnValues(WAGO_COLUMN_THRESHOLD_VL, (dyn_float)getDpValues(dps, \".Value:_alert_hdl.1._u_limit\"));  
+	dataGrid.setColumnValues(WAGO_COLUMN_THRESHOLD_L, (dyn_float)getDpValues(dps, \".Value:_alert_hdl.2._u_limit\"));  
+	dataGrid.setColumnValues(WAGO_COLUMN_THRESHOLD_H, (dyn_float)getDpValues(dps, \".Value:_alert_hdl.3._u_limit\"));  
+	dataGrid.setColumnValues(WAGO_COLUMN_THRESHOLD_VH, (dyn_float)getDpValues(dps, \".Value:_alert_hdl.4._u_limit\"));
+
+	// format alarm text
+	dyn_string texts = (dyn_string)getDpValues(dps, \".Value:_alert_hdl.1._text\");
+	for (int i = 1; i <= dynlen(texts); i++) {
+		texts[i] = substr(texts[i], WAGO_ALARM_LEN_ANALOCIG);
+	}
+	dataGrid.setColumnValues(WAGO_COLUMN_ALARM_TEXT, texts);
+}
+
+void saveData() {
+	dataGrid.visible = false;
+
+	// type
+	dyn_float offsets, gains;
+	dyn_string formulas;
+  types = dataGrid.getColumnValues(WAGO_COLUMN_WAGO_TYPE);
+	setWagoTypes(types, offsets, gains, formulas);
+  
+	dpSetWait(dpAppend(dps, \".Type:_original.._value\"), types);
+	dpSetWait(dpAppend(dps, \".Offset:_original.._value\"), offsets);
+	dpSetWait(dpAppend(dps, \".Gain:_original.._value\"), gains);
+	
+	// scaling
+	dpSetWait(dpAppend(dps, \".Y1:_original.._value\"), dataGrid.getColumnValues(WAGO_COLUMN_SCALING_Y1));
+	dpSetWait(dpAppend(dps, \".Y2:_original.._value\"), dataGrid.getColumnValues(WAGO_COLUMN_SCALING_Y2));
+
+	// save alarm
+	dyn_float vls = dataGrid.getColumnValues(WAGO_COLUMN_THRESHOLD_VL);
+	dyn_float ls = dataGrid.getColumnValues(WAGO_COLUMN_THRESHOLD_L);
+	dyn_float hs = dataGrid.getColumnValues(WAGO_COLUMN_THRESHOLD_H);
+	dyn_float vhs = dataGrid.getColumnValues(WAGO_COLUMN_THRESHOLD_VH);
+	dyn_float actives = dataGrid.getColumnValues(WAGO_COLUMN_ACTIVE);
+	dyn_string valueDps = dpAppend(dps, \".Value\");
+	dyn_string texts = dataGrid.getColumnValues(WAGO_COLUMN_ALARM_TEXT);
+	dyn_string description = dataGrid.getColumnValues(WAGO_COLUMN_DESCRIPTION);
+ 	
+	// ack all before modifying
+	dpSetWait(dpAppend(valueDps, \":_alert_hdl.._ack\"), dynFillInt(len, DPATTR_ACKTYPE_SINGLE));
+	dpSetWait(dpAppend(valueDps, \":_alert_hdl.._active\"), dynFillBool(len, FALSE));
+  
+	// loop on all dps  
+	for (int i = 1; i <= dynlen(valueDps); i++) {
+		string alarmText, warningText;
+		sprintf(alarmText, WAGO_ALARM_FORMAT_ANALOCIG, texts[i]);
+		sprintf(warningText, WAGO_WARNING_FORMAT_ANALOCIG, texts[i]);
+		
+		saveAnalogicAlert(valueDps[i], description[i], alarmText, warningText, vls[i], ls[i], hs[i], vhs[i], actives[i]);
+		saveDpFunction(dps[i], formulas[i]);
+	}
+}
+
+void setWagoTypes(dyn_int& types, dyn_float& offsets, dyn_float& gains, dyn_string& formulas) {
+	for (int i = 1; i <= dynlen(types); i++) {
+    if (types[i] == 0) types[i] = WAGO_ANALOGIC_TYPE_PT100;
+    
+		if (types[i] == WAGO_ANALOGIC_TYPE_PT100) {
+			dynAppend(offsets, WAGO_DEFAULT_PT100_OFFSET);
+			dynAppend(gains, WAGO_DEFAULT_PT100_GAIN);
+			dynAppend(formulas, WAGO_PT100_FORMULA);
+		} else if (types[i] == WAGO_ANALOGIC_TYPE_4_20MA) {
+			dynAppend(offsets, WAGO_DEFAULT_4_20MA_OFFSET);
+			dynAppend(gains, WAGO_DEFAULT_4_20MA_GAIN);
+			dynAppend(formulas, WAGO_4_20MA_FORMULA);
+		}
+	}
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 3
+"PUSH_BUTTON1"
+""
+1 850 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  848 933 911 962
+
+T 
+2
+LANG:5 4 Save
+LANG:1 4 Save
+"main()
+{
+  save_clicked();
+}" 0
+ E E E
+2 4
+"PRIMITIVE_TEXT1"
+""
+1 320 445 E E E 1 E 1 E N "black_grey_g" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 320 445 606 478
+0 2 2 "0s" 0 0 0 192 0 0  320 445 1
+2
+LANG:5 27 Tahoma,20,-1,5,75,0,0,0,0,0
+LANG:1 27 Tahoma,20,-1,5,75,0,0,0,0,0
+0 2
+LANG:5 21 Loading, please wait!
+LANG:1 21 Loading, please wait!
+13 5
+"PUSH_BUTTON2"
+""
+1 650 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  648 933 701 962
+
+T 
+2
+LANG:5 8 Activate
+LANG:1 8 Activate
+"main()
+{
+  activate_clicked();
+}" 0
+ E E E
+13 6
+"PUSH_BUTTON3"
+""
+1 705 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  703 933 766 962
+
+T 
+2
+LANG:5 10 Unactivate
+LANG:1 11 Desactivate
+"main()
+{
+  desactivate_clicked();
+}" 0
+ E E E
+13 7
+"PUSH_BUTTON4"
+""
+1 785 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  783 933 846 962
+
+T 
+2
+LANG:5 7 Refresh
+LANG:1 7 Refresh
+"main()
+{
+  refresh_clicked();
+}" 0
+ E E E
+4 10
+"LINE1"
+""
+1 775 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  775 930 775 960
+4 11
+"LINE2"
+""
+1 776 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  776 930 776 960
+4 12
+"LINE3"
+""
+1 640 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  640 930 640 960
+4 13
+"LINE4"
+""
+1 641 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  641 930 641 960
+13 16
+"PUSH_BUTTON7"
+""
+1 535 948.1578947368423 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  533 933 582 962
+
+T 
+2
+LANG:5 4 Copy
+LANG:1 6 Invert
+"main()
+{
+  copy_clicked();
+}" 0
+ E E E
+13 17
+"PUSH_BUTTON8"
+""
+1 585 948.1578947368423 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  583 933 632 962
+
+T 
+2
+LANG:5 5 Paste
+LANG:1 10 Non invert
+"main()
+{
+  paste_clicked();
+}" 0
+ E E E
+4 18
+"LINE7"
+""
+1 525 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  525 930 525 960
+4 19
+"LINE8"
+""
+1 526 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  526 930 526 960
+29 20
+"dataGrid"
+""
+1 14.24100156494523 11.639549436796 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+20 0 0 0 0 0
+"main()
+{
+  dataGrid_keyboardFocusedIn();
+}" 0
+ E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+4
+"selectionMode" "enum 3"
+"selectionBehavior" "enum 1"
+"alternatingRow" "bool TRUE"
+"columnResizeMode" "enum 3"
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  0 0 910 930
+12 DataGrid.ewo
+1
+0 "cellValueChanged" "(int row, int column, anytype value)"
+"  dataGrid_cellValueChanged(row, column, value);"
+E0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+1 0 "SHAPE_GROUP0" -1
+2 0 
+10 11 
+
+1 1 "SHAPE_GROUP1" -1
+2 0 
+12 13 
+
+1 3 "SHAPE_GROUP3" -1
+2 0 
+18 19 
+
+0

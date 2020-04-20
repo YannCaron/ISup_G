@@ -1,0 +1,1113 @@
+V 10
+1
+LANG:5 14 Database saver
+PANEL,-1 -1 817 725 N "_3DFace" 0
+"//** EventInitialize
+void initializeTables()
+{
+	t_rules.tableMode (TABLE_SELECT_BROWSE);
+	t_rules.selectByClick (TABLE_SELECT_LINE);
+}
+
+
+main()
+{
+
+	initializeTables();
+
+	gSpecFilename = getSpecFileName(DEFAULT_SPEC_FILE_NAME);
+
+	loadRulesContent(gSpecFilename);
+	tb_filename.text = getPath(DPLIST_REL_PATH ,DEFAULT_FILE_NAME);
+	
+}" 0
+ E E E E 1 -1 -1 0  10 220
+""0  1
+E "#uses \"sgDpPatternLib.ctl\"
+#uses \"sgASCIILib.ctl\"
+#uses \"sgStringLib.ctl\"
+#uses \"sgIOLib.ctl\"
+
+//** constants
+// FORMAT
+const string FORMAT_TIME = \"%M:%S\";
+const string FORMAT_MILLI = \".%03d\";
+// PANNELS
+const string PANNEL_VIEW_PATH = \"tools/DatabaseSave_DpView.pnl\";
+const string PANNEL_VIEW_TITLE = \"Datapoint view - %1\";
+const string PANNEL_VIEW_PARAMETER_TYPE = \"$type:%1\";
+const string PANNEL_VIEW_PARAMETER_PATTERN = \"$pattern:%1\";
+// SPEC
+const string SPEC_COLUMN_NAME = \"c_name\";
+const string SPEC_COLUMN_TYPE = \"c_typePattern\";
+const string SPEC_COLUMN_PATTERN = \"c_pattern\";
+const int TEXT_SPEC_COLUMN_NAME = 1;
+const int TEXT_SPEC_COLUMN_TYPE = 2;
+const int TEXT_SPEC_COLUMN_PATTERN = 3;
+// FILE
+const string DEFAULT_SPEC_FILE_NAME = \"SaveOP_History_Disable_Comment.spf\";
+const string DEFAULT_SPEC_PATH = \"spec\";
+const string DEFAULT_FILE_NAME = \"DatabaseSaverToolExport.dpl\";
+const string EXTENTION_SPEC = \"*.spf\";
+const string EXTENTION_DPL = \"*.dpl\";
+const string COMMAND_WRITE_TEXT = \"write \\\"%1\\\"\";
+const string COMMAND_NOTEPAD_TEXT = \"notepad %1\";
+const string COMMAND_EXPLORE = \"explorer %1\";
+// LOG
+const string LOG_COLUMN_TIME = \"c_timestamp\";
+const string LOG_COLUMN_MESSAGE = \"c_message\";
+const string LOG_COLUMN_STATUS = \"c_status\";
+const string LOG_STATUS_SUCCESS = \"success\";
+const string LOG_STATUS_INFO = \"info\";
+const string LOG_STATUS_WARNING = \"warning\";
+const string LOG_STATUS_ERROR = \"error\";
+
+const string LOG_COLOR_NORMAL = \"black\";
+const string LOG_COLOR_SUCCESS = \"blue\";
+const string LOG_COLOR_WARNING = \"{255, 204, 0}\";
+const string LOG_COLOR_ERROR = \"red\";
+
+const string LOG_ASCII_PROCESSFILE = \"processing file\";
+const string LOG_ASCII_WAITING = \"Waiting for last response from eventmanager...\";
+const string LOG_ASCII_SCANNING = \"Scanning of file\";
+const string LOG_ASCII_END = \"End of Program\";
+const string LOG_ASCII_SEND = \"sent.\";
+
+// MESSAGE
+const string DIALOG_SYSTEM_ERROR_OK = \"no database error found\";
+const string DIALOG_IMPORT_OK = \"dpl file import successfully\";
+const string DIALOG_IMPORT_NOFILE = \"Please select file name before importing it !\";
+const string DIALOG_IMPORT_FILENOTEXIST = \"File does not exist !\";
+const string DIALOG_IMPORT_ERROR = \"an error occured during import. Error number : %1\";
+const string DIALOG_EXPORT_OK = \"dpl file export successfully\";
+const string DIALOG_EXPORT_NOFILE = \"Please select file name before exporting it !\";
+const string DIALOG_EXECUTE_RULE = \"Execute \\\"%1\\\" : [(%2).%3]\";
+const string DIALOG_LINE_CREATED = \"\\\"%1\\\" : %2 lines created\";
+const string DIALOG_NO_LINE_CREATED = \"\\\"%1\\\" return no line !\";
+const string DIALOG_SPEC_DOESNT_EXIST = \"Spec file [%1] does not exist !\";
+
+// global variables
+time gProcessBeginTime;
+string gSpecFilename;
+
+//** property
+// File
+string getSpecFileName(string filename = \"\")
+{
+	
+	// value
+	string value;
+	
+	value = getPath(DPLIST_REL_PATH) + DEFAULT_SPEC_PATH;
+	
+	if (filename != \"\")
+		value += '/' + filename;
+	
+	return value;
+	
+}
+
+// DBFile
+string getDBFilename()
+{
+	// variable
+	string value;
+	
+	value = tb_filename.text;
+	strreplace(value, \"/\", \"\\\\\");
+
+	return value;
+}
+
+void setDBFilename(string value)
+{
+	tb_filename.text = value;
+}
+
+bool isFilenameOK()
+{
+
+	// variable
+	bool value = false;
+
+	// verify not empty
+	if (getDBFilename() == \"\")
+	{
+		addLoggerError(DIALOG_IMPORT_NOFILE);
+	}
+	// verify exist
+	else if (!fexist(getDBFilename()))
+	{
+		addLoggerError(DIALOG_IMPORT_FILENOTEXIST);
+	}
+	else
+	{
+		value = true;
+	}
+	
+	return value;
+
+}
+
+// rule
+int getRuleLineCount()
+{
+	return t_rules.lineCount();
+}
+
+string getRuleName(int i)
+{
+	return t_rules.cellValueRC (i, SPEC_COLUMN_NAME);
+}
+
+string getRuleType(int i)
+{
+	return t_rules.cellValueRC (i, SPEC_COLUMN_TYPE);
+}
+
+string getRulePattern(int i)
+{
+	return t_rules.cellValueRC (i, SPEC_COLUMN_PATTERN);
+}
+
+void setRuleContent(string line)
+{
+
+	// variable
+	dyn_string columns;
+
+	columns = strsplit (line, ASCII_COLUMN_SEPARATOR);
+
+	// assign to table content
+	t_rules.appendLine (
+		SPEC_COLUMN_NAME, columns[TEXT_SPEC_COLUMN_NAME],
+		SPEC_COLUMN_TYPE, columns[TEXT_SPEC_COLUMN_TYPE],
+		SPEC_COLUMN_PATTERN, columns[TEXT_SPEC_COLUMN_PATTERN]);
+
+}
+
+//** methode
+void loadRulesContent (string filename)
+{
+
+	// variable
+	file f;
+	string line;
+	
+	// clear rule table
+	t_rules.deleteAllLines();
+
+	if (fexist (filename)) {
+	
+		f = fopen (filename, FILE_READ);
+		
+		// loop on lines
+		while (feof(f) == 0)
+		{
+			fgets (line, FILE_READ_MAXLENGTH, f);
+	
+			strreplace (line, ASCII_LINE_SEPARATOR, \"\");
+			if (line != \"\")	setRuleContent(line);
+		}
+		
+		fclose(f);
+		
+		addLoggerNormal (strplace (\"Spec file %1 loaded.\", filename));
+
+	} 
+	else
+	{
+		addLoggerError (strplace (DIALOG_SPEC_DOESNT_EXIST, filename));
+	}
+	
+}
+
+void saveRuleContent(string filename)
+{
+
+	// variable
+	file f;
+	int col;
+	string line;
+
+	f = fopen (filename, FILE_CREATE);
+
+	// loop on rows
+	for (col = 0; col < t_rules.lineCount(); col++)
+	{
+		line = strconcat(t_rules.getLineN(col), ASCII_COLUMN_SEPARATOR) + ASCII_LINE_SEPARATOR;
+		fputs(line, f);
+	}
+	
+	fflush (f);
+	fclose (f);
+
+	addLoggerNormal (strplace (\"Spec file %1 saved.\", filename));
+
+}
+
+void newRuleContent(string filename)
+{
+
+	// variable
+	file f;
+
+	f = fopen (filename, FILE_CREATE);
+	
+	fflush (f);
+	fclose (f);
+	
+	addLoggerNormal (strplace (\"Spec file %1 created.\", filename));
+
+}
+
+// logger
+void clearLogger()
+{
+	t_log.deleteAllLines();
+}
+
+void addLoggerLine(string text, string status, string forColor)
+{
+
+	// variable
+	int row;
+	string elapsedTime;
+	
+	// get time
+	elapsedTime = formatTime(FORMAT_TIME, getCurrentTime() - gProcessBeginTime,  FORMAT_MILLI);
+
+	// add line
+	t_log.appendLine (
+		LOG_COLUMN_TIME, elapsedTime,
+		LOG_COLUMN_MESSAGE, text,
+		LOG_COLUMN_STATUS, status);
+	
+	if (forColor != \"\")
+	{
+		// get added line number
+		row = t_log.lineCount() - 1;
+		
+		// set color
+		t_log.cellForeColRC (row, LOG_COLUMN_TIME, forColor);
+		t_log.cellForeColRC (row, LOG_COLUMN_MESSAGE, forColor);
+		t_log.cellForeColRC (row, LOG_COLUMN_STATUS, forColor);
+	}
+}
+
+int getLogInfoStatus(string line, string &status, string &color)
+{
+	
+	if (
+		(isInStrBegin(line, \"PVSS00ascii\") && isInStr(line, \"INFO\")) ||
+		isInStrBegin(line, \"processing file\") || 
+		line == \"Waiting for last response from eventmanager...\" ||
+		(isInStrBegin(line, \"Scanning of file\") && isInStrEnd(line, \"is finished!\")) ||
+		line == \"End of Program\") // test process lines
+	{
+		status = LOG_STATUS_INFO;
+		color = LOG_COLOR_SUCCESS;
+	}
+	else if (isInStrEnd(line, \"sent.\")) // test normal dp import lines
+	{
+		status = LOG_STATUS_INFO;
+		color = LOG_COLOR_NORMAL;
+	}
+	else // warning
+	{
+		status = LOG_STATUS_ERROR;
+		color = LOG_COLOR_ERROR;
+	}
+
+}
+
+void addLoggerASCII(string filename)
+{
+	
+	// variable
+	file f;
+	string line;
+	string status, color;
+	
+	f = fopen (filename, FILE_READ);
+
+	// loop on file lines	
+	while(feof(f) == 0)
+	{
+		fgets(line, FILE_READ_MAXLENGTH, f);
+		strreplace (line, ASCII_LINE_SEPARATOR, \"\");
+		
+		if (line != \"\")
+		{
+			getLogInfoStatus(line, status, color);
+			addLoggerLine (line, status, color);
+		}	
+	}
+	
+	fclose(f);
+	
+}
+
+void addLoggerNormal(string text)
+{
+	addLoggerLine(text, LOG_STATUS_SUCCESS, \"\");
+}
+
+void addLoggerSuccess(string text)
+{
+	addLoggerLine(text, LOG_STATUS_SUCCESS, LOG_COLOR_SUCCESS);
+}
+
+void addLoggerWarning(string text)
+{
+	addLoggerLine(text, LOG_STATUS_WARNING, LOG_COLOR_WARNING);
+}
+
+void addLoggerError(string text)
+{
+	addLoggerLine(text, LOG_STATUS_ERROR, LOG_COLOR_ERROR);
+}
+
+// System Error
+bool isDatabaseError ()
+{
+
+	// variable
+	int i;
+	dyn_errClass err;
+	bool value = false;
+
+	err = getLastError(); 
+
+	if (dynlen(err) > 0)
+	{
+		for (i=1; i<=dynlen(err); i++)
+		{
+			addLoggerError ((string)err[i]);
+		}
+		throwError(err);
+		value = true;
+	}
+	else
+	{
+		addLoggerSuccess (DIALOG_SYSTEM_ERROR_OK);
+	}
+	
+	return value;
+
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 2
+"Frame1"
+""
+1 10 220 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 0 810 220
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 13 Configuration
+30 4
+"Frame2"
+""
+1 10 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 220 810 300
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 8 Database
+2 8
+"Text2"
+""
+1 20 240 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 22 242 88 258
+0 2 0 "0s" 0 0 0 64 0 0  22 242 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 10 Filename :
+30 24
+"Frame3"
+""
+1 10 720 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 300 810 720
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 3 Log
+13 5
+"bt_filename"
+""
+1 780 240 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 778 238 802 262
+
+T 
+1
+LANG:5 3 ...
+"main()
+{
+	// variable
+	string dbFileName;
+	
+	fileSelector (dbFileName, getPath(DPLIST_REL_PATH), false, EXTENTION_DPL);
+	dbFileName = addExtention(dbFileName, EXTENTION_DPL);
+	setDBFilename(dbFileName);
+
+}" 0
+ E E E
+14 6
+"tb_filename"
+""
+1 90 240 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 88 238 772 265
+2 "0s" 0 0 0 0 0 -1  E E E
+13 10
+"bt_import"
+""
+1 540 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 538 268 642 292
+
+T 
+1
+LANG:5 10 Import dpl
+"string getASCIICommandLine()
+{
+	
+	// variable
+	string value;
+	
+	// get command
+	value = getASCIICommand();
+	addASCIICmdIn (value, getDBFilename());
+	addASCIICmdLog (value);
+	
+	return value;	
+	
+}
+
+main()
+{
+
+	// variable
+	int importStatus;
+
+	// stock time
+	gProcessBeginTime = getCurrentTime();
+
+	if (isFilenameOK())
+	{
+		// all ok to import
+		importStatus = system (getASCIICommandLine());
+		
+		// logger
+		addLoggerASCII(getASCIILogFilename());
+		addLoggerASCII(getASCIIInfoFilename());
+
+		// error
+		if (importStatus == 0)
+		{
+			if (!isDatabaseError()) // manage database error
+				addLoggerSuccess(DIALOG_IMPORT_OK);
+		}
+		else
+		{
+			addLoggerError(strplace (DIALOG_IMPORT_ERROR, importStatus));
+		}
+	}
+
+}" 0
+ E E E
+13 11
+"bt_export"
+""
+1 20 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 268 122 292
+
+T 
+1
+LANG:5 13 Export to dpl
+"void addRulesValues(file f)
+{
+
+	// variable
+	int i;
+	int count;
+
+	// loop on rules	
+	for (i=0; i<getRuleLineCount(); i++)
+	{
+	
+		// log
+		addLoggerNormal(strplace (DIALOG_EXECUTE_RULE, getRuleName(i), getRuleType(i), getRulePattern(i)));
+		
+		// execute
+		fputs (getASCIIComment(getRuleName(i)), f);
+		count = appendDPPatternToFile(f, getRuleType(i), getRulePattern(i));
+		
+		// log
+		if (count != 0)
+		{
+			addLoggerNormal(strplace (DIALOG_LINE_CREATED, getRuleName(i), count));
+		}
+		else
+		{
+			addLoggerWarning(strplace (DIALOG_NO_LINE_CREATED, getRuleName(i)));
+		}
+
+	}
+
+}
+
+void dbToFile (string filename)
+{
+
+	// variable
+	file f;
+	
+	// write new file
+	f = fopen (filename, FILE_CREATE);
+	
+	// header
+	fputs (getASCIIDocumentHeader(), f);
+	fputs (getASCIIDPValuesHeader(), f);
+	
+	// all rules
+	addRulesValues(f);
+	
+	// close
+	fflush(f);
+	fclose(f);
+
+}
+
+main()
+{
+
+	// stock time
+	gProcessBeginTime = getCurrentTime();
+
+	if (getDBFilename() != \"\")
+	{
+		dbToFile(getDBFilename());
+		
+		if (!isDatabaseError()) // manage database error
+			addLoggerSuccess(DIALOG_EXPORT_OK);
+	}
+	else
+	{
+		addLoggerError(DIALOG_EXPORT_NOFILE);
+	}
+
+}" 0
+ E E E
+25 27
+"t_rules"
+""
+1 20 20 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E "main()
+{
+	// variable
+	string title;
+	dyn_string parameters;
+	
+	// get properties
+	title = strplace (PANNEL_VIEW_TITLE, getRuleName(t_rules.selectLineN));
+	parameters = makeDynString(
+		strplace (PANNEL_VIEW_PARAMETER_TYPE, getRuleType(t_rules.selectLineN)), 
+		strplace (PANNEL_VIEW_PARAMETER_PATTERN, getRulePattern(t_rules.selectLineN)));
+	
+	// open child frame
+	ChildPanelOnModal(PANNEL_VIEW_PATH, title, parameters, 25, 60);
+}" 0
+
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 18 712 212
+EE 1 0 1 3 1 "c_name" 14 1 1 "s" 1
+LANG:5 4 Name
+E
+1
+LANG:5 0 
+
+150 "c_typePattern" 14 1 1 "s" 1
+LANG:5 12 Type pattern
+E
+1
+LANG:5 0 
+
+150 "c_pattern" 36 1 1 "s" 1
+LANG:5 7 Pattern
+E
+1
+LANG:5 0 
+
+370 
+18 18 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 1 7
+1 0
+13 30
+"bt_open"
+""
+1 720 20 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 718 18 802 42
+
+T 
+1
+LANG:5 10 open / new
+"main()
+{
+
+	// variable
+	string oldSpecFileName = gSpecFilename;
+
+	fileSelector (gSpecFilename, getSpecFileName(), false, EXTENTION_SPEC);
+	
+	if (gSpecFilename != \"\" ) { // verify is file name selected
+
+		gSpecFilename = addExtention(gSpecFilename, EXTENTION_SPEC); // force extention
+		
+		if (fexist(gSpecFilename)) {
+			loadRulesContent(gSpecFilename);
+		} else {
+			newRuleContent(gSpecFilename);
+			loadRulesContent(gSpecFilename);
+		}
+
+	} else {
+		gSpecFilename = oldSpecFileName; // restore old filename if cancel
+	}
+	
+}" 0
+ E E E
+25 31
+"t_log"
+""
+1 -22 236 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ "main()
+{
+	clearLogger();
+}" 0
+ E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 318 802 712
+EE 1 0 1 3 1 "c_timestamp" 6 1 0 "s" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+70 "c_message" 61 1 0 "s" 1
+LANG:5 7 Message
+E
+1
+LANG:5 0 
+
+620 "c_status" 6 1 0 "s" 1
+LANG:5 6 Status
+E
+1
+LANG:5 0 
+
+70 
+16 16 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 1 7
+1 0
+13 32
+"bt_edit_dpl"
+""
+1 130 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 128 268 212 292
+
+T 
+1
+LANG:5 9 edit file
+"main()
+{
+
+	if (isFilenameOK())
+		system (strplace (COMMAND_WRITE_TEXT, getDBFilename()));
+
+}" 0
+ E E E
+13 33
+"bt_logFile"
+""
+1 650 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 648 268 722 292
+
+T 
+1
+LANG:5 8 Log file
+"main()
+{
+
+  system(strplace (COMMAND_WRITE_TEXT, getASCIILogFilename()));
+  
+}" 0
+ E E E
+13 34
+"bt_infoFile"
+""
+1 730 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 728 268 802 292
+
+T 
+1
+LANG:5 9 Info file
+"main()
+{
+
+  system(strplace (COMMAND_WRITE_TEXT, getASCIIInfoFilename()));
+  
+}" 0
+ E E E
+13 35
+"bt_edit"
+""
+1 720 190 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 718 188 802 212
+
+T 
+1
+LANG:5 4 edit
+"main()
+{
+	system (strplace (COMMAND_NOTEPAD_TEXT, gSpecFilename));
+	loadRulesContent(gSpecFilename);
+}" 0
+ E E E
+13 36
+"bt_new"
+""
+1 720 80 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 718 78 802 102
+
+T 
+1
+LANG:5 3 new
+"void newLine()
+{
+	t_rules.appendLine (SPEC_COLUMN_NAME, \"name\", SPEC_COLUMN_TYPE, \"*\", SPEC_COLUMN_PATTERN, \"*\");
+}
+
+main()
+{
+	newLine();
+}" 0
+ E E E
+13 37
+"bt_del"
+""
+1 720 110 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 718 108 802 132
+
+T 
+1
+LANG:5 6 delete
+"int selectedRule()
+{
+
+	// variable
+	int value;
+	dyn_int selection;
+
+	selection = t_rules.getSelectedLines();
+	
+	if (dynlen(selection) > 0)
+	{
+		// get first
+		value = selection[1];
+	}
+	else
+	{
+		value = -1;
+	}
+	 
+	return value;
+}
+
+main()
+{
+	if (selectedRule() > -1)
+	{
+		t_rules.deleteLineN(selectedRule());
+	}
+}" 0
+ E E E
+13 38
+"bt_save"
+""
+1 720 50 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 718 48 802 72
+
+T 
+1
+LANG:5 4 save
+"main()
+{
+	saveRuleContent(gSpecFilename);
+}" 0
+ E E E
+13 39
+"bt_explore"
+""
+1 220 270 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 218 268 302 292
+
+T 
+1
+LANG:5 7 explore
+"main()
+{
+
+	if (isFilenameOK())
+		system (strplace (COMMAND_EXPLORE, extractPath(getDBFilename())));
+
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,269 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 1
+"$SystemName"
+"main()
+{
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string activeChain;
+
+
+
+void readActiveChain(string dpName, string dpValue)
+{	
+	activeChain = dpValue;
+	ActiveChainLabel.text = activeChain;
+	
+	if(activeChain == \"A\")
+	{
+		SwitchoverButton.text = \"Switchover to chain B\";
+	}
+	else
+	{
+		if(activeChain == \"B\")
+		{
+			SwitchoverButton.text = \"Switchover to chain A\";
+		}
+		else
+		{
+			SwitchoverButton.text = \"Switchover\";
+			DebugN(\"ISupMainPanel; Warning: No active chain defined for auto-supervision ISup!\");
+		}
+	}
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1 104 "32" 103
+0
+1 2 104 "33" 103
+0
+1 3 104 "34" 103
+0
+1 4 104 "35" 103
+0
+1 5 104 "" 648
+0
+1 6 104 "54" 46
+0
+1 7 104 "55" 46
+0
+1 8 104 "92" 46
+0
+1 9 104 "102" 46
+0
+1 10 104 "103" 939
+0
+1 11 104 "103" 941
+0
+1 12 104 "104" 939
+0
+1 13 104 "104" 941
+0
+1 51 106 "32" 103
+0
+1 52 106 "33" 103
+0
+1 53 106 "34" 103
+0
+1 54 106 "35" 103
+0
+1 55 106 "" 648
+0
+1 56 106 "54" 46
+0
+1 57 106 "55" 46
+0
+1 58 106 "92" 46
+0
+1 59 106 "102" 46
+0
+1 60 106 "103" 939
+0
+1 61 106 "103" 941
+0
+1 62 106 "104" 939
+0
+1 63 106 "104" 941
+0
+1 26 105 "32" 103
+0
+1 27 105 "33" 103
+0
+1 28 105 "34" 103
+0
+1 29 105 "35" 103
+0
+1 30 105 "" 648
+0
+1 31 105 "54" 46
+0
+1 32 105 "55" 46
+0
+1 33 105 "92" 46
+0
+1 34 105 "102" 46
+0
+1 35 105 "103" 939
+0
+1 36 105 "103" 941
+0
+1 37 105 "104" 939
+0
+1 38 105 "104" 941
+0
+2 0
+"PageLabel"
+""
+1 10 5 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 7 1098 38
+1 2 0 "0s" 0 0 0 65 0 0  12 7 1
+2
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 30 Navir Sion: Links Informations
+LANG:1 4 AFPS
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 14 104 "35" 110
+0
+1 15 104 "34" 110
+0
+1 16 104 "33" 110
+0
+1 17 104 "32" 110
+0
+1 18 104 "54" 51
+0
+1 19 104 "54" 52
+0
+1 20 104 "55" 51
+0
+1 21 104 "55" 52
+0
+1 22 104 "92" 51
+0
+1 23 104 "92" 52
+0
+1 24 104 "102" 51
+0
+1 25 104 "102" 52
+0
+1 64 106 "35" 110
+0
+1 65 106 "34" 110
+0
+1 66 106 "33" 110
+0
+1 67 106 "32" 110
+0
+1 68 106 "54" 51
+0
+1 69 106 "54" 52
+0
+1 70 106 "55" 51
+0
+1 71 106 "55" 52
+0
+1 72 106 "92" 51
+0
+1 73 106 "92" 52
+0
+1 74 106 "102" 51
+0
+1 75 106 "102" 52
+0
+1 39 105 "35" 110
+0
+1 40 105 "34" 110
+0
+1 41 105 "33" 110
+0
+1 42 105 "32" 110
+0
+1 43 105 "54" 51
+0
+1 44 105 "54" 52
+0
+1 45 105 "55" 51
+0
+1 46 105 "55" 52
+0
+1 47 105 "92" 51
+0
+1 48 105 "92" 52
+0
+1 49 105 "102" 51
+0
+1 50 105 "102" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 104 "" -1
+"Navir\\objects\\LinksInfos1Station.pnl" 260 460 T 239 1 0 1.125 -250 -241.875
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""SIO"
+"$SystemName""$SystemName"
+3 105 "Group56" -1
+"Navir\\objects\\LinksInfos1Station.pnl" 10 280 T 240 1 0 1.125 0 -259.375
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC25"
+"$SystemName""$SystemName"
+3 106 "Group58" -1
+"Navir\\objects\\LinksInfos1Station.pnl" 10 60 T 241 1 0 1.125 0 98.125
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP25"
+"$SystemName""$SystemName"
+0

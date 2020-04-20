@@ -1,0 +1,1938 @@
+V 10
+1
+LANG:5 26 GenericConfig2_Main_Screen
+PANEL,261 165 1250 930 N "_3DFace" 0
+"main()
+{
+InitCompatibilityMode();
+
+if (LoadOnOpen)
+	{
+	Table1.visible = false;
+	sgTree_SetAppearanceAsTree(getShape(\"Tree\"));
+	PopulateTree();
+	Table1.visible = true;	
+	DisplayBlankTree;
+	}
+Text2.visible = false;
+}" 0
+E"main()
+{
+
+}" 0
+ E E 1 -1 -1 0  0 0
+"" 0 1
+E"
+//Global Variables/constants
+bool LoadOnOpen = true;
+bool AutoDisplayTableAtAll = true;
+bool happening = false;
+int NumTableColumns = 32;
+
+//########################## Update DP List ##################################
+void UpdateDPList()
+{
+//display all the points associated with the type selected
+//in the selectionlist box for the data points
+//with string matching
+
+dyn_string allDPTypes = DPTypesList.items; 
+dyn_string allDPsOfType, MatchedDPsOfType; 
+string SelectedType, MatchString; 
+
+//get all valid types
+SelectedType = allDPTypes[DPTypesList.selectedPos];
+allDPsOfType = getPointsOfType(SelectedType);
+DPsList.items = allDPsOfType;
+
+//if there is a string to match, let only the matching ones through
+
+MatchString = (DPsNameFilterEdit.text + \"*\");
+if (MatchString == \"*\")
+  {
+		MatchedDPsOfType = allDPsOfType;
+	}
+else 
+	{
+		MatchedDPsOfType = dynPatternMatch(MatchString, allDPsOfType);
+	} 
+DPsList.items = MatchedDPsOfType;
+
+//then update the table
+UpdateTable();
+}
+
+//########################## Element List for Type ##################################
+dyn_string ElementListForType(string data_point_type)
+{
+string dpt;
+dyn_dyn_string names;
+dyn_dyn_int types;
+int struc;
+dyn_string dpelist;
+
+struc=dpTypeGet(data_point_type,names,types);
+//DebugN(types);
+dpelist = ParseType(names, false);
+//DebugN(dpelist);
+return dpelist;
+
+}
+
+
+//########################## Update Table ##################################
+void UpdateTable()
+{
+dyn_string dpelist, just_dpe_names;
+dpelist[1] = \"DP Name\";
+//just_dpe_names = ElementListForType(DPTypesList.selectedText);
+//dynAppend(dpelist, just_dpe_names);
+//DPsList.items = dpelist; //for debugging only
+//SetTableColumns(dpelist);
+}
+
+
+//########################## Parse Type ##################################
+dyn_string ParseType(dyn_dyn_string structure, bool ShowRoot)
+//this takes what PVSS returns as the structure of a DP type
+//which is a 2d list representing a tree
+//and returns a 1d list of leaves
+//in the form root.branch.leaf or branch.leaf depending on input
+{
+//declarations
+dyn_string result, intermediate;
+string curr_name, testingvar;
+int curr_depth, min_depth;
+bool is_leaf, last_element, add_name, is_reference;
+
+if (ShowRoot)
+	{
+	min_depth = 1;
+	}
+else
+  {
+	min_depth = 2;
+  }
+  
+//DebugN(structure);
+for (int i = 1; i <= dynlen(structure) ; i++) //loop through every item in the list to parse
+	{
+	//inits
+	curr_name = \"\";
+	curr_depth = dynlen(structure[i]);
+	
+	if (curr_depth > 0)//if the last element was not a reference element
+	{
+	
+		if (!(curr_depth == 1))
+			{
+			is_reference = (!(structure[i][curr_depth - 1] == \"\")); //the element is a reference element
+			}
+		else
+			{
+			is_reference = false; //if the current depth is 1, it cannot be a reference element
+			}//end if
+		
+		intermediate[(curr_depth - is_reference)] = structure[i][(curr_depth - is_reference)];	
+		
+		last_element = (i == dynlen(structure));
+		
+		if (!last_element)
+			{
+			is_leaf = (dynlen(structure[i]) >= dynlen(structure[i+1])); //this if is because this statement will bomb on the last element
+			}
+		else
+			{
+			is_leaf = true; //if it is the last element in the list, it MUST be a leaf
+			}	
+		
+		if (is_leaf) //if the current item is a leaf
+	 	{
+	 	 //build up its name string
+			for (int j = min_depth; j <= (curr_depth - is_reference) ; j++)
+				{
+				if (j == min_depth) //so it isn't always started with a dot
+					{
+					curr_name = intermediate[j];
+					}
+ 	  	  if (j > min_depth)
+					{
+					curr_name = curr_name + \".\" + intermediate[j];
+					}//end if
+				}//end for
+
+			if (is_reference)
+			{
+			//DebugN(intermediate);
+			//DebugN(curr_name);
+			curr_name = \"Ref:\" + structure[i][curr_depth] + \".\" + intermediate[1] + \".\" + curr_name;
+			//DebugN(curr_name);
+			}
+
+			dynAppend(result, curr_name);
+			}//end if
+		}//end if curr_depth > 0
+	}//end for loop - every item in list to parse
+
+return result;
+}//ParseType
+
+//########################## Set Table Columns ##################################
+int SetTableColumns(dyn_string TableColumnTitles)
+{
+//this sets the right columns visible and gives them the correct titles
+
+//first, hide all columns
+for (int ColRef = 0;
+			ColRef < NumTableColumns;
+			ColRef++)
+		{
+		Table1.columnVisibility(ColRef, false);
+		}
+//you have to have 2 independent loops because you have to name ALL the columns
+//after every one has been made visible
+
+dyn_bool is_refs = patternMatch( \"Ref:*\", TableColumnTitles);
+
+for (int i = 1; i <= dynlen(TableColumnTitles); i++)
+	{
+	if (is_refs[i])
+		{
+		dyn_string split;
+		split = strsplit(TableColumnTitles[i], \":\");
+		split = strsplit(split[2], \".\");
+		TableColumnTitles[i] = \"Reference of type \"+split[1]+\" to\";
+		}
+	}
+
+
+for ( int ColRef = 0; 
+      ColRef <= dynlen(TableColumnTitles); 
+      ColRef++)
+	{
+	Table1.columnVisibility(ColRef, true);
+	}
+
+for ( int ColRef = 0; 
+      ColRef <= dynlen(TableColumnTitles); 
+      ColRef++)
+	{
+	if (ColRef == 0)
+		{
+		Table1.columnHeader(ColRef, \"\");
+		}
+	else
+		{
+		Table1.columnHeader(ColRef, TableColumnTitles[ColRef]);
+		}
+	}
+return 0;
+}//SetTableColumns
+
+//########################## Insert a dyn_string as Tree Nodes ##################################
+dyn_int InsertDynAsNodes(dyn_string leaves)
+//this takes a dyn string of leaves
+//in the format ((x.)^n)leaf eg: 'x.y.z.leaf' or even just 'leaf'
+//and displays it in the tree, with the non-leaf parts of the string as branches.
+
+{
+dyn_dyn_string leaf_paths;
+dyn_int intermediates, result; //intermediate nodes (branches)
+int num_leaves, curr_shallowest_different;
+idispatch curr_parent_node, curr_parent;
+string curr_dp_name = \"\";
+anytype curr_parent_data;
+
+Tree.Items.Clear;//clear existing tree
+
+num_leaves = dynlen(leaves);
+//parse the leaf names into their component bits
+for (int i = 1; i <= num_leaves; i++)
+	{
+	leaf_paths[i] = strsplit(leaves[i], \".\");
+	}
+
+//insert the leaves into the table, creating the branches on the way
+for (int j = 1; j <= num_leaves; j++)
+	{
+	//DebugN(\"inserting node name: \" + leaves[j]);
+	//find if this is still a sub-node of anything
+	if (j != 1)
+		{
+		curr_shallowest_different = ShallowestDifferent(leaf_paths[j - 1], leaf_paths[j]);
+		}
+	else
+		{
+		curr_shallowest_different = 1;
+		}
+	//insert the nodes into the table
+	for (int k = curr_shallowest_different; k <= dynlen(leaf_paths[j]); k++)
+		{
+		if (k == 1)
+			{
+			//DebugN(\"inserting root node: \" + leaf_paths[j][1]);
+			intermediates[1] = Tree.Items.Add(leaf_paths[j][1]); 
+			idispatch this_node;
+			this_node = Tree.ExtractNode(intermediates[1]);
+			//special bit for this tree... for primary data points that are not systems
+			if (dynlen(leaf_paths[j]) == 1)
+				{
+				this_node.Data = leaf_paths[j][1]+\";\"; //if is is not a system
+				}
+			else
+				{
+				this_node.Data = \"\"; //if it is a system root node
+				}
+			}
+		else
+			{
+			//curr_parent_node = Tree.ExtractNode(intermediates[1]);
+			//DebugN(\"inserting node: \" + leaf_paths[j][k] + \"under: \" + curr_parent_node.text );
+			//DebugN(Tree.ExtractNode(intermediates[k-1]));
+			
+			curr_parent_node = Tree.ExtractNode(intermediates[k-1]);
+			//DebugN(curr_parent_node);
+			intermediates[k] = curr_parent_node.Add(leaf_paths[j][k]);			
+						idispatch this_node;
+			this_node = Tree.ExtractNode(intermediates[k]);
+			this_node.Data = \"\";
+			}//end if
+		if (k == dynlen(leaf_paths[j]))
+			{
+			result[j] = intermediates[k];
+			}//end if
+		}//end for
+	
+	
+	//add to lists of subnodes in parent data fields
+
+		//make data point name
+	curr_dp_name = \"\";
+	for (int l = 1; l <= dynlen(leaf_paths[j]); l++)	
+		{
+		if (l == 1)
+			{
+			//DebugN(leaf_paths[j]);
+			curr_dp_name = leaf_paths[j][l]; //why does the first in the list come out as a number!
+			}
+		if (l > 2)
+			{
+			curr_dp_name = curr_dp_name + \".\" + leaf_paths[j][l];
+			}
+		}
+		//DebugN(curr_dp_name);
+		
+		//append dp name to parent nodes
+
+//		string parent_data, pd2;
+	for (int m = 2; m <= dynlen(leaf_paths[j]); m++)
+		{
+		curr_parent = Tree.ExtractNode(intermediates[m]);
+		curr_parent.Data = curr_parent.Data + curr_dp_name + \";\";
+		}	
+		
+	}//end for
+return result;
+}//end insert dyn as nodes
+
+//########################## Shallowest Different ##################################
+int ShallowestDifferent(dyn_string dyn1, dyn_string dyn2)
+//finds the smallest index for which the 2 dyn_strings have different values
+{
+int shorter, result;
+//result = 0;
+if (dynlen(dyn1) < dynlen(dyn2))
+	{
+	shorter = dynlen(dyn1);
+	}
+else
+	{
+	shorter = dynlen(dyn2);
+	}
+
+for (int i = 1; i <= shorter; i++)
+	{
+	if (dyn1[i] != dyn2[i])
+		{
+		return i;//for shallowest different, not deepest same
+		}
+	}
+}
+
+//########################## Remove internal points ##################################
+dyn_string RemoveInternalPoints(dyn_string all_points)
+//removes the internal points (ie those that start with an underscore) from a list
+{
+dyn_string result;
+dyn_string curr_point_name;
+for (int i = 1; i <= dynlen(all_points); i++)
+	{
+	curr_point_name = strsplit(all_points[i], \":\");
+	if (!(patternMatch(\"_*\", curr_point_name[2])))
+		{
+		if (!(patternMatch(\"_*\", dpTypeName(curr_point_name[2]))))
+			{
+			dynAppend(result, curr_point_name[2]);			
+			}
+		}
+	}
+return result;
+}
+
+
+//######################## dyn_string to string convert #######################
+string dyn_to_string(dyn_string items)
+{
+string result = \"\";
+for (int i = 1; i <= dynlen(items); i++)
+	{
+	result = result + items[i] + \" ; \";
+	}
+return result;
+}
+
+
+
+//########################## Display dp list in table ##################################
+void DisplayDPListInTable(string dptype, dyn_string dplist)
+{
+dyn_string dpelist, curr_dpelist;
+int num_dps, num_dpes;
+string curr_col;
+dyn_bool is_refs, is_dynstrings;
+dyn_anytype curr_row_data, dpe_types;
+dyn_dyn_anytype table_data, getting_data;
+
+//make sure the table isn't emtpy
+if (dynlen(dplist) > 0 )
+{
+
+//make the table look sensible again (if the table had been blanked before)
+if (Table1.backCol != \"White\")
+	{
+	Table1.backCol = \"White\";
+	Table1.gridColor(\"Black\");
+	}
+	
+//set up the stuff to get
+num_dps = dynlen(dplist);
+dpelist = ElementListForType(dptype);
+num_dpes = dynlen(dpelist);
+
+//find which elements are reference elements
+is_refs = patternMatch( \"Ref:*\", dpelist);
+//DebugTN(is_refs);
+
+//build the getting table
+for (int i = 1; i<= num_dps; i++)
+	{
+	for (int j = 1; j<= num_dpes; j++)
+		{
+		if (!(is_refs[j]))
+			{
+			dynAppend(getting_data[1], dplist[i] + \".\" + dpelist[j]);
+			dynAppend(getting_data[3], j + 1);
+			dynAppend(getting_data[4], i);
+			}
+		}
+	}
+
+dpGet(getting_data[1], getting_data[2]);
+
+//DebugN(getting_data);
+//a BIG dpGet with dyn_strings (cause individual dpGets are **slow**, but one big one is much faster!)
+
+// insert description
+
+for (int n = 1; n<= num_dps; n++)
+{
+	string desc = dpGetDescription(dplist[n]);
+
+	if (desc == getSystemName() + dplist[n])
+	{
+		desc = \"\";
+	}
+	
+	dynInsertAt (getting_data[1], dplist[n], 1);
+	dynInsertAt (getting_data[2], desc, 1);
+	dynInsertAt (getting_data[3], 1, 1);
+	dynInsertAt (getting_data[4], n, 1);
+}
+
+// insert description column
+dynInsertAt (dpelist, \"description\", 1);
+num_dpes = dynlen(dpelist);
+
+//insert the data obtained into the table
+for (int i = 1; i<= dynlen(getting_data[2]); i++)
+	{
+	table_data[(getting_data[3][i]+1)][(getting_data[4][i])] = getting_data[2][i];	
+	}
+
+//insert dp names
+for (int m = 1; m <= num_dps; m++)
+	{
+	table_data[1][m] = dplist[m];	
+	}
+
+//find dyn_strings
+is_dynstrings[1] = false;
+for (int j = 2; j <= num_dpes; j++)
+	{
+	if (!(is_refs[j-1]))
+		{
+		is_dynstrings[j] = (9 == dpElementType(dplist[1]+ \".\" + dpelist[j]));
+		}
+	else
+		{
+		is_dynstrings[j] = false;
+		}
+	}	
+
+for (int k = 2; k<= num_dpes; k++)
+	{
+	//insert reference text
+	if (is_refs[k-1])
+		{
+		dyn_string ref_point = strsplit(dpelist[k], \".\");
+		string ref_end = ref_point[dynlen(ref_point)];
+		for (int m = 1; m<= num_dps; m++)
+			{
+			table_data[k+1][m] = table_data[1][m] + \".\" + ref_end;
+			}
+		}
+	//re-format dyn_strings
+	if (is_dynstrings[k])
+		{
+		for (int m = 1; m<= num_dps; m++)
+		table_data[k+1][m] = dyn_to_string(table_data[k+1][m]);
+		}
+	}
+
+//fill the rest of the table with white space
+for (int k = num_dpes + 2; k<= NumTableColumns; k++)
+	{
+	for (int m = 1; m<= num_dps; m++)
+		{
+		table_data[k][m] = \"\";
+		} 
+	}
+
+//display the data in the table
+Table1.deleteAllLines;
+//set up the table columns and their titles correctly
+SetTableColumns(dpelist);
+
+//if NumTableColumns is changed, this call needs to be changed too!!!!!!
+Table1.appendLines(num_dps, \"1\", table_data[1],
+														\"2\", table_data[2],
+														\"3\", table_data[3],
+														\"4\", table_data[4],
+														\"5\", table_data[5],
+														\"6\", table_data[6],
+														\"7\", table_data[7],
+														\"8\", table_data[8],
+														\"9\", table_data[9],
+														\"10\", table_data[10],
+														\"11\", table_data[11],
+														\"12\", table_data[12],
+														\"13\", table_data[13],
+														\"14\", table_data[14],
+														\"15\", table_data[15],
+														\"16\", table_data[16],
+														\"17\", table_data[17],
+														\"18\", table_data[18],
+														\"19\", table_data[19],
+														\"20\", table_data[20],
+														\"21\", table_data[21],
+														\"22\", table_data[22],
+														\"23\", table_data[23],
+														\"24\", table_data[24],
+														\"25\", table_data[25],
+														\"26\", table_data[26],
+														\"27\", table_data[27],
+														\"28\", table_data[28],
+														\"29\", table_data[29],
+														\"30\", table_data[30],
+														\"31\", table_data[31],
+														\"32\", table_data[32]
+									); //yes, this is silly, but i dont think there is a better way in pvss!! (no for loop as a single command!)
+
+for (int i = 0; i <= num_dps-1; i++)//colour the title column so it is distunguishable
+	{	
+	Table1.currentCell(i, 0);
+	Table1.cellBackCol = \"_3DFace\";
+	}	
+	
+}//end if empty table from v beginning
+} //end DisplayDPListInTable
+
+//##################################### leaf list for system ##############################
+dyn_string SystemLeafList(string system_name)
+{
+dyn_string result_point_names, curr_names, name_parts;
+string curr_type = \"\";
+string name_string = system_name;
+string curr_str_name;
+int start_cut;
+bool continue_deeper = true;
+//int depth_count = 0; //debugging
+
+while (continue_deeper)
+	{
+	//build the name string
+	name_string = name_string + \".*\";
+	//get the data info
+	curr_names = dpNames(name_string);
+  
+	if (dynlen(curr_names) == 0) //if there are no more leaves to be found
+		{
+	//	////DebugN(depth_count);
+		continue_deeper = false;
+		}
+	else //if there are still potential leaves to find...
+	{
+	
+	name_parts = strsplit(curr_names[1], \":\");
+  start_cut = strlen(system_name) + strlen(name_parts[1]) + 1;
+
+	//depth_count++;//debugging
+	//DebugN(curr_names);
+	//DebugN(dynlen(curr_names));
+	for (int i = 1; i <= dynlen(curr_names); i++)
+		{
+		curr_type =dpTypeRefName(curr_names[i]); // this is ********* SLOW *********
+		if (curr_type != \"\")
+			//if we have found a leaf of a known type
+			{
+			
+			//add the name string to the list of leaves
+			//as system_name. data point type. path
+				
+				//DebugN(curr_names[i]);
+			dynAppend(result_point_names, 
+		  					(system_name + \".\" + curr_type + substr(curr_names[i], start_cut, (strlen(curr_names[i])-start_cut)))
+								);
+			}//end if
+		}//end for
+	}//end if
+	}//end while
+	
+if (dynlen(result_point_names) == 0) //is this necessary??
+	{
+	dynAppend(result_point_names, system_name);
+	}
+dynSortAsc(result_point_names);
+//DebugN(result_point_names);
+return result_point_names;
+
+}
+
+//################################ Populate Tree ######################################
+void PopulateTree()
+{
+dyn_string systems_list, temp_system, tree_list;
+bool testing = false;
+
+if (testing)
+	{
+	tree_list[1] = \"bob.says.hello\";
+	tree_list[2] = \"bob.says.babe\";
+	tree_list[3] = \"bob.says.you\";
+	tree_list[4] = \"bob.says.are\";
+	tree_list[5] = \"bob.says.nice\";
+	tree_list[6] = \"bob.looks.good\";
+	tree_list[7] = \"babe.says.hello\";
+	tree_list[8] = \"babe.says.bob\";
+	tree_list[9] = \"babe.says.you\";
+	tree_list[10] = \"babe.says.look\";
+	tree_list[11] = \"babe.says.good\";
+	tree_list[12] = \"babe.looks.sexy\";
+	}
+else
+	{
+	//get the names of all the systems
+	Text2.text = \"Getting system names\";
+	systems_list = dpNames(\"*\");
+
+	//remove the pvss internal systems
+	Text2.text = \"Hiding internal systems\";
+  systems_list = RemoveInternalPoints(systems_list);
+	
+	//build the list of system types, and type data points...
+	for (int i = 1; i <= dynlen(systems_list); i++)
+		{
+		Text2.text = \"processing type: \" + systems_list[i];
+		//DebugN(\"system leaf list with: \" + systems_list[i]);
+		temp_system = SystemLeafList(systems_list[i]);
+		//DebugN(temp_system);
+		dynAppend(tree_list, temp_system);
+		}
+	}
+
+//display the list of systems
+Text2.text = \"inserting nodes into tree\";
+InsertDynAsNodes(tree_list);
+Text2.text = \"\";
+
+}
+
+//##################### on a tree event ######################
+void TreeHappening(long nodeID)
+//what to do when something interesting happens in the tree
+{
+idispatch selected_node;
+selected_node = Tree.ExtractNode(nodeID);
+Text2.text = selected_node.path;
+if (AutoDisplayTableAtAll)
+	{
+	DisplayTableFromTreeSelection(false);
+	}
+}
+
+//################## Display blank table ###########
+void DisplayBlankTable()
+{
+Table1.deleteAllLines;
+Table1.columnHeader(\"1\", \"Cannot Display Multiple Types\");
+for (int i = 1; i <= NumTableColumns ; i++)
+	{
+	Table1.columnVisibility(i, false);
+	}
+Table1.gridColor(\"hellgrau\");
+Table1.backCol = \"hellgrau\";
+}
+
+
+//############################### show contents of table from the selection in the tree ###########
+void DisplayTableFromTreeSelection(bool ignore_size_check)
+{
+string dps_to_display_str, display_type;
+dyn_string dps_display_list, a_dp_for_type;
+idispatch curr_node;
+int approx_normal_dp_lengh_in_chars = 250;
+
+//get the string comprising the list of data points to display
+curr_node = Tree.ExtractNode(Tree.Selected);
+dps_to_display_str = curr_node.Data;
+//DebugN(dps_to_display_str);
+
+//see if you want to auto-display the points
+//for even greater time saving, first check the length of the incoming string. if it's huge, there's no need to even bother splitting it.
+if ((!(strlen(dps_to_display_str) > (approx_normal_dp_lengh_in_chars * AutoDisplaySpin.text))) || ignore_size_check) //approximate test...
+	{
+	//extract the list of DPs to be displayed from the selected node (***to do: multi select***)
+	dps_display_list = strsplit(dps_to_display_str, \";\");
+	
+//	////DebugN(dps_display_list);
+	
+	//exact test
+	if (((dynlen(dps_display_list) <= AutoDisplaySpin.text) 
+		  && 
+		  (dynlen(dps_display_list) != 0))
+		 || ignore_size_check)
+		 
+		{
+		//find the type of the dps to be displayed
+	
+		a_dp_for_type = strsplit(curr_node.Path, \".\");
+		if (dynlen(a_dp_for_type) > 1)
+			{
+			display_type = a_dp_for_type[2];
+			}
+		else
+			{
+			display_type = dpTypeName(a_dp_for_type[1]);
+			}
+			//DebugN(display_type);		
+		//display the list
+	//	////DebugN(display_type, dps_display_list);		
+		
+		DisplayDPListInTable(display_type, dps_display_list);
+		
+		}//end exact test
+	else
+		{
+		DisplayBlankTable();
+		}
+	}//end approx test
+else
+	{
+	DisplayBlankTable();
+	}
+}
+
+
+//############# file exists ##############
+bool panelExists(string FilePath)
+{
+string panelpath = getPath(PANELS_REL_PATH, FilePath);
+DebugN(\"does panel exist at \",panelpath,FilePath);
+if (panelpath != \"\")
+	return true;
+else
+	return false;
+}
+
+
+//########################## show edit panel ###############################
+void ShowEditPanel(string DPType, dyn_string EditDPs)
+{
+string editPanelPath;
+string edit_dp_string = \"\";
+
+////DebugN(EditDPs);
+
+if (dynlen(EditDPs) > 1)
+	{
+	for (int i = 1; i<=dynlen(EditDPs);i++)
+		{
+		edit_dp_string = edit_dp_string + EditDPs[i] + \";\";
+		}
+	}
+else
+	{
+	edit_dp_string = EditDPs[1];
+	}
+
+editPanelPath = \"sgFw/tools/GenericConfig2/GenericConfig2_\" + DPType + \".pnl\" ;
+//DebugN(editPanelPath);
+if (panelExists(editPanelPath))
+	{
+//	////DebugN(\"the file exists, opening editing panel for type \"+DPType);
+	//open the editing panel, instantiating the reference parameters
+	//hide the table as well while this is the case	
+	ContentsText.text = \" Editing \"+DPType+\" Type \";
+	Table1.visible = false;
+	SaveBtn.enabled = true;
+	CloseDoNotSaveBtn.enabled = true;
+	CopyBtn.enabled = false;
+	PasteBtn.enabled = false;
+	DisplayAllPointsBtn.enabled = false;
+	
+	Tree.Enabled = false;
+	
+ 	addSymbol(myModuleName(), myPanelName(), editPanelPath, \"EditPanel\",
+ 					makeDynString(\"$DPEditNames:\"+edit_dp_string),
+ 					316, 91, 0, 1, 1);
+	}
+else
+	{
+	////DebugN(\"no new edit panel exists, checking for an old edit panel\");
+		//if old edit panel exists, open it in 'compatibility mode'	
+	editPanelPath = \"sgFw/GenericConfig/GenericConfig_\"+DPType+\".pnl\";
+	////DebugN(editPanelPath);
+	if (panelExists(editPanelPath))
+		{
+		////DebugN(\"old edit panel \"+editPanelPath+\" does exist, opening\");
+		
+		string first_edit_point = EditDPs[1]; //because old edit panels can't edit multiple points
+		////DebugN(first_edit_point, DPType);
+		
+		//open the old panel using the old library call		
+		SummaryDblClick(first_edit_point, DPType);
+		}
+	else
+		//no edit panel exists, open the test panel
+		{
+		DebugN(\"no edit panel exists for this type\");
+		Text2.visible = true;
+		Text2.text = \"no edit panel exists for type \"+DPType;
+		delay(1, 500);
+		Text2.visible = false;
+		
+		//hide the table
+		//ContentsText.text = \" Editing \"+DPType+\" Type \";
+		//Table1.visible = false;
+		//SaveBtn.enabled = true;
+		//CloseDoNotSaveBtn.enabled = true;
+		//Tree.Enabled = false;
+ 		//addSymbol(myModuleName(), myPanelName(), \"sgFw/tools/GenericConfig2/TestEdit.pnl\", \"EditPanel\",
+ 		//				makeDynString(\"$DPEditNames:\"+edit_dp_string, \"$DPEditType:\"+DPType),
+ 		//				316, 91, 0, 1, 1);
+		//eventually, open an error editing panel, or do nothing at all, remain showing the value in the table
+		//or give an error message
+		}
+	}
+
+}
+
+//###################### close edit panel ########################
+void CloseEditPanel()
+{
+removeSymbol(myModuleName(), myPanelName(), \"EditPanel\");
+SaveBtn.enabled = false;
+CloseDoNotSaveBtn.enabled = false;
+ContentsText.text = \" Data Points and their Contents \";
+Tree.Enabled = true;
+Table1.visible = true;
+	CopyBtn.enabled = true;
+	PasteBtn.enabled = true;
+	DisplayAllPointsBtn.enabled = true;
+//Delay(1);
+//DisplayBlankTree();
+TreeHappening(Tree.Selected);
+
+}
+
+//##################### currently selected type ######################
+string CurrentlySelectedType()
+{
+idispatch curr_node;
+string result;
+dyn_string DPsToEdit, SplitEdit;
+
+curr_node = Tree.ExtractNode(Tree.Selected);
+DPsToEdit = curr_node.Data;
+SplitEdit = strsplit(curr_node.Path, \".\");
+//DebugN(SplitEdit);
+if (dynlen(SplitEdit) > 1)
+	{
+	result = SplitEdit[2];
+	}
+else
+	{
+	if (curr_node.Data != \"\")
+		{
+		result = dpTypeName(curr_node.Text);
+		}
+	else
+		{
+		result = \"\";
+		}
+	}
+return result;
+}
+
+//############################# table click open edit panel ##################
+void TableClickOpenEditPanel()
+{
+dyn_string DPsToEdit;
+dyn_int sel_lines;
+string curr_dp;
+sel_lines = Table1.getSelectedLines;
+if (dynlen(sel_lines) > 0)
+	{
+	for (int i = 1; i<=dynlen(sel_lines); i++)
+		{
+		Table1.currentCell(sel_lines[i], 0);
+		dynAppend(DPsToEdit, Table1.cellValue);
+		}
+	////DebugN(DPsToEdit);
+	ShowEditPanel(CurrentlySelectedType(), DPsToEdit);
+	}
+}
+
+dyn_string TableSelectedDPs()
+{
+dyn_string result;
+dyn_int sel_lines;
+string curr_dp;
+sel_lines = Table1.getSelectedLines;
+if (dynlen(sel_lines) > 0)
+	{
+	for (int i = 1; i<=dynlen(sel_lines); i++)
+		{
+		Table1.currentCell(sel_lines[i], 0);
+		dynAppend(result, Table1.cellValue);
+		}
+	//DebugN(DPsToEdit);
+	}
+return result;
+}
+
+dyn_string RemoveNonLeaves(dyn_string StringList)
+{
+	dyn_string result;
+	//dynSortAsc(StringList);
+	for (int i = 1; i<dynlen(StringList);i++)
+		{	
+		if (strlen(StringList[i]) < strlen(StringList[i+1]))
+			{
+			if (StringList[i] != (substr(StringList[i+1], 0, strlen(StringList[i]))))
+				{
+				dynAppend(result, StringList[i]);
+				}
+			}
+		else
+			{
+			dynAppend(result, StringList[i]);
+			}	
+		}
+		dynAppend(result, StringList[dynlen(StringList)]);
+	return result;
+}
+
+
+void InitCompatibilityMode() //if all the old panels are superceded, this can be removed.
+{
+		//you need this for the old panels
+		sgDBInit();
+		bool b;
+		b = sgDBCreateTable(DBKEY_MODIFIED_VALUES);
+		//if (!b)
+		//DebugN(\"GenericConfigPanel: unable to create table 'MODIFIED_VALUES'\");//if table is already created it gives this error.
+																																							//commented because if you open panel twice it doesn't matter
+		//end need this
+}
+" 0
+ 2
+"CBRef""1"
+"EClose""main()
+{
+
+	SaveChangesOnCloseCheckBox.state(0) = false;
+	PanelOff();
+
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 7
+"ContentsFrame"
+""
+1 275 870 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 275 50 1245 870
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+2 58
+"ContentsText"
+""
+1 283 45 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+55 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 285 47 466 63
+0 2 0 "s" 0 0 0 192 0 0  285 47
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 32  Data Points and their Contents 
+6 15
+"TitleBorder"
+""
+1 10 45 E E E 1 E 1 E N "_WindowText" E N {204,204,204} E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 10 270 45
+2 0
+"TitleText"
+""
+1 45 13 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 47 15 220 40
+0 2 0 "s" 0 0 0 192 0 0  47 15
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 18 Generic Config 2.0
+30 4
+"DPTypesFrame"
+""
+1 5 924 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 5 50 277 926
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 17  Data Point Tree 
+2 30
+"PrefsSetLabel"
+""
+1 874 17 E E E 0 E 0 E N "_WindowText" E N "_Transparent" E E
+ E E
+31 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 876 19 972 35
+0 2 0 "s" 0 0 0 192 0 0  876 19
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 16 Preferences Set:
+30 31
+"PrefsFrame"
+""
+1 741 49 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+32 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 741 -1 1245 49
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+30 34
+"CopyPasteFrame"
+""
+1 278 926 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+35 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 278 875 988 926
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 50  Copy - Paste (with reference to table selection) 
+2 37
+"CurrentCopyLabel"
+""
+1 610 895 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+38 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 612 897 721 913
+0 2 0 "s" 0 0 0 192 0 0  612 897
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 19 Current Point Held:
+30 39
+"SaveAndCloseFrame"
+""
+1 990 926 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+40 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 990 875 1245 926
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 12  Edit Panel 
+2 49
+"Text2"
+""
+1 285 18 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+47 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 287 20 288 36
+0 2 0 "s" 0 0 0 192 0 0  287 20
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+2 50
+"Text1"
+""
+1 10 873 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+48 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 875 253 891
+0 2 0 "s" 0 0 0 192 0 0  12 875
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 47 Auto-Display when <                      Points
+13 16
+"PrefsOpenBtn"
+""
+1 753 14 E E E 0 E 0 E N "_3DText" E N "_3DFace" E E
+ E E
+17 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+751 12 865 41
+T 
+1
+LANG:5 16 Type Preferences
+"main()
+{
+//Table1.visible = !(Table1.visible);
+//TestText.text = \"hello world\";
+}
+
+
+
+" 0
+ E E E
+22 29
+"PrefsSetCombo"
+""
+1 975 15 E E E 0 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+30 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+973 13 1242 40
+0
+E
+E
+E
+ 0 0
+13 35
+"CopyBtn"
+""
+1 285 895 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+283 893 417 922
+T 
+1
+LANG:5 19 Copy Selected Point
+"main()
+{
+dyn_string selected_dps = TableSelectedDPs();
+if (dynlen(selected_dps) != 0)
+	{
+	CurrentCopyText.text = selected_dps[1];
+	}
+}" 0
+ E E E
+13 36
+"PasteBtn"
+""
+1 425 895 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+37 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+423 893 602 922
+T 
+1
+LANG:5 28 Paste into Selected Point(s)
+"main()
+{
+dyn_string paste_points = TableSelectedDPs();
+string copy_source = CurrentCopyText.text;
+string dptype = CurrentlySelectedType();
+//DebugN(dptype);
+dyn_string copy_dpe_names = RemoveNonLeaves(dpNames(copy_source + \".***\"));
+//DebugN(copy_dpe_names);
+dyn_string paste_dpe_names;
+
+dyn_string dpe_paths;
+dyn_anytype dpe_values;
+dyn_int table_selected;
+
+if (dpTypeRefName(copy_source) == dptype)
+	{
+
+	for (int j = 1; j<=dynlen(copy_dpe_names);j++)	
+		{
+		dpGet(copy_dpe_names[j], dpe_values[j]);
+		}
+
+	//DebugN(dpe_values);
+	
+	for (int k = 1; k<=dynlen(paste_points);k++)
+		{
+		paste_dpe_names = RemoveNonLeaves(dpNames(paste_points[k] + \".***\"));
+		
+		for (int i = 1; i<=dynlen(paste_dpe_names);i++)
+			{
+	//		DebugN(\"setting\", paste_dpe_names[i], dpe_values[i]);
+			dpSet(paste_dpe_names[i], dpe_values[i]);
+			}
+		}
+	
+	PasteBtn.backCol = \"green\";
+	table_selected = Table1.getSelectedLines();
+
+	TreeHappening(Tree.Selected);
+
+	Table1.addSelectLines(table_selected);
+	
+	delay(0, 500);
+	PasteBtn.backCol = \"_3DFace\";
+	
+	}
+else
+	{
+	string pastebtntxt = PasteBtn.text;
+	
+	PasteBtn.backCol = \"red\";
+	PasteBtn.text = \"Type Mismatch\";
+	DebugN(\"trying to paste an element of a different type. copied element is \"+dpTypeRefName(copy_source)+\" , target is \"+dptype+\".\");
+	delay(1, 500);
+	PasteBtn.backCol = \"_3DFace\";
+	PasteBtn.text = pastebtntxt;
+	}
+
+}
+
+" 0
+ E E E
+14 38
+"CurrentCopyText"
+""
+1 725 896 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+39 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+723 894 979 921
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+13 40
+"SaveBtn"
+""
+1 1117 890 E E E 0 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+41 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1115 888 1239 922
+T 
+1
+LANG:5 14 Save and Close
+"main()
+{
+CloseEditPanel();
+}" 0
+ E E E
+13 41
+"Button9"
+""
+1 280 0 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+42 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+278 -2 452 27
+T 
+1
+LANG:5 11 Test Button
+"main()
+{
+DisplayTableFromTreeSelection(false);
+}" 0
+ E E "main()
+{
+Button9.visible = (!AutoDisplayTableAtAll);
+}" 0
+
+13 44
+"Button1"
+""
+1 460 0 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+44 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+458 -2 602 27
+T 
+1
+LANG:5 13 populate tree
+"main()
+{
+PopulateTree();
+
+}" 0
+ E E "main()
+{
+Button1.visible = (!LoadOnOpen);
+}" 0
+
+29 45
+"Tree"
+""
+1 -6 33 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+44 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+10 65 270 865
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"//	DebugN(\"calling tree event from event click\");
+	TreeHappening(Tree.Selected);
+//DebugN(Tree.Selected)
+"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+"KeyCode = 0;"
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+"idispatch curr_node;
+string dpEditType;
+dyn_string DPsToEdit, SplitEdit;
+
+curr_node = Tree.ExtractNode(Tree.Selected);
+DPsToEdit = strsplit(curr_node.Data, \";\");
+//DebugN(curr_node.Data);
+SplitEdit = strsplit(curr_node.Path, \".\");
+//DebugN(SplitEdit);
+if (dynlen(SplitEdit) > 1)
+	{
+	dpEditType = SplitEdit[2];
+//	Text2.text = \"Showing Edit panel of type: \"+dpEditType;
+	//DebugN(\"Showing Edit panel of type: \"+dpEditType);
+	ShowEditPanel(dpEditType, DPsToEdit);
+	}
+else
+	{
+	if (curr_node.Data != \"\")
+		//it is a primary data point - not a system
+		{
+		dpEditType = dpTypeName(curr_node.Text);
+		Text2.text = \"Showing Edit panel of type: \"+dpEditType;
+		//DebugN(\"Showing Edit panel of type: \"+dpEditType);
+		ShowEditPanel(dpEditType, DPsToEdit);
+		}
+	}"
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+21 51
+"AutoDisplaySpin"
+""
+1 135 871 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+49 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+133 869 217 896
+0
+E
+E
+E
+
+N 10 1000 10 30 1 1
+13 52
+"DisplayAllPointsBtn"
+""
+1 10 897 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+50 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 895 272 922
+T 
+1
+LANG:5 14 Display Points
+"main()
+{
+DisplayTableFromTreeSelection(true);
+}" 0
+ E E E
+13 57
+"CloseDoNotSaveBtn"
+""
+1 997 890 E E E 0 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+54 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+995 888 1114 922
+T 
+1
+LANG:5 5 Close
+"main()
+{
+//DebugN(SaveChangesOnCloseCheckBox.state(0));
+//DebugN(\"un-checking save on close box\");
+SaveChangesOnCloseCheckBox.state(0) = false;
+//DebugN(SaveChangesOnCloseCheckBox.state(0));
+//DebugN(\"closing edit panel\");
+CloseEditPanel();
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+25 54
+"Table1"
+""
+1 59 61 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ "main()
+{
+TableClickOpenEditPanel();
+}" 0
+ "main()
+{
+TableClickOpenEditPanel();
+
+}" 0
+
+51 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 108 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+277 63 1241 865
+"main()
+{
+Table1.sortOnClick(FALSE);
+Table1.tableMode(TABLE_SELECT_MULTIPLE);
+Table1.selectByClick(TABLE_SELECT_LINE);
+DisplayBlankTable();
+}" 0
+ E 1 0 1 32 1 "1" 0 -1 0 "s" 1
+LANG:5 2 #1
+E1
+LANG:5 0 
+ 128 "2" 0 0 0 "s" 1
+LANG:5 1 2
+E1
+LANG:5 0 
+ 128 "3" 0 0 0 "s" 1
+LANG:5 1 3
+E1
+LANG:5 0 
+ 128 "4" 0 0 0 "s" 1
+LANG:5 1 4
+E1
+LANG:5 0 
+ 128 "5" 0 0 0 "s" 1
+LANG:5 1 5
+E1
+LANG:5 0 
+ 128 "6" 0 0 0 "s" 1
+LANG:5 1 6
+E1
+LANG:5 0 
+ 128 "7" 0 0 0 "s" 1
+LANG:5 1 7
+E1
+LANG:5 0 
+ 128 "8" 0 0 0 "s" 1
+LANG:5 1 8
+E1
+LANG:5 0 
+ 128 "9" 0 0 0 "s" 1
+LANG:5 1 9
+E1
+LANG:5 0 
+ 128 "10" 0 0 0 "s" 1
+LANG:5 2 10
+E1
+LANG:5 0 
+ 128 "11" 0 0 0 "s" 1
+LANG:5 2 11
+E1
+LANG:5 0 
+ 128 "12" 0 0 0 "s" 1
+LANG:5 2 12
+E1
+LANG:5 0 
+ 128 "13" 0 0 0 "s" 1
+LANG:5 2 13
+E1
+LANG:5 0 
+ 128 "14" 0 0 0 "s" 1
+LANG:5 2 14
+E1
+LANG:5 0 
+ 128 "15" 0 0 0 "s" 1
+LANG:5 2 15
+E1
+LANG:5 0 
+ 128 "16" 0 0 0 "s" 1
+LANG:5 2 16
+E1
+LANG:5 0 
+ 128 "17" 0 0 0 "s" 1
+LANG:5 2 17
+E1
+LANG:5 0 
+ 128 "18" 0 0 0 "s" 1
+LANG:5 2 18
+E1
+LANG:5 0 
+ 128 "19" 0 0 0 "s" 1
+LANG:5 2 19
+E1
+LANG:5 0 
+ 128 "20" 0 0 0 "s" 1
+LANG:5 2 20
+E1
+LANG:5 0 
+ 128 "21" 0 0 0 "s" 1
+LANG:5 2 21
+E1
+LANG:5 0 
+ 128 "22" 0 0 0 "s" 1
+LANG:5 2 22
+E1
+LANG:5 0 
+ 128 "23" 0 0 0 "s" 1
+LANG:5 2 23
+E1
+LANG:5 0 
+ 128 "24" 0 0 0 "s" 1
+LANG:5 2 24
+E1
+LANG:5 0 
+ 128 "25" 0 0 0 "s" 1
+LANG:5 2 25
+E1
+LANG:5 0 
+ 128 "26" 0 0 0 "s" 1
+LANG:5 2 26
+E1
+LANG:5 0 
+ 128 "27" 0 0 0 "s" 1
+LANG:5 2 27
+E1
+LANG:5 0 
+ 128 "28" 0 0 0 "s" 1
+LANG:5 2 28
+E1
+LANG:5 0 
+ 128 "29" 0 0 0 "s" 1
+LANG:5 2 29
+E1
+LANG:5 0 
+ 128 "30" 0 0 0 "s" 1
+LANG:5 2 30
+E1
+LANG:5 0 
+ 128 "31" 0 0 0 "s" 1
+LANG:5 3 #31
+E1
+LANG:5 0 
+ 128 "32" 0 0 0 "s" 1
+LANG:5 2 32
+E1
+LANG:5 0 
+ 128 26 26 "" 1 1
+LANG:5 1 1
+8 128 1
+LANG:5 108 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 3 0
+1 0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+2 56
+"Text3"
+""
+1 285 68 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+53 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 287 70 538 86
+0 2 0 "s" 0 0 0 64 0 0  287 70
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 15 Data Point Type
+22 55
+"ComboBox1"
+""
+1 285 90 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+52 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+283 88 557 115
+0
+E
+E
+E
+ 0 0
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

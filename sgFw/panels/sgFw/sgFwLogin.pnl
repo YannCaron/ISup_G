@@ -1,0 +1,183 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 413 121 N "_3DFace" 3
+"$panel"
+"$params"
+"$password"
+"main()
+{
+  form_initialize();
+}" 0
+ E E E E 1 -1 -1 0  120 234
+""0  1
+E "string panel = $panel;
+string password = $password;
+dyn_string params = dynInsertEachString($params, \"$\");
+
+void form_initialize() {
+  tbWrong.visible(false);
+}
+
+void btGo_clicked() {
+  validate();
+}
+
+void tbPassword_lostFocus() {
+  validate();
+}
+
+void tbPassword_textChanged() {
+    tbWrong.visible(false);
+}
+
+void validate() {
+  if (tbPassword.text == password) {
+    tbPassword.text = \"\";
+    RootPanelOnModule(panel, panel + rand(), \"mainModule\", params);
+  } else {
+    tbWrong.visible(true);
+  }
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+30 0
+"FRAME1"
+""
+1 120 234 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+0 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.9204545454545452 0 0.4492187499999998 -105.4545454545454 -105.1171874999999 0 E 120 234 561 491
+1
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 5 Login
+2 3
+"PRIMITIVE_TEXT2"
+""
+1 24.99999999999993 34.99999999999994 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 24.99999999999993 34.99999999999994 188.9999999999999 54.99999999999994
+0 2 2 "0s" 0 0 0 64 0 0  24.99999999999993 34.99999999999994 1
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 21 Enter admin password:
+14 4
+"tbPassword"
+""
+1 199.9999999999999 34.99999999999994 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E "main()
+{
+  tbPassword_lostFocus();
+}" 0
+ E
+0
+1
+LANG:5 0 
+
+1
+"textChangedCB" "main(string newText)
+{
+  tbPassword_textChanged();
+}"
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  198 33 392 56
+3 "0S" 0 0 0 0 0 -1  E E E
+13 5
+"PUSH_BUTTON1"
+""
+1 344.9999999999999 69.99999999999994 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  343 68 392 97
+
+T 
+1
+LANG:5 2 Go
+"main()
+{
+  btGo_clicked();
+}" 0
+ E E E
+2 6
+"tbWrong"
+""
+1 119.9999999999999 74.99999999999994 E E E 1 E 1 E N "_WindowText" E N "alertCamWentUna" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 119.9999999999999 74.99999999999994 289.9999999999999 94.99999999999994
+0 2 2 "0s" 0 0 0 65 0 0  119.9999999999999 74.99999999999994 1
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 16 Wrong password !
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

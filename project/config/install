@@ -1,0 +1,13 @@
+[global]
+pvssversion = 3.10
+user = ops
+framework = sgFw
+common = sgCommon
+
+[project]
+system = 1
+site = 0
+projectname = ISup_G
+major = 2
+minor = 26
+

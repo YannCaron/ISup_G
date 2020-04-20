@@ -1,0 +1,379 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 420 220 N "_3DFace" 3
+"$LabelsNum"
+"$SystemName"
+"$SystemStatus"
+"main()
+{
+  int x,y;
+  int w,h;
+  
+  getValue(\"DecorationStatus\",\"position\",x,y);
+  getValue(\"DecorationStatus\",\"size\",w,h);
+  
+  //DebugTN(x,y);
+  
+    addSymbol(myModuleName(), myPanelName(),\"objects/componentText.pnl\", \"CTILS\" + x + y, 
+              \"\",
+              x+(w/2),y,0,1,1);
+
+  if ($LabelsNum >= 0)
+    addSymbol(myModuleName(), myPanelName(),\"objects/labelText.pnl\", \"LT1\" + x + y, 
+              \"\",
+              x+(w/2),y+25,0,1,1);
+  if ($LabelsNum > 1)
+    addSymbol(myModuleName(), myPanelName(),\"objects/labelText.pnl\", \"LT2\" + x + y, 
+              \"\",
+              x+(w/2),y+45,0,1,1);
+  if ($LabelsNum > 2)
+    addSymbol(myModuleName(), myPanelName(),\"objects/labelText.pnl\", \"LT3\" + x + y, 
+              \"\",
+              x+(w/2),y+65,0,1,1);
+  if ($LabelsNum > 3)
+    addSymbol(myModuleName(), myPanelName(),\"objects/labelText.pnl\", \"LT4\" + x + y, 
+              \"\",
+              x+(w/2),y+85,0,1,1);
+  
+  	initSystemName();
+	
+	connectSystemDP();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "
+// Modifications Februar 2004 PWulliens
+// PW March 2006 based on sgFwBlock.pnl
+// August 2006: Modification to avoid multiple dpGet.
+//							General optimization
+//							Added text to inform on disconnection or logic error		
+
+string systemName;
+string systemStatus;
+string description;
+bool isConnected;
+bool wasHidden; // to know if disconnected was hidden
+
+void updateBlock(string fwOkDpName, int fwOkValue,
+									string statusDpName, string statusDpValue,
+									string Label1Name, string Label1Value,
+				 					string Label2Name, string Label2Value,
+				 					string Label3Name, string Label3Value,				  
+				 					string Label4Name, string Label4Value,
+								 	string hiddenName, bool componentHidden)
+{
+	if(!componentHidden)
+	{
+		wasHidden = false;
+	
+  	 //aj & pw 08/2007 componenttext is added dynamically as refpanel
+          int x,y,w,h;        
+          getValue(\"DecorationStatus\",\"position\",x,y);
+          getValue(\"DecorationStatus\",\"size\",w,h);
+          setValue(\"CTILS\"  + x + y + \".ComponentText\",\"visible\",true);
+          // replaces
+          //ComponentText.visible = true;
+
+          if ( ($LabelsNum >= 0) && (h >  40) ) setValue(\"LT1\"  + x + y + \".LabelText\",\"visible\",true);
+          if ( ($LabelsNum >  1) && (h >  60) ) setValue(\"LT2\"  + x + y + \".LabelText\",\"visible\",true);
+          if ( ($LabelsNum >  2) && (h >  80) ) setValue(\"LT3\"  + x + y + \".LabelText\",\"visible\",true);
+          if ( ($LabelsNum >  3) && (h > 100) ) setValue(\"LT4\"  + x + y + \".LabelText\",\"visible\",true);
+		//LabelsText.visible = true;
+		DecorationStatus.visible = true;
+		
+		if(fwOkValue == 0)
+		{
+		//	DisconnectedLogicErrorText.visible = false;
+
+		// Define background color and tooltip text according to status
+			if(isOPS(statusDpValue)){
+				setComponentsColor(\"sgStdOPSColor\");
+				updateToolTip(\"Operational\");
+			}
+			else if(isSBY(statusDpValue)){
+				setComponentsColor(\"sgStdSBYColor\");	
+				updateToolTip(\"StandBy\");
+			}
+			else if(isWIP(statusDpValue)){
+				setComponentsColor(\"sgStdWIPColor\");	
+				updateToolTip(\"Work in progress\");
+			}
+			else if(isTEC(statusDpValue)){
+				setComponentsColor(\"sgStdTECColor\");	
+				updateToolTip(\"Technical presence\");
+			}
+			else if(isINI(statusDpValue)){
+				setComponentsColor(\"sgStdINIColor\");	
+				updateToolTip(\"Initializing\");
+			}
+			else if(isDEG(statusDpValue)){
+				setComponentsColor(\"sgStdDEGColor\");	
+				updateToolTip(\"Degraded\");
+			}
+			else if(isUS(statusDpValue)){
+				setComponentsColor(\"sgStdU/SColor\");	
+				updateToolTip(\"Unserviceable\");
+			}
+			else if(isABS(statusDpValue)){
+				setComponentsColor(\"sgStdABSColor\");	
+				updateToolTip(\"Absent\");
+			}
+			else if(isSTP(statusDpValue)){
+				setComponentsColor(\"sgStdSTPColor\");	
+				updateToolTip(\"Stopped\");
+			}
+			else{
+				setComponentsColor(\"sgStdUKNColor\");	
+				updateToolTip(\"Unknown\");
+			}		
+			updateLabels(Label1Value, Label2Value, Label3Value, Label4Value, $LabelsNum);
+		}
+		else  // case framework isn't ok
+		{
+			activeDisconnectedLogicErrorText(\"LOGIC ERROR\");
+			updateToolTip(\"Logic (Framework) error on System: \" + systemName);
+			updateLabels(\"LOGIC ERROR!\",\"\",\"\",\"\",1);
+	
+			setComponentsColor(\"sgStdUKNColor\");	
+		}// test framework ok
+	}
+	else  // case block hidden
+	{
+		wasHidden = true;
+	
+          //aj & pw 08/2007 componenttext is added dynamically as refpanel
+          int x,y,w,h;        
+          getValue(\"DecorationStatus\",\"position\",x,y);
+          getValue(\"DecorationStatus\",\"size\",w,h);
+          setValue(\"CTILS\"  + x + y + \".ComponentText\",\"visible\",false);
+          // replaces
+          //ComponentText.visible = false;
+
+          if ( ($LabelsNum >= 0) && (h >  40) ) setValue(\"LT1\"  + x + y + \".LabelText\",\"visible\",false);
+          if ( ($LabelsNum >  1) && (h >  60) ) setValue(\"LT2\"  + x + y + \".LabelText\",\"visible\",false);
+          if ( ($LabelsNum >  2) && (h >  80) ) setValue(\"LT3\"  + x + y + \".LabelText\",\"visible\",false);
+          if ( ($LabelsNum >  3) && (h > 100) ) setValue(\"LT4\"  + x + y + \".LabelText\",\"visible\",false);
+		//LabelsText.visible = false;
+          DecorationStatus.visible = false;
+		
+	}// Hidden test
+}
+
+// labels management
+void updateLabels(string label1, string label2, string label3, string label4, int labelsNum)
+{
+	//aj & pw 08/2007 componenttext and labels are added dynamically as refpanel
+        int x,y,w,h;        
+        getValue(\"DecorationStatus\",\"position\",x,y);
+        getValue(\"DecorationStatus\",\"size\",w,h);
+  
+  	switch(labelsNum)
+	{
+	case \"0\" :
+                if (h >  40) setValue(\"LT1\"  + x + y + \".LabelText\",\"text\",\"\");
+		//LabelsText.text = \"\";
+		break;
+
+	case \"1\" :
+                if (h >  40) setValue(\"LT1\"  + x + y + \".LabelText\",\"text\",label1);
+		//LabelsText.text = \"\\n\" + label1;
+		break;
+
+	case \"2\" :
+                if (h >  40) setValue(\"LT1\"  + x + y + \".LabelText\",\"text\",label1);
+                if (h >  60) setValue(\"LT2\"  + x + y + \".LabelText\",\"text\",label2);
+		//LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2;
+		break;
+
+	case \"3\" :
+                if (h >  40) setValue(\"LT1\"  + x + y + \".LabelText\",\"text\",label1);
+                if (h >  60) setValue(\"LT2\"  + x + y + \".LabelText\",\"text\",label2);
+                if (h >  80) setValue(\"LT3\"  + x + y + \".LabelText\",\"text\",label3);
+		//LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2 + \"\\n\" + label3;
+		break;
+
+	default :
+                if (h >  40) setValue(\"LT1\"  + x + y + \".LabelText\",\"text\",label1);
+                if (h >  60) setValue(\"LT2\"  + x + y + \".LabelText\",\"text\",label2);
+                if (h >  80) setValue(\"LT3\"  + x + y + \".LabelText\",\"text\",label3);
+                if (h > 100) setValue(\"LT4\"  + x + y + \".LabelText\",\"text\",label4);
+		//LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2 + \"\\n\" + label3 + \"\\n\" + label4;
+	}// switch
+}
+
+void setComponentsColor(string statusColor)
+{
+	DecorationStatus.backCol = statusColor;
+}
+
+//  Add to ToolTip the deactivation info
+void updateToolTip(string toolTipText)
+{
+	DecorationStatus.toolTipText = toolTipText;
+//	ComponentText.toolTipText = toolTipText;
+//	LabelsText.toolTipText = toolTipText;
+}
+
+void connectSystemDP()
+{
+  // if not yet connected, don't show dev CompText - can be wrong
+
+        //aj & pw 08/2007 componenttext is added dynamically as refpanel
+        int x,y;        
+        getValue(\"DecorationStatus\",\"position\",x,y);
+        setValue(\"CTILS\"  + x + y + \".ComponentText\",\"text\",\"\");
+        // replaces
+	//ComponentText.text = \"\";
+  
+	dpConnect(\"checkSystemConnection\", \"_Connections.Dist.ManNums\", \"_Connections_2.Dist.ManNums\",
+                                            \"_DistManager.State.SystemNums\", \"_DistManager_2.State.SystemNums\",
+                                            ACTIVE_CHAIN);
+}
+
+void checkSystemConnection(string connDpNameA, dyn_string manNumsA, string connDpNameB, dyn_string manNumsB,
+			    string distManDpA, dyn_string distManNumsA, string distManDpB, dyn_string distManNumsB,
+			    string activeChainDp, string activeChain)
+{
+	int systemId;
+
+	systemId = getSystemId(systemName);
+	
+	string uiSystemName;
+	uiSystemName = getSystemName();
+
+        description = dpGetDescription(systemName + systemStatus);
+        
+        //aj & pw 08/2007 componenttext is added dynamically as refpanel
+        int x,y;        
+        getValue(\"DecorationStatus\",\"position\",x,y);
+        setValue(\"CTILS\"  + x + y + \".ComponentText\",\"text\",description);
+
+        
+	if ( ( ((activeChain == \"A\") && (dynlen(manNumsA) > 0) && (dynContains(distManNumsA, systemId))) 
+		|| ((activeChain == \"B\") && (dynlen(manNumsB) > 0) && (dynContains(distManNumsB, systemId))) 
+		|| (systemName == uiSystemName)	) && (systemId >= 1) )
+	{	
+		if(!isConnected)
+		{
+			//description = dpGetDescription(systemName + systemStatus);
+			
+			// if component used with 2 lines, no labels
+			//if($LabelsNum == 0)
+			//{//
+			//	strreplace(description, \"\\\\n\", \"\\n\");  // line delimiter is \"\\n\" in description
+			//}
+			//ComponentText.text = description;
+		
+			dpConnect(\"updateBlock\", true,
+									systemName + ACTIVE_FW_OK + \":_alert_hdl.._act_prior\",
+								  systemName + systemStatus + STATUS_POSTFIX,
+								  systemName + systemStatus + LABEL1_POSTFIX,
+								  systemName + systemStatus + LABEL2_POSTFIX,
+								  systemName + systemStatus + LABEL3_POSTFIX,
+								  systemName + systemStatus + LABEL4_POSTFIX,
+								  systemName + systemStatus + HIDDEN_POSTFIX);		  
+	
+			isConnected = TRUE;
+		}
+	}
+	else
+	{
+		activeDisconnectedLogicErrorText(\"DISCONNECTED\");
+		updateToolTip(\"Connection between \" + getSystemName() + \" and \" + systemName + \" failed\", false, false);
+		updateLabels(\"DISCONNECTED\",\"\",\"\",\"\",0);
+			
+		setComponentsColor(\"sgStdUKNColor\", \"\");	
+	}
+}
+
+void activeDisconnectedLogicErrorText(string text)
+{
+	if(!wasHidden)
+	{
+	//	DisconnectedLogicErrorText.visible = true;
+	//	DisconnectedLogicErrorText.text = systemName + \" \" + text;
+	}
+	else
+	{
+	//	DisconnectedLogicErrorText.visible = false;
+	}
+}
+
+// Check if $SystemName is given. If not, strip to have system name from the $BitState
+void initSystemName()
+{					
+	if($SystemName != \"\")
+	{
+		systemName = $SystemName;
+		systemStatus = $SystemStatus;
+	}
+	else
+	{
+		systemName = substr($SystemStatus, 0, strpos($SystemStatus, \":\") + 1);		
+		systemStatus = substr($SystemStatus, strpos($SystemStatus, \":\") + 1);		
+	}
+	// if empty, get local systemName
+	if(systemName == \"\")
+	{
+		systemName = getSystemName();
+	}
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+10 46
+"DecorationStatus"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "sgStdUKNColor" E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 3 0 1 E U  1 E 4 10 10
+10 210
+410 210
+410 10
+ 1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

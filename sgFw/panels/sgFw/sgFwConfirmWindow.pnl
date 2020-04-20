@@ -1,0 +1,210 @@
+V 10
+3
+LANG:5 11 Information
+LANG:1 11 Information
+LANG:0 11 Information
+PANEL,394 236 439 130 N "_3DFace" 3
+"$1"
+"$2"
+"$3"
+"main()
+{
+	returnValue = \"\";
+
+	setInputFocus(myModuleName(), myPanelName(), \"nok\");
+}" 0
+"main()
+{
+}" 0
+E E E 1 -1 -1 0  251 55
+"" 0 1
+E"
+string returnValue;" 0
+ 2
+"CBRef""0"
+"EClose""main()
+{
+	returnValue = \"false\";
+	PanelOffReturn(makeDynFloat(0),makeDynString(returnValue));  
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 9
+"text"
+""
+1 70 20 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+   
+   // Th.V Mars 2004 
+   // Somme time empty $3 parameter contain space
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\" || $3 == \" \" || $3 == \"  \")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 242 20 586 36
+0 0 0 "s" 0 0 0 193 0 0  242 20
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 11
+"Text1"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  2 0 3 "11.bmp" 13434828 E 12 12 48 48
+0 2 0 "s" 0 0 0 64 0 0  12 12
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 0 
+LANG:1 0 
+13 8
+"nok"
+""
+1 279 78 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+2 0 0 0 39 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+0
+3
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+278 78 382 106
+T 
+3
+LANG:5 6 Cancel
+LANG:1 6 Cancel
+LANG:0 9 Abbrechen
+"main()
+{
+	returnValue = \"false\";
+	PanelOffReturn(makeDynFloat(0),makeDynString(returnValue));
+}
+" 0
+ E E E
+13 0
+"ok"
+""
+1 88 78 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+0
+3
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+88 78 192 106
+T 
+3
+LANG:5 2 OK
+LANG:1 2 OK
+LANG:0 2 OK
+"main()
+{
+	returnValue = \"true\";
+	PanelOffReturn(makeDynFloat(0),makeDynString(returnValue));
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

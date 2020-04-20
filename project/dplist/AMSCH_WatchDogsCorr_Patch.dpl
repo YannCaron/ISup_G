@@ -1,0 +1,6 @@
+# ascii dump of database
+
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+AMSCH.WatchDog.Timeouts	sgAMSCH	25, 25, 25, 25, 25, 25, 75, 75, 25, 25, 25, 25, 25, 25, 75, 75	0x101	14.02.2018 07:57:16.533

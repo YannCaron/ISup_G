@@ -1,0 +1,1170 @@
+V 11
+3
+LANG:5 11 Alert panel
+LANG:1 11 Alert panel
+LANG:0 11 Meldeschirm
+PANEL,-1 -1 1110 860 N "_3DFace" 13
+"$CurrentClosedPos"
+"$SystemPos"
+"$dayFrom"
+"$dayTo"
+"$havePanelParams"
+"$hourFrom"
+"$hourTo"
+"$minuteFrom"
+"$minuteTo"
+"$monthFrom"
+"$monthTo"
+"$yearFrom"
+"$yearTo"
+"main()
+{
+
+	hideTableInitPatientText();
+	
+	sgDBWaitForInit();	
+
+// get systems froms DB table (set in sgBasePanel
+	dyn_string systems;
+
+	systems = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_LABELS_LIST);
+	dynInsertAt(systems, \"All\", 1); // Insert \"All\" at the top -> offset in function refreshAlarms!
+	
+	SystemsList.items = systems;
+
+//if called by Alarms button, $PanelParams = \"\"
+	if($havePanelParams == \"No\")
+	{
+		CurrentClosedBox.selectedPos = 1; // Default position
+	
+		SystemsList.selectedPos = 1;
+	
+		CurrentClosedBox.selectedPos = 1;
+	
+		setCurrentOrClosed();
+    table.visible = false;  // to hide table
+	}
+	else if($havePanelParams == \"Yes\")
+	{
+		readLastPanelParameters();
+	
+		setCurrentOrClosed();
+  
+    refreshAlarms();    
+    
+	}
+	setCurrentPanelParameters();
+}
+" 0
+ E E E E 1 -1 -1 0  20 20
+"refFileName"0  1
+E "string lastSystemChoice;
+dyn_string gDBSupervisedSystem;
+bool isConnected = false;
+
+void setCurrentPanelParameters()
+{
+// set the params if the next navigation with the back and fwd buttons
+	string param1 = \"$havePanelParams:Yes\";
+// current settings 
+	string param2 = \"$SystemPos:\" + SystemsList.selectedPos;
+	string param3 = \"$CurrentClosedPos:\" + CurrentClosedBox.selectedPos;
+
+	string param4 = \"$dayFrom:\" + dayFrom.text;
+	string param5 = \"$monthFrom:\" + monthFrom.text;
+	string param6 = \"$yearFrom:\" + yearFrom.text;
+	string param7 = \"$hourFrom:\" + hourFrom.text;
+	string param8 = \"$minuteFrom:\" + minuteFrom.text;
+
+	string param9 = \"$dayTo:\" + dayTo.text;
+	string param10 = \"$monthTo:\" + monthTo.text;
+	string param11 = \"$yearTo:\" + yearTo.text;
+	string param12 = \"$hourTo:\" + hourTo.text;
+	string param13 = \"$minuteTo:\" + minuteTo.text;
+	
+	dyn_string ds = makeDynString(param1, param2, param3, param4, param5, param6, 
+																param7, param8, param9, param10, param11, param12, param13);
+	naviHistoryParams[naviIndex] = ds;
+}
+
+void readLastPanelParameters()
+{
+	dyn_string ds =	naviHistoryParams[naviIndex];
+
+// collect values from $parameters
+	SystemsList.selectedPos = $SystemPos;
+
+	CurrentClosedBox.selectedPos = $CurrentClosedPos;
+
+	dayFrom.text = $dayFrom;
+	monthFrom.text = $monthFrom;
+	yearFrom.text = $yearFrom;
+	hourFrom.text = $hourFrom;
+	minuteFrom.text = $minuteFrom;
+
+	dayTo.text = $dayTo;
+	monthTo.text = $monthTo;
+	yearTo.text = $yearTo;
+	hourTo.text = $hourTo;
+	minuteTo.text = $minuteTo;
+}
+
+void refreshAlarms()
+{
+	time t1;
+	time t2;
+	string name;
+	string alarmChoice;
+	string filterChoice;
+	dyn_string systemsName;
+	dyn_string alarmsPoints;
+	dyn_string empty;
+	PatientText.text = \"Query done, wait...\";
+	
+// This delay is necessary at the panel call. Because the sgAlarms table isn't loaded at the refreshAlarms call.
+	delay(0,500);
+		
+	t1 = makeTime(yearFrom.text, monthFrom.text, dayFrom.text, hourFrom.text, minuteFrom.text);
+
+  t2 = makeTime(yearTo.text, monthTo.text, dayTo.text, hourTo.text, minuteTo.text, 59, 999);  // PW 2015-08-25 added 59,999 seconds to assure to have the last alarms
+
+	 filterChoice = SystemsList.text;	
+	 
+// Case of no system selected, get own system name + remote systems names
+	if(filterChoice == \"All\")
+	{
+    dynAppend(systemsName, getSystemName());
+   	dynAppend(systemsName, sgFwGetRemoteSystems()); 	
+   	alarmsPoints = empty; 
+  }	
+	else 
+	{	
+		int indexChoice = SystemsList.selectedPos - 1; // index = position - 1 because \"All\" is added in the top!
+		
+		dyn_string ds1;
+		ds1 = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_ALARMS_LIST);
+
+		string alarmDPName;
+		alarmDPName = ds1[indexChoice];
+	
+		// Get the system name
+		dyn_string ds2;
+	 	ds2 = sgDBGet(DBKEY_HMI_SUPERVISED_SYSTEMS_TABLE, DBKEY_HMI_SYSTEMS_LIST);
+	 	
+		if (alarmDPName == \"---\")
+		{
+    dynAppend(systemsName, ds2[indexChoice]);
+			alarmsPoints = empty; // alarmsPoints -> all points selected
+		}
+		else
+		{		
+			// split on separator
+			dyn_string alarms = strsplit(alarmDPName, \"+\");
+
+    dynAppend(systemsName, ds2[indexChoice]);
+				
+			for(int cpt = 1; cpt <= dynlen(alarms); cpt++)
+			{	
+				dyn_string ds2;
+				ds2 = getPointsFromPattern(systemsName + alarms[cpt]);
+				
+				for (int i = 1; i <= dynlen(ds2); i++)
+				{
+					strreplace(ds2[i], systemsName, \"\");
+					ds2[i] = strsplit(ds2[i], \".\")[1] + \".**\";
+				}
+				dynAppend (alarmsPoints,	ds2);
+			} // for
+		} // normal query
+	} // not all
+
+  string pattern;
+ 	if (dynlen(alarmsPoints) == 0) {
+     pattern = \"**\";
+   } else {
+     pattern = alarmsPoints[1];
+   }
+
+  if (isConnected) {
+		alertPanel_terminate(table.name);
+  }
+  
+  if(CurrentClosedBox.text == \"Current\") {
+    alertTable_initialize(table.name, concatSystems(systemsName) + pattern);
+    isConnected = true;
+  } else {
+		alertTable_initialize_timed(table.name, systemsName, pattern, t1, t2);
+    isConnected = true;
+  }
+  
+	setCurrentPanelParameters();
+
+}
+
+string concatSystems(dyn_string systems) {
+  string ret = \"\";
+	for (int i = 1; i <= dynlen(systems); i++) {
+    if (i > 1) ret += \", \";
+    ret += systems[i];
+  }
+  ret = \"{\" + ret + \"}\";
+  return ret;
+}
+
+void setCurrentOrClosed()
+{
+	if(CurrentClosedBox.text == \"Current\")
+	{
+//		dpSet(\"_ASProp_\" + myManNum() + \".Settings.Timerange.Type\", 0);
+		setDateAndTimeSettingsVisible(false);
+	}
+	else
+	{
+//		dpSet(\"_ASProp_\" + myManNum() + \".Settings.Timerange.Type\", 2);
+		setDateAndTimeSettingsVisible(true);
+	}
+	delay(0,500);
+}
+
+void setDateAndTimeSettingsVisible(bool value)
+{		
+	buttonNowFrom.visible = value;
+	FrameFrom.visible = value;
+	dayFrom.visible = value;
+	monthFrom.visible = value;
+	yearFrom.visible = value;
+	minuteFrom.visible = value;
+	hourFrom.visible = value;
+	minHourPointsFrom.visible = value;
+
+	buttonNowTo.visible = value;
+	FrameTo.visible = value;
+	dayTo.visible = value;
+	monthTo.visible = value;
+	yearTo.visible = value;
+	minuteTo.visible = value;
+	hourTo.visible = value;
+	minHourPointsTo.visible = value;
+}
+
+void hideTableInitPatientText()
+{
+  alertTableStopProcess(table.name);
+	PatientText.text = \"Click on <Show alarms Button> to refresh\";
+}
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+10 29
+"Polyline1"
+""
+1 163 909 E E E 1 E 1 E N "_Window" E N "_Transparent" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E U  0 E 3 163 909
+163 938
+10 938
+ 0
+10 30
+"Polyline2"
+""
+1 11 937 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E U  0 E 3 11 937
+11 910
+161 910
+ 0
+6 31
+"busySize"
+""
+1 15 913 E E E 1 E 1 E N "_3DFace" E N "_Transparent" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 15 913 157 930
+6 32
+"busyFlag"
+""
+1 17 914 E E E 1 E 0 E N {0,0,153} E N {0,0,153} E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 17 914 53 933
+2 33
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+46 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 12 Alarms panel
+LANG:1 12 Alarms panel
+2 34
+"minHourPointsFrom"
+""
+1 510 70 E E E 1 E 0 E N {0,0,0} E N "_Transparent" E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 512 72 518 91
+0 2 0 "0s" 0 0 0 192 0 0  512 72 1
+3
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 1 :
+LANG:1 1 :
+LANG:0 1 :
+2 35
+"minHourPointsTo"
+""
+1 820 70 E E E 1 E 0 E N {0,0,0} E N "_Transparent" E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 822 72 828 91
+0 2 0 "0s" 0 0 0 192 0 0  822 72 1
+3
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 1 :
+LANG:1 1 :
+LANG:0 1 :
+30 36
+"FrameFrom"
+""
+1 310 100 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+49 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 310 55 615 100
+2
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 From
+LANG:1 4 From
+30 37
+"FrameTo"
+""
+1 620 100 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+50 0 0 0 0 0
+E E E
+1
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 620 55 925 100
+2
+LANG:5 27 Tahoma,-1,12,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 2 To
+LANG:1 2 To
+2 55
+"PatientText"
+""
+1 -20 360 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E -18 362 1068 398
+0 2 0 "0s" 0 0 0 65 0 0  -18 362 1
+2
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-220-100-100-*-*-iso8859-1|-24,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 36 Set in panel script & library as.ctl
+LANG:1 33 Click on "show alarms" to refresh
+14 10
+"state"
+""
+1 165 907 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  165 907 320 940
+2 "0s" 0 0 0 0 0 -1  E E E
+14 11
+"as_lineCount"
+""
+1 320 907 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  320 907 427 940
+2 "0s" 0 0 0 0 0 -1  E E E
+14 12
+"as_fieldValue"
+""
+1 430 907 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  430 907 999 940
+2 "0s" 0 0 0 0 0 -1  E E E
+13 39
+"ShowButton"
+""
+1 930 65 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  928 63 1102 97
+
+T 
+2
+LANG:5 11 Show alarms
+LANG:1 11 Show alarms
+"main()
+{
+  table.visible = true;	
+  refreshAlarms();
+  setCurrentPanelParameters();
+
+	lastSystemChoice = SystemsList.text;
+}
+" 0
+ E E E
+21 40
+"minuteFrom"
+""
+1 720 138 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  518 68 557 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 0 59 1 1 1 1
+21 41
+"hourFrom"
+""
+1 673 138 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  473 68 510 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 0 23 1 1 1 1
+21 42
+"yearFrom"
+""
+1 508 151 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  398 68 455 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 2000 2030 1 2000 1 1
+21 43
+"monthFrom"
+""
+1 618 221 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  358 68 396 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 1 12 1 1 1 1
+21 44
+"dayFrom"
+""
+1 552 221 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  318 68 356 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 1 31 1 1 1 1
+21 45
+"minuteTo"
+""
+1 1030 138 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  828 68 867 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 0 59 1 1 1 1
+21 46
+"hourTo"
+""
+1 983 138 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  783 68 820 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 0 23 1 1 1 1
+21 47
+"yearTo"
+""
+1 819 151 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+60 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  708 68 765 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 2000 2030 1 2000 1 1
+21 48
+"monthTo"
+""
+1 929 221 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+61 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  668 68 706 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 1 12 1 1 1 1
+21 49
+"dayTo"
+""
+1 863 221 E E E 1 E 0 E N "STD_text" E N "STD_inputfield_back" E E
+ E E
+62 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  628 68 666 95
+0
+
+E
+"main()
+{
+	hideTableInitPatientText();
+}" 0
+
+E
+
+N 1 31 1 1 1 1
+13 50
+"buttonNowTo"
+""
+1 874 69 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+63 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  873 68 917 97
+
+T 
+3
+LANG:5 3 Now
+LANG:1 3 Now
+LANG:0 5 Jetzt
+"main()
+{
+  	time t;
+
+  	t = getCurrentTime();
+
+	dayTo.text = day(t);
+	monthTo.text = month(t);
+	yearTo.text = year(t);
+	
+	hourTo.text = hour(t);
+	minuteTo.text = minute(t);
+	
+	hideTableInitPatientText();
+}
+" 0
+ E E E
+13 51
+"buttonNowFrom"
+""
+1 564 69 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+64 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  563 68 607 97
+
+T 
+3
+LANG:5 3 Now
+LANG:1 3 Now
+LANG:0 5 Jetzt
+"main()
+{
+ 	time t;
+
+ 	t = getCurrentTime();
+
+	dayFrom.text = day(t);
+	monthFrom.text = month(t);
+	yearFrom.text = year(t);
+	
+	hourFrom.text = hour(t);
+	minuteFrom.text = minute(t);
+	
+	hideTableInitPatientText();
+}
+" 0
+ E E E
+22 52
+"SystemsList"
+""
+1 10 65 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 63 177 93
+4
+2
+LANG:5 3 All
+LANG:1 3 All
+
+1
+2
+LANG:5 4 AFPS
+LANG:1 4 AFPS
+
+0
+2
+LANG:5 4 ISup
+LANG:1 4 ISup
+
+0
+2
+LANG:5 4 TBox
+LANG:1 4 TBox
+
+0
+
+E
+"main()
+{
+	if(lastSystemChoice != SystemsList.text)
+	{
+		hideTableInitPatientText();
+	}
+}" 0
+
+E
+ 0 0
+22 53
+"CurrentClosedBox"
+""
+1 180 65 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  178 63 307 93
+2
+2
+LANG:5 7 Current
+LANG:1 7 Current
+
+0
+2
+LANG:5 6 Closed
+LANG:1 6 Closed
+
+0
+
+E
+"main()
+{
+	if(CurrentClosedBox.text == \"Current\")
+	{
+		dpSet(\"_ASProp_\" + myManNum() + \".Settings.Timerange.Type\", 0);
+		setDateAndTimeSettingsVisible(false);
+	}
+	else
+	{
+		dpSet(\"_ASProp_\" + myManNum() + \".Settings.Timerange.Type\", 2);
+		
+		time t = getCurrentTime();
+		dayTo.text = day(t);
+		monthTo.text = month(t);
+		yearTo.text = year(t);
+		hourTo.text = hour(t);
+		minuteTo.text = minute(t);
+		
+		dayFrom.text = day(t);
+		monthFrom.text = month(t);
+		yearFrom.text = year(t);
+		hourFrom.text = 0;
+		minuteFrom.text = 0;
+		setDateAndTimeSettingsVisible(true);
+	}
+	hideTableInitPatientText();
+}
+" 0
+
+E
+ 0 0
+25 57
+"table"
+""
+1 10.04113345521026 -582.6790830945566 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+68 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  13 103 1102 857
+E"main(int row, string column, string value)
+{
+  alertTable_clicked(table.name(), row, column, value);
+}" 0
+ 1 0 1 11 0 "line" 0 0 0 "s" 1
+LANG:5 2 Id
+E
+1
+LANG:5 0 
+
+0 "dp" 10 0 0 "s" 1
+LANG:5 9 Datapoint
+E
+1
+LANG:5 0 
+
+150 "dir" 0 0 0 "s" 1
+LANG:5 3 dir
+E
+1
+LANG:5 0 
+
+0 "_abbr" 1 0 0 "s" 1
+LANG:5 4 abbr
+E
+1
+LANG:5 0 
+
+27 "_alert_color" 0 1 0 "s" 1
+LANG:5 2 S.
+E
+1
+LANG:5 0 
+
+20 "_system_time" 12 1 0 "[%d/%m/%Y %H:%M:%St,False,,ALIGNMENT_BEGINNING]" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+180 "_text" 48 1 0 "s" 1
+LANG:5 4 Text
+E
+1
+LANG:5 0 
+
+692 "_direction" 3 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Dir.
+E
+1
+LANG:5 0 
+
+54 "_ackable" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Ack.
+E
+1
+LANG:5 0 
+
+30 "_panel" 4 1 0 "[0s,,,ALIGNMENT_BEGINNING]" 1
+LANG:5 5 panel
+E
+1
+LANG:5 0 
+
+66 "_dp_list" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 6 Detail
+E
+1
+LANG:5 0 
+
+25 
+26 26 10 10
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

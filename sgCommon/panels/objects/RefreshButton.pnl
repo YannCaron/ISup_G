@@ -1,0 +1,119 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,305 160 310 50 N "_3DFace" 2
+"$ConfirmationText"
+"$StationName"
+"main()
+{
+	//	$StationName = Navir_g:LLZxx --> we keep only LLZxx
+	shortstationName = substr($StationName, strpos($StationName, \":\") + 1);
+
+	Button.toolTipText = \"Refresh all statuses for Station \" + shortstationName;
+
+	Button.text = \"Refresh Station \" + shortstationName;
+	
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"global string shortstationName;" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"Button"
+""
+1 10 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 8 302 42
+T 
+2
+LANG:5 21 Refresh Station XXXXX
+LANG:1 10 PRIMUS CMD
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string EventText;
+	
+	if($ConfirmationText != \"\")
+	{
+		ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+			makeDynString(\"$1:Do you really want to refresh Statuses for Station \" + $StationName + \" ?\\nIt can take a few seconds (minutes for Dial-up lines)!\",
+								 \"$2:Yes\", \"$3:No\"), df, ds);
+		
+		if(ds[1] == \"true\")
+		{
+			// Time Stamp isn'nt available in the refresh case!
+			dpSet($StationName + \".RawDatas.TimeStamp\", \"Manual Refresh Station\");
+				
+			dpSet($StationName + \".RawDatas.Commands.Specifics.Command_0\", \"1\");	//Rewrite with \"\" for 2 same consecutives commands
+			delay(0, 500);
+			dpSet($StationName + \".RawDatas.Commands.Specifics.Command_0\",  \"\");
+			// Add Event
+			sgHistoryAddEvent($StationName + \".History\", SEVERITY_COMMAND, \"Refresh request for station \" + $StationName + \" sent\");
+		}				
+	}
+	else
+	{
+			// Time Stamp isn'nt available in the refresh case!
+			dpSet($StationName + \".RawDatas.TimeStamp\", \"Manual Refresh Station\");
+
+			dpSet($StationName + \".RawDatas.Commands.Specifics.Command_0\", \"1\");	//Rewrite with \"\" for 2 same consecutives commands
+			delay(0, 500);
+			dpSet($StationName + \".RawDatas.Commands.Specifics.Command_0\", \"0\");
+			historyAddEvent($StationName + \".History\", \"Refresh request for station \" + $StationName + \" sent\");
+	}
+//	Close Command window at terminate
+//	DebugN(\"Close panel\");
+
+	PanelOffPanel(\"Command Window\");	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

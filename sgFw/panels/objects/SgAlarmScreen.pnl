@@ -1,0 +1,468 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 1090 232 N "_3DFace" 0
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+25 0
+"table"
+"SgAlertScreen"
+1 0 0 E E E 1 E 1 E N "_3DText" E N "_3DFace" E "// SimpleCtrlScriptStart {valid}
+// SimpleCtrlScript {alertConfirm}
+// dp {dpid}
+// time {time}
+// count {count}
+// confirmable {ackable}
+// SimpleCtrlScriptEnd
+main()
+{
+   bool confirmable, valid, stopped;
+   int i, count, start, end;
+   string dpStr, k_dpStr;
+   time t;
+
+   getValue( \"\", \"stop\", stopped );
+   if ( !stopped )
+     setValue(\"\", \"stop\", true );
+   getValue( \"\", \"lineRangeVisible\", start, end );
+   setValue( \"\", \"sortPart\", start, end, \"time\", \"count\" );
+   for( i = start; i <= end; i++ )
+   {
+     setValue( \"\", \"currentCellCAC\", i, 0 );
+     getValue( \"\", \"valid\", valid );
+     if ( valid )
+     {
+        setValue( \"\", \"currentColumnCAC\", \"dpid\" );
+        getValue( \"\", \"cellValueCAC\", dpStr );
+        k_dpStr = dpSubStr(dpStr, DPSUB_DP_EL_CONF_DET);
+        if (dpSubStr(dpStr, DPSUB_CONF_DET) == dpSubStr(dpStr, DPSUB_CONF))
+          k_dpStr = k_dpStr + \".\";
+        k_dpStr+= \"._ack_state\";
+        setValue( \"\", \"currentColumnCAC\", \"time\" );
+        getValue( \"\", \"cellValueCAC\", t );
+        setValue( \"\", \"currentColumnCAC\", \"count\" );
+        getValue( \"\", \"cellValueCAC\", count );
+        setValue( \"\", \"currentColumnCAC\", \"ackable\" );
+        getValue( \"\", \"cellValueCAC\", confirmable );
+        if ( confirmable )
+          alertSet( t, count, k_dpStr, DPATTR_ACKTYPE_MULTIPLE );
+     }
+   }
+   if( !stopped )
+     setValue( \"\", \"stop\", false );
+   setValue( \"\", \"sortUndo\", 0 );
+}
+" 0
+
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  -2 -2 1091 217
+"
+dyn_bool g_colVis;           // holds the flag wheter an optional column is visible or not
+string   g_connectId;        // holds id of current query
+dyn_int  g_counterConnectId; // holds numbers of Id's
+
+time     g_timeLastUpdate;   // holds time of the last update
+bool     g_showInternals;    // value from _Config.ShowInternals
+unsigned g_maxClosedLines;   // max num of lines to be queried by closed protocoll
+string   g_dpCommentFilter;  // store filter
+
+unsigned g_state;            // alert-state filter
+
+//int g_busyThread;    // id of thread, which shows busyness
+
+int g_maxLines;      // num of max lines in open protocoll
+
+// TI 14075 (discarding pending values)
+//int        g_discardThread;
+//time       g_discardStart;
+bool       g_discarded;
+
+//const time MINCB_TIME = 2;
+//const time MAXCB_TIME = 5;
+
+// these strings are global for performance reason (they hold localized text)
+//string strEntered, strLeft;
+
+//-------------------------------------------------------------------------
+
+main()
+{
+	dyn_string systems;
+	// call the AlarmScreen initialization in /lib/as.ctl
+	as_init();
+  
+  
+//  PW march 2004
+//  modified because already done in sgAlarmsPanel.pnl
+
+// 	dpGet(\"_ASProp_\" + myManNum() + \".Settings.System.Selections\", systems);
+//	dpSet(\"_ASProp_\" + myManNum() + \".Settings.System.Selections\", systems);
+}	" 0
+E 1 0 1 22 24 "_abbr" 1 1 0 "s" 1
+LANG:5 10 Short sign
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+27 "_prior" 1 0 0 "s" 1
+LANG:5 8 Priority
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+33 "time" 13 1 0 "[%d/%m/%Y %H:%M:%St,False,,ALIGNMENT_BEGINNING]" 1
+LANG:5 4 Time
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+195 "dpElement" 11 0 0 "s" 1
+LANG:5 10 DP element
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+168 "dpComment" 16 0 0 "s" 1
+LANG:5 22 DP element/Description
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+232 "_text" 45 1 0 "s" 1
+LANG:5 10 Alert text
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+645 "direction" 3 1 0 "s" 1
+LANG:5 4 Dir.
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+56 "_value" 3 0 0 "s" 1
+LANG:5 5 Value
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+61 "ack" 1 1 0 "s" 1
+LANG:5 15 Acknowledgement
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+32 "commentStr" 0 0 0 "s" 1
+LANG:5 7 Comment
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+3 "_ack_time" 17 0 0 "s" 1
+LANG:5 9 Ack. time
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+255 "_partner" 0 0 0 "s" 1
+LANG:5 12 Partner time
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+2 "_comment" 1 0 0 "s" 1
+LANG:5 8 Comments
+"main(int row)
+{
+  atime  ti; 
+  string sAlertDp; 
+  string sClass; 
+  bool   bArchiv;
+  string sWarningText;
+   
+
+  // Alert with a class which is not saving the alert should not be commented
+  getValue( \"\", \"cellValueRC\", row, \"time\", ti );
+  sAlertDp = dpSubStr( getAIdentifier( ti ), DPSUB_SYS_DP_EL_CONF_DET );
+  dpGet( sAlertDp + \"._class\", sClass );
+  dpGet( sClass + \":_alert_class.._archive\", bArchiv );
+
+  // Give a comment to a DP from another system is not allowed
+  if( dpSubStr( sAlertDp, DPSUB_SYS ) != getSystemName() )
+  {
+    sWarningText = getCatStr( \"sc\", \"noCommentSystem\" );
+    ChildPanelOnCentralModal(\"vision/messageWarning\", \"\",
+      makeDynString( \"$1:\" + sWarningText ));
+  }
+  else if( !bArchiv ) 
+  { 
+    // Alert will not be saved 
+    sWarningText = getCatStr( \"sc\", \"noComment\" );
+    strreplace ( sWarningText, \"§\", \"\\n\" );  
+    ChildPanelOnCentralModal(\"vision/messageWarning\", \"\", 
+      makeDynString( \"$1:\" + sWarningText )); 
+  }
+  else
+  {
+    // Alert will be saved and system is ok
+    as_commentAction(row, \"vision/SC/AS_detail\");
+  }
+}" 0
+
+1
+LANG:5 0 
+
+25 "_panel" 5 1 0 "s" 1
+LANG:5 5 Panel
+"main(int row, string col)
+{
+ //  as_cellAction(row, col); 
+
+ //PW navigation modif march 2004
+ //old:  as_cellAction(row, col); 
+	string panelName;
+	string dpName;
+	dyn_string panelParams;
+  
+  getValue(\"\", \"cellValueRC\", row, \"_panel\", panelName);
+
+// get dp to have the parameters
+	getValue(\"\", \"cellValueRC\", row, \"dpElement\", dpName);
+  
+      // parametrisation on the _alert_hdl are only allowed when alerthandling 
+      // and pending alerts are acknowledged
+      
+//      dpSet(dpName+\":_alert_hdl.._active\",0);
+//      delay(0,100);
+//      dpSet(dpName+\":_alert_hdl.._ack\",2);
+//      delay(0,100);
+//      dpSet(dpName+\":_alert_hdl.._panel\",panel);
+//      delay(0,100);
+//      dpSet(dpName+\":_alert_hdl.._active\",1);
+//      delay(0,100);
+//      dpGet(dpName+\":_alert_hdl.._panel\",panel);
+//      setValue(\"\", \"cellValueRC\", row, \"_panel\", panel);
+       
+        dpGet(dpName+\":_alert_hdl.._panel_param\", panelParams);  
+
+//	DebugN(\"sgAlarmScreen.pnl ;table_EventColumnCmd__panel; panelParams:\" + panelParams);
+
+		sgFwSetNaviParams(panelName, panelParams);
+	sgFwNaviPanelOn(); 
+}" 0
+
+1
+LANG:5 0 
+
+85 "detail" 1 1 0 "s" 1
+LANG:5 3 ...
+"main(int row)
+{
+  as_detailAction(row, \"vision/SC/AS_detail\");
+}" 0
+
+1
+LANG:5 0 
+
+30 "ackable" 1 0 0 "s" 1
+LANG:5 15 Acknowledgeable
+E
+1
+LANG:5 0 
+
+24 "oldest_ack" 3 0 0 "s" 1
+LANG:5 6 Oldest
+E
+1
+LANG:5 0 
+
+56 "_ack_user" 3 0 0 "s" 1
+LANG:5 4 User
+"main(int row, string col)
+{
+  as_cellAction(row, col);
+}" 0
+
+1
+LANG:5 0 
+
+56 "partner" 3 0 0 "s" 1
+LANG:5 7 Partner
+E
+1
+LANG:5 0 
+
+56 "dpid" 3 0 0 "s" 1
+LANG:5 4 dpid
+E
+1
+LANG:5 0 
+
+56 "count" 3 0 0 "s" 1
+LANG:5 3 #21
+E
+1
+LANG:5 0 
+
+56 "timeStr" 0 0 0 "s" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+0 
+27 27 "" 1 1
+LANG:5 3 #24
+"" 1 1
+LANG:5 3 #23
+"" 1 1
+LANG:5 3 #22
+"" 1 1
+LANG:5 2 #1
+"" 1 1
+LANG:5 2 #2
+"" 1 1
+LANG:5 2 #3
+"" 1 1
+LANG:5 2 #4
+"" 1 1
+LANG:5 2 #5
+"" 1 1
+LANG:5 2 #6
+"" 1 1
+LANG:5 2 #7
+"" 1 1
+LANG:5 2 #8
+"" 1 1
+LANG:5 2 #9
+"" 1 1
+LANG:5 3 #10
+"" 1 1
+LANG:5 3 #11
+"" 1 1
+LANG:5 3 #12
+"" 1 1
+LANG:5 3 #13
+"" 1 1
+LANG:5 3 #14
+"" 1 1
+LANG:5 3 #15
+"" 1 1
+LANG:5 3 #16
+"" 1 1
+LANG:5 3 #17
+"" 1 1
+LANG:5 3 #18
+"" 1 1
+LANG:5 3 #19
+"" 1 1
+LANG:5 3 #20
+"" 1 1
+LANG:5 3 #21
+8 72
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

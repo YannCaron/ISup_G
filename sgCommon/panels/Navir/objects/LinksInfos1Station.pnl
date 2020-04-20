@@ -1,0 +1,189 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 100 N "_3DFace" 4
+"$CommandEnable"
+"$ILSForCAT"
+"$StationName"
+"$SystemName"
+"main()
+{
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 649 32 "" 103
+0
+1 651 33 "" 103
+0
+1 653 34 "" 103
+0
+1 655 35 "" 103
+0
+30 648
+"StationFrame"
+""
+1 10 85 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+164 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+	setValue(\"StationFrame\", \"text\", \" \" + $StationName + \" \");
+}" 0
+ E 0 1 1 0 1 E 1 0 1 0 8.88178419700125e-016 0 E 10 5 1100 85
+1
+LANG:5 90 -*-Tahoma-bold-r-normal-*-*-100-100-100-*-*-iso8859-1|-13,0,0,0,758,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 13  StationName 
+1 657 54 "" 46
+0
+1 660 55 "" 46
+0
+1 663 92 "" 46
+0
+1 666 102 "" 46
+0
+1 669 103 "" 939
+0
+1 670 103 "" 941
+0
+1 671 104 "" 939
+0
+1 672 104 "" 941
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 656 35 "" 110
+0
+1 654 34 "" 110
+0
+1 652 33 "" 110
+0
+1 650 32 "" 110
+0
+1 658 54 "" 51
+0
+1 659 54 "" 52
+0
+1 661 55 "" 51
+0
+1 662 55 "" 52
+0
+1 664 92 "" 51
+0
+1 665 92 "" 52
+0
+1 667 102 "" 51
+0
+1 668 102 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 32 "Group19"
+"objects\\sgFwBitStateBlock.pnl" 120 240 T 159 0.370967741935484 0 0.272727272727273 175.108518264318 -15.7272727272729
+2
+"$BitState""$StationName + \".Structured.Links.ComOpenA\""
+"$SystemName""$SystemName"
+3 33 "Group20"
+"objects\\sgFwBitStateBlock.pnl" 120 200 T 160 0.370967741935484 0 0.272727272727273 175.319615469157 -34.7272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComRequestA\""
+"$SystemName""$SystemName"
+3 34 "Group21"
+"objects\\sgFwBitStateBlock.pnl" 435 240 T 161 0.370967741935484 0 0.272727272727273 498.640433157935 -15.7272727272729
+2
+"$BitState""$StationName + \".Structured.Links.ComOpenB\""
+"$SystemName""$SystemName"
+3 35 "Group22"
+"objects\\sgFwBitStateBlock.pnl" 435 200 T 162 0.370967741935484 0 0.272727272727273 498.851530362775 -34.7272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComRequestB\""
+"$SystemName""$SystemName"
+3 54 "Group22"
+"objects\\sgFwBlock.pnl" 20 585 T 186 0.475 0 0.125 10.1418668046929 -52.781270305393
+5
+"$LabelsNum"""
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;StationName:$StationName;PanelOnStationModule:Navir/Objects/Station%nrNav%Nav.pnl;ILSForCAT:$ILSForCAT;CommandEnable:$CommandEnable"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.LinkAStatus\""
+3 55 "Group24"
+"objects\\sgFwBlock.pnl" 20 80 T 187 0.475 0 0.125 890.141866804692 9.718729694607
+5
+"$LabelsNum"""
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;StationName:$StationName;PanelOnStationModule:Navir/Objects/Station%nrNav%Nav.pnl;ILSForCAT:$ILSForCAT;CommandEnable:$CommandEnable"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.LinkBStatus\""
+3 92 "Group76"
+"objects\\sgFwBlock.pnl" 20 390 T 228 0.475 0 0.125 10.8861212428235 5.9131741390513
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;StationName:$StationName;PanelOnStationModule:Navir/Objects/Station%nrNav%Nav.pnl;ILSForCAT:$ILSForCAT;CommandEnable:$CommandEnable"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.TSAStatus\""
+3 102 "Group96"
+"objects\\sgFwBlock.pnl" 880 325 T 238 0.475 0 0.125 481.933740290442 14.1631741390513
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;StationName:$StationName;PanelOnStationModule:Navir/Objects/Station%nrNav%Nav.pnl;ILSForCAT:$ILSForCAT;CommandEnable:$CommandEnable"
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.TSBStatus\""
+3 103 ""
+"Navir\\objects\\NavirPermCallButtons.pnl" 520 70 T 245 1 0 1 -60 -50
+4
+"$Chain""A"
+"$HiddenDp""$StationName + \".Structured.Links.ComRequestA.Hidden\""
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+3 104 "Group11"
+"Navir\\objects\\NavirPermCallButtons.pnl" 460 20 T 246 1 0 1 100 2.1316282072803e-014
+4
+"$Chain""B"
+"$HiddenDp""$StationName + \".Structured.Links.ComRequestB.Hidden\""
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+0

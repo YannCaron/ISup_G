@@ -1,0 +1,386 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 1
+"$SystemName"
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 8 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 10 1096 46
+1 2 0 "0s" 0 0 0 65 0 0  10 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 5 EMLAN
+LANG:1 6 PRIMUS
+1 72 8 "" 46
+0
+13 71
+"ForceToUKN"
+""
+1 15 670 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  13 668 217 702
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  sgHistoryAddEvent($SystemName+ \"EMLAN\" + \".History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+  
+  dyn_string dp_Names, dpNameWDPattern;		
+  dyn_string dpValues;
+  
+  int res = dpGet($SystemName + \"EMLAN\" + \".WatchDogs.Outputs\", dpNameWDPattern);
+  
+  dp_Names = dpNames($SystemName + dpNameWDPattern[1]);  
+ // DebugTN(\"dp_Names: \"+ dp_Names);
+  
+  int res = dpGet($SystemName + \"EMLAN\" + \".WatchDogs.DefaultValues\", dpValues);
+		
+  for(int cpt = 1; cpt <= dynlen(dp_Names); cpt++)
+  {
+    dpSet(dp_Names[cpt], dpValues[1]);	
+  }  
+
+}
+" 0
+ E E E
+1 75 16 "" 11
+0
+1 76 17 "" 46
+0
+1 82 19 "" 46
+0
+1 79 18 "" 46
+0
+1 88 21 "" 46
+0
+1 85 20 "" 46
+0
+1 94 23 "" 46
+0
+1 91 22 "" 46
+0
+1 100 25 "" 46
+0
+1 97 24 "" 46
+0
+1 106 27 "" 46
+0
+1 103 26 "" 46
+0
+1 112 29 "" 46
+0
+1 109 28 "" 46
+0
+1 118 31 "" 46
+0
+1 115 30 "" 46
+0
+1 124 33 "" 46
+0
+1 121 32 "" 46
+0
+1 130 35 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 73 8 "" 51
+0
+1 74 8 "" 52
+0
+1 77 17 "" 51
+0
+1 78 17 "" 52
+0
+1 83 19 "" 51
+0
+1 84 19 "" 52
+0
+1 80 18 "" 51
+0
+1 81 18 "" 52
+0
+1 89 21 "" 51
+0
+1 90 21 "" 52
+0
+1 86 20 "" 51
+0
+1 87 20 "" 52
+0
+1 95 23 "" 51
+0
+1 96 23 "" 52
+0
+1 92 22 "" 51
+0
+1 93 22 "" 52
+0
+1 101 25 "" 51
+0
+1 102 25 "" 52
+0
+1 98 24 "" 51
+0
+1 99 24 "" 52
+0
+1 107 27 "" 51
+0
+1 108 27 "" 52
+0
+1 104 26 "" 51
+0
+1 105 26 "" 52
+0
+1 113 29 "" 51
+0
+1 114 29 "" 52
+0
+1 110 28 "" 51
+0
+1 111 28 "" 52
+0
+1 119 31 "" 51
+0
+1 120 31 "" 52
+0
+1 116 30 "" 51
+0
+1 117 30 "" 52
+0
+1 125 33 "" 51
+0
+1 126 33 "" 52
+0
+1 122 32 "" 51
+0
+1 123 32 "" 52
+0
+1 131 35 "" 51
+0
+1 132 35 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 8 "" -1
+"objects\\sgFwBlock.pnl" 90 120 T 10 1 0 0.2 10 66
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt01"
+3 16 "" -1
+"objects\\sgFwHistory.pnl" 40 770 T 26 1 0 1 -40 -70
+2
+"$SystemHistory""EMLAN.History"
+"$SystemName""$SystemName"
+3 17 "PANEL_REF17" -1
+"objects\\sgFwBlock.pnl" 90 120 T 26 1 0 0.2 520 66
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt02"
+3 18 "PANEL_REF18" -1
+"objects\\sgFwBlock.pnl" 90 120 T 27 1 0 0.2 520 116
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt04"
+3 19 "PANEL_REF19" -1
+"objects\\sgFwBlock.pnl" 90 120 T 28 1 0 0.2 10 116
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt03"
+3 20 "PANEL_REF20" -1
+"objects\\sgFwBlock.pnl" 90 120 T 29 1 0 0.2 520 166
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt06"
+3 21 "PANEL_REF21" -1
+"objects\\sgFwBlock.pnl" 90 120 T 30 1 0 0.2 10 166
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt05"
+3 22 "PANEL_REF22" -1
+"objects\\sgFwBlock.pnl" 90 120 T 31 1 0 0.2 520 216
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt08"
+3 23 "PANEL_REF23" -1
+"objects\\sgFwBlock.pnl" 90 120 T 32 1 0 0.2 10 216
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt07"
+3 24 "PANEL_REF24" -1
+"objects\\sgFwBlock.pnl" 90 120 T 33 1 0 0.2 520 266
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt10"
+3 25 "PANEL_REF25" -1
+"objects\\sgFwBlock.pnl" 90 120 T 34 1 0 0.2 10 266
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt09"
+3 26 "PANEL_REF26" -1
+"objects\\sgFwBlock.pnl" 90 120 T 35 1 0 0.2 520 316
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt12"
+3 27 "PANEL_REF27" -1
+"objects\\sgFwBlock.pnl" 90 120 T 36 1 0 0.2 10 316
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt11"
+3 28 "PANEL_REF28" -1
+"objects\\sgFwBlock.pnl" 90 120 T 39 1 0 0.2 520 366
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt14"
+3 29 "PANEL_REF29" -1
+"objects\\sgFwBlock.pnl" 90 120 T 40 1 0 0.2 10 366
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt13"
+3 30 "PANEL_REF30" -1
+"objects\\sgFwBlock.pnl" 90 120 T 41 1 0 0.2 520 416
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt16"
+3 31 "PANEL_REF31" -1
+"objects\\sgFwBlock.pnl" 90 120 T 42 1 0 0.2 10 416
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt15"
+3 32 "PANEL_REF32" -1
+"objects\\sgFwBlock.pnl" 90 120 T 43 1 0 0.2 520 466
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt18"
+3 33 "PANEL_REF33" -1
+"objects\\sgFwBlock.pnl" 90 120 T 44 1 0 0.2 10 466
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt17"
+3 35 "PANEL_REF35" -1
+"objects\\sgFwBlock.pnl" 90 120 T 46 1 0 0.2 10 516
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""EMLAN.Structureds.LANEqpmt19"
+0

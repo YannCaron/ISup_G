@@ -1,0 +1,29 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgAMSCH_N.sgAMSCH_N	1#1
+	GlobalStatus	41#2:sgFwSystem
+	Connections	41#3:sgFwConnections
+	WatchDog	41#4:sgWatchDogs
+	History	41#5:sgFwHistory
+	OPS	41#6:sgAMSCHChain
+	CONT	41#7:sgAMSCHChain
+	Calculated	1#2297
+		CSSActive	25#2300
+		CSSActiveStates	5#2302
+		RSSActive	25#2301
+		RSSActiveStates	5#2303
+	Params	41#8:sgParams
+	ConvTables	1#9
+		ConvTableRSS	41#10:sgConnectWithConvertTable
+		ConvTableCSS	41#11:sgConnectWithConvertTable
+		ConvTableCADAS	41#14:sgConnectWithConvertTable
+		ConvTableEFG	41#15:sgConnectWithConvertTable
+		ConvTableSysUpTime	41#16:sgConnectWithConvertTable
+	TruthTables	1#1544
+		GlobalTT	41#1545:sgFwTruthTable
+		TTU_S	41#1546:sgFwTruthTable
+		TTRedundantU_S	41#1547:sgFwTruthTable
+		TTCadasUpTime	41#1548:sgFwTruthTable
+	MenuEntry	41#17:sgFwMenuEntry

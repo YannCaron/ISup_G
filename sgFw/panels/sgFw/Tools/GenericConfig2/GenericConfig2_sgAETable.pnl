@@ -1,0 +1,931 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,289 181 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values;
+dyn_string curr_trans;
+
+DPEditNames = $DPEditNames;
+
+data_points = DPEditNames;
+// =\"AFPS.History;\"; //change when finished testing
+
+data_point_elements = makeDynString(AETABLE_POSTFIX
+																	 );
+
+dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+AETableInitialValue = dpe_values[dpe_index(AETABLE_POSTFIX)];
+
+sgEditPanel_AETable_init_states();
+sgEditPanel_AETableFill(dpe_values[dpe_index(AETABLE_POSTFIX)]);
+
+
+
+for (int x = 1; x<=dynlen(states); x++)
+	{
+	for (int y = 1; y<=dynlen(states); y++)
+		{
+		curr_trans = sgEditPanel_AETableValueGet(states[x], states[y]);
+		AddSingleTransition(curr_trans[1], states[x], states[y], curr_trans[2], curr_trans[3]);
+		}
+	}
+	
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+
+}
+
+
+
+" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgAETable editor\");
+SavingChangesBack();
+//DebugN(\"test2\");
+
+sgEditPanel_AETable_init_states();
+
+//DebugN(\"test3\");
+
+//just for display - this works.
+for (int i = 1; i<= dynlen(states);i++)
+	{
+	for (int j = 1; j<= dynlen(states);j++)
+		{
+		removeSymbol(myModuleName(), myPanelName(), \"SingleTransition\"+states[i]+states[j]);
+		}
+	}
+
+//DebugN(\"finished event terminate for sgAETable editor\");
+
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+//global variables
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+string AETableInitialValue;
+//if no dpe name constants defined in the constants lib, define them here
+const string AETABLE_POSTFIX = \".Table\";
+
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+
+
+//##################### saving changes back ########################
+int SavingChangesBack()
+{
+dyn_anytype all_values;
+
+//DebugN(\"entering procedure for saving changes back in sgAETable\");	
+//this is where you save back to the database
+
+//to make sure than when you are closing it really does get the info off the panel
+
+all_values[dpe_index(AETABLE_POSTFIX)] = sgEditPanel_AETableValue();
+
+if (all_values[dpe_index(AETABLE_POSTFIX)] != AETableInitialValue)
+	{
+	changed_elements[dpe_index(AETABLE_POSTFIX)] = true;
+	}
+
+//but only save back if saving is enabled:
+//DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+//	DebugN(\"Saving changes back enabled\");	
+//	DebugN(\"values are:\", data_points, data_point_elements, all_values, changed_elements);
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+//DebugN(\"ending SavingChangesBack\");
+
+//PanelOff();
+return 1;
+}
+
+void AddSingleTransition(bool Enabled, string OldState, string NewState, string Severity, string AlarmAction)
+{
+int x = state_index(OldState);
+int y = state_index(NewState);
+int PANEL_BASE_X = 282;
+int PANEL_BASE_Y = 65;
+
+//panelPosition(myModuleName(),\"GenericConfig_2_Main_Screen\",PANEL_BASE_X,PANEL_BASE_Y);
+//DebugN(PANEL_BASE_X,PANEL_BASE_Y);
+
+const int ITEMS_BASE_X = PANEL_BASE_X + 30;
+const int ITEMS_BASE_Y = PANEL_BASE_Y + 87;
+const int ITEM_WIDTH = 93;
+const int ITEM_HEIGHT = 60;
+
+int a = ITEMS_BASE_X + (ITEM_WIDTH * (x-1)); //these constants are for the position on the panel
+int b = ITEMS_BASE_Y + (ITEM_HEIGHT * (y-1)); //
+
+
+//DebugN(x, y, a, b);
+
+ 		addSymbol(myModuleName(), myPanelName(), \"sgFw/tools/GenericConfig2/AETableSingleTransition.pnl\", \"SingleTransition\"+OldState+NewState,
+ 						makeDynString(\"$TransitionEnabled:\"+Enabled, 
+ 													\"$SeverityRating:\"+Severity,
+ 													\"$AlarmAction:\"+AlarmAction,
+ 													\"$OldState:\"+OldState,
+ 													\"$NewState:\"+NewState
+													),
+ 						a, b, 0, 1, 1);
+
+}
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 29
+"OPSRow"
+""
+1 0 80 E E E 1 E 1 E N {0,0,0} E N "sgStdOPSColor" E E
+ E E
+30 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 82 28 138
+1 2 0 "s" 0 0 0 65 0 0  2 82
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 OPS
+2 30
+"SBYRow"
+""
+1 0 140 E E E 1 E 1 E N {0,0,0} E N "sgStdSBYColor" E E
+ E E
+31 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 142 28 198
+1 2 0 "s" 0 0 0 65 0 0  2 142
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 SBY
+2 31
+"INIRow"
+""
+1 0 200 E E E 1 E 1 E N {0,0,0} E N "sgStdINIColor" E E
+ E E
+32 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 202 28 258
+1 2 0 "s" 0 0 0 65 0 0  2 202
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 INI
+2 32
+"DEGRow"
+""
+1 0 260 E E E 1 E 1 E N {0,0,0} E N "sgStdDEGColor" E E
+ E E
+33 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 262 28 318
+1 2 0 "s" 0 0 0 65 0 0  2 262
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 DEG
+2 33
+"USRow"
+""
+1 0 320 E E E 1 E 1 E N {0,0,0} E N "sgStdU/SColor" E E
+ E E
+34 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 322 28 378
+1 2 0 "s" 0 0 0 65 0 0  2 322
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 U/S
+2 34
+"TECRow"
+""
+1 0 380 E E E 1 E 1 E N {0,0,0} E N "sgStdTECColor" E E
+ E E
+35 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 382 28 438
+1 2 0 "s" 0 0 0 65 0 0  2 382
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 TEC
+2 35
+"WIPRow"
+""
+1 0 440 E E E 1 E 1 E N {0,0,0} E N "sgStdWIPColor" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 442 28 498
+1 2 0 "s" 0 0 0 65 0 0  2 442
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 WIP
+2 36
+"ABSRow"
+""
+1 0 500 E E E 1 E 1 E N {0,0,0} E N "sgStdABSColor" E E
+ E E
+37 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 502 28 558
+1 2 0 "s" 0 0 0 65 0 0  2 502
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 ABS
+2 37
+"STPRow"
+""
+1 0 560 E E E 1 E 1 E N {0,0,0} E N "sgStdSTPColor" E E
+ E E
+38 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 562 28 618
+1 2 0 "s" 0 0 0 65 0 0  2 562
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 STP
+2 38
+"UKNRow"
+""
+1 0 620 E E E 1 E 1 E N {0,0,0} E N "sgStdUKNColor" E E
+ E E
+39 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 2 622 28 678
+1 2 0 "s" 0 0 0 65 0 0  2 622
+ 1
+1
+LANG:5 119 -microsoft windows-Trebuchet MS-bold-r-normal-*-*-150-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Trebuchet MS
+0 ""
+1
+LANG:5 3 UKN
+2 39
+"Text3"
+""
+1 4 32 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+40 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 6 34 42 50
+0 2 0 "s" 0 0 0 64 0 0  6 34
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 OLD
+2 40
+"Text4"
+""
+1 0 60 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+41 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 2 62 38 78
+0 2 0 "s" 0 0 0 64 0 0  2 62
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 NEW
+4 41
+"Line1"
+""
+1 0 50 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+42 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  30 60 0 50
+2 42
+"OPSCol"
+""
+1 30 50 E E E 1 E 1 E N {0,0,0} E N "sgStdOPSColor" E E
+ E E
+43 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 32 52 121 78
+1 2 0 "s" 0 0 0 65 0 0  32 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 OPS
+2 43
+"SBYCol"
+""
+1 123 50 E E E 1 E 1 E N {0,0,0} E N "sgStdSBYColor" E E
+ E E
+44 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 125 52 214 78
+1 2 0 "s" 0 0 0 65 0 0  125 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 SBY
+2 44
+"INICol"
+""
+1 216 50 E E E 1 E 1 E N {0,0,0} E N "sgStdINIColor" E E
+ E E
+45 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 218 52 307 78
+1 2 0 "s" 0 0 0 65 0 0  218 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 INI
+2 45
+"DEGCol"
+""
+1 309 50 E E E 1 E 1 E N {0,0,0} E N "sgStdDEGColor" E E
+ E E
+46 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 311 52 400 78
+1 2 0 "s" 0 0 0 65 0 0  311 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 DEG
+2 46
+"USCol"
+""
+1 402 50 E E E 1 E 1 E N {0,0,0} E N "sgStdU/SColor" E E
+ E E
+47 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 404 52 493 78
+1 2 0 "s" 0 0 0 65 0 0  404 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 U/S
+2 47
+"TECCol"
+""
+1 495 50 E E E 1 E 1 E N {0,0,0} E N "sgStdTECColor" E E
+ E E
+48 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 497 52 586 78
+1 2 0 "s" 0 0 0 65 0 0  497 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 TEC
+2 48
+"WIPCol"
+""
+1 588 50 E E E 1 E 1 E N {0,0,0} E N "sgStdWIPColor" E E
+ E E
+49 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 590 52 679 78
+1 2 0 "s" 0 0 0 65 0 0  590 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 WIP
+2 49
+"ABSCol"
+""
+1 681 50 E E E 1 E 1 E N {0,0,0} E N "sgStdABSColor" E E
+ E E
+50 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 683 52 772 78
+1 2 0 "s" 0 0 0 65 0 0  683 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 ABS
+2 50
+"STPCol"
+""
+1 774 50 E E E 1 E 1 E N {0,0,0} E N "sgStdSTPColor" E E
+ E E
+51 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 776 52 865 78
+1 2 0 "s" 0 0 0 65 0 0  776 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 STP
+2 51
+"UKNCol"
+""
+1 867 50 E E E 1 E 1 E N {0,0,0} E N "sgStdUKNColor" E E
+ E E
+52 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 869 52 958 78
+1 2 0 "s" 0 0 0 65 0 0  869 52
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 UKN
+4 59
+"Line2"
+""
+1 123 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+60 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  123 680 123 80
+4 60
+"Line3"
+""
+1 681 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+61 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  681 680 681 80
+4 61
+"Line4"
+""
+1 588 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+62 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  588 680 588 80
+4 62
+"Line5"
+""
+1 495 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+63 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  495 680 495 80
+4 63
+"Line6"
+""
+1 402 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+64 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  402 680 402 80
+4 64
+"Line7"
+""
+1 309 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+65 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  309 680 309 80
+4 65
+"Line8"
+""
+1 216 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+66 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  216 680 216 80
+4 66
+"Line9"
+""
+1 774 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+67 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  774 680 774 80
+4 67
+"Line10"
+""
+1 867 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+68 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  867 680 867 80
+4 68
+"Line11"
+""
+1 30 140 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+69 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 140 960 140
+4 69
+"Line12"
+""
+1 30 200 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+70 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 200 960 200
+4 70
+"Line13"
+""
+1 30 260 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 260 960 260
+4 71
+"Line14"
+""
+1 30 320 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 320 960 320
+4 72
+"Line15"
+""
+1 30 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+73 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 380 960 380
+4 73
+"Line16"
+""
+1 30 440 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+74 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 440 960 440
+4 74
+"Line17"
+""
+1 30 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+75 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 500 960 500
+4 75
+"Line18"
+""
+1 30 560 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+76 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 560 960 560
+4 76
+"Line19"
+""
+1 30 620 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+77 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 620 960 620
+4 77
+"Line20"
+""
+1 30 680 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+78 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  30 680 960 680
+4 78
+"Line21"
+""
+1 960 80 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+79 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  960 680 960 80
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

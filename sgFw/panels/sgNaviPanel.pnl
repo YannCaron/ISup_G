@@ -1,0 +1,278 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 860 N "_3DFace" 0
+"main()
+{
+// 	naviButtonsModule.ModuleName=\"naviButtonsModule\";
+//	RootPanelOnModule(\"sgNaviButtonsPanel.pnl\", \"NaviButton\", \"naviButtonsModule\", makeDynString());
+}
+" 0
+ E E E E 1 -1 -1 0  350 55
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 369
+"Text1"
+""
+1 13 38 E E E 1 E 0 E N "_WindowText" E N {255,0,0} E E
+ E E
+113 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+	//DebugTN(myModuleName(),myPanelName());
+	addSymbol(myModuleName(), myPanelName(), sgGetSystemPrefix() + \"NaviButtonsPanel.pnl\", \"NaviButton\", makeDynString(), 0, 35, 0,1,1);
+}" 0
+ E 0 1 1 0 1 E U  1 E 15 40 111 56
+0 2 0 "0s" 0 0 0 64 0 0  15 40 1
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 11 add Buttons
+13 305
+"EventsButton"
+""
+1 5 810 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+81 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  3 808 117 834
+
+T 
+2
+LANG:5 6 Events
+LANG:1 6 Events
+"main()
+{
+	dyn_string ds;
+	// params is set to no when called by this button (initialization)
+	ds = makeDynString(\"$havePanelParams:No\");
+
+	sgFwSetNaviParams(\"sgFw/sgFwHistoryQueryPanel.pnl\", ds);
+	sgFwNaviPanelOn();
+}" 0
+ E E E
+13 350
+"FwdButton"
+""
+1 85 5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+97 0 0 0 0 0
+E E E
+0
+3
+LANG:5 10 Go forward
+LANG:0 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  83 3 117 32
+
+P 
+10040064
+"pictures/PT_jumpRight.gif"
+1
+LANG:5 0 
+"main()
+{
+	naviGoForward();
+}" 0
+ E E E
+13 352
+"BackButton"
+""
+1 5 5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+99 0 0 0 0 0
+E E E
+0
+3
+LANG:5 11 Go backward
+LANG:0 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  3 3 37 32
+
+P 
+10040064
+"pictures/PT_jumpLeft.gif"
+1
+LANG:5 0 
+"main()
+{
+	naviGoBackward();
+}" 0
+ E E E
+13 355
+"HomeButton"
+""
+1 40 5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+3
+LANG:5 4 Home
+LANG:0 0 
+LANG:1 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  38 3 82 32
+
+P 
+13434828
+"pictures/sgFwHome.bmp"
+1
+LANG:5 0 
+"main()
+{
+	sgFwSetNaviParams(sgGetSystemPrefix() + \"RootPanel.pnl\", makeDynString(\"\"));
+	sgFwNaviPanelOn();
+}" 0
+ E E "main()
+{
+	sgFwInitNaviPanel(sgGetSystemPrefix() + \"RootPanel.pnl\", makeDynString(\"InitParam\"));
+	sgFwNaviPanelOn();
+	
+	//  the refresh isn't done with the sgFwBlock because he is in a another module
+	while(true)
+	{
+		enableDisableBckFwdButtons();
+		delay(0,500);
+//		DebugN(\"HomeButton_EventInitialize; in while loop\");
+	}
+}" 0
+
+13 303
+"AlarmsButton"
+""
+1 5 785 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+79 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  3 783 117 809
+
+T 
+2
+LANG:5 6 Alarms
+LANG:1 6 Alarms
+"main()
+{
+	dyn_string ds;
+	// params is set to no when called by this button (initialization)
+	ds = makeDynString(\"$havePanelParams:No\");
+
+	sgFwSetNaviParams(\"sgFw/sgFwAlarmsPanel.pnl\", ds);
+	sgFwNaviPanelOn();
+}" 0
+ E E E
+13 366
+"Button1"
+""
+1 5 835 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+112 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  3 833 117 859
+
+T 
+2
+LANG:5 5 Admin
+LANG:1 6 Alarms
+"main()
+{
+	dyn_string ds;
+	// params is set to no when called by this button (initialization)
+	ds = makeDynString(\"$havePanelParams:No\");
+
+	sgFwSetNaviParams(\"ADMIN/sgAdminMainPanel.pnl\", ds);
+	sgFwNaviPanelOn();
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

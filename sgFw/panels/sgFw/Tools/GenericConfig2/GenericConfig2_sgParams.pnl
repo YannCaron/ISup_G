@@ -1,0 +1,723 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,258 160 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+
+	string DPEditNames = \"AFPS.ComponentsParams;\";
+	idispatch curr_node;
+	int curr_node_id;
+	string histories_str, ae_table, dp_to_load, curr_node_text;
+	bool generate_events, generate_alarms;
+	dyn_string checked_histories, dpe_names;	
+	dyn_anytype dp_data;
+	int check_hists_count = 1;
+	
+	data_point_elements =  makeDynString(\".Histories\",
+																			 \".AETable\",
+																			 \".Delay\",
+																			 \".GenerateAlarms\",
+																			 \".GenerateEvents\");
+	
+	for (int i = 1; i<= dynlen(data_point_elements); i++)
+	{
+		changed_elements[i] = false;
+	}
+	
+	//populate the lists of histories and event tables
+	
+	histories = getPointsOfType(\"sgFwHistory\");
+	alarm_event_tables = getPointsOfType(\"sgAETable\");
+	dynSortAsc(alarm_event_tables);
+	////DebugN(histories, alarm_event_tables);
+	
+	//load the information into the boxes from the first data point supplied (maybe average or def values if more than 1 in the end ...?)	
+	data_points = strsplit($DPEditNames, \";\"); //change to $ when no longer testing ***************
+	dp_to_load = data_points[1];
+	
+	for (int i = 1; i<= dynlen(data_point_elements); i++)
+		{
+		dpe_names[i] = dp_to_load + data_point_elements[i];
+		}
+	 ////DebugN(dpe_names);
+	dpGet(dpe_names, dp_data);
+	
+	// HERE
+	SetDataToDisplay(dp_data);
+	
+	//check the checkboxes generate alarms and events
+	AECheckButtons.state(0) = dp_data[4];
+	AECheckButtons.state(1) = dp_data[5];
+	
+	
+	//display the prestatus to status delay
+	
+	SpinButton1.text = dp_data[3];	
+
+}" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgParams editor\");
+SavingChangesBack();
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+
+dyn_string histories;
+dyn_string alarm_event_tables;
+
+void DisplayAETable(int alarm_event_list_node_index)
+{
+	string AEdpName;
+	string AEtableContentsStr;
+	dyn_string AEtableContents;
+	idispatch curr_node;
+	
+	curr_node = AlarmsEventsRadioButtonList.ExtractNode(alarm_event_list_node_index);
+	AEdpName = curr_node.Text+\".Table\";
+	////DebugN(AEdpName);
+	dpGet(AEdpName, AEtableContentsStr);
+	////DebugN(AEtableContentsStr);
+	AEtableContents = strsplit(AEtableContentsStr, \";\");
+	SelectionList1.items = AEtableContents;
+}
+
+int dpe_index(string dpe_name)
+{
+	return dynContains(data_point_elements, dpe_name);
+}
+
+void SetDataToDisplay(dyn_anytype dp_data)
+{
+	
+	////DebugN(data_point_elements, dp_data);
+	sgTree_CreateCheckList(getShape(\"HistoriesCheckList\"), histories, dp_data[dpe_index(\".Histories\")]);
+	sgTree_CreateRadioList(getShape(\"AlarmsEventsRadioButtonList\"), alarm_event_tables, dp_data[dpe_index(AETABLE_POSTFIX)]);
+
+}
+//##################### saving changes back ########################3
+void SavingChangesBack()
+{
+//DebugN(\"entering procedure for saving changes back in sgParams\");	
+//this is where you save back to the database
+
+//but only save back if saving is enabled:
+//DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+{
+//DebugN(\"Saving changes back\");
+idispatch curr_node;
+dyn_anytype dpe_values;
+dyn_dyn_anytype to_write;
+int curr_node_state_index, x;
+dyn_string hists;
+//get the values for histories
+
+to_write[2] = hists; //this is ONLY an init in order to create the second column - no data moves here, but hists is a nice empty dyn_string!!
+
+for (int i = 1; i<= dynlen(histories); i++)
+	{
+	curr_node = HistoriesCheckList.GetNodeAtRow(i-1);
+	if (curr_node.StateIndex == 2)
+		{
+		dynAppend(hists, curr_node.Text);
+		}
+	}
+dpe_values[1] = hists;
+
+//values for AETable
+for (int i = 1; i<= dynlen(alarm_event_tables); i++)
+	{
+	curr_node = AlarmsEventsRadioButtonList.GetNodeAtRow(i-1);
+	if (curr_node.StateIndex == 4)
+		{
+		dpe_values[2] = curr_node.Text;
+		}
+	}
+
+//values for generate alarms, events, prestatus-status delay
+dpe_values[3] = SpinButton1.text;
+dpe_values[4] = (AECheckButtons.state(0) == 1);
+dpe_values[5] = (AECheckButtons.state(1) == 1);
+
+
+//make a list of what has changed and therefore what needs to be saved back
+for (int i = 1; i<= dynlen(data_points); i++)
+	{
+	for (int j = 1; j<= dynlen(data_point_elements); j++)
+		{
+		if (changed_elements[j])
+			{
+			dynAppend(to_write[1], (data_points[i] + data_point_elements[j]));
+			x = dynlen(to_write[2])+1;
+			to_write[2][x] = dpe_values[j];
+			}
+		}
+	}
+//DebugN(\"writing back : \");
+
+dyn_string writenames = to_write[1];
+
+if (dynlen(writenames) > 0)
+	{
+	//DebugN(\"dpSetting type sgParams\");
+  dpSet(writenames, to_write[2]); //set the new data back into the database. 
+	}
+}
+else
+{
+//DebugN(\"discarding changes\");
+}
+
+//PanelOff();
+
+}
+
+" 0
+ 2
+"CBRef""1"
+"EClose""main()
+{
+
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 23
+"HistoriesFrame"
+""
+1 10 790 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+24 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 10 340 790
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 28  Write Events to Histories: 
+30 24
+"AlarmsEventsFrame"
+""
+1 345 475 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+25 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 345 10 945 475
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 19  Alarms and Events 
+2 27
+"Text2"
+""
+1 355 25 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 357 27 848 48
+0 2 0 "s" 0 0 0 64 0 0  357 27
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 87 Choose AE Table:                                            Preview of AE Table in use:
+30 28
+"StatusFrame"
+""
+1 345 555 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+29 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 345 485 945 555
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 8  Status 
+2 31
+"Text4"
+""
+1 355 510 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+32 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 357 512 565 528
+0 2 0 "s" 0 0 0 192 0 0  357 512
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 34 Delay between preStatus and Status
+2 32
+"Text1"
+""
+1 25 40 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+33 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 27 42 248 88
+0 2 0 "s" 0 0 0 64 0 0  27 42
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 21 Loading Edit Panel...
+17 25
+"SelectionList1"
+""
+1 640 50 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+638 48 927 457
+0
+E
+E
+E
+
+3 1
+20 26
+"AECheckButtons"
+""
+1 360 380 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+27 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+358 378 527 442
+2
+T 
+1
+LANG:5 15 Generate Alarms
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+T 
+1
+LANG:5 15 Generate Events
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+2
+E E E E 
+E"main(int button, bool state)
+{
+changed_elements[4] = true;
+changed_elements[5] = true;
+}" 0
+21 30
+"SpinButton1"
+""
+1 585 510 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+31 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+583 508 772 535
+0
+E
+"main()
+{
+changed_elements[3] = true;
+}" 0
+
+E
+
+N 0 1000 1 999 0 1
+29 33
+"AlarmsEventsRadioButtonList"
+""
+1 -168 -171 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+33 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+350 50 630 380
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"
+sgTree_RadioBtnClick(getShape(\"AlarmsEventsRadioButtonList\"));
+changed_elements[dpe_index(AETABLE_POSTFIX)] = true;
+
+idispatch curr_node;
+//de-select all items in the list
+for (int i = 1; i <= dynlen(alarm_event_tables); i++)
+	{
+	curr_node = AlarmsEventsRadioButtonList.GetNodeAtRow(i-1);
+	////DebugN(curr_node.Text);
+	curr_node.StateIndex = 5;
+	}
+curr_node = AlarmsEventsRadioButtonList.ExtractNode(AlarmsEventsRadioButtonList.Selected);
+curr_node.StateIndex = 4;
+DisplayAETable(AlarmsEventsRadioButtonList.Selected);
+changed_elements[2] = true;
+"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 34
+"HistoriesCheckList"
+""
+1 -413 54 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+34 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+20 30 330 780
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"changed_elements[dpe_index(\".Histories\")] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"sgTree_CheckListMouseDown(getShape(\"HistoriesCheckList\"), X);
+//changed_elements[1] = true;"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

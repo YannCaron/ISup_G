@@ -1,0 +1,72 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRecVoiceCoreServerCompChain.sgRecVoiceCoreServerCompChain	1#1
+	ConnectivityCaptureApiService	41#1:sgFwSystem
+	CyberTechContentManagerArchivingService	41#1:sgFwSystem
+	CyberTechContentManagerStorageService	41#1:sgFwSystem
+	CybertechRecorderControllerService	41#1:sgFwSystem
+	CyberTechCoreApiService	41#1:sgFwSystem
+	CyberTechDatabaseInterfaceServer	41#1:sgFwSystem
+	DSC-server	41#1:sgFwSystem
+	FaultManagerService	41#1:sgFwSystem
+	CyberTechLicenseService	41#1:sgFwSystem
+	NR_LogfileManager	41#1:sgFwSystem
+	CyberTechMediaManager	41#1:sgFwSystem
+	CyberTechSystemManager	41#1:sgFwSystem
+	CyberTechUserManager	41#1:sgFwSystem
+	MySQL	41#1:sgFwSystem
+	W3SVC	41#1:sgFwSystem
+
+sgRecVoiceCoreServerRawDataChain.sgRecVoiceCoreServerRawDataChain	1#1
+	ConnectivityCaptureApiService	25#1
+	CyberTechContentManagerArchivingService	25#1
+	CyberTechContentManagerStorageService	25#1
+	CybertechRecorderControllerService	25#1
+	CyberTechCoreApiService	25#1
+	CyberTechDatabaseInterfaceServer	25#1
+	DSC-server	25#1
+	FaultManagerService	25#1
+	CyberTechLicenseService	25#1
+	NR_LogfileManager	25#1
+	CyberTechMediaManager	25#1
+	CyberTechSystemManager	25#1
+	CyberTechUserManager	25#1
+	MySQL	25#1
+	W3SVC	25#1
+
+sgRecVoice.sgRecVoice	1#1
+	MenuEntry	41#12:sgFwMenuEntry
+	Config	1#1
+		Site	25#1
+	GlobalStatus	41#1:sgFwSystem
+	RawData	1#1
+		CoreServerA	41#1:sgRecVoiceCoreServerRawDataChain
+	Components	1#1
+		CoreServerA	41#1:sgRecVoiceCoreServerCompChain
+	Connections	41#1:sgFwConnections
+	WatchDogs	41#1:sgWatchDogs
+	History	41#1:sgFwHistory
+	Params	41#1:sgParams
+	TruthTables	1#1
+		GlobalTT	41#1:sgFwTruthTable
+	ConvTableStatus	41#1:sgConnectWithConvertTable
+
+# Datapoint/DpId
+DpName	TypeName	ID
+RecVoice	sgRecVoice	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+RecVoice.GlobalStatus	""	lt:1 LANG:5 "RecVoice GVA 18@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+RecVoice.MenuEntry.Name	sgRecVoice	"RecVoice GVA"	0x200101	02.09.2016 08:08:42.933
+RecVoice.MenuEntry.Group	sgRecVoice	"REC"	0x101	02.09.2016 08:08:42.934
+RecVoice.MenuEntry.Panel	sgRecVoice	"RecVoice/sgRecVoiceMainPanel.pnl"	0x101	02.09.2016 08:08:42.935
+RecVoice.MenuEntry.Params	sgRecVoice	"Site:GVA;SystemName:ISup_G:"	0x200101	23.01.2017 14:34:22.659
+RecVoice.MenuEntry.GlobalStatusPoint	sgRecVoice	"RecVoice.GlobalStatus"	0x300101	22.06.2017 17:07:35.113
+
+

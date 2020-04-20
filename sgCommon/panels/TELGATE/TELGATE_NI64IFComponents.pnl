@@ -1,0 +1,98 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 205 38 N "_3DFace" 2
+"$IFName"
+"$SystemName"
+"main()
+{
+    IFNameText.text = $IFName;
+
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+1 7 0 "" 46
+0
+1 10 1 "" 46
+0
+2 6
+"IFNameText"
+""
+1 5 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 5 10 70 45
+0 2 2 "0s" 0 0 0 64 0 0  5 10 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 7 $IFName
+0
+LAYER, 1 
+1
+LANG:5 0 
+1 8 0 "" 51
+0
+1 9 0 "" 52
+0
+1 11 1 "" 51
+0
+1 12 1 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+3 0 "PANEL_REF97" -1
+"objects\\sgFwBlock.pnl" 340 305 T 0 0.175 0 0.125 -14.5 -33.125
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""\"TELGATE.Components.NI64IF.\" + $IFName +\".PowerSupply\""
+3 1 "PANEL_REF1" -1
+"objects\\sgFwBlock.pnl" 340 305 T 1 0.2 0 0.125 52.00000000000001 -33.125
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""\"TELGATE.Components.NI64IF.\" + $IFName +\".Ethernet\""
+0

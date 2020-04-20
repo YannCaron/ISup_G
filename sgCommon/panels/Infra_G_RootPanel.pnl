@@ -1,0 +1,381 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 9 Top panel
+LANG:1 9 Top panel
+1 456 7 "" 46
+0
+30 386
+"FRAME2"
+""
+1 170 164 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+182 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.482517482517483 0 0.5825242718446601 -222.027972027972 24.46601941747577 0 E 170 164 886 371
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 33 Buildings/Stations Infrastructure
+1 462 79 "" 46
+0
+1 465 80 "" 46
+0
+1 468 81 "" 46
+0
+1 471 82 "" 46
+0
+1 474 83 "" 46
+0
+1 477 84 "" 46
+0
+1 459 78 "" 46
+0
+1 480 85 "" 46
+0
+1 486 87 "" 46
+0
+1 483 86 "" 46
+0
+25 421
+"taAlert"
+""
+1 5 -280.9742120343839 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+201 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  8 258 1106 852
+"main()
+{
+  string pattern = \"Infra_G:*.Components.*.{Inputs.*,AnalogInputs.*.Value}\";
+  alertTable_initialize(taAlert.name(), pattern);
+ }" 0
+"main(int row, string column, string value)
+{
+  alertTable_clicked(taAlert.name(), row, column, value);
+}" 0
+ 1 0 1 11 1 "line" 0 0 0 "s" 1
+LANG:5 2 Id
+E
+1
+LANG:5 0 
+
+0 "dp" 10 0 0 "s" 1
+LANG:5 9 Datapoint
+E
+1
+LANG:5 0 
+
+150 "dir" 0 0 0 "s" 1
+LANG:5 3 dir
+E
+1
+LANG:5 0 
+
+0 "_abbr" 1 0 0 "s" 1
+LANG:5 4 abbr
+E
+1
+LANG:5 0 
+
+27 "_alert_color" 1 1 0 "s" 1
+LANG:5 2 S.
+E
+1
+LANG:5 0 
+
+27 "_system_time" 13 1 0 "[%d/%m/%Y %H:%M:%St,False,,ALIGNMENT_BEGINNING]" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+195 "_text" 33 1 0 "s" 1
+LANG:5 4 Text
+E
+1
+LANG:5 0 
+
+483 "_help" 17 1 0 "s" 1
+LANG:5 11 Description
+E
+1
+LANG:5 0 
+
+250 "_direction" 3 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Dir.
+E
+1
+LANG:5 0 
+
+56 "_ackable" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Ack.
+E
+1
+LANG:5 0 
+
+32 "_dp_list" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 6 Detail
+E
+1
+LANG:5 0 
+
+32 
+25 25 "" 1 1
+LANG:5 2 #1
+10 10
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 0 1 1 1 7
+1 0
+13 455
+"SystemButton"
+""
+1 920 90 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+202 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  918 88 1087 122
+
+T 
+2
+LANG:5 11 Analogical 
+LANG:1 7 Button1
+"main()
+{
+	sgFwSetNaviParams(\"Infra/AnalogPanel.pnl\", \"\" );
+	sgFwNaviPanelOn();
+
+}" 0
+ E E E
+1 489 88 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 457 7 "" 51
+0
+1 458 7 "" 52
+0
+1 463 79 "" 51
+0
+1 464 79 "" 52
+0
+1 466 80 "" 51
+0
+1 467 80 "" 52
+0
+1 469 81 "" 51
+0
+1 470 81 "" 52
+0
+1 472 82 "" 51
+0
+1 473 82 "" 52
+0
+1 475 83 "" 51
+0
+1 476 83 "" 52
+0
+1 478 84 "" 51
+0
+1 479 84 "" 52
+0
+1 460 78 "" 51
+0
+1 461 78 "" 52
+0
+1 481 85 "" 51
+0
+1 482 85 "" 52
+0
+1 487 87 "" 51
+0
+1 488 87 "" 52
+0
+1 484 86 "" 51
+0
+1 485 86 "" 52
+0
+1 490 88 "" 51
+0
+1 491 88 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 7 "Group8" -1
+"objects\\sgFwBlock.pnl" 370 200 T 6 0.625 0 0.25 198.75 10
+5
+"$LabelsNum""0"
+"$PanelName""Infra_G_MainPanel.pnl"
+"$PanelParams""SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""Infra.GlobalStatus"
+3 78 "PANEL_REF157" -1
+"objects\\sgFwBlock.pnl" 550 390 T 190 0.5 0 0.2 -25.00000000000001 62
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/BNAMainPanel.pnl; StationName:StationBNA;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationBNA.GlobalStatus"
+3 79 "PANEL_REF152" -1
+"objects\\sgFwBlock.pnl" 550 390 T 191 0.5000000000000001 0 0.2 604.9999999999999 62
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/DOLMainPanel.pnl; StationName:StationDOL;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationDOL.GlobalStatus"
+3 80 "PANEL_REF156" -1
+"objects\\sgFwBlock.pnl" 550 390 T 192 0.4999999999999999 0 0.2 -235 112
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/SMR2MainPanel.pnl; StationName:StationSMR2;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationSMR2.GlobalStatus"
+3 81 "PANEL_REF158" -1
+"objects\\sgFwBlock.pnl" 550 390 T 193 0.5000000000000001 0 0.2 184.9999999999999 112
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/SRXP2MainPanel.pnl; StationName:StationSRXP2;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationSRXP2.GlobalStatus"
+3 82 "PANEL_REF159" -1
+"objects\\sgFwBlock.pnl" 550 390 T 194 0.5 0 0.2 -25.00000000000001 112
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/SRX2MainPanel.pnl; StationName:StationSRX2;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationSRX2.GlobalStatus"
+3 83 "PANEL_REF160" -1
+"objects\\sgFwBlock.pnl" 550 390 T 195 0.5000000000000001 0 0.2 604.9999999999999 112
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/CUN2MainPanel.pnl; StationName:StationCUN2;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationCUN2.GlobalStatus"
+3 84 "PANEL_REF161" -1
+"objects\\sgFwBlock.pnl" 550 390 T 196 0.5000000000000001 0 0.2 394.9999999999999 112
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/CUN1MainPanel.pnl; StationName:StationCUN1;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationCUN1.GlobalStatus"
+3 85 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 550 390 T 197 0.5 0 0.2 185 62
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/TWRMainPanel.pnl; StationName:StationTWR;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationTWR.GlobalStatus"
+3 86 "PANEL_REF86" -1
+"objects\\sgFwBlock.pnl" 550 390 T 198 0.5000000000000001 0 0.125 394.9999999999999 91.25
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/LENKMainPanel.pnl; StationName:StationLENK;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationLENK.GlobalStatus"
+3 87 "PANEL_REF87" -1
+"objects\\sgFwBlock.pnl" 550 390 T 199 0.5 0 0.2 -234.9999999999999 62.00000000000001
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/NAGMainPanel.pnl; StationName:StationNAG;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationNAG.GlobalStatus"
+3 88 "PANEL_REF88" -1
+"objects\\sgFwBlock.pnl" 550 390 T 203 0.5000000000000001 0 0.125 394.9999999999999 116.25
+5
+"$LabelsNum""0"
+"$PanelName""Infra/InfraStationGenericPanel.pnl"
+"$PanelParams""PanelOnStationModule:Infra/LENK2MainPanel.pnl; StationName:StationLENK2;SystemName:Infra_G:"
+"$SystemName""Infra_G:"
+"$SystemStatus""StationLENK2.GlobalStatus"
+0

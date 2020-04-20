@@ -1,0 +1,176 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 640 N "_3DFace" 0
+E E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 14 115 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 LOC 01
+ 
+0
+1 15 115 "" 1
+0
+1 16 116 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 01
+ 
+0
+1 17 116 "" 1
+0
+1 18 117 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links LUG
+ 
+0
+1 19 117 "" 1
+0
+1 20 118 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 NavSupLUG
+ 
+0
+1 21 118 "" 1
+0
+1 22 119 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 MUZ
+ 
+0
+1 23 119 "" 1
+0
+1 24 120 "" 0
+0
+1 25 120 "" 1
+0
+13 13
+"INCHStatusesBtn"
+""
+1 13.684210526316 618.235294117647 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+139 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0  3 528 117 562
+
+T 
+1
+LANG:5 11 INCH States
+"main()
+{
+	dyn_string ds;
+	
+	ds = makeDynString(\"\");
+
+	sgFwSetNaviParams(\"Navir/INCH/NavirINCHStatusesZRH.pnl\", ds);
+	
+	sgFwNaviPanelOn();
+
+}" 0
+ E E "main()
+{
+
+}" 0
+
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 115 "Group17" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 135 1.22222222222222 0 1.21779032109044 -1.1111111111111 -94.60112889813961
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""LOC 01"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_L:;StationName:LOC01;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_L:LOC01.Structured.Station"
+3 116 "Group18" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 136 1.22222222222222 0 1.18421052631579 -1.33333333333334 -86.7736842105264
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""GP 01"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_L:;StationName:GP01;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_L:GP01.Structured.Station"
+3 117 "Group19" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 370 T 137 1.22222222222222 0 1.19318181818182 -1.1111111111111 -261.477272727273
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links LUG"
+"$PanelName""Navir/Links/LinksInfosLUG.pnl"
+"$PanelParams""SystemName:Navir_L:"
+"$isVisible""1"
+"$system""Navir_L:LinksInfosLUG"
+3 118 "Group20" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 405 T 138 1.22222222222222 0 1.24289772727273 -1.11111111111111 -278.373579545455
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSupLUG"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_L:"
+"$isVisible""1"
+"$system""Navir_L:NavSup"
+3 119 "PANEL_REF120" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 138 1.22222222222222 0 1.18421052631579 -1.1111111111111 -47.1052631578948
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""MUZ"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_L:;StationName:MUZ;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_L:MUZ.Structured.Station"
+3 120 "PANEL_REF123" -1
+"Navir\\objects\\HeartBeatChecker.pnl" -5.0000000000004 430 T 138 1.04545454545455 0 0.888888888888889 -4.40536496171262e-013 207.7777777777778
+1
+"$SystemName""Navir_L:"
+0

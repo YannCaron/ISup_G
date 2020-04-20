@@ -1,0 +1,253 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgRadars.sgRadars	1#1
+	Params	41#20:sgParams
+	History	41#21:sgFwHistory
+	GlobalStatus	41#372:sgFwSystem
+	Components	1#537
+		GV2S	1#542
+			FaultOnRadar	41#543:sgFwSystem
+			WarningOnRadar	41#544:sgFwSystem
+		GV1P	1#551
+			FaultOnRadar	41#552:sgFwSystem
+			WarningOnRadar	41#553:sgFwSystem
+			GPSTimeServer	41#554:sgFwSystem
+		GV1S	1#1524
+			FaultOnRadar	41#1858:sgFwSystem
+			WarningOnRadar	41#1859:sgFwSystem
+		DOLS	1#1528
+			FaultOnRadar	41#1860:sgFwSystem
+			WarningOnRadar	41#1861:sgFwSystem
+	DoleParams	41#1990:sgParams
+	DoleGlobalStatus	41#1997:sgFwSystem
+sgSAMAX.sgSAMAX	1#1
+	Components	1#2
+		SAMAXInterface	41#3:sgFwSystem
+		SAMAXSystem	41#4:sgFwSystem
+	GlobalStatus	41#5:sgFwSystem
+	Params	41#7:sgParams
+	History	41#175:sgFwHistory
+sgInterComm.sgInterComm	1#1
+	Components	1#2
+		AlarmsCenter	41#3:sgFwSystem
+		Interface	41#4:sgFwSystem
+		AlarmsCenterGVAPAY	41#223:sgFwSystem
+	GlobalStatus	41#5:sgFwSystem
+	History	41#109:sgFwHistory
+	Params	41#110:sgParams
+	RawDatas	1#355
+		LTInput016	23#356
+		LTInput017	23#357
+		LTInput055	23#358
+	WatchDogs	41#359:sgWatchDogs
+	Connections	41#360:sgFwConnections
+sgSYCONT.sgSYCONT	1#1
+	Components	1#2
+		SYCOStatus	41#3:sgFwSystem
+	GlobalStatus	41#4:sgFwSystem
+	History	41#5:sgFwHistory
+	Connections	41#7:sgFwConnections
+	Params	41#85:sgParams
+	RawDatas	1#159
+		LTInput053	23#160
+	WatchDogs	41#221:sgWatchDogs
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SAMAX	sgSAMAX	28944
+InterComm	sgInterComm	28945
+SYCONT	sgSYCONT	28946
+Radars	sgRadars	28947
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SAMAX.Components.SAMAXInterface	""	lt:1 LANG:5 "SAMAX interface@@"
+SAMAX.Components.SAMAXSystem	""	lt:1 LANG:5 "SAMAX system@@"
+SAMAX.GlobalStatus	""	lt:1 LANG:5 "SAMAX@@"
+InterComm.Components.AlarmsCenter	""	lt:1 LANG:5 "Central en défaut@@"
+InterComm.Components.Interface	""	lt:1 LANG:5 "Default interface@@"
+InterComm.Components.AlarmsCenterGVAPAY	""	lt:1 LANG:5 "Central en défaut@%s@"
+InterComm.GlobalStatus	""	lt:1 LANG:5 "InterPhone@%s@"
+SYCONT.Components.SYCOStatus	""	lt:1 LANG:5 "SYCO NT@@"
+SYCONT.GlobalStatus	""	lt:1 LANG:5 "SYCO NT@@"
+Radars.Components.GV1S	""	lt:1 LANG:5 "GVA1S@%s@"
+Radars.GlobalStatus	""	lt:1 LANG:5 "Radars@%s@"
+Radars.Components.GV2S.FaultOnRadar	""	lt:1 LANG:5 "GV2S: Fault On Radar@%s@"
+Radars.Components.GV2S.WarningOnRadar	""	lt:1 LANG:5 "GV2S: Warning On Radar@%s@"
+Radars.Components.GV1P.FaultOnRadar	""	lt:1 LANG:5 "GV1P: Fault On Radar@%s@"
+Radars.Components.GV1P.WarningOnRadar	""	lt:1 LANG:5 "GV1P: Warning On Radar@%s@"
+Radars.Components.GV1P.GPSTimeServer	""	lt:1 LANG:5 "GV1P: GPS Time Server@%s@"
+Radars.Components.GV1S.FaultOnRadar	""	lt:1 LANG:5 "GV1S: Fault On Radar@%s@"
+Radars.Components.GV1S.WarningOnRadar	""	lt:1 LANG:5 "GV1S: Warning On Radar@%s@"
+Radars.Components.DOLS.FaultOnRadar	""	lt:1 LANG:5 "DOLS: Fault On Radar@%s@"
+Radars.Components.DOLS.WarningOnRadar	""	lt:1 LANG:5 "DOLS: Warning On Radar@%s@"
+Radars.DoleGlobalStatus	""	lt:1 LANG:5 "Radars (Dôle)@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SAMAX.Components.SAMAXInterface.PreStatus	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.Components.SAMAXInterface.Status	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.Components.SAMAXInterface.Message	sgSAMAX	""	0x101	07.10.2015 08:47:12.722
+SAMAX.Components.SAMAXInterface.Params	sgSAMAX	"SAMAX.Params"	0x101	04.08.2015 07:32:08.142
+SAMAX.Components.SAMAXSystem.PreStatus	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.Components.SAMAXSystem.Status	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.Components.SAMAXSystem.Message	sgSAMAX	""	0x101	07.10.2015 08:47:12.722
+SAMAX.Components.SAMAXSystem.Params	sgSAMAX	"SAMAX.Params"	0x101	04.08.2015 07:32:08.144
+SAMAX.GlobalStatus.PreStatus	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.GlobalStatus.Status	sgSAMAX	"UKN"	0x101	07.10.2015 08:47:12.513
+SAMAX.GlobalStatus.Disabled	sgSAMAX	0	0x101	07.10.2015 08:47:26.668
+SAMAX.GlobalStatus.Message	sgSAMAX	""	0x101	07.10.2015 08:47:12.722
+SAMAX.GlobalStatus.Alarms.GenerateAlarms	sgSAMAX	1	0x300101	04.08.2015 13:04:35.080
+SAMAX.GlobalStatus.Alarms.AlarmActive	sgSAMAX	1	0x200101	07.10.2015 08:47:26.672
+SAMAX.GlobalStatus.LogicConfig.LogicEnabled	sgSAMAX	1	0x101	04.08.2015 07:32:08.147
+SAMAX.GlobalStatus.LogicConfig.Rule	sgSAMAX	"TTWorstCase"	0x101	04.08.2015 07:32:08.148
+SAMAX.GlobalStatus.LogicConfig.Inputs	sgSAMAX	"SAMAX.Components.*"	0x101	04.08.2015 07:32:08.150
+SAMAX.GlobalStatus.Params	sgSAMAX	""	0x100101	04.08.2015 13:05:22.972
+SAMAX.GlobalStatus.AETable	sgSAMAX	"AETable02"	0x101	08.07.2015 13:01:35.959
+SAMAX.Params.Histories	sgSAMAX	"SAMAX.History"	0x101	04.08.2015 07:32:08.156
+SAMAX.Params.AETable	sgSAMAX	"AETable01"	0x100101	06.08.2015 09:16:24.946
+SAMAX.Params.GenerateEvents	sgSAMAX	1	0x101	04.08.2015 07:32:08.159
+SAMAX.History.Message	sgSAMAX	"07/10/15	08:48:47	SEVERITY?	ISup Wago LT changed from UKN to OPS	 "	0x300101	07.10.2015 08:48:47.070
+SAMAX.History.HistorySize	sgSAMAX	100	0x101	04.08.2015 07:32:08.160
+SAMAX.History.ShortHistory	sgSAMAX	"04/08/15	13:38:09	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "04/08/15	13:40:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:10:47	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:13:57	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:17:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:21:24	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/08/15	09:21:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:26:25	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:27:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:16:30	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:33:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Wago LT changed from UKN to U/S	 ", "06/08/15	13:41:05	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:41:46	SEVERITY?	ISup Wago LT changed from OPS to U/S	 ", "06/08/15	13:42:00	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "25/08/15	12:02:04	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "01/09/15	03:33:12	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "01/09/15	03:33:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	13:31:50	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	14:00:08	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "03/09/15	06:29:16	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "23/09/15	11:15:46	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/10/15	12:16:30	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:34:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:41:37	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "06/10/15	13:42:41	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:23	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	07:46:06	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:47:03	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:38:20	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	08:40:47	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:47:24	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	08:48:47	SEVERITY?	ISup Wago LT changed from UKN to OPS	 "	0x101	07.10.2015 08:48:47.581
+InterComm.Components.AlarmsCenter.PreStatus	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.AlarmsCenter.Status	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.AlarmsCenter.Message	sgInterComm	""	0x101	07.10.2015 08:47:12.722
+InterComm.Components.AlarmsCenter.Events.EventText	sgInterComm	"Central TWR - APP"	0x101	04.08.2015 07:32:08.167
+InterComm.Components.AlarmsCenter.Params	sgInterComm	"InterComm.Params"	0x101	04.08.2015 07:32:08.168
+InterComm.Components.Interface.PreStatus	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.Interface.Status	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.Interface.Message	sgInterComm	""	0x101	07.10.2015 08:47:12.722
+InterComm.Components.Interface.Params	sgInterComm	"InterComm.Params"	0x101	04.08.2015 07:32:08.171
+InterComm.Components.AlarmsCenterGVAPAY.PreStatus	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.AlarmsCenterGVAPAY.Status	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.Components.AlarmsCenterGVAPAY.Message	sgInterComm	""	0x101	07.10.2015 08:47:12.722
+InterComm.Components.AlarmsCenterGVAPAY.Events.EventText	sgInterComm	"Central GVA - PAY"	0x101	04.08.2015 07:32:08.205
+InterComm.Components.AlarmsCenterGVAPAY.Params	sgInterComm	"InterComm.Params"	0x101	04.08.2015 07:32:08.207
+InterComm.GlobalStatus.PreStatus	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.GlobalStatus.Status	sgInterComm	"UKN"	0x101	07.10.2015 08:47:12.513
+InterComm.GlobalStatus.Disabled	sgInterComm	0	0x101	07.10.2015 08:47:26.649
+InterComm.GlobalStatus.Message	sgInterComm	""	0x101	07.10.2015 08:47:12.722
+InterComm.GlobalStatus.Alarms.GenerateAlarms	sgInterComm	1	0x101	04.08.2015 07:32:08.172
+InterComm.GlobalStatus.Alarms.AlarmActive	sgInterComm	1	0x200101	07.10.2015 08:47:26.653
+InterComm.GlobalStatus.LogicConfig.LogicEnabled	sgInterComm	1	0x101	04.08.2015 07:32:08.174
+InterComm.GlobalStatus.LogicConfig.Rule	sgInterComm	"TTWorstCase"	0x101	04.08.2015 07:32:08.175
+InterComm.GlobalStatus.LogicConfig.Inputs	sgInterComm	"InterComm.Components.*"	0x101	04.08.2015 07:32:08.177
+InterComm.GlobalStatus.AETable	sgInterComm	"AETable02"	0x101	04.08.2015 07:32:08.178
+InterComm.History.Message	sgInterComm	"07/10/15	08:48:47	SEVERITY?	ISup Wago LT changed from UKN to OPS	 "	0x300101	07.10.2015 08:48:47.070
+InterComm.History.HistorySize	sgInterComm	100	0x101	04.08.2015 07:32:08.180
+InterComm.History.ShortHistory	sgInterComm	"04/08/15	13:38:09	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "04/08/15	13:40:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:10:47	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:13:57	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:17:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:21:24	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/08/15	09:21:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:26:25	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:27:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:16:30	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:33:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Wago LT changed from UKN to U/S	 ", "06/08/15	13:41:05	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:41:46	SEVERITY?	ISup Wago LT changed from OPS to U/S	 ", "06/08/15	13:42:00	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "25/08/15	12:02:04	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "01/09/15	03:33:12	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "01/09/15	03:33:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	13:31:50	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	14:00:08	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "03/09/15	06:29:16	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "23/09/15	11:15:46	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/10/15	12:16:30	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:34:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:41:37	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "06/10/15	13:42:41	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:23	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	07:46:06	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:47:03	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:38:20	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	08:40:47	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:47:24	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	08:48:47	SEVERITY?	ISup Wago LT changed from UKN to OPS	 "	0x101	07.10.2015 08:48:47.580
+InterComm.Params.Histories	sgInterComm	"InterComm.History"	0x101	04.08.2015 07:32:08.181
+InterComm.Params.AETable	sgInterComm	"AETable01"	0x101	06.08.2015 09:16:58.510
+InterComm.Params.GenerateEvents	sgInterComm	1	0x101	04.08.2015 07:32:08.186
+SYCONT.Components.SYCOStatus.PreStatus	sgSYCONT	"OPS"	0x100101	07.10.2015 08:50:17.252
+SYCONT.Components.SYCOStatus.Status	sgSYCONT	"OPS"	0x100101	07.10.2015 08:50:17.254
+SYCONT.Components.SYCOStatus.Message	sgSYCONT	""	0x101	07.10.2015 08:47:12.722
+SYCONT.Components.SYCOStatus.Params	sgSYCONT	"SYCONT.Params"	0x101	04.08.2015 07:32:08.208
+SYCONT.GlobalStatus.PreStatus	sgSYCONT	"OPS"	0x100101	07.10.2015 08:50:17.406
+SYCONT.GlobalStatus.Status	sgSYCONT	"OPS"	0x100101	07.10.2015 08:50:17.420
+SYCONT.GlobalStatus.Disabled	sgSYCONT	0	0x101	07.10.2015 08:47:26.680
+SYCONT.GlobalStatus.Message	sgSYCONT	""	0x101	07.10.2015 08:47:12.722
+SYCONT.GlobalStatus.Alarms.GenerateAlarms	sgSYCONT	0	0x100101	04.08.2015 07:32:08.210
+SYCONT.GlobalStatus.Alarms.AlarmActive	sgSYCONT	1	0x300101	07.10.2015 08:46:11.126
+SYCONT.GlobalStatus.LogicConfig.LogicEnabled	sgSYCONT	1	0x101	04.08.2015 07:32:08.212
+SYCONT.GlobalStatus.LogicConfig.Rule	sgSYCONT	"TTWorstCase"	0x101	04.08.2015 07:32:08.213
+SYCONT.GlobalStatus.LogicConfig.Inputs	sgSYCONT	"SYCONT.Components.*"	0x101	04.08.2015 07:32:08.215
+SYCONT.GlobalStatus.Params	sgSYCONT	""	0x100101	04.08.2015 13:04:55.373
+SYCONT.GlobalStatus.AETable	sgSYCONT	"AETable02"	0x300101	04.08.2015 13:05:09.429
+SYCONT.History.Message	sgSYCONT	"07/10/15	08:50:17	SOLVED:  	SYCO NT changed from UKN to OPS	 "	0x300101	07.10.2015 08:50:17.254
+SYCONT.History.HistorySize	sgSYCONT	100	0x101	04.08.2015 07:32:08.220
+SYCONT.History.ShortHistory	sgSYCONT	"04/08/15	13:38:09	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "04/08/15	13:40:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:10:47	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	09:10:47	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:13:57	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:14:09	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	09:14:45	SEVERITY?	SYCO NT changed from OPS to qq	 ", "06/08/15	09:14:45	SEVERITY?	SYCO NT changed from qq to OPS	 ", "06/08/15	09:17:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:17:49	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	09:21:24	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/08/15	09:21:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:25:05	CRITICAL:	SYCO NT changed from OPS to UKN	 ", "06/08/15	09:25:24	WARNING: 	SYCO NT changed from UKN to U/S	 ", "06/08/15	09:25:44	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/08/15	09:25:47	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/08/15	09:25:55	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/08/15	09:26:25	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:27:28	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	09:27:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:16:30	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:16:30	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:33:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:33:27	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:34:27	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Wago LT changed from UKN to U/S	 ", "06/08/15	13:41:05	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:41:46	SEVERITY?	ISup Wago LT changed from OPS to U/S	 ", "06/08/15	13:42:00	SEVERITY?	ISup Wago LT changed from U/S to OPS	 ", "06/08/15	13:45:34	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:45:59	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/08/15	13:53:04	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:53:16	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/08/15	13:54:32	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/08/15	13:55:03	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "25/08/15	12:01:53	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "25/08/15	12:02:04	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "25/08/15	12:02:04	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "01/09/15	03:33:12	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "01/09/15	03:33:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	13:31:50	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "01/09/15	13:31:50	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	13:31:59	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "01/09/15	14:00:08	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	14:00:08	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "01/09/15	14:00:17	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "03/09/15	06:29:16	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "03/09/15	06:29:16	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "03/09/15	06:29:28	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "23/09/15	11:15:46	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/10/15	11:45:39	WARNING: 	SYCO NT changed from UKN to U/S	 ", "06/10/15	11:47:45	WARNING: 	SYCO NT changed from UKN to U/S	 ", "06/10/15	11:48:52	WARNING: 	SYCO NT changed from U/S to UKN	 ", "06/10/15	11:49:06	WARNING: 	SYCO NT changed from UKN to U/S	 ", "06/10/15	11:49:09	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/10/15	12:16:30	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:34:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:38:19	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/10/15	13:39:24	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/10/15	13:39:44	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/10/15	13:40:44	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/10/15	13:41:36	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "06/10/15	13:41:37	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "06/10/15	13:42:41	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "06/10/15	13:42:41	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "06/10/15	13:43:03	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:01	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:44:23	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	07:45:55	CRITICAL:	SYCO NT changed from OPS to U/S	 ", "07/10/15	07:46:05	SOLVED:  	SYCO NT changed from U/S to OPS	 ", "07/10/15	07:46:06	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:46:42	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	07:47:03	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:38:20	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	08:40:47	SEVERITY?	ISup Wago LT changed from OPS to UKN	 ", "07/10/15	08:47:16	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "07/10/15	08:47:24	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	08:47:35	CRITICAL:	SYCO NT changed from OPS to UKN	 ", "07/10/15	08:48:46	SOLVED:  	SYCO NT changed from UKN to OPS	 ", "07/10/15	08:48:47	SEVERITY?	ISup Wago LT changed from UKN to OPS	 ", "07/10/15	08:50:06	CRITICAL:	SYCO NT changed from OPS to UKN	 ", "07/10/15	08:50:17	SOLVED:  	SYCO NT changed from UKN to OPS	 "	0x101	07.10.2015 08:50:17.675
+SYCONT.Connections.Inputs	sgSYCONT	"SYCONT.RawDatas.LTInput053"	0x101	07.10.2015 08:54:45.721
+SYCONT.Connections.Outputs	sgSYCONT	"SYCONT.Components.SYCOStatus.PreStatus"	0x101	04.08.2015 07:32:08.224
+SYCONT.Connections.Rules	sgSYCONT	"ConnectWithConvertTableInvalid"	0x101	06.10.2015 11:40:36.504
+SYCONT.Connections.Params	sgSYCONT	"DirectTableString"	0x101	06.10.2015 11:47:27.867
+SYCONT.Params.Histories	sgSYCONT	"SYCONT.History"	0x101	04.08.2015 07:32:08.228
+SYCONT.Params.AETable	sgSYCONT	"AETable01"	0x100101	06.08.2015 09:16:12.875
+SYCONT.Params.GenerateEvents	sgSYCONT	1	0x101	04.08.2015 07:32:08.230
+SYCONT.RawDatas.LTInput053	sgSYCONT	1	0x200101	07.10.2015 08:59:13.849
+SYCONT.WatchDogs.References	sgSYCONT	"_SerialModbus_11.Status.Heartbeat"	0x101	06.08.2015 13:43:51.094
+SYCONT.WatchDogs.DefaultValues	sgSYCONT	"1"	0x101	07.10.2015 07:46:16.492
+SYCONT.WatchDogs.Outputs	sgSYCONT	"SYCONT.RawDatas.LTInput053:_original.._userbit1"	0x101	07.10.2015 08:55:06.830
+SYCONT.WatchDogs.Timeouts	sgSYCONT	12	0x101	06.08.2015 13:44:43.937
+Radars.Params.Histories	sgRadars	"Radars.History"	0x101	04.08.2015 07:32:08.231
+Radars.Params.AETable	sgRadars	"AETable01"	0x101	04.08.2015 07:32:08.232
+Radars.Params.GenerateEvents	sgRadars	1	0x101	04.08.2015 07:32:08.233
+Radars.History.Message	sgRadars	"07/10/15	08:47:24	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 "	0x300101	07.10.2015 08:47:24.758
+Radars.History.HistorySize	sgRadars	100	0x101	04.08.2015 07:32:08.234
+Radars.History.ShortHistory	sgRadars	"04/08/15	13:38:09	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "04/08/15	13:40:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:10:47	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:13:57	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:17:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:21:24	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/08/15	09:21:59	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:26:25	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	09:27:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:16:30	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:33:28	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:34:27	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:45:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:53:05	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/08/15	13:54:32	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "25/08/15	12:01:53	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	03:33:12	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "01/09/15	03:33:34	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	13:31:50	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "01/09/15	14:00:08	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "03/09/15	06:29:16	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "23/09/15	11:15:46	SEVERITY?	ISup Moxa LT changed from OPS to UKN	 ", "06/10/15	13:34:22	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "06/10/15	13:43:13	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:44:12	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	07:46:51	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 ", "07/10/15	08:47:24	SEVERITY?	ISup Moxa LT changed from UKN to OPS	 "	0x101	07.10.2015 08:47:25.391
+Radars.GlobalStatus.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.GlobalStatus.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.GlobalStatus.Disabled	sgRadars	0	0x101	07.10.2015 08:47:26.659
+Radars.GlobalStatus.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.GlobalStatus.Alarms.GenerateAlarms	sgRadars	1	0x300101	04.08.2015 13:03:43.964
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars	1	0x200101	07.10.2015 08:47:26.663
+Radars.GlobalStatus.LogicConfig.LogicEnabled	sgRadars	1	0x101	04.08.2015 07:32:08.237
+Radars.GlobalStatus.LogicConfig.Rule	sgRadars	"TTWorstCase"	0x101	04.08.2015 07:32:08.245
+Radars.GlobalStatus.LogicConfig.Inputs	sgRadars	"Radars.Components.*.*"	0x101	04.08.2015 07:32:08.248
+Radars.GlobalStatus.Params	sgRadars	""	0x100101	04.08.2015 13:03:22.010
+Radars.GlobalStatus.AETable	sgRadars	"AETable02"	0x101	08.07.2015 13:01:36.024
+Radars.Components.GV2S.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV2S.FaultOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV2S.FaultOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV2S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.252
+Radars.Components.GV2S.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV2S.WarningOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV2S.WarningOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV2S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.255
+Radars.Components.GV1P.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.FaultOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.FaultOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV1P.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.257
+Radars.Components.GV1P.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.WarningOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.WarningOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV1P.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.260
+Radars.Components.GV1P.GPSTimeServer.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.GPSTimeServer.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1P.GPSTimeServer.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV1P.GPSTimeServer.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.261
+Radars.Components.GV1S.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1S.FaultOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1S.FaultOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV1S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.268
+Radars.Components.GV1S.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1S.WarningOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.GV1S.WarningOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.GV1S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	04.08.2015 07:32:08.269
+Radars.Components.DOLS.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.DOLS.FaultOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.DOLS.FaultOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.DOLS.FaultOnRadar.Params	sgRadars	"Radars.DoleParams"	0x101	04.08.2015 07:32:08.270
+Radars.Components.DOLS.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.DOLS.WarningOnRadar.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.Components.DOLS.WarningOnRadar.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.Components.DOLS.WarningOnRadar.Params	sgRadars	"Radars.DoleParams"	0x101	04.08.2015 07:32:08.271
+Radars.DoleParams.Histories	sgRadars	"Radars.History", "DoleHistory"	0x101	04.08.2015 07:32:08.272
+Radars.DoleParams.AETable	sgRadars	"AETable01"	0x101	04.08.2015 07:32:08.273
+Radars.DoleParams.GenerateEvents	sgRadars	1	0x101	04.08.2015 07:32:08.274
+Radars.DoleGlobalStatus.PreStatus	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.DoleGlobalStatus.Status	sgRadars	"UKN"	0x101	07.10.2015 08:47:12.513
+Radars.DoleGlobalStatus.Message	sgRadars	""	0x101	07.10.2015 08:47:12.722
+Radars.DoleGlobalStatus.LogicConfig.LogicEnabled	sgRadars	1	0x101	04.08.2015 07:32:08.275
+Radars.DoleGlobalStatus.LogicConfig.Rule	sgRadars	"TTWorstCase"	0x101	04.08.2015 07:32:08.276
+Radars.DoleGlobalStatus.LogicConfig.Inputs	sgRadars	"Radars.Components.DOLS.*"	0x101	04.08.2015 07:32:08.277
+Radars.DoleGlobalStatus.AETable	sgRadars	"AETable02"	0x101	04.08.2015 07:32:08.279
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+SAMAX.GlobalStatus.Alarms.AlarmActive	sgSAMAX		12					"SAMAX/SAMAXMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SAMAX"	lt:1 LANG:5 ""												0								
+InterComm.GlobalStatus.Alarms.AlarmActive	sgInterComm		12					"InterComm/InterCommMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on InterPhone"	lt:1 LANG:5 ""												0								
+SYCONT.Components.SYCOStatus.Alarms.AlarmActive	sgSYCONT		12					"0"		lt:1 LANG:5 ""	\0	alert.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SYCO NT"	lt:1 LANG:5 ""												0								
+SYCONT.GlobalStatus.Alarms.AlarmActive	sgSYCONT		12					"SYCONT/SYCONTMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SYCO NT"	lt:1 LANG:5 ""												0								
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars		12					"Radars/RadarsMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on Radars"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+SYCONT.RawDatas.LTInput053	sgSYCONT	56	\4
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+SYCONT.RawDatas.LTInput053	sgSYCONT	16	"11_1701_1.1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"

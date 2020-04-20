@@ -1,0 +1,633 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 8 Stations
+LANG:1 4 AFPS
+1 588 74 "" 46
+0
+1 592 79 "" 46
+0
+1 595 80 "" 46
+0
+1 598 81 "" 46
+0
+1 601 83 "" 46
+0
+1 604 84 "" 46
+0
+1 607 85 "" 46
+0
+1 610 86 "" 46
+0
+1 613 87 "" 46
+0
+1 616 88 "" 46
+0
+1 619 89 "" 46
+0
+1 622 90 "" 46
+0
+1 625 91 "" 46
+0
+1 628 92 "" 46
+0
+1 631 93 "" 46
+0
+1 634 94 "" 46
+0
+1 637 95 "" 46
+0
+1 640 96 "" 46
+0
+1 643 97 "" 46
+0
+1 646 98 "" 46
+0
+1 649 99 "" 46
+0
+1 652 100 "" 46
+0
+1 655 101 "" 46
+0
+1 658 103 "" 46
+0
+1 661 104 "" 46
+0
+30 493
+"Frame1"
+""
+1 85 295 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+138 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 130 -70 0 E 85 135 305 300
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 7 Poste 2
+30 494
+"Frame2"
+""
+1 545 295 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+139 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 -100 -70 0 E 545 135 765 300
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 GVA 1
+30 495
+"Frame3"
+""
+1 315 295 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+140 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 -100 115 0 E 315 135 535 300
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 2 RX
+30 496
+"Frame4"
+""
+1 775 295 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+141 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 -100 -70 0 E 775 135 995 300
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 GVA 2
+30 497
+"Frame5"
+""
+1 205 553 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+142 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 10 75 0 E 205 360 425 560
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 7 Cunay 1
+30 498
+"Frame6"
+""
+1 665 517 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+143 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 -220 75 0 E 665 360 885 525
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 4 Dole
+1 591 75 "" 11
+0
+13 436
+"ForceToUKN"
+""
+1 80 660 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+123 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  78 658 282 692
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	wagoForceToUnknown(\"IOGw_G:\", \"Stations\");
+
+}
+" 0
+ E E E
+1 664 105 "" 46
+0
+1 667 106 "" 46
+0
+1 670 107 "" 46
+0
+1 673 108 "" 46
+0
+30 587
+"FRAME1"
+""
+1 315 295 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+149 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 130 115 0 E 315 135 535 300
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 3 RX2
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 589 74 "" 51
+0
+1 590 74 "" 52
+0
+1 593 79 "" 51
+0
+1 594 79 "" 52
+0
+1 596 80 "" 51
+0
+1 597 80 "" 52
+0
+1 599 81 "" 51
+0
+1 600 81 "" 52
+0
+1 602 83 "" 51
+0
+1 603 83 "" 52
+0
+1 605 84 "" 51
+0
+1 606 84 "" 52
+0
+1 608 85 "" 51
+0
+1 609 85 "" 52
+0
+1 611 86 "" 51
+0
+1 612 86 "" 52
+0
+1 614 87 "" 51
+0
+1 615 87 "" 52
+0
+1 617 88 "" 51
+0
+1 618 88 "" 52
+0
+1 620 89 "" 51
+0
+1 621 89 "" 52
+0
+1 623 90 "" 51
+0
+1 624 90 "" 52
+0
+1 626 91 "" 51
+0
+1 627 91 "" 52
+0
+1 629 92 "" 51
+0
+1 630 92 "" 52
+0
+1 632 93 "" 51
+0
+1 633 93 "" 52
+0
+1 635 94 "" 51
+0
+1 636 94 "" 52
+0
+1 638 95 "" 51
+0
+1 639 95 "" 52
+0
+1 641 96 "" 51
+0
+1 642 96 "" 52
+0
+1 644 97 "" 51
+0
+1 645 97 "" 52
+0
+1 647 98 "" 51
+0
+1 648 98 "" 52
+0
+1 650 99 "" 51
+0
+1 651 99 "" 52
+0
+1 653 100 "" 51
+0
+1 654 100 "" 52
+0
+1 656 101 "" 51
+0
+1 657 101 "" 52
+0
+1 659 103 "" 51
+0
+1 660 103 "" 52
+0
+1 662 104 "" 51
+0
+1 663 104 "" 52
+0
+1 665 105 "" 51
+0
+1 666 105 "" 52
+0
+1 668 106 "" 51
+0
+1 669 106 "" 52
+0
+1 671 107 "" 51
+0
+1 672 107 "" 52
+0
+1 674 108 "" 51
+0
+1 675 108 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 74 "Group6" -1
+"objects\\sgFwBlock.pnl" 440 200 T 105 0.5 0 0.125 4.92236024844721 64.7678571428571
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Poste2.StationIntrusion"
+3 75 "Group8" -1
+"objects\\sgFwHistory.pnl" 10 710 T 106 1 0 1 -10 -10
+2
+"$SystemHistory""Stations.History"
+"$SystemName""IOGw_G:"
+3 79 "Group12" -1
+"objects\\sgFwBlock.pnl" 20 70 T 110 0.5 0 0.125 215.398550724638 116.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Poste2.SmokeAlarm"
+3 80 "Group14" -1
+"objects\\sgFwBlock.pnl" 20 70 T 111 0.5 0 0.125 215.398550724638 151.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Poste2.SecuritySystem"
+3 81 "Group16" -1
+"objects\\sgFwBlock.pnl" 20 70 T 112 0.5 0 0.125 214.684265010352 186.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Poste2.TechnicalPresence"
+3 83 "Group23" -1
+"objects\\sgFwBlock.pnl" 20 70 T 114 0.5 0 0.125 674.922360248447 81.2678571428571
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA2.StationIntrusion"
+3 84 "Group24" -1
+"objects\\sgFwBlock.pnl" 230 70 T 115 0.5 0 0.125 569.5161977834611 116.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA2.SmokeAlarm"
+3 85 "Group25" -1
+"objects\\sgFwBlock.pnl" 410 70 T 116 0.5 0 0.125 479.746376811594 151.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA2.SecuritySystem"
+3 86 "Group26" -1
+"objects\\sgFwBlock.pnl" 650 70 T 117 0.5 0 0.125 359.615771859667 186.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA2.TechnicalPresence"
+3 87 "Group31" -1
+"objects\\sgFwBlock.pnl" 20 70 T 118 0.5 0 0.125 444.922360248447 81.2678571428571
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA1.StationIntrusion"
+3 88 "Group32" -1
+"objects\\sgFwBlock.pnl" 230 70 T 119 0.5 0 0.125 339.516197783461 116.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA1.SmokeAlarm"
+3 89 "Group33" -1
+"objects\\sgFwBlock.pnl" 410 70 T 120 0.5 0 0.125 249.746376811594 151.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA1.SecuritySystem"
+3 90 "Group34" -1
+"objects\\sgFwBlock.pnl" 650 70 T 121 0.5 0 0.125 129.615771859667 186.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.GVA1.TechnicalPresence"
+3 91 "Group39" -1
+"objects\\sgFwBlock.pnl" 20 70 T 124 0.5 0 0.125 214.922360248447 266.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX.StationIntrusion"
+3 92 "Group40" -1
+"objects\\sgFwBlock.pnl" 230 70 T 125 0.5 0 0.125 109.516197783461 301.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX.SmokeAlarm"
+3 93 "Group41" -1
+"objects\\sgFwBlock.pnl" 410 70 T 126 0.5 0 0.125 19.7463768115941 336.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX.SecuritySystem"
+3 94 "Group42" -1
+"objects\\sgFwBlock.pnl" 650 70 T 127 0.5 0 0.125 -100.384228140333 371.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX.TechnicalPresence"
+3 95 "Group47" -1
+"objects\\sgFwBlock.pnl" 20 70 T 128 0.5 0 0.125 214.922360248447 451.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Cunay.StationIntrusion"
+3 96 "Group48" -1
+"objects\\sgFwBlock.pnl" 230 70 T 129 0.5 0 0.125 109.516197783461 486.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Cunay.SmokeAlarm"
+3 97 "Group49" -1
+"objects\\sgFwBlock.pnl" 410 70 T 130 0.5 0 0.125 19.7463768115942 521.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Cunay.SecuritySystem"
+3 98 "Group50" -1
+"objects\\sgFwBlock.pnl" 650 70 T 131 0.5 0 0.125 -100.384228140333 556.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Cunay.TechnicalPresence"
+3 99 "Group52" -1
+"objects\\sgFwBlock.pnl" 20 340 T 132 0.5 0 0.125 214.922360248447 557.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Cunay.TTLineFaulty"
+3 100 "Group58" -1
+"objects\\sgFwBlock.pnl" 20 340 T 133 0.5 0 0.125 444.922360248447 417.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.StationIntrusion"
+3 101 "Group59" -1
+"objects\\sgFwBlock.pnl" 230 340 T 134 0.5 0 0.125 339.516197783461 452.267857142857
+5
+"$LabelsNum""0"
+"$PanelName""Stations/DoleSmokeAlarm.pnl"
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.GlobalStatus"
+3 103 "Group61" -1
+"objects\\sgFwBlock.pnl" 650 340 T 136 0.5 0 0.125 129.615771859667 522.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.TechnicalPresence"
+3 104 "Group62" -1
+"objects\\sgFwBlock.pnl" 880 340 T 137 0.5 0 0.125 14.9223602484472 487.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.Cerberus"
+3 105 "PANEL_REF106" -1
+"objects\\sgFwBlock.pnl" 20 70 T 144 0.5 0 0.125 444.922360248447 266.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX2.StationIntrusion"
+3 106 "PANEL_REF107" -1
+"objects\\sgFwBlock.pnl" 230 70 T 145 0.5 0 0.125 339.516197783461 301.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX2.SmokeAlarm"
+3 107 "PANEL_REF108" -1
+"objects\\sgFwBlock.pnl" 410 70 T 146 0.5 0 0.125 249.746376811594 336.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX2.SecuritySystem"
+3 108 "PANEL_REF109" -1
+"objects\\sgFwBlock.pnl" 650 70 T 147 0.5 0 0.125 129.615771859667 371.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams""SystemName:IOGw_G:"
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.RX2.TechnicalPresence"
+0

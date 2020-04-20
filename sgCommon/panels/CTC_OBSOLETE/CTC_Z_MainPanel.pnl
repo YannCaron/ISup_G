@@ -1,0 +1,243 @@
+V 11
+2
+LANG:5 10 sgCTCPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 17 CompuTime Centers
+LANG:1 4 AFPS
+2 233
+"Text5"
+""
+1 516.0392156862747 223 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+79 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 518.0392156862747 225 614 248
+0 2 0 "0s" 0 0 0 192 0 0  518.0392156862747 225 1
+1
+LANG:5 27 Tahoma,-1,19,5,69,0,0,0,0,0
+0 1
+LANG:5 9 CTC   ANZ
+4 246
+"Line5"
+" "
+1 563.0392156862747 85 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+92 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  563 650 563 85
+4 247
+"Line6"
+" "
+1 564.0392156862747 86.0967277217534 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+93 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  564 650 564 86
+1 332 37 "" 46
+0
+1 335 38 "" 46
+0
+1 338 39 "" 46
+0
+1 341 45 "" 46
+0
+1 344 46 "" 46
+0
+13 205
+"ForceToUKN"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+		sgCTCForceAllCTCToUKN();
+		
+		sgHistoryAddEvent(\"CTC.History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+}
+
+" 0
+ E E E
+1 347 47 "" 11
+0
+2 328
+"PRIMITIVE_TEXT2"
+""
+1 591.0392156862747 243 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+115 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 593.0392156862747 245 633 261
+0 2 0 "0s" 0 0 0 192 0 0  593.0392156862747 245 1
+1
+LANG:5 27 Tahoma,-1,13,5,75,0,0,0,0,0
+0 1
+LANG:5 6 Clocks
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 333 37 "" 51
+0
+1 334 37 "" 52
+0
+1 336 38 "" 51
+0
+1 337 38 "" 52
+0
+1 339 39 "" 51
+0
+1 340 39 "" 52
+0
+1 342 45 "" 51
+0
+1 343 45 "" 52
+0
+1 345 46 "" 51
+0
+1 346 46 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 37 "Group12" -1
+"objects\\sgFwBlock.pnl" 30 190 T 61 0.490196078431373 0 0.181818181818182 420.294117647059 362.272727272728
+5
+"$LabelsNum""0"
+"$PanelName""CTC/CTCDetails.pnl"
+"$PanelParams""CTCName:CTC-ANZ-UHREN-B-C"
+"$SystemName"""
+"$SystemStatus""CTC.Components.CTC-ANZ-UHREN-B-C.GlobalStatus"
+3 38 "Group14" -1
+"objects\\sgFwBlock.pnl" 30 310 T 62 0.490196078431373 0 0.181818181818182 420.294117647059 280.454545454546
+5
+"$LabelsNum""0"
+"$PanelName""CTC/CTCDetails.pnl"
+"$PanelParams""CTCName:CTC-ANZ-UHREN-A-LW"
+"$SystemName"""
+"$SystemStatus""CTC.Components.CTC-ANZ-UHREN-A-LW.GlobalStatus"
+3 39 "Group19" -1
+"objects\\sgFwBlock.pnl" 260 130 T 63 0.487608622994652 0 0.181818181818182 308.7367491087347 433.181818181819
+5
+"$LabelsNum""0"
+"$PanelName""CTC/CTCDetails.pnl"
+"$PanelParams""CTCName:CTC-ANZ-UHREN-D-E"
+"$SystemName"""
+"$SystemStatus""CTC.Components.CTC-ANZ-UHREN-D-E.GlobalStatus"
+3 45 "Group12" -1
+"objects\\sgFwBlock.pnl" 580 120 T 69 0.490196078431373 0 0.181818181818182 150.6862745098037 255.000000000001
+5
+"$LabelsNum""0"
+"$PanelName""CTC/CTCDetails.pnl"
+"$PanelParams""CTCName:CTC-ANZ-UHREN-A-SG"
+"$SystemName"""
+"$SystemStatus""CTC.Components.CTC-ANZ-UHREN-A-SG.GlobalStatus"
+3 46 "Group14" -1
+"objects\\sgFwBlock.pnl" 375 470 T 70 0.488451608401368 0 0.181818181818182 252.1795408554887 431.363636363637
+5
+"$LabelsNum""0"
+"$PanelName""CTC/CTCDetails.pnl"
+"$PanelParams""CTCName:CTC-ANZ-ERSATZ-1"
+"$SystemName"""
+"$SystemStatus""CTC.Components.CTC-ANZ-ERSATZ-1.GlobalStatus"
+3 47 "" -1
+"objects\\sgFwHistory.pnl" 115 595 T 74 1 0 1 -115 105
+2
+"$SystemHistory""CTC.History"
+"$SystemName"""
+0

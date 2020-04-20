@@ -1,0 +1,723 @@
+V 11
+2
+LANG:5 12 LogicalLines
+LANG:1 12 LogicalLines
+PANEL,-1 -1 914 966 N "_3DFace" 0
+"main()
+{
+  form_initialize();
+}" 0
+ "main()
+{
+  form_terminate();
+}" 0
+ E E E 1 -1 -1 0  45 50
+""0  1
+E "// const
+const int WAGO_COLUMN_INPUT = 0;
+const int WAGO_COLUMN_DESCRIPTION = 1;
+const int WAGO_COLUMN_NONC = 2;
+const int WAGO_COLUMN_DELAY = 3;
+const int WAGO_COLUMN_ACTIVE = 4;
+const int WAGO_COLUMN_ALARM = 5;
+const int WAGO_COLUMN_ALARM_TEXT = 6;
+
+// global
+dyn_string dps;
+dyn_string references;
+int len;
+string id, wipDP;
+int threadID;
+bool threadRun;
+bool shouldBeSaved = false;
+
+void loadDps() {
+  id = getOptionalParam(\"$id\", \"StationBNA.Components.BNAA60VO01\");
+  dps = dpNames(id + \".Inputs.*\");
+  len = dynlen(dps);
+
+}
+
+void tickWip() {
+  threadRun = true;
+  while(threadRun) {
+    dpSet(wipDP, true);
+    
+    delay(1, 0);
+  }
+}
+
+// event
+void form_initialize() {
+  enableGlobalButtons(false);
+  loadDps();
+  
+  wipDP = id + \".WorkInProgress\";
+  threadID = startThread(\"tickWip\");
+  
+  load();
+  shouldBeSaved = false;
+}
+
+void form_terminate() {
+  dpSet(wipDP, false);
+  threadRun = false;
+}
+
+void save_clicked() {
+  saveData();
+
+  // reload
+  load();  
+  shouldBeSaved = false;
+}
+
+void refresh_clicked() {
+  detectShouldBeSave();
+  load();
+  shouldBeSaved = false;
+}
+
+void dataGrid_keyboardFocusedIn() {
+  shouldBeSaved = true;
+}
+
+void activate_clicked() {
+  for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+    dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_ACTIVE, true);
+  }
+}
+
+void desactivate_clicked() {
+  for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+    dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_ACTIVE, false);
+  }
+}
+
+void invert_clicked() {
+  for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+    dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_NONC, true);
+  }
+}
+
+void nonInvert_clicked() {
+  for (int i = 1; i <= dynlen(dataGrid.getSelectedRows()); i++) {
+    dataGrid.setValue(dataGrid.getSelectedRows()[i], WAGO_COLUMN_NONC, false);
+  }
+}
+
+void copy_clicked() {
+  dataGrid.copy();
+}
+
+void paste_clicked() {
+  dataGrid.paste();
+}
+
+// method
+void detectShouldBeSave() {
+  if (shouldBeSaved && 
+      showDialog(MSGBOX_SAVE, \"Save\", \"Modifications was not saved.\\nWould you like to save it before process?\")) {
+    
+    shouldBeSaved = false;
+    saveData();
+  }
+}
+
+void load() {
+  dataGrid.visible = false;
+  dataGrid.clear();
+  
+  dataModel();
+  loadData();
+  
+  dataGrid.visible = true;
+}
+
+void dataModel() {
+  dataGrid.addReadonlyColumn(\"Name\");
+  dataGrid.addStringColumn(\"Description\");
+  dataGrid.addComboColumn(\"Normal O/C\", makeDynString(\"NOpen\", \"NClosed\"), makeDynBool(FALSE, TRUE));
+  dataGrid.addIntColumn(\"Cycle delay\", WAGO_DELAY_MIN, WAGO_DELAY_MAX);
+  dataGrid.addBoolColumn(\"Alarm\");
+  dataGrid.addComboColumn(\"Alarm Type\", makeDynString(\"Alarm\", \"Disturbance\", \"Warning\"), WAGO_ALARMS);
+  dataGrid.addStringColumn(\"Alarm Text\");
+}
+
+void loadData() {
+  dataGrid.setColumnValues(WAGO_COLUMN_INPUT, dynFillStringFormat(dynlen(dps), \"Input.%03d\"));  
+  dataGrid.setColumnValues(WAGO_COLUMN_DESCRIPTION, (dyn_string) getDpValues(dps, \":_alert_hdl.._help\"));  
+  dataGrid.setColumnValues(WAGO_COLUMN_DELAY, loadCycles(dps));  
+
+  // alert hdl
+  dataGrid.setColumnValues(WAGO_COLUMN_ACTIVE, getDpValues(dps, \":_alert_hdl.._active\"));  
+  dataGrid.setColumnValues(WAGO_COLUMN_NONC, getDpValues(dps, \":_alert_hdl.._ok_range\"));  
+  dataGrid.setColumnValues(WAGO_COLUMN_ALARM, (dyn_string)getDpValues(dps, \":_alert_hdl.._class\"));  
+  dataGrid.setColumnValues(WAGO_COLUMN_ALARM_TEXT, loadTexts(dps));
+
+}
+
+dyn_int loadCycles(dyn_string &dps) {
+  
+  dyn_string rawReferences = getDpValues(dps, \":_address.._reference\");
+  dyn_int result;  
+  
+  for(int i = 1; i <= dynlen(rawReferences); i++) {
+    int cycle = 0;
+    int pos = strpos(rawReferences[i], \"$\");
+    string reference = rawReferences[i];
+    if (pos > 0) {
+      reference = substr(rawReferences[i], 0, pos);
+      cycle = (int)substr(rawReferences[i], pos + 1);
+    }
+    dynAppend(references, reference);
+    dynAppend(result, cycle);
+  }
+  
+  return result;
+  
+}
+
+dyn_string loadTexts(dyn_string &dps) {
+  dyn_string text0 = getDpValues(dps, \":_alert_hdl.._text0\");
+  dyn_string text1 = getDpValues(dps, \":_alert_hdl.._text1\");
+  dyn_string texts;
+  
+  for(int i = 1; i <= dynlen(text0); i++) {
+      dynAppend(texts, \"\" + text0[i] + text1[i]);
+  }
+  
+  return texts;
+
+}
+
+void saveData() {
+  dataGrid.visible = false;
+
+  // ack all before modifying
+  dpSetWait(dpAppend(dps, \":_alert_hdl.._ack\"), dynFillInt(len, DPATTR_ACKTYPE_SINGLE));
+  dpSetWait(dpAppend(dps, \":_alert_hdl.._active\"), dynFillBool(len, FALSE));
+      
+  // alert
+  dyn_bool actives = dataGrid.getColumnValues(WAGO_COLUMN_ACTIVE);
+  dyn_bool nonc = dataGrid.getColumnValues(WAGO_COLUMN_NONC);
+  dyn_int cycles = dataGrid.getColumnValues(WAGO_COLUMN_DELAY);
+  dyn_string alarms = dataGrid.getColumnValues(WAGO_COLUMN_ALARM);
+  dyn_string texts = dataGrid.getColumnValues(WAGO_COLUMN_ALARM_TEXT);
+  dyn_string descriptions = dataGrid.getColumnValues(WAGO_COLUMN_DESCRIPTION);
+  
+  for (int i = 1; i <= dynlen(dps); i++) {
+    saveLogicAlert(dps[i], actives[i], nonc[i], alarms[i], texts[i], descriptions[i]);
+  }
+  
+  // smoothing
+  dyn_string referencesWithCycle;
+  for (int i = 1; i <= dynlen(references); i++) {
+    if (cycles[i] == 0) {
+      dynAppend(referencesWithCycle, references[i]);
+    } else {
+      dynAppend(referencesWithCycle, references[i] + \"$\" + cycles[i]);
+    }
+  }
+
+  dpSetWait(dpAppend(dps, \":_address.._reference\"), referencesWithCycle);
+  
+}
+
+void enableGlobalButtons(bool state)
+{
+  CopyBtn.enabled = state;
+  PasteBtn.enabled = state;
+  NoClosedBtn.enabled = state;
+  NoOpenBtn.enabled = state;
+  ActivateBtn.enabled = state;
+  UnactivateBtn.enabled = state;
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 25
+"SaveBtn"
+""
+1 849.9999999999998 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  848 933 912 962
+
+T 
+2
+LANG:5 4 Save
+LANG:1 4 Save
+"main()
+{
+  save_clicked();
+}" 0
+ E E E
+2 28
+"PRIMITIVE_TEXT1"
+""
+1 320 445 E E E 1 E 1 E N "black_grey_g" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 320 445 606 478
+0 2 2 "0s" 0 0 0 192 0 0  320 445 1
+2
+LANG:5 27 Tahoma,20,-1,5,75,0,0,0,0,0
+LANG:1 27 Tahoma,20,-1,5,75,0,0,0,0,0
+0 2
+LANG:5 21 Loading, please wait!
+LANG:1 21 Loading, please wait!
+13 29
+"ActivateBtn"
+""
+1 630 948.1578947368421 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  628 933 692 962
+
+T 
+2
+LANG:5 8 Activate
+LANG:1 8 Activate
+"main()
+{
+  activate_clicked();
+}" 0
+ E E E
+13 30
+"UnactivateBtn"
+""
+1 695 948.1578947368421 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  693 933 767 962
+
+T 
+2
+LANG:5 10 Unactivate
+LANG:1 11 Desactivate
+"main()
+{
+  desactivate_clicked();
+}" 0
+ E E E
+13 31
+"RefreshBtn"
+""
+1 784.9999999999998 948.1578947368421 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  783 933 847 962
+
+T 
+2
+LANG:5 7 Refresh
+LANG:1 7 Refresh
+"main()
+{
+  refresh_clicked();
+}" 0
+ E E E
+13 32
+"NoClosedBtn"
+""
+1 465 948.1578947368423 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  463 933 537 962
+
+T 
+2
+LANG:5 10 No. Closed
+LANG:1 6 Invert
+"main()
+{
+  invert_clicked();
+}" 0
+ E E E
+13 33
+"NoOpenBtn"
+""
+1 539.9999999999999 948.1578947368421 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  538 933 612 962
+
+T 
+2
+LANG:5 8 No. Open
+LANG:1 10 Non invert
+"main()
+{
+  nonInvert_clicked();
+}" 0
+ E E E
+4 34
+"LINE1"
+""
+1 775 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  775 930 775 960
+4 35
+"LINE2"
+""
+1 776 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  776 930 776 960
+4 36
+"LINE3"
+""
+1 620 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  620 930 620 960
+4 37
+"LINE4"
+""
+1 621 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  621 930 621 960
+4 38
+"LINE5"
+""
+1 455 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+38 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  455 930 455 960
+4 39
+"LINE6"
+""
+1 456 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  456 930 456 960
+13 40
+"CopyBtn"
+""
+1 350 948.1578947368423 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  348 933 397 962
+
+T 
+2
+LANG:5 4 Copy
+LANG:1 6 Invert
+"main()
+{
+  copy_clicked();
+}" 0
+ E E E
+13 41
+"PasteBtn"
+""
+1 400 948.1578947368423 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 34 MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  398 933 447 962
+
+T 
+2
+LANG:5 5 Paste
+LANG:1 10 Non invert
+"main()
+{
+  paste_clicked();
+}" 0
+ E E E
+4 43
+"LINE7"
+""
+1 340 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+43 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  340 930 340 960
+4 44
+"LINE8"
+""
+1 341 930 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  341 930 341 960
+4 47
+"LINE11"
+""
+1 915.2387045506523 930 E E E 1 E 1 E N "_AlertPanelBackground" E N {255,255,255} E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  915 930 0 930
+4 48
+"LINE12"
+""
+1 915.2387045506523 931 E E E 1 E 1 E N "White" E N {255,255,255} E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  915 931 0 931
+29 27
+"dataGrid"
+""
+1 14.24100156494523 11.639549436796 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+27 0 0 0 0 0
+"main()
+{
+  dataGrid_keyboardFocusedIn();
+}" 0
+ E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+4
+"selectionMode" "enum 3"
+"selectionBehavior" "enum 1"
+"alternatingRow" "bool TRUE"
+"columnResizeMode" "enum 3"
+2
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  0 0 910 930
+12 DataGrid.ewo
+0
+E13 49
+"EnableCommands"
+""
+1 5 935 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 35 MS Shell Dlg 2,10,-1,5,75,0,0,0,0,0
+0  3 933 172 962
+
+T 
+1
+LANG:5 22 Enable Global commands
+"main()
+{
+  enableGlobalButtons(true);
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+1 0 "SHAPE_GROUP0" -1
+2 0 
+34 35 
+
+1 1 "SHAPE_GROUP1" -1
+2 0 
+36 37 
+
+1 2 "SHAPE_GROUP2" -1
+2 0 
+38 39 
+
+1 3 "SHAPE_GROUP3" -1
+2 0 
+43 44 
+
+1 5 "SHAPE_GROUP5" -1
+2 0 
+47 48 
+
+0

@@ -1,0 +1,36 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgSMS.sgSMS	1#1
+	SMSTest	41#2:sgFwSystem
+	SMSMode	23#3
+	SMSConfig	1#36
+		LocalSMSSystems	9#37
+		RemoteSMSSystems	9#38
+		SMTPServerName	25#41
+	EmailTest	41#76:sgFwSystem
+	EmailMode	23#77
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SMS	sgSMS	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SMS.SMSTest	""	lt:1 LANG:5 "ISup SMS Test@%s@"
+SMS.SMSTest.Alarms.AlarmActive	""	lt:1 LANG:5 "TEST SMS MODE@@"
+SMS.EmailTest	""	lt:1 LANG:5 "ISup Email Test@%s@"
+SMS.EmailTest.Alarms.AlarmActive	""	lt:1 LANG:5 "TEST Email MODE@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SMS.SMSTest.Alarms.GenerateAlarms	sgSMS	1	0x101	03.05.2017 08:56:29.228
+SMS.SMSTest.AETable	sgSMS	"AETable01"	0x101	03.05.2017 08:56:29.229
+SMS.EmailTest.Alarms.GenerateAlarms	sgSMS	1	0x101	03.05.2017 08:56:29.229
+SMS.EmailTest.AETable	sgSMS	"AETable01"	0x101	03.05.2017 08:56:29.230
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+SMS.SMSTest.Alarms.AlarmActive	sgSMS		12					""		lt:1 LANG:5 ""	\0	alert.		1	0	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alert TEST SMS Mode"	lt:1 LANG:5 ""												0								
+SMS.EmailTest.Alarms.AlarmActive	sgSMS		12					""		lt:1 LANG:5 ""	\0	alert.		1	0	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alert TEST Email Mode"	lt:1 LANG:5 ""												0								

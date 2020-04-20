@@ -1,0 +1,84 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,474 100 349 117 N "_3DFace" 2
+"$DisjoncteurDpName"
+"$RedresseurDpName"
+EEE E E 1 -1 -1 0  -1 -1
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 104 17 "" 46
+0
+1 107 17 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 11 Redresseur 
+
+0
+1 108 17 "" 24
+0
+1 109 17 "" 40
+0
+1 110 18 "" 46
+0
+1 111 18 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 21 Disjoncteur batteries
+
+0
+1 112 18 "" 24
+0
+1 113 18 "" 40
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 17 "Group36"
+"objects\\sgFwBlock.pnl" 740 80 T 22 0.8250000000000001 0 0.25  -600.1546218487393 -10.49999999999997  
+4
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""$RedresseurDpName"
+3 18 "Group4"
+"objects\\sgFwBlock.pnl" 10 10 T 22 0.8250000000000001 0 0.15  1.845378151260661 78.50000000000003  
+4
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemStatus""$DisjoncteurDpName"
+0

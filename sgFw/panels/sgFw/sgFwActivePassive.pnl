@@ -1,0 +1,183 @@
+V 10
+1
+LANG:5 15 ActivePassiveTT
+PANEL,-1 -1 201 56 N "_3DFace" 0
+"
+string myHost;
+
+main()
+{
+	string hostInfo;
+	string projNr;
+	dyn_string patches;
+
+	stayOnTop(true);
+
+	myHost = getHostname();
+	if( isServerA(myHost) )
+		hostInfo = \"Server A (\" + myHost + \")\";
+	else if (isServerB(myHost) )
+		hostInfo = \"Server B (\" + myHost + \")\";
+  else
+  {
+  	hostInfo = \"Client \" + \" (\" + myHost + \")\";
+  }
+
+	projNr = PROJ_PATH;
+	
+	int point = strpos(projNr, \".\");
+	projNr = substr( projNr, (point-1), (strlen(projNr) - point) );
+		
+	patches = getFileNames(PROJ_PATH,\"*.*\"); 
+	//DebugTN(patches);
+	
+	int highestPatch;
+	string patchName;
+	
+	for (int i=1; i<=dynlen(patches); i++)
+	{
+		//int ver = strpos(patches[i], projNr);
+		//patches[i] = substr(patches[i], (ver+5), strlen(patches[i]) - (ver+9));
+		
+		patches[i] = substr( patches[i], strpos(patches[i], \".\"));
+		patches[i] = substr( patches[i], strpos(patches[i], \"P\"));
+		patches[i] = substr( patches[i], 0, strpos(patches[i], \".txt\"));
+		int tmp = substr(patches[i], 1);
+		
+		if (tmp > highestPatch)
+		{
+			highestPatch = tmp;
+			patchName = patches[i];
+		}
+			
+		//DebugTN(patches, highestPatch, patches[i]);
+	}
+
+	hostInfo += \" v\" + projNr;
+	if (patchName != \"\")
+		hostInfo +=  \" - \" + patchName;
+	
+	dpConnect(\"sgFwActiveChainChanged\", ACTIVE_CHAIN);
+	
+	info.text = hostInfo;
+}
+
+void sgFwActiveChainChanged(string dp, string activeChain)
+{
+
+	//DebugTN(activeChain, myHost);
+	if( ( ( activeChain == \"A\")  && ( isServerA(myHost) ) ) ||
+	    ( ( activeChain == \"B\")  && ( isServerB(myHost) ) ) )
+	{
+		state.text = \"ACTIVE\";
+		border.backCol = \"sgStdOPSColor\";
+	}
+	else if( ( isServerA(myHost) )  || ( isServerB(myHost) ) )
+	{
+		state.text = \"PASSIVE\";
+		border.backCol = \"sgStdSBYColor\";
+	}
+	else
+	{
+		state.text = \"CLIENT\";
+		border.backCol = \"sgStdABSColor\";
+	}
+}" 0
+ E E E E 1 -1 -1 0  10 50
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+6 1
+"border"
+""
+1 10 65 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 5 1 0 1 E 1 0 1 -10 -10 1 E 10 10 210 65
+2 0
+"state"
+""
+1 0 2 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 2 4 198 37
+0 2 0 "0s" 0 0 0 65 0 0  2 4 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-27-*-100-100-*-*-iso8859-1|-27,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 5 Text1
+2 2
+"info"
+""
+1 0 35 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 2 37 198 53
+0 2 0 "0s" 0 0 0 65 0 0  2 37 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 5 Text1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

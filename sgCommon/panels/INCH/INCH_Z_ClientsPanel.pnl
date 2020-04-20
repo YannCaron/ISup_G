@@ -1,0 +1,767 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 4
+"$FirstClientDigit"
+"$FourthClientDigit"
+"$SecondClientDigit"
+"$ThirdClientDigit"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,75,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 19 INCH Zürich Clients
+LANG:1 4 AFPS
+1 1 33 "" 46
+0
+1 4 37 "" 46
+0
+1 7 39 "" 46
+0
+1 10 41 "" 46
+0
+1 13 43 "" 46
+0
+1 16 44 "" 46
+0
+1 19 45 "" 46
+0
+1 22 49 "" 46
+0
+1 25 50 "" 46
+0
+1 28 51 "" 46
+0
+1 31 55 "" 46
+0
+1 34 59 "" 46
+0
+1 37 61 "" 46
+0
+1 40 62 "" 46
+0
+1 43 63 "" 46
+0
+1 46 64 "" 46
+0
+1 49 65 "" 46
+0
+1 52 66 "" 46
+0
+1 55 67 "" 46
+0
+1 58 68 "" 46
+0
+1 61 69 "" 46
+0
+1 64 79 "" 46
+0
+1 67 80 "" 46
+0
+1 70 81 "" 46
+0
+1 73 82 "" 46
+0
+1 76 83 "" 46
+0
+1 79 84 "" 46
+0
+1 82 85 "" 46
+0
+1 85 86 "" 46
+0
+1 88 87 "" 46
+0
+1 91 98 "" 0
+0
+1 92 99 "" 0
+0
+1 93 100 "" 0
+0
+1 94 101 "" 0
+0
+1 95 102 "" 0
+0
+1 96 103 "" 0
+0
+1 97 104 "" 0
+0
+1 98 105 "" 0
+0
+1 99 106 "" 0
+0
+1 100 107 "" 0
+0
+1 101 108 "" 0
+0
+1 102 109 "" 0
+0
+1 103 110 "" 0
+0
+1 104 111 "" 0
+0
+1 105 112 "" 0
+0
+1 106 113 "" 0
+0
+1 107 114 "" 0
+0
+1 108 115 "" 0
+0
+1 109 116 "" 0
+0
+1 110 117 "" 0
+0
+1 111 118 "" 0
+0
+1 112 119 "" 0
+0
+1 113 120 "" 0
+0
+1 114 121 "" 0
+0
+1 115 122 "" 0
+0
+1 116 123 "" 0
+0
+1 117 124 "" 0
+0
+1 118 125 "" 0
+0
+1 119 126 "" 0
+0
+1 120 127 "" 0
+0
+1 121 128 "" 11
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 2 33 "" 51
+0
+1 3 33 "" 52
+0
+1 5 37 "" 51
+0
+1 6 37 "" 52
+0
+1 8 39 "" 51
+0
+1 9 39 "" 52
+0
+1 11 41 "" 51
+0
+1 12 41 "" 52
+0
+1 14 43 "" 51
+0
+1 15 43 "" 52
+0
+1 17 44 "" 51
+0
+1 18 44 "" 52
+0
+1 20 45 "" 51
+0
+1 21 45 "" 52
+0
+1 23 49 "" 51
+0
+1 24 49 "" 52
+0
+1 26 50 "" 51
+0
+1 27 50 "" 52
+0
+1 29 51 "" 51
+0
+1 30 51 "" 52
+0
+1 32 55 "" 51
+0
+1 33 55 "" 52
+0
+1 35 59 "" 51
+0
+1 36 59 "" 52
+0
+1 38 61 "" 51
+0
+1 39 61 "" 52
+0
+1 41 62 "" 51
+0
+1 42 62 "" 52
+0
+1 44 63 "" 51
+0
+1 45 63 "" 52
+0
+1 47 64 "" 51
+0
+1 48 64 "" 52
+0
+1 50 65 "" 51
+0
+1 51 65 "" 52
+0
+1 53 66 "" 51
+0
+1 54 66 "" 52
+0
+1 56 67 "" 51
+0
+1 57 67 "" 52
+0
+1 59 68 "" 51
+0
+1 60 68 "" 52
+0
+1 62 69 "" 51
+0
+1 63 69 "" 52
+0
+1 65 79 "" 51
+0
+1 66 79 "" 52
+0
+1 68 80 "" 51
+0
+1 69 80 "" 52
+0
+1 71 81 "" 51
+0
+1 72 81 "" 52
+0
+1 74 82 "" 51
+0
+1 75 82 "" 52
+0
+1 77 83 "" 51
+0
+1 78 83 "" 52
+0
+1 80 84 "" 51
+0
+1 81 84 "" 52
+0
+1 83 85 "" 51
+0
+1 84 85 "" 52
+0
+1 86 86 "" 51
+0
+1 87 86 "" 52
+0
+1 89 87 "" 51
+0
+1 90 87 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 33 "Group7" -1
+"objects\\sgFwBlock.pnl" 130 300 T 48 0.7625 0 0.25 -44.125 -10
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.$FirstClientDigit + 1"
+3 37 "Group16" -1
+"objects\\sgFwBlock.pnl" 65 70 T 52 0.775 0 0.25 729.366666666666 47
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.$ThirdClientDigit + 1"
+3 39 "Group20" -1
+"objects\\sgFwBlock.pnl" 65 70 T 54 0.7625 0 0.25 5.18333333333306 112
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+$FirstClientDigit + 2"
+3 41 "Group24" -1
+"objects\\sgFwBlock.pnl" 65 70 T 56 0.7625 0 0.25 5.18333333333306 177
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 3"
+3 43 "Group32" -1
+"objects\\sgFwBlock.pnl" 65 70 T 58 0.7625 0 0.25 5.18333333333306 242
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 4"
+3 44 "Group33" -1
+"objects\\sgFwBlock.pnl" 65 130 T 59 0.7625 0 0.25 5.18333333333306 292
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 5"
+3 45 "Group34" -1
+"objects\\sgFwBlock.pnl" 65 190 T 60 0.7625 0 0.25 5.18333333333306 342
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 6"
+3 49 "Group44" -1
+"objects\\sgFwBlock.pnl" 65 70 T 64 0.7625 0 0.25 5.18333333333305 437
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 7"
+3 50 "Group45" -1
+"objects\\sgFwBlock.pnl" 65 130 T 65 0.7625 0 0.25 5.18333333333306 487
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 8"
+3 51 "Group46" -1
+"objects\\sgFwBlock.pnl" 65 190 T 66 0.7625 0 0.25 5.18333333333305 537
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FirstClientDigit + 9"
+3 55 "Group54" -1
+"objects\\sgFwBlock.pnl" 65 490 T 70 0.7625 0 0.25 5.18333333333306 527
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 0"
+3 59 "Group60" -1
+"objects\\sgFwBlock.pnl" 65 70 T 74 0.7625 0 0.25 365.183333333333 47
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.$SecondClientDigit + 1"
+3 61 "Group80" -1
+"objects\\sgFwBlock.pnl" 65 135 T 76 0.7625 0 0.25 365.183333333333 96
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 2"
+3 62 "Group81" -1
+"objects\\sgFwBlock.pnl" 65 200 T 77 0.7625 0 0.25 365.183333333333 145
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 3"
+3 63 "Group82" -1
+"objects\\sgFwBlock.pnl" 65 265 T 78 0.7625 0 0.25 365.183333333333 194
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 4"
+3 64 "Group83" -1
+"objects\\sgFwBlock.pnl" 65 330 T 79 0.7625 0 0.25 365.183333333333 242
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 5"
+3 65 "Group84" -1
+"objects\\sgFwBlock.pnl" 65 395 T 80 0.7625 0 0.25 365.183333333333 291
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 6"
+3 66 "Group85" -1
+"objects\\sgFwBlock.pnl" 65 460 T 81 0.7625 0 0.25 365.183333333333 340
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 7"
+3 67 "Group86" -1
+"objects\\sgFwBlock.pnl" 65 525 T 82 0.7625 0 0.25 365.183333333333 389
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 8"
+3 68 "Group87" -1
+"objects\\sgFwBlock.pnl" 65 590 T 83 0.7625 0 0.25 365.183333333333 437
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $SecondClientDigit  + 9"
+3 69 "Group88" -1
+"objects\\sgFwBlock.pnl" 65 655 T 84 0.7625 0 0.25 365.183333333333 486
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 0"
+3 79 "Group116" -1
+"objects\\sgFwBlock.pnl" 475 135 T 94 0.775 0 0.25 411.616666666666 96
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 2"
+3 80 "Group117" -1
+"objects\\sgFwBlock.pnl" 475 200 T 95 0.775 0 0.25 411.616666666666 145
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 3"
+3 81 "Group118" -1
+"objects\\sgFwBlock.pnl" 475 265 T 96 0.775 0 0.25 411.616666666666 194
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 4"
+3 82 "Group119" -1
+"objects\\sgFwBlock.pnl" 475 330 T 97 0.775 0 0.25 411.616666666666 242
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 5"
+3 83 "Group120" -1
+"objects\\sgFwBlock.pnl" 475 395 T 98 0.775 0 0.25 411.616666666667 291
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 6"
+3 84 "Group121" -1
+"objects\\sgFwBlock.pnl" 475 460 T 99 0.775 0 0.25 411.616666666666 340
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 7"
+3 85 "Group122" -1
+"objects\\sgFwBlock.pnl" 475 525 T 100 0.775 0 0.25 411.616666666666 389
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 8"
+3 86 "Group123" -1
+"objects\\sgFwBlock.pnl" 475 590 T 101 0.775 0 0.25 411.616666666666 437
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $ThirdClientDigit + 9"
+3 87 "Group124" -1
+"objects\\sgFwBlock.pnl" 475 655 T 102 0.775 0 0.25 411.616666666666 486
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.+ $FourthClientDigit + 0"
+3 98 "" -1
+"objects\\sgFwBtnCommand.pnl" 20 75 T 112 0.666666666666667 0 1.25 -3.33333333333333 -28.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"1\""
+3 99 "Group65" -1
+"objects\\sgFwBtnCommand.pnl" 20 70 T 113 0.666666666666667 0 1.25 -3.33333333333333 42.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"2\""
+3 100 "Group68" -1
+"objects\\sgFwBtnCommand.pnl" 20 70 T 114 0.666666666666667 0 1.25 -3.33333333333333 107.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"3\""
+3 101 "Group69" -1
+"objects\\sgFwBtnCommand.pnl" 20 135 T 115 0.666666666666667 0 1.25 -3.33333333333333 91.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"4\""
+3 102 "Group72" -1
+"objects\\sgFwBtnCommand.pnl" 20 70 T 116 0.666666666666667 0 1.25 -3.33333333333333 237.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"5\""
+3 103 "Group73" -1
+"objects\\sgFwBtnCommand.pnl" 20 135 T 117 0.666666666666667 0 1.25 -3.33333333333333 221.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"6\""
+3 104 "Group76" -1
+"objects\\sgFwBtnCommand.pnl" 20 70 T 118 0.666666666666667 0 1.25 -3.33333333333333 367.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"7\""
+3 105 "Group77" -1
+"objects\\sgFwBtnCommand.pnl" 20 135 T 119 0.666666666666667 0 1.25 -3.33333333333333 351.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"8\""
+3 106 "Group79" -1
+"objects\\sgFwBtnCommand.pnl" 20 525 T 120 0.666666666666667 0 1.25 -3.33333333333333 -71.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FirstClientDigit +  \"9\""
+3 107 "Group89" -1
+"objects\\sgFwBtnCommand.pnl" 20 70 T 121 0.666666666666667 0 1.25 356.666666666667 -22.5
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"1\""
+3 108 "Group90" -1
+"objects\\sgFwBtnCommand.pnl" 20 135 T 122 0.666666666666667 0 1.25 356.666666666667 -38.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"2\""
+3 109 "Group91" -1
+"objects\\sgFwBtnCommand.pnl" 20 200 T 123 0.666666666666667 0 1.25 356.666666666667 -54.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"3\""
+3 110 "Group92" -1
+"objects\\sgFwBtnCommand.pnl" 20 265 T 124 0.666666666666667 0 1.25 356.666666666667 -71.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"4\""
+3 111 "Group93" -1
+"objects\\sgFwBtnCommand.pnl" 20 330 T 125 0.666666666666667 0 1.25 356.666666666667 -87.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"5\""
+3 112 "Group94" -1
+"objects\\sgFwBtnCommand.pnl" 20 395 T 126 0.666666666666667 0 1.25 356.666666666667 -103.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"6\""
+3 113 "Group95" -1
+"objects\\sgFwBtnCommand.pnl" 20 460 T 127 0.666666666666667 0 1.25 356.666666666667 -119.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"7\""
+3 114 "Group96" -1
+"objects\\sgFwBtnCommand.pnl" 20 525 T 128 0.666666666666667 0 1.25 356.666666666667 -136.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"8\""
+3 115 "Group97" -1
+"objects\\sgFwBtnCommand.pnl" 20 590 T 129 0.666666666666667 0 1.25 356.666666666667 -152.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"9\""
+3 116 "Group107" -1
+"objects\\sgFwBtnCommand.pnl" 430 70 T 130 0.666666666666667 0 1.25 448.666666666667 -22.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"1\""
+3 117 "Group108" -1
+"objects\\sgFwBtnCommand.pnl" 430 135 T 131 0.666666666666667 0 1.25 448.666666666667 -38.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"2\""
+3 118 "Group109" -1
+"objects\\sgFwBtnCommand.pnl" 430 200 T 132 0.666666666666667 0 1.25 448.666666666667 -54.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"3\""
+3 119 "Group110" -1
+"objects\\sgFwBtnCommand.pnl" 430 265 T 133 0.666666666666667 0 1.25 448.666666666667 -71.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"4\""
+3 120 "Group111" -1
+"objects\\sgFwBtnCommand.pnl" 430 330 T 134 0.666666666666667 0 1.25 448.666666666667 -87.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"5\""
+3 121 "Group112" -1
+"objects\\sgFwBtnCommand.pnl" 430 395 T 135 0.666666666666667 0 1.25 448.666666666667 -103.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"6\""
+3 122 "Group113" -1
+"objects\\sgFwBtnCommand.pnl" 430 460 T 136 0.666666666666667 0 1.25 448.666666666667 -119.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"7\""
+3 123 "Group114" -1
+"objects\\sgFwBtnCommand.pnl" 430 525 T 137 0.666666666666667 0 1.25 448.666666666667 -136.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"8\""
+3 124 "Group115" -1
+"objects\\sgFwBtnCommand.pnl" 430 590 T 138 0.666666666666667 0 1.25 448.666666666667 -152.75
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"9\""
+3 125 "Group117" -1
+"objects\\sgFwBtnCommand.pnl" 430 70 T 139 0.666666666666667 0 1.25 -276.333333333333 562.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $SecondClientDigit +  \"0\""
+3 126 "Group119" -1
+"objects\\sgFwBtnCommand.pnl" 805 70 T 140 0.666666666666667 0 1.25 -166.333333333333 562.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $ThirdClientDigit +  \"0\""
+3 127 "Group121" -1
+"objects\\sgFwBtnCommand.pnl" 805 70 T 141 0.666666666666667 0 1.25 198.666666666667 562.25
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.\" + $FourthClientDigit +  \"0\""
+3 128 "Group63" -1
+"objects\\sgFwHistory.pnl" 10 710 T 141 1 0 1 -10 -10
+2
+"$SystemHistory""INCH.History"
+"$SystemName"""
+0

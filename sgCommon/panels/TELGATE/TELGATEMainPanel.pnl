@@ -1,0 +1,2007 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 2
+"$Site"
+"$SystemName"
+"main()
+{
+  PageLabel.text = \"TELGATE \" + $Site; 
+  VCXFrame.text = $Site + \" Status\"; 
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 16.83277313021277 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E 1.013761467889908 0 1 2.02752293577992 0 1 E 0 10 1086 46
+1 2 0 "0s" 0 0 0 65 0 0  0 10 1
+2
+LANG:5 27 Tahoma,22,-1,5,75,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 15 TELGATE + $Site
+LANG:1 4 AFPS
+1 2678 76 "" 11
+0
+13 379
+"ForceToUKN"
+""
+1 0 680 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  -2 678 207 712
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+		ForceToUnknown(\"\", \"TELGATE\");
+
+}
+" 0
+ E E E
+1 2679 83 "" 46
+0
+30 414
+"FRAME1"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+118 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.4625 0 0.6531531531531531 249.5 -34.72972972972978 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 VCX 1
+1 2682 84 "" 46
+0
+1 2685 85 "" 46
+0
+1 2688 86 "" 46
+0
+1 2691 87 "" 46
+0
+1 2694 88 "" 46
+0
+1 2697 89 "" 46
+0
+1 2700 90 "" 46
+0
+30 565
+"FRAME2"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+172 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.4625 0 0.6531531531531531 249.5 155.2702702702703 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 VCX 2
+1 2703 91 "" 46
+0
+1 2706 92 "" 46
+0
+1 2709 93 "" 46
+0
+1 2712 94 "" 46
+0
+1 2715 95 "" 46
+0
+1 2718 96 "" 46
+0
+30 586
+"VCXFrame"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+173 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.1625 0 2.972972972972974 160.5 -449.4594594594597 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 14 $Site + Status
+1 2721 101 "" 46
+0
+30 617
+"FRAME4"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+184 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6625 0 0.2477477477477476 -69.49999999999999 68.3783783783784 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 25 ATS-QSIG (3 channels/line
+30 618
+"FRAME5"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+185 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6625 0 0.2477477477477477 -69.5 128.3783783783784 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 27 ISDN-PRI (30 channels/line)
+30 619
+"FRAME6"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+186 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7124999999999999 0 0.6981981981981983 -85.49999999999999 -37.29729729729731 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 18 Lines to VISTA TEL
+1 2724 102 "0" 46
+0
+1 2725 102 "1" 46
+0
+1 2726 102 "" 6
+0
+1 2731 103 "0" 46
+0
+1 2732 103 "1" 46
+0
+1 2733 103 "" 6
+0
+1 2738 104 "0" 46
+0
+1 2739 104 "1" 46
+0
+1 2740 104 "" 6
+0
+1 2745 105 "0" 46
+0
+1 2746 105 "1" 46
+0
+1 2747 105 "" 6
+0
+1 2752 106 "0" 46
+0
+1 2753 106 "1" 46
+0
+1 2754 106 "" 6
+0
+1 2759 107 "0" 46
+0
+1 2760 107 "1" 46
+0
+1 2761 107 "" 6
+0
+1 2766 109 "0" 46
+0
+1 2767 109 "1" 46
+0
+1 2768 109 "" 6
+0
+1 2773 110 "0" 46
+0
+1 2774 110 "1" 46
+0
+1 2775 110 "" 6
+0
+1 2780 111 "0" 46
+0
+1 2781 111 "1" 46
+0
+1 2782 111 "" 6
+0
+1 2787 112 "0" 46
+0
+1 2788 112 "1" 46
+0
+1 2789 112 "" 6
+0
+1 2794 113 "0" 46
+0
+1 2795 113 "1" 46
+0
+1 2796 113 "" 6
+0
+1 2801 114 "0" 46
+0
+1 2802 114 "1" 46
+0
+1 2803 114 "" 6
+0
+1 2808 115 "0" 46
+0
+1 2809 115 "1" 46
+0
+1 2810 115 "" 6
+0
+1 2815 116 "0" 46
+0
+1 2816 116 "1" 46
+0
+1 2817 116 "" 6
+0
+1 2822 117 "0" 46
+0
+1 2823 117 "1" 46
+0
+1 2824 117 "" 6
+0
+30 749
+"FRAME7"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+206 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.65 0 2.905405405405406 422 -428.1081081081082 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 17 NI64 IF(ATS-QSIG)
+1 2829 118 "" 46
+0
+1 2832 119 "" 46
+0
+1 2835 120 "" 46
+0
+1 2838 121 "" 46
+0
+1 2841 122 "" 46
+0
+1 2844 123 "" 46
+0
+1 2847 124 "" 46
+0
+1 2850 125 "" 46
+0
+1 2853 126 "" 46
+0
+1 2856 127 "" 46
+0
+1 2859 129 "" 46
+0
+30 935
+"FRAME8"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+239 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6625 0 0.2477477477477476 -69.49999999999999 518.3783783783784 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 26 VCX-QSIG (30 channel/line)
+30 937
+"FRAME10"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+241 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7124999999999999 0 0.427927927927928 -85.49999999999999 458.1081081081081 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 14 Lines to EMTEL
+1 2862 130 "" 46
+0
+1 2865 131 "" 46
+0
+30 989
+"FRAME12"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+248 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999997 0 0.3153153153153155 689 447.027027027027 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 25 ATS-QSIG (3 channels/line
+30 990
+"FRAME13"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+249 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.8249999999999997 0 1.68918918918919 681 196.2162162162162 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 26 Lines to External from GVA
+1 2868 132 "" 9
+0
+1 2869 133 "" 9
+0
+30 1183
+"FRAME14"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+253 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999997 0 0.8108108108108109 689 438.7837837837838 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 23 MFC R2 (1 Channel/line)
+30 1186
+"FRAME15"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+256 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999997 0 0.2027027027027026 689 720.9459459459459 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 26 ISDN-PRI (30Channels/line)
+30 1195
+"FRAME16"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+274 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999998 0 0.4279279279279279 689 -1.891891891891884 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 25 ATS-QSIG (3 channels/line
+30 1196
+"FRAME17"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+275 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.825 0 1.914414414414415 681 -271.6216216216217 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 26 Lines to External from ZRH
+1 2870 143 "" 9
+0
+1 2871 144 "" 9
+0
+30 1199
+"FRAME18"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+276 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.8000000000000002 0 0.9234234234234231 689 14.86486486486491 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 23 MFC R2 (1 Channel/line)
+30 1201
+"FRAME19"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+277 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.8000000000000002 0 0.2027027027027031 689 340.9459459459459 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 26 ISDN-PRI (30Channels/line)
+1 2872 154 "" 9
+0
+1 2873 155 "" 9
+0
+1 2874 156 "" 9
+0
+1 2875 157 "" 9
+0
+1 2876 159 "" 9
+0
+1 2877 160 "" 9
+0
+1 2878 161 "" 9
+0
+1 2879 162 "" 9
+0
+1 2880 163 "" 9
+0
+1 2881 164 "" 9
+0
+1 2882 165 "" 9
+0
+1 2883 166 "" 9
+0
+1 2884 169 "" 9
+0
+1 2885 170 "" 9
+0
+1 2886 171 "" 9
+0
+1 2887 172 "" 9
+0
+1 2888 173 "" 9
+0
+1 2889 174 "" 9
+0
+1 2890 175 "" 9
+0
+1 2891 176 "" 9
+0
+4 1234
+"LINE2"
+""
+1 787.5 520 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+302 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  765 550 780 585
+4 1235
+"LINE3"
+""
+1 285 580 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+303 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  285 580 300 545
+4 1236
+"LINE4"
+""
+1 765 225 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+304 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  765 225 780 190
+4 1237
+"LINE5"
+""
+1 285 190 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+305 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  285 190 300 225
+1 2892 177 "" 9
+0
+1 2893 178 "" 46
+0
+30 1461
+"FRAME20"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+311 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7124999999999999 0 0.5855855855855855 -85.49999999999999 216.6216216216217 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 18 VISTA TEL Commands
+1 2896 180 "" 0
+0
+1 2897 181 "" 0
+0
+30 1684
+"FRAME21"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+314 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.625 0 0.5405405405405404 430.0000000000001 -10.81081081081085 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 ILIF1
+30 1685
+"FRAME22"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+315 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.625 0 0.5405405405405405 430 114.1891891891891 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 ILIF2
+1 2898 182 "" 46
+0
+1 2901 183 "" 46
+0
+30 1914
+"FRAME23"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+318 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.625 0 0.5405405405405405 430 239.1891891891891 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 ILIF3
+30 1915
+"FRAME24"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+319 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.625 0 0.5405405405405405 430 364.1891891891892 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 ILIF4
+30 1916
+"FRAME25"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+320 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.625 0 0.5405405405405405 430 489.1891891891892 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 5 ILIF5
+1 2904 184 "" 46
+0
+1 2907 185 "" 46
+0
+1 2910 186 "" 46
+0
+1 2913 187 "" 9
+0
+1 2914 188 "" 9
+0
+1 2915 189 "" 9
+0
+1 2916 190 "" 9
+0
+30 2159
+"FRAME26"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+328 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999997 0 0.2252252252252256 689 382.1621621621621 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 13 SIP Trunk SBC
+1 2917 191 "" 9
+0
+1 2919 193 "" 9
+0
+1 2918 192 "" 9
+0
+30 2408
+"FRAME27"
+""
+1 120 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+333 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.7999999999999997 0 0.2252252252252257 689 762.1621621621621 0 E 120 168 521 391
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 13 SIP Trunk SBC
+1 2920 194 "" 9
+0
+2 2653
+"PRIMITIVE_TEXT1"
+""
+1 790 825 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+335 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 790 825 870 845
+0 2 2 "0s" 0 0 0 64 0 0  790 825 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 Health
+1 2921 196 "" 46
+0
+2 2657
+"PRIMITIVE_TEXT2"
+""
+1 905 825 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+337 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 905 825 985 845
+0 2 2 "0s" 0 0 0 64 0 0  905 825 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 Status
+1 2924 197 "" 46
+0
+1 2927 198 "" 46
+0
+1 2930 199 "" 46
+0
+1 2933 200 "" 46
+0
+2 2670
+"PRIMITIVE_TEXT3"
+""
+1 1020 825 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+342 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 1020 825 1100 845
+0 2 2 "0s" 0 0 0 64 0 0  1020 825 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 4 SiPa
+1 2936 201 "" 46
+0
+2 2675
+"PRIMITIVE_TEXT4"
+""
+1 792 445 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+345 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 792 445 872 465
+0 2 2 "0s" 0 0 0 64 0 0  792 445 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 Health
+2 2676
+"PRIMITIVE_TEXT5"
+""
+1 905 445 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+346 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 905 445 985 465
+0 2 2 "0s" 0 0 0 64 0 0  905 445 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 6 Status
+2 2677
+"PRIMITIVE_TEXT6"
+""
+1 1020 445 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+347 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 1020 445 1100 465
+0 2 2 "0s" 0 0 0 64 0 0  1020 445 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 4 SiPa
+1 2939 202 "" 46
+0
+1 2942 203 "" 46
+0
+1 2945 204 "" 46
+0
+1 2948 205 "" 46
+0
+1 2951 206 "" 46
+0
+1 2954 207 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 2680 83 "" 51
+0
+1 2681 83 "" 52
+0
+1 2683 84 "" 51
+0
+1 2684 84 "" 52
+0
+1 2686 85 "" 51
+0
+1 2687 85 "" 52
+0
+1 2689 86 "" 51
+0
+1 2690 86 "" 52
+0
+1 2692 87 "" 51
+0
+1 2693 87 "" 52
+0
+1 2695 88 "" 51
+0
+1 2696 88 "" 52
+0
+1 2698 89 "" 51
+0
+1 2699 89 "" 52
+0
+1 2701 90 "" 51
+0
+1 2702 90 "" 52
+0
+1 2704 91 "" 51
+0
+1 2705 91 "" 52
+0
+1 2707 92 "" 51
+0
+1 2708 92 "" 52
+0
+1 2710 93 "" 51
+0
+1 2711 93 "" 52
+0
+1 2713 94 "" 51
+0
+1 2714 94 "" 52
+0
+1 2716 95 "" 51
+0
+1 2717 95 "" 52
+0
+1 2719 96 "" 51
+0
+1 2720 96 "" 52
+0
+1 2722 101 "" 51
+0
+1 2723 101 "" 52
+0
+1 2727 102 "0" 51
+0
+1 2728 102 "0" 52
+0
+1 2729 102 "1" 51
+0
+1 2730 102 "1" 52
+0
+1 2734 103 "0" 51
+0
+1 2735 103 "0" 52
+0
+1 2736 103 "1" 51
+0
+1 2737 103 "1" 52
+0
+1 2741 104 "0" 51
+0
+1 2742 104 "0" 52
+0
+1 2743 104 "1" 51
+0
+1 2744 104 "1" 52
+0
+1 2748 105 "0" 51
+0
+1 2749 105 "0" 52
+0
+1 2750 105 "1" 51
+0
+1 2751 105 "1" 52
+0
+1 2755 106 "0" 51
+0
+1 2756 106 "0" 52
+0
+1 2757 106 "1" 51
+0
+1 2758 106 "1" 52
+0
+1 2762 107 "0" 51
+0
+1 2763 107 "0" 52
+0
+1 2764 107 "1" 51
+0
+1 2765 107 "1" 52
+0
+1 2769 109 "0" 51
+0
+1 2770 109 "0" 52
+0
+1 2771 109 "1" 51
+0
+1 2772 109 "1" 52
+0
+1 2776 110 "0" 51
+0
+1 2777 110 "0" 52
+0
+1 2778 110 "1" 51
+0
+1 2779 110 "1" 52
+0
+1 2783 111 "0" 51
+0
+1 2784 111 "0" 52
+0
+1 2785 111 "1" 51
+0
+1 2786 111 "1" 52
+0
+1 2790 112 "0" 51
+0
+1 2791 112 "0" 52
+0
+1 2792 112 "1" 51
+0
+1 2793 112 "1" 52
+0
+1 2797 113 "0" 51
+0
+1 2798 113 "0" 52
+0
+1 2799 113 "1" 51
+0
+1 2800 113 "1" 52
+0
+1 2804 114 "0" 51
+0
+1 2805 114 "0" 52
+0
+1 2806 114 "1" 51
+0
+1 2807 114 "1" 52
+0
+1 2811 115 "0" 51
+0
+1 2812 115 "0" 52
+0
+1 2813 115 "1" 51
+0
+1 2814 115 "1" 52
+0
+1 2818 116 "0" 51
+0
+1 2819 116 "0" 52
+0
+1 2820 116 "1" 51
+0
+1 2821 116 "1" 52
+0
+1 2825 117 "0" 51
+0
+1 2826 117 "0" 52
+0
+1 2827 117 "1" 51
+0
+1 2828 117 "1" 52
+0
+1 2830 118 "" 51
+0
+1 2831 118 "" 52
+0
+1 2833 119 "" 51
+0
+1 2834 119 "" 52
+0
+1 2836 120 "" 51
+0
+1 2837 120 "" 52
+0
+1 2839 121 "" 51
+0
+1 2840 121 "" 52
+0
+1 2842 122 "" 51
+0
+1 2843 122 "" 52
+0
+1 2845 123 "" 51
+0
+1 2846 123 "" 52
+0
+1 2848 124 "" 51
+0
+1 2849 124 "" 52
+0
+1 2851 125 "" 51
+0
+1 2852 125 "" 52
+0
+1 2854 126 "" 51
+0
+1 2855 126 "" 52
+0
+1 2857 127 "" 51
+0
+1 2858 127 "" 52
+0
+1 2860 129 "" 51
+0
+1 2861 129 "" 52
+0
+1 2863 130 "" 51
+0
+1 2864 130 "" 52
+0
+1 2866 131 "" 51
+0
+1 2867 131 "" 52
+0
+1 2894 178 "" 51
+0
+1 2895 178 "" 52
+0
+1 2899 182 "" 51
+0
+1 2900 182 "" 52
+0
+1 2902 183 "" 51
+0
+1 2903 183 "" 52
+0
+1 2905 184 "" 51
+0
+1 2906 184 "" 52
+0
+1 2908 185 "" 51
+0
+1 2909 185 "" 52
+0
+1 2911 186 "" 51
+0
+1 2912 186 "" 52
+0
+1 2922 196 "" 51
+0
+1 2923 196 "" 52
+0
+1 2925 197 "" 51
+0
+1 2926 197 "" 52
+0
+1 2928 198 "" 51
+0
+1 2929 198 "" 52
+0
+1 2931 199 "" 51
+0
+1 2932 199 "" 52
+0
+1 2934 200 "" 51
+0
+1 2935 200 "" 52
+0
+1 2937 201 "" 51
+0
+1 2938 201 "" 52
+0
+1 2940 202 "" 51
+0
+1 2941 202 "" 52
+0
+1 2943 203 "" 51
+0
+1 2944 203 "" 52
+0
+1 2946 204 "" 51
+0
+1 2947 204 "" 52
+0
+1 2949 205 "" 51
+0
+1 2950 205 "" 52
+0
+1 2952 206 "" 51
+0
+1 2953 206 "" 52
+0
+1 2955 207 "" 51
+0
+1 2956 207 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "Group7" -1
+"objects\\sgFwHistory.pnl" 10 710 T 108 0.7110091743119267 0 1 -14.22018348623851 -5
+2
+"$SystemHistory""TELGATE.History"
+"$SystemName""$SystemName"
+3 83 "PANEL_REF84" -1
+"objects\\sgFwBlock.pnl" 340 305 T 115 0.2 0 0.125 292 56.87499999999989
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.NodeStatus"
+3 84 "PANEL_REF84" -1
+"objects\\sgFwBlock.pnl" 340 305 T 159 0.2 0 0.125 247 86.87499999999997
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.PowerSupply"
+3 85 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 340 305 T 160 0.2 0 0.125 247 116.8749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.ICCB"
+3 86 "PANEL_REF86" -1
+"objects\\sgFwBlock.pnl" 340 305 T 161 0.2 0 0.125 247 146.8749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.FAN"
+3 87 "PANEL_REF87" -1
+"objects\\sgFwBlock.pnl" 340 305 T 162 0.2 0 0.125 332 86.87500000000009
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.DSP"
+3 88 "PANEL_REF88" -1
+"objects\\sgFwBlock.pnl" 340 305 T 163 0.2 0 0.125 332 116.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.Ethernet"
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 340 305 T 164 0.2 0 0.125 332 146.8750000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX1.IF"
+3 90 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 340 305 T 165 0.2 0 0.125 292 246.8750000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.NodeStatus"
+3 91 "PANEL_REF91" -1
+"objects\\sgFwBlock.pnl" 340 305 T 166 0.2 0 0.125 247 276.8749999999998
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.PowerSupply"
+3 92 "PANEL_REF92" -1
+"objects\\sgFwBlock.pnl" 340 305 T 167 0.2 0 0.125 247 306.8749999999998
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.ICCB"
+3 93 "PANEL_REF93" -1
+"objects\\sgFwBlock.pnl" 340 305 T 168 0.2 0 0.125 247 336.8749999999998
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.FAN"
+3 94 "PANEL_REF94" -1
+"objects\\sgFwBlock.pnl" 340 305 T 169 0.2 0 0.125 332 276.8750000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.DSP"
+3 95 "PANEL_REF95" -1
+"objects\\sgFwBlock.pnl" 340 305 T 170 0.2 0 0.125 332 306.8750000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.Ethernet"
+3 96 "PANEL_REF96" -1
+"objects\\sgFwBlock.pnl" 340 305 T 171 0.2 0 0.125 332 336.8750000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VCX2.IF"
+3 101 "PANEL_REF101" -1
+"objects\\sgFwBlock.pnl" 340 305 T 178 0.05 0 0.125 3.000000000000001 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_1"
+3 102 "PANEL_REF102" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 189 1.015228426395939 0 1 -88.90862944162433 -70.00000000000006
+2
+"$IFName""IF1"
+"$SystemName""$SystemName"
+3 103 "PANEL_REF103" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 190 1.015228426395939 0 1 -88.90862944162433 -40.00000000000006
+2
+"$IFName""IF2"
+"$SystemName""$SystemName"
+3 104 "PANEL_REF104" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 191 1.015228426395939 0 1 -88.90862944162433 -10.00000000000006
+2
+"$IFName""IF3"
+"$SystemName""$SystemName"
+3 105 "PANEL_REF105" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 193 1.014150943396226 0 1 -88.27830188679219 54.99999999999992
+2
+"$IFName""IF4"
+"$SystemName""$SystemName"
+3 106 "PANEL_REF106" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 194 1.014150943396226 0 1 -88.27830188679219 84.99999999999994
+2
+"$IFName""IF5"
+"$SystemName""$SystemName"
+3 107 "PANEL_REF107" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 195 1.014150943396226 0 1 -88.27830188679219 114.9999999999999
+2
+"$IFName""IF6"
+"$SystemName""$SystemName"
+3 109 "PANEL_REF109" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 197 1.015228426395939 0 1 -88.90862944162433 179.9999999999999
+2
+"$IFName""IF7"
+"$SystemName""$SystemName"
+3 110 "PANEL_REF110" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 198 1.015228426395939 0 1 -88.90862944162433 209.9999999999999
+2
+"$IFName""IF8"
+"$SystemName""$SystemName"
+3 111 "PANEL_REF111" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 199 1.015228426395939 0 1 -88.90862944162433 239.9999999999999
+2
+"$IFName""IF9"
+"$SystemName""$SystemName"
+3 112 "PANEL_REF112" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 200 1.015228426395939 0 1 -88.90862944162433 304.9999999999999
+2
+"$IFName""IF10"
+"$SystemName""$SystemName"
+3 113 "PANEL_REF113" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 201 1.015228426395939 0 1 -88.90862944162433 334.9999999999999
+2
+"$IFName""IF11"
+"$SystemName""$SystemName"
+3 114 "PANEL_REF114" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 202 1.015228426395939 0 1 -88.90862944162433 364.9999999999999
+2
+"$IFName""IF12"
+"$SystemName""$SystemName"
+3 115 "PANEL_REF115" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 203 1.015228426395939 0 1 -88.90862944162433 424.9999999999999
+2
+"$IFName""IF13"
+"$SystemName""$SystemName"
+3 116 "PANEL_REF116" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 204 1.015228426395939 0 1 -88.90862944162433 454.9999999999999
+2
+"$IFName""IF14"
+"$SystemName""$SystemName"
+3 117 "PANEL_REF117" -1
+"TELGATE\\TELGATE_NI64IFComponents.pnl" 582 170 T 205 1.015228426395939 0 1 -88.90862944162433 484.9999999999999
+2
+"$IFName""IF15"
+"$SystemName""$SystemName"
+3 118 "PANEL_REF118" -1
+"objects\\sgFwBlock.pnl" 340 305 T 216 0.05 0 0.125 28.00000000000001 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_2"
+3 119 "PANEL_REF119" -1
+"objects\\sgFwBlock.pnl" 340 305 T 217 0.05 0 0.125 228 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_10"
+3 120 "PANEL_REF120" -1
+"objects\\sgFwBlock.pnl" 340 305 T 218 0.05 0 0.125 53.00000000000001 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_3"
+3 121 "PANEL_REF121" -1
+"objects\\sgFwBlock.pnl" 340 305 T 219 0.05 0 0.125 78 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_4"
+3 122 "PANEL_REF122" -1
+"objects\\sgFwBlock.pnl" 340 305 T 220 0.05 0 0.125 103 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_5"
+3 123 "PANEL_REF123" -1
+"objects\\sgFwBlock.pnl" 340 305 T 221 0.05 0 0.125 128 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_6"
+3 124 "PANEL_REF124" -1
+"objects\\sgFwBlock.pnl" 340 305 T 222 0.05 0 0.125 153 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_7"
+3 125 "PANEL_REF125" -1
+"objects\\sgFwBlock.pnl" 340 305 T 223 0.05 0 0.125 178 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_8"
+3 126 "PANEL_REF126" -1
+"objects\\sgFwBlock.pnl" 340 305 T 224 0.05 0 0.125 203 91.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ATSQSIGtoVISTATEL.VISTATEL_9"
+3 127 "PANEL_REF127" -1
+"objects\\sgFwBlock.pnl" 340 305 T 225 0.05 0 0.125 828 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_1"
+3 129 "PANEL_REF129" -1
+"objects\\sgFwBlock.pnl" 340 305 T 227 0.05 0 0.125 3 151.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ISDNPRItoVISTATEL.ISDNPRI_1"
+3 130 "PANEL_REF130" -1
+"objects\\sgFwBlock.pnl" 340 305 T 243 0.05 0 0.125 28 151.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.ISDNPRItoVISTATEL.ISDNPRI_2"
+3 131 "PANEL_REF131" -1
+"objects\\sgFwBlock.pnl" 340 305 T 244 0.05 0 0.125 28 541.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.QSIGtoEMTEL.VCXQSIG_2"
+3 132 "PANEL_REF140" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 250 1 0 1 -3 77.00000000000003
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGGVAtoExternal"
+"$LineSiteName""MIL"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 133 "PANEL_REF133" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 250 1 0 1 152 77
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGGVAtoExternal"
+"$LineSiteName""BLP"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 143 "PANEL_REF143" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 263 1 0 1 -3 -328
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""KRH"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 144 "PANEL_REF144" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 264 1 0 1 -3 -303
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""WIE"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 154 "PANEL_REF154" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 278 1 0 1 152.0000000000001 -192.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""LUG"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 155 "PANEL_REF155" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 279 1 0 1 152 -353
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""FHN"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 156 "PANEL_REF156" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 280 1 0 1 152 -328
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""BLP"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 157 "PANEL_REF157" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 281 1 0 1 -3 332
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ISDNPRIGVAtoExternal"
+"$LineSiteName""PABX"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 159 "PANEL_REF159" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 283 1 0 1 -3 -353
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""MIL"
+"$NLines""3"
+"$SystemName""$SystemName"
+3 160 "PANEL_REF160" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 284 1 0 1 -2.999999999999886 -117.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""BSL"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 161 "PANEL_REF161" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 285 1 0 1 -2.999999999999886 -142.9999999999999
+5
+"$ExcludedLine""1"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""SWITWR"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 162 "PANEL_REF162" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 286 1 0 1 152.0000000000001 -167.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""LGN"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 163 "PANEL_REF163" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 287 1 0 1 -2.999999999999886 -167.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""MUC"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 164 "PANEL_REF164" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 288 1 0 1 -2.999999999999886 -192.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""PDA"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 165 "PANEL_REF165" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 289 1 0 1 -2.999999999999886 -227.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""MNO"
+"$NLines""5"
+"$SystemName""$SystemName"
+3 166 "PANEL_REF166" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 290 1 0 1 -2.999999999999886 -252.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""RMS"
+"$NLines""5"
+"$SystemName""$SystemName"
+3 169 "PANEL_REF169" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 293 1 0 1 -2.999999999999886 -48
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ISDNPRIZRHtoExternal"
+"$LineSiteName""PABX"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 170 "PANEL_REF170" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 294 1 0 1 -3 177.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""RMS"
+"$NLines""4"
+"$SystemName""$SystemName"
+3 171 "PANEL_REF171" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 295 1 0 1 -3 212.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""ATH"
+"$NLines""3"
+"$SystemName""$SystemName"
+3 172 "PANEL_REF172" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 296 1 0 1 -3 152.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""MNO"
+"$NLines""6"
+"$SystemName""$SystemName"
+3 173 "PANEL_REF173" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 297 1 0 1 152 262.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""LYO"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 174 "PANEL_REF174" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 298 1 0 1 -3 262.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""CBY"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 175 "PANEL_REF175" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 299 1 0 1 152 237.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""BSL"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 176 "PANEL_REF176" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 300 1 0 1 -3 237.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""AIX"
+"$NLines""3"
+"$SystemName""$SystemName"
+3 177 "PANEL_REF177" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 309 1 0 1 152 -303
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGZRHtoExternal"
+"$LineSiteName""SWITWR"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 178 "PANEL_REF178" -1
+"objects\\sgFwBlock.pnl" 340 305 T 310 0.325 0 0.275 34.50000000000001 271.125
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.VISTA.VISTAStatus"
+3 180 "PANEL_REF180" -1
+"TELGATE\\TELGATE_CmdButton.pnl" 10 375 T 312 0.9285714285714286 0 0.8333333333333334 0.7142857142857133 72.49999999999999
+3
+"$Command""\"VISTA TEL OFF\""
+"$HistoryName""$SystemName + \"TELGATE.History\""
+"$SystemName""$SystemName"
+3 181 "PANEL_REF181" -1
+"TELGATE\\TELGATE_CmdButton.pnl" 10 375 T 313 0.9285714285714286 0 0.8333333333333334 0.7142857142857133 42.49999999999999
+3
+"$Command""\"VISTA TEL ON\""
+"$HistoryName""$SystemName + \"TELGATE.History\""
+"$SystemName""$SystemName"
+3 182 "PANEL_REF182" -1
+"objects\\sgFwBlock.pnl" 340 305 T 316 0.1 0 0.425 676 -24.62500000000006
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.NI64IF.FAN.ILIF1"
+3 183 "PANEL_REF183" -1
+"objects\\sgFwBlock.pnl" 340 305 T 317 0.1 0 0.425 676 100.3749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.NI64IF.FAN.ILIF2"
+3 184 "PANEL_REF184" -1
+"objects\\sgFwBlock.pnl" 340 305 T 321 0.1 0 0.425 676 225.3749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.NI64IF.FAN.ILIF3"
+3 185 "PANEL_REF185" -1
+"objects\\sgFwBlock.pnl" 340 305 T 322 0.1 0 0.425 676 350.3749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.NI64IF.FAN.ILIF4"
+3 186 "PANEL_REF186" -1
+"objects\\sgFwBlock.pnl" 340 305 T 323 0.1 0 0.425 676 470.3749999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.NI64IF.FAN.ILIF5"
+3 187 "PANEL_REF187" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 324 1 0 1 -2.999999999999886 -92.99999999999993
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""AIX"
+"$NLines""3"
+"$SystemName""$SystemName"
+3 188 "PANEL_REF188" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 325 1 0 1 152.0000000000001 -142.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""CBY"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 189 "PANEL_REF189" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 326 1 0 1 152.0000000000001 -117.9999999999999
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""LYO"
+"$NLines""2"
+"$SystemName""$SystemName"
+3 190 "PANEL_REF190" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 327 1 0 1 152.0000000000001 -92.99999999999989
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2ZRHtoExternal"
+"$LineSiteName""ATH"
+"$NLines""3"
+"$SystemName""$SystemName"
+3 191 "PANEL_REF191" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 329 1 0 1 -3 102
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""ATSQSIGGVAtoExternal"
+"$LineSiteName""KRH"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 192 "PANEL_REF192" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 330 1 0 1 -3 287.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""MUC"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 193 "PANEL_REF193" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 331 1 0 1 152 287.0000000000002
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""LGN"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 194 "PANEL_REF194" -1
+"TELGATE\\TELGATE_LinesComponents.pnl" 785 435 T 334 1 0 1 152.0000000000001 212.0000000000001
+5
+"$ExcludedLine""0"
+"$LineEquipmentName""MFCR2GVAtoExternal"
+"$LineSiteName""PDA"
+"$NLines""1"
+"$SystemName""$SystemName"
+3 196 "PANEL_REF196" -1
+"objects\\sgFwBlock.pnl" 340 305 T 336 0.05 0 0.125 853 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_2"
+3 197 "PANEL_REF197" -1
+"objects\\sgFwBlock.pnl" 340 305 T 338 0.05 0 0.125 938 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_1"
+3 198 "PANEL_REF198" -1
+"objects\\sgFwBlock.pnl" 340 305 T 339 0.05 0 0.125 963 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_2"
+3 199 "PANEL_REF199" -1
+"objects\\sgFwBlock.pnl" 340 305 T 340 0.05 0 0.125 1038 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.SipA_i"
+3 200 "PANEL_REF200" -1
+"objects\\sgFwBlock.pnl" 340 305 T 341 0.05 0 0.125 1063 781.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCGVA.SipA_o"
+3 201 "PANEL_REF201" -1
+"objects\\sgFwBlock.pnl" 340 305 T 343 0.05 0 0.125 3 541.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.QSIGtoEMTEL.VCXQSIG_1"
+3 202 "PANEL_REF202" -1
+"objects\\sgFwBlock.pnl" 340 305 T 353 0.05 0 0.125 828 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_1"
+3 203 "PANEL_REF203" -1
+"objects\\sgFwBlock.pnl" 340 305 T 354 0.05 0 0.125 853 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_2"
+3 204 "PANEL_REF204" -1
+"objects\\sgFwBlock.pnl" 340 305 T 355 0.05 0 0.125 938 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_1"
+3 205 "PANEL_REF205" -1
+"objects\\sgFwBlock.pnl" 340 305 T 356 0.05 0 0.125 963 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_2"
+3 206 "PANEL_REF206" -1
+"objects\\sgFwBlock.pnl" 340 305 T 357 0.05 0 0.125 1038 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.SipA_i"
+3 207 "PANEL_REF207" -1
+"objects\\sgFwBlock.pnl" 340 305 T 358 0.05 0 0.125 1063 401.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""TELGATE.Components.Lines.SIPTrunkSBCZRH.SipA_o"
+0

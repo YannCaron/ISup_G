@@ -1,0 +1,1478 @@
+V 10
+1
+LANG:5 16 System test tool
+PANEL,-1 -1 905 650 N "_3DFace" 0
+"main()
+{
+	// test
+	FileName.text = \"D:\\\\TestScripts\\\\MASTER.txt\";
+	Loop.text = \"1\";
+	ExecutionTimeText.visible = false;
+	ExecutionTimeText_2.visible = false;
+	DisplayTime.visible = false;
+	StopButton.visible = false;
+}" 0
+ E E E E 1 -1 -1 0  30 90
+""0  1
+E "// constants
+const string WindowspanelPath = \"sgFw\\\\sgFwConfirmWindow.pnl\";
+
+const int NO_VERBOSE = 0;
+const int MEDIUM_VERBOSE = 1;
+const int FULL_VERBOSE = 2;
+
+//const char 	 TAB				= '\\t';
+const string TABULATION = \"    \";
+const string OK  				= \"OK\";
+const string NOK				= \"NOK\";
+
+const int TOLERANCE_TIME = 10;
+const int SCRIPTING_TOOL_VERSION = \"1.0\";
+
+// Keywords
+const string ALIAS    		= \"ALIAS\";
+const string SET      		= \"SET\";
+const string DELAY				= \"DELAY\";
+const string CHECK    		= \"CHECK\";
+const string FOR_EACH 		= \"FOR_EACH\";
+const string END_FOR_EACH = \"END_FOR_EACH\";
+const string VERBOSE			= \"VERBOSE\";
+const string CALL					= \"CALL\";
+const string SEND_XML			= \"SEND_XML\";
+
+
+// Globals
+dyn_string gAliasDP, gAliasAlias, gDynScripts;
+int gLineIndex; // line counter
+int gExecututionNumber;
+time gStartTime; 
+bool gStop, gVerbose;
+
+float translatTime(time delta)
+{
+	int seconds, dixiemmes, milliSeconds, temp;
+	
+	seconds = second(delta);
+	int minutes = minute(delta);
+	int hours = hour(delta);
+	milliSeconds  = milliSecond(delta);
+		
+	temp = milliSeconds + (seconds * 1000);	
+	dixiemmes = milliSeconds/100; //time in tenths of second
+	return hours * 3600 + minutes * 60 + seconds + ((float)dixiemmes/10);
+} // float(translatTime(time delta)
+
+bool appenddyn_stringToReport(dyn_string message)
+{
+	// RepostFileName
+	string reportFileName = FileName.text;
+	dyn_string dyn = strsplit (FileName.text, '.');
+	
+	if (dynlen(dyn) < 2)
+	{
+		LogList.appendItem(message);
+		return false;
+	}
+		
+	reportFileName = dyn[1] + \"_Report.\" + dyn[2];
+	file h;
+	h = fopen(reportFileName, \"a+\");
+	if (h == 0)
+	{
+		ChildPanelOnModal(WindowspanelPath, \"Warning !!!\", makeDynString(\"$1:\" + \"Unable to open result file\", \"$2:\" + OK, \"$3:\"), 0, 0);				
+		return false;
+	}
+
+	// header
+	time ActualTime;
+	ActualTime = getCurrentTime();
+	string temp = ActualTime;
+	string record;
+	
+	for (int i = 1; i <= dynlen(message); i++)
+	{
+		record = \"[\" + temp + \"] \" + message[i];
+		
+		fputs(\"\\n\" + record, h);	
+		
+		dyn_string cleanedString;
+		cleanedString = removeTabIndentation(message);
+		LogList.appendItem(cleanedString[1]);
+		LogList.selectedPos = LogList.itemCount;
+	} // loop on the dynstring
+	
+	fclose(h);	
+	
+	return true;
+} // bool AppendStringToRapport(string message)
+
+dyn_string removeTabIndentation(dyn_string dynMessage)
+{
+	string temp;
+	sprintf(temp, \"%c\", '\\t');
+		
+	for (int i = 1; i < dynlen(dynMessage); i++)
+	{
+		string line;
+		line = dynMessage[i];
+		string newLine;
+		newLine = strltrim(line, temp);
+		dynMessage[i] = newLine;
+	} // for
+	
+ return dynMessage;
+} // dyn_string removeTabIndentation(dyn_string dynMessage)
+
+
+dyn_string replaceTabIndentation(dyn_string dynMessage)
+{
+	string temp;
+	sprintf(temp, \"%c\", '\\t');
+		
+	for (int i = 1; i < dynlen(dynMessage); i++)
+	{
+		string line;
+		line = dynMessage[i];
+		string newLine;
+		newLine = strltrim(line, temp);
+		
+		if (newLine != dynMessage[i])
+			newLine = TABULATION + newLine;
+		dynMessage[i] = newLine;
+	}
+	
+ return dynMessage;
+} // dyn_string replaceTabIndentation(dyn_string dynMessage)
+
+dyn_string parseScriptFile(string testScript)
+{
+	dyn_string dynScripts;
+	dynScripts = strsplit(testScript, \"\\n\");	
+	
+	// Display the script
+	dyn_string cleaned;
+	cleaned = replaceTabIndentation(dynScripts);
+	ScriptList.items = cleaned;
+	
+	// remove tab indentation		
+	return removeTabIndentation(dynScripts);
+} // dyn_string parsScriptFile(string testScript)
+
+string runScript(string scriptLine, string starValue)
+{	
+	string keyWord;
+	dyn_string params;
+	dyn_string temp;
+		
+	// spliting keyword and params					
+	dynAppend(temp, strsplit(scriptLine, \" \"));
+	if (temp == \"\")
+		return \" \";
+	
+	keyWord =  temp[1];
+				
+	for (int i = 2; i <= dynlen(temp); i++)
+	{
+		dynAppend(params, temp[i]);
+	}
+ 
+	DisplayTime.text  = translatTime(getCurrentTime()- gStartTime);
+	
+	string result = \"\";
+	if (strpos(keyWord, \"//\") != -1)
+	{
+		appenddyn_stringToReport(scriptLine); // commment
+		return result;
+	}					
+	
+	keyWord = strtoupper(keyWord);
+
+	switch (keyWord)
+	{
+		case ALIAS: 		return run_ALIAS(params);
+			break;
+							
+		case SET: 			if (params[1] == \"TO\"  || params[1] == \"to\")
+										{
+											params[1] = params[2];
+										}
+										
+										return run_SET(params, starValue);
+			break;
+			
+		case DELAY: 		return run_DELAY(params, starValue);
+			break;
+							
+		case CHECK: 		return run_CHECK(params, starValue);
+			break;	
+							
+		case FOR_EACH: 	return run_FOR_EACH(params);
+			break;
+			
+		case END_FOR_EACH: 	return \"END_FOR_EACH\";
+			break;
+			
+		case VERBOSE: 	return run_VERBOSE(params); 		
+			break;
+
+		case CALL:			return run_CALL(params);
+			break;																	
+			
+		case SEND_XML: return run_SEND_XML(params, starValue);
+			break;
+			
+		default: 				result = NOK + \" Unable to recognise keyword: '\" + keyWord + \"'\";						
+	} // switch
+	
+	return result;
+} // bool runScript(string scriptLine)
+
+string run_CALL(dyn_string params)
+{
+	string fileName;
+	fileName = params[1];
+	
+	if (gVerbose == FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"KeyWord: ALIAS Parameters: \" + params);
+	}
+
+	bool l_error;
+	// save values to local
+	dyn_string l_DynScripts;
+	l_DynScripts = gDynScripts;
+	
+  int l_LineIndex;
+  l_LineIndex = gLineIndex;
+  
+  // save script list
+  dyn_string l_ScriptList;
+  l_ScriptList = ScriptList.items;
+  
+  // Execute the script
+	l_error = executeScriptFile(fileName);
+
+ 	// restor values
+  gDynScripts = l_DynScripts;
+  gLineIndex = l_LineIndex;
+  
+  // restor script list
+  ScriptList.items = l_ScriptList;
+  
+	if (l_error == true)
+		return OK  + \" CALL \" + fileName;	
+	else
+		return NOK + \" CALL \" + fileName;	
+} // string run_CALL(dyn_string params)
+
+string run_ALIAS(dyn_string params)
+{
+	
+	string pattern = params[1];
+	string alias = params[2];
+	
+	if (gVerbose == FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"KeyWord: ALIAS Parameters: \" + params);
+	} 
+
+	// if the alias already exist, the item is replaced
+	int index;
+	index = dynContains(gAliasAlias, alias);
+	if (index != 0)
+	{
+		// DebugN(\"New value for the alias \" + gAliasAlias[index] + \": \" + pattern + \"(index: \" + index + \")\");
+		gAliasDP[index] = pattern;
+	}	
+	else	
+		dynAppend(gAliasAlias, params[2]);
+	
+	// may be just an alias (without pattern)
+	if (dpExists(params[1]))
+	{
+		dynAppend(gAliasDP, params[1]);
+		return OK + \" ALIAS: alias \" + params[2] + \"match DPName: \" + params[1];
+	}
+	else
+	{
+		// Alias with pattern
+		dynAppend(gAliasDP, params[1]);
+		
+		dyn_string ds;
+		ds = dpNames(params[1]);
+	
+		string temp;
+		for (int i = 1; i <= dynlen(ds); i++)
+			temp += ds[i];		
+			
+		if (gVerbose == NO_VERBOSE)	
+			return OK + \" ALIAS: alias \" + params[2] + \" with \" + dynlen(ds) + \" points\";
+		else	
+			return OK + \" ALIAS: alias \" + params[2] + \"match with: \" + temp;
+	}	// alias with pattern
+	
+	return OK;	
+} // string run_ALIAS(params)
+
+string run_SET(dyn_string params, string starValue)
+{
+	string pattern = params[1]; 
+	string value   = params[2];
+
+	if (gVerbose == FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"KeyWord: SET, pattern: \" + pattern + \", value: \" + value);
+	}
+		
+	// indentation in a (for each statement) ?
+	string indentation;
+	indentation = findIndentation(starValue);
+			
+	int l_error;
+	dyn_string dynSet;
+	
+	if (starValue != \"\")
+	{
+		// we are in a for_each loop
+		string newPattern;
+		
+		newPattern = replaceAlias(pattern);
+		
+		newPattern = replaceStar(newPattern, starValue);
+		if (dpExists(newPattern) == 0)
+			return NOK + \" CHECK pattern: \" + pattern + \" doesn't mach any alias or DPName\";
+			
+		dynAppend(dynSet, newPattern);
+	}		
+	else
+		dynSet = loadDynString(pattern);
+		
+	if (dynlen(dynSet) == 0)
+		return NOK + \" SET pattern: \" + pattern + \" doesn't mach any alias or DPName\";
+		
+	// Set values(s)
+	string temp = indentation + OK + \" SET \";
+	for (int i = 1; i <= dynlen(dynSet); i++)
+	{
+		l_error = dpSet(dynSet[i], value);
+		
+		if (l_error != 0)
+			return NOK + \" SET\" + dynSet[i] + \" to \" + value;
+		
+		temp += dynSet[i] + \", \";	
+		delay(0, 100);
+	} // for
+	
+	if (gVerbose == NO_VERBOSE && starValue == \"\")
+		return indentation + OK + \" SET \" + pattern + \" TO \" + value;	
+	else
+	{
+		temp += \"TO \" + value;	
+		return temp;
+	}  
+} // string run_ALIAS(params)
+
+dyn_string loadDynString(string pattern, bool check = true)
+{
+	dyn_string ds;
+	
+	// single DP ?
+	if (dpExists(pattern))
+		dynAppend(ds, pattern);
+	else
+	{
+		// DebugN(\"Not a single DP\");
+	
+	 // pattern ?
+	 ds = getPointsFromPattern(pattern);
+	 
+	 if (dynlen(ds) == 0)
+	 {
+	 	// alias ?
+	 	int index = dynContains(gAliasAlias, pattern);
+	 	if (index == 0)
+	 	{
+	 		if (check == true)
+	 		 	return ds; // in case of CHECK or SET command
+	 		else
+	 			return pattern; // in case of XML_SEND command
+	 	}
+	 	else
+	 	{
+	 		// simple alias
+	 		if (dpExists(gAliasDP[index]))
+				dynAppend(ds, gAliasDP[index]);
+			else
+			{
+				ds = getPointsFromPattern(gAliasDP[index]);		
+			}	// alias and pattern	
+	 	} // alias
+	 } // not a simple pattern
+	} // not a simple DPName
+	return ds;	
+} // dyn_string loadDynString(string pattern)
+
+string replaceAlias(string alias)
+{
+	int index;
+	index = dynContains(gAliasAlias, alias);
+	
+	if (index != 0)
+		return gAliasDP[index];
+	else
+	{
+		// DebugN(\"Alias: \" + gAliasDP);
+		return alias;
+	}
+} // string replaceAlias(string alias)
+
+
+string run_CHECK(dyn_string params, string starValue)
+{
+	string pattern = params[1], errorMessage;;
+	string expectedValue = params[2];
+	int withinTime;
+		
+	if (dynlen(params) > 2)
+		withinTime = params[3];
+	else
+		withinTime = 0;
+
+	if (gVerbose == FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"KeyWord: CHECK, pattern: \" + pattern + \", expected value: \" + expectedValue + \", within time: \" + withinTime);
+	}
+	
+	if (withinTime < 0 || withinTime > 360)
+		return NOK + \" CHECK \"	+ pattern + \" time value invalide\";
+
+	// indentation in a (for each statement) ?
+	string indentation;
+	indentation = findIndentation(starValue);
+				
+	time timeStamp;
+	int  deltaTime;
+	timeStamp = getCurrentTime();
+	string value;
+  
+  dyn_string dynCheck, dynValuesBefor, dynGoodAfter, dynValuesAfter;
+  
+	if (starValue != \"\")
+	{
+		// we are in a for_each loop
+		string newPattern;
+		newPattern = replaceAlias(pattern);
+		
+		newPattern = replaceStar(newPattern, starValue);
+		
+		if (dpExists(newPattern) == 0)
+			return NOK + \" CHECK pattern: \" + pattern + \" doesn't mach any alias or DPName\";
+			
+		dynAppend(dynCheck, newPattern);
+	}		
+	else
+		dynCheck = loadDynString(pattern);
+		
+	// Initialize dynValues
+	for (int i = 1; i <= dynlen(dynCheck); i++)
+	{
+		dynAppend(dynValuesBefor, true);
+		dynAppend(dynGoodAfter, true);
+	}
+	
+	if (dynlen(dynCheck) == 0)
+		return NOK + \" CHECK pattern: \" + pattern + \" doesn't mach any alias or DPName\";
+	
+	bool AllGoodBeforTime = true;		
+	// wait the event not occur too fast
+	// delay(1);
+	bool quit = true;
+	while (true)
+	{
+		deltaTime = translatTime(getCurrentTime() - timeStamp);
+		
+		if (deltaTime >= withinTime)
+			break; // ellapsed time or time = 0
+	
+		for (int i = 1; i <= dynlen(dynCheck); i++)
+		{	
+			dpGet(dynCheck[i], value);
+		  // if a set instruction is followed by a check function sometimes it is necessary to wait for the database
+			//if (value == expectedValue && deltaTime > TOLERANCE_TIME)
+			if (value == expectedValue && deltaTime < withinTime - 2)
+			{
+				DebugN(\"TestScript >> value is already as expected (before wait time) deltaTime: \" + deltaTime);
+				dynValuesBefor[i] = false;
+				AllGoodBeforTime = false;
+			}	
+		}
+	
+		quit = true;	
+		// if all values are too short we can quit..
+		for (int i = 1; i <= dynlen(dynCheck); i++)
+		{
+			if (dynValuesBefor[i] == true)
+			{
+				quit = false;
+				break;
+			}
+		} // if one is ok 
+		if (quit == true)
+			break;	
+			
+		if (gStop == true)
+			break;
+		
+		DisplayTime.text  = translatTime(getCurrentTime()- gStartTime);			
+		delay(0, 200);
+	} // while time inside the allowed time
+		
+	if (quit == true && withinTime > 0)
+	{	
+		if (dynlen(dynCheck) > 1)
+			return NOK + \" CHECK \" + pattern + \" expected value: \" + expectedValue + \" all events occurs in a time to short\";	
+		else
+			return NOK + \" CHECK \" 	+ dynCheck[1] + \" expected value: \" + expectedValue + \" event occurs to fast\";
+	}		
+	int cpt;
+	time endTime;
+	bool allValuesAsExpected = true;
+		
+  //	Wait the event occur in the allowed time		
+  //if (withinTime == 0)
+  //	delay(1);
+  	
+	while (true)
+	{	
+		for (cpt = 1; cpt <= dynlen(dynCheck); cpt++)
+		{	
+		 	dpGet(dynCheck[cpt], dynValuesAfter[cpt]);
+			if (dynValuesAfter[cpt] != expectedValue)
+				dynGoodAfter[cpt] = false;
+			else
+				dynGoodAfter[cpt] = true;
+		} 
+		
+		// check if all values are as expected
+		allValuesAsExpected = true;
+		for (int i = 1; i <= dynlen(dynCheck); i++)
+		{
+			if (dynGoodAfter[i] == false)
+				allValuesAsExpected = false;	
+		}
+		
+		if (allValuesAsExpected == true)
+			break;
+	
+		deltaTime = translatTime(getCurrentTime() - timeStamp);
+		if (deltaTime > withinTime + TOLERANCE_TIME)
+				break;
+				
+		if (gStop == true)
+			break;
+				
+		DisplayTime.text  = translatTime(getCurrentTime()- gStartTime);				
+		delay(0,200);
+	} // will time inside allowed time 
+
+ if (gStop == true)
+ 	return NOK + \" CHECK (user press stop button)\";
+ 			
+// outside allowed time or all ok
+	if (AllGoodBeforTime == true && allValuesAsExpected == true)
+	{
+		// all ok
+		string dp, tt;
+		if (dynlen(dynCheck) > 1)
+		 dp = pattern;
+		else
+			dp = dynCheck[1];
+		
+    if (withinTime == 0)
+				return indentation + OK + \" CHECK \" + dp + \"value: \" + expectedValue + \" as expected\";
+		else
+			return indentation + OK + \" CHECK \" + dp + \"value: \" + expectedValue + \" as expected in \" + translatTime(deltaTime) + \" second(s)\";
+	} // all ok 
+	else
+	{	
+		// all times to long ?
+		bool allbads = true;
+		for (int i = 1; i <= dynlen(dynCheck); i++)
+		{
+			if (dynGoodAfter[i] == true)
+				allbads = false;
+		}	
+		
+		if (allbads == true && AllGoodBeforTime == true)
+		{
+			string dp, tt;
+			if (dynlen(dynCheck) > 1)
+			{
+			 dp = pattern;
+			 tt = \" all times more than \";
+			}
+			else
+			{
+				dp = dynCheck[1];
+				tt = \" time more than \";
+			}
+			
+			if (withinTime == 0)
+			{
+				if (dynlen(dynCheck) == 1)
+					return NOK + \" CHECK \" + dp + \" expected value: \" + expectedValue + \" found: \" + dynValuesAfter[1];
+				else
+					return NOK + \" CHECK \" + dp + \" expected value: \" + expectedValue;
+			}
+			else	
+				return NOK + \" CHECK \" + dp + \" value: \" + expectedValue + tt + translatTime(deltaTime) + \" second(s)\"; 
+		} // all bads
+		
+		errorMessage = NOK + \" CHECK \" ;
+		if (AllGoodBeforTime == false) // time too short
+		{
+			errorMessage += \"time to short for \";
+			for (int i = 1; i <= dynlen(dynCheck); i++)
+				if (dynValuesBefor[i] == false)
+					errorMessage += dynCheck[i] + \", \";		
+		}
+		
+		if (allValuesAsExpected == false)
+		{
+					
+			errorMessage += \"time to long for \";
+			
+			for (int i = 1; i <= dynlen(dynCheck); i++)
+				if (dynGoodAfter[i] == false)
+					errorMessage += dynCheck[i] + \", \";		
+		}
+	} // not all good (mixed result)		
+ return errorMessage;
+} // string run_CHECK(params)
+
+string findIndentation(string starValue)
+{ 
+	string indentation;
+	if (starValue != \"\")
+		return TABULATION;
+	else
+		return \"\";
+}
+
+string run_DELAY(dyn_string params, string starValue)
+{
+	int delayTime = params[1];
+		
+	if (gVerbose == FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"KeyWord: DELAY, delay time: \" + delayTime);
+	}
+
+	delay(delayTime);	
+	return findIndentation(starValue) + OK + \" DELAY: \" + delayTime + \"[sec]\";
+	// delay[delayTime];
+}
+
+string run_SEND_XML(dyn_string params, string starValue)
+{
+	string systemName, status, message, label1 = \"\", label2, label3;
+	dyn_string subSystemName;
+	
+	// XML message example 
+	// SEND_XML AFPS Backup2 OPS (in the script file)
+	// <ISupStatus Version=\"1.0\"> 
+	// <System Name=\"AFPS\" Source=\"\"> 
+	// <SubSystem Name=\"Backup2\" Status=\"OPS\"> 
+	// <Label Name=\"Label3\">  </Label> 
+	// <Label Name=\"Label2\">  </Label> 
+	// <Label Name=\"Label1\">  </Label> 
+	// </SubSystem> 
+	// </System> 
+	// </ISupStatus>
+
+  if (dynlen(params) < 3)
+  	return NOK + \"	SEND_XML, invalide argument number\";
+	
+	systemName    = params[1];
+	dynAppend(subSystemName, params[2]);
+	status        = params[3];
+	
+	// indentation in a (for each statement) ?
+	string indentation;
+	indentation = findIndentation(starValue);
+
+	if (starValue != \"\")
+	{
+		// we are in a for_each loop
+		string newPattern;
+		// DebugN(\"subSystemName: \" + subSystemName);
+		newPattern = replaceAlias(subSystemName);
+		// DebugN(\"starValue: \" + starValue);
+		// DebugN(\"After replaceAlias: \" + newPattern);
+		newPattern = replaceStar(newPattern, starValue);
+		// DebugN(\"After replaceStar: \" + newPattern);			
+		subSystemName[1] = newPattern;
+		// DebugN(\"subSystemName: \" + subSystemName);
+	}		
+	else
+	{
+		// DebugN(\"SubsystemName before loadString: \" + subSystemName);
+		subSystemName = loadDynString(subSystemName, false);
+		// DebugN(\"SubsystemName after loadString: \" + subSystemName);
+	}
+//	if (dynlen(params) > 3)
+//		message = params[4];
+//
+//  if (dynlen(params) >= 5)		 
+//  	label1 = params[5];
+//  else
+// 		label1 = \"\"; 
+//  	
+//  if (dynlen(params) >= 6)		 
+//  	label2 = params[6];
+//  else
+//  	label2 = \"\";
+//  
+//  if (dynlen(params) == 7)		 	
+//  	label3 = params[7];
+//  else
+//  	label3 = \"\";
+  		
+	string xmlMessage, tag;	
+	//tag = XMLcreateTag(\"Label\", makeDynString(\"Name\"), makeDynString(\"Label3\"), label);  	
+	//tag = XMLcreateTag(\"Label Name\", makeDynString(\"Label2\"), makeDynString(label2), tag);  
+	//tag = XMLcreateTag(\"Label Name\", makeDynString(\"Label1\"), makeDynString(label1), tag);  
+	tag = XMLcreateTag(\"SubSystem\", makeDynString(\"Name\", \"Status\"), makeDynString(subSystemName, status), \"\");  	
+	tag =  XMLcreateTag(\"System\", makeDynString(\"Name\", \"Source\"), makeDynString(systemName, \"\"), tag);
+  tag = XMLcreateTag(\"ISupStatus\", makeDynString(\"Version\"), makeDynString(\"1.0\"), tag);
+  xmlMessage = XMLaddHeader(tag);
+
+  if (gVerbose == FULL_VERBOSE)
+  	appenddyn_stringToReport(\"XML message: \" + xmlMessage);
+  
+  DebugN(xmlMessage);  
+  int id;
+  //id = tcpOpen(\"ISUP_G_A\", 5000);
+  
+  // Get the port ID
+  int port;
+  //dpGet(\"XMLUtils.CallBackConfig.Port\", port);
+  dpGet(\"XMLServer.Config.Port\", port);
+  // DebugN(\"XML port: \" + port);
+  id = tcpOpen(\"127.0.0.1\", port);
+  
+  if (id == -1)
+  	return NOK + \" SEND_XML: unable to open tcp port: \" + port;
+  
+  int l_error;
+  l_error = tcpWrite(id, xmlMessage);
+  if (l_error == -1)
+  	return NOK + \" SEND_XML: unable to write to the port\";
+	
+	tcpClose(id);
+	return indentation + \"OK SEND_XML \" + systemName + \" \" + subSystemName + \" new state: \" + status;
+} // string run_SEND_XML(dyn_string params)
+
+string run_FOR_EACH(dyn_string params)
+{
+	dyn_string commandSubSet;	
+	
+	// find the index of END_FOR_EACH keyword
+	int i, copy_of_i;
+	for (i = gLineIndex + 1; i <= dynlen(gDynScripts); i++)
+	{
+	 	if (strpos(gDynScripts[i], END_FOR_EACH) == 0)
+			break;
+		
+	 	dynAppend(commandSubSet, gDynScripts[i]);
+	}	
+		
+	if (i > dynlen(gDynScripts))
+	 return NOK + \"	FOR_EACH, don't find END_FOR_EACH keyword\";
+	
+	copy_of_i = i;
+
+	// DebugN(\"Nb params: \" + dynlen(params));
+	if (dynlen(params) < 1 || dynlen(params) > 2)
+		return NOK + \"	FOR_EACH, invalide argument number\";
+		
+	string pattern = params[1];
+		
+	// pattern ?
+	int index = dynContains(gAliasAlias, pattern);
+	if (index != 0)
+		pattern = gAliasDP[index];
+	
+	// find all items
+	dyn_string ds = getPointsFromPattern(pattern);
+	
+	int length;
+	length = dynlen(ds);
+	
+	if (length < 1)
+		return NOK + \"	FOR_EACH, pattern or alias doesn't match with any DP\";
+	else
+	{
+		if (gVerbose == FULL_VERBOSE)
+			appenddyn_stringToReport(OK + \" FOR_EACH \" + pattern + \"(found END_FOR_EACH at index: \" + i + \")\");
+		else
+			appenddyn_stringToReport(OK + \" FOR_EACH \" + pattern);
+	}
+		
+	string l_error = OK;
+				
+	for (int indexPattern = 1; indexPattern <= length; indexPattern++)
+	{
+		// find the starValue		
+		string starValue;
+		starValue = findStarValue(pattern, ds[indexPattern]);
+		
+		if (gVerbose == FULL_VERBOSE)
+			appenddyn_stringToReport(\"FOR_EACH: DP NAME = \" + ds[indexPattern]); 		
+		else
+		{
+			if (indexPattern > 1)
+				appenddyn_stringToReport(\"\");				
+		}
+		// Warning i is transfered by reference !!!	
+		int temp;
+		temp =  executeScriptList(i, commandSubSet, starValue);		 
+		if (temp == false)
+			l_error = NOK;
+			
+		if (gStop == true)
+			break;
+	} // for
+	 
+	gLineIndex = copy_of_i; // end of the FOR_EACH loop
+	
+	if (l_error == NOK)
+		return l_error  + \" END_FOR_EACH (error inside the loop)\";
+	else
+		return l_error  + \" END_FOR_EACH\";		
+} // string run_FOR_EACH(dyn_string params, int gVerbose)
+
+string run_VERBOSE(dyn_string params)
+{
+	if (params[1] == \"=\" && dynlen(params) >= 4)
+		params[1] = params[4];
+	else
+		params[1] = params[2];
+		
+	string verbose;
+	verbose = params[1];
+		
+	switch(verbose)
+	{
+		case \"NO_VERBOSE\": return OK + \" VERBOSE SET TO NO_VERBOSE\";
+			break;
+		
+		case \"MEDIUM_VERBOSE\": return OK + \" VERBOSE SET TO MEDIUM_VERBOSE\";
+			break;		
+		
+		case \"FULL_VERBOSE\": return OK + \" VERBOSE SET TO  FULL_VERBOSE\";
+			break;
+	
+		default:
+			if (verbose == 0)
+				return OK + \" VERBOSE SET TO NO_VERBOSE\";
+			else
+				if (verbose == 1)			
+					return OK + \" VERBOSE SET TO MEDIUM_VERBOSE\";
+				else
+					if (verbose == 2)
+						return OK + \" VERBOSE SET TO  FULL_VERBOSE\";
+	} // switch verbose
+	return NOK + \" VERBOSE parameter can be either: NO_VERBOSE, MEDIUM_VERBOSE, FULL_VERBOSE or resp. 0,1,2\";
+} // string run_VERBOSE(dyn_string params)
+
+bool executeScriptList(int &index, dyn_string dynScripts, string starValue)
+{	
+	bool l_error = true;
+	
+	for (index = 1; index <= dynlen(dynScripts); index ++)
+	{	
+		if (gVerbose	!= NO_VERBOSE)
+			appenddyn_stringToReport(\"Evaluate line [\" + index + \"]: \" + dynScripts[index]);
+
+		int rightIndex;
+		rightIndex = index;	
+		if (starValue != \"\")
+		{
+			rightIndex += gLineIndex;
+		}	
+		
+		ScriptList.selectedPos = rightIndex;
+			
+		// Evaluate the script line		
+		string result  = runScript(dynScripts[index], starValue);
+		if (result == \"\")
+		{
+			delay(0,100);
+			continue;
+		}
+		
+		appenddyn_stringToReport(result);
+		
+ 		// Check if an error occur 
+		if (strpos(result, NOK) != -1)
+			l_error = false;
+											
+		if (gStop == true)
+			break;
+		
+		DisplayTime.text  = translatTime(getCurrentTime()- gStartTime);
+		delay(0, 200);
+	} // for (int i = 1; i <= dynlen(dynScripts); i ++)			
+	return l_error; 
+} // executeScriptList(int index, dyn_string dynScripts)
+
+void setProgramCounterFrame(bool visible)
+{
+		ExecutionCounter.visible = visible;
+		LoopText.visible = visible;
+		Loop.visible = visible;
+		AlreadyExecutedText.visible = visible;
+		AlreadyExecuted.visible = visible;
+} // only one time
+
+void beforExecution()
+{
+	// erase report file
+	string reportFileName = FileName.text;
+	if (strpos(reportFileName, \".\") == -1)
+	{
+		FileName.text = FileName.text + \".txt\";
+		// DebugN(\"reportFileName: \" + reportFileName);
+	}
+	
+	dyn_string dyn = strsplit (FileName.text, '.');
+			
+	reportFileName = dyn[1] + \"_Report.\" + dyn[2];
+	bool l_error;
+	l_error = remove(reportFileName);
+	
+	gVerbose = NO_VERBOSE;
+	RunScript.enabled = false;
+	LogList.deleteAllItems;
+	
+	gExecututionNumber = Loop.text;
+	if (gExecututionNumber == -1)
+		gExecututionNumber = 99999;	
+	
+	if (gExecututionNumber > 1)
+		setProgramCounterFrame(true);
+	else
+		setProgramCounterFrame(false);
+		
+	ExecutionTimeText.visible = true;
+	ExecutionTimeText_2.visible = true;
+	DisplayTime.visible = true;
+			
+	Loop.enabled = false;	
+	StopButton.enabled = true;
+	StopButton.visible = true;
+	gStop = false;
+	gStartTime = getCurrentTime();
+	
+	appenddyn_stringToReport(\"Scripting tool version: \" + SCRIPTING_TOOL_VERSION);
+	appenddyn_stringToReport(\"\");
+	appenddyn_stringToReport(\"Script launched time: \" + gStartTime);
+} // void beforExecution()
+
+bool executeScriptFile(string scriptFileName)
+{
+	string testScript;
+	bool l_error;
+	
+	l_error = fileToString(scriptFileName, testScript);
+	
+	if (l_error == false)
+	{
+		appenddyn_stringToReport(\"Unable to open script file: \" + scriptFileName);		
+		return false;
+	}
+		
+	// parsing file (on command for on line)
+	gDynScripts = parseScriptFile(testScript);	
+		
+	if (dynlen(gDynScripts) > 1 && gVerbose > NO_VERBOSE && gVerbose != FULL_VERBOSE)
+		appenddyn_stringToReport(OK + \" parsing\");	
+		
+	if (gVerbose	== FULL_VERBOSE)
+	{
+		appenddyn_stringToReport(\"Parsed text:\");
+		appenddyn_stringToReport(gDynScripts);
+		appenddyn_stringToReport(\"End of parsed text\");
+		appenddyn_stringToReport(\"\");
+	}
+	
+	if (gVerbose	== FULL_VERBOSE)
+		appenddyn_stringToReport(\"Script file contains: \" + dynlen(gDynScripts) + \" lines\");	
+		
+	// call the execution 
+	l_error = executeScriptList(gLineIndex, gDynScripts,\"\");
+	
+	return l_error;
+} // bool executeScriptFile(string scriptFileName)
+ 
+void afterExecution(bool l_error)
+{
+	if (gStop == true)
+		appenddyn_stringToReport(\"The user press the STOP button: protocol break\");
+			
+	if (l_error != false)
+		appenddyn_stringToReport(\"End of protocol without any error congratulation !!!\");
+	else
+		appenddyn_stringToReport(\"End of protocol, some error(s) occurs\");
+	
+	time endTime;
+	endTime = getCurrentTime();
+
+	string temp;
+	temp = translatTime(endTime - gStartTime);
+	DisplayTime.text = temp;
+	
+	// Display graphics items...
+	setProgramCounterFrame(true);	
+	// Enable the button	
+	RunScript.enabled = true;
+	// Enable the loop counter
+	Loop.enabled = true;		
+	StopButton.enabled = false;
+} // void afterExecution()
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 2
+"Text1"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 12 12 248 38
+0 2 0 "0s" 0 0 0 64 0 0  12 12 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 23 File name of the script
+2 4
+"Text"
+""
+1 10 130 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 132 288 148
+0 2 0 "0s" 0 0 0 64 0 0  12 132 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 26 Log [last executed record]
+2 6
+"Text2"
+""
+1 10 380 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 382 508 398
+0 2 0 "0s" 0 0 0 64 0 0  12 382 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 49 Script [record selected = actual executed record]
+2 7
+"LoopText"
+""
+1 720 30 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 722 32 768 48
+0 2 0 "0s" 0 0 0 64 0 0  722 32 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 4 Loop
+2 13
+"AlreadyExecutedText"
+""
+1 600 70 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 602 72 723 91
+0 2 0 "0s" 0 0 0 192 0 0  602 72 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 15 Alread executed
+30 14
+"ExecutionCounter"
+""
+1 590 140 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+15 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 590 10 880 140
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 17 Execution counter
+2 16
+"ExecutionTimeText"
+""
+1 600 110 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 602 112 748 128
+0 2 0 "0s" 0 0 0 64 0 0  602 112 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 14 Execution time
+2 17
+"ExecutionTimeText_2"
+""
+1 820 110 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 822 112 868 128
+0 2 0 "0s" 0 0 0 64 0 0  822 112 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 5 [sec]
+14 1
+"FileName"
+""
+1 10 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 33 497 62
+3 "0s" 0 0 0 0 0 -1  E E E
+13 0
+"RunScript"
+""
+1 10 75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 73 272 127
+
+T 
+1
+LANG:5 10 Run script
+"main()
+{
+	// INIT
+	beforExecution();
+			
+	// Load the file
+	bool l_error = true;
+				
+	for (int i = 0; i < gExecututionNumber; i++)
+	{
+		if (i > 1)
+			appenddyn_stringToReport(\"starting (master) script execution number: \" + (i + 1));
+			
+		int temp;
+		string nb;
+		temp = executeScriptFile(FileName.text);		
+		
+		AlreadyExecuted.text = i;
+		
+		if (temp == false)
+			l_error = false;
+			
+		if (gStop == true)
+			break;
+	}		
+	afterExecution(l_error);
+} // //Function RunScript_EventClick
+
+" 0
+ E E E
+17 5
+"ScriptList"
+""
+1 10 400 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 398 882 622
+0
+
+"main()
+{
+
+}" 0
+
+E
+E
+
+0 0
+14 9
+"Loop"
+""
+1 770 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 768 28 822 57
+3 "3d" 3 0 0 0 0 -1  E E E
+14 12
+"AlreadyExecuted"
+""
+1 770 70 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 768 68 822 97
+3 "3s" 3 0 0 0 0 -1  E E E
+14 15
+"DisplayTime"
+""
+1 750 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 748 108 822 137
+3 "6d" 6 0 0 0 0 -1  E E E
+13 18
+"StopButton"
+""
+1 325 75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-15-*-100-100-*-*-iso8859-1|-15,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 323 73 567 127
+
+T 
+1
+LANG:5 8 STOP !!!
+"main()
+{
+	gStop = true;
+	StopButton.enabled = false;
+	RunScript.enabled = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+17 3
+"LogList"
+""
+1 10 150 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 148 882 372
+0
+
+"main()
+{
+
+}" 0
+
+E
+E
+
+0 0
+13 19
+"Button1"
+""
+1 510 35 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 508 33 567 62
+
+T 
+1
+LANG:5 6 Browse
+"main()
+{
+string fileName;
+
+	fileSelector(fileName, \"D:\\\\TestScripts\");
+	FileName.text() = fileName;
+//	DebugTN(fileName);
+	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

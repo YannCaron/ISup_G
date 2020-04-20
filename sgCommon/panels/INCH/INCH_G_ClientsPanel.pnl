@@ -1,0 +1,1673 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,0 0 1110 860 N "_3DFace" 33
+"$C01"
+"$C02"
+"$C03"
+"$C04"
+"$C05"
+"$C06"
+"$C07"
+"$C08"
+"$C09"
+"$C10"
+"$C11"
+"$C12"
+"$C13"
+"$C14"
+"$C15"
+"$C16"
+"$C17"
+"$C18"
+"$C19"
+"$C20"
+"$C21"
+"$C22"
+"$C23"
+"$C24"
+"$C25"
+"$C26"
+"$C27"
+"$C28"
+"$C29"
+"$C30"
+"$C31"
+"$C32"
+"$C33"
+EEE E E 1 -1 -1 0  10 10
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U 1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12
+ 1
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 19 INCH Geneva Clients
+LANG:1 4 AFPS
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+1 0 129 "" -1
+0
+1 0 130 "" -1
+0
+1 0 131 "" -1
+0
+1 0 132 "" -1
+0
+1 0 133 "" -1
+0
+1 0 134 "" -1
+0
+1 0 135 "" -1
+0
+1 0 136 "" -1
+0
+1 0 137 "" -1
+0
+1 0 138 "" -1
+0
+1 0 139 "" -1
+0
+1 0 140 "" -1
+0
+1 0 141 "" -1
+0
+1 0 142 "" -1
+0
+1 0 143 "" -1
+0
+1 0 144 "" -1
+0
+1 0 145 "" -1
+0
+1 0 146 "" -1
+0
+1 0 147 "" -1
+0
+1 0 148 "" -1
+0
+1 0 149 "" -1
+0
+1 0 150 "" -1
+0
+1 0 151 "" -1
+0
+1 0 152 "" -1
+0
+1 0 153 "" -1
+0
+1 0 154 "" -1
+0
+1 0 155 "" -1
+0
+1 0 156 "" -1
+0
+1 0 157 "" -1
+0
+1 0 158 "" -1
+0
+1 0 159 "" -1
+0
+1 0 160 "" -1
+0
+1 0 161 "" -1
+0
+1 0 128 "" -1
+0
+1 0 162 "" -1
+0
+1 0 163 "" -1
+0
+1 0 164 "" -1
+0
+1 0 165 "" -1
+0
+1 0 166 "" -1
+0
+1 0 167 "" -1
+0
+1 0 168 "" -1
+0
+1 0 169 "" -1
+0
+1 0 170 "" -1
+0
+1 0 171 "" -1
+0
+1 0 172 "" -1
+0
+1 0 173 "" -1
+0
+1 0 174 "" -1
+0
+1 0 175 "" -1
+0
+1 0 176 "" -1
+0
+1 0 177 "" -1
+0
+1 0 178 "" -1
+0
+1 0 179 "" -1
+0
+1 0 180 "" -1
+0
+1 0 181 "" -1
+0
+1 0 182 "" -1
+0
+1 0 183 "" -1
+0
+1 0 184 "" -1
+0
+1 0 185 "" -1
+0
+1 0 186 "" -1
+0
+1 0 187 "" -1
+0
+1 0 188 "" -1
+0
+1 0 189 "" -1
+0
+1 0 190 "" -1
+0
+1 0 191 "" -1
+0
+1 0 192 "" -1
+0
+1 0 193 "" -1
+0
+1 0 194 "" -1
+0
+0
+3 128 "Group63"
+"objects\\sgFwHistory.pnl" 10 710 T 141 1 0 1  -10 -10  
+2
+"$SystemHistory""INCH.History"
+"$SystemName"""
+3 129 "Group128"
+"objects\\sgFwBlock.pnl" 55 60 T 141 0.7625 0 0.25  12.6208333333331 40  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C01"
+3 130 "Group129"
+"objects\\sgFwBlock.pnl" 425 600 T 142 0.7625 0 0.25  101.183333333333 445  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C21"
+3 131 "Group130"
+"objects\\sgFwBlock.pnl" 55 120 T 143 0.7625 0 0.25  13.1833333333331 85  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C02"
+3 132 "Group131"
+"objects\\sgFwBlock.pnl" 55 180 T 144 0.7625 0 0.25  13.1833333333331 130  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C03"
+3 133 "Group132"
+"objects\\sgFwBlock.pnl" 55 240 T 145 0.7625 0 0.25  13.1833333333331 175  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C04"
+3 134 "Group133"
+"objects\\sgFwBlock.pnl" 55 300 T 146 0.7625 0 0.25  13.1833333333331 220  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C05"
+3 135 "Group134"
+"objects\\sgFwBlock.pnl" 55 360 T 147 0.7625 0 0.25  13.1833333333331 265  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C06"
+3 136 "Group135"
+"objects\\sgFwBlock.pnl" 55 420 T 148 0.7625 0 0.25  13.183333333333 310  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C07"
+3 137 "Group136"
+"objects\\sgFwBlock.pnl" 55 480 T 149 0.7625 0 0.25  13.1833333333331 355  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C08"
+3 138 "Group137"
+"objects\\sgFwBlock.pnl" 55 540 T 150 0.7625 0 0.25  13.183333333333 400  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C09"
+3 139 "Group138"
+"objects\\sgFwBlock.pnl" 55 600 T 151 0.7625 0 0.25  13.1833333333331 445  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C10"
+3 140 "Group139"
+"objects\\sgFwBlock.pnl" 55 660 T 152 0.7625 0 0.25  13.1833333333331 490  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C11"
+3 141 "Group140"
+"objects\\sgFwBlock.pnl" 425 60 T 153 0.7625 0 0.25  101.183333333333 40  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C12"
+3 142 "Group141"
+"objects\\sgFwBlock.pnl" 425 120 T 154 0.7625 0 0.25  101.183333333333 85  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C13"
+3 143 "Group142"
+"objects\\sgFwBlock.pnl" 425 180 T 155 0.7625 0 0.25  101.183333333333 130  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C14"
+3 144 "Group143"
+"objects\\sgFwBlock.pnl" 425 240 T 156 0.7625 0 0.25  101.183333333333 175  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C15"
+3 145 "Group144"
+"objects\\sgFwBlock.pnl" 425 300 T 157 0.7625 0 0.25  101.183333333333 220  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C16"
+3 146 "Group145"
+"objects\\sgFwBlock.pnl" 425 360 T 158 0.7625 0 0.25  101.183333333333 265  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C17"
+3 147 "Group146"
+"objects\\sgFwBlock.pnl" 425 420 T 159 0.7625 0 0.25  101.183333333333 310  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C18"
+3 148 "Group147"
+"objects\\sgFwBlock.pnl" 425 480 T 160 0.7625 0 0.25  101.183333333333 355  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C19"
+3 149 "Group148"
+"objects\\sgFwBlock.pnl" 425 540 T 161 0.7625 0 0.25  101.183333333333 400  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C20"
+3 150 "Group149"
+"objects\\sgFwBlock.pnl" 425 660 T 162 0.7625 0 0.25  100.558333333333 490  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C22"
+3 151 "Group150"
+"objects\\sgFwBlock.pnl" 795 60 T 163 0.7625 0 0.25  188.558333333333 40  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C23"
+3 152 "Group151"
+"objects\\sgFwBlock.pnl" 795 120 T 164 0.7625 0 0.25  188.558333333333 85  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C24"
+3 153 "Group152"
+"objects\\sgFwBlock.pnl" 795 180 T 165 0.7625 0 0.25  188.558333333333 130  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C25"
+3 154 "Group153"
+"objects\\sgFwBlock.pnl" 795 240 T 166 0.7625 0 0.25  188.558333333333 175  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C26"
+3 155 "Group154"
+"objects\\sgFwBlock.pnl" 795 300 T 167 0.7625 0 0.25  188.558333333333 220  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C27"
+3 156 "Group155"
+"objects\\sgFwBlock.pnl" 795 360 T 168 0.7625 0 0.25  188.558333333333 265  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C28"
+3 157 "Group156"
+"objects\\sgFwBlock.pnl" 795 420 T 169 0.7625 0 0.25  188.558333333333 310  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C29"
+3 158 "Group157"
+"objects\\sgFwBlock.pnl" 795 480 T 170 0.7625 0 0.25  188.558333333333 355  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C30"
+3 159 "Group158"
+"objects\\sgFwBlock.pnl" 795 540 T 171 0.7625 0 0.25  188.558333333333 400  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C31"
+3 160 "Group159"
+"objects\\sgFwBlock.pnl" 795 600 T 172 0.7625 0 0.25  188.558333333333 445  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C32"
+3 161 "Group160"
+"objects\\sgFwBlock.pnl" 795 660 T 173 0.7625 0 0.25  188.558333333333 490  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH.Components.Clients.0 + $C33"
+3 162 "Group161"
+"objects/sgFwBtnCommand.pnl" 10 60 T 174 0.666666666666667 0 1.25  3.66666666666667 -19.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C01"
+3 163 "Group162"
+"objects/sgFwBtnCommand.pnl" 10 120 T 175 0.666666666666667 0 1.25  3.66666666666667 -34.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C02"
+3 164 "Group163"
+"objects/sgFwBtnCommand.pnl" 10 180 T 176 0.666666666666667 0 1.25  3.66666666666667 -49.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C03"
+3 165 "Group164"
+"objects/sgFwBtnCommand.pnl" 10 240 T 177 0.666666666666667 0 1.25  3.66666666666667 -64.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C04"
+3 166 "Group165"
+"objects/sgFwBtnCommand.pnl" 10 300 T 178 0.666666666666667 0 1.25  3.66666666666667 -79.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C05"
+3 167 "Group166"
+"objects/sgFwBtnCommand.pnl" 10 360 T 179 0.666666666666667 0 1.25  3.66666666666667 -94.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C06"
+3 168 "Group167"
+"objects/sgFwBtnCommand.pnl" 10 420 T 180 0.666666666666667 0 1.25  3.66666666666667 -109.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C07"
+3 169 "Group168"
+"objects/sgFwBtnCommand.pnl" 10 480 T 181 0.666666666666667 0 1.25  3.66666666666667 -124.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C08"
+3 170 "Group169"
+"objects/sgFwBtnCommand.pnl" 10 540 T 182 0.666666666666667 0 1.25  3.66666666666667 -139.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C09"
+3 171 "Group170"
+"objects/sgFwBtnCommand.pnl" 10 660 T 183 0.666666666666667 0 1.25  3.66666666666669 -169.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C11"
+3 172 "Group171"
+"objects/sgFwBtnCommand.pnl" 380 60 T 184 0.666666666666667 0 1.25  126.666666666667 -19.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C12"
+3 173 "Group172"
+"objects/sgFwBtnCommand.pnl" 380 120 T 185 0.666666666666667 0 1.25  126.666666666667 -34.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C13"
+3 174 "Group173"
+"objects/sgFwBtnCommand.pnl" 380 180 T 186 0.666666666666667 0 1.25  126.666666666667 -49.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C14"
+3 175 "Group174"
+"objects/sgFwBtnCommand.pnl" 380 240 T 187 0.666666666666667 0 1.25  126.666666666667 -64.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C15"
+3 176 "Group175"
+"objects/sgFwBtnCommand.pnl" 380 300 T 188 0.666666666666667 0 1.25  126.666666666667 -79.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C16"
+3 177 "Group176"
+"objects/sgFwBtnCommand.pnl" 380 360 T 189 0.666666666666667 0 1.25  126.666666666667 -94.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C17"
+3 178 "Group177"
+"objects/sgFwBtnCommand.pnl" 380 420 T 190 0.666666666666667 0 1.25  126.666666666667 -109.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C18"
+3 179 "Group178"
+"objects/sgFwBtnCommand.pnl" 380 480 T 191 0.666666666666667 0 1.25  126.666666666667 -124.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C19"
+3 180 "Group179"
+"objects/sgFwBtnCommand.pnl" 380 600 T 192 0.666666666666667 0 1.25  126.666666666667 -154.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C21"
+3 181 "Group180"
+"objects/sgFwBtnCommand.pnl" 380 660 T 193 0.666666666666667 0 1.25  126.666666666667 -169.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C22"
+3 182 "Group181"
+"objects/sgFwBtnCommand.pnl" 750 60 T 194 0.666666666666667 0 1.25  249.666666666667 -19.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C23"
+3 183 "Group182"
+"objects/sgFwBtnCommand.pnl" 750 120 T 195 0.666666666666667 0 1.25  249.666666666667 -34.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C24"
+3 184 "Group183"
+"objects/sgFwBtnCommand.pnl" 750 180 T 196 0.666666666666667 0 1.25  249.666666666667 -49.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C25"
+3 185 "Group184"
+"objects/sgFwBtnCommand.pnl" 750 240 T 197 0.666666666666667 0 1.25  249.666666666667 -64.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C26"
+3 186 "Group185"
+"objects/sgFwBtnCommand.pnl" 750 300 T 198 0.666666666666667 0 1.25  249.666666666667 -79.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C27"
+3 187 "Group186"
+"objects/sgFwBtnCommand.pnl" 750 360 T 199 0.666666666666667 0 1.25  249.666666666667 -94.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C28"
+3 188 "Group187"
+"objects/sgFwBtnCommand.pnl" 750 420 T 200 0.666666666666667 0 1.25  249.666666666667 -109.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C29"
+3 189 "Group188"
+"objects/sgFwBtnCommand.pnl" 10 600 T 201 0.666666666666667 0 1.25  3.66666666666669 -154.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C10"
+3 190 "Group189"
+"objects/sgFwBtnCommand.pnl" 380 540 T 202 0.666666666666667 0 1.25  126.666666666667 -139.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C20"
+3 191 "Group190"
+"objects/sgFwBtnCommand.pnl" 750 480 T 203 0.666666666666667 0 1.25  249.666666666667 -124.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C30"
+3 192 "Group191"
+"objects/sgFwBtnCommand.pnl" 750 540 T 204 0.666666666666667 0 1.25  249.666666666667 -139.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C31"
+3 193 "Group192"
+"objects/sgFwBtnCommand.pnl" 750 600 T 205 0.666666666666667 0 1.25  249.666666666667 -154.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C32"
+3 194 "Group193"
+"objects/sgFwBtnCommand.pnl" 750 660 T 206 0.666666666666667 0 1.25  249.666666666667 -169.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH"
+"$SystemStatus""\"INCH.Components.Clients.0\" + $C33"
+0

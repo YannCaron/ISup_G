@@ -1,0 +1,197 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 10 Navir Sion
+LANG:1 4 AFPS
+1 647 106 "" 46
+0
+30 646
+"Frame5"
+""
+1 25 378 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+142 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 25 70 1085 390
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 10 Navir SION
+1 650 108 "" 12
+19 "text" 0 0 1
+LANG:5 4 GP25
+
+0
+1 651 108 "1" 46
+0
+1 652 108 "0" 46
+0
+1 657 110 "" 12
+19 "text" 0 0 1
+LANG:5 3 SIO
+
+0
+1 658 110 "1" 46
+0
+1 659 110 "3" 46
+0
+1 660 110 "0" 46
+0
+1 667 112 "" 46
+0
+1 670 113 "" 12
+19 "text" 0 0 1
+LANG:5 5 LOC25
+
+0
+1 671 113 "1" 46
+0
+1 672 113 "3" 46
+0
+1 673 113 "0" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 648 106 "" 51
+0
+1 649 106 "" 52
+0
+1 653 108 "1" 51
+0
+1 654 108 "1" 52
+0
+1 655 108 "0" 51
+0
+1 656 108 "0" 52
+0
+1 661 110 "1" 51
+0
+1 662 110 "1" 52
+0
+1 663 110 "3" 51
+0
+1 664 110 "3" 52
+0
+1 665 110 "0" 51
+0
+1 666 110 "0" 52
+0
+1 668 112 "" 51
+0
+1 669 112 "" 52
+0
+1 674 113 "1" 51
+0
+1 675 113 "1" 52
+0
+1 676 113 "3" 51
+0
+1 677 113 "3" 52
+0
+1 678 113 "0" 51
+0
+1 679 113 "0" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 106 "Group17" -1
+"objects\\sgFwBlock.pnl" 530 395 T 141 1.175 0 0.25 -562.936555697823 211.488095238096
+5
+"$LabelsNum""0"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_S:"
+"$SystemName""Navir_S:"
+"$SystemStatus""NavSup.GlobalStatus"
+3 108 "Group21" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 105 T 144 1.27777777777778 0 0.9 271.726098191214 195.5
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP25"
+"$SystemName""Navir_S:"
+3 110 "Group25" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 470 T 146 1.27777777777778 0 0.901118521241401 781.6666666666666 -133.3020007351783
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""SIO"
+"$SystemName""Navir_S:"
+3 112 "Group22" -1
+"objects\\sgFwBlock.pnl" 910 395 T 147 1.175 0 0.25 -488.892907334212 211.202380952381
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Links/LinksInfosSIO.pnl"
+"$PanelParams""SystemName:Navir_S:"
+"$SystemName""Navir_S:"
+"$SystemStatus""LinksInfosSIO.GlobalStatus"
+3 113 "PANEL_REF114" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 225 T 147 1.27777777777778 0 0.899863903299301 11.6666666666666 87.50340241751748
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC25"
+"$SystemName""Navir_S:"
+0

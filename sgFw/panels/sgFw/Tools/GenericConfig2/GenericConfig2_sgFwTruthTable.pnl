@@ -1,0 +1,870 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,279 214 956 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+	dyn_string ds;
+	
+	ds = makeDynString(\"---\", \"ANY\");
+	dynAppend(ds, sgFwGetStatuses());
+	AllCombo.items    = ds;
+	AnyCombo.items    = ds;
+	OutputCombo.items = sgFwGetStatuses();
+	
+	for (int i = 0; i <= 32; i++)
+		NCombo.appendItem(i);
+			
+	// Get original values
+	dyn_string table;
+	
+	dpGet(getDpEdit() + \".Table\", table);
+		
+	 for (int i = 1; i <= dynlen(table); i++)
+	 {
+	 	dyn_string header;
+	 	header = sgTTGetLineHeader(table[i]);
+	 	
+	 	dynAppend(gAllList,    header[1]);
+	 	dynAppend(gAnyList,    header[2]);
+	 	dynAppend(gOutputList, header[3]);
+	 	dynAppend(gNList,      header[4]);
+	 	
+	 	
+	 	dyn_string inputs;
+	 	inputs = sgTTGetInputs(table[i]);
+	 	
+	 	string inputString;
+	 	for (int cpt = 1; cpt <= dynlen(inputs); cpt++)
+	 	{
+	 		if (inputString != \"\")
+	 			inputString += \"_\";
+	 			
+	 		inputString += inputs[cpt];
+	 	} // loop fo one input
+	 	
+	 	dynAppend(gInputsList, inputString);
+	 } // loop for all lines
+	 
+	refresh();
+	if (AllList.itemCount > 0)
+		selectionChanged(AllList.selectedPos);
+	else
+		AllCombo.selectedPos = 3;
+	
+	InvalidLabel.visible = false;
+} // EventInitialize
+" 0
+"main()
+{
+
+	SavingChangesBack();
+
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"const string WindowspanelPath = \"sgFw\\\\sgFwConfirmWindow.pnl\";
+const string DBKEY_MODIFIED_VALUES    = \"MODIFIED_VALUES\";	
+dyn_string gAllList, gAnyList, gNList, gInputsList, gOutputList;
+
+void refresh()
+{
+	AllList.items    = gAllList;
+	AnyList.items    = gAnyList;
+	InputsList.items = gInputsList;
+	NList.items      = gNList;
+	OutputList.items = gOutputList;
+	
+//	checkAndupDatesgBD();
+}
+
+string getDpEdit()
+{
+
+	dyn_string data_points;
+
+	data_points = strsplit($DPEditNames, \";\"); 
+
+	return data_points[1];
+
+}
+
+string generateLine()
+{
+	string res;
+	
+	res = AllCombo.selectedText + \"_\" + AnyCombo.selectedText + \"_\" + OutputCombo.selectedText + \"_\" + NCombo.selectedText;
+	if(InputsField.text != \"\")
+	{
+		res += \"_\";
+		res += 	InputsField.text;
+	}
+	return res;
+}
+
+
+dyn_string generateTable()
+{
+	dyn_string table;
+
+	for(int cpt = 1; cpt <= dynlen(gAllList); cpt++)
+	{
+		string res;
+		
+		res = gAllList[cpt] + \"_\" + gAnyList[cpt] + \"_\" + gOutputList[cpt] + \"_\" + gNList[cpt];
+		if(gInputsList[cpt] != \"\")
+		{
+			res += \"_\";
+			res += 	gInputsList[cpt];
+		}
+		dynAppend(table, res);
+	}
+	return table;
+}
+
+
+void selectionChanged(int position)
+{
+	AllList.selectedPos = position;
+	AnyList.selectedPos = position;
+	NList.selectedPos = position;
+	InputsList.selectedPos = position;
+	OutputList.selectedPos = position;
+
+	AllCombo.selectedPos = dynContains(AllCombo.items, AllList.selectedText);
+	AnyCombo.selectedPos = dynContains(AnyCombo.items, AnyList.selectedText);
+	NCombo.selectedPos = dynContains(NCombo.items, NList.selectedText);
+	InputsField.text = InputsList.selectedText;
+	OutputCombo.selectedPos = dynContains(OutputCombo.items, OutputList.selectedText);	
+}
+
+void moveLineUp()
+{
+	int currentPos;
+		
+	currentPos = AllList.selectedPos;
+
+	if(currentPos < 2)		// we are on the first line
+		return;
+		
+	changeElementsPosition(currentPos, currentPos - 1);
+}
+
+void moveLineDown()
+{
+	int currentPos;
+		
+	currentPos = AllList.selectedPos;
+
+	if(currentPos >= dynlen(gAllList))		// we are on the last line
+		return;
+	
+	changeElementsPosition(currentPos, currentPos + 1);
+}
+
+
+void changeElementsPosition(int currentPosition, int nextPosition)
+{
+	string temp;
+	
+	temp =	gAllList[currentPosition];
+	gAllList[currentPosition] = gAllList[nextPosition];
+	gAllList[nextPosition] = temp;
+
+	temp =	gAnyList[currentPosition];
+	gAnyList[currentPosition] = gAnyList[nextPosition];
+	gAnyList[nextPosition] = temp;
+
+	temp =	gInputsList[currentPosition];
+	gInputsList[currentPosition] = gInputsList[nextPosition];
+	gInputsList[nextPosition] = temp;
+
+	temp =	gNList[currentPosition];
+	gNList[currentPosition] = gNList[nextPosition];
+	gNList[nextPosition] = temp;
+
+	temp =	gOutputList[currentPosition];
+	gOutputList[currentPosition] = gOutputList[nextPosition];
+	gOutputList[nextPosition] = temp;
+
+	refresh();
+	selectionChanged(nextPosition);	
+}
+
+void removeElement(int currentPosition)
+{
+	dynRemove(gAllList, currentPosition);
+	dynRemove(gAnyList, currentPosition);
+	dynRemove(gInputsList, currentPosition);
+	dynRemove(gNList, currentPosition);
+	dynRemove(gOutputList, currentPosition);
+
+	refresh();
+	
+	if(currentPosition > 1)
+		selectionChanged(currentPosition - 1);	
+	else
+		selectionChanged(currentPosition);	
+}
+
+void SavingChangesBack()
+{
+
+	if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+		dyn_string table;
+		table = generateTable();
+	
+		bool result;
+		result = sgTTCheckTable(table);
+	
+		if (result)
+		{
+			InvalidLabel.visible = false;
+			bool b;
+			// dpSet($DPName + \".Table\", table);
+			//b = sgDBSet(DBKEY_MODIFIED_VALUES, getDpEdit() + \".Table\", table);
+			b = dpSet(getDpEdit() + \".Table\", table);
+			if (b != 0)
+				DebugTN(\"GenericConfig -> sgTruthTable: unable to set values in Table key\");
+		}
+		else
+		{
+			InvalidLabel.visible = true;
+		}
+	
+	}
+
+} // void upDatesgBD()
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 18
+"Text1"
+""
+1 15 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+17 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 17 12 73 28
+0 2 0 "s" 0 0 0 65 0 0  17 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 All
+2 19
+"Text2"
+""
+1 95 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 97 12 153 38
+0 2 0 "s" 0 0 0 65 0 0  97 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 3 Any
+2 20
+"Text3"
+""
+1 175 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 177 12 233 28
+0 2 0 "s" 0 0 0 65 0 0  177 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 1 N
+2 21
+"Text4"
+""
+1 255 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+20 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 257 12 553 38
+0 2 0 "s" 0 0 0 65 0 0  257 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Inputs
+2 22
+"Text5"
+""
+1 625 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+21 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 627 12 688 38
+0 2 0 "s" 0 0 0 65 0 0  627 12
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Output
+30 31
+"Frame1"
+""
+1 10 420 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+22 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 360 845 420
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 12 Current Line
+30 32
+"Frame2"
+""
+1 735 265 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+25 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 735 80 845 265
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 13 Selected Line
+2 33
+"InvalidLabel"
+""
+1 10 430 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+24 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 432 308 448
+0 2 0 "s" 0 0 0 64 0 0  12 432
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 29 The table is actually invalid
+17 1
+"AllList"
+""
+1 15 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+13 33 77 352
+0
+E
+"main()
+{
+	selectionChanged(AllList.selectedPos);
+}" 0
+
+E
+
+3 1
+17 2
+"AnyList"
+""
+1 95 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+93 33 157 352
+0
+E
+"main()
+{
+	selectionChanged(AnyList.selectedPos);
+}" 0
+
+E
+
+3 1
+17 3
+"NList"
+""
+1 175 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+173 33 237 352
+0
+E
+"main()
+{
+	selectionChanged(NList.selectedPos);
+}" 0
+
+E
+
+3 1
+17 4
+"InputsList"
+""
+1 255 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+253 33 612 352
+0
+E
+"main()
+{
+	selectionChanged(InputsList.selectedPos);
+}" 0
+
+E
+
+3 1
+17 5
+"OutputList"
+""
+1 630 35 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+628 33 692 352
+0
+E
+"main()
+{
+	selectionChanged(OutputList.selectedPos);
+}" 0
+
+E
+
+3 1
+13 6
+"UpBtn"
+""
+1 760 110 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+758 108 822 142
+T 
+1
+LANG:5 2 Up
+"main()
+{
+	moveLineUp();
+}" 0
+ E E E
+13 7
+"RemoveLineBtn"
+""
+1 760 160 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+7 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+758 158 822 192
+T 
+1
+LANG:5 6 Remove
+"main()
+{
+	removeElement(AllList.selectedPos);
+}" 0
+ E E E
+13 8
+"DownBtn"
+""
+1 760 210 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+8 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+758 208 822 242
+T 
+1
+LANG:5 4 Down
+"main()
+{
+	moveLineDown();
+}" 0
+ E E E
+22 9
+"AllCombo"
+""
+1 15 380 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+13 378 77 405
+0
+E
+E
+E
+ 0 0
+22 10
+"AnyCombo"
+""
+1 95 380 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+93 378 157 405
+0
+E
+E
+E
+ 0 0
+22 11
+"NCombo"
+""
+1 175 380 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+173 378 237 405
+0
+E
+E
+E
+ 0 0
+14 13
+"InputsField"
+""
+1 255 380 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+253 378 552 405
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+13 14
+"InputsChangeBtn"
+""
+1 555 380 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+13 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+553 378 617 407
+T 
+1
+LANG:5 6 Change
+"main()
+{
+	dyn_float dummy;
+	dyn_string result;
+	ChildPanelOnModalReturn(\"sgFw\\\\GenericConfig\\\\sgFwTruthTableInputsPanel.pnl\", \"Inputs editor\", 
+														makeDynString(\"$N:\" + NCombo.selectedText, \"$Inputs:\" + InputsField.text), -200, -200, dummy, result);
+	InputsField.text = result[1];
+}" 0
+ E E E
+22 15
+"OutputCombo"
+""
+1 630 380 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+628 378 697 405
+0
+E
+E
+E
+ 0 0
+13 16
+"AddBtn"
+""
+1 775 380 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+773 378 837 407
+T 
+1
+LANG:5 3 Add
+"main()
+{	
+	if (sgTTCheckLine(generateLine()))
+	{
+		string allField;
+		allField = AllCombo.selectedText;
+		dynAppend(gAllList, allField);
+		
+		string anyField;
+		anyField = AnyCombo.selectedText;
+		dynAppend(gAnyList, anyField);
+		
+		string nField;
+		nField = NCombo.selectedText;
+		dynAppend(gNList, nField);
+		
+		string inputsField;
+		inputsField = InputsField.text;
+		dynAppend(gInputsList, inputsField);
+		
+		string outputField;
+		outputField = OutputCombo.selectedText;
+		dynAppend(gOutputList, outputField);
+				
+		refresh();
+		
+		selectionChanged(AllList.itemCount);
+		
+	}
+	else
+		ChildPanelOn(WindowspanelPath, \"Invalid line\", makeDynString(\"$1: The line is invalid\", \"$2:\", \"$3:OK\"), 200, 200);
+}" 0
+ E E "main()
+{
+}" 0
+
+13 17
+"ChangeLineBtn"
+""
+1 705 380 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+703 378 767 407
+T 
+1
+LANG:5 6 Change
+"main()
+{	
+	if (sgTTCheckLine(generateLine()))
+	{
+		int currentPos;
+		currentPos = AllList.selectedPos;
+	
+		gAllList[currentPos] = AllCombo.selectedText;
+		gAnyList[currentPos] = AnyCombo.selectedText;
+		gNList[currentPos] = NCombo.selectedText;
+		gInputsList[currentPos] = InputsField.text;
+		gOutputList[currentPos] = OutputCombo.selectedText;
+		
+		refresh();
+		
+		selectionChanged(currentPos);
+	}
+	else
+		ChildPanelOn(WindowspanelPath, \"Invalid line\", makeDynString(\"$1: The line is invalid!\", \"$2:\", \"$3:OK\"), 200, 200);
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 34
+"SaveChangesOnCloseCheckBox"
+""
+1 305 350 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+23 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+303 348 722 437
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

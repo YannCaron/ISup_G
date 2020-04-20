@@ -1,0 +1,403 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 2
+"$Node"
+"$Site"
+"main()
+{
+  initialize();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "bool active = true;
+
+void initialize() {
+  	PageLabel.text = \"CPDLC-ES-\" + $Site + \" Node \" + $Node;
+
+   string esName = \"ES\" + $Site + \"Node\" + $Node;
+		string dp, value;
+		dp = \"CPDLC.Components.\" + esName + \".Components.Redu.Status\";
+
+   dpConnect(\"activeConnect\", true, dp);
+
+}
+
+void activeConnect(string dp, string value) {
+  active = (value != \"SBY\");
+  
+  CMDATNConnection.enabled = active;
+  CMDSKYVISUConnection.enabled = active;
+  CMDRecData.enabled = active;
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 19 CPDLC-ES-XXX Node X
+LANG:1 4 AFPS
+1 569 76 "" 11
+0
+13 379
+"ForceToUKN"
+""
+1 10 670 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 668 212 702
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	ForceToUnknown(\"\", \"CPDLC\");
+
+}
+" 0
+ E E E
+1 570 80 "" 46
+0
+1 573 88 "" 46
+0
+1 576 89 "" 46
+0
+1 579 90 "" 46
+0
+1 582 91 "" 46
+0
+1 585 92 "" 46
+0
+1 588 93 "" 46
+0
+1 591 94 "" 46
+0
+13 493
+"CMDATNConnection"
+""
+1 150 284 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+146 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  148 285 212 348
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"CPDLC/CPDLCConnectionCommand.pnl\", \"CPDLC Command Window\", makeDynString(\"$Site:\" + $Site, \"$Node:\" + $Node, \"$Cnn:ATNConnection\"), 0, 0);
+}" 0
+ E E E
+13 495
+"CMDSKYVISUConnection"
+""
+1 1240 157.5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+149 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  543 285 607 348
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"CPDLC/CPDLCConnectionCommand.pnl\", \"CPDLC Command Window\", makeDynString(\"$Site:\" + $Site, \"$Node:\" + $Node, \"$Cnn:SKYVISUConnection\"), 0, 0);
+}" 0
+ E E E
+1 594 96 "" 1
+0
+1 595 96 "" 3
+0
+1 596 97 "" 1
+0
+1 597 97 "" 3
+0
+1 598 98 "" 1
+0
+1 599 98 "" 3
+0
+1 600 99 "" 1
+0
+1 601 99 "" 3
+0
+1 602 100 "" 1
+0
+1 603 100 "" 3
+0
+13 531
+"CMDNode"
+""
+1 150 92 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+161 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  148 90 212 153
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"CPDLC/CPDLCNodeCommand.pnl\", \"CPDLC Command Window\", makeDynString(\"$Site:\" + $Site, \"$Node:\" + $Node, \"$Active:\" + active), 0, 0);
+}" 0
+ E E E
+1 604 101 "" 46
+0
+13 568
+"CMDRecData"
+""
+1 1240 250.5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+163 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  543 378 607 441
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	ChildPanelOnCentralModal(\"CPDLC/CPDLCConnectionCommand.pnl\", \"CPDLC Command Window\", makeDynString(\"$Site:\" + $Site, \"$Node:\" + $Node, \"$Cnn:RecData\"), 0, 0);
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 571 80 "" 51
+0
+1 572 80 "" 52
+0
+1 574 88 "" 51
+0
+1 575 88 "" 52
+0
+1 577 89 "" 51
+0
+1 578 89 "" 52
+0
+1 580 90 "" 51
+0
+1 581 90 "" 52
+0
+1 583 91 "" 51
+0
+1 584 91 "" 52
+0
+1 586 92 "" 51
+0
+1 587 92 "" 52
+0
+1 589 93 "" 51
+0
+1 590 93 "" 52
+0
+1 592 94 "" 51
+0
+1 593 94 "" 52
+0
+1 605 101 "" 51
+0
+1 606 101 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "Group7" -1
+"objects\\sgFwHistory.pnl" 10 710 T 108 1 0 1 -10 -15
+2
+"$SystemHistory""CPDLC.History"
+"$SystemName"""
+3 80 "PANEL_REF81" -1
+"objects\\sgFwBlock.pnl" 340 305 T 112 1.11393084433076 0 0.292067307692308 -167.013825958453 3.20733173076923
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.OPStatus.GlobalStatus\""
+3 88 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 340 305 T 130 0.622807484069945 0 0.291996002197266 460.188895513486 2.52379833568225
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.Redu\""
+3 89 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 340 305 T 131 0.6152388849568911 0 0.294449907426025 -57.2241209607325 97.375580735111
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.NTP\""
+3 90 "PANEL_REF91" -1
+"objects\\sgFwBlock.pnl" 340 305 T 133 0.615726627849674 0 0.294449907426025 202.512501743437 97.375580735111
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.CPU\""
+3 91 "PANEL_REF92" -1
+"objects\\sgFwBlock.pnl" 340 305 T 134 0.6282707076144191 0 0.294449907426025 458.23879810571 97.375580735111
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.Memory\""
+3 92 "PANEL_REF93" -1
+"objects\\sgFwBlock.pnl" 340 305 T 135 0.779302587612062 0 0.294449907426025 -53.3172198835945 197.375580735111
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.ATNConnection.GlobalStatus\""
+3 93 "PANEL_REF94" -1
+"objects\\sgFwBlock.pnl" 340 305 T 136 0.6282707076144191 0 0.294449907426025 983.23879810571 372.375580735111
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""ISup_G:"
+"$SystemStatus""CPDLC.Components.ESGVANode01.Components.Memory"
+3 94 "PANEL_REF95" -1
+"objects\\sgFwBlock.pnl" 340 305 T 140 0.791967561825528 0 0.294449907426025 337.343794434683 197.375580735111
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.SKYVISUConnection.GlobalStatus\""
+3 96 "PANEL_REF97" -1
+"objects\\sgFwInfoBlock.pnl" 155 385 T 155 1.97456879360899 0 1.38756229235881 -156.058163009394 -154.211482558142
+2
+"$SystemInfo""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Infos.CMLogon\""
+"$SystemName"""
+3 97 "PANEL_REF98" -1
+"objects\\sgFwInfoBlock.pnl" 155 385 T 156 1.97456879360899 0 1.38756229235881 -156.058163009394 -64.2114825581419
+2
+"$SystemInfo""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Infos.OLDILogon\""
+"$SystemName"""
+3 98 "PANEL_REF99" -1
+"objects\\sgFwInfoBlock.pnl" 155 385 T 157 1.97463073697863 0 1.38756229235881 -156.067764231687 25.7885174418581
+2
+"$SystemInfo""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Infos.CPDLCOn\""
+"$SystemName"""
+3 99 "PANEL_REF100" -1
+"objects\\sgFwInfoBlock.pnl" 155 385 T 158 2.00089637752378 0 1.38756229235881 234.8610614838141 -64.21148255814188
+2
+"$SystemInfo""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Infos.UM\""
+"$SystemName"""
+3 100 "PANEL_REF101" -1
+"objects\\sgFwInfoBlock.pnl" 155 385 T 159 2.00089637752378 0 1.38756229235881 234.8610614838141 25.78851744185822
+2
+"$SystemInfo""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Infos.DM\""
+"$SystemName"""
+3 101 "PANEL_REF101" -1
+"objects\\sgFwBlock.pnl" 340 305 T 162 0.791967561825528 0 0.294449907426025 337.343794434683 289.375580735111
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"CPDLC.Components.ES\" + $Site + \"Node\" + $Node + \".Components.RecData.GlobalStatus\""
+0

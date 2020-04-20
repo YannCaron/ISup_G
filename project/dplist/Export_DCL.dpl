@@ -1,0 +1,171 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgDCL.sgDCL	1#1
+	GlobalStatus	41#3:sgFwSystem
+	WatchDog	41#5:sgWatchDogs
+	History	41#6:sgFwHistory
+	TruthTables	1#7
+		GlobalTT	41#8:sgFwTruthTable
+	RawDatas	1#9
+		DCLGWA	41#10:sgDCLGWRawData
+		DCLGWB	41#11:sgDCLGWRawData
+	Structureds	1#12
+		DCLGWAStatus	41#255:sgFwSystem
+		DCLGWBStatus	41#256:sgFwSystem
+		Lines	1#257
+			SYLEX	41#258:sgFwSystem
+			RECDATA_GVA	41#259:sgFwSystem
+			ARINC	41#260:sgFwSystem
+			SITA	41#261:sgFwSystem
+			RECDATA_ZRH	41#458:sgFwSystem
+	Params	41#14:sgParams
+	ConvTables	1#15
+		DCLGWStatus	41#262:sgConnectWithConvertTable
+		DCLGWLines	41#493:sgConnectWithConvertTable
+		DCLGWSYLEX	41#494:sgConnectWithConvertTable
+	Connections	41#501:sgFwConnections
+	MenuEntry	41#528:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+DCL	sgDCL	28916
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+DCL.GlobalStatus	""	lt:1 LANG:5 "DCL@%s@"
+DCL.Structureds.DCLGWAStatus	""	lt:1 LANG:5 "DCL Gateway A@%s@"
+DCL.Structureds.DCLGWBStatus	""	lt:1 LANG:5 "DCL Gateway B@%s@"
+DCL.Structureds.Lines.SYLEX	""	lt:1 LANG:5 "SYLEX@%s@"
+DCL.Structureds.Lines.RECDATA_GVA	""	lt:1 LANG:5 "RECDATA GVA@%s@"
+DCL.Structureds.Lines.ARINC	""	lt:1 LANG:5 "ARINC@%s@"
+DCL.Structureds.Lines.SITA	""	lt:1 LANG:5 "SITA@%s@"
+DCL.Structureds.Lines.RECDATA_ZRH	""	lt:1 LANG:5 "RECDATA ZRH@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+DCL.GlobalStatus.PreStatus	sgDCL	"UKN"	0x200101	18.12.2019 14:35:15.365
+DCL.GlobalStatus.Status	sgDCL	"UKN"	0x200101	18.12.2019 14:35:00.118
+DCL.GlobalStatus.Disabled	sgDCL	0	0x101	18.12.2019 14:35:16.176
+DCL.GlobalStatus.SubDisabled	sgDCL	0	0x100101	02.02.2016 13:47:03.598
+DCL.GlobalStatus.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.GlobalStatus.Alarms.GenerateAlarms	sgDCL	1	0x101	18.02.2014 15:26:59.266
+DCL.GlobalStatus.Alarms.AlarmActive	sgDCL	1	0x200101	18.12.2019 14:35:16.186
+DCL.GlobalStatus.LogicConfig.LogicEnabled	sgDCL	1	0x101	26.02.2014 10:28:44.910
+DCL.GlobalStatus.LogicConfig.Rule	sgDCL	"DCL.TruthTables.GlobalTT"	0x101	26.02.2014 10:29:16.053
+DCL.GlobalStatus.LogicConfig.Inputs	sgDCL	"DCL.Structureds.DCLGWAStatus", "DCL.Structureds.DCLGWBStatus", "DCL.Structureds.Lines.ARINC", "DCL.Structureds.Lines.SITA", "DCL.Structureds.Lines.RECDATA_GVA", "DCL.Structureds.Lines.RECDATA_ZRH", "DCL.Structureds.Lines.SYLEX"	0x101	26.02.2014 15:18:57.083
+DCL.GlobalStatus.AETable	sgDCL	"AETable01"	0x101	18.02.2014 15:22:06.940
+DCL.WatchDog.References	sgDCL	"DCL.RawDatas.DCLGWA.*", "DCL.RawDatas.DCLGWB.*"	0x101	26.02.2014 11:50:40.053
+DCL.WatchDog.DefaultValues	sgDCL	"0", "0"	0x101	26.02.2014 11:50:48.775
+DCL.WatchDog.Outputs	sgDCL	"DCL.RawDatas.DCLGWA.*", "DCL.RawDatas.DCLGWB.*"	0x101	26.02.2014 11:51:07.054
+DCL.WatchDog.Timeouts	sgDCL	50, 50	0x101	26.02.2014 11:51:17.827
+DCL.History.Message	sgDCL	"18/12/19	14:35:14	WARNING: 	ARINC changed from UKN to U/S	 "	0x100101	18.12.2019 14:35:14.888
+DCL.History.HistorySize	sgDCL	100	0x101	18.02.2014 14:38:00.169
+DCL.History.ShortHistory	sgDCL	"18/12/19	09:13:02	WARNING: 	SYLEX changed from UKN to U/S	 ", "18/12/19	09:13:02	WARNING: 	RECDATA ZRH changed from UKN to U/S	 ", "18/12/19	09:13:02	WARNING: 	RECDATA GVA changed from UKN to U/S	 ", "18/12/19	09:13:02	WARNING: 	SITA changed from UKN to U/S	 ", "18/12/19	09:13:02	WARNING: 	ARINC changed from UKN to U/S	 ", "18/12/19	14:35:14	WARNING: 	SYLEX changed from UKN to U/S	 ", "18/12/19	14:35:14	WARNING: 	RECDATA ZRH changed from UKN to U/S	 ", "18/12/19	14:35:14	WARNING: 	RECDATA GVA changed from UKN to U/S	 ", "18/12/19	14:35:14	WARNING: 	SITA changed from UKN to U/S	 ", "18/12/19	14:35:14	WARNING: 	ARINC changed from UKN to U/S	 "	0x101	18.12.2019 14:35:15.366
+DCL.TruthTables.GlobalTT.Table	sgDCL	"UKN_---_UKN_0", "---_---_OPS_7_OPS+_SBY+_OPS+_OPS+_OPS+_OPS+_OPS+", "---_---_OPS_7_SBY+_OPS+_OPS+_OPS+_OPS+_OPS+_OPS+", "---_---_DEG_7_OPS+_ANY+_DEG+_DEG+_DEG+_DEG+_DEG+", "---_---_DEG_7_ANY+_OPS+_DEG+_DEG+_DEG+_DEG+_DEG+", "---_---_DEG_7_OPS+_ANY+_ANY+_ANY+_ANY+_ANY+_ANY+", "---_---_DEG_7_ANY+_OPS+_ANY+_ANY+_ANY+_ANY+_ANY+", "---_---_UKN_7_UKN+_UKN+_ANY+_ANY+_ANY+_ANY+_ANY+", "---_ANY_U/S_0"	0x101	12.03.2014 11:18:25.291
+DCL.RawDatas.DCLGWA.GlobalStatus	sgDCL	0	0x141	07.01.2020 14:44:39.325
+DCL.RawDatas.DCLGWA.SYLEX	sgDCL	0	0x141	07.01.2020 14:44:41.338
+DCL.RawDatas.DCLGWA.RECDATA_GVA	sgDCL	0	0x141	07.01.2020 14:44:43.349
+DCL.RawDatas.DCLGWA.ARINC	sgDCL	0	0x141	07.01.2020 14:44:25.368
+DCL.RawDatas.DCLGWA.SITA	sgDCL	0	0x141	07.01.2020 14:44:27.378
+DCL.RawDatas.DCLGWB.GlobalStatus	sgDCL	0	0x141	07.01.2020 14:44:39.325
+DCL.RawDatas.DCLGWB.SYLEX	sgDCL	0	0x141	07.01.2020 14:44:41.338
+DCL.RawDatas.DCLGWB.RECDATA_GVA	sgDCL	0	0x141	07.01.2020 14:44:43.350
+DCL.RawDatas.DCLGWB.ARINC	sgDCL	0	0x141	07.01.2020 14:44:25.368
+DCL.RawDatas.DCLGWB.SITA	sgDCL	0	0x141	07.01.2020 14:44:27.378
+DCL.Params.Histories	sgDCL	"DCL.History"	0x101	18.02.2014 14:45:20.448
+DCL.Params.AETable	sgDCL	"AETable01"	0x101	18.02.2014 14:45:29.668
+DCL.Params.GenerateEvents	sgDCL	1	0x101	18.02.2014 14:45:49.127
+DCL.Structureds.DCLGWAStatus.PreStatus	sgDCL	"UKN"	0x200101	18.12.2019 14:35:00.118
+DCL.Structureds.DCLGWAStatus.Status	sgDCL	"UKN"	0x200101	18.12.2019 14:35:00.118
+DCL.Structureds.DCLGWAStatus.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.722
+DCL.Structureds.DCLGWAStatus.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.DCLGWAStatus.Alarms.AlarmActive	sgDCL	0	0x101	02.02.2016 12:26:46.102
+DCL.Structureds.DCLGWAStatus.Params	sgDCL	"DCL.Params"	0x101	18.02.2014 14:48:59.807
+DCL.Structureds.DCLGWBStatus.PreStatus	sgDCL	"UKN"	0x200101	18.12.2019 14:35:00.118
+DCL.Structureds.DCLGWBStatus.Status	sgDCL	"UKN"	0x200101	18.12.2019 14:35:00.118
+DCL.Structureds.DCLGWBStatus.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.DCLGWBStatus.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.DCLGWBStatus.Alarms.AlarmActive	sgDCL	0	0x101	06.07.2015 09:20:21.870
+DCL.Structureds.Lines.SYLEX.PreStatus	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.682
+DCL.Structureds.Lines.SYLEX.Status	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.887
+DCL.Structureds.Lines.SYLEX.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.Lines.SYLEX.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.Lines.SYLEX.Alarms.AlarmActive	sgDCL	0	0x101	26.02.2014 14:18:37.505
+DCL.Structureds.Lines.SYLEX.Params	sgDCL	"DCL.Params"	0x101	18.02.2014 14:51:02.217
+DCL.Structureds.Lines.RECDATA_GVA.PreStatus	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.682
+DCL.Structureds.Lines.RECDATA_GVA.Status	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.888
+DCL.Structureds.Lines.RECDATA_GVA.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.Lines.RECDATA_GVA.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.Lines.RECDATA_GVA.Alarms.AlarmActive	sgDCL	0	0x101	20.10.2015 08:52:26.240
+DCL.Structureds.Lines.RECDATA_GVA.Params	sgDCL	"DCL.Params"	0x101	18.02.2014 14:51:14.152
+DCL.Structureds.Lines.ARINC.PreStatus	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.682
+DCL.Structureds.Lines.ARINC.Status	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.888
+DCL.Structureds.Lines.ARINC.StatusDelay	sgDCL	5	0x101	29.10.2019 07:26:53.653
+DCL.Structureds.Lines.ARINC.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.Lines.ARINC.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.Lines.ARINC.Alarms.AlarmActive	sgDCL	0	0x101	02.02.2016 12:26:49.714
+DCL.Structureds.Lines.ARINC.Params	sgDCL	"DCL.Params"	0x101	18.02.2014 14:51:21.169
+DCL.Structureds.Lines.SITA.PreStatus	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.682
+DCL.Structureds.Lines.SITA.Status	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.888
+DCL.Structureds.Lines.SITA.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.Lines.SITA.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.Lines.SITA.Alarms.AlarmActive	sgDCL	0	0x101	27.02.2014 11:55:31.248
+DCL.Structureds.Lines.SITA.Params	sgDCL	"DCL.Params"	0x101	18.02.2014 14:51:29.405
+DCL.ConvTables.DCLGWStatus.Input	sgDCL	"0", "1", "2"	0x101	25.02.2014 13:21:49.344
+DCL.ConvTables.DCLGWStatus.Output	sgDCL	"UKN", "SBY", "OPS"	0x101	18.02.2014 14:47:36.967
+DCL.Structureds.Lines.RECDATA_ZRH.PreStatus	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.682
+DCL.Structureds.Lines.RECDATA_ZRH.Status	sgDCL	"U/S"	0x100101	18.12.2019 14:35:14.888
+DCL.Structureds.Lines.RECDATA_ZRH.Disabled	sgDCL	0	0x101	18.12.2019 07:33:00.723
+DCL.Structureds.Lines.RECDATA_ZRH.Message	sgDCL	""	0x101	18.12.2019 14:35:00.419
+DCL.Structureds.Lines.RECDATA_ZRH.Alarms.AlarmActive	sgDCL	0	0x101	27.02.2014 11:55:27.174
+DCL.Structureds.Lines.RECDATA_ZRH.Params	sgDCL	"DCL.Params"	0x101	26.02.2014 14:17:01.357
+DCL.RawDatas.DCLGWA.RECDATA_ZRH	sgDCL	0	0x141	07.01.2020 14:44:29.384
+DCL.RawDatas.DCLGWB.RECDATA_ZRH	sgDCL	0	0x141	07.01.2020 14:44:29.384
+DCL.ConvTables.DCLGWLines.Input	sgDCL	"0", "1", "2"	0x101	26.02.2014 14:03:39.665
+DCL.ConvTables.DCLGWLines.Output	sgDCL	"U/S", "DEG", "OPS"	0x101	26.02.2014 14:03:57.248
+DCL.ConvTables.DCLGWSYLEX.Input	sgDCL	"0", "1"	0x101	26.02.2014 14:02:57.431
+DCL.ConvTables.DCLGWSYLEX.Output	sgDCL	"U/S", "OPS"	0x101	26.02.2014 14:03:15.764
+DCL.Connections.Inputs	sgDCL	"DCL.RawDatas.DCLGW*.GlobalStatus", "DCL.RawDatas"	0x101	27.02.2014 11:34:39.631
+DCL.Connections.Outputs	sgDCL	"DCL.Structureds.DCLGW*Status.PreStatus", "DCL.Structureds.Lines"	0x101	27.02.2014 11:02:27.513
+DCL.Connections.Rules	sgDCL	"ConnectWithConvertTable", "ConnectDCLLines"	0x101	27.02.2014 11:34:55.883
+DCL.Connections.Params	sgDCL	"DCL.ConvTables.DCLGWStatus", "DCL.ConvTables"	0x101	27.02.2014 11:35:53.145
+DCL.MenuEntry.Name	sgDCL	"DCL"	0x101	02.09.2016 08:08:42.855
+DCL.MenuEntry.Group	sgDCL	"FDP"	0x200101	02.09.2016 08:08:42.856
+DCL.MenuEntry.Panel	sgDCL	"DCL/DCL_G_MainPanel.pnl"	0x101	02.09.2016 08:08:42.857
+DCL.MenuEntry.Params	sgDCL	"SystemName:ISup_G:"	0x101	02.09.2016 08:08:42.858
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+DCL.GlobalStatus.Alarms.AlarmActive	sgDCL		12					"DCL/DCL_G_MainPanel.pnl"	""	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on DCL"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+DCL.RawDatas.DCLGWA.GlobalStatus	sgDCL	56	\1
+DCL.RawDatas.DCLGWA.SYLEX	sgDCL	56	\1
+DCL.RawDatas.DCLGWA.RECDATA_GVA	sgDCL	56	\1
+DCL.RawDatas.DCLGWA.ARINC	sgDCL	56	\1
+DCL.RawDatas.DCLGWA.SITA	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.GlobalStatus	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.SYLEX	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.RECDATA_GVA	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.ARINC	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.SITA	sgDCL	56	\1
+DCL.RawDatas.DCLGWA.RECDATA_ZRH	sgDCL	56	\1
+DCL.RawDatas.DCLGWB.RECDATA_ZRH	sgDCL	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+DCL.RawDatas.DCLGWA.GlobalStatus	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.2"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWA.SYLEX	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.3"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWA.RECDATA_GVA	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.6"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWA.ARINC	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.4"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWA.SITA	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.5"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.GlobalStatus	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.2"	"_DCL"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.SYLEX	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.3"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.RECDATA_GVA	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.6"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.ARINC	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.4"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.SITA	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.5"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWA.RECDATA_ZRH	sgDCL	16	"80_1.3.6.1.4.1.34007.1.1.7"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+DCL.RawDatas.DCLGWB.RECDATA_ZRH	sgDCL	16	"81_1.3.6.1.4.1.34007.1.1.7"	"_DCL"	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

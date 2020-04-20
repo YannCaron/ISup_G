@@ -1,0 +1,426 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "#uses \"sgDpPatternLib.ctl\"" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 5 Admin
+LANG:1 4 AFPS
+30 1
+"Frame1"
+""
+1 10 780 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 60 1100 780
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 16 Disabled systems
+30 25
+"Frame2"
+""
+1 10 850 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 790 1100 850
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 12 System Tools
+1 68 5 "" 2
+0
+1 69 5 "" 3
+0
+1 70 5 "" 0
+0
+1 71 5 "" 4
+0
+1 72 5 "" 9
+0
+1 73 5 "" 10
+0
+1 74 5 "" 11
+0
+2 40
+"tbBackup"
+""
+1 310 815 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+	tbBackup.text = \"\";
+}" 0
+ E 0 1 1 0 1 E U  0 E 312 817 478 843
+0 2 0 "0s" 0 0 0 64 0 0  312 817 1
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 6 backup
+13 24
+"btSave"
+""
+1 20 810 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  18 808 292 842
+
+T 
+1
+LANG:5 28 Backup Disabled and Comments
+"const string FILE_BACKUP = \"DisabledCommentsBackup\";
+const string FILE_EXTENSION = \".dpl\";
+
+const string MESSAGE_WAIT = \"please wait...\";
+const string MESSAGE_WAIT_COLOR = \"sgStdCommand\";
+const string MESSAGE_SUCCEED = \"backup succeeded\";
+const string MESSAGE_SUCCEED_COLOR = \"black\";
+const string MESSAGE_ERROR = \"an error occured !\";
+const string MESSAGE_ERROR_COLOR = \"red\";
+
+main()
+{
+	string exportFileName;
+	tbBackup.text = MESSAGE_WAIT;
+	tbBackup.color = MESSAGE_WAIT_COLOR;
+
+  time currentTime;
+  currentTime = getCurrentTime();
+        
+  string systemName;
+  systemName = cbDistribution.selectedText;  // in sgFwSystemsView.pnl
+        
+  exportFileName = getPath(DPLIST_REL_PATH) + systemName + \"-\" + FILE_BACKUP + \"-\" + year(currentTime) + \"_\" + 
+                             month(currentTime) + \"_\" + day(currentTime)  
+                             + \"-\" + hour(currentTime) + \"_\" + minute(currentTime) 
+                             + FILE_EXTENSION;
+        
+	int res = disabledAndComments(exportFileName);
+
+	if (res > 0)
+	{
+		tbBackup.text = MESSAGE_SUCCEED;
+		tbBackup.color = MESSAGE_SUCCEED_COLOR;
+	}
+	else
+	{
+		tbBackup.text = MESSAGE_ERROR;
+		tbBackup.color = MESSAGE_ERROR_COLOR;
+	}
+}" 0
+ E E E
+13 42
+"TestSoundBtn"
+""
+1 920 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  918 808 1092 842
+
+T 
+1
+LANG:5 10 Test Sound
+"main()
+{
+	string systemName = getSystemName();
+
+	if ((systemName == \"ISup_G:\") || (systemName == \"ISup_Z:\"))
+	{
+		startSound(PROJ_PATH + \"data/ding.wav\", false);
+		delay(1);
+		startSound(PROJ_PATH + \"data/ding.wav\", false);
+		delay(1);
+		startSound(PROJ_PATH + \"data/ding.wav\", false);
+	}
+}" 0
+ E E "main()
+{
+	bool fsActivated;
+	string systemName = getSystemName();
+
+	if (systemName == \"ISup_G:\")
+	{
+		this.text = \"Test Sound\";
+		this.visible = true;
+	}
+
+	if (systemName == \"ISup_Z:\")
+	{
+                this.text = \"Test Sound\";
+		this.visible = true;
+ 	}
+}
+
+" 0
+
+13 59
+"PUSH_BUTTON1"
+""
+1 725 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  723 808 912 842
+
+T 
+1
+LANG:5 15 SMS Mode ON/OFF
+"main()
+{
+  dyn_string ds;
+  dyn_float df;
+  bool smsMode;
+
+  dpGet(\"SMS.SMSMode\", smsMode);	
+
+  if(!smsMode)   
+  {
+    ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+	makeDynString(\"$1:Do you really want to start ISup SMS MODE ?\\n(This command will send automatically a test SMS)\",
+                      \"$2:Yes\", \"$3:No\"), df, ds);
+   
+    if(ds[1] == \"true\")
+    {                         
+      dpSet(\"SMS.SMSMode\", TRUE);	
+      sgHistoryAddEvent(SYSTEM_HISTORY, SEVERITY_SYSTEM, \"ISup SMS mode ON\");
+      // acknowledgement will be made by user after receiving the SMS
+      // immediately open child panel otherwise user can leave admin panel and alarm stays!!
+      ChildPanelOnCentralModal(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+  	    makeDynString(\"$1:Wait until you have received the test SMS\\n before clicking <<Ack All>> (~5 seconds)\", \"$2:\", \"$3:Close\"));
+
+      // wait until dpqueryconnect is established
+      //delay(1); // not necessary as dpquery is startet with \"true\" so order doesn't matter
+      // write SMS TEST alarm
+      delay(1);
+      dpSet(\"SMS.SMSTest.Alarms.AlarmActive\", TRUE);
+      delay(6);
+      
+      dpSet(\"SMS.SMSTest.Alarms.AlarmActive\", FALSE);
+          }// if confirm panel response was ok    
+  }// if wasn't in SMS mode
+  else //was SMS mode)   
+  {
+    ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+	makeDynString(\"$1:Do you really want to stop ISup SMS MODE ?\\n(No SMS)\", \"$2:Yes\", \"$3:No\"), df, ds);
+
+    if(ds[1] == \"true\")
+    {        
+      dpSet(\"SMS.SMSMode\", FALSE);	
+      sgHistoryAddEvent(SYSTEM_HISTORY, SEVERITY_SYSTEM, \"ISup SMS mode OFF\");
+    }// if confirm panel response was ok    
+  }// else was in SMS Mode  
+}   
+    " 0
+ E E "main()
+{
+
+	bool fsActivated;
+	string systemName = getSystemName();
+
+	if (strpos(systemName, \"ISup\") >= 0)
+	{
+		this.visible = true;
+        	dpConnect(\"setBtnLabel\", \"SMS.SMSMode\");
+        }
+}
+
+void setBtnLabel(string isNightModeDpName, bool isSMSMode)
+{
+  if (isSMSMode)
+    this.text = \"Switch OFF SMS Mode\";      
+  else
+    this.text = \"Switch ON SMS Mode\";      
+}" 0
+
+13 67
+"PUSH_BUTTON2"
+""
+1 520 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
+0  518 808 717 842
+
+T 
+1
+LANG:5 17 Email Mode ON/OFF
+"main()
+{
+  dyn_string ds;
+  dyn_float df;
+  bool emailMode;
+
+  dpGet(\"SMS.EmailMode\", emailMode);	
+
+  if(!emailMode)   
+  {
+    ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+	makeDynString(\"$1:Do you really want to start ISup Email MODE ?\\n(This command will send automatically a test Email)\",
+                      \"$2:Yes\", \"$3:No\"), df, ds);
+   
+    if(ds[1] == \"true\")
+    {                         
+      dpSet(\"SMS.EmailMode\", TRUE);	
+      sgHistoryAddEvent(SYSTEM_HISTORY, SEVERITY_SYSTEM, \"ISup Email mode ON\");
+
+      ChildPanelOnCentralModal(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+  	    makeDynString(\"$1:Wait until you have received the test Email\\n before clicking <<Ack All>> (~5 seconds)\", \"$2:\", \"$3:Close\"));
+
+      delay(1);
+      dpSet(\"SMS.EmailTest.Alarms.AlarmActive\", TRUE);
+      delay(6);
+      
+      dpSet(\"SMS.EmailTest.Alarms.AlarmActive\", FALSE);
+          }// if confirm panel response was ok    
+  }
+  else 
+  {
+    ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+	makeDynString(\"$1:Do you really want to stop ISup Email MODE ?\\n(No Email)\", \"$2:Yes\", \"$3:No\"), df, ds);
+
+    if(ds[1] == \"true\")
+    {        
+      dpSet(\"SMS.EmailMode\", FALSE);	
+      sgHistoryAddEvent(SYSTEM_HISTORY, SEVERITY_SYSTEM, \"ISup Email mode OFF\");
+    }// if confirm panel response was ok    
+  }
+}       " 0
+ E E "main()
+{
+
+	bool fsActivated;
+	string systemName = getSystemName();
+
+	if (strpos(systemName, \"ISup\") >= 0)
+	{
+		this.visible = true;
+        	dpConnect(\"setBtnLabel\", \"SMS.EmailMode\");
+        }
+}
+
+void setBtnLabel(string isEmailModeDpName, bool isEmailMode)
+{
+  if (isEmailMode)
+    this.text = \"Switch OFF Email Mode\";      
+  else
+    this.text = \"Switch ON Email Mode\";      
+}" 0
+
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 5 "" -1
+"objects\\sgFwSystemsView.pnl" 20 80 T 10 1 0 1 0 2.8421709430404e-014
+0
+0

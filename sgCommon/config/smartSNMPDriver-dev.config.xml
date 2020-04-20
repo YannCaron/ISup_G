@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Configuration columnSeparator=";" errorFormat=" - " 
+    dpValueFormat="%s.data.%s" dpStatusFormat="%s.statusIBit.%s" 
+    dataTopic="ch/skyguide/isup/mqdriver/data" dataQos="0" 
+    commandTopic="ch/skyguide/isup/mqdriver/command" commandQos="0"
+    reduTopic="ch/skyguide/isup/mqdriver/monitoring/redundancy" reduQos="0" 
+    heartbeatTopic="ch/skyguide/isup/mqdriver/monitoring/heartbeat" heartbeatQos="0" 
+    statusTopic="ch/skyguide/isup/mqdriver/monitoring/status" statusQos="0" heartbeatPolling="10000">
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_1" address="ISUP-SIM-A" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_2" address="ISUP-SIM-A" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+</Configuration>

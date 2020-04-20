@@ -1,0 +1,1009 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 1244 521 N "_3DFace" 0
+"main()
+{
+	sgDBInit();
+	bool b;
+	b = sgDBCreateTable(DBKEY_MODIFIED_VALUES);
+	if (!b)
+		DebugN(\"GenericConfigPanel: unable to create table 'MODIFIED_VALUES'\");
+		
+	loadAndCheck();		
+		
+}
+" 0
+ E E E E 1 -1 -1 0  10 90
+""0  1
+E "
+//table columns
+const string NAME = \"Name\";
+const string COMPONENT_TEXT = \"ComponentText\";
+const string EVENT_TEXT = \"EventText\";
+const string GENERATE_EVENTS = \"GenerateEvents\";
+const string HISTORIES = \"Histories\";
+const string GENERATE_ALARMS = \"GenerateAlarms\";
+const string AETABLE = \"AETable\";
+const string LOGIC_ENABLED = \"LogicEnabled\";
+const string TRUTH_TABLE = \"TruthTable\";
+const string INPUTS = \"Inputs\";
+const string PARAMS = \"Params\";
+const string CHECKS = \"Checks\";
+
+const int ID_NAME = 1;
+const int ID_COMPONENT_TEXT = 2;
+const int ID_EVENT_TEXT = 3;
+const int ID_GENERATE_EVENTS = 4;
+const int ID_HISTORIES = 5;
+const int ID_GENERATE_ALARMS = 6;
+const int ID_AETABLE = 7;
+const int ID_LOGIC_ENABLED = 8;
+const int ID_TRUTH_TABLE = 9;
+const int ID_INPUTS = 10;
+const int ID_PARAMS = 11;
+const int NB_FIELDS = 11; // last index in data, check is done afterwards
+
+const int ID_ALARM_CONFIG_TYPE = 12; 
+const int ID_ALARM_CONFIG_ACTIVE = 13; 
+const int ID_CHECKS = 14;
+
+string gPoint;
+string gType;
+string gSystem;
+bool gFlag;
+
+dyn_dyn_string gData;
+
+
+void getValues(dyn_string systems)
+{
+	dyn_string names;
+
+  gData[ID_NAME] = systems;
+
+	dynClear(names);
+	ProgressIndicator.text = \"Get componentsText\";
+	gData[ID_COMPONENT_TEXT] = dpGetDescription(systems);
+
+// eventTexts
+	dynClear(names);
+	ProgressIndicator.text = \"Get eventsText\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + EVENT_TEXT_POSTFIX);
+	}
+	dpGet(names, gData[ID_EVENT_TEXT]);
+
+// generateEvents
+	dynClear(names);
+	ProgressIndicator.text = \"Get generateEvents\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + EVENT_GENERATE_EVENT_POSTFIX);
+	}
+	dpGet(names, gData[ID_GENERATE_EVENTS]);
+
+// histories
+	dynClear(names);
+	ProgressIndicator.text = \"Get histories\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + EVENT_HISTORIES_POSTFIX);
+	}
+	dpGet(names, gData[ID_HISTORIES]);
+	
+// generateAlarms
+	dynClear(names);
+	ProgressIndicator.text = \"Get generateAlarms flag\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + GENERATE_ALARMS_POSTFIX);
+	}
+	dpGet(names, gData[ID_GENERATE_ALARMS]);
+	
+// aETable
+	dynClear(names);
+	ProgressIndicator.text = \"Get aeTables\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + AETABLE_POSTFIX);
+	}
+	dpGet(names, gData[ID_AETABLE]);
+
+// logicEnabled
+	dynClear(names);
+	ProgressIndicator.text = \"Get logicEnabled flags\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + LOGIC_ENABLED_POSTFIX);
+	}
+	dpGet(names, gData[ID_LOGIC_ENABLED]);
+
+// truthTable
+	dynClear(names);
+	ProgressIndicator.text = \"Get truthTable names\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + LOGIC_RULE_POSTFIX);
+	}
+	dpGet(names, gData[ID_TRUTH_TABLE]);
+
+// inputs
+	dynClear(names);
+	ProgressIndicator.text = \"Get logic inputs\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + LOGIC_INPUTS_POSTFIX);
+	}
+	dpGet(names, gData[ID_INPUTS]);
+
+// params
+	dynClear(names);
+	ProgressIndicator.text = \"Get params table names\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + PARAMS_POSTFIX);
+	}
+	dpGet(names, gData[ID_PARAMS]);
+
+// alarm activ
+	dynClear(names);
+	ProgressIndicator.text = \"Get alert handling config status\";
+	for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+		dynAppend(names, systems[cpt] + ALARM_HANDLING);
+  }
+  
+  dpGet(names, gData[ID_ALARM_CONFIG_TYPE]);
+  
+  for(int cpt = 1; cpt <= dynlen(systems); cpt++)
+	{
+
+  	if (gData[ID_ALARM_CONFIG_TYPE][cpt] != 0)
+			dpGet(systems[cpt] + ALARM_CONFIG_ACTIVE_POSTFIX, gData[ID_ALARM_CONFIG_ACTIVE][cpt]);
+		 else
+		 	gData[ID_ALARM_CONFIG_ACTIVE][cpt] = FALSE;
+	}
+	
+} // getValues
+
+
+
+
+void updateValues(int row)
+{
+// update only one system
+//	DebugTN(\"updateValues \" + row + \" system: \" + gData[ID_NAME][row]);
+	gData[ID_COMPONENT_TEXT][row] = dpGetDescription(gData[ID_NAME][row]);
+	dpGet(gData[ID_NAME][row] + EVENT_TEXT_POSTFIX, gData[ID_EVENT_TEXT][row]);
+	dpGet(gData[ID_NAME][row] + EVENT_GENERATE_EVENT_POSTFIX, gData[ID_GENERATE_EVENTS][row]);
+	dpGet(gData[ID_NAME][row] + EVENT_HISTORIES_POSTFIX, gData[ID_HISTORIES][row]);
+	dpGet(gData[ID_NAME][row] + GENERATE_ALARMS_POSTFIX, gData[ID_GENERATE_ALARMS][row]);
+	dpGet(gData[ID_NAME][row] + AETABLE_POSTFIX, gData[ID_AETABLE][row]);
+	dpGet(gData[ID_NAME][row] + LOGIC_ENABLED_POSTFIX, gData[ID_LOGIC_ENABLED][row]);
+	dpGet(gData[ID_NAME][row] + LOGIC_RULE_POSTFIX, gData[ID_TRUTH_TABLE][row]);
+	dpGet(gData[ID_NAME][row] + LOGIC_INPUTS_POSTFIX, gData[ID_INPUTS][row]);
+	dpGet(gData[ID_NAME][row] + PARAMS_POSTFIX, gData[ID_PARAMS][row]);
+}
+
+
+dyn_string translateDataForTable(int row)
+{
+	// replace TRUE/FALSE with Y/N
+	// and concatenate dyn_strings
+	
+	dyn_string data;
+	
+	// fill data with originals values
+	for (int cpt = 1; cpt <= NB_FIELDS; cpt++)
+		data[cpt] = gData[cpt][row];
+		
+	if (gData[ID_GENERATE_EVENTS][row] == \"TRUE\") 
+		data[ID_GENERATE_EVENTS] = \"Y\"; 
+	else
+		data[ID_GENERATE_EVENTS] = \"N\";
+
+	if (gData[ID_GENERATE_ALARMS][row] == \"TRUE\") 
+		data[ID_GENERATE_ALARMS]= \"Y\";
+	else
+		data[ID_GENERATE_ALARMS] = \"N\";
+		
+	if (gData[ID_LOGIC_ENABLED][row] == \"TRUE\")
+		data[ID_LOGIC_ENABLED] = \"Y\";
+	else
+		data[ID_LOGIC_ENABLED] = \"N\";
+
+	dyn_string dyn_temp;
+	dyn_temp = strsplit(gData[ID_HISTORIES][row], \"|\");
+
+	int nbHistories = dynlen(dyn_temp);
+	if (nbHistories > 1)
+	{
+	  data[ID_HISTORIES] = \" \" + nbHistories;		  
+	}
+
+	dyn_temp = strsplit(gData[ID_INPUTS][row],\"|\");
+	int nbInputs = dynlen(dyn_temp);
+	if (nbInputs > 1)
+	{
+		data[ID_INPUTS] = \" \" + nbInputs;
+	}
+	return data;
+} // dyn_string translateDataForTable()
+
+dyn_string checkTable(int row)
+{
+	  int nbUS = 0;
+  	int nbDEG = 0;
+ 		dyn_string result;
+ 		
+ 		int dataLineNumber = row + 1;
+ 		
+		dynAppend(result, \"ERRORS\");
+		
+		ProgressIndicator.text = \"Check System Integrity\";
+		if(gData[ID_COMPONENT_TEXT][dataLineNumber] == \"\")
+		{
+			dynAppend(result, \"Component text not defined\");
+			nbUS++;
+		}
+		
+		bool generateAlarms = false;
+		if (gData[ID_PARAMS][dataLineNumber] != \"\")
+		{
+			// has params defined
+			dyn_string temp;
+			temp = sgDBGet(gData[ID_PARAMS][dataLineNumber], DBKEY_GENERATE_ALARMS);	
+			generateAlarms = temp[1];	
+			
+		}
+		else if (gData[ID_GENERATE_ALARMS][dataLineNumber] == true)
+			generateAlarms = true;
+		
+		if (generateAlarms && (gData[ID_ALARM_CONFIG_TYPE][dataLineNumber] == 0))
+		{
+				dynAppend(result, \"Generate alarms but no alarm handling\");
+				nbUS++;
+		}
+
+		if (!generateAlarms && gData[ID_ALARM_CONFIG_TYPE][dataLineNumber] && (gData[ID_ALARM_CONFIG_ACTIVE][dataLineNumber] == true))
+		{
+				dynAppend(result, \"no Generate alarms but alarm handling active\");
+				nbUS++;
+		}
+		
+		if ((generateAlarms) && (gData[ID_ALARM_CONFIG_TYPE][dataLineNumber] != 0) && (gData[ID_ALARM_CONFIG_ACTIVE][dataLineNumber] == false)) //
+		{
+				dynAppend(result, \"Generate alarms but alarm handling not activ\");
+				nbUS++;
+		}
+		
+		bool generateEvents;
+		dyn_string localHistories;
+		dyn_string paramsHistories;
+		localHistories = strsplit(gData[ID_HISTORIES][dataLineNumber], \"|\");
+		if(gData[ID_PARAMS][dataLineNumber] == \"\")
+		{
+			generateEvents = gData[ID_GENERATE_EVENTS][dataLineNumber];
+			dynClear(paramsHistories);
+		}
+		else
+		{
+			// DebugTN(\"check table: will get info for params \" + gData[ID_PARAMS][dataLineNumber]);
+			dyn_string temp;
+			temp = sgDBGet(gData[ID_PARAMS][dataLineNumber], DBKEY_GENERATE_EVENTS);
+		//	DebugTN(\"check table: gen events from DB \" + temp);
+			generateEvents = temp[1];
+		//	DebugTN(\"check table: generate events from params is \" + generateEvents);
+			paramsHistories	= sgDBGet(gData[ID_PARAMS][dataLineNumber], DKBEY_HISTORIES);
+		}
+
+		if(generateEvents)
+		{
+			if((dynlen(localHistories) == 0) && (dynlen(paramsHistories) == 0))
+			{
+				dynAppend(result, \"Generate events without histories defined\");
+				nbUS++;
+			}
+			if((dynlen(localHistories) != 0) && (dynlen(paramsHistories) != 0))
+			{
+				dynAppend(result, \"Generate events with histories defined locally and in params\");
+				nbDEG++;
+			}
+			
+		}
+		else
+		{
+			if((dynlen(localHistories) != 0) || (dynlen(paramsHistories) != 0))
+			{
+				dynAppend(result, \"Don't generate events with histories defined\");
+				nbUS++;
+			}
+		}
+
+		if(gData[ID_GENERATE_EVENTS][dataLineNumber] == TRUE && gData[ID_AETABLE][dataLineNumber] == \"\" && gData[ID_PARAMS][dataLineNumber] == \"\")
+		{
+			dynAppend(result, \"Generate events but no AETable defined (and no params)\");
+			nbUS++;
+		}
+		
+		if (gData[ID_LOGIC_ENABLED][dataLineNumber] == TRUE && gData[ID_TRUTH_TABLE][dataLineNumber] == \"\" )
+		{
+			dynAppend(result, \"logic enabled but no truth table\");
+			nbUS++;
+		}
+		
+		if(gData[ID_LOGIC_ENABLED][dataLineNumber] == TRUE && gData[ID_INPUTS][dataLineNumber] != \"\")
+		{
+		 // retrieve inputs
+		 dyn_string inputs;
+		 inputs = strsplit(gData[ID_INPUTS][dataLineNumber], \"|\");
+		 		 
+		 //DebugTN(\"checkTable >> inputs: \" + inputs);
+		 int nbInputs;
+		 for (int cpt = 1; cpt <= dynlen(inputs); cpt++)
+		 {	
+		 	string input;
+		 	input = strltrim(inputs[cpt], \" \");
+		 	input = strrtrim(input, \" \");
+		 	
+			dyn_string points = getPointsFromPattern(input);
+		 
+			if (dynlen(points) == 0)
+			{
+				dynAppend(result, \"Input pattern: \" + input + \" match nothing\");
+				nbUS++;
+			}
+			else
+			{
+				if (dynlen(points) == 1)
+				{
+					if (!strpos(input, \"*\"))
+					{
+						dynAppend(result, \"Input pattern: \" + input + \" match only one input\");
+						nbUS++;
+					} 
+						
+					nbInputs++;
+				}
+				else
+					nbInputs += dynlen(points);
+			}	
+		 } // for
+		 
+		 if (nbInputs < 2)
+		 {
+		 		if (nbInputs == 0)
+		 			dynAppend(result, \"No inputs for the logic\");
+		 		else		
+		 			dynAppend(result, \"Only one input for the logic\");
+		 			
+		 		nbUS++;
+		 } 		 
+		} // inputs check
+		
+		dynAppend(result, \"WARNING\");
+
+		if(gData[ID_COMPONENT_TEXT][dataLineNumber] == gData[ID_EVENT_TEXT][dataLineNumber]) // eventText vs componentText
+		{
+			dynAppend(result, \"Component text = event text\");
+			nbDEG++;
+		}
+
+		bool alarm_active;
+    dpGet((gData[ID_NAME][dataLineNumber] + \":_alert_hdl.._active\") ,alarm_active);
+    
+		if(gData[ID_HISTORIES][dataLineNumber] != \"\" && gData[ID_GENERATE_EVENTS][dataLineNumber] == FALSE && gData[ID_PARAMS][dataLineNumber] == \"\")
+		{
+			dynAppend(result, \"GenerateEvent = FALSE, histories defined, no params\");
+			nbDEG++;
+		}
+						
+		if(gData[ID_GENERATE_ALARMS][dataLineNumber] == TRUE && gData[ID_PARAMS][dataLineNumber] != \"\")
+		{
+			dynAppend(result, \"GenerateAlarms and params table defined\");
+			nbDEG++;
+		}
+
+		if(gData[ID_GENERATE_ALARMS][dataLineNumber] == TRUE && gData[ID_AETABLE][dataLineNumber] == \"\" && gData[ID_PARAMS][dataLineNumber] == \"\")
+		{
+			dynAppend(result, \"GenerateAlarms but no AETable and no params defined\");
+			nbDEG++;
+		}
+
+		if(gData[ID_AETABLE][dataLineNumber] != \"\" && gData[ID_PARAMS][dataLineNumber] != \"\")
+		{
+			dynAppend(result, \"AETable but params table defined\");
+			nbDEG++;
+		}
+		
+		if(gData[ID_LOGIC_ENABLED][dataLineNumber] == TRUE && gData[ID_INPUTS][dataLineNumber] == \"\")
+		{
+			dynAppend(result, \"Logic enabled but no inputs\");
+			nbDEG++;
+		}
+				
+		if(gData[ID_INPUTS][dataLineNumber] != \"\" && gData[ID_LOGIC_ENABLED][dataLineNumber] == FALSE)
+		{
+			dynAppend(result, \"Inputs but logic enabled = FALSE\");
+			nbDEG++;
+		}
+			
+		if (gData[ID_TRUTH_TABLE][dataLineNumber] != \"\" && gData[ID_LOGIC_ENABLED][dataLineNumber] == FALSE)
+		{
+			dynAppend(result, \"Truth table but logic enabled = FALSE\");
+			nbDEG++;
+		}
+
+		if ((nbUS + nbDEG) > 1)
+			dynAppend(result, \"Errors: \" + nbUS + \" - Warnings: \" + nbDEG);
+		else if (dynlen(result) == 3)
+			dynAppend(result, result[3-nbUS]);
+		else
+			dynAppend(result, \"OK\");
+		
+
+		if (nbUS > 0)
+		{
+			dynAppend(result, \"sgStdU/SColor\");
+		}
+		else if (nbDEG > 0)
+		{
+			dynAppend(result, \"sgStdDEGColor\");
+		}
+		else
+		{
+			dynAppend(result, \"sgStdOPSColor\");
+		}
+	ProgressIndicator.text = \"\";
+	// DebugTN(\"checkTable >> result: \" + result);
+	return result;
+} // checkTable
+
+void setTableColumnsReadOnly()
+{
+	ProgressIndicator.text = \"Set all columns to read only\";
+	for (int cpt=0; cpt < Table.columnCount; cpt++)
+		Table.columnEditable(cpt, FALSE);
+		
+	ProgressIndicator.text = \"\";
+}
+
+void fillCheckField(dyn_string result, int row)
+{	
+	ErrorsListLB.deleteAllItems();
+//	DebugTN(\"fillCheckField >> nb lines in result: \" + dynlen(result));
+
+	dyn_int selectedLines;
+	selectedLines = Table.getSelectedLines();
+	
+	if ( (dynlen(result) != 4) && ( dynContains(selectedLines,row) > 0) )
+	{
+		for (int cpt = 1; cpt <= dynlen(result) - 2; cpt++)
+			ErrorsListLB.appendItem(result[cpt]);
+	}
+		
+	// line before is the text of the check field
+	Table.cellValueRC(row,CHECKS) = result[dynlen(result)-1]; 
+	
+	// last line is the color of the check field in the table	
+  Table.cellBackColRC(row, CHECKS) = result[dynlen(result)];
+  
+  string color;
+  if(Table.cellValueRC(row, PARAMS) != \"\")
+  {
+  	color = \"black\";
+  }
+  else
+  {
+  	color = \"white\";
+  }
+	Table.cellBackColRC(row, GENERATE_ALARMS) = color;
+	Table.cellBackColRC(row, GENERATE_EVENTS) = color;
+	Table.cellBackColRC(row, AETABLE) = color;
+ 	Table.cellBackColRC(row, HISTORIES) = color;
+}
+
+void openGenericConfig()
+{
+	string column;
+	// Launch the right sgFwConfig panel 
+	dyn_int lines;		
+ 	lines = Table.getSelectedLines();
+
+	SummaryLB.items = SummaryDblClick(gPoint, gType);
+	
+	if (gType == \"sgFwSystem\")
+	{
+	  dyn_string dynKeys;
+	  //dynKeys contains all the systems which where modified in the GenericConfig panel!!
+	  dynKeys = sgDBTableKeys(DBKEY_UPDATED_VALUES);
+	  
+	  DebugTN(\"Table_EventDblClick >> nb modified dp: \" + dynlen(dynKeys));
+	  for (int cpt = 1; cpt <= dynlen(dynKeys); cpt++)
+	  {
+			// if nothing was modified in the GenericConfig panel -> stop
+	  	if (dynKeys[cpt] == \"\")
+	  		continue;
+	  		
+	  	// retrieve the corresponding linenumber in gDATA of the updated systems
+	  	int dataId = dynContains(gData[ID_NAME], dynKeys[cpt]);
+
+	  	// DebugTN(\"EventDblClick dynKeys: \" + dynKeys[cpt] + \" gData: \" + gData[ID_NAME] + \" dataId: \" + dataId);
+
+	  	updateValues(dataId);
+	  	
+	  	sgDBRemove(DBKEY_UPDATED_VALUES, dynKeys[cpt]);
+	  	
+  		if (dataId <= 0)
+  		{
+  			DebugTN(\"Table_EventDblClick >> unable to retrieve data index\");
+  			return;
+  		}
+
+	  	dyn_string data1;
+			data1 = translateDataForTable(dataId);
+	 	
+			Table.updateLine(1,NAME, data1[ID_NAME],
+												COMPONENT_TEXT, data1[ID_COMPONENT_TEXT],
+												EVENT_TEXT, data1[ID_EVENT_TEXT],
+												GENERATE_EVENTS, data1[ID_GENERATE_EVENTS],
+												HISTORIES, data1[ID_HISTORIES],
+												GENERATE_ALARMS, data1[ID_GENERATE_ALARMS],
+												AETABLE, data1[ID_AETABLE],
+												LOGIC_ENABLED, data1[ID_LOGIC_ENABLED],
+												TRUTH_TABLE, data1[ID_TRUTH_TABLE],
+												INPUTS, data1[ID_INPUTS],	
+												PARAMS, data1[ID_PARAMS]
+												);		
+		if ( dynContains(lines, dataId-1) > 0)
+			Table.addSelectLines(dataId-1);
+			
+		dyn_string result = checkTable(dataId - 1);
+		fillCheckField(result, dataId - 1);
+
+	  } //if sgFwSystem
+
+	} // update the table only if type is sgFwSystem !
+} // openGenricConfig
+
+void loadAndCheck()
+{
+	// prepare params in database
+	
+	
+	sgAELoadTables();
+	sgFwLoadParams();
+		
+
+	dyn_string systems;
+		
+	systems = getPointsOfType(\"sgFwSystem\");
+//	dynAppend(systems,\"Test\");
+//	dynAppend(systems,\"Test2\");
+//	dynAppend(systems,\"Test3\");
+	
+
+// componentTexts
+  getValues(systems);
+
+	setTableColumnsReadOnly();
+		
+	dyn_string data1;
+	
+	Table.deleteAllLines();
+	
+	for (int cpt = 1; cpt <= dynlen(gData[1]); cpt++)
+	{
+		//DebugTN(\"FillButton_EventClick >> will call translateData for line: \" + cpt);
+		data1 = translateDataForTable(cpt);	// replace all TRUE by Y..	
+		
+		//DebugN(\"FillButton_EventClick >> data received from translateData: \" + data1);
+	
+		Table.appendLine(NAME, data1[ID_NAME],
+										COMPONENT_TEXT, data1[ID_COMPONENT_TEXT],
+										EVENT_TEXT, data1[ID_EVENT_TEXT],
+										GENERATE_EVENTS, data1[ID_GENERATE_EVENTS],
+										HISTORIES, data1[ID_HISTORIES],
+										GENERATE_ALARMS, data1[ID_GENERATE_ALARMS],
+										AETABLE, data1[ID_AETABLE],
+										LOGIC_ENABLED, data1[ID_LOGIC_ENABLED],
+										TRUTH_TABLE, data1[ID_TRUTH_TABLE],
+										INPUTS, data1[ID_INPUTS],	
+										PARAMS, data1[ID_PARAMS]
+										);
+										
+		
+	}
+										
+	// check all the table
+	// field in data are in cross order
+	for (int cpt = 1; cpt <= dynlen(gData[1]); cpt++)
+	{
+		dyn_string temp;
+		
+		// DebugTN(\"Will check gData for line number: \" + cpt + \" gData: \" + temp);
+		dyn_string result = checkTable(cpt-1); // checkTable want the table number (start at 0!)
+		fillCheckField(result,cpt -1); // in the table first line is 0	
+		
+	}										
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 4
+"Text1"
+""
+1 430 250 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 432 252 495 269
+0 2 0 "0s" 0 0 0 192 0 0  432 252 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 11 nbHistories
+2 6
+"ProgressIndicator"
+""
+1 20 470 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 22 472 368 498
+0 2 0 "0s" 0 0 0 64 0 0  22 472 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 18 Progress indicator
+2 10
+"Text2"
+""
+1 390 330 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 392 332 608 348
+0 2 0 "0s" 0 0 0 64 0 0  392 332 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 15 Errors/Warnings
+2 11
+"Text3"
+""
+1 710 330 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 712 332 928 348
+0 2 0 "0s" 0 0 0 64 0 0  712 332 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 29 Summary of the selected point
+25 0
+"Table"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N "_Window" E E
+ E "main()
+{
+	
+	// to be sure that the EventColumnCommand Script is finished before
+	while (!gFlag)
+		delay(0,200);
+		
+	openGenericConfig();
+}
+" 0
+
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 8 1237 327
+"main()
+{
+Table.sortOnClick(FALSE);
+Table.tableMode(TABLE_SELECT_MULTIPLE);
+Table.selectByClick(TABLE_SELECT_LINE);
+}" 0
+"main(int row, string column, string value)
+{
+// DebugTN(row,column,value);
+	dyn_string summary;
+
+ gFlag = FALSE;
+ gSystem = Table.cellValueRC(row,NAME);
+
+ if (value == \"\") 
+	column = \"sgFwSystem\";
+	
+	if (column == AETABLE || column == HISTORIES || column == TRUTH_TABLE || column == PARAMS)
+	{
+		summary = Eval(value);
+ 		gPoint = value;
+ 	}
+	else
+	{
+		summary = generateSummary_sgFwSystem(gSystem);
+ 		gPoint = Table.cellValueRC(row,NAME);
+	}
+
+ switch(column)
+ {
+  case AETABLE:
+ 		gType = \"sgAETable\";
+ 	 	break;
+
+	case HISTORIES:
+ 		gType = \"sgFwHistory\";
+ 	 	break;
+								
+	case TRUTH_TABLE:
+ 		gType = \"sgFwTruthTable\";
+ 	 	break;
+	
+	case PARAMS:
+ 		gType = \"sgParams\";
+ 	 	break;
+ 	 
+ 	default: 
+ 		gType = \"sgFwSystem\"; 	
+ } // switch	
+ 	
+  SummaryLB.items = summary;
+		
+	// DebugTN(\"Table_EventColumnCommand >> will check for line: \" + row);
+	dyn_string result = checkTable(row); // checkTable want the table index
+	
+	ErrorsListLB.deleteAllItems();
+	
+	fillCheckField(result, row);
+	  
+	gFlag = TRUE;
+	 
+	// Just write selected lines on the log 
+	dyn_int selectedLines;
+	selectedLines = Table.getSelectedLines();
+	
+	DebugTN(\"Table_EventColumnCommand >> selected lines:\");
+	for (int cpt = 1; cpt <= dynlen(selectedLines); cpt++) 
+		DebugN(Table.cellValueRC(selectedLines[cpt], NAME));
+}
+" 0
+ 1 0 1 12 1 "Name" 15 1 0 "s" 1
+LANG:5 4 Name
+E
+1
+LANG:5 0 
+
+163 "ComponentText" 10 1 0 "s" 1
+LANG:5 13 ComponentText
+E
+1
+LANG:5 0 
+
+109 "EventText" 9 1 0 "s" 1
+LANG:5 9 EventText
+E
+1
+LANG:5 0 
+
+102 "GenerateEvents" 2 1 1 "s" 1
+LANG:5 2 GE
+E
+1
+LANG:5 0 
+
+32 "Histories" 12 1 1 "s" 1
+LANG:5 9 Histories
+E
+1
+LANG:5 0 
+
+128 "GenerateAlarms" 2 1 1 "s" 1
+LANG:5 2 GA
+E
+1
+LANG:5 0 
+
+31 "AETable" 12 1 1 "s" 1
+LANG:5 7 AETable
+E
+1
+LANG:5 0 
+
+128 "LogicEnabled" 2 1 1 "s" 1
+LANG:5 2 LE
+E
+1
+LANG:5 0 
+
+28 "TruthTable" 7 1 1 "s" 1
+LANG:5 10 TruthTable
+E
+1
+LANG:5 0 
+
+80 "Inputs" 7 1 1 "s" 1
+LANG:5 6 Inputs
+E
+1
+LANG:5 0 
+
+80 "Params" 13 1 1 "s" 1
+LANG:5 6 Params
+E
+1
+LANG:5 0 
+
+142 "Checks" 16 1 1 "s" 1
+LANG:5 6 Checks
+E
+1
+LANG:5 0 
+
+177 
+26 26 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 1 7
+1 0
+17 8
+"SummaryLB"
+""
+1 710 355 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E "main()
+{
+	openGenericConfig();
+}" 0
+
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 708 353 1237 512
+0
+
+"main()
+{
+
+}" 0
+
+E
+E
+
+0 0
+17 9
+"ErrorsListLB"
+""
+1 390 355 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 388 353 707 512
+0
+
+E
+E
+E
+
+0 0
+13 12
+"Button1"
+""
+1 20 360 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 358 372 397
+
+T 
+1
+LANG:5 46 ReLoad and check don't reload AETable and TT !
+"main()
+{
+	loadAndCheck();
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

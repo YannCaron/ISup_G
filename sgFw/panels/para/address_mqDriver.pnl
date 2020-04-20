@@ -1,0 +1,488 @@
+V 11
+3
+LANG:5 11 address_sim
+LANG:1 11 address_sim
+LANG:0 11 address_sim
+PANEL,-1 -1 620 480 N "_3DFace" 1
+"$1"
+"main()
+{
+  string dp;
+  
+  if ($1==\"\")
+  {
+    RootPanelOn(
+      \"vision/MessageWarning\",
+      paGetCatStr(\"para\",\"warning\"),
+      makeDynString(paGetCatStr(\"para\",\"novision\")));
+  }
+  if (!paIsNative[paMyModuleId()])
+  {
+    dp = myUiDpName() + \".\";
+    dpSetWait(dp+\"PanelOff.ModuleName:_original.._value\",myModuleName(),
+          dp+\"PanelOff.PanelName:_original.._value\",\"address\");
+  }
+  paInitPanel($1,\":_address\");
+}
+
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "void evalModusVisibility() {
+  bool vis = (modus.number==0);
+
+//!!!pollgroup
+  frmPollGroup.visible = vis;
+  txtPollGroup.visible = vis;
+  cmbPollGroup.visible = vis;
+  cmdPollGroup.visible = vis;
+}" 0
+ 2
+"CBRef" "0"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"programname"
+""
+1 28 10 E E E 1 E 1 E N "schwarz" E N "_Transparent" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 30 10 191 31
+0 2 0 "0s" 0 0 0 192 0 0  30 10 1
+3
+LANG:5 26 arial,-1,18,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,18,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-160-100-100-*-*-iso8859-1|-18,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 18 Skyguide MQ Driver
+LANG:1 26 Skyguide TCP Communication
+LANG:0 23 Peripherie - Simulation
+1 1 0 "" 0
+0
+1 2 0 "" 1
+0
+1 3 1 "" 0
+0
+1 4 1 "" 1
+0
+6 5
+"Border1"
+""
+1 10 60 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 60 610 110
+2 6
+"Text1"
+""
+1 20 50 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 20 50 89 66
+0 0 0 "0s" 0 0 0 192 0 0  20 50 1
+3
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 10  Reference
+LANG:1 31  Reference  (use dot separator)
+LANG:0 10  Referenz 
+2 7
+"Text2"
+""
+1 410 50 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 410 50 479 66
+0 0 0 "0s" 0 0 0 192 0 0  410 50 1
+3
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 10  Subindex 
+LANG:1 10  Subindex 
+LANG:0 10  Subindex 
+6 8
+"Border2"
+""
+1 10 130 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 130 610 180
+2 9
+"Text4"
+""
+1 20 120 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 20 120 170 136
+0 0 0 "0s" 0 0 0 192 0 0  20 120 1
+3
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 24  Type of transformation 
+LANG:1 24  Type of transformation 
+LANG:0 11  Trans.Art 
+6 10
+"Border3"
+""
+1 240 200 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 -230 0 0 E 240 200 400 300
+2 11
+"Text5"
+""
+1 20 190 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 20 190 81 206
+0 0 0 "0s" 0 0 0 192 0 0  20 190 1
+3
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 10 Direction 
+LANG:1 10 Direction 
+LANG:0 10  Richtung 
+2 12
+"Text6"
+""
+1 510 50 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 510 50 609 66
+0 0 0 "0s" 0 0 0 192 0 0  510 50 1
+3
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0 3
+LANG:5 15  Driver number 
+LANG:1 15  Driver number 
+LANG:0 15  Treibernummer 
+14 14
+"subindex"
+""
+1 410 68 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0  410 68 493 101
+3 "10d" 10 0 0 0 0 -1  E E E
+19 15
+"mode"
+""
+1 17.7419354838712 208 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0  18 208 162 292
+2
+T 
+3
+LANG:5 6 Output
+LANG:1 6 Output
+LANG:0 7 Eingang
+
+0 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+T 
+2
+LANG:5 5 Input
+LANG:1 5 Input
+
+1 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+1
+E E
+22 16
+"datatype"
+""
+1 16.47435897435894 138 E E E 1 E 1 E N {0,0,0} E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0  18 138 297 171
+4
+1
+LANG:5 7 Boolean
+
+0
+1
+LANG:5 7 Integer
+
+0
+1
+LANG:5 5 Float
+
+0
+1
+LANG:5 6 String
+
+0
+
+E
+E
+E
+ 0 1
+1 17 2 "0" 0
+0
+1 18 2 "0" 1
+0
+1 19 2 "" 0
+0
+1 20 2 "" 1
+0
+1 21 2 "" 2
+0
+1 22 2 "" 3
+0
+21 23
+"driver"
+""
+1 510 68 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0  510 68 570 101
+0
+
+E
+E
+E
+
+N 1 256 1 1 1 1
+1 24 3 "" 0
+0
+21 25
+"Agent"
+""
+1 18.98305084745763 67.27272727272728 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 Arial,10,-1,5,50,0,0,0,0,0
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+LANG:0 26 Arial,10,-1,5,50,0,0,0,0,0
+0  18 68 82 102
+0
+
+E
+E
+E
+
+N 1 9999 1 1 1 1
+14 13
+"reference"
+""
+1 16.864406779661 68 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:1 26 arial,-1,13,5,50,0,0,0,0,0
+LANG:0 107 -microsoft windows-arial-medium-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,500,0,0,0,0,0,0,0,16,arial
+0  18 68 392 101
+3 "120s" 120 0 0 0 0 -1  E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 0 "" -1
+"para\\dpe.ref" 308 10 T 0 U 
+1
+"$DPE""$1"
+3 1 "" -1
+"para\\lock_unlock.ref" 6 12 T 0 U 
+1
+"$1""$1"
+3 2 "" -1
+"para\\buttons.ref" 220 440 T 0 1 0 1 -210 10
+0
+3 3 "active" -1
+"para\\refAddressActive.pnl" 10 450 T 36 1 0 1 100 2.000000000000085
+0
+0

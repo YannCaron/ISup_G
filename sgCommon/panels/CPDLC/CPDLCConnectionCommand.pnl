@@ -1,0 +1,151 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 493 292 N "_3DFace" 3
+"$Cnn"
+"$Node"
+"$Site"
+"main()
+{
+  setCPDLCTitle($Site, $Node, $Cnn);
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 6
+"LabelWindowCmd"
+""
+1 10 20 E E E 1 E 1 E N {0,0,0} E N "_3DFace" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 22 478 48
+0 2 0 "0s" 0 0 0 65 0 0  12 22 1
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 25 CPDLC Connection Commands
+LANG:1 14 LabelWindowCmd
+13 5
+"Close"
+""
+1 405 250 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  403 248 487 282
+
+T 
+2
+LANG:5 5 Close
+LANG:1 5 Close
+"main()
+{
+//	Close Command window at Click this button
+	PanelOffPanel(\"CPDLC Command Window\");	
+}" 0
+ E E E
+13 2
+"AttachBtn"
+""
+1 30 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  28 83 462 122
+
+T 
+1
+LANG:5 7 Connect
+"main()
+{
+	sendCPDLCCommand ($Site, $Node, $Cnn, $Cnn + \"Command\", CMD_ENABLE, TXT_ENABLE);
+}
+" 0
+ E E E
+13 3
+"DetachBtn"
+""
+1 30 165 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  28 163 462 202
+
+T 
+1
+LANG:5 10 Disconnect
+"main()
+{
+	sendCPDLCCommand ($Site, $Node, $Cnn, $Cnn + \"Command\", CMD_DISABLE, TXT_DISABLE);
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

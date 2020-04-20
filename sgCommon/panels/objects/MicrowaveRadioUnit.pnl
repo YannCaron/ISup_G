@@ -1,0 +1,146 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,340 100 303 124 N "_3DFace" 5
+"$DataFailure"
+"$LineFailure"
+"$RxFailure"
+"$SystemName"
+"$TxFailure"
+EEE E E 1 -1 -1 0  -1 -1
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 3 1 "" 46
+0
+1 6 1 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 8 ML: Line
+
+0
+1 7 1 "" 24
+0
+1 8 1 "" 40
+0
+30 25
+"Frame1"
+""
+1 10 110 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 10 290 110
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-16,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 20 Microwave radio unit
+1 26 4 "" 46
+0
+1 27 4 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 8 ML: Data
+
+0
+1 28 4 "" 24
+0
+1 29 4 "" 40
+0
+1 30 5 "" 46
+0
+1 31 5 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 6 ME: Rx
+
+0
+1 32 5 "" 24
+0
+1 33 5 "" 40
+0
+1 34 6 "" 46
+0
+1 35 6 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 7 MS2: Tx
+
+0
+1 36 6 "" 24
+0
+1 37 6 "" 40
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 1 "Group4"
+"objects\\sgFwBlock.pnl" 140 175 T 2 0.3249999999999999 0 0.125  104.6360580595876 47.91666666666674  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$LineFailure"
+3 4 "Group6"
+"objects\\sgFwBlock.pnl" 150 70 T 7 0.3249999999999999 0 0.125  101.6360580595876 25.91666666666674  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$DataFailure"
+3 5 "Group6"
+"objects\\sgFwBlock.pnl" 20 35 T 7 0.3000000000000001 0 0.125  14.12559205500392 30.91666666666671  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$RxFailure"
+3 6 "Group8"
+"objects\\sgFwBlock.pnl" 20 70 T 8 0.2999999999999999 0 0.125  14.12559205500394 60.91666666666671  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$TxFailure"
+0

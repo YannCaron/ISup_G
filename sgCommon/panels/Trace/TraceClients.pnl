@@ -1,0 +1,302 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 18 Trace Workstations
+LANG:1 6 PRIMUS
+1 51 20 "" 46
+0
+1 54 87 "" 11
+0
+1 55 88 "" 46
+0
+1 58 89 "" 46
+0
+1 61 90 "" 46
+0
+1 64 91 "" 46
+0
+1 67 92 "" 46
+0
+1 70 93 "" 46
+0
+1 73 94 "" 46
+0
+1 76 95 "" 46
+0
+1 79 96 "" 46
+0
+1 82 97 "" 46
+0
+1 85 98 "" 46
+0
+1 88 99 "" 46
+0
+1 91 100 "" 46
+0
+1 94 101 "" 46
+0
+1 97 102 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 52 20 "" 51
+0
+1 53 20 "" 52
+0
+1 56 88 "" 51
+0
+1 57 88 "" 52
+0
+1 59 89 "" 51
+0
+1 60 89 "" 52
+0
+1 62 90 "" 51
+0
+1 63 90 "" 52
+0
+1 65 91 "" 51
+0
+1 66 91 "" 52
+0
+1 68 92 "" 51
+0
+1 69 92 "" 52
+0
+1 71 93 "" 51
+0
+1 72 93 "" 52
+0
+1 74 94 "" 51
+0
+1 75 94 "" 52
+0
+1 77 95 "" 51
+0
+1 78 95 "" 52
+0
+1 80 96 "" 51
+0
+1 81 96 "" 52
+0
+1 83 97 "" 51
+0
+1 84 97 "" 52
+0
+1 86 98 "" 51
+0
+1 87 98 "" 52
+0
+1 89 99 "" 51
+0
+1 90 99 "" 52
+0
+1 92 100 "" 51
+0
+1 93 100 "" 52
+0
+1 95 101 "" 51
+0
+1 96 101 "" 52
+0
+1 98 102 "" 51
+0
+1 99 102 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 20 "Group21" -1
+"objects\\sgFwBlock.pnl" 30 110 T 31 0.6 0 0.265 157 130.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client01"
+3 87 "" -1
+"objects\\sgFwHistory.pnl" 190 725 T 109 1 0 1 -190 -25
+2
+"$SystemHistory""Trace.History"
+"$SystemName"""
+3 88 "PANEL_REF88" -1
+"objects\\sgFwBlock.pnl" 30 110 T 165 0.6 0 0.265 412 130.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client02"
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 30 110 T 166 0.6 0 0.265 667 130.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client03"
+3 90 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 30 110 T 167 0.6 0 0.265 157 200.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client04"
+3 91 "PANEL_REF91" -1
+"objects\\sgFwBlock.pnl" 30 110 T 168 0.6 0 0.265 412 200.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client05"
+3 92 "PANEL_REF92" -1
+"objects\\sgFwBlock.pnl" 30 110 T 169 0.6 0 0.265 667 200.8499999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client06"
+3 93 "PANEL_REF93" -1
+"objects\\sgFwBlock.pnl" 30 110 T 170 0.6 0 0.265 157 270.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client07"
+3 94 "PANEL_REF94" -1
+"objects\\sgFwBlock.pnl" 30 110 T 171 0.6 0 0.265 412 270.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client08"
+3 95 "PANEL_REF95" -1
+"objects\\sgFwBlock.pnl" 30 110 T 172 0.6 0 0.265 667 270.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client09"
+3 96 "PANEL_REF96" -1
+"objects\\sgFwBlock.pnl" 30 110 T 173 0.6 0 0.265 157 340.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client10"
+3 97 "PANEL_REF97" -1
+"objects\\sgFwBlock.pnl" 30 110 T 174 0.6 0 0.265 412 340.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client11"
+3 98 "PANEL_REF98" -1
+"objects\\sgFwBlock.pnl" 30 110 T 175 0.6 0 0.265 667 340.8499999999999
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client12"
+3 99 "PANEL_REF99" -1
+"objects\\sgFwBlock.pnl" 30 110 T 176 0.6 0 0.265 287 410.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client13"
+3 100 "PANEL_REF100" -1
+"objects\\sgFwBlock.pnl" 30 110 T 177 0.6 0 0.265 542 410.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client14"
+3 101 "PANEL_REF101" -1
+"objects\\sgFwBlock.pnl" 30 110 T 178 0.6 0 0.265 287 480.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client15"
+3 102 "PANEL_REF102" -1
+"objects\\sgFwBlock.pnl" 30 110 T 179 0.6 0 0.265 542 480.85
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Trace.Components.Clients.Components.Client16"
+0

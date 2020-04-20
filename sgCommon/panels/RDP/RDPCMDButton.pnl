@@ -1,0 +1,129 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,0 0 158 51 N "_3DFace" 4
+"$Command"
+"$ConfirmationText"
+"$HistoryName"
+"$Label"
+"main()
+{
+	Button.toolTipText = $Label + \" command\";
+
+	Button.text = $Label;
+	
+	if($Label == \"\")
+		Button.visible = false;
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"void addCommandEvent(string EventText)
+{
+	if($HistoryName != \"\"){
+		if(dpExists($HistoryName)){
+			sgHistoryAddEvent($HistoryName, SEVERITY_COMMAND, EventText);
+		//	DebugN(\"historyAddEvent with confirmation done\");
+		}
+		else{
+			DebugN(\"''\" + EventText + \"'' . But no Event done!\");
+			DebugN(\"History Name: ''\" + $HistoryName + \"'' does not exist for RDPCMDButton; Command: ''\" + $Label + \"'' !\");
+		}
+	}
+}" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"Button"
+""
+1 10 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+
+0
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 8 152 42
+T 
+2
+LANG:5 7 RDP CMD
+LANG:1 7 RDP CMD
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string EventText;
+	
+	if($ConfirmationText != \"\")
+	{
+//		DebugN(\"ds before calling panel: \" + ds);
+		ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+//		ChildPanelOnCentralModalReturn(\"RDP/MessageConfirmRDP.pnl\", \"Confirmation\", 
+		makeDynString(\"$1:Do you really want to \" + $ConfirmationText + \" ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+		if(ds[1] == \"true\"){
+			sendRDPCommand(\"SET \" + $Command);
+			//DebugN(\"Send maid with confirmation\");
+			// Add Event
+			EventText = \"<<\" + $ConfirmationText + \">> sent\";
+			addCommandEvent(EventText);
+		}				
+	//	DebugN(\"ds after window close: \" + ds[1] );
+		
+	}
+	else
+	{
+			sendRDPCommand(\"SET \" + $Command);
+//			DebugN(\"Send maid without confirmation\");
+			// Add Event, if no confirmation, only the label name
+			EventText = \"<<\" + $Label + \">> sent\";
+			addCommandEvent(EventText);
+	}
+//	Close Command window at terminate
+//	DebugN(\"Close panel\");
+
+	PanelOffPanel(\"Command Window\");	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

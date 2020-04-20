@@ -1,0 +1,209 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values;
+DPEditNames = $DPEditNames;
+
+data_point_elements = makeDynString(TEMPLATE_POSTIFIX
+																	 );				
+
+data_points = strsplit(DPEditNames, \";\"); 
+dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+
+TextField1.text = dpe_values[dpe_index(TEMPLATE_POSTIFIX)];
+
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+
+}
+" 0
+"main()
+{
+SavingChangesBack();
+}" 0
+"main()
+{
+
+}" 0
+ E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+//global variables
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+const string TEMPLATE_POSTIFIX = \".Template\";
+
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+dyn_anytype all_values;
+
+
+//DebugN(\"entering procedure for saving changes back in sgConvertWithStringInsertion\");
+//this is where you save back to the database
+
+all_values[dpe_index(TEMPLATE_POSTIFIX)] = TextField1.text;
+
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+
+	////DebugN(data_points, data_point_elements, all_values, changed_elements);
+	////DebugN(all_values, changed_elements);
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 107
+"Text1"
+""
+1 40 40 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+103 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 42 42 186 58
+0 2 0 "s" 0 0 0 192 0 0  42 42
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 21 Connection Template: 
+30 109
+"Frame1"
+""
+1 20 80 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+105 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 20 20 600 80
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+14 108
+"TextField1"
+""
+1 190 40 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+104 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+188 38 582 65
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(TEMPLATE_POSTFIX)] = true;
+}" 0
+
+E
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

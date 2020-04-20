@@ -1,0 +1,182 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 675 N "_3DFace" 0
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 444
+"Line3"
+""
+1 30 45 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+124 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  90 45 30 45
+4 445
+"Line4"
+""
+1 31 46 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+125 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  91 46 31 46
+1 446 73 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 EMSup
+ 
+0
+1 447 73 "" 2
+0
+1 448 80 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 EMTEL
+ 
+0
+1 449 80 "" 2
+0
+1 450 90 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 EMDIS
+ 
+0
+1 451 90 "" 2
+0
+1 452 114 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 EMNet
+ 
+0
+1 453 114 "" 2
+0
+1 454 115 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 4 MRTS
+ 
+0
+1 455 115 "" 2
+0
+1 456 116 "" 2
+0
+1 457 116 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 EMLAN
+ 
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 73 "Group11" -1
+"objects/sgFwNaviAlertButton.pnl" 5 70 T 97 1.22222222222222 0 0.875 -1.33333333333334 -46.25
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""EMSupLinks"
+"$PanelName""EMSup_Z_MainPanel.pnl"
+"$PanelParams"""
+"$isVisible""1"
+"$system""EMSup"
+3 80 "Group11" -1
+"objects/sgFwNaviAlertButton.pnl" 5 425 T 101 1.22222222222222 0 0.875 -1.111111111111101 -226.625
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label"""
+"$PanelName"""
+"$PanelParams""SystemName:EMSup_Z:"
+"$isVisible""1"
+"$system""EMTEL"
+3 90 "Group17" -1
+"objects/sgFwNaviAlertButton.pnl" 5 570 T 102 1.22222222222222 0 0.875 -1.22222222222231 -443.875
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label"""
+"$PanelName"""
+"$PanelParams""SystemName:EMSup_Z:"
+"$isVisible""1"
+"$system""EMDIS"
+3 114 "Group33" -1
+"objects/sgFwNaviAlertButton.pnl" 5 235 T 123 1.22222222222222 0 0.875 -1.111111111111101 -90.625
+7
+"$AlarmPoint""EMNet.EMNet.GlobalStatus"
+"$DistributedSystems"""
+"$Label""EMNet"
+"$PanelName""ErrorsList/sgErrorsListPanel.pnl"
+"$PanelParams""ErrorsList:EMSup_Z:EMNet.EMNet.ErrorsList;CriticalEvents:EMSup_Z:EMNet.EMNet.NewCriticalEvents;CriticalEventsStatus:EMSup_Z:EMNet.EMNet.CriticalEventsStatus;HeartbeatStatus:EMSup_Z:EMNet.EMNet.TimeoutRef;PageTitle:EMNet"
+"$isVisible""1"
+"$system"""
+3 115 "Group7" -1
+"objects/sgFwNaviAlertButton.pnl" 5 145 T 125 1.22222222222222 0 0.875 -0.9999999999998916 48.375
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label"""
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:EMSup_Z:;FileOnMRTSModule:MRTS/MRTSDefaultPanel.pnl"
+"$isVisible""1"
+"$system""MRTS"
+3 116 "PANEL_REF116" -1
+"objects/sgFwNaviAlertButton.pnl" 5 570 T 126 1.22222222222222 0 0.875 -1.111111111111101 -413.75
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label"""
+"$PanelName"""
+"$PanelParams""SystemName:EMSup_Z:"
+"$isVisible""1"
+"$system""EMLAN"
+0

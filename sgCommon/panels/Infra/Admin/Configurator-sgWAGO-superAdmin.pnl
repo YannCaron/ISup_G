@@ -1,0 +1,646 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 914 966 N "_3DFace" 0
+"main()
+{
+  form_load();
+}" 0
+ E E E E 1 -1 -1 0  30 55
+""0  1
+E "// const
+const int ROW_INPUT = 0;
+const int ROW_ADDRESS = 1;
+const int WAGO_DRIVER_TYPE = 16;
+const string WAGO_DRIVER_NAME = \"SERIALMOD\";
+const int WAGO_DRIVER_TYPE_COIL = 1701;
+const int WAGO_DRIVER_TYPE_REGISTER = 1702;
+const int WAGO_DRIVER_DIR_INPUT = 4;
+
+const int DRIVER_NUM = 2;
+
+// global
+string id;
+string name;
+string logicAlarmTextFormat, analogicAlarmTextFormat, analogicWarningTextFormat;
+string defaultComPort;
+int defaultAddress;
+dyn_int agentIDs;
+
+void loadDps() {
+  string s1, s2;
+  id = getOptionalParam(\"$id\", \"StationBNA.Components.BNAA60VO01\");
+  
+  int p1 = strpos(id, \".\");
+  int p2 = strpos(id, \".\", p1 + 1);
+  s1 = substr(id, 0, p1);
+  s2 = substr(id, p2 + 1);
+  sprintf (logicAlarmTextFormat, \"Alarm - %s.%s.LogicInput.%s\", s1, s2, \"%03d\");
+  sprintf (analogicAlarmTextFormat, \"Alarm - %s.%s.AnalogicInput.%s\", s1, s2, \"%03d\");
+  sprintf (analogicWarningTextFormat, \"Warning - %s.%s.AnalogicInput.%s\", s1, s2, \"%03d\");
+  
+  // get default values
+  string dpBus, dpSerialModbus;
+  dpGet(id + \".Bus\", dpBus);
+  dpGet(dpBus + \".ModbusAgent\", dpSerialModbus);
+  dpGet(dpSerialModbus + \".Address.Port\", defaultComPort, id + \".Address\", defaultAddress);
+}
+
+// event
+void form_load() {
+  loadDps();
+  
+  // default values
+  tbWAGO.text = id;
+  sbDriverNum.text = DRIVER_NUM;
+  
+  loadAgents();
+  
+  // select the com port
+  for (int i = 1; i<=cbAgent.itemCount(); i++) {
+    if (cbAgent.items()[i] == defaultComPort) {
+      cbAgent.selectedPos(i);
+    }
+  }
+
+  sbAddress.text = defaultAddress;
+  
+  // data grid
+  dgInputs.clear();
+  dgInputs.addReadonlyColumn(\"Input\");
+  dgInputs.setColumnValues(ROW_INPUT, dpNames(id + \"{.Inputs.*,.AnalogInputs.*.RawValue}\"));
+}
+
+void loadAgents() {
+  cbAgent.deleteAllItems();  
+  
+  dyn_dyn_anytype result;
+  dpQuery(\"SELECT '_online.._value' FROM '*.Address.Port' WHERE _DPT=\\\"_SerialModbus\\\"\", result);
+
+  dyn_int addresses;
+  for (int i = 2; i<=dynlen(result); i++) {
+    int agentID;
+    sscanf((string)result[i][1], \"Infra_G:_SerialModbus_%d.Address.Port\", agentID);
+    
+    // add agent
+    dynAppend(agentIDs, agentID);
+    cbAgent.appendItem(result[i][2]);
+  }
+}
+
+int getAgentID() {
+  return agentIDs[cbAgent.selectedPos()];
+}
+
+void createAddress_clicked() {
+  btCreateAddress.enabled = false;
+  createAddress(dpNames(id + \".Inputs.*\"), WAGO_DRIVER_TYPE_COIL);
+  createAddress(dpNames(id + \".AnalogInputs.*.RawValue\"), WAGO_DRIVER_TYPE_REGISTER);
+  btCreateAddress.enabled = true;
+}
+
+void createAlert_clicked() {
+  btCreateAlert.enabled = false;
+  createLogicAlert();
+  createAnalogicAlert();
+  createDpFunctions();
+  btCreateAlert.enabled = true;
+}
+
+void createArchive_clicked() {
+  btCreateArchive.enabled = false;
+  createArchives();
+  btCreateArchive.enabled = true;
+}
+
+void cleanup_clicked() {
+  btCleanup.enabled = false;
+  cleanup();
+  btCleanup.enabled = true;
+}
+
+// function
+void createAddress(dyn_string dps, int type) {
+  DebugTN(\"Generate address configs for [\" + dps[1] + \" .. \" + dps[dynlen(dps) + \"]\"]);
+
+  // get dp
+  int len = dynlen(dps);
+
+  // set address
+  defaultAddress = sbAddress.text();
+  dpSet(id + \".Address\", defaultAddress);
+    
+  // create distrib
+  dpSetWait(dpAppend(dps, \":_distrib.._type\"), dynFillInt(len, DPCONFIG_DISTRIBUTION_INFO));
+  dpSetWait(dpAppend(dps, \":_distrib.._driver\"), dynFillInt(len, sbDriverNum.text()));
+
+  // create reference values
+  dyn_string references;
+  for (int i = 1; i<=len; i++) {
+    references[i] = getAgentID() + \"_\" + type + \"_\" + sbAddress.text() + \".\" + i;
+  }
+    
+  dpSetWait(dpAppend(dps, \":_address.._type\"), dynFillInt(len, WAGO_DRIVER_TYPE));
+  dpSetWait(dpAppend(dps, \":_address.._drv_ident\"), dynFillString(len, WAGO_DRIVER_NAME));
+  dpSetWait(dpAppend(dps, \":_address.._reference\"), references);
+  dpSetWait(dpAppend(dps, \":_address.._datatype\"), dynFillInt(len, type));
+  dpSetWait(dpAppend(dps, \":_address.._direction\"), dynFillInt(len, WAGO_DRIVER_DIR_INPUT));
+  dpSetWait(dpAppend(dps, \":_address.._active\"), dynFillBool(len, true));
+
+}
+
+void createLogicAlert() {
+
+  // get dps
+  dyn_string dps = dpNames(id + \".Inputs.*\");
+  int len = dynlen(dps);
+
+  // if not exists, create it
+  DebugTN(\"Generate logic alert configs for [\" + dps[1] + \" .. \" + dps[dynlen(dps) + \"]\"]);
+  
+  // description
+  for (int i = 1; i <= dynlen(dps); i++) {
+    dpSetDescription(dps[i], \"\");
+  }
+  
+  // ack all before modifying
+  dpSetWait(dpAppend(dps, \":_alert_hdl.._ack\"), dynFillInt(len, DPATTR_ACKTYPE_SINGLE));
+    
+  // create alert
+  dyn_string alertTexts = dynFillStringFormat(dynlen(dps), logicAlarmTextFormat);
+  for (int i = 1; i <= dynlen(dps); i++) {
+    saveLogicAlert(dps[i], FALSE, TRUE, WAGO_ALARMS[1], alertTexts[i], \"\");
+  }
+
+}
+
+void createAnalogicAlert() {
+
+  // get dps
+  dyn_string dps = dpNames(id + \".AnalogInputs.*.Value\");
+  int len = dynlen(dps);
+  
+  // if not exists, create it
+  DebugTN(\"Generate analogic alert configs for [\" + dps[1] + \" .. \" + dps[dynlen(dps) + \"]\"]);
+
+  // ack all before modifying
+  dpSetWait(dpAppend(dps, \":_alert_hdl.._ack\"), dynFillInt(len, DPATTR_ACKTYPE_SINGLE));
+
+  // create alert
+  dyn_string alarmTexts = dynFillStringFormat(dynlen(dps), analogicAlarmTextFormat);
+  dyn_string warningTexts = dynFillStringFormat(dynlen(dps), analogicWarningTextFormat);
+  
+  for (int i = 1; i <= dynlen(dps); i++) {
+    dyn_float th = WAGO_DEFAULT_PT100_THRESHOLDS;
+    saveAnalogicAlert(dps[i], \"\", alarmTexts[i], warningTexts[i], th[1], th[2], th[3], th[4], FALSE);
+  }
+
+}
+
+void createDpFunctions() {
+
+  // get dps
+  dyn_string dps = dpNames(id + \".AnalogInputs.*\");
+  int len = dynlen(dps);
+  
+  // if not exists, create it
+  DebugTN(\"Generate analogic dp functions for [\" + dps[1] + \" .. \" + dps[dynlen(dps) + \"]\"]);
+  
+  dpSetWait(dpAppend(dps, \".Offset:_original.._value\"), dynFillFloat(len, WAGO_DEFAULT_PT100_OFFSET));
+  dpSetWait(dpAppend(dps, \".Gain:_original.._value\"), dynFillFloat(len, WAGO_DEFAULT_PT100_GAIN));
+  dpSetWait(dpAppend(dps, \".Y1:_original.._value\"), dynFillFloat(len, WAGO_DEFAULT_PT100_Y1));
+  dpSetWait(dpAppend(dps, \".Y2:_original.._value\"), dynFillFloat(len, WAGO_DEFAULT_PT100_Y2));
+  
+  for (int i = 1; i <= dynlen(dps); i++) {
+    saveDpFunction(dps[i], WAGO_PT100_FORMULA);
+  }
+}
+
+void createArchives() {
+  
+  // get dps
+  dyn_string dps = dpNames(id + \".AnalogInputs.*.Value\");
+  int len = dynlen(dps);
+
+  // if not exists, create it
+  DebugTN(\"Generate archive configs for [\" + dps[1] + \" .. \" + dps[dynlen(dps) + \"]\"]);
+    
+  // create alert
+  for (int i = 1; i <= dynlen(dps); i++) {
+    saveArchive(dps[i]);
+  }
+  
+}
+
+void cleanup() {
+  dyn_string dps = dpNames(\"Station*.Components.*.Inputs.*\");
+
+  dpSetWait(dynAppendEachString(dps, \":_smooth.._type\"), dynFillInt(dynlen(dps), DPCONFIG_NONE));
+
+	DebugTN(\"Smoothing cleanup executed for [\" + dynlen(dps) + \"] configs\");
+    
+}
+
+
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+2 0
+"PRIMITIVE_TEXT1"
+""
+1 17 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 17 30 54 46
+0 2 2 "0s" 0 0 0 192 0 0  17 30 1
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 4 WAGO
+14 1
+"tbWAGO"
+""
+1 70.00000000000003 25 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  68 23 357 52
+3 "0s" 0 0 0 0 0 -1  E E E
+13 2
+"btCreateAddress"
+""
+1 570.0000000000001 870 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  568 868 757 897
+
+T 
+1
+LANG:5 16 Create Addresses
+"main()
+{
+  createAddress_clicked();
+}" 0
+ E E E
+13 3
+"btCreateAlert"
+""
+1 10 925 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  8 923 197 952
+
+T 
+1
+LANG:5 29 Create Alerts && DP Functions
+"main()
+{
+  createAlert_clicked();
+}" 0
+ E E E
+30 4
+"FRAME1"
+""
+1 0 49 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+4 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.433070866141732 0 11.9718309859155 0 -586.6197183098597 0 E 0 49 636 121
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 4 Info
+2 5
+"PRIMITIVE_TEXT2"
+""
+1 17 67 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 17 67 52 83
+0 2 2 "0s" 0 0 0 192 0 0  17 67 1
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 6 Inputs
+29 6
+"dgInputs"
+""
+1 69.99999999999996 65 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  70 65 900 840
+12 DataGrid.ewo
+0
+E30 7
+"FRAME2"
+""
+1 0 49 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+7 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.433070866141732 0 0.774647887323943 0 812.0422535211268 0 E 0 49 636 121
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 7 Address
+2 8
+"PRIMITIVE_TEXT3"
+""
+1 180 870 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 180 870 309 886
+0 2 2 "0s" 0 0 0 192 0 0  180 870 1
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 21 SerialModbus agent ID
+2 11
+"PRIMITIVE_TEXT4"
+""
+1 12 872 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 12 872 94 888
+0 2 2 "0s" 0 0 0 192 0 0  12 872 1
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 13 Driver number
+21 12
+"sbDriverNum"
+""
+1 105 870 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  103 868 152 897
+0
+
+E
+E
+E
+
+N 1 256 1 1 1 1
+30 13
+"FRAME3"
+""
+1 0 49 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+13 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.3228346456692914 0 0.774647887323943 0 867.0422535211268 0 E 0 49 636 121
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 5 Alert
+2 14
+"PRIMITIVE_TEXT5"
+""
+1 402 872 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 402 872 480 888
+0 2 2 "0s" 0 0 0 192 0 0  402 872 1
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 12 Head address
+21 15
+"sbAddress"
+""
+1 495 870 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  493 868 542 897
+0
+
+E
+E
+E
+
+N 1 256 1 1 1 1
+22 16
+"cbAgent"
+""
+1 320 870 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  318 868 392 892
+0
+
+E
+E
+E
+ 0 0
+13 17
+"btCreateArchive"
+""
+1 765 870 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  763 868 902 897
+
+T 
+1
+LANG:5 15 Create archives
+"main()
+{
+  createArchive_clicked();
+}" 0
+ E E E
+13 18
+"btCleanup"
+""
+1 220 925 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  218 923 407 952
+
+T 
+1
+LANG:5 15 Cleanup All Bus
+"main()
+{
+  cleanup_clicked();
+}" 0
+ E E E
+30 19
+"FRAME4"
+""
+1 0 49 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+19 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.3228346456692914 0 0.774647887323943 210 867.0422535211268 0 E 0 49 636 121
+1
+LANG:5 27 Tahoma,12,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 6 Smooth
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

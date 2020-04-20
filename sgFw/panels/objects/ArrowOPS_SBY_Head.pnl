@@ -1,0 +1,179 @@
+V 10
+1
+LANG:1 8 (NoName)
+PANEL,392 126 99 166 N "_3DFace" 4
+"$HeadVisibleValue"
+"$OPSValue"
+"$SBYValue"
+"$SystemStatus"
+"main()
+{
+// $HeadVisible is the control if component is a dynamic Line or a dynamic Arrow
+	bool HeadVisible;
+	
+	if($HeadVisibleValue == \"TRUE\"){
+		HeadVisible = true;	
+	}
+	else{ 
+		HeadVisible = false;	
+	}
+	SBYHead.visible = HeadVisible;
+	
+// Control if Arrow/Line is dynamic these 3 $Parameters = 0 --> Static Arrow/Line
+	if(($SystemStatus == \"\") && ($OPSValue == \"\") && ($SBYValue == \"\")){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+	 	OPSHead.color = \"black\";
+		OPSLine.color = \"black\";	
+		return;	
+	}
+
+// if only systemStatus is = 0 --> unknown status
+	else{
+		if($SystemStatus == \"\"){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"sgStdUKNColor\";
+		OPSLine.color = \"sgStdUKNColor\";	
+		return;
+		}
+		else{
+
+// dpConnect only with valid DP 
+			dpConnect(\"hideArrow\", $SystemStatus);
+		}
+	}
+}" 0
+EE E E 1 -1 -1 0  50 30
+"" 0 1
+E"main()
+{}
+//void updateStatus(string dpName, string value)	
+void hideArrow(string dpName, string value)
+{
+
+// $HeadVisible is the control if component is a dynamic Line or a dynamic Arrow
+	bool HeadVisible;
+	
+	if($HeadVisibleValue == \"TRUE\"){
+		HeadVisible = true;	
+	}
+	else{ 
+		HeadVisible = false;	
+	}
+	SBYHead.visible = HeadVisible;
+//	DebugN(\"Headvisible: \" + HeadVisible);
+
+	if((value == $SBYValue) && ($OPSValue != $SBYValue)){
+		OPSHead.visible = false;
+		OPSLine.visible =  false;	
+	}
+	else if((value == $OPSValue) && ($OPSValue != \"\") && ($SBYValue != \"\") && ($OPSValue != $SBYValue)){
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"black\";
+		OPSLine.color = \"black\";	
+	}
+	else{
+		OPSHead.visible = HeadVisible;
+		OPSLine.visible = true;	
+		OPSHead.color = \"sgStdUKNColor\";
+		OPSLine.color = \"sgStdUKNColor\";	
+	}
+}" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 6 Layer1
+10 1
+"SBYHead"
+""
+1 221 222 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 3 50 150
+35 120
+65 120
+1
+4 7
+"SBYLine"
+""
+1 50 120 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+8 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  50 120 50 10
+10 8
+"OPSHead"
+""
+1 221 222 E E E 1 E 0 E N {0,0,0} E N "black" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 3 50 150
+35 120
+65 120
+1
+4 9
+"OPSLine"
+""
+1 50 130 E E E 1 E 0 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+1
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 1 0 1 E  50 130 50 10
+0
+LAYER, 1 
+1
+LANG:1 6 Layer2
+0
+LAYER, 2 
+1
+LANG:1 6 Layer3
+0
+LAYER, 3 
+1
+LANG:1 6 Layer4
+0
+LAYER, 4 
+1
+LANG:1 6 Layer5
+0
+LAYER, 5 
+1
+LANG:1 6 Layer6
+0
+LAYER, 6 
+1
+LANG:1 6 Layer7
+0
+LAYER, 7 
+1
+LANG:1 6 Layer8
+0
+0

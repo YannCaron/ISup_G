@@ -1,0 +1,680 @@
+V 11
+3
+LANG:5 10 Navigation
+LANG:1 10 Navigation
+LANG:0 10 Navigation
+PANEL,-1 -1 120 767 N "_3DFace" 0
+"main()
+{}
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 434
+"Line1"
+""
+1 26 356.0000000000003 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+134 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  86 356 26 356
+4 435
+"Line2"
+""
+1 25 355.0000000000003 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+135 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  85 355 25 355
+4 468
+"Line3"
+""
+1 26 486.0000000000002 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+151 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  86 486 26 486
+4 469
+"Line4"
+""
+1 25 485.0000000000002 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+152 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  85 485 25 485
+1 586 69 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links GVA
+ 
+0
+1 587 69 "" 2
+0
+1 588 74 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 GVA
+ 
+0
+1 589 74 "" 2
+0
+1 590 102 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 LOC 04
+ 
+0
+1 591 102 "" 2
+0
+1 592 103 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 04
+ 
+0
+1 593 103 "" 2
+0
+1 594 104 "" 0
+31 "transform" 0 0 1 0 1 0.22222222222224 -20.26315789473686
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 LOC 22
+ 
+0
+1 595 104 "" 2
+31 "transform" 0 0 1 0 1 0.2222222222223991 -21.05263157894734
+0
+1 596 105 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 22
+ 
+0
+1 597 105 "" 2
+0
+1 598 106 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 PAS
+ 
+0
+1 599 106 "" 2
+0
+1 600 107 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 GLA
+ 
+0
+1 601 107 "" 2
+0
+1 602 108 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 SPR
+ 
+0
+1 603 108 "" 2
+0
+1 604 109 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 FRI
+ 
+0
+1 605 109 "" 2
+0
+1 606 110 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 LAP
+ 
+0
+1 607 110 "" 2
+0
+1 608 111 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 NavSupGVA
+ 
+0
+1 609 111 "" 2
+0
+1 610 114 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 Gonio
+ 
+0
+1 611 114 "" 2
+0
+1 612 115 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 L0C 25
+ 
+0
+1 613 115 "" 2
+0
+1 614 116 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 25
+ 
+0
+1 615 116 "" 2
+0
+1 616 117 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links SIO
+ 
+0
+1 617 117 "" 2
+0
+1 618 118 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 NavSupSIO
+ 
+0
+1 619 118 "" 2
+0
+1 620 119 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 3 SIO
+ 
+36 "mouseHoverBackCol" 0 0 N "_Transparent"0
+0
+1 621 119 "" 2
+0
+1 622 122 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 6 LOC 24
+ 
+0
+1 623 122 "" 2
+0
+1 624 123 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 5 GP 24
+ 
+0
+1 625 123 "" 2
+0
+1 626 124 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links EPL
+ 
+0
+1 627 124 "" 2
+0
+1 628 127 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 7 NDB EPL
+ 
+0
+1 629 127 "" 2
+0
+1 630 128 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 10 L0C 23 PAY
+ 
+0
+1 631 128 "" 2
+0
+1 632 129 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 GP 23 PAY
+ 
+31 "transform" 0 0 1 0 1 -0.2222222222222401 4.684210526314903
+0
+1 633 129 "" 2
+31 "transform" 0 0 1 0 1 -0.4444444444443123 3.894736842104408
+0
+4 524
+"LINE1"
+""
+1 31.2222222222222 590.9052631578945 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  91 591 31 591
+4 525
+"LINE2"
+""
+1 30.2222222222222 589.9052631578945 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  90 590 30 590
+1 634 130 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 10 L0C 05 PAY
+ 
+0
+1 635 130 "" 2
+0
+1 636 131 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 GP 05 PAY
+ 
+0
+1 637 131 "" 2
+0
+1 638 132 "" 0
+31 "transform" 0 0 1 0 1 -0.22222222222224 4.684210526314772
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 Links PAY
+ 
+0
+1 639 132 "" 2
+31 "transform" 0 0 1 0 1 -0.2222222222220722 4.204545454545837
+0
+1 640 133 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 9 NavSupPAY
+ 
+0
+1 641 133 "" 2
+0
+4 584
+"LINE3"
+""
+1 26 745.6842105263143 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+164 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  86 746 26 746
+4 585
+"LINE4"
+""
+1 25 744.6842105263143 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+166 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  85 745 25 745
+1 642 134 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 7 VDF GVA
+ 
+0
+1 643 134 "" 2
+0
+1 644 135 "" 2
+0
+1 645 135 "" 0
+21 "pushButtonLabel" 0 0 1 1
+LANG:5 7 VDF CUN
+ 
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 69 "Group4" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 190 T 93 1.22222222222222 0 0.795454545454546 -1.1111111111111 153.8636363636363
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links GVA"
+"$PanelName""Navir/Links/LinksInfosGVA.pnl"
+"$PanelParams""SystemName:Navir_G:"
+"$isVisible""1"
+"$system""LinksInfosGVA"
+3 74 "Group8" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 125 T 95 1.22222222222222 0 0.789473684210526 -1.1111111111111 6.31578947368428
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GVA"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:GVA;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""GVA.Structured.Station"
+3 102 "Group16" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 5 T 123 1.22222222222222 0 0.789473684210526 -1.1111111111111 51.0526315789474
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LOC 04"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:LOC04;ILSForCAT:ILS04;CommandEnable:1"
+"$isVisible""1"
+"$system""LOC04.Structured.Station"
+3 103 "Group18" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 40 T 124 1.22222222222222 0 0.789473684210526 -1.1111111111111 48.421052631579
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GP 04"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:GP04;ILSForCAT:ILS04;CommandEnable:1"
+"$isVisible""1"
+"$system""GP04.Structured.Station"
+3 104 "Group21" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 40 T 125 1.22222222222222 0 0.789473684210527 -1.33333333333334 -6.31578947368422
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LOC 22"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:LOC22;ILSForCAT:ILS22;CommandEnable:1"
+"$isVisible""1"
+"$system""LOC22.Structured.Station"
+3 105 "Group22" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 75 T 126 1.22222222222222 0 0.789473684210526 -1.1111111111111 -29.2105263157895
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GP 22"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:GP22;ILSForCAT:ILS22;CommandEnable:1"
+"$isVisible""1"
+"$system""GP22.Structured.Station"
+3 106 "Group24" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 210 T 127 1.22222222222222 0 0.789473684210526 -1.1111111111111 -35.7894736842105
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""PAS"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:PAS;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""PAS.Structured.Station"
+3 107 "Group26" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 210 T 128 1.22222222222222 0 0.789473684210526 -1.1111111111111 -10.7894736842105
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GLA"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:GLA;ILSForCAT:ILSDummyForHMICAT;CommandEnable:0"
+"$isVisible""1"
+"$system""GLA.Structured.Station"
+3 108 "Group28" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 210 T 129 1.22222222222222 0 0.789473684210527 -1.1111111111111 14.21052631578934
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""SPR"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:SPR;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""SPR.Structured.Station"
+3 109 "Group32" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 245 T 130 1.22222222222222 0 0.789473684210526 -1.1111111111111 11.57894736842121
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""FRI"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:FRI;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""FRI.Structured.Station"
+3 110 "Group33" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 280 T 131 1.22222222222222 0 0.815789473684211 -1.1111111111111 1.57894736842098
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LAP"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:LAP;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""LAP.Structured.Station"
+3 111 "Group18" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 460 T 132 1.22222222222222 0 0.795454545454546 -1.1111111111111 -35.90909090909081
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSupGVA"
+"$PanelName""Navir/NavSup/NavSupMainPanelRedu.pnl"
+"$PanelParams""SystemName:Navir_G:;TWRClientFrameVisible:1"
+"$isVisible""1"
+"$system""Navir_G:NavSup"
+3 114 "Group15" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 300 T 135 1.22222222222222 0 0.784412955465587 -56.1111111111111 19.6761133603239
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""Gonio"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:Gonio;ILSForCAT:ILSDummyForHMICAT;CommandEnable:0"
+"$isVisible""0"
+"$system""Gonio.Structured.Station"
+3 115 "Group17" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 135 1.22222222222222 0 0.789473684210526 -1.1111111111111 288.9473684210527
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems""Navir_S:"
+"$Label""LOC 25"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_S:;StationName:LOC25;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""LOC25.Structured.Station"
+3 116 "Group18" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 136 1.22222222222222 0 0.789473684210526 -1.1111111111111 290.2631578947367
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems""Navir_S:"
+"$Label""GP 25"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_S:;StationName:GP25;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""GP25.Structured.Station"
+3 117 "Group19" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 370 T 137 1.22222222222222 0 0.795454545454547 -1.1111111111111 140.6818181818173
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links SIO"
+"$PanelName""Navir/Links/LinksInfosSIO.pnl"
+"$PanelParams""SystemName:Navir_S:"
+"$isVisible""1"
+"$system""Navir_S:LinksInfosSIO"
+3 118 "Group20" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 405 T 138 1.22222222222222 0 0.790934917355372 -1.1111111111111 139.6713584710743
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSupSIO"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_S:"
+"$isVisible""1"
+"$system""Navir_S:NavSup"
+3 119 "Group23" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 425 T 140 1.22222222222222 0 0.789473684210526 -1.1111111111111 74.4736842105261
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems""Navir_S:"
+"$Label""SIO"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_S:;StationName:SIO;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""SIO.Structured.Station"
+3 122 "Group29" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 381 T 144 1.22222222222222 0 0.789473684210526 -0.66666666666662 189.2105263157896
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LOC 24"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:LOC24;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_G:LOC24.Structured.Station"
+3 123 "Group30" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 406 T 145 1.22222222222222 0 0.789473684210526 -0.66666666666662 194.4736842105266
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GP 24"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_G:;StationName:GP24;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_G:GP24.Structured.Station"
+3 124 "Group31" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 481 T 146 1.22222222222222 0 0.795454545454546 -0.66666666666662 182.3863636363636
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links EPL"
+"$PanelName""Navir/Links/LinksInfosEPL.pnl"
+"$PanelParams""SystemName:Navir_G:"
+"$isVisible""1"
+"$system""Navir_G:LinksInfosEPL"
+3 127 "Group34" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 456 T 149 1.22222222222222 0 0.789473684210526 -0.66666666666662 180.0000000000006
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""NDB EPL"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_G:;StationName:NDBEPL;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_G:NDBEPL.Structured.Station"
+3 128 "PANEL_REF129" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 153 1.22222222222222 0 0.789473684210526 -1.1111111111111 523.9473684210527
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LOC 23 PAY"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_P:;StationName:LOC23;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_P:LOC23.Structured.Station"
+3 129 "PANEL_REF130" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 154 1.22222222222222 0 0.789473684210526 -0.88888888888886 520.578947368422
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GP 23 PAY"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_P:;StationName:GP23;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_P:GP23.Structured.Station"
+3 130 "PANEL_REF131" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 90 T 159 1.22222222222222 0 0.789473684210526 -1.1111111111111 573.6315789473674
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""LOC 05 PAY"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station2Nav.pnl;SystemName:Navir_P:;StationName:LOC05;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_P:LOC05.Structured.Station"
+3 131 "PANEL_REF132" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 120 T 160 1.22222222222222 0 0.789473684210526 -0.88888888888886 575.2631578947364
+7
+"$AlarmPoint""NavirUtils.DummyAlarms"
+"$DistributedSystems"""
+"$Label""GP 05 PAY"
+"$PanelName""Navir/Objects/StationMainPanel.pnl"
+"$PanelParams""PanelOnStationModule:Navir/Objects/Station1Nav.pnl;SystemName:Navir_P:;StationName:GP05;ILSForCAT:ILSDummyForHMICAT;CommandEnable:1"
+"$isVisible""1"
+"$system""Navir_P:GP05.Structured.Station"
+3 132 "PANEL_REF133" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 481 T 161 1.22222222222222 0 0.795454545454546 -0.88888888888886 307.386363636363
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""Links PAY"
+"$PanelName""Navir/Links/LinksInfosPAY.pnl"
+"$PanelParams""SystemName:Navir_P:"
+"$isVisible""1"
+"$system""Navir_P:LinksInfosPAY"
+3 133 "PANEL_REF134" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 460 T 162 1.22222222222222 0 0.795454545454546 -1.1111111111111 353.7751196172233
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""NavSupPAY"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_P:;TWRClientFrameVisible:1"
+"$isVisible""1"
+"$system""Navir_P:NavSup"
+3 134 "PANEL_REF134" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 300 T 167 1.22222222222222 0 0.784412955465587 -1.1111111111111 44.6761133603239
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""VDF GVA "
+"$PanelName""Navir/VDF/VDFPanelGVA.pnl"
+"$PanelParams""SystemName:Navir_G:; VDFName:VDFGVA"
+"$isVisible""1"
+"$system""VDFGVA"
+3 135 "PANEL_REF135" -1
+"objects\\sgFwNaviAlertButton.pnl" 5 300 T 167 1.22222222222222 0 0.784412955465587 -1.1111111111111 19.67611336032391
+7
+"$AlarmPoint"""
+"$DistributedSystems"""
+"$Label""VDF CUN"
+"$PanelName""Navir/VDF/VDFPanelCUN.pnl"
+"$PanelParams""SystemName:Navir_G:; VDFName:VDFCUN"
+"$isVisible""1"
+"$system""VDFCUN"
+0

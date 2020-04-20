@@ -1,0 +1,393 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 335
+"Line5"
+" "
+1 45 405 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+90 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1045 405 45 405
+4 336
+"Line6"
+" "
+1 46 406 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+91 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1046 406 46 406
+4 331
+"Line1"
+" "
+1 45 225 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+86 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1045 225 45 225
+4 332
+"Line2"
+" "
+1 46 226 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+87 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1046 226 46 226
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 7 IDMGrid
+LANG:1 4 AFPS
+1 337 49 "" 46
+0
+1 340 56 "" 46
+0
+1 343 57 "" 46
+0
+1 346 58 "" 46
+0
+1 349 59 "" 46
+0
+1 352 60 "" 46
+0
+1 355 61 "" 46
+0
+1 358 62 "" 46
+0
+1 361 63 "" 46
+0
+1 364 64 "" 46
+0
+1 367 65 "" 46
+0
+1 370 66 "" 46
+0
+1 373 67 "" 46
+0
+1 376 68 "" 46
+0
+2 329
+"Text1"
+""
+1 60 378 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 62 380 170 406
+0 2 0 "0s" 0 0 0 192 0 0  62 380 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-21-*-100-100-*-*-iso8859-1|-21,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 11 Enclosure 1
+2 330
+"Text2"
+""
+1 60 198 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+86 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 62 200 170 226
+0 2 0 "0s" 0 0 0 192 0 0  62 200 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-21-*-100-100-*-*-iso8859-1|-21,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 11 Enclosure 2
+13 229
+"Button1"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+	ForceToUnknown(\"ISup_Z:\", \"IDM\");
+}
+" 0
+ E E E
+1 379 48 "" 11
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 338 49 "" 51
+0
+1 339 49 "" 52
+0
+1 341 56 "" 51
+0
+1 342 56 "" 52
+0
+1 344 57 "" 51
+0
+1 345 57 "" 52
+0
+1 347 58 "" 51
+0
+1 348 58 "" 52
+0
+1 350 59 "" 51
+0
+1 351 59 "" 52
+0
+1 353 60 "" 51
+0
+1 354 60 "" 52
+0
+1 356 61 "" 51
+0
+1 357 61 "" 52
+0
+1 359 62 "" 51
+0
+1 360 62 "" 52
+0
+1 362 63 "" 51
+0
+1 363 63 "" 52
+0
+1 365 64 "" 51
+0
+1 366 64 "" 52
+0
+1 368 65 "" 51
+0
+1 369 65 "" 52
+0
+1 371 66 "" 51
+0
+1 372 66 "" 52
+0
+1 374 67 "" 51
+0
+1 375 67 "" 52
+0
+1 377 68 "" 51
+0
+1 378 68 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 48 ""
+"objects\\sgFwHistory.pnl" 205 105 T 65 1 0 1 -205 595
+2
+"$SystemHistory""IDM.History"
+"$SystemName"""
+3 49 "Group21"
+"objects\\sgFwBlock.pnl" 50 241 T 65 0.25 0 0.15 197.519047619048 163.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl1"
+3 56 "Group35"
+"objects\\sgFwBlock.pnl" 90 170 T 72 0.25 0 0.15 307.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl2"
+3 57 "Group37"
+"objects\\sgFwBlock.pnl" 90 170 T 73 0.25 0 0.15 427.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl3"
+3 58 "Group39"
+"objects\\sgFwBlock.pnl" 90 170 T 74 0.25 0 0.15 547.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl4"
+3 59 "Group41"
+"objects\\sgFwBlock.pnl" 90 170 T 75 0.25 0 0.15 667.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl5"
+3 60 "Group43"
+"objects\\sgFwBlock.pnl" 90 170 T 76 0.25 0 0.15 787.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl6"
+3 61 "Group45"
+"objects\\sgFwBlock.pnl" 90 170 T 77 0.25 0 0.15 907.519047619048 174.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure2.Components.zhigobl7"
+3 62 "Group53"
+"objects\\sgFwBlock.pnl" 150 200 T 78 0.25 0 0.15 172.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl1"
+3 63 "Group54"
+"objects\\sgFwBlock.pnl" 270 200 T 79 0.25 0 0.15 262.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl2"
+3 64 "Group55"
+"objects\\sgFwBlock.pnl" 390 200 T 80 0.25 0 0.15 352.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl3"
+3 65 "Group56"
+"objects\\sgFwBlock.pnl" 510 200 T 81 0.25 0 0.15 442.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl4"
+3 66 "Group57"
+"objects\\sgFwBlock.pnl" 630 200 T 82 0.25 0 0.15 532.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl5"
+3 67 "Group58"
+"objects\\sgFwBlock.pnl" 750 200 T 83 0.25 0 0.15 622.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl6"
+3 68 "Group59"
+"objects\\sgFwBlock.pnl" 870 200 T 84 0.25 0 0.15 712.519047619048 349.85
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""IDM.Components.Enclosure1.Components.zhigobl7"
+0

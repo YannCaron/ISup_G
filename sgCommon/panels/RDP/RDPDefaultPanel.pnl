@@ -1,0 +1,639 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 1090 638 N "_3DFace" 0
+E E E E E 1 -1 -1 0  520 115
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 151
+"FRAME1"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395348 0 1.119402985074626 -506.2790697674415 286.8656716417912 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 8 ACC Only
+30 152
+"FRAME2"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395349 0 1.119402985074627 -506.2790697674419 6.86567164179105 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 ACC + APP GVA
+30 153
+"FRAME3"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395349 0 0.6716417910447767 -506.2790697674419 256.1194029850746 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 17 ACC + APP GVA/ZRH
+30 154
+"FRAME4"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395349 0 0.6716417910447728 -506.2790697674417 206.1194029850748 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 ACC + APP ZRH
+30 155
+"FRAME5"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+60 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395349 0 0.6716417910447764 -506.2790697674419 106.1194029850746 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 15 Primary APP GVA
+30 299
+"FRAME12"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+69 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.302325581395349 0 0.6716417910447764 -506.2790697674419 156.1194029850746 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 15 Primary APP ZRH
+1 300 1 "" 46
+0
+1 303 2 "" 46
+0
+1 306 6 "" 46
+0
+1 309 9 "" 46
+0
+1 312 10 "" 46
+0
+1 315 13 "" 46
+0
+1 318 14 "" 46
+0
+2 49
+"Text1"
+""
+1 423 -2 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 425 0 651 36
+0 2 0 "0s" 0 0 0 65 0 0  425 0 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 11 Radar Chain
+LANG:1 11 Radar Chain
+2 54
+"Text2"
+""
+1 443 423 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 445 425 671 461
+0 2 0 "0s" 0 0 0 65 0 0  445 425 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 6 System
+LANG:1 6 System
+1 321 18 "" 46
+0
+4 64
+"Line2"
+""
+1 10 505 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1080 505 10 505
+2 65
+"Text3"
+""
+1 428 508 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 430 510 656 546
+0 2 0 "0s" 0 0 0 65 0 0  430 510 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 6 Output
+LANG:1 6 Output
+1 324 20 "" 46
+0
+1 327 21 "" 46
+0
+4 81
+"Line3"
+""
+1 10 425 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  1080 425 10 425
+1 330 23 "" 46
+0
+1 333 24 "" 46
+0
+1 336 25 "" 46
+0
+1 339 27 "" 46
+0
+1 342 28 "" 46
+0
+1 345 29 "" 46
+0
+1 348 30 "" 46
+0
+1 351 31 "" 46
+0
+1 354 35 "" 46
+0
+13 80
+"ForceRefreshButton"
+""
+1 10 605 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+2
+LANG:5 16 Force RDP to UKN
+LANG:1 15 Refresh all RDP
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 603 212 637
+
+T 
+2
+LANG:5 12 Force to UKN
+LANG:1 13 Force Refresh
+"main()
+{
+  sgHistoryAddEvent(\"RDP.History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+  
+  ForceToUnknown(\"\", \"RDP\"); // P.W. june 2013 only for ARTAS statuses! Events in SystemHistory!
+}" 0
+ E E E
+1 357 36 "" 46
+0
+1 360 37 "" 46
+0
+30 294
+"FRAME7"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+64 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6744186046511629 0 5.522388059701492 714.0697674418605 -197.4626865671642 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 8 pLine A3
+30 295
+"FRAME8"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+65 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6744186046511629 0 5.522388059701492 514.0697674418605 -197.4626865671642 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 pLine A3 + B3
+30 296
+"FRAME9"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+66 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6744186046511629 0 5.522388059701492 314.0697674418605 -197.4626865671642 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 pLine A2 + B2
+30 297
+"FRAME10"
+""
+1 120 43 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+67 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.6511627906976744 0 5.522388059701492 121.8604651162791 -197.4626865671642 0 E 120 43 336 111
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 pLine A1 + B1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 301 1 "" 51
+0
+1 302 1 "" 52
+0
+1 304 2 "" 51
+0
+1 305 2 "" 52
+0
+1 307 6 "" 51
+0
+1 308 6 "" 52
+0
+1 310 9 "" 51
+0
+1 311 9 "" 52
+0
+1 313 10 "" 51
+0
+1 314 10 "" 52
+0
+1 316 13 "" 51
+0
+1 317 13 "" 52
+0
+1 319 14 "" 51
+0
+1 320 14 "" 52
+0
+1 322 18 "" 51
+0
+1 323 18 "" 52
+0
+1 325 20 "" 51
+0
+1 326 20 "" 52
+0
+1 328 21 "" 51
+0
+1 329 21 "" 52
+0
+1 331 23 "" 51
+0
+1 332 23 "" 52
+0
+1 334 24 "" 51
+0
+1 335 24 "" 52
+0
+1 337 25 "" 51
+0
+1 338 25 "" 52
+0
+1 340 27 "" 51
+0
+1 341 27 "" 52
+0
+1 343 28 "" 51
+0
+1 344 28 "" 52
+0
+1 346 29 "" 51
+0
+1 347 29 "" 52
+0
+1 349 30 "" 51
+0
+1 350 30 "" 52
+0
+1 352 31 "" 51
+0
+1 353 31 "" 52
+0
+1 355 35 "" 51
+0
+1 356 35 "" 52
+0
+1 358 36 "" 51
+0
+1 359 36 "" 52
+0
+1 361 37 "" 51
+0
+1 362 37 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 1 "Group3" -1
+"objects\\sgFwBlock.pnl" 50 30 T 2 0.3249999999999994 0 0.125 583.75 66.25000000000003
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GV2S"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GV2S.GlobalStatus"
+3 2 "Group5" -1
+"objects\\sgFwBlock.pnl" 50 30 T 3 0.325 0 0.125 383.7499999999999 246.25
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GOSS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GOSS.GlobalStatus"
+3 6 "Group14" -1
+"objects\\sgFwBlock.pnl" 290 70 T 7 0.325 0 0.125 505.7500000000003 141.25
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:LYOP"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.LYOP.GlobalStatus"
+3 9 "Group25" -1
+"objects\\sgFwBlock.pnl" 160 70 T 10 0.3250000000000003 0 0.125 153.0000000000001 291.25
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:LAGS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.LAGS.GlobalStatus"
+3 10 "Group26" -1
+"objects\\sgFwBlock.pnl" 290 70 T 11 0.3249999999999997 0 0.125 110.7500000000004 141.2500000000001
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GV1P"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GV1P.GlobalStatus"
+3 13 "Group29" -1
+"objects\\sgFwBlock.pnl" 160 110 T 14 0.325 0 0.1250000000000003 348 336.2499999999999
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:LESX"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.LESX.GlobalStatus"
+3 14 "Group30" -1
+"objects\\sgFwBlock.pnl" 290 110 T 15 0.3249999999999994 0 0.125 305.7500000000004 56.25000000000003
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:NEVS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.NEVS.GlobalStatus"
+3 18 "" -1
+"objects\\sgFwBlock.pnl" 133 321 T 25 0.3375 0 0.15 430.1125 416.85
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/ARTAS.pnl"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.ARTAS.GlobalStatus"
+3 20 "Group22" -1
+"objects\\sgFwBlock.pnl" 430 340 T 29 0.7749999999999999 0 0.25 -123.25 460
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.MVPrimaryLan"
+3 21 "Group24" -1
+"objects\\sgFwBlock.pnl" 430 480 T 30 0.7749999999999999 0 0.2496982758620709 236.75 425.144827586206
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""RDP.Structured.MVSecondaryLan"
+3 23 "Group21" -1
+"objects\\sgFwBlock.pnl" 870 100 T 36 0.325 0 0.1250000000000003 517.25 337.5
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:TGMM"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.TGMM.GlobalStatus"
+3 24 "Group22" -1
+"objects\\sgFwBlock.pnl" 810 150 T 36 0.325 0 0.125 -58.24999999999989 51.25000000000006
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GRES"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GRES.GlobalStatus"
+3 25 "Group23" -1
+"objects\\sgFwBlock.pnl" 620 160 T 37 0.325 0 0.1250000000000003 3.499999999999986 330
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:CIRS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.CIRS.GlobalStatus"
+3 27 "Group24" -1
+"objects\\sgFwBlock.pnl" 14 185 T 41 0.325 0 0.125 595.4499999999998 226.875
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:HL2S"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.HL2S.GlobalStatus"
+3 28 "Group25" -1
+"objects\\sgFwBlock.pnl" 10 225 T 41 0.325 0 0.1250000000000003 596.75 321.8749999999999
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:LBRX"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.LBRX.GlobalStatus"
+3 29 "Group27" -1
+"objects\\sgFwBlock.pnl" 10 225 T 42 0.325 0 0.125 596.75 271.875
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GDBS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GDBS.GlobalStatus"
+3 30 "Group26" -1
+"objects\\sgFwBlock.pnl" 10 175 T 43 0.3250000000000003 0 0.125 396.7499999999998 278.125
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:DOLS"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.DOLS.GlobalStatus"
+3 31 "Group28" -1
+"objects\\sgFwBlock.pnl" 285 125 T 44 0.325 0 0.125 112.3750000000001 234.3750000000001
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:HL1S"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.HL1S.GlobalStatus"
+3 35 "Group26" -1
+"objects\\sgFwBlock.pnl" 570 75 T 47 0.3249999999999994 0 0.125 214.7500000000005 90.62500000000003
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:GV1S"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.GV1S.GlobalStatus"
+3 36 "PANEL_REF36" -1
+"objects\\sgFwBlock.pnl" 10 225 T 61 0.3249999999999998 0 0.125 201.75 351.875
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:PESX"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.PESX.GlobalStatus"
+3 37 "PANEL_REF37" -1
+"objects\\sgFwBlock.pnl" 290 70 T 61 0.325 0 0.125 305.7499999999999 191.25
+5
+"$LabelsNum""0"
+"$PanelName""RDP/RDPMainPanel.pnl"
+"$PanelParams""FileOnRDPModule:RDP/RadarPanel.pnl;RadarName:HL2P"
+"$SystemName"""
+"$SystemStatus""RDP.Structured.Radars.HL2P.GlobalStatus"
+0

@@ -1,0 +1,189 @@
+V 11
+3
+LANG:5 4 Info
+LANG:1 9 infoPanel
+LANG:0 9 InfoPanel
+PANEL,-1 -1 1110 120 N "_3DFace" 0
+"main()
+{
+	string name;
+	dyn_string remoteSystems;
+  dyn_string connectedRemoteSystems;
+	dyn_string systems;
+	
+	// ARProp propertier for an Alert Row component
+	name = \"_ARProp_\" + myManNum() + \".Settings.System.Selections\";
+	
+	remoteSystems = sgFwGetRemoteSystems();	
+        
+        // PW january 2009 Loop to check if remote system is connected to avoid Error in LogViewer
+        for (int i = 1; i <= dynlen(remoteSystems); i++)
+        {
+          
+          if (dpExists(remoteSystems[i] + ACTIVE_FW_OK))   //std Fw datapoints which always exists
+            dynAppend(connectedRemoteSystems, remoteSystems[i]);
+        }// loop for
+        
+	systems = getSystemName();
+	dynAppend(systems,connectedRemoteSystems);
+	
+// Get and Set to refresh the point...
+ 	dpSet(name, systems);
+	
+  addSymbol(myModuleName(), myPanelName(), sgGetSystemPrefix() + \"InfoAckPanel.pnl\", \"InfoAckPanel\", makeDynString(), 995, 5, 0, 1, 1);
+}" 0
+ E E E E 1 -1 -1 0  350 60
+""0  1
+E E 2
+"CBRef" "0"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+25 98
+"taAlert"
+""
+1 0.4981718464351136 -95.85959885386829 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  3 3 992 117
+"main()
+{
+  dyn_string remoteSystems;    
+  remoteSystems = sgFwGetRemoteSystems();
+  
+  string systemName;  	
+  systemName = getSystemName();  
+
+  string pattern = \"{\" + systemName;
+  
+  for (int i = 1; i<=dynlen(remoteSystems); i++)
+  {
+    pattern = pattern + \",\" + remoteSystems[i];
+  }  
+
+  pattern = pattern + \"}{*,*.*,*.*.*,*.*.*.*,*.*.*.*.*,*.*.*.*.*.*,*.*.*.*.*.*.*,*.*.*.*.*.*.*.*}{.*Status.Alarms.AlarmActive,.Framework.ActiveFwOk,.*Ui*.Alarms.AlarmActive }\";  
+ // pattern = pattern + \"}**{.*Status.Alarms.AlarmActive,.Framework.ActiveFwOk,.*Ui*.Alarms.AlarmActive}\";
+  
+//    pattern = pattern + \"}{**.GlobalStatus.Alarms.AlarmActive,**.Status.Alarms.AlarmActive,FwUtils.Framework.ActiveFwOk}\";  
+//  DebugTN(\"pattern 2 : \"+ pattern);
+  
+  alertTable_initialize(taAlert.name(), pattern);
+}" 0
+"main(int row, string column, string value)
+{
+  alertTable_clicked(taAlert.name(), row, column, value);
+}" 0
+ 0 0 1 11 0 "line" 0 0 0 "s" 1
+LANG:5 2 Id
+E
+1
+LANG:5 0 
+
+0 "dp" 10 0 0 "s" 1
+LANG:5 9 Datapoint
+E
+1
+LANG:5 0 
+
+150 "dir" 0 0 0 "s" 1
+LANG:5 3 dir
+E
+1
+LANG:5 0 
+
+0 "_abbr" 1 0 0 "s" 1
+LANG:5 4 abbr
+E
+1
+LANG:5 0 
+
+27 "_alert_color" 0 1 0 "s" 1
+LANG:5 2 S.
+E
+1
+LANG:5 0 
+
+20 "_system_time" 12 1 0 "[%d/%m/%Y %H:%M:%St,False,,ALIGNMENT_BEGINNING]" 1
+LANG:5 4 Time
+E
+1
+LANG:5 0 
+
+180 "_text" 41 1 0 "s" 1
+LANG:5 4 Text
+E
+1
+LANG:5 0 
+
+590 "_direction" 3 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Dir.
+E
+1
+LANG:5 0 
+
+54 "_ackable" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 4 Ack.
+E
+1
+LANG:5 0 
+
+30 "_panel" 4 1 0 "[0s,,,ALIGNMENT_BEGINNING]" 1
+LANG:5 5 panel
+E
+1
+LANG:5 0 
+
+66 "_dp_list" 1 1 0 "[0s,,,ALIGNMENT_CENTER]" 1
+LANG:5 6 Detail
+E
+1
+LANG:5 0 
+
+25 
+26 26 10 10
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

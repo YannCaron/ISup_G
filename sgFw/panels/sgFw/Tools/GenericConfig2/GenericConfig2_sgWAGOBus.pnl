@@ -1,0 +1,405 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 0
+"main()
+{
+dyn_anytype dpe_values;
+
+
+//DPEditNames = $DPEditNames;
+DPEditNames = \"ISupWAGOBus;\";
+// =\"AFPS.History;\"; //change when finished testing
+
+data_point_elements = makeDynString(PORT_POSTFIX,
+																		BAUD_RATE_POSTFIX,
+																		PORT_SETTINGS_POSTFIX,
+																		POLLING_RATE_POSTFIX
+																	 );				
+
+data_points = strsplit(DPEditNames, \";\"); 
+dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+
+SerialPortText.text = dpe_values[dpe_index(PORT_POSTFIX)];
+BaudRateComboBox.text = dpe_values[dpe_index(BAUD_RATE_POSTFIX)];
+SettingsText.text = dpe_values[dpe_index(PORT_SETTINGS_POSTFIX)];
+PollingRateSpin.text = dpe_values[dpe_index(POLLING_RATE_POSTFIX)];
+
+	
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+
+}
+" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgWAGOBus editor\");
+SavingChangesBack();
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+//global variables
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+
+//if no dpe name constants defined in the constants lib, define them here
+const string PORT_POSTFIX = \".Port\";
+const string BAUD_RATE_POSTFIX = \".BaudRate\";
+const string PORT_SETTINGS_POSTFIX = \".Settings\";
+const string POLLING_RATE_POSTFIX = \".PollingRate\";
+
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+
+dyn_string validate()
+{
+dyn_string result;
+
+if (substr(SerialPortText.text, 0, 3) != \"COM\")
+	{
+	dynAppend(result, \"Port definition does not start with COM\");
+	}
+	
+
+if (dynlen(result) > 0)
+	{
+	for (int j = 1; j<=dynlen(result);j++)
+		{
+		result[j] = \"sgWAGOBus error:\" + result[j];
+		}
+	DebugN(result);
+	}
+return result;
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+dyn_anytype all_values;
+
+//DebugN(\"entering procedure for saving changes back in sgWAGOBus\");	
+//this is where you save back to the database
+all_values[dpe_index(PORT_POSTFIX)] = SerialPortText.text;
+all_values[dpe_index(BAUD_RATE_POSTFIX)] = BaudRateComboBox.text;
+all_values[dpe_index(PORT_SETTINGS_POSTFIX)] = SettingsText.text;
+all_values[dpe_index(POLLING_RATE_POSTFIX)] = PollingRateSpin.text;
+
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+	
+	
+	
+	//would be nice to have option to see if any errors produced in validation, whether to not close...
+	
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 18
+"Text1"
+""
+1 50 30 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 120 32 188 48
+0 2 0 "s" 0 0 0 194 0 0  120 32
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 11 Serial Port
+2 21
+"Text4"
+""
+1 52 60 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+22 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 120 62 186 78
+0 2 0 "s" 0 0 0 194 0 0  120 62
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 9 Baud Rate
+2 22
+"Text5"
+""
+1 70 90 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+23 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 123 92 174 108
+0 2 0 "s" 0 0 0 194 0 0  123 92
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 8 Settings
+2 23
+"Text6"
+""
+1 40 120 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+24 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 120 122 198 138
+0 2 0 "s" 0 0 0 194 0 0  120 122
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 12 Polling Rate
+30 28
+"Frame1"
+""
+1 20 160 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+29 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 20 10 270 160
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+14 24
+"SerialPortText"
+""
+1 140 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+138 28 252 55
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(PORT_POSTFIX)] = true;
+}" 0
+
+E
+E
+22 25
+"BaudRateComboBox"
+""
+1 140 60 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+138 58 252 85
+9
+1
+LANG:5 4 1200
+ 0
+1
+LANG:5 4 2400
+ 0
+1
+LANG:5 4 4800
+ 0
+1
+LANG:5 4 9600
+ 0
+1
+LANG:5 5 19200
+ 0
+1
+LANG:5 5 38400
+ 0
+1
+LANG:5 5 57600
+ 0
+1
+LANG:5 6 115200
+ 0
+1
+LANG:5 0 
+ 0
+E
+"main()
+{
+changed_elements[dpe_index(BAUD_RATE_POSTFIX)] = true;
+}" 0
+
+E
+ 0 0
+14 26
+"SettingsText"
+""
+1 140 90 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+27 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+138 88 252 115
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+changed_elements[dpe_index(PORT_SETTINGS_POSTFIX)] = true;
+}" 0
+
+E
+E
+21 27
+"PollingRateSpin"
+""
+1 140 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+138 118 252 145
+0
+E
+"main()
+{
+changed_elements[dpe_index(POLLING_RATE_POSTFIX)] = true;
+}" 0
+
+E
+
+N 0 1000000 1 99 0 1
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

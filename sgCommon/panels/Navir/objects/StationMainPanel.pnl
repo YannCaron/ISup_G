@@ -1,0 +1,451 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 3
+"$ILSForCAT"
+"$StationName"
+"$SystemName"
+"main()
+{
+  init_Panel();
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "void init_Panel()
+{    
+  setValues();
+  connectActiveChain();
+  connectCATIIStatusBlinker();
+}
+
+void connectCATIIStatusBlinker()
+{
+  if ($ILSForCAT != \"ILSDummyForHMICAT\")  // to avoid connection for nothing
+    dpConnect(\"connectCATIIStatus\", $SystemName + $ILSForCAT + \".HMIStatuses.CATIIStatus.Status\");
+}
+
+void connectCATIIStatus(string catDpName, string catStatus)
+{
+  if (catStatus == OPS_STATUS)
+  {
+    CATII_IIIBlinkerRECT.visible = true;
+    CATII_IIIBlinkerRECT.backCol = \"<{212,208,200},3,{153,0,204},3,{0,0,0},0,{0,0,0},0,{0,0,0},0,{0,0,0},0>\";  
+  }
+  else
+  {
+    CATII_IIIBlinkerRECT.backCol = \"_3DFace\";  
+    CATII_IIIBlinkerRECT.visible = false;
+  }
+}
+
+void setValues()
+{    
+  string site = \"\";
+	string stationComment;
+	int nrNavaids;
+        
+	dpGet($SystemName + $StationName + \".General.Site\", site,
+				$SystemName + $StationName + \".General.StationComment\", stationComment,
+        $SystemName + $StationName + \".General.NrNavaids\", nrNavaids);
+
+	if (stationComment != \"\" && stationComment != \"0\") //0 is send from excel for an empty string
+	{
+		StationInfosFrame.visible = true;
+		StationCommentText.visible = true;
+    strreplace(stationComment, \"|\", \"\\n\"); // to allow multiple line
+  	StationCommentText.text = stationComment;
+	}
+	else
+	{
+		StationInfosFrame.visible = false;
+		StationCommentText.visible = false;
+	}     	
+	
+	PageLabel.text = \"Navir: Station \" + $StationName + \" \" + site;
+	stationModule.ModuleName = \"stationModule\";
+		
+	//check if navaid number is possible. If not it will be force to 3!
+		if((nrNavaids != 1) && (nrNavaids != 2) && (nrNavaids != 3))
+	{
+    sgHistoryAddEvent( $SystemName + \"FwUtils.SystemHistory\", SEVERITY_SYSTEM, \"Station Nr Navaid for Station: \" + $StationName + \" isn't available !\");
+		nrNavaids = 3;
+	}
+	 
+	string fileOnModule = naviReturnPanelNameOnModule(\"$PanelOnStationModule\");
+	dyn_string naviParams = naviReturnCurrentParams();
+	
+//  DebugTN(\"Before replace naviParams = \" + naviParams);
+//	DebugTN(\"Before replace fileOnModule = \" + fileOnModule);
+
+	// the file name can be configurable for the navaid nr. for the station panel (1, 2 or 3 navaids)
+	strreplace(fileOnModule, \"%nrNav%\", nrNavaids);
+	
+//	DebugTN(\"After replace fileOnModule = \" + fileOnModule);
+
+	RootPanelOnModule(fileOnModule, \"\", \"stationModule\", naviParams);
+}	
+
+void connectActiveChain()
+{	
+  dpConnect(\"readActiveChain\", $SystemName + ACTIVE_CHAIN);
+}
+
+void readActiveChain(string dpName, string activeChain)
+{	
+	ActiveChainLabel.text = activeChain;
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+29 545
+"stationModule"
+""
+1 -3497 110 E E E 1 E 1 E N "_3DText" E N {255,255,255} E E
+ E E
+140 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+ 0 110 1110 570
+15 Canvas.Canvas.1
+0
+E6 666
+"CATII_IIIBlinkerRECT"
+""
+1 52 52 E E E 1 E 0 E N "_Transparent" E N "_dpdoesnotexist" E E
+ E E
+164 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+ }" 0
+ E 0 1 1 2 1 E 1.98076923076923 0 1 -221.519230769231 -370 1 E 285 414 493 480
+30 628
+"Frame2"
+""
+1 480 710 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 480 655 640 710
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-12-*-100-100-*-*-iso8859-1|-12,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 18 Navir Active Chain
+30 637
+"StationInfosFrame"
+""
+1 645 710 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 645 655 1095 710
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-12-*-100-100-*-*-iso8859-1|-12,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 13 Station Infos
+2 0
+"PageLabel"
+""
+1 10 3 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 5 1098 41
+1 2 0 "0s" 0 0 0 65 0 0  12 5 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 21 Navir: Station XXX YY
+LANG:1 4 AFPS
+30 592
+"Frame1"
+""
+1 10 715 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+147 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 565 1100 715
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 0 
+1 668 26 "" 103
+0
+1 670 27 "" 103
+0
+1 672 28 "" 103
+0
+1 674 29 "" 103
+0
+2 627
+"ActiveChainLabel"
+""
+1 500 660 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  connectActiveChain();
+}" 0
+ E 0 1 1 0 1 E U  0 E 502 662 618 701
+0 2 0 "0s" 0 0 0 65 0 0  502 662 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-32-*-100-100-*-*-iso8859-1|-32,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-870-100-100-*-*-iso8859-1|-96,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 3  X 
+LANG:1 1 X
+2 636
+"StationCommentText"
+""
+1 640 660 E E E 1 E 1 E N "sgStdU/SColor" E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 1 1 0 1 E U  0 E 642 662 1093 713
+0 2 0 "0s" 0 0 0 65 0 0  642 662 2
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 15 Station Comment
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 9 next line
+1 681 35 "" 46
+0
+1 682 36 "" 46
+0
+1 667 16 "" 0
+0
+1 676 32 "" 939
+0
+1 677 32 "" 941
+0
+1 678 33 "" 939
+0
+1 679 33 "" 941
+0
+1 680 34 "" 11
+0
+1 683 37 "" 46
+0
+1 686 38 "" 46
+0
+1 689 39 "" 46
+0
+1 692 40 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 669 26 "" 110
+0
+1 671 27 "" 110
+0
+1 673 28 "" 110
+0
+1 675 29 "" 110
+0
+1 684 37 "" 51
+0
+1 685 37 "" 52
+0
+1 687 38 "" 51
+0
+1 688 38 "" 52
+0
+1 690 39 "" 51
+0
+1 691 39 "" 52
+0
+1 693 40 "" 51
+0
+1 694 40 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 16 "Group3"
+"Navir\\objects\\NavirRefreshStationBtn.pnl" 10 610 T 141 1.55204849498328 0 1.33333333333333 4.4795150501672 -143.333333333331
+2
+"$StationName""$StationName "
+"$SystemName""$SystemName"
+3 26 "Group14"
+"objects\\sgFwBitStateBlock.pnl" 50 140 T 151 0.379032258064516 0 0.272727272727273 196.132616487455 582.272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComOpenA\""
+"$SystemName""$SystemName"
+3 27 "Group16"
+"objects\\sgFwBitStateBlock.pnl" 95 635 T 152 0.379032258064516 0 0.272727272727273 623.899283154122 447.272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComOpenB\""
+"$SystemName""$SystemName"
+3 28 "Group18"
+"objects\\sgFwBitStateBlock.pnl" 25 635 T 153 0.379032258064516 0 0.272727272727273 205.348302761965 407.272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComRequestA\""
+"$SystemName""$SystemName"
+3 29 "Group20"
+"objects\\sgFwBitStateBlock.pnl" 835 635 T 154 0.379032258064516 0 0.272727272727273 343.742420409024 407.272727272727
+2
+"$BitState""$StationName + \".Structured.Links.ComRequestB\""
+"$SystemName""$SystemName"
+3 32 ""
+"Navir\\objects\\NavirPermCallButtons.pnl" 565 610 T 157 1 0 1 -105 -25
+4
+"$Chain""A"
+"$HiddenDp""$StationName + \".Structured.Links.ComRequestA.Hidden\""
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+3 33 "Group14"
+"Navir\\objects\\NavirPermCallButtons.pnl" 460 585 T 158 1 0 1 100 0
+4
+"$Chain""B"
+"$HiddenDp""$StationName + \".Structured.Links.ComRequestB.Hidden\""
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+3 34 ""
+"objects\\sgFwHistory.pnl" 300 840 T 159 1 0 1 -300 -135
+2
+"$SystemHistory""$StationName + \".History\""
+"$SystemName""$SystemName"
+3 35 "Group16"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 385 T 159 1 0 0.125 55.3981683981688 1.875
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""$ILSForCAT + \".HMIStatuses.CATIIStatus\""
+3 36 "Group17"
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 415 T 160 1 0 0.125 55.3981683981688 28.125
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""$ILSForCAT + \".HMIStatuses.CATIIIStatus\""
+3 37 "PANEL_REF38"
+"objects\\sgFwBlock.pnl" 20 490 T 160 0.4625 0 0.15 10.4012913624641 506.662475633528
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.LinkAStatus\""
+3 38 "PANEL_REF39"
+"objects\\sgFwBlock.pnl" 230 490 T 161 0.45271164021164 0 0.15 802.683695957266 508.662475633528
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.LinkBStatus\""
+3 39 "PANEL_REF40"
+"objects\\sgFwBlock.pnl" 245 640 T 162 0.46005291005291 0 0.15 794.014182590516 525.595808966862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.TSBStatus\""
+3 40 "PANEL_REF41"
+"objects\\sgFwBlock.pnl" 245 640 T 163 0.4625 0 0.15 -93.5761675020885 523.595808966862
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$StationName + \".Structured.Links.TSAStatus\""
+0

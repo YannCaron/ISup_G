@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><Configuration columnSeparator=";" errorFormat=" - " dpValueFormat="%s.data.%s" dpStatusFormat="%s.statusIBit.%s" dataTopic="ch/skyguide/isup/mqdriver/data" dataQos="0" commandTopic="ch/skyguide/isup/mqdriver/command" commandQos="0" reduTopic="ch/skyguide/isup/mqdriver/monitoring/redundancy" reduQos="0" heartbeatTopic="ch/skyguide/isup/mqdriver/monitoring/heartbeat" heartbeatQos="0" statusTopic="ch/skyguide/isup/mqdriver/monitoring/status" statusQos="0" heartbeatPolling="10000">
+  <manager type="SNMP v3" name="SMARTRADIO_1" address="dol1-tx1-ini-s" port="161" version="3" polling="10000" retryFactor="3" securityLevel="authPriv" user="roSmartRadio" authProtocol="SHA" authPass="u5KnET9DonvK" privProtocol="DES" privPass="u5KnET9DonvK">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_2" address="dol1-tx2-ini-s" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v3" name="SMARTRADIO_3" address="cun2-rx1-ini-s" port="161" version="3" polling="10000" retryFactor="3" securityLevel="authPriv" user="roSmartRadio" authProtocol="SHA" authPass="u5KnET9DonvK" privProtocol="DES" privPass="u5KnET9DonvK">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_4" address="cun2-rx2-ini-s" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_5" address="nags-tx1-ad1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_6" address="nags-tx2-ad1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_7" address="nags-rx1-ad1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_8" address="nags-rx2-ad1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_9" address="hoe-rx1-m2" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_10" address="hoe-rx1-m3" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_11" address="hoe-rx1-north" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_12" address="hoe-rx1-multi_acc" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_13" address="lagt-tx1-m2" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_14" address="lagt-tx1-m3" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_15" address="lagt-tx1-north" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_16" address="lagt-tx1-multi_acc" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_17" address="n16-tx1-multi_twr" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_18" address="n16-tx1-adc_1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_19" address="n16-tx1-final" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_20" address="n16-tx1-apw" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.1.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.1.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.1.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_21" address="w14-rx1-multi_twr" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_22" address="w14-rx1-adc_1" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_23" address="w14-rx1-final" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+  <manager type="SNMP v1 v2c" name="SMARTRADIO_24" address="w14-rx1-apw" port="161" version="2" polling="10000" retryFactor="3" readCommunity="6AY8WmLVGbhM">
+    <statusOID>1.3.6.1.4.1.30397.2.5.1.2.0</statusOID>
+    <query oid="1.3.6.1.4.1.30397.2.11.10.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.11.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.3.2.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.12.0"/>
+    <query oid="1.3.6.1.4.1.30397.2.11.9.0"/>
+    <query oid="1.3.6.1.4.1.2363.6.1.1.1.0"/>
+  </manager>
+</Configuration>

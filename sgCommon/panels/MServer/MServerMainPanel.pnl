@@ -1,0 +1,456 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1111 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 8 M-Server
+LANG:1 4 AFPS
+1 505 36 "" 46
+0
+1 508 37 "" 46
+0
+1 511 38 "" 46
+0
+1 514 40 "" 46
+0
+1 517 41 "" 46
+0
+1 520 42 "" 46
+0
+1 523 45 "" 46
+0
+1 526 70 "" 46
+0
+1 529 72 "" 46
+0
+1 532 74 "" 46
+0
+1 535 75 "" 46
+0
+1 538 76 "" 46
+0
+1 541 78 "" 46
+0
+30 502
+"Frame1"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+145 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.088825214899714 0 -51.20343839541547 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+30 503
+"Frame2"
+""
+1 565 639 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+146 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.088825214899713 5 -51.20343839541523 0 E 565 295 990 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 500
+"Text2"
+""
+1 618 638 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 620 640 712 663
+0 2 0 "0s" 0 0 0 192 0 0  620 640 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 10 M-Server 2
+2 499
+"Text1"
+""
+1 396 638 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+142 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 398 640 490 663
+0 2 0 "0s" 0 0 0 194 0 0  490 640 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 10 M-Server 1
+1 544 80 "" 46
+0
+13 194
+"Button1"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+87 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  ForceToUnknown(\"\", \"MServer\");
+}" 0
+ E E E
+1 504 35 "" 11
+0
+1 547 83 "" 46
+0
+1 550 84 "" 46
+0
+1 553 85 "" 46
+0
+1 556 86 "" 46
+0
+1 559 87 "" 46
+0
+1 562 88 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 506 36 "" 51
+0
+1 507 36 "" 52
+0
+1 509 37 "" 51
+0
+1 510 37 "" 52
+0
+1 512 38 "" 51
+0
+1 513 38 "" 52
+0
+1 515 40 "" 51
+0
+1 516 40 "" 52
+0
+1 518 41 "" 51
+0
+1 519 41 "" 52
+0
+1 521 42 "" 51
+0
+1 522 42 "" 52
+0
+1 524 45 "" 51
+0
+1 525 45 "" 52
+0
+1 527 70 "" 51
+0
+1 528 70 "" 52
+0
+1 530 72 "" 51
+0
+1 531 72 "" 52
+0
+1 533 74 "" 51
+0
+1 534 74 "" 52
+0
+1 536 75 "" 51
+0
+1 537 75 "" 52
+0
+1 539 76 "" 51
+0
+1 540 76 "" 52
+0
+1 542 78 "" 51
+0
+1 543 78 "" 52
+0
+1 545 80 "" 51
+0
+1 546 80 "" 52
+0
+1 548 83 "" 51
+0
+1 549 83 "" 52
+0
+1 551 84 "" 51
+0
+1 552 84 "" 52
+0
+1 554 85 "" 51
+0
+1 555 85 "" 52
+0
+1 557 86 "" 51
+0
+1 558 86 "" 52
+0
+1 560 87 "" 51
+0
+1 561 87 "" 52
+0
+1 563 88 "" 51
+0
+1 564 88 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 "" -1
+"objects\\sgFwHistory.pnl" 165 140 T 97 1 0 1 -165 560
+2
+"$SystemHistory""MServer.History"
+"$SystemName"""
+3 36 "Group6" -1
+"objects\\sgFwBlock.pnl" 25 490 T 98 0.789968652037618 0 0.379746835443038 150.2507836990596 283.9240506329125
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.AFTN1"
+3 37 "Group8" -1
+"objects\\sgFwBlock.pnl" 25 490 T 99 0.789968652037618 0 0.379746835443038 150.2507836990596 103.9240506329126
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.MS1"
+3 38 "Group10" -1
+"objects\\sgFwBlock.pnl" 25 490 T 100 0.789968652037618 0 0.379746835443038 150.2507836990596 193.9240506329126
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.WMO1"
+3 40 "Group16" -1
+"objects\\sgFwBlock.pnl" 230 490 T 102 0.789968652037618 0 0.379746835443038 438.3072100313478 283.9240506329125
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.AFTN2"
+3 41 "Group17" -1
+"objects\\sgFwBlock.pnl" 25 365 T 103 0.789968652037617 0 0.379746835443038 600.2507836990596 151.3924050632923
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.MS2"
+3 42 "Group18" -1
+"objects\\sgFwBlock.pnl" 230 365 T 104 0.789968652037618 0 0.379746835443038 438.3072100313478 241.3924050632923
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.WMO2"
+3 45 "Group25" -1
+"objects\\sgFwBlock.pnl" 25 365 T 108 0.412801640115614 0 0.375171572365411 9.679958997109656 -56.93762391337501
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.INCHZ"
+3 70 "Group74" -1
+"objects\\sgFwBlock.pnl" 25 70 T 133 0.412801640115614 0 0.375058602906704 189.6799589971097 53.74589779653072
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.INCHG"
+3 72 "Group78" -1
+"objects\\sgFwBlock.pnl" 25 70 T 135 0.412801640115614 0 0.375171572365411 369.6799589971097 53.73798993442123
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.INCHB"
+3 74 "Group82" -1
+"objects\\sgFwBlock.pnl" 25 70 T 137 0.412801640115614 0 0.375058602906704 549.6799589971096 53.74589779653072
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.INCHL"
+3 75 "Group85" -1
+"objects\\sgFwBlock.pnl" 25 195 T 138 0.412801640115614 0 0.375058602906704 369.6799589971097 96.86357243319269
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.SKYVISUZ"
+3 76 "Group86" -1
+"objects\\sgFwBlock.pnl" 25 70 T 139 0.412801640115614 0 0.375058602906704 9.679958997109658 143.7458977965307
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.CALM"
+3 78 "vv" -1
+"objects\\sgFwBlock.pnl" 25 70 T 141 0.412801640115614 0 0.375 189.6799589971097 143.75
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.FDPZ"
+3 80 "Group24" -1
+"objects\\sgFwBlock.pnl" 560 90 T 150 0.412801640115614 0 0.374878286270691 328.8310815352562 136.2609542356378
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.SKYVISUG"
+3 83 "PANEL_REF84" -1
+"objects\\sgFwBlock.pnl" 560 175 T 153 0.415229885057471 0 0.374198146828225 507.4712643678162 14.51532430506064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.VOLATIS"
+3 84 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 740 90 T 154 0.415229885057471 0 0.374398288464967 432.7298850574714 136.304154038153
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.DABS"
+3 85 "PANEL_REF85" -1
+"objects\\sgFwBlock.pnl" 560 175 T 154 0.415229885057471 0 0.374198146828225 687.4712643678162 14.51532430506064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.IBS"
+3 86 "PANEL_REF86" -1
+"objects\\sgFwBlock.pnl" 25 490 T 155 0.789968652037618 0 0.379746835443038 150.2507836990595 373.9240506329113
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.CLUSTER1"
+3 87 "PANEL_REF87" -1
+"objects\\sgFwBlock.pnl" 25 490 T 156 0.789968652037618 0 0.379746835443038 600.2507836990595 373.9240506329113
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.CLUSTER2"
+3 88 "PANEL_REF88" -1
+"objects\\sgFwBlock.pnl" 560 175 T 156 0.415229885057471 0 0.374198146828225 687.4712643678162 104.5153243050606
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""MServer.Components.CRYSTAL"
+0

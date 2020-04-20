@@ -1,0 +1,247 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 970 802 N "_3DFace" 0
+"const string DP_POSITION = \"Infra_G:StationDOL.Components.RDR102VO01.AnalogInputs.002.Value\";
+const float MAX_POSITION = 569;
+const float MIN_POSITION = 0;
+const float M = 20;
+const int SEPARATION = 100;
+
+float x1, y1;
+float w, h;
+float ratioXY;
+
+main()
+{
+  initialize();
+	
+  drawCabin();
+	
+  delay(0, 500);
+        
+  dpConnect (\"moveTelepherique\", DP_POSITION);
+}
+
+void initialize()
+{
+  // get line value
+  getValue (\"line\", \"position\", x1, y1);
+  getValue (\"line\", \"size\", w, h);
+
+  w -= 5;
+  h -= 5;
+
+  // get ratio
+  ratioXY = (h / w);
+}
+
+void moveTelepherique (string dp, float value)
+{
+  float posX, posY;
+  
+  // verify max
+  if (value > MAX_POSITION)  {
+    value = MAX_POSITION;
+  }
+  if (value < MIN_POSITION)  {
+    value = MIN_POSITION;
+  }
+  // calculate position
+  posX = M + (value * (w - (2 * M)) / MAX_POSITION);
+  posY = posX * ratioXY;
+
+  // changed refpoints of refpanels for new sgFwBlock
+  posX -= 145;
+  posY += 20;
+        
+  // set position
+  setValue(\"benne\", \"position\", x1 + posX, y1 - posY);
+  setValue(\"benne.Altitud\", \"text\", strformat(\"\\\\right{%3.0m}\",4,(MAX_POSITION - value)));
+}
+
+void drawCabin()
+{
+  // variable
+  float posX, posY;
+
+  // initialize tips
+  setValue(\"start\", \"position\", x1 + M, y1 - (M * ratioXY));
+  setValue(\"stop\", \"position\", (x1 + w) - M, (y1 - h) + (M * ratioXY));
+
+  // set separators
+  for (int i=0; i<=MAX_POSITION; i+=SEPARATION)
+  {
+    posX = (w - ( i * (w - (2 * M)) / MAX_POSITION)) - M;
+    posY = posX * ratioXY;
+    addSymbol (myModuleName(), myPanelName(), \"objects/Telepherique/separator.pnl\", \"sep\"+i, \"\", x1 + posX, y1 - posY, 0, 1, 1);
+  }
+}
+
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 25
+"line"
+""
+1 130 290 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  130 290 835 60
+1 50 7 "" 46
+0
+1 53 8 "" 46
+0
+7 46
+"start"
+""
+1 150 285 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 150 285 5 5
+7 47
+"stop"
+""
+1 825 65 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 825 65 5 5
+2 48
+"Text1"
+""
+1 65 280 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 67 282 123 303
+0 2 0 "0s" 0 0 0 66 0 0  67 282 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 3 569
+2 49
+"Text2"
+""
+1 840 50 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 842 52 898 73
+0 2 0 "0s" 0 0 0 64 0 0  842 52 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 1 0
+1 56 9 "0" 46
+0
+1 57 9 "" 4
+0
+1 58 9 "" 14
+0
+1 59 9 "" 15
+0
+1 60 9 "" 22
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 51 7 "" 51
+0
+1 52 7 "" 52
+0
+1 54 8 "" 51
+0
+1 55 8 "" 52
+0
+1 61 9 "0" 51
+0
+1 62 9 "0" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 7 "Group10" -1
+"objects\\sgFwBlock.pnl" 290 400 T 9 0.2625 0 0.125 -6.21397058823528 194.9375
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""DoleTelepherique.Components.Bottom"
+3 8 "Group12" -1
+"objects\\sgFwBlock.pnl" 15 245 T 10 0.2625 0 0.125 760.973529411765 -6.06250000000009
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""DoleTelepherique.Components.Top"
+3 9 "benne" -1
+"objects\\Telepherique\\Cabin.pnl" 37 95 T 16 1 0 1 -27 575
+0
+0

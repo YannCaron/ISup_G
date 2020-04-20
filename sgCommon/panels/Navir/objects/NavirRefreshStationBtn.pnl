@@ -1,0 +1,145 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 310 50 N "_3DFace" 2
+"$StationName"
+"$SystemName"
+"main()
+{
+  initBtn();  
+}
+
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string machineName = \"\";
+   
+void initBtn()
+{
+  bool stationIsDedicatedLine;
+  bool stationRefreshAvailable;
+
+  dpGet($SystemName + $StationName + \".General.IsStationOnDedicatedLine\", stationIsDedicatedLine,
+    $SystemName + $StationName + \".General.RefreshCommandAvailable\", stationRefreshAvailable);
+	
+  if(stationRefreshAvailable)
+  { 
+    machineName = getHostname();	// get name only if button enabled
+    Button.enabled = true;
+    if(!stationIsDedicatedLine)
+    {
+      Button.text = \"Refresh Station \" + $StationName + \" (dial-up)\";
+      Button.toolTipText = \"Refresh current station (\" + $StationName + \") through the public telephone network. It can take a few seconds to call the station!\";
+    }
+    else
+    {
+      Button.text = \"Refresh Station \" + $StationName;
+      Button.toolTipText = \"Refresh all statuses for Station \" + $StationName;
+    }  
+  }
+  else
+    Button.enabled = false;
+}
+
+void btn_clicked()
+{
+	dyn_string ds;
+	dyn_string df;
+	
+	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+    makeDynString(\"$1:Do you really want to refresh Station \" + $StationName + 
+                  \" ?\\nIt can take a few seconds (minutes for Dial-up lines) \\n and IT CAN HAVE AN IMPACT ON THE INCH STATES!\",
+								  \"$2:Yes\", \"$3:No\"), df, ds);
+		
+	if(ds[1] == \"true\")
+	{
+		sgHistoryAddEvent($SystemName + $StationName + \".History\", SEVERITY_COMMAND, \"Refresh request from \" + machineName + \" for station \" + $StationName + \" sent\");
+	// Time Stamp isn'nt available in the refresh case!
+		dpSet($SystemName + $StationName + \".RawDatas.TimeStamp\", \"Manual Refresh Station\");		
+		delay(0, 100);   // to be sure to have the right time stamp message
+// first Refresh on chain A
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.RefreshStation.Cmd_OutA\", \"1\");	
+		delay(0, 500);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.RefreshStation.Cmd_OutA\",  \"0\");//Rewrite with \"0\" for 2 same consecutives commands
+// then Refresh on chain B 
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.RefreshStation.Cmd_OutB\", \"1\");	
+		delay(0, 500);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.RefreshStation.Cmd_OutB\",  \"0\");//Rewrite with \"0\" for 2 same consecutives commands
+		// Add Event
+
+// Button Hidden for 10 seconds if panel refreshed
+		Button.enabled = false;
+	}		
+
+//Delay to re-enable the button
+	delay(10);
+	Button.enabled = true;
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"Button"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+ 8 8 302 42
+
+T 
+2
+LANG:5 21 Refresh Station XXXXX
+LANG:1 10 PRIMUS CMD
+"main()
+{
+  btn_clicked();
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

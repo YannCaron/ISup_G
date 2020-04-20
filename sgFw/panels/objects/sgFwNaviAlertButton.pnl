@@ -1,0 +1,338 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 120 55 N "_3DFace" 7
+"$AlarmPoint"
+"$DistributedSystems"
+"$Label"
+"$PanelName"
+"$PanelParams"
+"$isVisible"
+"$system"
+"main() {
+  panel_initialize();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "// global 										--------------------------------------------------------------------
+const int SYSTEM_ALL_CONNECTED = 0;
+const int SYSTEM_ANY_CONNECTED = 1;
+const int SYSTEM_NOT_CONNECTED = 2;
+
+void initializeLabel() {
+  
+  if(\"\" == $Label)
+		SystemButton.text = $system;
+	else
+		SystemButton.text = $Label;
+	
+	AlertButton.visible = $isVisible;
+	SystemButton.visible = $isVisible;
+        
+}
+
+void setAlarmColor(int alarmState)
+{
+  switch(alarmState)
+  {
+    case DPATTR_ALERTSTATE_NONE :
+    	AlertButton.backCol = \"_Button\";
+    break;
+    case DPATTR_ALERTSTATE_APP_NOT_ACK :
+			AlertButton.backCol = \"alertCamUna\";
+    break;
+    case DPATTR_ALERTSTATE_APP_ACK :
+			AlertButton.backCol = \"alertCamAckn\";
+    break;
+    case DPATTR_ALERTSTATE_DISAPP_NOT_ACK :
+    case DPATTR_ALERTSTATE_APP_DISAPP_NOT_ACK :
+			AlertButton.backCol = \"alertWentUna\";
+    break;
+    case DPATTR_ALERTSTATE_DISCONNECTED :
+			AlertButton.backCol = \"alertCamAckn\";    break;
+    default:
+    	AlertButton.backCol = \"_Button\";
+    break;
+	}
+}
+
+void setSystemColor(int systemState) {
+  switch (systemState) {
+		case SYSTEM_ALL_CONNECTED :
+			SystemButton.backCol = \"_Button\";
+    break;
+		case SYSTEM_ANY_CONNECTED :
+			SystemButton.backCol = \"sgStdWarning\";
+    break;
+		case SYSTEM_NOT_CONNECTED :
+			SystemButton.backCol = \"alertCamAckn\";
+    break;
+    default:
+			SystemButton.backCol = \"_Button\";
+    break;
+  }
+}
+
+void evalSystemConnected() {
+  bool areAllConnected = true;
+  int systemState = SYSTEM_NOT_CONNECTED;
+  
+  for (int i = 1; i <= mappinglen(dsConnected); i++) {
+    if (mappingGetValue(dsConnected, i) == true) {
+      systemState = SYSTEM_ANY_CONNECTED;
+    } else {
+			areAllConnected = false;
+    }
+  }
+  
+  if (areAllConnected) {
+    setSystemColor(SYSTEM_ALL_CONNECTED);
+  } else {
+    setSystemColor(systemState);
+  }
+  
+}
+
+// local 										--------------------------------------------------------------------
+void connectLocal() {
+  
+  if ($AlarmPoint == \"\") {
+		dpConnect(\"localAlarm_changed\", $system + \".GlobalStatus\" + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._act_state\");
+  } else {
+		dpConnect(\"localAlarm_changed\", $AlarmPoint + ALARM_ACTIVE_POSTFIX + \":_alert_hdl.._act_state\");
+	}
+  
+}
+
+void localAlarm_changed(string alarmDP, int alarm)
+{
+  setAlarmColor(alarm);
+}
+
+// distributed 							--------------------------------------------------------------------
+string prevActiveChain;
+mapping dsConnected, dsAlarms;
+
+void initializeDistributed() {
+  
+	dyn_string distributedSystems = strsplit($DistributedSystems, \";\");
+  for (int i=1; i<=dynlen(distributedSystems); i++) {
+    dsConnected[distributedSystems[i]] = false;
+    dsAlarms[distributedSystems[i]] = DPATTR_ALERTSTATE_NONE;
+	}
+  
+}
+
+void connectDistribution() {
+  
+	dpConnect(\"distribution_changed\", TRUE, ACTIVE_CHAIN, 
+                  \"_Connections.Dist.ManNums\", \"_Connections_2.Dist.ManNums\", 
+                  \"_DistManager.State.SystemNums\", \"_DistManager_2.State.SystemNums\");
+        
+}
+
+bool isDistributionRunning(string activeChain, dyn_int manNumsA, dyn_int manNumsB) {
+  return ((activeChain == \"A\" && dynlen(manNumsA) > 0) || (activeChain == \"B\" && dynlen(manNumsB) > 0));
+}
+
+bool isDSRunning(string distributedSystem, string activeChain, dyn_int systemNumsA, dyn_int systemNumsB) {
+	int systemId = getSystemId(distributedSystem);
+  return ((activeChain == \"A\" && dynContains(systemNumsA, systemId)) || (activeChain == \"B\" && dynContains(systemNumsB, systemId)));
+}
+
+void distribution_changed(string activeChainDP, string activeChain, 
+                          string manNumsADP, dyn_int manNumsA,
+                          string manNumsBDP, dyn_int manNumsB,
+                          string systemNumsADP, dyn_int systemNumsA, 
+                          string systemNumsBDP, dyn_int systemNumsB) {
+
+  // manage distributed system status mapping
+  for (int i = 1; i <= mappinglen(dsConnected); i++) {
+    string distributedSystem = mappingGetKey(dsConnected, i);
+
+    if (isDistributionRunning(activeChain, manNumsA, manNumsB)) {
+      
+      if (dsConnected[distributedSystem]) dpQueryDisconnect(\"distributedAlert_updated\", distributedSystem);
+    
+      if (isDSRunning (distributedSystem, activeChain, systemNumsA, systemNumsB)) {
+        dsConnected[distributedSystem] = true;
+        dpQueryConnectSingle(\"distributedAlert_updated\", TRUE, distributedSystem, 
+                             \"SELECT '_alert_hdl.._act_state' FROM '\" + SYSTEM_GLOBAL  + ALARM_ACTIVE_POSTFIX + \"' REMOTE '\" + distributedSystem + \"'\");  
+      } else {
+        dsConnected[distributedSystem] = false;
+      }
+    } else {
+      dsConnected[distributedSystem] = false;
+      dsAlarms[distributedSystem] = DPATTR_ALERTSTATE_NONE;
+    }
+  }
+    
+  evalSystemConnected();
+//	DebugTN(dsConnected, dsAlarms);
+  
+}
+
+bool isAnyConnected() {
+  bool connected = false;
+  
+  for (int i = 1; i <= mappinglen(dsConnected); i++) {
+    if (mappingGetValue(dsConnected, i) == true) {
+      connected = true;
+    }
+  }
+  return connected;
+}
+
+int getAlertStateSynthesis () {
+  int isConnected;
+  int currentState;
+  int state;
+ 
+  for (int i = 1; i <= mappinglen(dsAlarms); i++) {
+    isConnected = mappingGetValue(dsConnected, i);
+    
+    if (isConnected) {
+      currentState = mappingGetValue(dsAlarms, i);
+
+      if (currentState == DPATTR_ALERTSTATE_APP_NOT_ACK) {
+        return DPATTR_ALERTSTATE_APP_NOT_ACK;
+      } else if (state == DPATTR_ALERTSTATE_NONE) {
+        state = currentState;
+      }     
+    }
+  }
+  
+  return state;
+}
+
+void distributedAlert_updated (string ident, dyn_dyn_anytype ds) {
+  
+  if (dynlen(ds) >= 2) {
+    int systemAlarm = ds[2][2];
+    dsAlarms[ident] = systemAlarm;
+  } else {
+    dsAlarms[ident] = DPATTR_ALERTSTATE_NONE;
+  }
+  
+  setAlarmColor(getAlertStateSynthesis());
+//	DebugTN(dsConnected, dsAlarms);
+  
+}
+
+// event handling							 --------------------------------------------------------------------
+void panel_initialize() {
+  
+	if ($DistributedSystems == \"\") {
+		connectLocal();
+  } else {
+		initializeDistributed();
+    connectDistribution();
+  }
+
+  initializeLabel();
+  
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"SystemButton"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 8 92 37
+
+T 
+2
+LANG:5 6 System
+LANG:1 7 Button1
+"main()
+{
+	string filePanelName;
+	string panelName;
+	string historyName;
+	dyn_string ds;
+	int cpt;
+	
+// File name for panel	
+	if(\"\" == $PanelName)
+		filePanelName = $system + \"/\" + $system + \"MainPanel.pnl\";
+	else
+		filePanelName = $PanelName;
+
+	ds = strsplit($PanelParams, \";\");
+	
+	for(cpt = 1; cpt <= dynlen(ds); cpt++)
+	{
+		ds[cpt] = \"$\" + ds[cpt];
+	}
+	
+//	RootPanelOnModule(filePanelName, \"\", \"mainModule\", ds);
+// P.W. New navigation concept
+	sgFwSetNaviParams(filePanelName, ds);
+	sgFwNaviPanelOn();
+
+}" 0
+ E E E
+6 2
+"AlertButton"
+""
+1 30 40 E E E 1 E 1 E N "_GediBackground" E N "_3DFace" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 1 1 E 1 0 0.9199999999999999 1 1.800000000000001 1 E 90 10 100 35
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

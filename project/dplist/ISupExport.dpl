@@ -1,0 +1,16 @@
+# ascii dump of database
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+ISup.ServerA.Components.nJamsAlerts.Events.EventText	sgISup	"Server A: nJams Service"	0x200101	06.01.2020 13:17:12.522
+ISup.ServerA.Components.nJamsAlerts.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:16:29.076
+ISup.ServerA.Components.nJamsLifecycle.Events.EventText	sgISup	"Server A: IMON Service"	0x200101	06.01.2020 13:16:45.804
+ISup.ServerA.Components.nJamsLifecycle.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:16:34.086
+ISup.ServerA.Components.Sphinx.Events.EventText	sgISup	"Server A: SPHINX Service"	0x300101	06.01.2020 13:20:37.593
+ISup.ServerA.Components.Sphinx.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:16:45.319
+ISup.ServerB.Components.nJamsAlerts.Events.EventText	sgISup	"Server B: njams Service"	0x200101	06.01.2020 13:16:26.110
+ISup.ServerB.Components.nJamsAlerts.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:16:54.820
+ISup.ServerB.Components.nJamsLifecycle.Events.EventText	sgISup	"Server B: IMON Service"	0x200101	06.01.2020 13:16:33.603
+ISup.ServerB.Components.nJamsLifecycle.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:17:00.199
+ISup.ServerB.Components.Sphinx.Events.EventText	sgISup	"Server B: SPHINX Service"	0x300101	06.01.2020 13:20:22.158
+ISup.ServerB.Components.Sphinx.Params	sgISup	"ISup.ComponentsParams"	0x101	02.12.2019 10:17:10.986

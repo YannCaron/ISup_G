@@ -1,0 +1,76 @@
+	# ascii dump of database
+
+# DpType
+TypeName
+sgSYLEX.sgSYLEX	1#1
+	GlobalStatus	41#2:sgFwSystem
+	ChainsTT	41#4:sgFwTruthTable
+	SYLEX1	41#129:sgSYLEXServer
+	SYLEX2	41#130:sgSYLEXServer
+	Lines	1#391
+		CENTRE_6	41#432:sgFwSystem
+		CENTRE_11	41#433:sgFwSystem
+		LinesReference	25#886
+		AIGGMS	41#2862:sgFwSystem
+		AIMS	41#2863:sgFwSystem
+		SAMAX	41#2864:sgFwSystem
+		CENTRE_2	41#2867:sgFwSystem
+		CENTRE_4	41#2868:sgFwSystem
+		CENTRE_5	41#2869:sgFwSystem
+		CENTRE_1	41#3210:sgFwSystem
+		CENTRE_7	41#3211:sgFwSystem
+		CENTRE_12	41#3213:sgFwSystem
+		CENTRE_13	41#3214:sgFwSystem
+		CENTRE_14	41#3215:sgFwSystem
+		CENTRE_15	41#3216:sgFwSystem
+		CENTRE_16	41#3217:sgFwSystem
+		INCH	41#3475:sgFwSystem
+		CRYSTAL	41#5804:sgFwSystem
+		AMS_CH	41#5891:sgFwSystem
+		TBOX_GVA	41#5924:sgFwSystem
+		TBOX_ZRH	41#5925:sgFwSystem
+		RECDATA_A	41#5990:sgFwSystem
+		RECDATA_B	41#5991:sgFwSystem
+		DCL	41#6056:sgFwSystem
+		ETFMS_A	41#6057:sgFwSystem
+		CENTRE_17	41#6122:sgFwSystem
+		ETFMS_B	41#6155:sgFwSystem
+		WEB_SERV	41#1:sgFwSystem
+	History	41#393:sgFwHistory
+	Commutation	41#2777:sgFwSystem
+	WatchDogsConfig	41#2810:sgWatchDogs
+	ComponentsParams	41#2854:sgParams
+	SystemHistory	41#3158:sgFwHistory
+	SYLEXChainsStatus	41#3610:sgFwSystem
+	ChainAETable	41#4706:sgAETable
+	Connections	41#6195:sgFwConnections
+	Heartbeat	23#6190
+	MenuEntry	41#6282:sgFwMenuEntry
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SYLEX.Lines.WEB_SERV	""	lt:1 LANG:5 "WEB SERVICE@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SYLEX.Lines.WEB_SERV.Params	sgSYLEX	"SYLEX.ComponentsParams"	0x101	03.12.2013 09:59:59.794
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+SYLEX.Lines.WEB_SERV.PreStatus	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.Label1	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.Label2	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.Label3	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.Label4	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.Message	sgSYLEX	56	\3
+SYLEX.Lines.WEB_SERV.CommandOut	sgSYLEX	56	\3
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+SYLEX.Lines.WEB_SERV.PreStatus	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1501	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.Label1	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Label1"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.Label2	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Label2"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.Label3	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Label3"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.Label4	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Label4"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.Message	sgSYLEX	16	"2_SYLEX*.WEB_SERV.Message"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"
+SYLEX.Lines.WEB_SERV.CommandOut	sgSYLEX	16	"2_SYLEX.WEB_SERV"	""	0	0	\1	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1502	"TCPCOMM"

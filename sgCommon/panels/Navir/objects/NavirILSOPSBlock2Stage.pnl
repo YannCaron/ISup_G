@@ -1,0 +1,307 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,366 160 420 220 N "_3DFace" 2
+"$SystemName"
+"$SystemStatus"
+"main()
+{
+	getsgFwBlockSystemName();
+
+	startThread(\"pointChecker\");
+}" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"
+// Modifications Februar 2004 PWulliens
+// PW March 2006 based on sgFwBlock.pnl
+
+global string systemName, systemStatus;
+global string description;
+
+void updateBlock(string statusDpName, string statusDpValue,
+				 string Label1Name, string Label1Value,
+				 string Label2Name, string Label2Value,
+				 string Label3Name, string Label3Value,				  
+				 string Label4Name, string Label4Value)
+{
+
+// Define background color and tooltip text according to status
+	if(isOPS(statusDpValue)){
+		setComponentsColor(\"sgStdOPSColor\");
+		updateToolTip(\"Operational\");
+	}
+	else if(isSBY(statusDpValue)){
+		setComponentsColor(\"sgStdSBYColor\");	
+		updateToolTip(\"StandBy\");
+	}
+	else if(isWIP(statusDpValue)){
+		setComponentsColor(\"sgStdWIPColor\");	
+		updateToolTip(\"Work in progress\");
+	}
+	else if(isTEC(statusDpValue)){
+		setComponentsColor(\"sgStdTECColor\");	
+		updateToolTip(\"Technical presence\");
+	}
+	else if(isINI(statusDpValue)){
+		setComponentsColor(\"sgStdINIColor\");	
+		updateToolTip(\"Initializing\");
+	}
+	else if(isDEG(statusDpValue)){
+		setComponentsColor(\"sgStdDEGColor\");	
+		updateToolTip(\"Degraded\");
+	}
+	else if(isUS(statusDpValue)){
+		setComponentsColor(\"sgStdU/SColor\");	
+		updateToolTip(\"Unserviceable\");
+	}
+	else if(isABS(statusDpValue)){
+		setComponentsColor(\"sgStdABSColor\");	
+		updateToolTip(\"Absent\");
+	}
+	else if(isSTP(statusDpValue)){
+		setComponentsColor(\"sgStdSTPColor\");	
+		updateToolTip(\"Stopped\");
+	}
+	else{
+		setComponentsColor(\"sgStdUKNColor\");	
+		updateToolTip(\"Unknown\");
+	}		
+//	updateLabels(Label1Value, Label2Value, Label3Value, Label4Value, $LabelsNum);
+}
+
+
+// labels management
+void updateLabels(string label1, string label2, string label3, string label4, int labelsNum)
+{
+	switch(labelsNum)
+	{
+	case \"0\" :
+		LabelsText.text = \"\";
+		break;
+
+	case \"1\" :
+		LabelsText.text = \"\\n\" + label1;
+		break;
+
+	case \"2\" :
+		LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2;
+		break;
+
+	case \"3\" :
+		LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2 + \"\\n\" + label3;
+		break;
+
+	default :
+		LabelsText.text = \"\\n\" + label1 + \"\\n\" + label2 + \"\\n\" + label3 + \"\\n\" + label4;
+	}// switch
+}
+
+void setComponentsColor(string statusColor)
+{
+	DecorationStatus.backCol = statusColor;
+}
+
+//  Add to ToolTip the deactivation info
+void updateToolTip(string toolTipText)
+{
+	DecorationStatus.toolTipText = toolTipText;
+	ComponentText.toolTipText = toolTipText;
+//	LabelsText.toolTipText = toolTipText;
+}
+
+// Thread to check the dp
+void pointChecker()
+{
+	bool initDone = false;
+	bool componentHidden;
+	string activeChain, oldActiveChain;
+	
+	description = dpGetDescription(systemName + systemStatus);
+	
+	strreplace(description, \"\\\\n\", \"\\n\");  // line delimiter is \"\\n\" in description
+
+	ComponentText.text = description;
+	
+	while(true)
+	{
+		// check if (distributed) Dp is available, if connection is broken, block is set to UKN
+		if(distributedDpAvailable(systemName + systemStatus + STATUS_POSTFIX))
+		{
+			bool frameworkOK;
+
+			oldActiveChain = activeChain;
+			dpGet(systemName + ACTIVE_FW_OK, frameworkOK,
+						systemName + ACTIVE_CHAIN, activeChain);
+
+			if ((activeChain != oldActiveChain) && initDone && !componentHidden)
+			{
+				dpDisconnect(\"updateBlock\",
+							  systemName + systemStatus + STATUS_POSTFIX,
+							  systemName + systemStatus + LABEL1_POSTFIX,
+							  systemName + systemStatus + LABEL2_POSTFIX,
+							  systemName + systemStatus + LABEL3_POSTFIX,
+							  systemName + systemStatus + LABEL4_POSTFIX);
+				initDone = false;
+			}
+			
+			// check if concerned Framework is ok	
+			if(frameworkOK)
+			{
+				if(!initDone)
+				{
+					// DebugN(\"sgFwBlocK: exitst, readable not initDone\");
+					initDone = true;
+			
+				// Get the component text and the Hidden value	
+					dpGet(systemName + systemStatus + HIDDEN_POSTFIX, componentHidden);
+									
+				// if block isn't Hidden, normal functionalities
+					if(!componentHidden)
+					{
+					// Write Component Text value
+						ComponentText.visible = true;
+						DecorationStatus.visible = true;
+//						LabelsText.visible = true;
+					
+						// Connect to the Status and others to change the color etc
+						dpConnect(\"updateBlock\",
+							  systemName + systemStatus + STATUS_POSTFIX,
+							  systemName + systemStatus + LABEL1_POSTFIX,
+							  systemName + systemStatus + LABEL2_POSTFIX,
+							  systemName + systemStatus + LABEL3_POSTFIX,
+							  systemName + systemStatus + LABEL4_POSTFIX);
+					}
+					// if Hidden, hide all components of this block
+					else
+					{
+						ComponentText.visible = false;
+						DecorationStatus.visible = false;
+//						LabelsText.visible = false;
+					}// Hidden test
+				}// test initDone
+			}
+			else  // case frame work isn't ok
+			{
+				initDone = false;
+			
+//				updateLabels(\"LOGIC ERROR!\",\"\",\"\",\"\",1);
+
+				DecorationStatus.backCol = \"sgStdUKNColor\";
+			}// test framework ok
+		}
+		else // -> dp isn't available
+		{
+			initDone = false;
+	
+//			updateLabels(\"DISCONNECTED\",\"\",\"\",\"\",1);
+	
+			DecorationStatus.backCol = \"sgStdUKNColor\";
+		}
+		delay(0,500);
+	}
+}
+
+// Check if $SystemName is given. If not, strip to have system name from the $SystemStatus
+void getsgFwBlockSystemName()
+{					
+	if($SystemName != \"\")
+	{
+		systemName = $SystemName;
+		// 07.03.2006 aj added variable systemStatus, otherwise systemName is doubled if it is given in the $SystemStatus		
+		systemStatus = $SystemStatus;
+	}
+	else
+	{
+		systemName = substr($SystemStatus, 0, strpos($SystemStatus, \":\") + 1);		
+		// 07.03.2006 aj added variable systemStatus, otherwise systemName is doubled if it is given in the $SystemStatus		
+		systemStatus =   substr($SystemStatus, strpos($SystemStatus, \":\") + 1);		
+		//DebugTN(systemStatus,$SystemStatus);
+	}
+}
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+10 46
+"DecorationStatus"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "sgStdUKNColor" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 2 3 0 1 E U  1 E 4 10 10
+10 210
+410 210
+410 10
+1
+2 25
+"ComponentText"
+""
+0 0 0 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 10 410 210
+0 0 0 "s" 0 0 0 65 0 0  10 10
+ 2
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 12 Component \n
+LANG:1 14 Component name
+2
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-190-100-100-*-*-iso8859-1|-21,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 4 name
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

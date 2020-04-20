@@ -1,0 +1,221 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_SNMPV3Entity._SNMPV3Entity	1#1
+	Command	20#2
+	AliasName	25#3
+	Vendor	25#4
+	Model	25#5
+	Location	25#6
+	Access	1#7
+		IPAddress	25#8
+		Port	20#9
+		Timeout	20#10
+		Retries	20#11
+		SecurityName	25#12
+		SecurityLevel	20#13
+		ContextName	25#14
+		ContextEngineID	25#15
+		AuthProtocol	20#16
+		AuthPasswd	25#17
+		PrivProtocol	20#18
+		PrivPasswd	25#19
+	Status	1#20
+		ErrorOID	9#21
+		QueueLength	20#22
+		Timeout	23#23
+	Notify	1#24
+		ID	20#25
+		Text	25#26
+	Browse	1#27
+		Start	25#28
+		Result	9#29
+sgRecAVRECompChain.sgRecAVRECompChain	1#1
+	Logger01	41#2:sgFwSystem
+	Logger02	41#3:sgFwSystem
+sgRecAVRERawDataChain.sgRecAVRERawDataChain	1#1
+	Status01	21#2
+	Status02	21#3
+sgRecAVRE.sgRecAVRE	1#1
+	GlobalStatus	41#5113:sgFwSystem
+	RawData	1#4
+		ChainA	41#5114:sgRecAVRERawDataChain
+		ChainB	41#5115:sgRecAVRERawDataChain
+	Components	1#5116
+		PairStatus	41#5117:sgRecAVRECompChain
+		ChainA	41#5118:sgRecAVRECompChain
+		ChainB	41#5119:sgRecAVRECompChain
+	Connections	41#5121:sgFwConnections
+	WatchDogs	41#5413:sgWatchDogs
+	History	41#3:sgFwHistory
+	ChainParams	41#5123:sgParams
+	PairParams	41#5124:sgParams
+	TruthTables	1#5125
+		GlobalTT	41#5126:sgFwTruthTable
+		TTVoiceRecordingLogger	41#5128:sgFwTruthTable
+	ConvTableStatus	41#5419:sgConnectWithIntRange
+	MenuEntry	41#5428:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+RecAVREGVA	sgRecAVRE	28975
+_1_SNMPV3Entity_1	_SNMPV3Entity	28999
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+RecAVREGVA.History.HistorySize	""	lt:1 LANG:5 "100"
+RecAVREGVA.GlobalStatus	""	lt:1 LANG:5 "RECAVRE GVA@%s@"
+RecAVREGVA.GlobalStatus.Alarms.GenerateAlarms	"sgRecAVRE"	lt:1 LANG:5 "1"
+RecAVREGVA.GlobalStatus.Alarms.AlarmActive	""	lt:1 LANG:5 "1"
+RecAVREGVA.GlobalStatus.LogicConfig.LogicEnabled	""	lt:1 LANG:5 "1"
+RecAVREGVA.GlobalStatus.LogicConfig.Rule	""	lt:1 LANG:5 "RecAVREGVA.TruthTables.GlobalTT"
+RecAVREGVA.GlobalStatus.LogicConfig.Inputs	""	lt:1 LANG:5 "RecAVREGVA.Components.LoggerGlobalStatus"
+RecAVREGVA.GlobalStatus.AETable	""	lt:1 LANG:5 "AETable01"
+RecAVREGVA.Components.PairStatus.Logger01	""	lt:1 LANG:5 "Logger Pair 01@@"
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.LogicEnabled	""	lt:1 LANG:5 "1"
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.Rule	""	lt:1 LANG:5 "RecAVREGVA.TruthTables.TTVoiceRecordingLogger"
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.Inputs	""	lt:1 LANG:5 "RecAVREGVA.Components.Chain*.Logger01"
+RecAVREGVA.Components.PairStatus.Logger01.Params	""	lt:1 LANG:5 "RecAVREGVA.PairParams"
+RecAVREGVA.Components.PairStatus.Logger02	""	lt:1 LANG:5 "Logger Pair 02@@"
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.LogicEnabled	""	lt:1 LANG:5 "1"
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.Rule	""	lt:1 LANG:5 "RecAVREGVA.TruthTables.TTVoiceRecordingLogger"
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.Inputs	""	lt:1 LANG:5 "RecAVREGVA.Components.Chain*.Logger02"
+RecAVREGVA.Components.PairStatus.Logger02.Params	""	lt:1 LANG:5 "RecAVREGVA.PairParams"
+RecAVREGVA.Components.ChainA.Logger01	""	lt:1 LANG:5 "RECAVRELOGA51@@"
+RecAVREGVA.Components.ChainA.Logger01.Events.EventText	""	lt:1 LANG:5 "RECAVRELOGA51"
+RecAVREGVA.Components.ChainA.Logger01.Params	""	lt:1 LANG:5 "RecAVREGVA.ChainParams"
+RecAVREGVA.Components.ChainA.Logger02	""	lt:1 LANG:5 "RECAVRELOGA52@@"
+RecAVREGVA.Components.ChainA.Logger02.Events.EventText	""	lt:1 LANG:5 "RECAVRELOGA52"
+RecAVREGVA.Components.ChainA.Logger02.Params	""	lt:1 LANG:5 "RecAVREGVA.ChainParams"
+RecAVREGVA.Components.ChainB.Logger01	""	lt:1 LANG:5 "RECAVRELOGB51@@"
+RecAVREGVA.Components.ChainB.Logger01.Events.EventText	""	lt:1 LANG:5 "RECAVRELOGB51"
+RecAVREGVA.Components.ChainB.Logger01.Params	""	lt:1 LANG:5 "RecAVREGVA.ChainParams"
+RecAVREGVA.Components.ChainB.Logger02	""	lt:1 LANG:5 "RECAVRELOGB52@@"
+RecAVREGVA.Components.ChainB.Logger02.Events.EventText	""	lt:1 LANG:5 "RECAVRELOGB52"
+RecAVREGVA.Components.ChainB.Logger02.Params	""	lt:1 LANG:5 "RecAVREGVA.ChainParams"
+RecAVREGVA.ChainParams.Histories	""	lt:1 LANG:5 "RecAVREGVA.History"
+RecAVREGVA.ChainParams.AETable	""	lt:1 LANG:5 "AETable01"
+RecAVREGVA.ChainParams.GenerateEvents	""	lt:1 LANG:5 "1"
+RecAVREGVA.PairParams.Histories	""	lt:1 LANG:5 "RecAVREGVA.History"
+RecAVREGVA.PairParams.AETable	""	lt:1 LANG:5 "AETable01"
+RecAVREGVA.PairParams.GenerateEvents	""	lt:1 LANG:5 "1"
+RecAVREGVA.WatchDogs.Timeouts	""	lt:1 LANG:5 "50, 50"
+_1_SNMPV3Entity_1.	""	lt:1 LANG:5 "RECAVRELOGA51@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+RecAVREGVA.History.Message	sgRecAVRE	""	0x101	03.07.2018 07:17:33.919
+RecAVREGVA.History.HistorySize	sgRecAVRE	100	0x101	25.11.2015 13:20:25.936
+RecAVREGVA.History.ShortHistory	sgRecAVRE		0x101	03.07.2018 07:17:42.267
+RecAVREGVA.GlobalStatus.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.GlobalStatus.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.GlobalStatus.Disabled	sgRecAVRE	0	0x101	03.07.2018 08:14:55.834
+RecAVREGVA.GlobalStatus.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.GlobalStatus.Alarms.GenerateAlarms	sgRecAVRE	1	0x101	25.11.2015 13:20:25.746
+RecAVREGVA.GlobalStatus.Alarms.AlarmActive	sgRecAVRE	1	0x200101	03.07.2018 08:14:56.458
+RecAVREGVA.GlobalStatus.LogicConfig.LogicEnabled	sgRecAVRE	1	0x101	25.11.2015 13:20:25.868
+RecAVREGVA.GlobalStatus.LogicConfig.Rule	sgRecAVRE	"RecAVREGVA.TruthTables.GlobalTT"	0x101	25.11.2015 13:20:25.873
+RecAVREGVA.GlobalStatus.LogicConfig.Inputs	sgRecAVRE	"RecAVREGVA.Components.PairStatus.Logger*"	0x101	25.11.2015 13:20:25.878
+RecAVREGVA.GlobalStatus.AETable	sgRecAVRE	"AETable01"	0x101	25.11.2015 13:20:25.881
+RecAVREGVA.RawData.ChainA.Status01	sgRecAVRE	-1	0x141	09.07.2018 08:18:13.060
+RecAVREGVA.RawData.ChainA.Status02	sgRecAVRE	-1	0x141	09.07.2018 08:18:13.060
+RecAVREGVA.RawData.ChainB.Status01	sgRecAVRE	-1	0x141	09.07.2018 08:18:13.060
+RecAVREGVA.RawData.ChainB.Status02	sgRecAVRE	-1	0x141	09.07.2018 08:18:13.060
+RecAVREGVA.Components.PairStatus.Logger01.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.PairStatus.Logger01.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.PairStatus.Logger01.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.PairStatus.Logger01.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.LogicEnabled	sgRecAVRE	1	0x101	25.11.2015 13:20:25.888
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.Rule	sgRecAVRE	"RecAVREGVA.TruthTables.TTVoiceRecordingLogger"	0x101	25.11.2015 13:20:25.909
+RecAVREGVA.Components.PairStatus.Logger01.LogicConfig.Inputs	sgRecAVRE	"RecAVREGVA.Components.Chain*.Logger01"	0x101	25.11.2015 13:20:25.912
+RecAVREGVA.Components.PairStatus.Logger01.Params	sgRecAVRE	"RecAVREGVA.PairParams"	0x101	25.11.2015 13:20:25.913
+RecAVREGVA.Components.PairStatus.Logger02.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.PairStatus.Logger02.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.PairStatus.Logger02.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.PairStatus.Logger02.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.LogicEnabled	sgRecAVRE	1	0x101	25.11.2015 13:20:25.914
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.Rule	sgRecAVRE	"RecAVREGVA.TruthTables.TTVoiceRecordingLogger"	0x101	25.11.2015 13:20:25.915
+RecAVREGVA.Components.PairStatus.Logger02.LogicConfig.Inputs	sgRecAVRE	"RecAVREGVA.Components.Chain*.Logger02"	0x101	25.11.2015 13:20:25.916
+RecAVREGVA.Components.PairStatus.Logger02.Params	sgRecAVRE	"RecAVREGVA.PairParams"	0x101	25.11.2015 13:20:25.917
+RecAVREGVA.Components.ChainA.Logger01.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainA.Logger01.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainA.Logger01.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.ChainA.Logger01.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.ChainA.Logger01.Events.EventText	sgRecAVRE	"RECAVRELOGA51"	0x101	25.11.2015 13:20:25.919
+RecAVREGVA.Components.ChainA.Logger01.Params	sgRecAVRE	"RecAVREGVA.ChainParams"	0x101	25.11.2015 13:20:25.920
+RecAVREGVA.Components.ChainA.Logger02.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainA.Logger02.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainA.Logger02.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.ChainA.Logger02.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.ChainA.Logger02.Events.EventText	sgRecAVRE	"RECAVRELOGA52"	0x101	25.11.2015 13:20:25.920
+RecAVREGVA.Components.ChainA.Logger02.Params	sgRecAVRE	"RecAVREGVA.ChainParams"	0x101	25.11.2015 13:20:25.921
+RecAVREGVA.Components.ChainB.Logger01.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainB.Logger01.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainB.Logger01.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.ChainB.Logger01.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.ChainB.Logger01.Events.EventText	sgRecAVRE	"RECAVRELOGB51"	0x101	25.11.2015 13:20:25.922
+RecAVREGVA.Components.ChainB.Logger01.Params	sgRecAVRE	"RecAVREGVA.ChainParams"	0x101	25.11.2015 13:20:25.924
+RecAVREGVA.Components.ChainB.Logger02.PreStatus	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainB.Logger02.Status	sgRecAVRE	"UKN"	0x200101	03.07.2018 08:14:38.490
+RecAVREGVA.Components.ChainB.Logger02.Disabled	sgRecAVRE	0	0x101	03.07.2018 07:14:34.751
+RecAVREGVA.Components.ChainB.Logger02.Message	sgRecAVRE	""	0x101	03.07.2018 08:14:39.281
+RecAVREGVA.Components.ChainB.Logger02.Events.EventText	sgRecAVRE	"RECAVRELOGB52"	0x101	25.11.2015 13:20:25.925
+RecAVREGVA.Components.ChainB.Logger02.Params	sgRecAVRE	"RecAVREGVA.ChainParams"	0x101	25.11.2015 13:20:25.926
+RecAVREGVA.Connections.Inputs	sgRecAVRE	"RecAVREGVA.RawData.ChainA.Status*", "RecAVREGVA.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.927
+RecAVREGVA.Connections.Outputs	sgRecAVRE	"RecAVREGVA.Components.ChainA.Logger*.PreStatus", "RecAVREGVA.Components.ChainB.Logger*.PreStatus"	0x101	25.11.2015 13:20:25.928
+RecAVREGVA.Connections.Rules	sgRecAVRE	"ConnectWithIntRange", "ConnectWithIntRange"	0x101	11.04.2016 12:29:09.822
+RecAVREGVA.Connections.Params	sgRecAVRE	"RecAVREGVA.ConvTableStatus", "RecAVREGVA.ConvTableStatus"	0x101	25.11.2015 13:20:25.930
+RecAVREGVA.ChainParams.Histories	sgRecAVRE	"RecAVREGVA.History"	0x101	25.11.2015 13:20:25.936
+RecAVREGVA.ChainParams.AETable	sgRecAVRE	"AETable01"	0x101	25.11.2015 13:20:25.937
+RecAVREGVA.ChainParams.GenerateEvents	sgRecAVRE	1	0x101	25.11.2015 13:20:25.938
+RecAVREGVA.PairParams.Histories	sgRecAVRE	"RecAVREGVA.History"	0x101	25.11.2015 13:20:25.941
+RecAVREGVA.PairParams.AETable	sgRecAVRE	"AETable01"	0x101	25.11.2015 13:20:25.942
+RecAVREGVA.PairParams.GenerateEvents	sgRecAVRE	1	0x101	25.11.2015 13:20:25.943
+RecAVREGVA.TruthTables.GlobalTT.Table	sgRecAVRE	"OPS_---_OPS_0", "UKN_---_UKN_0", "DEG_---_DEG_0", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_OPS_DEG_0", "---_ANY_UKN_0"	0x101	25.11.2015 13:20:25.944
+RecAVREGVA.TruthTables.TTVoiceRecordingLogger.Table	sgRecAVRE	"OPS_---_OPS_0", "DEG_---_OPS_0", "U/S_---_U/S_0", "UKN_---_UKN_0", "---_---_OPS_2_OPS+_DEG+", "---_---_DEG_2_OPS+_U/S+", "---_---_DEG_2_OPS+_UKN+", "---_---_OPS_2_DEG+_OPS+", "---_---_DEG_2_U/S+_OPS+", "---_---_DEG_2_UKN+_OPS+", "---_---_DEG_2_DEG+_U/S+", "---_---_DEG_2_DEG+_UKN+", "---_---_U/S_2_U/S+_UKN+", "---_---_DEG_2_U/S+_DEG+", "---_---_DEG_2_UKN+_DEG+", "---_---_U/S_2_UKN+_U/S+"	0x101	25.11.2015 13:20:25.946
+RecAVREGVA.WatchDogs.References	sgRecAVRE	"RecAVREGVA.RawData.ChainA.Status*", "RecAVREGVA.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.931
+RecAVREGVA.WatchDogs.DefaultValues	sgRecAVRE	"-1", "-1"	0x101	25.11.2015 13:20:25.932
+RecAVREGVA.WatchDogs.Outputs	sgRecAVRE	"RecAVREGVA.RawData.ChainA.Status*", "RecAVREGVA.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.933
+RecAVREGVA.WatchDogs.Timeouts	sgRecAVRE	25, 25	0x101	03.12.2015 15:09:28.506
+RecAVREGVA.ConvTableStatus.Input	sgRecAVRE	-1, 0, 1, 999999	0x101	03.12.2015 15:08:46.181
+RecAVREGVA.ConvTableStatus.Output	sgRecAVRE	"UKN", "OPS", "U/S", "U/S"	0x101	03.12.2015 15:09:01.489
+RecAVREGVA.MenuEntry.Name	sgRecAVRE	"RECAVRE"	0x200101	02.09.2016 08:08:42.937
+RecAVREGVA.MenuEntry.Group	sgRecAVRE	"REC"	0x101	02.09.2016 08:08:42.938
+RecAVREGVA.MenuEntry.Panel	sgRecAVRE	"RecVoice/sgRecAVREMainPanel.pnl"	0x200101	02.09.2016 08:08:42.939
+RecAVREGVA.MenuEntry.Params	sgRecAVRE	"Site:GVA;SystemName:ISup_G:"	0x101	02.09.2016 08:08:42.940
+RecAVREGVA.MenuEntry.Hidden	sgRecAVRE	0	0x100101	02.06.2016 11:33:47.151
+RecAVREGVA.MenuEntry.GlobalStatusPoint	sgRecAVRE	"RecAVREGVA.GlobalStatus"	0x101	22.06.2017 17:06:38.083
+_1_SNMPV3Entity_1.Access.IPAddress	_SNMPV3Entity	"RECAVRELOGA51"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.Port	_SNMPV3Entity	161	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.Timeout	_SNMPV3Entity	100	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.Retries	_SNMPV3Entity	1	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.SecurityName	_SNMPV3Entity	"public"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.SecurityLevel	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.ContextName	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.ContextEngineID	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.AuthProtocol	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.AuthPasswd	_SNMPV3Entity	"NiceNRXAuth"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.PrivProtocol	_SNMPV3Entity	2	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Access.PrivPasswd	_SNMPV3Entity	"NiceNRXPriv"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_1.Status.ErrorOID	_SNMPV3Entity	"-5#A1_1.3.6.1.4.1.23491.1.7.1.0 - error: SNMP++: SNMP request timed out"	0x101	09.07.2018 08:18:13.060
+_1_SNMPV3Entity_1.Status.QueueLength	_SNMPV3Entity	0	0x101	09.07.2018 08:18:13.060
+_1_SNMPV3Entity_1.Status.Timeout	_SNMPV3Entity	1	0x300101	03.07.2018 08:15:48.507
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+RecAVREGVA.GlobalStatus.Alarms.AlarmActive	sgRecAVRE		12					"RecVoice/sgRecAVREMainPanel.pnl"	"$Site:GVA", "$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on Rec AVRE GVA"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+RecAVREGVA.RawData.ChainA.Status01	sgRecAVRE	56	\1
+RecAVREGVA.RawData.ChainA.Status02	sgRecAVRE	56	\1
+RecAVREGVA.RawData.ChainB.Status01	sgRecAVRE	56	\1
+RecAVREGVA.RawData.ChainB.Status02	sgRecAVRE	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+RecAVREGVA.RawData.ChainA.Status01	sgRecAVRE	16	"A1_1.3.6.1.4.1.23491.1.7.1.0"	"_AVRE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecAVREGVA.RawData.ChainA.Status02	sgRecAVRE	16	"A2_1.3.6.1.4.1.23491.1.7.1.0"	"_AVRE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecAVREGVA.RawData.ChainB.Status01	sgRecAVRE	16	"A3_1.3.6.1.4.1.23491.1.7.1.0"	"_AVRE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecAVREGVA.RawData.ChainB.Status02	sgRecAVRE	16	"A4_1.3.6.1.4.1.23491.1.7.1.0"	"_AVRE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

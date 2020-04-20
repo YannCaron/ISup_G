@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Service name="SNMP" version="1.0.0" engine="groovy">
+
+    <root type="Node">
+        <element type="Script" src="global.groovy" />
+        <element type="Script" src="base.groovy" />
+        <element type="Script" src="uspace.script.groovy" />
+                
+        <element type="Shutdown" variantName="outShutdownAction" />
+        <element type="SocketWatcher" port="${monitoringPort}" variantName="inWatcher" />
+        
+        <element type="MQAgent" address="tcp://127.0.0.1:1883" clientName="SNMP-getMQClient">
+            <subscribers>
+                <subscriber topicName="ch/skyguide/isup/mqdriver/command" qos="0" variantName="mqInCommand" />
+                <subscriber topicName="ch/skyguide/isup/mqdriver/monitoring/redundancy" qos="0" variantName="mqInRedu" />
+            </subscribers>
+            <publishers>
+                <publisher topicName="ch/skyguide/isup/mqdriver/data" qos="0" variantName="mqOutData" />
+                <publisher topicName="ch/skyguide/isup/mqdriver/monitoring/heartbeat" qos="0" variantName="mqOutHeartbeat" />
+                <publisher topicName="ch/skyguide/isup/mqdriver/monitoring/status" qos="0" variantName="mqOutStatus" />
+            </publishers>
+        </element>
+        
+        <element type="name" name="USpace">
+                    
+            <element type="SNMPManager" name="ServerA" transport="udp" address="zsutmdgw01" port="161" timeout="1000" retry="3" version="v2c" community="public">
+                <element type="LoopExecutor" rate="10000">
+                    <decorated type="node">
+                        <!-- server status -->
+                        <element type="SNMPGet" desc="ugwy1" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.49" variantResponseName="UspaceServerAStatus" variantFailureName="UspaceServerAFailure" />
+                        <!-- nodes status -->
+                        <element type="SNMPGet" desc="ogn" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.111.103.110" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sfo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.115.102.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="adbs" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.100.98.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ausp" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.115.112" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="auth" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.116.104" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="invo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.105.110.118.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="rega" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.114.101.103.97" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sdoc" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.115.100.111.99" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.117.103.119.121" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="afims" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.102.105.109.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="artas" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.114.116.97.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="flarm" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.102.108.97.114.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="notam" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.110.111.116.97.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy1" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.49" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy2" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.50" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy3" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.51" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                    </decorated>
+                </element>
+            </element>
+        
+            <element type="SNMPManager" name="ServerB" transport="udp" address="zsutmdgw02" port="161" timeout="1000" retry="3" version="v2c" community="public">
+                <element type="LoopExecutor" rate="10000">
+                    <decorated type="node">
+                        <!-- server status -->
+                        <element type="SNMPGet" desc="ugwy2" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.50" variantResponseName="UspaceServerBStatus" variantFailureName="UspaceServerBFailure" />
+                        <!-- nodes status -->
+                        <element type="SNMPGet" desc="ogn" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.111.103.110" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sfo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.115.102.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="adbs" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.100.98.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ausp" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.115.112" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="auth" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.116.104" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="invo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.105.110.118.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="rega" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.114.101.103.97" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sdoc" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.115.100.111.99" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.117.103.119.121" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="afims" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.102.105.109.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="artas" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.114.116.97.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="flarm" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.102.108.97.114.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="notam" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.110.111.116.97.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy1" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.49" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy2" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.50" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy3" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.51" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />                    
+                    </decorated>
+                </element>
+            </element>
+         
+            <element type="SNMPManager" name="ServerC" transport="udp" address="zsutmdgw03" port="161" timeout="1000" retry="3" version="v2c" community="public">
+                <element type="LoopExecutor" rate="10000">
+                    <decorated type="node">
+                        <!-- server status -->
+                        <element type="SNMPGet" desc="ugwy3" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.51" variantResponseName="UspaceServerCStatus" variantFailureName="UspaceServerCFailure" />
+                        <!-- nodes status -->
+                        <element type="SNMPGet" desc="ogn" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.111.103.110" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sfo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.3.115.102.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="adbs" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.100.98.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ausp" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.115.112" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="auth" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.97.117.116.104" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="invo" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.105.110.118.111" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="rega" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.114.101.103.97" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="sdoc" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.115.100.111.99" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.4.117.103.119.121" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="afims" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.102.105.109.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="artas" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.97.114.116.97.115" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="flarm" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.102.108.97.114.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="notam" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.110.111.116.97.109" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy1" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.49" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy2" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.50" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />
+                        <element type="SNMPGet" desc="ugwy3" oid="1.3.6.1.4.1.8072.1.3.2.3.1.4.5.117.103.119.121.51" variantResponseName="UspaceSNMPResponse" variantFailureName="UspaceSNMPFailure" />                    
+                    </decorated>
+                </element>
+            </element>
+            
+        </element>
+
+        
+    </root>
+    
+</Service>
+

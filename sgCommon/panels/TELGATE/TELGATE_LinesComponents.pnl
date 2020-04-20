@@ -1,0 +1,102 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 277 43 N "_3DFace" 5
+"$ExcludedLine"
+"$LineEquipmentName"
+"$LineSiteName"
+"$NLines"
+"$SystemName"
+"main()
+{
+  LineSiteText.text = $LineSiteName;
+ 
+  addLinessgFwBlocks();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "void addLinessgFwBlocks()
+{    
+  int xText, yText;
+  
+  getValue(\"LineSiteText\", \"position\", xText, yText); 
+  
+  for (int i=1; i <= $NLines; i++){
+
+    int x = xText + 55 + 25 * i; 
+    int y = yText -5 ;
+  //  DebugTN(\"in addlinesgFwBlock before if. $ExcludedLine: \" + $ExcludedLine + \" i:\" + i);  
+
+    if (i!=$ExcludedLine)  // to exclude some line
+    {
+      string dpName = \"TELGATE.Components.Lines.\" + $LineEquipmentName + \".\" + $LineSiteName + \"_\" + i;
+      addSymbol(
+    		myModuleName(), \"\",
+    		\"objects/sgFwBlock.pnl\",\"Line\" + i,
+    		  makeDynString(\"$SystemName:\" + $SystemName,\"$LabelsNum:0\",\"$PanelName:\",\"$PanelParams:\",\"$SystemStatus:\" + dpName),
+  		  x,
+  		  y,0,0.048,0.11
+  		);
+    }  
+  }
+}
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+2 9
+"LineSiteText"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 10 10 90 30
+0 2 2 "0s" 0 0 0 64 0 0  10 10 1
+1
+LANG:5 27 Tahoma,11,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 $LineSiteName
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

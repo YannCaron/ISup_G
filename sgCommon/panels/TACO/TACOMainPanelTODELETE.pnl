@@ -1,0 +1,289 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 2
+LANG:5 7 TACO-BE
+LANG:1 4 AFPS
+1 403 76 "" 11
+0
+13 379
+"ForceToUKN"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	ForceToUnknown(\"\", \"TACO\");
+
+}
+" 0
+ E E E
+1 404 89 "" 46
+0
+1 407 90 "" 46
+0
+1 410 91 "" 46
+0
+1 413 92 "" 46
+0
+1 416 93 "" 46
+0
+1 419 94 "" 46
+0
+1 422 95 "" 46
+0
+13 402
+"RestartServiceBtn"
+""
+1 435 335 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,14,-1,5,50,0,0,0,0,0
+0  423 333 687 387
+
+T 
+1
+LANG:5 20 Save DB and Logfiles
+E "main()
+{
+  dyn_string ds;
+  dyn_float df;
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+    	makeDynString(\"$1:Do you really want to save DB and Logfiles ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+	
+  if(ds[1] == \"true\")
+  {
+    sgHistoryAddEvent(\"TACO.History\", SEVERITY_COMMAND, \"<<Save DB and Logfiles>> sent\");
+    dpSet(\"TACO.Command\", \"save-DB.txt\");   
+  }
+  PanelOffPanel(\"Command Window\");    
+}" 0
+ E E
+1 425 96 "" 4
+0
+1 426 96 "" 0
+0
+1 427 97 "" 4
+0
+1 428 97 "" 0
+0
+1 429 98 "" 4
+0
+1 430 98 "" 0
+0
+1 431 99 "" 4
+0
+1 433 100 "" 4
+0
+1 434 100 "" 0
+0
+1 432 99 "" 0
+0
+1 435 101 "" 4
+0
+1 436 101 "" 0
+0
+1 437 102 "" 4
+0
+1 438 102 "" 0
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 405 89 "" 51
+0
+1 406 89 "" 52
+0
+1 408 90 "" 51
+0
+1 409 90 "" 52
+0
+1 411 91 "" 51
+0
+1 412 91 "" 52
+0
+1 414 92 "" 51
+0
+1 415 92 "" 52
+0
+1 417 93 "" 51
+0
+1 418 93 "" 52
+0
+1 420 94 "" 51
+0
+1 421 94 "" 52
+0
+1 423 95 "" 51
+0
+1 424 95 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 76 "Group7" -1
+"objects\\sgFwHistory.pnl" 10 710 T 108 1 0 1 -10 -20
+2
+"$SystemHistory""TACO.History"
+"$SystemName"""
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 340 305 T 130 0.6499999999999999 0 0.2500000000000001 -121 173.75
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Clients.BETAHM01"
+3 90 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 340 305 T 136 0.6499999999999999 0 0.2500000000000001 229 173.75
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Clients.BETAHM02"
+3 91 "PANEL_REF91" -1
+"objects\\sgFwBlock.pnl" 340 305 T 137 0.6499999999999999 0 0.2500000000000001 574.0000000000001 173.75
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Clients.BETAHM03"
+3 92 "PANEL_REF92" -1
+"objects\\sgFwBlock.pnl" 340 305 T 138 0.6499999999999999 0 0.2500000000000001 14.00000000000002 23.74999999999997
+5
+"$LabelsNum""1"
+"$PanelName""TACO/TACODetailsOPPanel.pnl"
+"$PanelParams""Name:BETAOP01"
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Monitors.BETAOP01.GlobalStatus"
+3 93 "PANEL_REF93" -1
+"objects\\sgFwBlock.pnl" 340 305 T 139 0.6499999999999999 0 0.2500000000000001 434.0000000000001 23.74999999999997
+5
+"$LabelsNum""1"
+"$PanelName""TACO/TACODetailsOPPanel.pnl"
+"$PanelParams""Name:BETAOP02"
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Monitors.BETAOP02.GlobalStatus"
+3 94 "PANEL_REF94" -1
+"objects\\sgFwBlock.pnl" 340 305 T 140 0.6499999999999999 0 0.2500000000000001 14.00000000000002 83.74999999999997
+5
+"$LabelsNum""1"
+"$PanelName""TACO/TACODetailsEXPanel.pnl"
+"$PanelParams""Name:BETAEX01"
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Monitors.BETAEX01.GlobalStatus"
+3 95 "PANEL_REF95" -1
+"objects\\sgFwBlock.pnl" 340 305 T 141 0.6499999999999999 0 0.2500000000000001 434.0000000000001 83.74999999999997
+5
+"$LabelsNum""1"
+"$PanelName""TACO/TACODetailsEXPanel.pnl"
+"$PanelParams""Name:BETAEX02"
+"$SystemName"""
+"$SystemStatus""TACO.Structureds.Monitors.BETAEX02.GlobalStatus"
+3 96 "PANEL_REF96" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 142 0.7534246575342466 0 0.7936507936507936 92.12328767123287 20.63492063492064
+1
+"$Name""betaop01"
+3 97 "PANEL_REF97" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 142 0.7534246575342466 0 0.7936507936507936 92.12328767123287 80.63492063492063
+1
+"$Name""betaex01"
+3 98 "PANEL_REF98" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 143 0.7534246575342466 0 0.7936507936507936 -42.87671232876713 170.6349206349207
+1
+"$Name""betahm01"
+3 99 "PANEL_REF99" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 144 0.7534246575342466 0 0.7936507936507936 512.1232876712329 20.63492063492063
+1
+"$Name""betaop02"
+3 100 "PANEL_REF100" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 145 0.7534246575342466 0 0.7936507936507936 512.1232876712329 80.63492063492063
+1
+"$Name""betaex02"
+3 101 "PANEL_REF101" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 148 0.7534246575342466 0 0.7936507936507936 307.1232876712329 170.6349206349207
+1
+"$Name""betahm02"
+3 102 "PANEL_REF102" -1
+"TACO\\TACOCMDBtn.pnl" 112 102 T 149 0.7534246575342466 0 0.7936507936507936 652.1232876712329 170.6349206349207
+1
+"$Name""betahm03"
+0

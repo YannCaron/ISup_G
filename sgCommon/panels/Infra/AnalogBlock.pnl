@@ -1,0 +1,235 @@
+V 11
+1
+LANG:5 0 
+PANEL,-1 -1 151 62 N "_3DFace" 5
+"$DistributedSystems"
+"$DpName"
+"$Name"
+"$Unit"
+"$trend"
+"main()
+{
+  initialize();
+}" 0
+ E E E E 1 -1 -1 0  30 20
+""0  1
+E "const string CURVE1 = \"#curve1\";
+bool connected = false;
+
+void initialize()  {
+  name.text = $Name;
+  unit.text = $Unit;
+  
+  string localSystem = getSystemName();
+  
+  if ($DistributedSystems == localSystem) {
+    initLocalSystem();
+  } else {
+    initDistributedSystem();
+  }
+
+}
+
+void initLocalSystem() {
+  dpConnect(\"connectValue\", true, $DpName);
+}
+
+void initDistributedSystem() {
+  dpConnect(\"distribution_changed\", TRUE, ACTIVE_CHAIN, 
+            \"_Connections.Dist.ManNums\", \"_Connections_2.Dist.ManNums\", 
+            \"_DistManager.State.SystemNums\", \"_DistManager_2.State.SystemNums\");
+}
+
+void distribution_changed(string activeChainDP, string activeChain, 
+                          string manNumsADP, dyn_int manNumsA,
+                          string manNumsBDP, dyn_int manNumsB,
+                          string systemNumsADP, dyn_int systemNumsA, 
+                          string systemNumsBDP, dyn_int systemNumsB) {
+  
+    // if already connected disconnect
+    if (connected) {
+      dpDisconnect(\"connectValue\", $DistributedSystems + $DpName);
+      connected = false;
+      
+      // if not and distributed system running then connect to it
+    } 
+    
+    if (isDSRunning ($DistributedSystems, activeChain, systemNumsA, systemNumsB)) {
+      dpConnect(\"connectValue\", true, $DistributedSystems + $DpName);
+      connected = true;
+    }
+    
+  displayBlock();  
+}
+
+void value_clicked() {
+  string dp = $DistributedSystems + $DpName + \":_original.._value\";
+  string name = $trend;
+  
+  if ($trend != \"\") {
+    shape trend = getShape($trend);
+
+    // create area
+    trend.removeTrendArea(0);
+    trend.addTrendArea();
+    trend.addCurve(0, CURVE1);
+    
+    // connect
+    trend.curveLegendName(CURVE1, \"History: \" + $Name);
+    trend.connectDirectly(CURVE1, dp);
+    
+    // properties
+    trend.timeScaleVisibility(0, TRUE, 0);
+    trend.curveScaleVisibility(CURVE1, true);
+    trend.curveScaleVisibilityX(CURVE1, true);
+    
+    // style
+    trend.curveColor(CURVE1, \"sgInfraActiveColor\");
+    trend.curvePattern(CURVE1, \"[solid,oneColor,JoinMiter,CapNotLast,2]\");
+    trend.curveType(CURVE1, 2); // linear
+    trend.pointType(CURVE1, 7); // filled circle
+    
+  }
+}
+
+void connectValue(string dpName, float val) {
+  value.text = val;
+}
+
+// display
+displayBlock() {
+  if (connected) {
+    value.backCol = \"sgInfraActiveColor\";
+    value.foreCol = \"_ButtonText\";
+    unit.backCol = \"sgInfraActiveColor\";
+    unit.foreCol = \"_ButtonText\";
+  } else {
+    value.backCol = \"sgInfraInactiveColor\";
+    value.foreCol = \"_ButtonShadow\";
+    unit.backCol = \"sgInfraInactiveColor\";
+    unit.foreCol = \"_ButtonShadow\";
+  }
+}
+
+// tools
+bool isDistributionRunning(string activeChain, dyn_int manNumsA, dyn_int manNumsB) {
+  return ((activeChain == \"A\" && dynlen(manNumsA) > 0) || (activeChain == \"B\" && dynlen(manNumsB) > 0));
+}
+
+bool isDSRunning(string distributedSystem, string activeChain, dyn_int systemNumsA, dyn_int systemNumsB) {
+	int systemId = getSystemId(distributedSystem);
+  return ((activeChain == \"A\" && dynContains(systemNumsA, systemId)) || (activeChain == \"B\" && dynContains(systemNumsB, systemId)));
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+14 1
+"name"
+""
+1 1 5 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+1 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0  -1 3 150 28
+2 "0s" 0 0 0 1 0 -1  "main()
+{
+  value_clicked();
+}" 0
+ E E
+14 2
+"unit"
+""
+1 105 30 E E E 1 E 1 E N "_3DText" E N "sgInfraActiveColor" E E
+ E E
+3 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,21,5,50,0,0,0,0,0
+0  103 28 151 61
+2 "0s" 0 0 0 1 0 -1  "main()
+{
+  value_clicked();
+}" 0
+ E E
+14 3
+"value"
+""
+1 0.999999999999996 30 E E E 1 E 1 E N "_3DText" E N "sgInfraActiveColor" E E
+ E E
+5 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,21,5,50,0,0,0,0,0
+0  -1 28 107 61
+2 "0.2f" 3 0 0 2 0 -1  "main()
+{
+  value_clicked();
+}" 0
+ E E
+6 4
+"RECTANGLE1"
+""
+1 150 50 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 1 0 1.2 0 0 1 E 150 50 0 0
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

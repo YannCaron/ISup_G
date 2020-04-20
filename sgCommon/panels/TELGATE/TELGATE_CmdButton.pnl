@@ -1,0 +1,125 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 158 51 N "_3DFace" 3
+"$Command"
+"$HistoryName"
+"$SystemName"
+"main()
+{
+	Button.toolTipText = $Command + \" command\";
+
+	Button.text = $Command;
+	
+	if($Command == \"\")
+		Button.visible = false;
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "void sendTELGATECmd()
+{    
+  if($Command == \"VISTA TEL OFF\")
+    writeTELGATECMD(3);
+  else if($Command == \"VISTA TEL ON\") 
+    writeTELGATECMD(2);
+  else
+    DebugTN(\"TEGATE_CmdButton.pnl $Command: \" + $Command + \" not sent!\");  
+}
+
+void writeTELGATECMD(int cmdValue)
+{
+  dpSet($SystemName + \"TELGATE.RawData.VISTA.Commands.ITGVISTA_1\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ITGVISTA_2\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ATGVISTA_12\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ATGVISTA_34\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ATGVISTA_56\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ATGVISTA_78\", cmdValue,
+      $SystemName + \"TELGATE.RawData.VISTA.Commands.ATGVISTA_910\", cmdValue);
+
+  sgHistoryAddEvent($HistoryName, SEVERITY_COMMAND, \"<<\" + $Command + \">> sent\");
+}
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"Button"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+2
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 8 152 42
+
+T 
+2
+LANG:5 16 VISTA TEL ON/OFF
+LANG:1 7 RDP CMD
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	string EventText;
+	
+//		DebugN(\"ds before calling panel: \" + ds);
+		ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+		makeDynString(\"$1:Do you really want to switch \" + $Command + \" ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+  if(ds[1] == \"true\")
+  {
+    sendTELGATECmd();    
+  }				
+	//	DebugN(\"ds after window close: \" + ds[1] );
+		
+
+//	Close Command window at terminate
+//	DebugN(\"Close panel\");
+
+	PanelOffPanel(\"Command Window\");	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,514 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 4
+"$ILS_A"
+"$ILS_B"
+"$Site"
+"$SystemName"
+"main()
+{	
+	bool cmdDisabled;
+	
+	setLabels();
+	ILSSelectionDpNamePrefix = $SystemName + \"ILS\" + $ILS_A + \"_\" + $ILS_B + \"Selection\";
+	
+	initLastStatuses();
+
+	getRunwayNames();
+	
+	getHistories();
+		
+	dpConnect(\"connectSelectedILS\", ILSSelectionDpNamePrefix + \".Commands.ILSSelection\");
+
+	dpConnect(\"connectILSCmdButton\", ILSSelectionDpNamePrefix + \".Status.ILSButtonText\", ILSSelectionDpNamePrefix + \".Status.ILSButtonEnable\");
+																			
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "
+global string machineName;
+global string lastRequestedDirection;
+global string ILSSelectionDpNamePrefix;
+
+global string RunwayNameA;
+global string RunwayNameB;
+global string oppositeDirection;
+global dyn_string ILSHistories;
+
+global string LOCAoldStatus;
+global string GPAoldStatus;
+global string DMEAoldStatus;
+global string LOCBoldStatus;
+global string GPBoldStatus;
+global string DMEBoldStatus;
+global string SecundaryPSOldStatus;
+
+
+void getRunwayNames()
+{
+	dpGet(ILSSelectionDpNamePrefix + \".General.RunwayNameA\", RunwayNameA, 
+				ILSSelectionDpNamePrefix + \".General.RunwayNameB\", RunwayNameB);
+}
+
+void getHistories()
+{
+	dpGet(ILSSelectionDpNamePrefix + \".General.ILSHistories\", ILSHistories);
+}
+
+
+	//return if current client is the TWR client (on System Navir... && is client No 1)
+bool isTWRClient()
+{
+	string systemName;	
+	int manNum;
+
+	systemName = getSystemName();
+	systemName = substr(systemName, 0, strpos(systemName, \"_\" ));
+	
+	manNum = myManNum();
+	
+	if (systemName == \"Navir\" && manNum == 1)
+		return true;
+	else
+		return false;
+}
+
+void connectILSCmdButton(string dpButtonText, string buttonText, string dpButtonEnable, bool buttonEnable)
+{
+	if(buttonEnable && getIfAuthorizedCmdMachine())
+	{
+		ILSOtherDirectionButton.enabled = true;
+		ILSOtherDirectionButton.toolTipText = \"ILS Selection commands\";
+	}
+	else 
+	{
+		ILSOtherDirectionButton.enabled = false;
+		ILSOtherDirectionButton.toolTipText = \"No available ILS Selection commands for this client\";
+	}
+
+	if(oppositeDirection == \"B\")
+		ILSOtherDirectionButton.text = buttonText + \" >>\";	
+	else if(oppositeDirection == \"A\")
+		ILSOtherDirectionButton.text = \"<< \" + buttonText;	
+	else
+		ILSOtherDirectionButton.text = buttonText;	
+	
+}
+
+connectSelectedILS(string selectedILSDpName, string selectedILS)
+{
+	if(selectedILS == $ILS_A)
+	{
+		ILSASelectedText.visible = true;
+		ILSBSelectedText.visible = false;	
+		oppositeDirection = \"B\";  // arrow to B
+	}
+	else if(selectedILS == $ILS_B)
+	{
+		ILSASelectedText.visible = false;
+		ILSBSelectedText.visible = true;
+		oppositeDirection = \"A\";  // arrow to A
+	}
+}
+
+void setLabels()
+{
+	setValue(\"PageLabel\", \"text\", \"ILS \" + $ILS_A + \" - \" +$ILS_B + \" \" + $Site);	
+}
+
+// return if the current HMI is an authorized machine to select ILS
+bool getIfAuthorizedCmdMachine()
+{
+	dyn_string authorizedCmdMachineList;
+	
+	dpGet(ILSSelectionDpNamePrefix + \".General.AuthorizedSelectCmdMachine\", authorizedCmdMachineList);
+	
+	machineName = strtolower(getHostname());
+	
+	// force to lower case
+	for (int i = 1; i <= dynlen(authorizedCmdMachineList); i++)
+	{
+		authorizedCmdMachineList[i] = strtolower(authorizedCmdMachineList[i]);
+	}
+	
+//	DebugN(\"getIfAuthorizedCmdMachine(): machineName: \" + machineName);
+	if(	dynContains(authorizedCmdMachineList, machineName) > 0)
+		return true;
+	else return false;
+}	
+
+void initLastStatuses()
+{
+	LOCAoldStatus = OPS_STATUS;
+	GPAoldStatus = OPS_STATUS;
+	DMEAoldStatus = OPS_STATUS;
+	LOCBoldStatus = OPS_STATUS;
+	GPBoldStatus = OPS_STATUS;
+	DMEBoldStatus = OPS_STATUS;
+	SecundaryPSOldStatus = OPS_STATUS;
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 629
+"ILSBSelectedText"
+""
+1 730 220 E E E 1 E 1 E N "_WindowText" E N "grau" E E
+ E E
+174 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E U  1 E 732 222 1048 508
+1 2 0 "0s" 0 0 0 65 0 0  732 222 1
+1
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+0 1
+LANG:5 0 
+2 625
+"ILSASelectedText"
+""
+1 60 220 E E E 1 E 1 E N "_WindowText" E N "Grau" E E
+ E E
+173 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E U  1 E 62 222 378 508
+1 2 0 "0s" 0 0 0 65 0 0  62 222 1
+1
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+0 1
+LANG:5 0 
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 22 ILS A - B OPS TWR View
+LANG:1 4 AFPS
+1 685 72 "" 46
+0
+1 686 73 "" 46
+0
+1 689 111 "" 46
+0
+1 690 112 "" 46
+0
+1 691 113 "" 46
+0
+1 693 134 "" 46
+0
+1 694 135 "" 46
+0
+1 695 137 "" 46
+0
+1 696 138 "" 46
+0
+1 697 139 "" 46
+0
+1 698 140 "" 46
+0
+1 699 141 "" 46
+0
+1 700 142 "" 46
+0
+1 701 143 "" 46
+0
+13 426
+"ILSOtherDirectionButton"
+""
+1 430 160 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+126 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,24,5,69,0,0,0,0,0
+0  428 158 682 212
+
+T 
+1
+LANG:5 22 << Select other ILS >>
+"main()
+{
+	int ILSIntSelected;
+	string lastILSRequested;
+	string firstConfirmText;
+	string secondConfirmText;
+	string requestedDirection;
+	dyn_float df1, df2;
+	dyn_string ds1, ds2;
+	
+	// init ds for negative confirmation
+	
+	ds1 =	makeDynString(\"false\");
+	ds2 =	makeDynString(\"false\");
+	
+	dpGet(ILSSelectionDpNamePrefix + \".Commands.ILSSelection\", lastILSRequested);
+	
+	if(lastILSRequested ==	RunwayNameA)
+	{
+		requestedDirection = RunwayNameB;
+		lastRequestedDirection = RunwayNameB;
+		secondConfirmText = \"Do you really want to select ILS \"+ RunwayNameB + \" ?\";
+	}
+	else if(lastILSRequested ==	RunwayNameB)
+	{
+		requestedDirection = RunwayNameA;
+		lastRequestedDirection = RunwayNameA;
+		secondConfirmText = \"Do you really want to select ILS \"+ RunwayNameA + \" ?\";
+	}
+	else
+	{
+	// Case where no ILS selected informations! Then force new selection to opposite of last ILS direction !
+	// To be more safe. Always a possibility to select a direction!
+	// P.W. 01.06.2005
+	
+		if(lastRequestedDirection != RunwayNameA)
+		{
+			secondConfirmText = \"No ILS correctly selected! Do you really want to select ILS \" + RunwayNameA + \" ?\";
+			requestedDirection = RunwayNameA;
+			lastRequestedDirection = RunwayNameA;	
+		}
+		else 
+		{
+			secondConfirmText = \"No ILS correctly selected! Do you really want to select ILS \" + RunwayNameB + \" ?\";
+			requestedDirection = RunwayNameB;
+			lastRequestedDirection = RunwayNameB;
+		}
+		sgHistoryAddEvent(ILSHistories, SEVERITY_CRITICAL, \"Last ILS selection no sent!\" , \"Last request ILS : \" + lastILSRequested);
+	}
+	
+	
+	if(!isTWRClient())   // Two confirmation boxes for a not Tower client
+	{
+		firstConfirmText = \"Do you really want to select ILS \"+ requestedDirection + \" ?\\n \\n This action MUST BE coordinated with the TOWER!!!\";
+	
+		ChildPanelOnCentralModalReturn(\"Navir/ILS/sgNavir2ndILSConfirmWindow.pnl\", \"FIRST ILS SELECTION CONFIRMATION\", 
+																	makeDynString(\"$1:\" + firstConfirmText, \"$2:Yes\", \"$3:No\"), df1, ds1);
+	}
+	
+	// if user ok or is the Tower client
+	if(ds1[1] == \"true\" || isTWRClient())
+	{
+		// call normal confirmation text
+		ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+																		makeDynString(\"$1:\" + secondConfirmText, \"$2:Yes\", \"$3:No\"), df2, ds2);
+
+		if(ds2[1] == \"true\")
+		{
+			dpSet(ILSSelectionDpNamePrefix + \".Commands.ILSSelection\", requestedDirection);
+			
+			getHistories();
+
+			sgHistoryAddEvent(ILSHistories, SEVERITY_COMMAND, \"ILS \" + requestedDirection + \" selection command sent by \" + machineName);		
+		}
+	}
+}
+
+" 0
+ E E E
+1 692 119 "" 11
+0
+13 684
+"AckSoundButton"
+""
+1 430 550 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+195 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,69,0,0,0,0,0
+0  428 548 682 602
+
+T 
+1
+LANG:5 17 Acknowledge Alarm
+"main()
+{
+	stopSound();
+}" 0
+ E E E
+1 702 144 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 687 102 "" 13
+0
+1 688 102 "" 14
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 72 "Group26" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 235 T 109 0.7 0 0.35 -67 157.75
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.LOC\""
+3 73 "Group27" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 426 T 110 0.7 0 0.35 -67 180.9
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.DME\""
+3 102 "" -1
+"Navir\\ILS\\ILS_ICAO_Clock.pnl" 510 220 T 148 0.92452148790177 0 0.857142857142857 213.983387504514 200.571428571429
+6
+"$b_pvssRange""FALSE"
+"$dpe_percentage1""$SystemName + \"ILS\" + $ILS_A + \"_\" + $ILS_B+ \"Selection.Status.ILSTimer\""
+"$f_max""60"
+"$f_min""0.000"
+"$s_col1""sgStdOPSColor"
+"$s_col2""sgStdABSColor"
+3 111 "Group20" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 130 340 T 156 0.7 0 0.35 659 301
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B \".HMIStatuses.GP\""
+3 112 "Group21" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 130 110 T 157 0.7 0 0.35 659 201.5
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B \".HMIStatuses.LOC\""
+3 113 "Group22" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 130 210 T 158 0.7025 0 0.355 658.218467273467 255.704461152882
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B \".HMIStatuses.DME\""
+3 119 "" -1
+"objects\\sgFwHistory.pnl" 450 730 T 171 1 0 1 -450 -30
+2
+"$SystemHistory""\"ILS\" + $ILS_A+ \"_\"$ILS_B+ Selection.History"
+"$SystemName""$SystemName"
+3 134 "Group21" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 80 200 T 187 0.3750000000000001 0 0.15 780 610
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B + \".HMIStatuses.LOCDMEStatus\""
+3 135 "Group23" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 460 310 T 188 0.375 0 0.152073308270675 637.5 562.8572744360907
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B+ \".HMIStatuses.CATIStatus\""
+3 137 "Group27" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 460 340 T 190 0.3750000000000001 0 0.1495733082706749 637.5 529.1450751879705
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B+ \".HMIStatuses.CATIIStatus\""
+3 138 "Group29" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 460 370 T 191 0.3750000000000001 0 0.15 637.5 494.5
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_B+ \".HMIStatuses.CATIIIStatus\""
+3 139 "Group34" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 820 610 T 192 0.3749999999999999 0 0.15 -157.4999999999999 548.5
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A + \".HMIStatuses.LOCDMEStatus\""
+3 140 "Group35" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 820 580 T 193 0.3749999999999999 0 0.15 -157.4999999999999 523
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.CATIStatus\""
+3 141 "Group36" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 820 550 T 194 0.3749999999999999 0 0.15 -157.4999999999999 497.5
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.CATIIStatus\""
+3 142 "Group37" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 820 520 T 195 0.375 0 0.15 -157.5 472
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.CATIIIStatus\""
+3 143 "" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 450 460 T 196 0.625 0 0.275 148.75 488.5
+3
+"$LabelsNum""0"
+"$SystemName""$SystemName"
+"$SystemStatus""SecondaryPowerSupply.GlobalStatus"
+3 144 "PANEL_REF145" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 210 330 T 196 0.7 0 0.35 -67 304.5
+3
+"$LabelsNum""1"
+"$SystemName""$SystemName"
+"$SystemStatus""\"ILS\" + $ILS_A+ \".HMIStatuses.GP\""
+0

@@ -1,0 +1,441 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 1
+"$Site"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 9 INCH Bern
+LANG:1 4 AFPS
+1 759 39 "" 46
+0
+1 762 40 "" 46
+0
+30 251
+"Frame2"
+""
+1 10 228 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+64 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 175 1100 230
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 7 Brokers
+1 765 107 "" 46
+0
+1 768 108 "" 46
+0
+1 771 109 "" 46
+0
+30 582
+"Frame6"
+""
+1 10 160 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+139 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.18987341772152 0 -31.1392405063291 0 E 10 85 1100 165
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 7 Clients
+30 697
+"Frame1"
+""
+1 10 289 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+175 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 240 1100 295
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 9 INCH Core
+30 698
+"Frame5"
+""
+1 10 514 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+176 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.41552511415525 0 -126.735159817352 0 E 10 305 1100 525
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 15 INCH Interfaces
+1 774 128 "" 46
+0
+1 777 129 "" 46
+0
+1 780 130 "" 46
+0
+1 783 132 "" 46
+0
+1 786 134 "" 46
+0
+1 789 135 "" 46
+0
+1 792 136 "" 46
+0
+1 795 137 "" 46
+0
+1 798 138 "" 46
+0
+13 233
+"Button1"
+""
+1 15 660 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+60 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  13 658 217 692
+
+T 
+1
+LANG:5 13 Force Refresh
+"main()
+{
+	sgHistoryAddEvent(\"INCH\" + $Site + \".History\", SEVERITY_COMMAND, \"<<Force Refresh>> sent\");
+	sgXMLPrepareForceToUKN();	
+	sgINCHForceToUKN($Site);
+
+}
+" 0
+ E E E
+1 758 38 "" 11
+0
+1 801 141 "" 46
+0
+1 804 145 "" 46
+0
+1 807 146 "" 46
+0
+1 810 147 "" 46
+0
+1 813 148 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 760 39 "" 51
+0
+1 761 39 "" 52
+0
+1 763 40 "" 51
+0
+1 764 40 "" 52
+0
+1 766 107 "" 51
+0
+1 767 107 "" 52
+0
+1 769 108 "" 51
+0
+1 770 108 "" 52
+0
+1 772 109 "" 51
+0
+1 773 109 "" 52
+0
+1 775 128 "" 51
+0
+1 776 128 "" 52
+0
+1 778 129 "" 51
+0
+1 779 129 "" 52
+0
+1 781 130 "" 51
+0
+1 782 130 "" 52
+0
+1 784 132 "" 51
+0
+1 785 132 "" 52
+0
+1 787 134 "" 51
+0
+1 788 134 "" 52
+0
+1 790 135 "" 51
+0
+1 791 135 "" 52
+0
+1 793 136 "" 51
+0
+1 794 136 "" 52
+0
+1 796 137 "" 51
+0
+1 797 137 "" 52
+0
+1 799 138 "" 51
+0
+1 800 138 "" 52
+0
+1 802 141 "" 51
+0
+1 803 141 "" 52
+0
+1 805 145 "" 51
+0
+1 806 145 "" 52
+0
+1 808 146 "" 51
+0
+1 809 146 "" 52
+0
+1 811 147 "" 51
+0
+1 812 147 "" 52
+0
+1 814 148 "" 51
+0
+1 815 148 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 38 "" -1
+"objects\\sgFwHistory.pnl" 35 720 T 62 1 0 1 -35 -20
+2
+"$SystemHistory""INCH_B.History"
+"$SystemName"""
+3 39 "Group21" -1
+"objects\\sgFwBlock.pnl" 10 345 T 62 0.75 0 0.125 204.854395604396 153.458333333333
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Broker.BrokerA"
+3 40 "Group23" -1
+"objects\\sgFwBlock.pnl" 10 200 T 63 0.75 0 0.125 594.854395604396 172.458333333333
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Broker.BrokerB"
+3 107 "Group62" -1
+"objects\\sgFwBlock.pnl" 15 105 T 136 0.75 0 0.25 10.9999999999997 71
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_ClientsPanelBRN.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.GlobalClients.BRNClients"
+3 108 "Group63" -1
+"objects\\sgFwBlock.pnl" 405 105 T 137 0.75 0 0.25 103.25 71
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_ClientsPanelZRH.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.GlobalClients.ZRHClients"
+3 109 "Group64" -1
+"objects\\sgFwBlock.pnl" 795 105 T 138 0.75 0 0.25 190.75 71
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_ClientsPanelGVA.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.GlobalClients.GVAClients"
+3 128 "Group112" -1
+"objects\\sgFwBlock.pnl" 600 260 T 164 0.75 0 0.125 152.392857142857 229.291666666667
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Persistency.GlobalStatus"
+3 129 "Group113" -1
+"objects\\sgFwBlock.pnl" 15 325 T 165 0.75 0 0.125 13.75 299.375
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.CeilographBern.GlobalStatus"
+3 130 "Group114" -1
+"objects\\sgFwBlock.pnl" 15 380 T 166 0.75 0 0.125 773.75 292.5
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Maws.GlobalStatus"
+3 132 "Group116" -1
+"objects\\sgFwBlock.pnl" 405 380 T 168 0.75 0 0.125 -278.75 347.5
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Meteo.GlobalStatus"
+3 134 "Group118" -1
+"objects\\sgFwBlock.pnl" 15 440 T 170 0.75 0 0.125 773.75 450
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Wind32.GlobalStatus"
+3 135 "Group119" -1
+"objects\\sgFwBlock.pnl" 795 440 T 171 0.75 0 0.125 -191.25 450
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Wind14.GlobalStatus"
+3 136 "Group120" -1
+"objects\\sgFwBlock.pnl" 210 260 T 172 0.75 0 0.125 54.1620879120877 229.791666666667
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Monitoring.GlobalStatus"
+3 137 "Group121" -1
+"objects\\sgFwBlock.pnl" 405 325 T 173 0.75 0 0.125 101.25 299.375
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.CeilographMaerchligen.GlobalStatus"
+3 138 "Group122" -1
+"objects\\sgFwBlock.pnl" 405 440 T 174 0.75 0 0.125 101.25 340
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.NavirBRN.GlobalStatus"
+3 141 "PANEL_REF142" -1
+"objects\\sgFwBlock.pnl" 795 380 T 178 0.75 0 0.125 -571.25 402.5
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.InchZRH.GlobalStatus"
+3 145 "PANEL_REF146" -1
+"objects\\sgFwBlock.pnl" 795 380 T 182 0.75 0 0.125 188.75 347.5
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.InchGVA.GlobalStatus"
+3 146 "PANEL_REF147" -1
+"objects\\sgFwBlock.pnl" 405 435 T 183 0.752467105263158 0 0.125 -279.749177631579 450.625
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.Volatis.GlobalStatus"
+3 147 "PANEL_REF148" -1
+"objects\\sgFwBlock.pnl" 405 435 T 183 0.75 0 0.125 101.25 395.625
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.SmartBRN.GlobalStatus"
+3 148 "PANEL_REF148" -1
+"objects\\sgFwBlock.pnl" 405 435 T 185 0.75 0 0.125 481.25 395.625
+5
+"$LabelsNum""1"
+"$PanelName""INCH\\INCH_B_InterfacesPanel.pnl"
+"$PanelParams""Site:$Site"
+"$SystemName"""
+"$SystemStatus""INCH_B.Components.Interfaces.SmartGRE.GlobalStatus"
+0

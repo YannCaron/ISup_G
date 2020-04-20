@@ -1,0 +1,1093 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 1078 638 N "_3DFace" 1
+"$SystemName"
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  15 300
+""0  1
+E "const string SCM = \"MRTS/MRTSSystemControlModePanel.pnl\";" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 346
+"Frame7"
+""
+1 15 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+115 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.263596966729617 0 1.818181818181818 6.046045499055745 -173.6363636363636 0 E 15 200 475 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 2A
+1 478 1 "" 46
+0
+1 481 2 "" 46
+0
+1 484 5 "" 46
+0
+1 487 6 "" 46
+0
+1 490 9 "" 46
+0
+1 493 10 "" 46
+0
+1 496 12 "" 46
+0
+1 499 13 "" 46
+0
+1 502 14 "" 46
+0
+1 505 23 "" 46
+0
+1 508 24 "" 46
+0
+1 511 25 "" 46
+0
+1 514 26 "" 46
+0
+1 517 47 "" 46
+0
+1 520 48 "" 46
+0
+1 523 51 "" 46
+0
+1 526 52 "" 46
+0
+1 529 53 "" 46
+0
+1 532 54 "" 46
+0
+1 535 56 "" 46
+0
+1 538 57 "" 46
+0
+1 541 59 "" 46
+0
+1 544 60 "" 46
+0
+1 547 61 "" 46
+0
+1 550 63 "" 46
+0
+1 553 64 "" 46
+0
+1 556 65 "" 46
+0
+1 559 66 "" 46
+0
+1 562 67 "" 46
+0
+1 565 69 "" 46
+0
+1 568 71 "" 46
+0
+1 571 72 "" 46
+0
+1 574 73 "" 46
+0
+30 342
+"Frame3"
+""
+1 15 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+111 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.263596966729617 0 1 6.046045499055745 -15 0 E 15 50 475 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 1A
+30 344
+"Frame5"
+""
+1 130 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+113 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.671499043592067 0 1 42.70512433303134 -15 0 E 130 50 475 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 13 pLine 1A + 1B
+30 345
+"Frame6"
+""
+1 355 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+114 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 5.000000000000044 -15 0 E 355 50 475 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 1B
+30 347
+"Frame8"
+""
+1 130 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+116 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.671499043592066 0 1.81818181818181 42.70512433303144 -173.6363636363613 0 E 130 200 475 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 13 pLine 2A + 2B
+30 348
+"Frame9"
+""
+1 355 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+117 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.818181818181811 5.000000000000044 -173.6363636363616 0 E 355 200 475 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 2B
+30 349
+"Frame10"
+""
+1 605 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+118 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.263062695347241 0 1 435.8470693149191 -15 0 E 605 50 1065 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 1A
+30 350
+"Frame11"
+""
+1 720 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+119 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.671499043592066 0 1 231.5206886137121 -15 0 E 720 50 1065 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 13 pLine 1A + 1B
+30 351
+"Frame12"
+""
+1 945 190 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+120 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 4.440892098500626e-14 -15 0 E 945 50 1065 190
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 1B
+30 352
+"Frame13"
+""
+1 605 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+121 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.263654751961637 0 1.818181818181818 435.4888750632101 -173.6363636363636 0 E 605 200 1065 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 2A
+30 353
+"Frame14"
+""
+1 720 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+122 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.671499043592066 0 1.818181818181818 231.5206886137121 -173.6363636363636 0 E 720 200 1065 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 13 pLine 2A + 2B
+30 354
+"Frame15"
+""
+1 945 300 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+123 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.818181818181818 4.440892098500626e-14 -173.6363636363636 0 E 945 200 1065 300
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 8 pLine 2B
+1 577 76 "" 46
+0
+1 580 77 "" 46
+0
+1 583 78 "" 46
+0
+1 586 81 "" 46
+0
+1 589 82 "" 46
+0
+13 473
+"ChainABtn"
+""
+1 30 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+137 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  28 428 92 522
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	dyn_string MRTSName = makeDynString(\"$SystemName:\" + $SystemName, \"$Chain:A\");
+	//DebugTN(\"MRTSDefaultPanel >> will call panel:\" + SCM);
+	ChildPanelOnCentralModal(SCM, \"Command Window\", MRTSName, 0, 0);
+}" 0
+ E E E
+13 474
+"ForceRefreshButton"
+""
+1 0 605 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+139 0 0 0 0 0
+E E E
+0
+2
+LANG:5 16 Refresh all MRTS
+LANG:1 18 Refresh all PRIMUS
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  -2 603 202 637
+
+T 
+2
+LANG:5 12 Force to UKN
+LANG:1 13 Force Refresh
+"main()
+{
+	dyn_string dpesForceToUkn, values;
+	
+	dyn_string dp, dv;
+	dp = getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.Radars.*.Components.LineA.Label1\");
+	
+	int length = dynlen(dp);
+	// for each lines check if lineB exists
+	for (int cpt = 1; cpt <= length; cpt++)
+	{
+		string str;
+		str = dp[cpt];
+		strreplace(str, \"LineA\", \"LineB\");
+		
+		if (dpExists(str))
+			dynAppend(dp, str);	
+	}
+		
+	int length = dynlen(dp);	
+	// idem for second label
+	for (int cpt = 1; cpt <= length; cpt++)
+	{
+		string str;
+		str = dp[cpt];
+		strreplace(str, \"Label1\", \"Label2\");
+		dynAppend(dp, str);	
+	}
+		
+	// idem for the second chain
+	int length = dynlen(dp);	
+	for (int cpt = 1; cpt <= length; cpt++)
+	{
+		string str;
+		str = dp[cpt];
+		strreplace(str, \"NodeA\", \"NodeB\");
+		dynAppend(dp, str);	
+	}
+	
+	// create value for corresponding points
+	for (int cpt = 1; cpt <= dynlen(dp); cpt++)
+		dynAppend(dv, \"\");
+	
+	dpSet(dp,dv);
+	
+	dpesForceToUkn = $SystemName + \"MRTS.Components.NodeA.Components.NTP.PreStatus\";
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.NTPComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeA.Components.NodeStatus.PreStatus\");
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.NodeStatusComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeA.Components.QNH.PreStatus\");
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.QNHComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.Radars.*.GlobalStatus.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.Radars.*.Components.Radar.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.Radars.*.Components.LineA.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeA.Components.Radars.*.Components.LineB.PreStatus\"));
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeB.Components.NTP.PreStatus\");
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.NTPComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeB.Components.NodeStatus.PreStatus\");
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.NodeStatusComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeB.Components.QNH.PreStatus\");
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.QNHComponents.*.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.Radars.*.GlobalStatus.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.Radars.*.Components.Radar.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.Radars.*.Components.LineA.PreStatus\"));
+	dynAppend(dpesForceToUkn, getPointsFromPattern($SystemName + \"MRTS.Components.NodeB.Components.Radars.*.Components.LineB.PreStatus\"));
+																	
+	// create value for corresponding points
+	for (int cpt = 1; cpt <= dynlen(dpesForceToUkn); cpt++)
+		dynAppend(values, \"UKN\");
+
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeA.Components.QNHComponents.QNHReceptionArea1.Label1\");
+	dynAppend(values, \"unknown\");
+	dynAppend(dpesForceToUkn, $SystemName + \"MRTS.Components.NodeB.Components.QNHComponents.QNHReceptionArea1.Label1\");
+	dynAppend(values, \"unknown\");
+				
+	dpSet(dpesForceToUkn, values);
+	
+	// clear the MRTS cache
+	dpSet($SystemName + \"MRTS.ClearMRTSCache\", true);
+	
+	sgHistoryAddEvent($SystemName + \"MRTS.History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+}" 0
+ E E E
+13 475
+"SwitchToABtn"
+""
+1 100 525 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  98 523 392 557
+
+T 
+1
+LANG:5 17 Switch to chain A
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	ChildPanelOnCentralModalReturn(WindowspanelPath, \"Warning !!!\", makeDynString(\"$1:\" + \"Do you really want to switch over to chain A ?\", \"$2:\" + \"Yes\", \"$3:\" + \"No\"), df, ds);
+	
+	if(ds[1] == \"true\")
+	{
+		dpSet($SystemName + \"MRTS.Components.NodeB.SNMPData.System.SysStop\", true);
+		sgHistoryAddEvent($SystemName + \"MRTS.History\", SEVERITY_COMMAND, \"<<stop chain B>> sent\");
+		
+		dpSet($SystemName + \"MRTS.Components.NodeA.SNMPData.System.SysStart\", true);
+		sgHistoryAddEvent($SystemName + \"MRTS.History\", SEVERITY_COMMAND, \"<<start chain A>> sent\");
+		
+		PanelOffPanel(\"Command Window\");	
+	}
+	else
+		PanelOffPanel(\"Command Window\");
+}" 0
+ E E E
+13 476
+"SwitchToBBtn"
+""
+1 680 525 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  678 523 972 557
+
+T 
+1
+LANG:5 17 Switch to chain B
+"main()
+{
+	dyn_string ds;
+	dyn_string df;
+	ChildPanelOnCentralModalReturn(WindowspanelPath, \"Warning !!!\", makeDynString(\"$1:\" + \"Do you really want to switch over to chain B ?\", \"$2:\" + \"Yes\", \"$3:\" + \"No\"), df, ds);
+	
+	if(ds[1] == \"true\")
+	{
+		dpSet($SystemName + \"MRTS.Components.NodeA.SNMPData.System.SysStop\", true);
+		sgHistoryAddEvent($SystemName + \"MRTS.History\", SEVERITY_COMMAND, \"<<stop chain A>> sent\");
+		
+		dpSet($SystemName + \"MRTS.Components.NodeB.SNMPData.System.SysStart\", true);
+		sgHistoryAddEvent($SystemName + \"MRTS.History\", SEVERITY_COMMAND, \"<<start chain B>> sent\");
+		
+		PanelOffPanel(\"Command Window\");	
+	}
+	else
+		PanelOffPanel(\"Command Window\");
+}" 0
+ E E E
+13 477
+"ChainBBtn"
+""
+1 985 430 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+145 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  983 428 1047 522
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	dyn_string MRTSName = makeDynString(\"$SystemName:\" + $SystemName, \"$Chain:B\");
+	ChildPanelOnCentralModal(SCM, \"Command Window\", MRTSName, 0, 0);
+}" 0
+ E E E
+1 592 83 "" 46
+0
+1 595 84 "" 46
+0
+1 598 85 "" 46
+0
+1 601 86 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 479 1 "" 51
+0
+1 480 1 "" 52
+0
+1 482 2 "" 51
+0
+1 483 2 "" 52
+0
+1 485 5 "" 51
+0
+1 486 5 "" 52
+0
+1 488 6 "" 51
+0
+1 489 6 "" 52
+0
+1 491 9 "" 51
+0
+1 492 9 "" 52
+0
+1 494 10 "" 51
+0
+1 495 10 "" 52
+0
+1 497 12 "" 51
+0
+1 498 12 "" 52
+0
+1 500 13 "" 51
+0
+1 501 13 "" 52
+0
+1 503 14 "" 51
+0
+1 504 14 "" 52
+0
+1 506 23 "" 51
+0
+1 507 23 "" 52
+0
+1 509 24 "" 51
+0
+1 510 24 "" 52
+0
+1 512 25 "" 51
+0
+1 513 25 "" 52
+0
+1 515 26 "" 51
+0
+1 516 26 "" 52
+0
+1 518 47 "" 51
+0
+1 519 47 "" 52
+0
+1 521 48 "" 51
+0
+1 522 48 "" 52
+0
+1 524 51 "" 51
+0
+1 525 51 "" 52
+0
+1 527 52 "" 51
+0
+1 528 52 "" 52
+0
+1 530 53 "" 51
+0
+1 531 53 "" 52
+0
+1 533 54 "" 51
+0
+1 534 54 "" 52
+0
+1 536 56 "" 51
+0
+1 537 56 "" 52
+0
+1 539 57 "" 51
+0
+1 540 57 "" 52
+0
+1 542 59 "" 51
+0
+1 543 59 "" 52
+0
+1 545 60 "" 51
+0
+1 546 60 "" 52
+0
+1 548 61 "" 51
+0
+1 549 61 "" 52
+0
+1 551 63 "" 51
+0
+1 552 63 "" 52
+0
+1 554 64 "" 51
+0
+1 555 64 "" 52
+0
+1 557 65 "" 51
+0
+1 558 65 "" 52
+0
+1 560 66 "" 51
+0
+1 561 66 "" 52
+0
+1 563 67 "" 51
+0
+1 564 67 "" 52
+0
+1 566 69 "" 51
+0
+1 567 69 "" 52
+0
+1 569 71 "" 51
+0
+1 570 71 "" 52
+0
+1 572 72 "" 51
+0
+1 573 72 "" 52
+0
+1 575 73 "" 51
+0
+1 576 73 "" 52
+0
+1 578 76 "" 51
+0
+1 579 76 "" 52
+0
+1 581 77 "" 51
+0
+1 582 77 "" 52
+0
+1 584 78 "" 51
+0
+1 585 78 "" 52
+0
+1 587 81 "" 51
+0
+1 588 81 "" 52
+0
+1 590 82 "" 51
+0
+1 591 82 "" 52
+0
+1 593 83 "" 51
+0
+1 594 83 "" 52
+0
+1 596 84 "" 51
+0
+1 597 84 "" 52
+0
+1 599 85 "" 51
+0
+1 600 85 "" 52
+0
+1 602 86 "" 51
+0
+1 603 86 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 1 "Group3" -1
+"objects/sgFwBlock.pnl" 50 30 T 2 0.2375 0 0.15 238.1250000000001 90.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV2S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GV2S.GlobalStatus"
+3 2 "Group5" -1
+"objects/sgFwBlock.pnl" 50 30 T 3 0.2375 0 0.15 133.125 245.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GOSS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GOSS.GlobalStatus"
+3 5 "Group13" -1
+"objects/sgFwBlock.pnl" 160 70 T 6 0.2375 0 0.15 212 239.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL1S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.HL1S.GlobalStatus"
+3 6 "Group14" -1
+"objects/sgFwBlock.pnl" 290 70 T 7 0.2375 0 0.15 -43.87499999999996 44.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL2P"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.HL2P.GlobalStatus"
+3 9 "Group25" -1
+"objects/sgFwBlock.pnl" 160 70 T 10 0.2375 0 0.15 107 84.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV1S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GV1S.GlobalStatus"
+3 10 "Group26" -1
+"objects/sgFwBlock.pnl" 290 70 T 11 0.2375 0 0.15 301.1250000000001 44.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV1P"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GV1P.GlobalStatus"
+3 12 "Group28" -1
+"objects/sgFwBlock.pnl" 30 110 T 13 0.2375 0 0.15 242.875 273.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LAGS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.LAGS.GlobalStatus"
+3 13 "Group29" -1
+"objects/sgFwBlock.pnl" 160 110 T 14 0.24 0 0.15 106.6 313.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LESX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.LESX.GlobalStatus"
+3 14 "Group30" -1
+"objects/sgFwBlock.pnl" 290 110 T 15 0.2375 0 0.15 181.1250000000001 118.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:NEVS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.NEVS.GlobalStatus"
+3 23 "Group21" -1
+"objects/sgFwBlock.pnl" 870 100 T 36 0.2375 0 0.15 -181.6249999999999 80
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:TGMM"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.TGMM.GlobalStatus"
+3 24 "Group22" -1
+"objects/sgFwBlock.pnl" 810 150 T 36 0.2375 0 0.15 57.62500000000004 32.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GRES"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GRES.GlobalStatus"
+3 25 "Group23" -1
+"objects/sgFwBlock.pnl" 620 160 T 37 0.2375 0 0.15 -2.250000000000012 186
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:CIRS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.CIRS.GlobalStatus"
+3 26 "Group23" -1
+"objects/sgFwBlock.pnl" 200 80 T 40 0.2375 0 0.15 97.49999999999999 43
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:DOLS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.DOLS.GlobalStatus"
+3 47 "Group64" -1
+"objects/sgFwBlock.pnl" 140 325 T 72 0.525 0 0.15 176.5 336.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.NTP"
+3 48 "Group66" -1
+"objects/sgFwBlock.pnl" 305 400 T 75 0.725 0 0.425 -121.125 260
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.NodeStatus"
+3 51 "Group56" -1
+"objects/sgFwBlock.pnl" 345 75 T 80 0.2375 0 0.15 753.0625 83.75
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV2S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GV2S.GlobalStatus"
+3 52 "Group57" -1
+"objects/sgFwBlock.pnl" 125 240 T 81 0.2375 0 0.15 700.3125 214.0000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GOSS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GOSS.GlobalStatus"
+3 53 "Group58" -1
+"objects/sgFwBlock.pnl" 345 130 T 82 0.2375 0 0.15 753.0625 230.5000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL1S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.HL1S.GlobalStatus"
+3 54 "Group59" -1
+"objects/sgFwBlock.pnl" 235 130 T 83 0.2375 0 0.15 549.1875 35.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL2P"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.HL2P.GlobalStatus"
+3 56 "Group61" -1
+"objects/sgFwBlock.pnl" 15 75 T 85 0.2375 0 0.15 726.4375 83.75
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV1S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GV1S.GlobalStatus"
+3 57 "Group62" -1
+"objects/sgFwBlock.pnl" 125 75 T 86 0.2375 0 0.15 925.3125 43.75
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GV1P"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GV1P.GlobalStatus"
+3 59 "Group64" -1
+"objects/sgFwBlock.pnl" 345 185 T 88 0.2375 0 0.15 753.0625 262.2500000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LAGS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.LAGS.GlobalStatus"
+3 60 "Group65" -1
+"objects/sgFwBlock.pnl" 14 240 T 89 0.24 0 0.15 726.64 294.0000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LESX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.LESX.GlobalStatus"
+3 61 "Group66" -1
+"objects/sgFwBlock.pnl" 235 185 T 90 0.2375 0 0.15 779.1875 107.25
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:NEVS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.NEVS.GlobalStatus"
+3 63 "Group68" -1
+"objects/sgFwBlock.pnl" 345 240 T 92 0.2375 0 0.15 523.0625 59
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:TGMM"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.TGMM.GlobalStatus"
+3 64 "Group69" -1
+"objects/sgFwBlock.pnl" 125 130 T 93 0.2375 0 0.15 805.3125 35.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GRES"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GRES.GlobalStatus"
+3 65 "Group70" -1
+"objects/sgFwBlock.pnl" 125 185 T 94 0.2375 0 0.15 700.3125 182.2500000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:CIRS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.CIRS.GlobalStatus"
+3 66 "Group71" -1
+"objects/sgFwBlock.pnl" 15 130 T 95 0.2375 0 0.15 726.4375 35.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:DOLS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.DOLS.GlobalStatus"
+3 67 "Group41" -1
+"objects/sgFwBlock.pnl" 285 385 T 95 0.525 0 0.15 -119.625 327.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.QNH"
+3 69 "Group43" -1
+"objects/sgFwBlock.pnl" 90 520 T 99 0.725 0 0.425 619.75 209
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.NodeStatus"
+3 71 "Group45" -1
+"objects/sgFwBlock.pnl" 90 305 T 101 0.525 0 0.15 567.75 339.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.QNH"
+3 72 "Group37" -1
+"objects/sgFwBlock.pnl" 235 130 T 107 0.2375 0 0.15 89.1875 270.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL2S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.HL2S.GlobalStatus"
+3 73 "Group39" -1
+"objects/sgFwBlock.pnl" 855 130 T 108 0.2375 0 0.15 526.9375 270.5000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:HL2S"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.HL2S.GlobalStatus"
+3 76 "Group38" -1
+"objects/sgFwBlock.pnl" 245 360 T 130 0.525 0 0.15 706.375 331
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.NTP"
+3 77 "Group36" -1
+"objects/sgFwBlock.pnl" 25 220 T 131 0.2375 0 0.15 244.0625 177
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GDBS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.GDBS.GlobalStatus"
+3 78 "Group38" -1
+"objects/sgFwBlock.pnl" 365 220 T 132 0.2375 0 0.15 58.31249999999999 102
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LBRX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.LBRX.GlobalStatus"
+3 81 "Group45" -1
+"objects/sgFwBlock.pnl" 25 260 T 135 0.2375 0 0.15 829.0625 171.0000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:GDBS"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.GDBS.GlobalStatus"
+3 82 "Group46" -1
+"objects/sgFwBlock.pnl" 365 260 T 136 0.2375 0 0.15 643.3125 96
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LBRX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.LBRX.GlobalStatus"
+3 83 "PANEL_REF83" -1
+"objects/sgFwBlock.pnl" 160 110 T 146 0.24 0 0.15 211.6 313.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:PESX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.PESX.GlobalStatus"
+3 84 "PANEL_REF84" -1
+"objects/sgFwBlock.pnl" 160 110 T 146 0.24 0 0.15 796.6 313.5000000000008
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:PESX"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.PESX.GlobalStatus"
+3 85 "PANEL_REF85" -1
+"objects/sgFwBlock.pnl" 290 70 T 146 0.2375 0 0.15 301.1250000000001 84.5
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LYOP"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.Radars.LYOP.GlobalStatus"
+3 86 "PANEL_REF86" -1
+"objects/sgFwBlock.pnl" 125 75 T 147 0.2375 0 0.15 925.3125 83.75
+5
+"$LabelsNum""0"
+"$PanelName""MRTS/MRTSMainPanel.pnl"
+"$PanelParams""SystemName:$SystemName;FileOnMRTSModule:MRTS/MRTSRadarPanel.pnl;RadarName:LYOP"
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.Radars.LYOP.GlobalStatus"
+0

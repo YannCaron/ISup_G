@@ -1,0 +1,1041 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1106 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+6 1295
+"CATII_IIIBlinkerRECT"
+""
+1 52 52 E E E 1 E 1 E N "_Transparent" E N "_dpdoesnotexist" E E
+ E E
+181 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  dpConnect(\"connectCATIIStatus\", \"Navir_G:ILS23.HMIStatuses.CATIIStatus.Status\");
+}
+
+void connectCATIIStatus(string catDpName, string catStatus)
+{
+  if (catStatus == OPS_STATUS)
+    this.backCol = \"<{212,208,200},3,{153,0,204},3,{0,0,0},0,{0,0,0},0,{0,0,0},0,{0,0,0},0>\";  
+  else
+    this.backCol = \"_3DFace\";  
+    
+  
+  }" 0
+ E 0 1 1 2 1 E 1 0 1 0 -16 1 E 285 414 493 480
+1 1550 91 "" 12
+19 "text" 0 0 1
+LANG:5 6 LOC 23
+
+0
+1 1551 91 "1" 46
+0
+1 1552 91 "0" 46
+0
+1 1557 92 "" 12
+19 "text" 0 0 1
+LANG:5 3 LAP
+
+0
+1 1558 92 "1" 46
+0
+1 1559 92 "0" 46
+0
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,40,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 12 Navir Geneva
+LANG:1 4 AFPS
+30 237
+"Frame1"
+""
+1 10 481 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+78 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1 0 -10 0 E 10 60 1100 490
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir GVA
+1 1564 94 "" 12
+19 "text" 0 0 1
+LANG:5 4 GP23
+
+0
+1 1565 94 "1" 46
+0
+1 1566 94 "3" 46
+0
+1 1567 94 "0" 46
+0
+30 535
+"Frame2"
+""
+1 270 463 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+123 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.02777777777778 0 -19.1944444444447 0 E 270 115 505 475
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 6 ILS 23
+1 1574 95 "" 12
+19 "text" 0 0 1
+LANG:5 6 LOC 05
+
+0
+1 1575 95 "1" 46
+0
+1 1576 95 "0" 46
+0
+1 1581 97 "" 12
+19 "text" 0 0 1
+LANG:5 5 GP 05
+
+0
+1 1582 97 "1" 46
+0
+1 1583 97 "3" 46
+0
+1 1584 97 "0" 46
+0
+30 562
+"Frame3"
+""
+1 20 463 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+127 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.02777777777778 0 -19.1944444444444 0 E 20 115 255 475
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 6 ILS 05
+1 1591 98 "" 12
+19 "text" 0 0 1
+LANG:5 3 GVA
+
+0
+1 1592 98 "1" 46
+0
+1 1593 98 "3" 46
+0
+1 1594 98 "0" 46
+0
+1 1601 99 "" 12
+19 "text" 0 0 1
+LANG:5 3 GLA
+
+0
+1 1602 99 "1" 46
+0
+1 1603 99 "0" 46
+0
+1 1608 103 "" 46
+0
+1 1611 104 "" 46
+0
+1 1614 105 "" 12
+19 "text" 0 0 1
+LANG:5 5 Gonio
+
+0
+1 1615 105 "1" 46
+0
+1 1616 105 "3" 46
+0
+1 1617 105 "0" 46
+0
+1 1624 106 "" 46
+0
+30 646
+"Frame5"
+""
+1 10 837 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+142 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.649350649350649 0 1.04735376044568 3.50649350649351 -39.4401114206128 0 E 10 495 550 855
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir SIO
+1 1627 107 "" 12
+19 "text" 0 0 1
+LANG:5 6 LOC 25
+
+0
+1 1628 107 "1" 46
+0
+1 1629 107 "3" 46
+0
+1 1630 107 "0" 46
+0
+1 1637 108 "" 12
+19 "text" 0 0 1
+LANG:5 4 GP25
+
+0
+1 1638 108 "1" 46
+0
+1 1639 108 "0" 46
+0
+1 1644 110 "" 12
+19 "text" 0 0 1
+LANG:5 3 SIO
+
+0
+1 1645 110 "1" 46
+0
+1 1646 110 "3" 46
+0
+1 1647 110 "0" 46
+0
+1 1654 112 "" 46
+0
+1 1657 113 "" 46
+0
+1 1658 114 "" 46
+0
+1 1659 119 "" 46
+0
+1 1662 120 "" 46
+0
+1 1665 121 "" 46
+0
+1 1668 122 "" 46
+0
+1 1671 123 "" 46
+0
+1 1674 136 "" 12
+19 "text" 0 0 1
+LANG:5 5 GP 24
+
+0
+1 1675 136 "1" 46
+0
+1 1676 136 "3" 46
+0
+1 1677 136 "0" 46
+0
+1 1684 137 "" 12
+19 "text" 0 0 1
+LANG:5 6 LOC 24
+
+0
+1 1685 137 "1" 46
+0
+1 1686 137 "0" 46
+0
+1 1691 138 "" 46
+0
+1 1694 139 "" 12
+19 "text" 0 0 1
+LANG:5 7 NDB EPL
+
+0
+1 1695 139 "1" 46
+0
+1 1696 139 "0" 46
+0
+30 899
+"Frame4"
+""
+1 570 764 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+172 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.697542533081285 0 1.00704225352113 332.400756143667 -19.4859154929578 0 E 570 495 1100 780
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 36  Les Eplatures Stations on Navir GVA
+13 847
+"INCHStatusesBtn"
+""
+1 825 795 E E E 1 E 1 E N {0,0,0} E N "_Button" E E
+ E E
+169 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0  823 793 1012 827
+
+T 
+1
+LANG:5 11 INCH States
+"main()
+{
+	dyn_string ds;
+	
+	ds = makeDynString(\"\");
+
+	sgFwSetNaviParams(\"Navir/INCH/NavirINCHStatusesGVA.pnl\", ds);
+	
+	sgFwNaviPanelOn();
+
+}" 0
+ E E "main()
+{
+
+}" 0
+
+1 1701 141 "" 46
+0
+1 1704 142 "" 46
+0
+1 1707 143 "" 12
+19 "text" 0 0 1
+LANG:5 3 FRI
+
+0
+1 1708 143 "1" 46
+0
+1 1709 143 "3" 46
+0
+1 1710 143 "0" 46
+0
+1 1717 144 "" 12
+19 "text" 0 0 1
+LANG:5 3 SPR
+
+0
+1 1718 144 "1" 46
+0
+1 1719 144 "3" 46
+0
+1 1720 144 "0" 46
+0
+1 1727 145 "" 12
+19 "text" 0 0 1
+LANG:5 3 PAS
+
+0
+1 1728 145 "1" 46
+0
+1 1729 145 "3" 46
+0
+1 1730 145 "0" 46
+0
+1 1737 147 "" 46
+0
+1 1740 148 "" 12
+19 "text" 0 0 1
+LANG:5 6 LOC 23
+
+0
+1 1741 148 "1" 46
+0
+1 1742 148 "3" 46
+0
+1 1743 148 "0" 46
+0
+1 1750 149 "" 12
+19 "text" 0 0 1
+LANG:5 5 GP 23
+
+0
+1 1751 149 "1" 46
+0
+1 1752 149 "0" 46
+0
+1 1757 152 "" 46
+0
+1 1760 153 "" 46
+0
+30 1549
+"FRAME1"
+""
+1 10 837 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+191 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.649350649350649 0 1.04735376044568 363.506493506493 -39.4401114206128 0 E 10 495 550 855
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Navir PAY
+1 1763 154 "" 12
+19 "text" 0 0 1
+LANG:5 5 LOC05
+
+0
+1 1764 154 "1" 46
+0
+1 1765 154 "3" 46
+0
+1 1766 154 "0" 46
+0
+1 1773 155 "" 12
+19 "text" 0 0 1
+LANG:5 5 GP 05
+
+0
+1 1774 155 "1" 46
+0
+1 1775 155 "0" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1609 103 "" 51
+0
+1 1610 103 "" 52
+0
+1 1612 104 "" 51
+0
+1 1613 104 "" 52
+0
+1 1625 106 "" 51
+0
+1 1626 106 "" 52
+0
+1 1655 112 "" 51
+0
+1 1656 112 "" 52
+0
+1 1660 119 "" 51
+0
+1 1661 119 "" 52
+0
+1 1663 120 "" 51
+0
+1 1664 120 "" 52
+0
+1 1666 121 "" 51
+0
+1 1667 121 "" 52
+0
+1 1669 122 "" 51
+0
+1 1670 122 "" 52
+0
+1 1672 123 "" 51
+0
+1 1673 123 "" 52
+0
+1 1692 138 "" 51
+0
+1 1693 138 "" 52
+0
+1 1702 141 "" 51
+0
+1 1703 141 "" 52
+0
+1 1553 91 "1" 51
+0
+1 1554 91 "1" 52
+0
+1 1555 91 "0" 51
+0
+1 1556 91 "0" 52
+0
+1 1560 92 "1" 51
+0
+1 1561 92 "1" 52
+0
+1 1562 92 "0" 51
+0
+1 1563 92 "0" 52
+0
+1 1568 94 "1" 51
+0
+1 1569 94 "1" 52
+0
+1 1570 94 "3" 51
+0
+1 1571 94 "3" 52
+0
+1 1572 94 "0" 51
+0
+1 1573 94 "0" 52
+0
+1 1577 95 "1" 51
+0
+1 1578 95 "1" 52
+0
+1 1579 95 "0" 51
+0
+1 1580 95 "0" 52
+0
+1 1585 97 "1" 51
+0
+1 1586 97 "1" 52
+0
+1 1587 97 "3" 51
+0
+1 1588 97 "3" 52
+0
+1 1589 97 "0" 51
+0
+1 1590 97 "0" 52
+0
+1 1595 98 "1" 51
+0
+1 1596 98 "1" 52
+0
+1 1597 98 "3" 51
+0
+1 1598 98 "3" 52
+0
+1 1599 98 "0" 51
+0
+1 1600 98 "0" 52
+0
+1 1604 99 "1" 51
+0
+1 1605 99 "1" 52
+0
+1 1606 99 "0" 51
+0
+1 1607 99 "0" 52
+0
+1 1618 105 "1" 51
+0
+1 1619 105 "1" 52
+0
+1 1620 105 "3" 51
+0
+1 1621 105 "3" 52
+0
+1 1622 105 "0" 51
+0
+1 1623 105 "0" 52
+0
+1 1631 107 "1" 51
+0
+1 1632 107 "1" 52
+0
+1 1633 107 "3" 51
+0
+1 1634 107 "3" 52
+0
+1 1635 107 "0" 51
+0
+1 1636 107 "0" 52
+0
+1 1640 108 "1" 51
+0
+1 1641 108 "1" 52
+0
+1 1642 108 "0" 51
+0
+1 1643 108 "0" 52
+0
+1 1648 110 "1" 51
+0
+1 1649 110 "1" 52
+0
+1 1650 110 "3" 51
+0
+1 1651 110 "3" 52
+0
+1 1652 110 "0" 51
+31 "transform" 0 0 1 0 1 1.030570752273633 1.092210365399865
+0
+1 1653 110 "0" 52
+0
+1 1678 136 "1" 51
+0
+1 1679 136 "1" 52
+0
+1 1680 136 "3" 51
+0
+1 1681 136 "3" 52
+0
+1 1682 136 "0" 51
+0
+1 1683 136 "0" 52
+0
+1 1687 137 "1" 51
+0
+1 1688 137 "1" 52
+0
+1 1689 137 "0" 51
+0
+1 1690 137 "0" 52
+0
+1 1697 139 "1" 51
+0
+1 1698 139 "1" 52
+0
+1 1699 139 "0" 51
+0
+1 1700 139 "0" 52
+0
+1 1705 142 "" 51
+0
+1 1706 142 "" 52
+0
+1 1711 143 "1" 51
+0
+1 1712 143 "1" 52
+0
+1 1713 143 "3" 51
+0
+1 1714 143 "3" 52
+0
+1 1715 143 "0" 51
+0
+1 1716 143 "0" 52
+0
+1 1721 144 "1" 51
+0
+1 1722 144 "1" 52
+0
+1 1723 144 "3" 51
+0
+1 1724 144 "3" 52
+0
+1 1725 144 "0" 51
+0
+1 1726 144 "0" 52
+0
+1 1731 145 "1" 51
+0
+1 1732 145 "1" 52
+0
+1 1733 145 "3" 51
+0
+1 1734 145 "3" 52
+0
+1 1735 145 "0" 51
+0
+1 1736 145 "0" 52
+0
+1 1738 147 "" 51
+0
+1 1739 147 "" 52
+0
+1 1744 148 "1" 51
+0
+1 1745 148 "1" 52
+0
+1 1746 148 "3" 51
+0
+1 1747 148 "3" 52
+0
+1 1748 148 "0" 51
+0
+1 1749 148 "0" 52
+0
+1 1753 149 "1" 51
+0
+1 1754 149 "1" 52
+0
+1 1755 149 "0" 51
+0
+1 1756 149 "0" 52
+0
+1 1758 152 "" 51
+0
+1 1759 152 "" 52
+0
+1 1761 153 "" 51
+0
+1 1762 153 "" 52
+0
+1 1767 154 "1" 51
+0
+1 1768 154 "1" 52
+0
+1 1769 154 "3" 51
+0
+1 1770 154 "3" 52
+0
+1 1771 154 "0" 51
+0
+1 1772 154 "0" 52
+0
+1 1776 155 "1" 51
+0
+1 1777 155 "1" 52
+0
+1 1778 155 "0" 51
+0
+1 1779 155 "0" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 91 "" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 400 270 T 119 1.19444444444445 0 0.633333333333333 -197.777777777778 74.6666666666666
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILS23"
+"$StationName""LOC23"
+"$SystemName""Navir_G:"
+3 92 "Group31" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 920 90 T 120 1 0 0.5933333333333331 -9.599999999999881 149.266666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LAP"
+"$SystemName""Navir_G:"
+3 94 "Group17" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 790 80 T 122 1.19444444444445 0 0.625776750862084 -663.611111111111 294.215678103222
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILS23"
+"$StationName""GP23"
+"$SystemName""Navir_G:"
+3 95 "Group21" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 150 T 124 1.19444444444445 0 0.633333333333333 -5.83333333333326 150.666666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILS05"
+"$StationName""LOC05"
+"$SystemName""Navir_G:"
+3 97 "Group23" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 260 T 126 1.19444444444445 0 0.625776750862084 -5.83333333333326 181.715678103222
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILS05"
+"$StationName""GP05"
+"$SystemName""Navir_G:"
+3 98 "Group25" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 260 T 128 1 0 0.650807820896567 495 65.224305227351
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GVA"
+"$SystemName""Navir_G:"
+3 99 "Group27" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 910 80 T 129 1 0 0.6 0.400000000000119 251.3
+4
+"$CommandEnable""0"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GLA"
+"$SystemName""Navir_G:"
+3 103 "Group15" -1
+"objects\\sgFwBlock.pnl" 130 90 T 136 0.5375 0 0.15 210.291552526475 345.534270505323
+5
+"$LabelsNum""1"
+"$PanelName""Navir/ILS/ILS_A_B.pnl"
+"$PanelParams""SystemName:Navir_G:;ILS_A:\"05\"; ILS_B:\"23\";Site:\"Geneva\""
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS23.GlobalStatus"
+3 104 "Group17" -1
+"objects\\sgFwBlock.pnl" 25 340 T 137 0.5375 0 0.15 16.6693303042529 307.734270505323
+5
+"$LabelsNum""1"
+"$PanelName""Navir/ILS/ILS_A_B.pnl"
+"$PanelParams""SystemName:Navir_G:;ILS_A:\"05\"; ILS_B:\"23\";Site:\"Geneva\";"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS05.GlobalStatus"
+3 105 "Group16" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 715 230 T 141 1 0 0.575714610793117 194.6 256.506116162657
+4
+"$CommandEnable""0"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""Gonio"
+"$SystemName""Navir_G:"
+3 106 "Group17" -1
+"objects\\sgFwBlock.pnl" 530 395 T 141 0.388644542183127 0 0.154411764705882 -183.772221201148 756.213235294117
+5
+"$LabelsNum""0"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_S:"
+"$SystemName""Navir_S:"
+"$SystemStatus""NavSup.GlobalStatus"
+3 107 "Group19" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 225 T 143 0.89304257528557 0 0.620999829099778 -6.7912772585671 519.475004272506
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC25"
+"$SystemName""Navir_S:"
+3 108 "Group21" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 105 T 144 0.89304257528557 0 0.633333333333333 -6.74974039460016 725.166666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP25"
+"$SystemName""Navir_S:"
+3 110 "Group25" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 470 T 146 0.89304257528557 0 0.625776750862084 163.208722741433 366.040277267237
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""SIO"
+"$SystemName""Navir_S:"
+3 112 "Group22" -1
+"objects\\sgFwBlock.pnl" 910 395 T 147 0.390490533562823 0 0.154411764705882 -163.183448078026 756.036764705883
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Links/LinksInfosSIO.pnl"
+"$PanelParams""SystemName:Navir_S:;CommandEnable:1"
+"$SystemName""Navir_S:"
+"$SystemStatus""LinksInfosSIO.GlobalStatus"
+3 113 "Group23" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 150 550 T 147 0.4875 0 0.125 219.003228715729 365.595551378446
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS23.HMIStatuses.CATIIStatus"
+3 114 "Group24" -1
+"Navir\\objects\\NavirILSOPSBlock.pnl" 295 380 T 147 0.4875 0 0.125 148.381607094107 356.595551378446
+3
+"$LabelsNum""0"
+"$SystemName""Navir_G:"
+"$SystemStatus""ILS23.HMIStatuses.CATIIIStatus"
+3 119 "Group31" -1
+"objects\\sgFwBlock.pnl" 440 185 T 151 0.802167669870989 0 0.154411764705882 -326.042258179486 473.241634697357
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 120 "" -1
+"objects\\sgFwBlock.pnl" 550 545 T 154 0.310077519379845 0 0.154411764705882 783.549864802906 346.927909207162
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""Navir_S.DistributedStatusB"
+3 121 "Group35" -1
+"objects\\sgFwBlock.pnl" 30 520 T 155 1.0125 0 0.175 314.338785314725 -22
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 122 "" -1
+"objects\\sgFwBlock.pnl" 670 450 T 155 0.3125 0 0.154411764705882 608.270885158717 361.339673913044
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""Navir_S.DistributedStatusA"
+3 123 "" -1
+"objects\\sgFwBlock.pnl" 820 450 T 155 0.682712014134275 0 0.154411764705882 -32.5475422552344 361.339673913044
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SecondaryPowerSupply.GlobalStatus"
+3 136 "Group35" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 555 T 169 0.920950155763244 0 0.620999829099778 712.3714953271031 409.545060669579
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP24"
+"$SystemName""Navir_G:"
+3 137 "Group36" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 685 T 170 0.920950155763244 0 0.633333333333333 712.3714953271031 222.833333333334
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC24"
+"$SystemName""Navir_G:"
+3 138 "Group38" -1
+"objects\\sgFwBlock.pnl" 300 815 T 171 0.414365390413024 0 0.15 792.411225002512 599.721428571429
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Links/LinksInfosEPL.pnl"
+"$PanelParams""SystemName:Navir_G:;CommandEnable:1"
+"$SystemName""Navir_G:"
+"$SystemStatus""LinksInfosEPL.GlobalStatus"
+3 139 "Group40" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 600 630 T 172 0.948857736240918 0 0.633333333333333 345.685358255449 257.666666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""NDBEPL"
+"$SystemName""Navir_G:"
+3 141 "" -1
+"objects\\sgFwBlock.pnl" 400 295 T 174 0.6802816901408451 0 0.15 256.20204865557 349.464285714286
+5
+"$LabelsNum""0"
+"$PanelName""Navir/NavSup/NavSupMainPanelRedu.pnl"
+"$PanelParams""SystemName:Navir_G:;TWRClientFrameVisible:1"
+"$SystemName""Navir_G:"
+"$SystemStatus""NavSup.GlobalStatus"
+3 142 "PANEL_REF143" -1
+"objects\\sgFwBlock.pnl" 380 280 T 175 0.65 0 0.15 571.354545454545 351.864285714286
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Links/LinksInfosGVA.pnl"
+"$PanelParams""SystemName:Navir_G:"
+"$SystemName""Navir_G:"
+"$SystemStatus""LinksInfosGVA.GlobalStatus"
+3 143 "PANEL_REF144" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 420 90 T 176 1 0 0.650807820896567 300 319.588860298622
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""FRI"
+"$SystemName""Navir_G:"
+3 144 "PANEL_REF145" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 580 90 T 177 1 0 0.650807820896567 140 175.588860298622
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""SPR"
+"$SystemName""Navir_G:"
+3 145 "PANEL_REF146" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 580 90 T 178 1 0 0.650807820896567 -56 319.588860298622
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""PAS"
+"$SystemName""Navir_G:"
+3 147 "PANEL_REF148" -1
+"objects\\sgFwBlock.pnl" 530 395 T 183 0.388644542183127 0 0.154411764705882 176.227778798852 756.213235294117
+5
+"$LabelsNum""0"
+"$PanelName""Navir/NavSup/NavSupMainPanelSingle.pnl"
+"$PanelParams""SystemName:Navir_P:"
+"$SystemName""Navir_P:"
+"$SystemStatus""NavSup.GlobalStatus"
+3 148 "PANEL_REF149" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 225 T 184 0.89304257528557 0 0.620999829099778 523.208722741433 519.475004272506
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC23"
+"$SystemName""Navir_P:"
+3 149 "PANEL_REF150" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 105 T 185 0.89304257528557 0 0.633333333333333 523.208722741433 725.166666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP23"
+"$SystemName""Navir_P:"
+3 152 "PANEL_REF153" -1
+"objects\\sgFwBlock.pnl" 910 395 T 188 0.390490533562823 0 0.154411764705882 196.816551921974 756.036764705883
+5
+"$LabelsNum""0"
+"$PanelName""Navir/Links/LinksInfosPAY.pnl"
+"$PanelParams""SystemName:Navir_P:;CommandEnable:1"
+"$SystemName""Navir_P:"
+"$SystemStatus""LinksInfosPAY.GlobalStatus"
+3 153 "PANEL_REF154" -1
+"objects\\sgFwBlock.pnl" 440 185 T 189 0.802167669870989 0 0.154411764705882 33.9577418205136 473.241634697357
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 154 "PANEL_REF155" -1
+"Navir\\objects\\sgNavirStationGlobal2Nav.pnl" 30 225 T 192 0.89304257528557 0 0.620999829099778 353.208722741433 519.475004272506
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""LOC05"
+"$SystemName""Navir_P:"
+3 155 "PANEL_REF156" -1
+"Navir\\objects\\sgNavirStationGlobal1Nav.pnl" 30 105 T 193 0.89304257528557 0 0.633333333333333 353.2502596054 725.166666666667
+4
+"$CommandEnable""1"
+"$ILSForCAT""ILSDummyForHMICAT"
+"$StationName""GP05"
+"$SystemName""Navir_P:"
+0

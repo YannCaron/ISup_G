@@ -1,0 +1,315 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 1250 450 N "_3DFace" 0
+E E E E E 1 -1 -1 0  165 120
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 3
+"Text2"
+""
+1 260 410 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 262 412 383 429
+0 2 0 "0s" 0 0 0 192 0 0  262 412 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 22 duplicated files found
+2 4
+"number"
+""
+1 230 410 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 232 412 257 429
+0 2 0 "0s" 0 0 0 192 0 0  232 412 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 5 -----
+13 0
+"Button1"
+""
+1 20 410 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 408 142 435
+
+T 
+1
+LANG:5 5 check
+"main()
+{
+	dyn_string pathes;
+	string fwPath;
+	string projPath;
+
+	this.enabled(false);
+	this.backCol(\"blau_grau_k\");
+	
+	number.text(\"-----\");
+		
+	Table1.sortOnClick(false);
+	Table1.deleteAllLines();
+		
+	paCfgReadValueList(PROJ_PATH + \"config/config\", \"general\", \"proj_path\", pathes);
+	//DebugTN(pathes);
+
+	//DebugTN(\"project pathes found: \");
+	//DebugTN(pathes, \" \", Table1.columnCount());
+	
+	if (dynlen(pathes) >= Table1.columnCount())
+	{
+		DebugTN(\"ATTENTION:\");
+		DebugTN(\"you have \" + dynlen(pathes) + \" proj_pathes in the config file\");
+		DebugTN(\"but there are currently only \" + (Table1.columnCount()-1) + \" columns defined in the table\");
+		DebugTN(\"if you need more just add invisible columns at the end of the table,\");
+		DebugTN(\"giving names according to the existing ones like <path\" + Table1.columnCount() + \"> for the next column\");
+		return;
+	}
+	
+	dyn_dyn_string directories;
+
+
+	// undocumented function but good enough for testpanel :-)
+	for (int cpt = 1; cpt <= dynlen(pathes); cpt++)
+	{
+		Table1.columnVisibility(cpt,true);
+		Table1.columnHeader(cpt,pathes[cpt]);
+		getRecursiveDirectoryNames(directories[cpt],pathes[cpt]);
+	}
+
+	dyn_string commonDirectories;
+
+	for (int cpt1 = 1; cpt1 <= dynlen(directories); cpt1++)
+	{
+		for (int dir1 = 1; dir1 <= dynlen(directories[cpt1]); dir1++)
+		{
+			for (int cpt2 = cpt1+1; cpt2 <= dynlen(directories); cpt2++)
+			{
+				for (int dir2 = 1; dir2 <= dynlen(directories[cpt2]); dir2++)
+				{
+					if (strtolower(directories[cpt1][dir1]) == strtolower(directories[cpt2][dir2]))
+						dynAppend(commonDirectories,strtolower(directories[cpt1][dir1]));
+				}
+			}
+		}
+	}
+
+	dynUnique(commonDirectories);
+
+	//DebugTN(\"commonDirectories----------------------------------\");
+	//DebugTN(commonDirectories);
+
+
+	dyn_string commonFiles;
+	
+	for (int cpt = 1; cpt <= dynlen(commonDirectories); cpt ++)
+	{
+		strreplace(commonDirectories[cpt],\"*\",\"\");
+		
+		for (int pp1 = 1; pp1 <= dynlen(pathes); pp1++)
+		{
+			for (int pp2 = pp1+1; pp2 <= dynlen(pathes); pp2++)
+			{
+				dyn_string temp, temp1,temp2;
+				
+				temp1 = getFileNamesRev(pathes[pp1] + \"\\\\\" + commonDirectories[cpt],\"*.bak\");
+				for (int f = 1; f <= dynlen(temp1); f++)
+					temp1[f] = strtolower(temp1[f]);
+
+				temp2 = getFileNamesRev(pathes[pp2] + \"\\\\\" + commonDirectories[cpt],\"*.bak\");
+				for (int f = 1; f <= dynlen(temp2); f++)
+					temp2[f] = strtolower(temp2[f]);
+				
+				
+				temp = dynIntersect(temp1, temp2);
+
+				for (int t = 1; t <= dynlen(temp); t++)
+					dynAppend(commonFiles, commonDirectories[cpt] + temp[t]);
+			}
+		}
+	}
+
+	dynUnique(commonFiles);
+
+	//DebugTN(\"commonFiles----------------------------------\");
+	//DebugTN(commonFiles);
+	
+	for (int fileCount = 1; fileCount <= dynlen(commonFiles); fileCount++)
+	{
+		time newest;
+		string column;
+
+		Table1.appendLine(\"fileName\", commonFiles[fileCount]);
+
+		for ( int cpt = 1; cpt <= dynlen(pathes); cpt++)
+		{
+			// check if file exists :-)
+			if (getFileSize(pathes[cpt] + \"\\\\\" + commonFiles[fileCount]) >= 0)
+			{
+				time t = getFileModificationTime(pathes[cpt] + \"\\\\\" + commonFiles[fileCount]);
+				if (t >= newest)
+				{
+					newest = t;
+					column = \"path\" + cpt;
+				}
+				Table1.updateLine(1,\"fileName\",commonFiles[fileCount],\"path\" + cpt,(string) t);
+			}
+		}
+		Table1.cellBackColRC(fileCount -1, column) = \"yellow\";
+	}
+	
+	number.text(dynlen(commonFiles));
+
+	Table1.sort(\"fileName\");
+	Table1.sortOnClick(true);
+
+	this.backCol(\"_3DFace\");
+	this.enabled(true);
+
+}" 0
+ E E E
+25 1
+"Table1"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 8 1242 407
+EE 1 0 1 9 1 "fileName" 59 1 0 "s" 1
+LANG:5 8 fileName
+E
+1
+LANG:5 0 
+
+600 "path1" 15 0 0 "s" 1
+LANG:5 5 path1
+E
+1
+LANG:5 0 
+
+160 "path2" 15 0 0 "s" 1
+LANG:5 5 path2
+E
+1
+LANG:5 0 
+
+160 "path3" 15 0 0 "s" 1
+LANG:5 5 path3
+E
+1
+LANG:5 0 
+
+160 "path4" 15 0 0 "s" 1
+LANG:5 5 path4
+E
+1
+LANG:5 0 
+
+160 "path5" 15 0 0 "s" 1
+LANG:5 5 path5
+E
+1
+LANG:5 0 
+
+160 "path6" 15 0 0 "s" 1
+LANG:5 5 path6
+E
+1
+LANG:5 0 
+
+160 "path7" 15 0 0 "s" 1
+LANG:5 5 path7
+E
+1
+LANG:5 0 
+
+160 "path8" 15 0 0 "s" 1
+LANG:5 5 path8
+E
+1
+LANG:5 0 
+
+160 
+26 26 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,69 @@
+[general]
+pvss_path = "C:/Siemens/Automation/WinCC_OA/3.10"
+proj_path = "%sgFw%"
+proj_path = "%sgCommon%"
+proj_path = "%proj%"
+proj_version = "%pvss%"
+userName = "root"
+password = ""
+langs = "en_GB.iso88591"
+
+distributed = 1
+ctrlMaxPendings = 1000
+
+data = "ISUP-G-A:1%system%%site%%port%$ISUP-G-B:1%system%%site%%port%"
+event = "ISUP-G-A:2%system%%site%%port%$ISUP-G-B:2%system%%site%%port%"
+pmonPort = 4999
+
+[redu]
+portNr = 3%system%%site%%port%
+
+[ctrl]
+loadAllCtrlLibs = 1
+
+[event]
+LoadCtrlLibs = "dpFunctionLib.ctl"
+
+[ui]
+loadAllCtrlLibs = 1
+visionScreenMode = "noTitleBar"
+#childSystemMenu = 0
+#20071029 aj otherwise setinputfocus does not work - hide with color (but problem with marker for ntp and recbrn,lug,zrh?)
+showInputFocus = 1
+focusColor = "_3DFace"
+focusLineType = "[solid, oneColor, JointMiter, CapNotLast, 0]"
+showQuitDialog = 0
+
+[ui_extend]
+visionScreenMode = "all"
+
+[SNMPDrv_1]
+enableTraps = "Yes"
+TrapReceptionPort=162
+agentAliveTimeout = 0
+
+[SNMPDrv_2]
+enableTraps = "No"
+TrapReceptionPort=1162
+
+[TCPComm]
+propertyPath = "%configPath%\tcpcomm.log4cpp.properties"
+
+[SerialModbus]
+propertyPath = "%configPath%\serialmodbus.log4cpp.properties"
+
+[MQTTDriver]
+propertyPath = "%configPath%mqttdriver.log4cpp.properties"
+address = tcp://localhost:1883
+clientID = MQDriver
+statusTopic = ch/skyguide/isup/mqdriver/data
+statusQoS = 0
+commandTopic = ch/skyguide/isup/mqdriver/command
+commandQoS = 2
+monitoringHeartbeatTopic = ch/skyguide/isup/mqdriver/monitoring/heartbeat
+monitoringHeartbeatQoS = 0
+monitoringStatusTopic = ch/skyguide/isup/mqdriver/monitoring/status
+monitoringStatusQoS = 0
+monitoringActiveAddress = mqtt.active.driver
+numberOfServices = 6
+timeout = 10000

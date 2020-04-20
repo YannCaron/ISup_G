@@ -1,0 +1,276 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgTELGATESIPTrunkSBCRaw.sgTELGATESIPTrunkSBCRaw	1#1
+	Health_1	21#1
+	Health_2	21#1
+	Status_1	21#1
+	Status_2	21#1
+	ESip_1	21#1
+	ESip_2	21#1
+	Telgate	21#1
+
+sgTELGATESIPTrunkSBCStruct.sgTELGATESIPTrunkSBCStruct	1#1
+	Health_1	41#1:sgFwSystem
+	Health_2	41#1:sgFwSystem
+	Status_1	41#1:sgFwSystem
+	Status_2	41#1:sgFwSystem
+	ESip_1	41#1:sgFwSystem
+	ESip_2	41#1:sgFwSystem
+
+
+sgTELGATE.sgTELGATE	1#1
+	GlobalStatus	41#2:sgFwSystem
+	RawData	1#3
+		VCX1	41#4:sgTELGATEVCXRaw
+		VCX2	41#5:sgTELGATEVCXRaw
+		Lines	1#6
+			ATSQSIGGVAtoExternal	41#7:sgTELGATEATSQSIGGVAtoExternalRaw
+			ATSQSIGZRHtoExternal	41#8:sgTELGATEATSQSIGZRHtoExternalRaw
+			MFCR2GVAtoExternal	41#9:sgTELGATEMFCR2GVAtoExternalRaw
+			MFCR2ZRHtoExternal	41#10:sgTELGATEMFCR2ZRHtoExternalRaw
+			ISDNPRIGVAtoExternal	41#11:sgTELGATEISDNPRItoExternalRaw
+			ISDNPRIZRHtoExternal	41#12:sgTELGATEISDNPRItoExternalRaw
+			ATSQSIGtoVISTATEL	41#13:sgTELGATEATSQSIGtoVISTATELRaw
+			ISDNPRItoVISTATEL	41#14:sgTELGATEISDNPRItoVISTATELRaw
+			QSIGtoEMTEL	41#15:sgTELGATEQSIGtoEMTELRaw
+			SIPTrunkSBCGVA	41#1:sgTELGATESIPTrunkSBCRaw
+			SIPTrunkSBCZRH	41#1:sgTELGATESIPTrunkSBCRaw
+		NI64IF	1#16
+			IF1	41#17:sgTELGATENI64IFRaw
+			IF2	41#18:sgTELGATENI64IFRaw
+			IF3	41#19:sgTELGATENI64IFRaw
+			IF4	41#20:sgTELGATENI64IFRaw
+			IF5	41#21:sgTELGATENI64IFRaw
+			IF6	41#22:sgTELGATENI64IFRaw
+			IF7	41#23:sgTELGATENI64IFRaw
+			IF8	41#24:sgTELGATENI64IFRaw
+			IF9	41#25:sgTELGATENI64IFRaw
+			IF10	41#26:sgTELGATENI64IFRaw
+			IF11	41#27:sgTELGATENI64IFRaw
+			IF12	41#28:sgTELGATENI64IFRaw
+			IF13	41#29:sgTELGATENI64IFRaw
+			IF14	41#30:sgTELGATENI64IFRaw
+			IF15	41#31:sgTELGATENI64IFRaw
+			FAN	1#4664
+				ILIF1	21#4665
+				ILIF2	21#4666
+				ILIF3	21#4667
+				ILIF4	21#4668
+				ILIF5	21#4669
+		VISTA	1#32
+			Commands	41#33:sgTELGATEVISTATEL
+	Components	1#34
+		VCX1	41#35:sgTELGATEVCXStruct
+		VCX2	41#36:sgTELGATEVCXStruct
+		Lines	1#37
+			ATSQSIGGVAtoExternal	41#38:sgTELGATEATSQSIGGVAtoExternalStruct
+			ATSQSIGZRHtoExternal	41#39:sgTELGATEATSQSIGZRHtoExternalStruct
+			MFCR2GVAtoExternal	41#40:sgTELGATEMFCR2GVAtoExternalStruct
+			MFCR2ZRHtoExternal	41#41:sgTELGATEMFCR2ZRHtoExternalStruct
+			ISDNPRIGVAtoExternal	41#42:sgTELGATEISDNPRItoExternalStruct
+			ISDNPRIZRHtoExternal	41#43:sgTELGATEISDNPRItoExternalStruct
+			ATSQSIGtoVISTATEL	41#44:sgTELGATEATSQSIGtoVISTATELStruct
+			ISDNPRItoVISTATEL	41#45:sgTELGATEISDNPRItoVISTATELStruct
+			QSIGtoEMTEL	41#46:sgTELGATEQSIGtoEMTELStruct
+			SIPTrunkSBCGVA	41#1:sgTELGATESIPTrunkSBCStruct
+			SIPTrunkSBCZRH	41#1:sgTELGATESIPTrunkSBCStruct
+		NI64IF	1#47
+			IF1	41#48:sgTELGATENI64IFStruct
+			IF2	41#49:sgTELGATENI64IFStruct
+			IF3	41#50:sgTELGATENI64IFStruct
+			IF4	41#51:sgTELGATENI64IFStruct
+			IF5	41#52:sgTELGATENI64IFStruct
+			IF6	41#53:sgTELGATENI64IFStruct
+			IF7	41#54:sgTELGATENI64IFStruct
+			IF8	41#55:sgTELGATENI64IFStruct
+			IF9	41#56:sgTELGATENI64IFStruct
+			IF10	41#57:sgTELGATENI64IFStruct
+			IF11	41#58:sgTELGATENI64IFStruct
+			IF12	41#59:sgTELGATENI64IFStruct
+			IF13	41#60:sgTELGATENI64IFStruct
+			IF14	41#61:sgTELGATENI64IFStruct
+			IF15	41#62:sgTELGATENI64IFStruct
+			FAN	1#4670
+				ILIF1	41#4671:sgFwSystem
+				ILIF2	41#4672:sgFwSystem
+				ILIF3	41#4673:sgFwSystem
+				ILIF4	41#4674:sgFwSystem
+				ILIF5	41#4675:sgFwSystem
+		VISTA	1#63
+			VISTAStatus	41#64:sgFwSystem
+			ATSQSIGtoVISTATELStatus	41#65:sgFwSystem
+			ISDNPRItoVISTATELStatus	41#66:sgFwSystem
+	Connections	41#67:sgFwConnections
+	ConnectionsParams	1#68
+		VCXPowerSupply	9#69
+		VCXICCB	9#70
+		VCXFAN	9#4663
+		VCXDSP	9#71
+		VCXIF	9#72
+		NI64IFPowerSupply	9#73
+		NI64IFEthernet	9#74
+		StdLines	9#75
+	WatchDogs	41#76:sgWatchDogs
+	History	41#77:sgFwHistory
+	Params	41#78:sgParams
+	TruthTables	1#79
+		GlobalTT	41#80:sgFwTruthTable
+	MenuEntry	41#81:sgFwMenuEntry
+	ConvTables	1#82
+		VCXStatus	41#83:sgConnectWithConvertTable
+		SIPTrunkSBCHealth	41#1:sgConnectWithIntRange
+		SIPTrunkSBCStatus	41#1:sgConnectWithConvertTable
+		
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_1	""	lt:1 LANG:5 "1@@"
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_2	""	lt:1 LANG:5 "2@@"
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_1	""	lt:1 LANG:5 "1@@"
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_2	""	lt:1 LANG:5 "2@@"
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_1	""	lt:1 LANG:5 "i@@"
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_2	""	lt:1 LANG:5 "o@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_1	""	lt:1 LANG:5 "1@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_2	""	lt:1 LANG:5 "2@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_1	""	lt:1 LANG:5 "1@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_2	""	lt:1 LANG:5 "2@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_1	""	lt:1 LANG:5 "i@@"
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_2	""	lt:1 LANG:5 "o@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_1.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA Health 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_2.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA Health 2"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Health_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_1.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA Status 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_2.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA Status 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.Status_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_1.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA SIP i"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_2.Events.EventText	sgTELGATE	"SIP Trunk SBC GVA SIP o"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCGVA.ESip_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_1.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH Health 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_2.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH Health 2"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Health_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_1.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH Status 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_2.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH Status 1"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.Status_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_1.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH SIP i"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_1.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_2.Events.EventText	sgTELGATE	"SIP Trunk SBC ZRH SIP o"	0x101	02.04.2019 14:04:38.381
+TELGATE.Components.Lines.SIPTrunkSBCZRH.ESip_2.Params	sgTELGATE	"TELGATE.Params"	0x101	02.04.2019 14:04:38.385
+
+# TELGATE.Connections.Inputs	sgTELGATE	"TELGATE.RawData.*.NodeStatus", "TELGATE.RawData.*.Ethernet", "TELGATE.RawData.VCX*", "TELGATE.RawData.VCX*", "TELGATE.RawData.VCX*", "TELGATE.RawData.VCX*", "TELGATE.RawData.VCX*", "TELGATE.RawData.NI64IF.IF*", "TELGATE.RawData.NI64IF.IF*", "TELGATE.RawData.NI64IF.FAN.ILIF*", "TELGATE.RawData.Lines.ATSQSIGGVAtoExternal.*", "TELGATE.RawData.Lines.ATSQSIGZRHtoExternal.*", "TELGATE.RawData.Lines.MFCR2GVAtoExternal.*", "TELGATE.RawData.Lines.MFCR2ZRHtoExternal.*", "TELGATE.RawData.Lines.ISDNPRIGVAtoExternal.*", "TELGATE.RawData.Lines.ISDNPRIZRHtoExternal.*", "TELGATE.RawData.Lines.ATSQSIGtoVISTATEL.*", "TELGATE.RawData.Lines.ISDNPRItoVISTATEL.*", "TELGATE.RawData.Lines.QSIGtoEMTEL.*"	0x101	02.04.2019 14:04:38.880
+# TELGATE.Connections.Outputs	sgTELGATE	"TELGATE.Components.*.NodeStatus.PreStatus", "TELGATE.Components.*.Ethernet.PreStatus", "TELGATE.Components.VCX*.PowerSupply.PreStatus", "TELGATE.Components.VCX*.ICCB.PreStatus", "TELGATE.Components.VCX*.FAN.PreStatus", "TELGATE.Components.VCX*.DSP.PreStatus", "TELGATE.Components.VCX*.IF.PreStatus", "TELGATE.Components.NI64IF.IF*.PowerSupply.PreStatus", "TELGATE.Components.NI64IF.IF*.Ethernet.PreStatus", "TELGATE.Components.NI64IF.FAN.ILIF*.PreStatus", "TELGATE.Components.Lines.ATSQSIGGVAtoExternal.*.PreStatus", "TELGATE.Components.Lines.ATSQSIGZRHtoExternal.*.PreStatus", "TELGATE.Components.Lines.MFCR2GVAtoExternal.*.PreStatus", "TELGATE.Components.Lines.MFCR2ZRHtoExternal.*.PreStatus", "TELGATE.Components.Lines.ISDNPRIGVAtoExternal.*.PreStatus", "TELGATE.Components.Lines.ISDNPRIZRHtoExternal.*.PreStatus", "TELGATE.Components.Lines.ATSQSIGtoVISTATEL.*.PreStatus", "TELGATE.Components.Lines.ISDNPRItoVISTATEL.*.PreStatus", "TELGATE.Components.Lines.QSIGtoEMTEL.*.PreStatus"	0x101	02.04.2019 14:04:38.881
+# TELGATE.Connections.Rules	sgTELGATE	"ConnectWithConvertTable", "ConnectWithConvertTable", "ConnectTELGATE2Components", "ConnectTELGATE2Components", "ConnectTELGATE4Components", "ConnectTELGATE2Components", "ConnectTELGATE4Components", "ConnectTELGATE2Components", "ConnectTELGATE2Components", "ConnectWithConvertTable", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines", "ConnectTELGATE2Lines"	0x101	02.04.2019 14:04:38.882
+# TELGATE.Connections.Params	sgTELGATE	"TELGATE.ConvTables.VCXStatus", "TELGATE.ConvTables.VCXStatus", "TELGATE.ConnectionsParams.VCXPowerSupply", "TELGATE.ConnectionsParams.VCXICCB", "TELGATE.ConnectionsParams.VCXFAN", "TELGATE.ConnectionsParams.VCXDSP", "TELGATE.ConnectionsParams.VCXIF", "TELGATE.ConnectionsParams.NI64IFPowerSupply", "TELGATE.ConnectionsParams.NI64IFEthernet", "TELGATE.ConvTables.VCXStatus", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines", "TELGATE.ConnectionsParams.StdLines"	0x101	02.04.2019 14:04:38.925
+# TELGATE.WatchDogs.References	sgTELGATE	"TELGATE.RawData.VCX1.*", "TELGATE.RawData.VCX2.*", "TELGATE.RawData.NI64IF.IF*.Eth0", "TELGATE.RawData.NI64IF.IF*.Eth1", "TELGATE.RawData.NI64IF.IF*.PowerSupplyA", "TELGATE.RawData.NI64IF.IF*.PowerSupplyB", "TELGATE.RawData.NI64IF.IF*.FAN", "TELGATE.RawData.Lines.ATSQSIGGVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGGVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ATSQSIGZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.MFCR2GVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.MFCR2GVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.MFCR2ZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.MFCR2ZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRIGVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRIGVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRIZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRIZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ATSQSIGtoVISTATEL.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGtoVISTATEL.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRItoVISTATEL.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRItoVISTATEL.*.ServiceAlarmTop", "TELGATE.RawData.Lines.QSIGtoEMTEL.*.ServiceStateOper", "TELGATE.RawData.Lines.QSIGtoEMTEL.*.ServiceAlarmTop"	0x101	02.04.2019 14:04:38.969
+# TELGATE.WatchDogs.DefaultValues	sgTELGATE	"-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1"	0x101	02.04.2019 14:04:39.009
+# TELGATE.WatchDogs.Outputs	sgTELGATE	"TELGATE.RawData.VCX1.*", "TELGATE.RawData.VCX2.*", "TELGATE.RawData.NI64IF.IF*.Eth0", "TELGATE.RawData.NI64IF.IF*.Eth1", "TELGATE.RawData.NI64IF.IF*.PowerSupplyA", "TELGATE.RawData.NI64IF.IF*.PowerSupplyB", "TELGATE.RawData.NI64IF.IF*.FAN", "TELGATE.RawData.Lines.ATSQSIGGVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGGVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ATSQSIGZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.MFCR2GVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.MFCR2GVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.MFCR2ZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.MFCR2ZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRIGVAtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRIGVAtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRIZRHtoExternal.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRIZRHtoExternal.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ATSQSIGtoVISTATEL.*.ServiceStateOper", "TELGATE.RawData.Lines.ATSQSIGtoVISTATEL.*.ServiceAlarmTop", "TELGATE.RawData.Lines.ISDNPRItoVISTATEL.*.ServiceStateOper", "TELGATE.RawData.Lines.ISDNPRItoVISTATEL.*.ServiceAlarmTop", "TELGATE.RawData.Lines.QSIGtoEMTEL.*.ServiceStateOper", "TELGATE.RawData.Lines.QSIGtoEMTEL.*.ServiceAlarmTop"	0x101	02.04.2019 14:04:39.042
+# TELGATE.WatchDogs.Timeouts	sgTELGATE	25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25	0x101	02.04.2019 14:04:39.044
+# TELGATE.History.Message	sgTELGATE	""	0x101	10.09.2019 11:21:56.887
+# TELGATE.History.HistorySize	sgTELGATE	100	0x101	02.04.2019 14:04:37.809
+# TELGATE.History.ShortHistory	sgTELGATE		0x101	10.09.2019 11:21:56.985
+# TELGATE.ConvTables.VCXStatus.Input	sgTELGATE	"0", "1", "2", "3", "4"	0x101	02.04.2019 14:04:39.045
+# TELGATE.ConvTables.VCXStatus.Output	sgTELGATE	"UKN", "U/S", "OPS", "DEG", "U/S"	0x101	02.04.2019 14:04:39.046
+# TELGATE.ConnectionsParams.VCXFAN	sgTELGATE	".FAN0", "2", ".FAN1", "2", ".FAN2", "2", ".FAN3", "2"	0x101	02.04.2019 14:04:39.049
+
+TELGATE.ConvTables.SIPTrunkSBCHealth.Input	sgTELGATE	-1, 74, 99, 100	0x101	02.04.2019 14:04:39.045
+TELGATE.ConvTables.SIPTrunkSBCHealth.Output	sgTELGATE	"UKN", "U/S", "DEG", "OPS"	0x101	02.04.2019 14:04:39.046
+TELGATE.ConvTables.SIPTrunkSBCStatus.Input	sgTELGATE	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"	0x101	02.04.2019 14:04:39.045
+TELGATE.ConvTables.SIPTrunkSBCStatus.Output	sgTELGATE	"UKN", "U/S", "OPS", "SBY", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S" 	0x101	02.04.2019 14:04:39.046
+
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Health_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Health_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Status_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Status_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.ESip_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.ESip_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Telgate	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Health_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Health_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Status_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Status_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.ESip_1	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.ESip_2	sgTELGATE	56	\1
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Telgate	sgTELGATE	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Health_1	sgTELGATE	16	"55_1.3.6.1.4.1.9148.3.2.1.1.3.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Health_2	sgTELGATE	16	"56_1.3.6.1.4.1.9148.3.2.1.1.3.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Status_1	sgTELGATE	16	"55_1.3.6.1.4.1.9148.3.2.1.1.4.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Status_2	sgTELGATE	16	"56_1.3.6.1.4.1.9148.3.2.1.1.4.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.ESip_1	sgTELGATE	16	"55_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.19"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.ESip_2	sgTELGATE	16	"55_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.20"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCGVA.Telgate	sgTELGATE	16	"55_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.47"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Health_1	sgTELGATE	16	"57_1.3.6.1.4.1.9148.3.2.1.1.3.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Health_2	sgTELGATE	16	"58_1.3.6.1.4.1.9148.3.2.1.1.3.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Status_1	sgTELGATE	16	"57_1.3.6.1.4.1.9148.3.2.1.1.4.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Status_2	sgTELGATE	16	"58_1.3.6.1.4.1.9148.3.2.1.1.4.0"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.ESip_1	sgTELGATE	16	"57_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.17"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.ESip_2	sgTELGATE	16	"57_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.18"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+TELGATE.RawData.Lines.SIPTrunkSBCZRH.Telgate	sgTELGATE	16	"57_1.3.6.1.4.1.9148.3.2.1.2.2.1.22.47"	"_TELGATE"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_1_SNMPAgent_55	_SNMPAgent	1
+_1_SNMPAgent_56	_SNMPAgent	1
+_1_SNMPAgent_57	_SNMPAgent	1
+_1_SNMPAgent_58	_SNMPAgent	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+_1_SNMPAgent_55.	""	lt:1 LANG:5 "TELGSIPSBCGVA1@@"
+_1_SNMPAgent_56.	""	lt:1 LANG:5 "TELGSIPSBCGVA2@@"
+_1_SNMPAgent_57.	""	lt:1 LANG:5 "TELGSIPSBCZRH1@@"
+_1_SNMPAgent_58.	""	lt:1 LANG:5 "TELGSIPSBCZRH2@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+_1_SNMPAgent_55.Access.IPAddress	_SNMPAgent	"TELGSIPSBCGVA1"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.ReadCommunity	_SNMPAgent	"Sbc%%psnmp"	0x200101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.Timeout	_SNMPAgent	100	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.Retries	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.Protocol	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Access.Port	_SNMPAgent	161	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_55.Status.Timeout	_SNMPAgent	1	0x300101	25.09.2019 12:43:12.156
+
+_1_SNMPAgent_56.Access.IPAddress	_SNMPAgent	"TELGSIPSBCGVA2"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.ReadCommunity	_SNMPAgent	"Sbc%%psnmp"	0x200101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.Timeout	_SNMPAgent	100	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.Retries	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.Protocol	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Access.Port	_SNMPAgent	161	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_56.Status.Timeout	_SNMPAgent	1	0x300101	25.09.2019 12:43:12.156
+
+_1_SNMPAgent_57.Access.IPAddress	_SNMPAgent	"TELGSIPSBCZRH1"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.ReadCommunity	_SNMPAgent	"Sbc%%psnmp"	0x200101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.Timeout	_SNMPAgent	100	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.Retries	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.Protocol	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Access.Port	_SNMPAgent	161	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_57.Status.Timeout	_SNMPAgent	1	0x300101	25.09.2019 12:43:12.156
+
+_1_SNMPAgent_58.Access.IPAddress	_SNMPAgent	"TELGSIPSBCZRH2"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.ReadCommunity	_SNMPAgent	"Sbc%%psnmp"	0x200101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.Timeout	_SNMPAgent	100	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.Retries	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.Protocol	_SNMPAgent	1	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Access.Port	_SNMPAgent	161	0x101	25.09.2019 12:42:10.527
+_1_SNMPAgent_58.Status.Timeout	_SNMPAgent	1	0x300101	25.09.2019 12:43:12.156

@@ -1,0 +1,168 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgSPHINX.sgSPHINX	1#1
+	MenuEntry	41#2:sgFwMenuEntry
+	Config	1#358
+		Site	25#387
+		ServerAName	25#396
+		ServerBName	25#397
+	GlobalStatus	41#3:sgFwSystem
+	RawData	1#4
+		ChainA	41#5:sgSPHINXRawDataChain
+		ChainB	41#6:sgSPHINXRawDataChain
+	Components	1#7
+		ChainA	41#8:sgSPHINXCompChain
+		ChainB	41#9:sgSPHINXCompChain
+	Connections	41#10:sgFwConnections
+	WatchDogs	41#11:sgWatchDogs
+	History	41#12:sgFwHistory
+	Params	41#372:sgParams
+	TruthTables	1#15
+		GlobalTT	41#16:sgFwTruthTable
+	ConvTableStatus	41#368:sgConnectWithConvertTable
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SPHINX	sgSPHINX	29350
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SPHINX.GlobalStatus	""	lt:1 LANG:5 "SPHINX@@"
+SPHINX.Components.ChainA.Netlogon	""	lt:1 LANG:5 "Netlogon@@"
+SPHINX.Components.ChainA.ADDomain	""	lt:1 LANG:5 "AD Domain@@"
+SPHINX.Components.ChainA.Kerberos	""	lt:1 LANG:5 "Kerberos@@"
+SPHINX.Components.ChainA.SecurityAccMgmt	""	lt:1 LANG:5 "Security Account Mgmt@@"
+SPHINX.Components.ChainB.Netlogon	""	lt:1 LANG:5 "Netlogon@@"
+SPHINX.Components.ChainB.ADDomain	""	lt:1 LANG:5 "AD Domain@@"
+SPHINX.Components.ChainB.Kerberos	""	lt:1 LANG:5 "Kerberos@@"
+SPHINX.Components.ChainB.SecurityAccMgmt	""	lt:1 LANG:5 "Security Account Mgmt@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+SPHINX.MenuEntry.Name	sgSPHINX	"SPHINX"	0x101	23.04.2018 14:19:06.287
+SPHINX.MenuEntry.Group	sgSPHINX	"EDP"	0x101	23.04.2018 14:19:06.288
+SPHINX.MenuEntry.Panel	sgSPHINX	"SPHINX/SPHINXMainPanel.pnl"	0x200101	23.04.2018 14:19:06.288
+SPHINX.MenuEntry.Params	sgSPHINX	"SystemName:ISup_G:"	0x200101	23.04.2018 14:19:06.289
+SPHINX.GlobalStatus.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:51.013
+SPHINX.GlobalStatus.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:51.355
+SPHINX.GlobalStatus.Disabled	sgSPHINX	0	0x101	02.05.2018 06:49:35.514
+SPHINX.GlobalStatus.SubDisabled	sgSPHINX	0	0x100101	24.04.2018 06:28:41.324
+SPHINX.GlobalStatus.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.GlobalStatus.Alarms.GenerateAlarms	sgSPHINX	1	0x101	23.04.2018 14:19:06.290
+SPHINX.GlobalStatus.Alarms.AlarmActive	sgSPHINX	0	0x101	02.05.2018 07:06:51.373
+SPHINX.GlobalStatus.LogicConfig.LogicEnabled	sgSPHINX	1	0x101	23.04.2018 14:19:06.291
+SPHINX.GlobalStatus.LogicConfig.Rule	sgSPHINX	"SPHINX.TruthTables.GlobalTT"	0x101	23.04.2018 14:19:06.291
+SPHINX.GlobalStatus.LogicConfig.Inputs	sgSPHINX	"SPHINX.Components.ChainA.*", "SPHINX.Components.ChainB.*"	0x101	23.04.2018 14:19:06.293
+SPHINX.GlobalStatus.AETable	sgSPHINX	"AETable01"	0x101	23.04.2018 14:19:06.294
+SPHINX.Components.ChainA.Netlogon.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainA.Netlogon.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.751
+SPHINX.Components.ChainA.Netlogon.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.630
+SPHINX.Components.ChainA.Netlogon.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainA.Netlogon.Events.EventText	sgSPHINX	"Netlogon Chain A"	0x101	23.04.2018 14:19:06.294
+SPHINX.Components.ChainA.Netlogon.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:28:24.998
+SPHINX.Components.ChainA.Netlogon.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.295
+SPHINX.Components.ChainA.ADDomain.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainA.ADDomain.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.752
+SPHINX.Components.ChainA.ADDomain.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.630
+SPHINX.Components.ChainA.ADDomain.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainA.ADDomain.Events.EventText	sgSPHINX	"AD Domain Chain A"	0x101	23.04.2018 14:19:06.295
+SPHINX.Components.ChainA.ADDomain.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:27:28.341
+SPHINX.Components.ChainA.ADDomain.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.296
+SPHINX.Components.ChainA.Kerberos.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainA.Kerberos.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.751
+SPHINX.Components.ChainA.Kerberos.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.630
+SPHINX.Components.ChainA.Kerberos.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainA.Kerberos.Events.EventText	sgSPHINX	"Kerberos Chain A"	0x101	23.04.2018 14:19:06.298
+SPHINX.Components.ChainA.Kerberos.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:22:58.981
+SPHINX.Components.ChainA.Kerberos.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.298
+SPHINX.Components.ChainA.SecurityAccMgmt.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainA.SecurityAccMgmt.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.753
+SPHINX.Components.ChainA.SecurityAccMgmt.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.630
+SPHINX.Components.ChainA.SecurityAccMgmt.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainA.SecurityAccMgmt.Events.EventText	sgSPHINX	"Security Account Mgmt Chain A"	0x101	23.04.2018 14:19:06.299
+SPHINX.Components.ChainA.SecurityAccMgmt.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:22:59.956
+SPHINX.Components.ChainA.SecurityAccMgmt.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.299
+SPHINX.Components.ChainB.Netlogon.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainB.Netlogon.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.751
+SPHINX.Components.ChainB.Netlogon.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.630
+SPHINX.Components.ChainB.Netlogon.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainB.Netlogon.Events.EventText	sgSPHINX	"Netlogon Chain A"	0x101	23.04.2018 14:19:06.300
+SPHINX.Components.ChainB.Netlogon.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:21:52.509
+SPHINX.Components.ChainB.Netlogon.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.302
+SPHINX.Components.ChainB.ADDomain.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainB.ADDomain.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.752
+SPHINX.Components.ChainB.ADDomain.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.631
+SPHINX.Components.ChainB.ADDomain.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainB.ADDomain.Events.EventText	sgSPHINX	"AD Domain Chain A"	0x101	23.04.2018 14:19:06.302
+SPHINX.Components.ChainB.ADDomain.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:27:34.622
+SPHINX.Components.ChainB.ADDomain.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.303
+SPHINX.Components.ChainB.Kerberos.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainB.Kerberos.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.750
+SPHINX.Components.ChainB.Kerberos.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.631
+SPHINX.Components.ChainB.Kerberos.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainB.Kerberos.Events.EventText	sgSPHINX	"Kerberos Chain A"	0x101	23.04.2018 14:19:06.303
+SPHINX.Components.ChainB.Kerberos.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:27:23.465
+SPHINX.Components.ChainB.Kerberos.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.304
+SPHINX.Components.ChainB.SecurityAccMgmt.PreStatus	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.740
+SPHINX.Components.ChainB.SecurityAccMgmt.Status	sgSPHINX	"OPS"	0x100101	02.05.2018 07:06:50.753
+SPHINX.Components.ChainB.SecurityAccMgmt.Disabled	sgSPHINX	0	0x101	26.04.2018 15:11:55.631
+SPHINX.Components.ChainB.SecurityAccMgmt.Message	sgSPHINX	""	0x101	02.05.2018 06:49:15.080
+SPHINX.Components.ChainB.SecurityAccMgmt.Events.EventText	sgSPHINX	"Security Account Mgmt Chain A"	0x101	23.04.2018 14:19:06.306
+SPHINX.Components.ChainB.SecurityAccMgmt.Alarms.AlarmActive	sgSPHINX	0	0x101	24.04.2018 06:27:23.465
+SPHINX.Components.ChainB.SecurityAccMgmt.Params	sgSPHINX	"SPHINX.Params"	0x200101	23.04.2018 14:19:06.306
+SPHINX.Connections.Inputs	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	23.04.2018 14:19:06.307
+SPHINX.Connections.Outputs	sgSPHINX	"SPHINX.Components.ChainA.*.PreStatus", "SPHINX.Components.ChainB.*.PreStatus"	0x101	23.04.2018 14:19:06.307
+SPHINX.Connections.Rules	sgSPHINX	"ConnectWithConvertTable", "ConnectWithConvertTable"	0x101	23.04.2018 14:19:06.308
+SPHINX.Connections.Params	sgSPHINX	"SPHINX.ConvTableStatus", "SPHINX.ConvTableStatus"	0x101	23.04.2018 14:19:06.310
+SPHINX.WatchDogs.References	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	23.04.2018 14:19:06.310
+SPHINX.WatchDogs.DefaultValues	sgSPHINX	"Unknown", "Unknown"	0x101	23.04.2018 14:19:06.311
+SPHINX.WatchDogs.Outputs	sgSPHINX	"SPHINX.RawData.ChainA.*", "SPHINX.RawData.ChainB.*"	0x101	23.04.2018 14:19:06.311
+SPHINX.WatchDogs.Timeouts	sgSPHINX	25, 25	0x101	23.04.2018 14:19:06.312
+SPHINX.History.Message	sgSPHINX	"02/05/18	07:06:50	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 "	0x200101	02.05.2018 07:06:50.753
+SPHINX.History.HistorySize	sgSPHINX	100	0x101	23.04.2018 14:19:06.314
+SPHINX.History.ShortHistory	sgSPHINX	"01/05/18	09:18:35	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:18:35	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:18:35	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:18:36	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:18:36	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:22:50	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:22:50	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:23:18	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:23:18	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:23:44	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:23:44	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:23:53	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:23:53	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:26:05	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:26:05	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:26:09	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:26:09	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:27:07	COMMAND: 	<<Force to UKN>> sent	 ", "01/05/18	09:27:08	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	09:27:08	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	09:27:09	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	09:27:09	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	12:52:17	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "01/05/18	14:53:26	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	AD Domain Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Kerberos Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Netlogon Chain A changed from OPS to UKN	 ", "01/05/18	14:53:26	CRITICAL:	Security Account Mgmt Chain A changed from OPS to UKN	 ", "02/05/18	07:06:50	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	Kerberos Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	Netlogon Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	AD Domain Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 ", "02/05/18	07:06:50	SOLVED:  	Security Account Mgmt Chain A changed from UKN to OPS	 "	0x101	02.05.2018 07:06:51.615
+SPHINX.TruthTables.GlobalTT.Table	sgSPHINX	"OPS_---_OPS_0", "UKN_---_UKN_0", "U/S_---_U/S_0", "---_---_DEG_8_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+", "---_---_DEG_8_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+", "---_---_DEG_8_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+", "---_---_DEG_8_OPS+_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+", "---_---_DEG_8_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+", "---_---_DEG_8_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+", "---_---_DEG_8_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+", "---_---_DEG_8_OPS+_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+", "---_---_DEG_8_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+_ANY+", "---_---_DEG_8_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+_ANY+_OPS+", "---_---_DEG_8_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+_ANY+", "---_---_DEG_8_ANY+_OPS+_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+", "---_---_DEG_8_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+_ANY+", "---_---_DEG_8_ANY+_ANY+_OPS+_ANY+_OPS+_OPS+_ANY+_OPS+", "---_---_DEG_8_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+_ANY+", "---_---_DEG_8_ANY+_ANY+_ANY+_ANY+_OPS+_OPS+_OPS+_OPS+", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_ANY_UKN_0"	0x101	24.04.2018 06:26:23.275
+SPHINX.ConvTableStatus.Input	sgSPHINX	"Unknown", "OK", "Error", "Degraded", "Pred Fail", "Starting", "Stopping", "Service", "Stressed", "NonRecover", "No Contact", "Lost Comm"	0x101	23.04.2018 14:19:06.319
+SPHINX.ConvTableStatus.Output	sgSPHINX	"UKN", "OPS", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S", "U/S"	0x101	23.04.2018 14:19:06.319
+SPHINX.Params.Histories	sgSPHINX	"SPHINX.History"	0x101	23.04.2018 14:19:06.316
+SPHINX.Params.AETable	sgSPHINX	"AETable02"	0x101	23.04.2018 14:19:06.317
+SPHINX.Params.GenerateEvents	sgSPHINX	1	0x101	23.04.2018 14:19:06.318
+SPHINX.Config.Site	sgSPHINX	"GVA"	0x101	23.04.2018 14:19:06.283
+SPHINX.RawData.ChainA.Netlogon	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainA.ADDomain	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainA.Kerberos	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainA.SecurityAccMgmt	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainB.Netlogon	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainB.ADDomain	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainB.Kerberos	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.RawData.ChainB.SecurityAccMgmt	sgSPHINX	"OK"	0x101	14.05.2018 14:26:43.076
+SPHINX.Config.ServerAName	sgSPHINX	"gsadpdc07"	0x101	23.04.2018 14:19:06.285
+SPHINX.Config.ServerBName	sgSPHINX	"gsadpdc08"	0x101	23.04.2018 14:19:06.285
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+SPHINX.GlobalStatus.Alarms.AlarmActive	sgSPHINX		12					"SPHINX/SPHINXMainPanel.pnl"	"$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on SPHINX"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+SPHINX.RawData.ChainA.Netlogon	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.ADDomain	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.Kerberos	sgSPHINX	56	\5
+SPHINX.RawData.ChainA.SecurityAccMgmt	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.Netlogon	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.ADDomain	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.Kerberos	sgSPHINX	56	\5
+SPHINX.RawData.ChainB.SecurityAccMgmt	sgSPHINX	56	\5
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+SPHINX.RawData.ChainA.Netlogon	sgSPHINX	16	"SphinxA.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.ADDomain	sgSPHINX	16	"SphinxA.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.Kerberos	sgSPHINX	16	"SphinxA.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainA.SecurityAccMgmt	sgSPHINX	16	"SphinxA.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.Netlogon	sgSPHINX	16	"SphinxB.Services.Netlogon.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.ADDomain	sgSPHINX	16	"SphinxB.Services.NTDS.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.Kerberos	sgSPHINX	16	"SphinxB.Services.Kdc.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"
+SPHINX.RawData.ChainB.SecurityAccMgmt	sgSPHINX	16	"SphinxB.Services.SamSs.Status"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1904	"MQDRIVER"

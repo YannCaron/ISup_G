@@ -1,0 +1,126 @@
+V 10
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	RDPModule.ModuleName = \"RDPModule\";
+	
+//	DebugN(\"naviHistoryParams[naviIndex ] : \" + naviHistoryParams[naviIndex] );
+	
+	string fileOnRDPMod;
+	dyn_string params;
+	
+	params = naviHistoryParams[naviIndex];
+	
+	 for(int i =1 ; i <= dynlen(params); i++)
+	 {
+	 		int position = strpos(params[i], \"$FileOnRDPModule\");
+//	 		DebugN(\"position for $FileOnRDPModule : \" + position);
+	 		
+	 		if(position >= 0)
+	 		{
+				fileOnRDPMod = substr(params[i], strpos(params[i], \":\") + 1);
+				dynRemove(params, i);
+				break;
+	 		}
+	}
+//	DebugN(\"fileOnRDPMod:\" +  fileOnRDPMod);
+
+//	DebugN(\"Params:\" +  params);
+
+//	RootPanelOnModule(\"RDP/RadarPanel.pnl\", \"\", \"RDPModule\", makeDynString(\"$RadarName:TGSM\"));
+	RootPanelOnModule(fileOnRDPMod, \"\", \"RDPModule\", params);
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 21 Radar Data Processing
+LANG:1 3 RDP
+1 3 8 "" 11
+0
+29 2
+"RDPModule"
+""
+1 0 79 E E E 1 E 1 E N "_3DText" E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+ 5 60 1105 700
+15 Canvas.Canvas.1
+0
+"main()
+{
+
+}" 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 8 "Group3"
+"objects\\sgFwHistory.pnl" 10 710 T 10 1 0 1 -10 -10
+2
+"$SystemHistory""RDP.History"
+"$SystemName"""
+0

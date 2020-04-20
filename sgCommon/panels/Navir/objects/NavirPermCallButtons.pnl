@@ -1,0 +1,187 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 120 79 N "_3DFace" 4
+"$Chain"
+"$HiddenDp"
+"$StationName"
+"$SystemName"
+"main()
+{
+	buttons_init();  
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string machineName; 
+
+void initLabels()
+{
+	Com_ONButton.text = \"Com \" + $Chain + \" ON\";
+	Com_OFFButton.text = \"Com \" + $Chain + \" OFF\";
+}
+
+void buttons_init()
+{
+  bool isANavirMachine;
+	bool isHidden;
+  bool isDedicatedLineStation;
+        
+	machineName = getHostname();
+	// check if the client is a Navir Machine (this call option isn't available for SMC)        	
+	if (strpos(machineName, \"Navir\") >= 0 || strpos(machineName, \"NAVIR\") >= 0 ||strpos(machineName, \"navir\") >= 0 )
+		isANavirMachine = true;
+	else
+		isANavirMachine = false;
+	
+  if (isANavirMachine)
+  {
+    initLabels();
+        	
+    // Only PSTN line have this option		
+	  dpGet($SystemName + $StationName + \".General.IsStationOnDedicatedLine\", isDedicatedLineStation,
+				$SystemName + $HiddenDp, isHidden);
+	
+	  if(!isDedicatedLineStation && !isHidden)
+	  {
+	  	Com_ONButton.visible = true;
+	  	Com_OFFButton.visible = true;
+      return;
+    }
+  }
+  Com_ONButton.visible = false;
+	Com_OFFButton.visible = false;	
+}
+
+void btnON_clicked()
+{
+  dyn_float df;
+	dyn_string ds;
+		
+	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+			makeDynString(\"$1:Do you really want to force communication \" + $Chain + \" to ON for Station \" + $StationName + \" ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+	if(ds[1] == \"true\")
+	{
+		sgHistoryAddEvent($SystemName + $StationName + \".History\", SEVERITY_COMMAND, \"Communication \" + $Chain + \" forced to ON from \" + machineName + \" for station \" + $StationName );
+
+// set value to 1 -> Call ON
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"1\");	
+		delay(0, 200);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"0\");	
+	}
+}
+
+void btnOFF_Clicked()
+{
+  dyn_float df;
+	dyn_string ds;
+		
+	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+			makeDynString(\"$1:Do you really want to force communication \" + $Chain + \" to OFF for Station \" + $StationName + \" ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+	if(ds[1] == \"true\")
+	{
+		sgHistoryAddEvent($SystemName + $StationName + \".History\", SEVERITY_COMMAND, \"Communication \" + $Chain + \" forced to OFF from \" + machineName + \" for station \" + $StationName );
+
+// set value to 1 -> Call ON
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"2\");	
+		delay(0, 200);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"0\");	
+
+// Command is done 2 times! it's possible that the TIM don't received the first command PW nov 2005
+		delay(0, 500);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"2\");	
+		delay(0, 200);
+		dpSet($SystemName + $StationName + \".RawDatas.Commands.PermanentCall.Cmd_Out\" + $Chain, \"0\");	
+	}
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 939
+"Com_ONButton"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+239 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 8 102 37
+
+T 
+1
+LANG:5 8 Com X ON
+"main()
+{	
+	btnON_clicked();	
+}" 0
+ E E E
+13 941
+"Com_OFFButton"
+""
+1 10 45 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+241 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 43 102 72
+
+T 
+1
+LANG:5 9 Com X OFF
+"main()
+{
+	btnOFF_Clicked();	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

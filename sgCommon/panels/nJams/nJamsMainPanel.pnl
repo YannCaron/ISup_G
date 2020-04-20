@@ -1,0 +1,499 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "void forceToUnknown_onClick() {
+  ForceToUnknown(\"\", \"nJams\");
+}
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 597
+"LINE1"
+""
+1 130.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+219 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  131 210 131 475
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 5 nJams
+LANG:1 4 AFPS
+1 768 35 "" 11
+0
+1 772 37 "" 46
+0
+13 536
+"PUSH_BUTTON2"
+""
+1 10 675 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+200 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 673 212 707
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  forceToUnknown_onClick();	
+}" 0
+ E E E
+30 552
+"Frame1"
+""
+1 235 168 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+204 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.591240875912409 0 2.202643171806166 -363.2749391727494 -235.3773861967692 0 E 235 168 921 396
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 10 Components
+4 598
+"LINE2"
+""
+1 295.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+220 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  296 210 296 505
+4 599
+"LINE3"
+""
+1 465.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+221 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  466 210 466 270
+4 600
+"LINE4"
+""
+1 635.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+222 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  636 210 636 480
+4 601
+"LINE5"
+""
+1 725.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+223 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  726 210 726 445
+4 602
+"LINE6"
+""
+1 815.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+224 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  816 210 816 505
+4 603
+"LINE7"
+""
+1 815.6666666666667 504.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+225 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  816 505 296 505
+4 604
+"LINE8"
+""
+1 725.6666666666665 444.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+226 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  726 445 691 445
+4 605
+"LINE9"
+""
+1 690.6666666666666 444.6666666666664 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+227 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  691 445 691 480
+1 775 39 "" 46
+0
+1 778 40 "" 46
+0
+1 781 41 "" 46
+0
+1 790 44 "" 46
+0
+1 787 43 "" 46
+0
+1 784 42 "" 46
+0
+1 793 45 "" 46
+0
+1 796 46 "" 46
+0
+1 805 50 "" 46
+0
+1 799 47 "" 46
+0
+1 802 48 "" 46
+0
+4 606
+"LINE10"
+""
+1 985.6666666666666 209.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+228 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  986 210 986 270
+1 809 52 "" 46
+0
+1 812 54 "" 46
+0
+1 815 55 "" 46
+0
+4 660
+"LINE11"
+""
+1 460.6666666666666 524.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+235 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  461 525 461 580
+4 661
+"LINE12"
+""
+1 620.6666666666666 524.6666666666665 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+236 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 2 1 E  621 525 621 580
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 773 37 "" 51
+0
+1 774 37 "" 52
+0
+1 776 39 "" 51
+0
+1 777 39 "" 52
+0
+1 779 40 "" 51
+0
+1 780 40 "" 52
+0
+1 782 41 "" 51
+0
+1 783 41 "" 52
+0
+1 791 44 "" 51
+0
+1 792 44 "" 52
+0
+1 788 43 "" 51
+0
+1 789 43 "" 52
+0
+1 785 42 "" 51
+0
+1 786 42 "" 52
+0
+1 794 45 "" 51
+0
+1 795 45 "" 52
+0
+1 797 46 "" 51
+0
+1 798 46 "" 52
+0
+1 806 50 "" 51
+0
+1 807 50 "" 52
+0
+1 800 47 "" 51
+0
+1 801 47 "" 52
+0
+1 803 48 "" 51
+0
+1 804 48 "" 52
+0
+1 810 52 "" 51
+0
+1 811 52 "" 52
+0
+1 813 54 "" 51
+0
+1 814 54 "" 52
+0
+1 816 55 "" 51
+0
+1 817 55 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 "" -1
+"objects\\sgFwHistory.pnl" 165 140 T 97 1 0 1 -165 560
+2
+"$SystemHistory""nJams.History"
+"$SystemName"""
+3 37 "PANEL_REF37" -1
+"objects\\sgFwBlock.pnl" 55 60 T 199 0.7625 0 0.225 708.0625 56.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.LifecycleConnection"
+3 39 "PANEL_REF39" -1
+"objects\\sgFwBlock.pnl" 55 60 T 205 0.3975 0 0.225 713.8041666666667 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.RulesEngine"
+3 40 "PANEL_REF40" -1
+"objects\\sgFwBlock.pnl" 55 60 T 206 0.3975 0 0.225 713.8041666666667 361.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.RulesEngineStatistic"
+3 41 "PANEL_REF41" -1
+"objects\\sgFwBlock.pnl" 55 60 T 207 2.537500000000001 0 0.225 -93.8958333333334 151.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.Database"
+3 42 "PANEL_REF42" -1
+"objects\\sgFwBlock.pnl" 55 60 T 209 0.8250000000000007 0 0.225 330.2916666666665 466.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.DataProviderController"
+3 43 "PANEL_REF43" -1
+"objects\\sgFwBlock.pnl" 55 60 T 210 0.3975 0 0.225 533.8041666666667 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.RequestStore"
+3 44 "PANEL_REF44" -1
+"objects\\sgFwBlock.pnl" 55 60 T 211 0.3975 0 0.225 23.80416666666674 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.JobController"
+3 45 "PANEL_REF45" -1
+"objects\\sgFwBlock.pnl" 55 60 T 212 0.3975 0 0.225 23.80416666666674 361.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.PluginManager"
+3 46 "PANEL_REF46" -1
+"objects\\sgFwBlock.pnl" 55 60 T 213 0.3975 0 0.225 533.8041666666667 361.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.Indexer"
+3 47 "PANEL_REF47" -1
+"objects\\sgFwBlock.pnl" 55 60 T 214 0.3975 0 0.225 363.8041666666667 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.MetricsComponent"
+3 48 "PANEL_REF48" -1
+"objects\\sgFwBlock.pnl" 55 60 T 215 0.3975 0 0.225 193.8041666666667 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.DataProviderStatistic"
+3 50 "PANEL_REF50" -1
+"objects\\sgFwBlock.pnl" 55 60 T 217 0.3875 0 0.225 884.3541666666666 256.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Components.CommunicationController"
+3 52 "PANEL_REF52" -1
+"objects\\sgFwBlock.pnl" 55 60 T 231 0.3975 0 0.225 23.80416666666663 461.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.Plugins.hwc"
+3 54 "PANEL_REF54" -1
+"objects\\sgFwBlock.pnl" 55 60 T 233 0.3975 0 0.225 353.8041666666666 566.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.DataProvider.Business"
+3 55 "PANEL_REF55" -1
+"objects\\sgFwBlock.pnl" 55 60 T 234 0.3975 0 0.225 523.8041666666667 566.1666666666665
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""nJams.Components.DataProvider.Monitoring"
+0

@@ -1,0 +1,11 @@
+sgWaitFwDBInit.ctl
+#sginitModbus.ctl
+sgInitErrorsList.ctl
+ISup_G_TrapsDispatcher.ctl
+sgRecording.ctl
+sgCPR.ctl
+sgLAN.ctl
+sgSMS.ctl
+sgInitOptiNet.ctl
+sgInitSmartRadio.ctl
+sgIMON.ctl

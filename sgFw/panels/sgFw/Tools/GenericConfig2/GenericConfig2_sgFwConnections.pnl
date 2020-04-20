@@ -1,0 +1,1430 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,284 100 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+dyn_anytype dpe_values, rules_configs;
+string DPEditNames = \"ISup.Connections;\";
+data_point_elements = makeDynString(INPUTS_POSTFIX,
+																		OUTPUTS_POSTFIX,
+																		RULES_POSTFIX,
+																		PARAMS_POSTFIX	);				
+																																									
+data_points = strsplit($DPEditNames, \";\"); //change to $ when finished testing
+dpe_values = sgEditPanel_LoadData($DPEditNames, data_point_elements); //change to $ when finished testing
+
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	all_values[i] = dpe_values[i];
+	changed_elements[i] = false;
+	}
+
+dpGet(makeDynString(\"FwUtils.ConnectionRules.Names\",
+									  \"FwUtils.ConnectionRules.Comments\",
+									  \"FwUtils.ConnectionRules.ParamsTypes\"), 
+			rules_configs);
+			
+rules_names = rules_configs[1];
+rules_comments = rules_configs[2];
+rules_params_types = rules_configs[3];
+
+for (int p = 1;p<=dynlen(rules_params_types);p++)
+	{
+	////DebugN(rules_params_types[p]);
+	if (rules_params_types[p] != \"\")
+		{
+		rule_param_files[p] = getPointsOfType(rules_params_types[p]);
+		}
+	else
+		{
+		rule_param_files[p] = makeDynString();
+		}
+
+	}
+if (dynlen(all_values) > 0)
+	{
+	sgTree_CreateRadioList(getShape(\"RuleRadioList\"), rules_names, all_values[dpe_index(RULES_POSTFIX)][1]);
+	UpdateConnectionsList();
+	DisplayConnection(1);
+	}
+else
+	{
+	sgTree_CreateRadioList(getShape(\"RuleRadioList\"), rules_names, \"\");
+	UpdateConnectionsList();
+	DisplayConnection(1);
+	}
+	
+for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+	changed_elements[i] = false;
+	}
+	
+	
+
+}
+" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgFwConnections editor\");
+SavingChangesBack();
+}" 0
+"main()
+{
+
+}" 0
+ E E 1 -1 -1 0  35 25
+"" 0 1
+E"
+dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+
+dyn_string rules_names, rules_comments, rules_params_types;
+dyn_dyn_string all_values, rule_param_files;
+
+dyn_string RemoveInternalPoints(dyn_string all_points)
+//removes the internal points (ie those that start with an underscore) from a list
+{
+dyn_string result;
+dyn_string curr_point_name;
+for (int i = 1; i <= dynlen(all_points); i++)
+	{
+	curr_point_name = strsplit(all_points[i], \":\");
+	if (!(patternMatch(\"_*\", curr_point_name[2])))
+		{
+		if (!(patternMatch(\"_*\", dpTypeName(curr_point_name[2]))))
+			{
+			dynAppend(result, curr_point_name[2]);			
+			}
+		}
+	}
+return result;
+}
+
+int dpe_index(string dpe_name)
+{
+return dynContains(data_point_elements, dpe_name);
+}
+
+dyn_string validate()
+{
+dyn_string result;
+
+int table_length = dynlen(all_values[1]);
+bool table_right_length;
+table_right_length = ((table_length == dynlen(all_values[2])) &&
+											(table_length == dynlen(all_values[3])) &&
+											(table_length == dynlen(all_values[4]))
+										 );
+if (!(table_right_length))
+	{
+	dynAppend(result, \"the lengths of the individual dyn_strings do not match\");
+	}
+else
+	{
+	for (int i = 1; i <= dynlen(all_values[1]);i++)
+		{
+		if (all_values[dpe_index(INPUTS_POSTFIX)][i] == \"\")	
+			{
+			dynAppend(result, \"no input specified for connection number \"+i);
+			if (dynlen(dpNames(all_values[dpe_index(INPUTS_POSTFIX)][i])) == 0)
+				{
+				dynAppend(result, \"input string matches no real inputs for connection number \"+i);
+				}
+			}
+		if (all_values[dpe_index(OUTPUTS_POSTFIX)][i] == \"\")	
+			{
+			dynAppend(result, \"no output specified for connection number \"+i);
+			if (dynlen(dpNames(all_values[dpe_index(OUTPUTS_POSTFIX)][i])) == 0)
+				{
+				dynAppend(result, \"output string matches no real outputs for connection number \"+i);
+				}
+			}
+		if (all_values[dpe_index(RULES_POSTFIX)][i] == \"\")
+			{
+			dynAppend(result, \"no connection rule specified for connection number \"+i);
+			}
+		else
+			{
+			dyn_string possible_rules =	rule_param_files[dynContains(rules_names, all_values[dpe_index(RULES_POSTFIX)][i])];
+			////DebugN(all_values[dpe_index(RULES_POSTFIX)][i], possible_rules);
+			if ((dynlen(possible_rules) == 0) && (all_values[dpe_index(PARAMS_POSTFIX)][i] != \"\"))
+				{
+				dynAppend(result, \"rule requiring empty params, has params specified for connection number \"+i);
+				}
+			if (dynlen(possible_rules) > 0)
+				{
+				if (all_values[dpe_index(PARAMS_POSTFIX)][i] == \"\")
+					{
+					dynAppend(result, \"rule requiring params does not have params specified for connection number \"+i);
+					}
+				else 
+					{
+					if (dynContains(possible_rules, all_values[dpe_index(PARAMS_POSTFIX)][i]) == 0)
+						{
+						dynAppend(result, \"rule requiring params has invalid params specified for connection number \"+i);
+						}
+					}
+				}		
+			}
+		}
+	}
+
+if (dynlen(result) > 0)
+	{
+	for (int j = 1; j<=dynlen(result);j++)
+		{
+		result[j] = \"sgFwConnections error:\" + result[j];
+		}
+	DebugN(result);
+	}
+return result;
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+//DebugN(\"entering procedure for saving changes back in sgFwConnections\");	
+//this is where you save back to the database
+
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+	//would be nice to have option to see if any errors produced in validation, whether to not close...
+	
+	////DebugN(changed_elements);
+	//if anything has changed, save it all back... (to avoid the possibility of out-of-sync columns)
+	bool anything_changed = ((changed_elements[1]) ||
+													 (changed_elements[2]) ||
+													 (changed_elements[3]) ||
+													 (changed_elements[4])
+													);
+	changed_elements[1] = anything_changed;
+	changed_elements[2] = anything_changed;
+	changed_elements[3] = anything_changed;
+	changed_elements[4] = anything_changed;	
+//	//DebugN(data_points, data_point_elements, all_values, changed_elements);
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+void UpdateParamsComboList()
+{
+dyn_string ParamsComboItems;
+string selected_rule, rule_type;
+selected_rule = sgTree_SelectedItemInRadioButtonList(getShape(\"RuleRadioList\"));
+
+if (selected_rule != \"\")
+	{
+	ShowParamsComboList(rule_param_files[dynContains(rules_names, selected_rule)]);
+	}
+else
+	{
+	ShowParamsComboList(makeDynString());
+	}
+}
+
+void ShowParamsComboList(dyn_string items)
+{
+if (dynlen(items) > 0)
+	{
+	ParamsComboBox.enabled = true;
+	}
+else
+	{
+	ParamsComboBox.enabled = false;
+	}
+ParamsComboBox.items = items;
+}
+
+
+string TreeDynamicExpand(shape Tree)
+{
+
+//sgTree_RadioBtnClick(getShape(\"Tree\"));
+//sgTree_RadioListClick(getShape(\"Tree\"), X)
+//Text1.text = sgTree_SelectedNodeText(Tree);
+//Text2.text = sgTree_SelectedNodePath(Tree);
+
+idispatch curr_node;
+curr_node = Tree.ExtractNode(Tree.Selected);
+dyn_string new_items;
+dyn_string new_item_split;
+
+if (!(curr_node.HasChildren))
+	{
+	new_items = RemoveInternalPoints(dpNames(curr_node.Path+\".*\"));
+	if (dynlen(new_items) > 0)
+		{
+	
+	for (int i = 1;i<=dynlen(new_items);i++)
+		{
+		new_item_split = strsplit(new_items[i], \".\");
+		curr_node.Add(new_item_split[dynlen(new_item_split)]);		
+		}
+		}
+	}
+curr_node.Expand(false);
+}
+
+void UpdateConnectionsList()
+{
+dyn_string connections_list_items;
+int conn_list_selected;
+if (dynlen(all_values[1])>0)
+{
+
+for(int i = 1; i <= dynlen(all_values[1]); i++)
+	{
+		dynAppend(connections_list_items, i + \". \" +
+																			all_values[dpe_index(INPUTS_POSTFIX)][i] +
+																			\" -> \" + 
+																			all_values[dpe_index(OUTPUTS_POSTFIX)][i] + 
+																			\", \" + 
+																			all_values[dpe_index(RULES_POSTFIX)][i] + 
+																			\"(\" + 
+																			all_values[dpe_index(PARAMS_POSTFIX)][i] + 
+																			\")\"
+						 );
+	}
+conn_list_selected = ConnectionsList.selectedPos;
+ConnectionsList.items = connections_list_items;
+ConnectionsList.selectedPos = conn_list_selected;
+}
+else
+	{
+	connections_list_items = makeDynString(\"    ----------- No Connections Defined (Add Some) ------------        \");
+	ConnectionsList.items = connections_list_items;
+	}
+}
+
+void DisplayPartialTree(string node_path, shape InOutTree)
+{
+bool still_going_deeper = true;
+if (node_path != \"\")
+{
+	dyn_string selected_names = RemoveInternalPoints(dpNames(node_path));
+	dyn_string node_path_split;
+	dyn_string tree_names;
+
+	if (dynlen(selected_names) > 0)
+		{
+		for (int i = 1;i<= dynlen(selected_names);i++)
+			{
+			node_path_split = strsplit(selected_names[i], \".\");
+			//fill the necessary parts of the tree.
+			for (int i = 0; i<= dynlen(node_path_split);i++)
+				{
+				if (i == 0)
+					{
+					dynAppend(tree_names, RemoveInternalPoints(dpNames(\"*\")));
+					}
+				else
+					{
+					still_going_deeper = ((strpos(node_path_split[i], \"*\") == -1) && still_going_deeper);
+					if (still_going_deeper)
+						{
+					//	//DebugN(ConcatDynStringWithChar(dynSubrange(input_path, 1, i), \".\")+\".*\");
+						dynAppend(tree_names, RemoveInternalPoints(dpNames(ConcatDynStringWithChar(dynSubrange(node_path_split, 1, i), \".\")+\".*\")));
+					//	//DebugN(tree_names);
+						}
+					}
+				}
+			}
+		dynSortAsc(tree_names);	
+		dynUnique(tree_names);
+		tree_names = RemoveNonLeaves(tree_names);
+		////DebugN(tree_names);
+		sgTree_CreateTree(InOutTree, tree_names);
+
+		////DebugN(selected_names);
+		idispatch curr_node;
+		for (int j = 1;j<=dynlen(selected_names);j++)
+			{
+		//	//DebugN(\"selecting node\", selected_names[j]);
+			curr_node = InOutTree.ExtractNode(InOutTree.Items.FindNodeOnPath(selected_names[j]));
+			curr_node.Selected = true;
+			}
+		}
+	else
+		{
+		sgTree_CreateTree(InOutTree, RemoveInternalPoints(dpNames(\"*\")));
+		}
+	}
+else
+	{
+	sgTree_CreateTree(InOutTree, RemoveInternalPoints(dpNames(\"*\")));
+	}
+}
+
+void DisplayConnection(int ConnIndex)
+{
+if (dynlen(all_values[1]) > 0)
+{
+
+DisplayPartialTree(all_values[dpe_index(INPUTS_POSTFIX)][ConnIndex], getShape(\"InputTree\"));
+DisplayPartialTree(all_values[dpe_index(OUTPUTS_POSTFIX)][ConnIndex], getShape(\"OutputTree\"));
+
+InputText.text = all_values[dpe_index(INPUTS_POSTFIX)][ConnIndex];
+OutputText.text = all_values[dpe_index(OUTPUTS_POSTFIX)][ConnIndex];
+sgTree_SelectItemInRadioList(getShape(\"RuleRadioList\"), all_values[dpe_index(RULES_POSTFIX)][ConnIndex]);
+UpdateParamsComboList();
+ParamsComboBox.text = all_values[dpe_index(PARAMS_POSTFIX)][ConnIndex];
+}
+else
+	{
+	InputTree.Items.Clear;
+	OutputTree.Items.Clear;
+	sgTree_SelectItemInRadioList(getShape(\"RuleRadioList\"), \"\");
+	InputText.text = \"\";
+	OutputText.text = \"\";
+	ParamsComboBox.text = \"\";
+	}
+}
+
+
+dyn_string RemoveNonLeaves(dyn_string StringList)
+{
+dyn_string result;
+//dynSortAsc(StringList);
+for (int i = 1; i<dynlen(StringList);i++)
+	{	if (strlen(StringList[i]) < strlen(StringList[i+1]))
+		{
+		if (StringList[i] != (substr(StringList[i+1], 0, strlen(StringList[i]))))
+			{
+			dynAppend(result, StringList[i]);
+			}
+		}
+	else
+		{
+		dynAppend(result, StringList[i]);
+		}	
+	}
+	dynAppend(result, StringList[dynlen(StringList)]);
+return result;
+}
+" 0
+ 2
+"CBRef""1"
+"EClose""main()
+{
+
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 42
+"Text3"
+""
+1 10 13 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+42 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 15 44 31
+0 2 0 "s" 0 0 0 192 0 0  12 15
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 5 Input
+2 43
+"Text4"
+""
+1 900 13 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+43 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 902 15 944 31
+0 2 0 "s" 0 0 0 192 0 0  902 15
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Output
+2 44
+"Text5"
+""
+1 350 73 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+44 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 352 75 385 91
+0 2 0 "s" 0 0 0 192 0 0  352 75
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 5 Rule:
+2 45
+"Text6"
+""
+1 330 403 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+45 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 332 405 442 421
+0 2 0 "s" 0 0 0 192 0 0  332 405
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 16 Rule Parameters:
+4 48
+"Line1"
+""
+1 310 249 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+48 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  330 249 310 249
+4 49
+"Line2"
+""
+1 310 259 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+49 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  330 259 310 259
+4 50
+"Line3"
+""
+1 324 256 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+50 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  324 267 335 256
+4 51
+"Line4"
+""
+1 324 243 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+51 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  335 254 324 243
+4 52
+"Line5"
+""
+1 620 249 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+52 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  640 249 620 249
+4 53
+"Line6"
+""
+1 620 259 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+53 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  640 259 620 259
+4 54
+"Line7"
+""
+1 634 256 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+54 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  634 267 645 256
+4 55
+"Line8"
+""
+1 634 243 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+55 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 5 2 0 1 E  645 254 634 243
+4 60
+"Line9"
+""
+1 170 487 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+59 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 507 170 487
+4 61
+"Line10"
+""
+1 170 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+60 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 510 160 500
+4 62
+"Line11"
+""
+1 180 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+61 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  170 510 180 500
+4 67
+"Line15"
+""
+1 790 487 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+66 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  790 507 790 487
+4 68
+"Line16"
+""
+1 790 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+67 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  790 510 780 500
+4 69
+"Line17"
+""
+1 800 500 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+68 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 3 2 0 1 E  790 510 800 500
+30 73
+"Frame1"
+""
+1 0 550 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 0 0 960 550
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 19  Single Connection 
+30 74
+"Frame2"
+""
+1 0 800 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 0 555 960 800
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 26  All connections in point 
+29 33
+"InputTree"
+""
+1 10 33 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+33 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+10 33 300 473
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"TreeDynamicExpand(getShape(\"InputTree\"));"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 34
+"RuleRadioList"
+""
+1 320 43 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+34 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+350 93 604 383
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+"sgTree_RadioBtnClick(getShape(\"RuleRadioList\"));
+UpdateParamsComboList();
+ParamsComboBox.text = \"\";
+all_values[dpe_index(RULES_POSTFIX)][ConnectionsList.selectedPos] = sgTree_SelectedItemInRadioButtonList(getShape(\"RuleRadioList\"));
+all_values[dpe_index(PARAMS_POSTFIX)][ConnectionsList.selectedPos] = ParamsComboBox.text;
+UpdateConnectionsList();
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+changed_elements[dpe_index(PARAMS_POSTFIX)] = true;"
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+""
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+29 36
+"OutputTree"
+""
+1 639 -35 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+
+660 33 950 473
+21 FlyTreeXCtrl.FlyTreeX
+57
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"TreeDynamicExpand(getShape(\"OutputTree\"));"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+E
+22 46
+"ParamsComboBox"
+""
+1 330 423 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+46 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+328 421 632 448
+0
+E
+"main()
+{
+all_values[dpe_index(PARAMS_POSTFIX)][ConnectionsList.selectedPos] = ParamsComboBox.text;
+UpdateConnectionsList();
+changed_elements[dpe_index(PARAMS_POSTFIX)] = true;
+
+}" 0
+
+E
+ 0 0
+14 56
+"InputText"
+""
+1 10 517 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+55 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 515 422 542
+3 "s" 0 0 0 0 0 0 
+E
+E
+"main()
+{
+all_values[dpe_index(INPUTS_POSTFIX)][ConnectionsList.selectedPos] = InputText.text;
+UpdateConnectionsList();
+DisplayPartialTree(InputText.text, getShape(\"InputTree\"));
+changed_elements[dpe_index(INPUTS_POSTFIX)] = true;
+}" 0
+
+13 58
+"InputCopyBtn"
+""
+1 10 483 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+57 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 481 142 512
+T 
+1
+LANG:5 12 Change Input
+"main()
+{
+if (sgTree_SelectedNodeHasChildren(getShape(\"InputTree\")))
+	{
+	InputText.text = sgTree_SelectedNodePath(getShape(\"InputTree\")) + \".*\";
+	}
+else
+	{
+	InputText.text = sgTree_SelectedNodePath(getShape(\"InputTree\"));
+	}
+	
+all_values[dpe_index(INPUTS_POSTFIX)][ConnectionsList.selectedPos] = InputText.text;
+UpdateConnectionsList();
+changed_elements[dpe_index(INPUTS_POSTFIX)] = true;
+
+}" 0
+ E E E
+13 59
+"OutputCopyBtn"
+""
+1 820 483 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+58 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+818 481 952 512
+T 
+1
+LANG:5 13 Change Output
+"main()
+{
+if (sgTree_SelectedNodeHasChildren(getShape(\"OutputTree\")))
+	{
+	OutputText.text = sgTree_SelectedNodePath(getShape(\"OutputTree\")) + \".*\";
+	}
+else
+	{
+	OutputText.text = sgTree_SelectedNodePath(getShape(\"OutputTree\"));
+	}
+all_values[dpe_index(OUTPUTS_POSTFIX)][ConnectionsList.selectedPos] = OutputText.text;
+UpdateConnectionsList();
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+14 66
+"OutputText"
+""
+1 540 517 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+65 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+538 515 952 542
+3 "s" 0 0 0 0 0 0 
+E
+E
+"main()
+{
+all_values[dpe_index(OUTPUTS_POSTFIX)][ConnectionsList.selectedPos] = OutputText.text;
+UpdateConnectionsList();
+DisplayPartialTree(OutputText.text, getShape(\"OutputTree\"));
+changed_elements[dpe_index(OUTPUTS_POSTFIX)] = true;
+}" 0
+
+17 70
+"ConnectionsList"
+""
+1 10 570 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+69 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 568 952 752
+0
+E
+"main()
+{
+DisplayConnection(ConnectionsList.selectedPos);
+}" 0
+
+E
+
+3 1
+13 71
+"NewConnectionBtn"
+""
+1 10 760 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+70 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 758 182 792
+T 
+1
+LANG:5 18 Add New Connection
+"main()
+{
+dynAppend(all_values[1], \"\");
+dynAppend(all_values[2], \"\");
+dynAppend(all_values[3], \"\");
+dynAppend(all_values[4], \"\");
+UpdateConnectionsList();
+DisplayConnection(dynlen(all_values[1]));
+ConnectionsList.selectedPos = dynlen(all_values[1]);
+changed_elements[1] = true;
+changed_elements[2] = true;
+changed_elements[3] = true;
+changed_elements[4] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+13 72
+"RemoveConnectionBtn"
+""
+1 200 760 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+71 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+198 758 392 792
+T 
+1
+LANG:5 26 Remove Selected Connection
+"main()
+{
+dynRemove(all_values[1], ConnectionsList.selectedPos);
+dynRemove(all_values[2], ConnectionsList.selectedPos);
+dynRemove(all_values[3], ConnectionsList.selectedPos);
+dynRemove(all_values[4], ConnectionsList.selectedPos);
+ConnectionsList.selectedPos = 1;
+UpdateConnectionsList();
+DisplayConnection(1);
+changed_elements[1] = true;
+changed_elements[2] = true;
+changed_elements[3] = true;
+changed_elements[4] = true;
+}" 0
+ E E "main()
+{
+
+}" 0
+
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

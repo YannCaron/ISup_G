@@ -1,0 +1,366 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,262 164 965 805 N "_3DFace" 1
+"$DPEditNames"
+"main()
+{
+	
+	loadHistory();
+	
+	for (int i = 1; i<=dynlen(data_point_elements);i++)
+	{
+		changed_elements[i] = false;
+	}
+
+}
+" 0
+"main()
+{
+//DebugN(\"entering event terminate for sgFwHistory editor\");
+SavingChangesBack();
+}" 0
+E E E 1 -1 -1 0  35 25
+"" 0 1
+E"dyn_string data_points;
+dyn_string data_point_elements; 
+dyn_bool changed_elements;
+string DPEditNames;
+
+const string MESSAGE_POSTFIX = \".Message\";
+const string HISTORY_SIZE_POSTFIX = \".HistorySize\";
+const string SHORT_HISTORY_POSTFIX = \".ShortHistory\";
+
+int dpe_index(string dpe_name)
+{
+	return dynContains(data_point_elements, dpe_name);
+}
+
+dyn_string validate()
+{
+
+	dyn_string result;
+	
+	if ((HistoryLengthSpin.text < 1) || (HistoryLengthSpin.text > 100))
+	{
+		dynAppend(result, \"History size value: \"+HistoryLengthSpin.text+ \" may be out of range (should be 1 <= x <= 100)\");
+	}
+	
+	if (dynlen(result) > 0)
+	{
+		for (int j = 1; j<=dynlen(result);j++)
+		{
+			result[j] = \"sgFWHistory error:\" + result[j];
+		}
+		DebugN(result);
+	}
+	
+	return result;
+	
+}
+
+void loadHistory()
+{
+
+	dyn_anytype dpe_values;
+	dyn_string historyList;
+	string historyText;
+	const string MESSAGE_POSTFIX = \".Message\";
+	const string HISTORY_SIZE_POSTFIX = \".HistorySize\";
+	const string SHORT_HISTORY_POSTFIX = \".ShortHistory\";
+	
+	DPEditNames = $DPEditNames;
+	
+	data_point_elements = makeDynString(MESSAGE_POSTFIX,
+																			HISTORY_SIZE_POSTFIX,
+																			SHORT_HISTORY_POSTFIX
+																		 );				
+	
+	data_points = strsplit(DPEditNames, \";\"); 
+	dpe_values = sgEditPanel_LoadData(DPEditNames, data_point_elements);
+
+	// get dpe values
+	historyText = dpe_values[dpe_index(MESSAGE_POSTFIX)];
+	historyList = dpe_values[dpe_index(SHORT_HISTORY_POSTFIX)];
+
+	// replace tab
+	strreplace (historyText, \"\\t\", \"    \");
+	for (int i = 1; i<=dynlen(historyList); i++)
+	{
+		strreplace (historyList[i], \"\\t\", \"    \");
+	}
+	
+	// assign to controls
+	MessageText.text = historyText;
+	HistoryLengthSpin.text = dpe_values[dpe_index(HISTORY_SIZE_POSTFIX)];
+	ContentsList.items = historyList;
+	//ContentsList.selectedPos = 0;
+
+
+}
+
+//##################### saving changes back ########################
+void SavingChangesBack()
+{
+dyn_anytype all_values;
+
+//DebugN(\"entering procedure for saving changes back in sgFWHistory\");	
+//this is where you save back to the database
+
+//to make sure than when you are closing it really does get the info off the panel
+all_values[dpe_index(HISTORY_SIZE_POSTFIX)] = HistoryLengthSpin.text;
+all_values[dpe_index(MESSAGE_POSTFIX)] = MessageText.text; //though these should never need to be saved
+all_values[dpe_index(SHORT_HISTORY_POSTFIX)] = ContentsList.items; // never need to save
+//they are never saved because there is no mechanism in this panel for their changed_elements to be set
+
+//but only save back if saving is enabled:
+////DebugN(SaveChangesOnCloseCheckBox.state(0));
+if (SaveChangesOnCloseCheckBox.state(0) == 1)
+	{
+	//DebugN(\"Saving changes back enabled\");	
+	
+	//validation
+	validate();
+	//would be nice to have option to see if any errors produced in validation, whether to not close...
+	
+	sgEditPanel_SaveData(data_points, data_point_elements, all_values, changed_elements);
+	}
+else
+	{
+	//DebugN(\"discarding changes\");
+	}
+
+//PanelOff();
+
+}
+
+
+
+" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 73
+"Frame1"
+""
+1 10 58 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+71 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 10 140 60
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 16  History Length 
+30 74
+"Frame2"
+""
+1 10 797 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+72 0 0 0 0 0
+EE E
+1
+1
+LANG:5 0 
+0
+E E 0 1 1 0 1 E U  0 E 10 70 950 800
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 18  History Contents 
+2 75
+"Text1"
+""
+1 20 100 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+73 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 22 102 88 118
+0 2 0 "s" 0 0 0 192 0 0  22 102
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 9 Message: 
+17 70
+"ContentsList"
+""
+1 20 140 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+69 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+18 138 942 792
+0
+E
+"main()
+{
+
+}" 0
+
+E
+
+3 1
+14 77
+"MessageText"
+""
+1 90 100 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+75 0 0 0 0 0
+E"main()
+{
+
+}" 0
+ E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+88 98 939 125
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+
+}" 0
+
+E
+"main()
+{
+
+}" 0
+
+21 78
+"HistoryLengthSpin"
+""
+1 20 27 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+76 0 0 0 0 0
+"main()
+{
+changed_elements[dpe_index(HISTORY_SIZE_POSTFIX)] = true;
+}" 0
+E E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+18 25 132 52
+0
+E
+"main()
+{
+changed_elements[dpe_index(HISTORY_SIZE_POSTFIX)] = true;
+}" 0
+
+E
+
+N 0 1000 1 99 1 1
+13 79
+"RefreshHistoryBtn"
+""
+1 830 30 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+76 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+828 28 932 62
+T 
+1
+LANG:5 7 Refresh
+"main()
+{
+
+	loadHistory();
+	
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+20 17
+"SaveChangesOnCloseCheckBox"
+""
+1 295 340 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+293 338 712 427
+1
+T 
+1
+LANG:5 26 SaveChangesOnCloseCheckBox
+ 1
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

@@ -1,0 +1,347 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1100 460 N "_3DFace" 5
+"$CommandEnable"
+"$ElementName"
+"$NavaidNr"
+"$StationName"
+"$SystemName"
+"main()
+{
+  set_FrameVisibility();
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "void  set_FrameVisibility()
+{
+  if($CommandEnable == \"1\")
+	  FrameCmdButton.visible = true;
+	else
+		FrameCmdButton.visible = false;
+}
+
+void set_TitleName()
+{
+  string entity;
+  dpGet ($SystemName + $StationName + \".Structured.\" + $ElementName + \".Name\", entity);
+  
+  if(entity != \"\")
+     PageLabel.text = entity + \" states\";
+  else
+     PageLabel.text = $ElementName + \" states\";
+  
+  }" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 918 172 "" 103
+0
+1 920 174 "" 103
+0
+1 922 175 "" 103
+0
+1 924 176 "" 103
+0
+1 926 177 "" 103
+0
+1 928 178 "" 103
+0
+1 930 179 "" 103
+0
+1 932 182 "" 103
+0
+1 934 183 "" 103
+0
+1 936 184 "" 103
+0
+1 938 185 "" 103
+0
+1 940 186 "" 103
+0
+1 942 187 "" 103
+0
+1 944 188 "" 103
+0
+1 946 189 "" 103
+0
+1 948 190 "" 103
+0
+2 916
+"PageLabel"
+""
+1 270 0 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+216 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  set_TitleName();
+}" 0
+ E 0 1 1 0 1 E U  0 E 272 2 858 53
+0 2 0 "0s" 0 0 0 65 0 0  272 2 1
+2
+LANG:5 89 -*-Tahoma-bold-r-normal-*-29-*-100-100-*-*-iso8859-1|-29,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 17 Entity XXX States
+LANG:1 4 AFPS
+30 917
+"FrameCmdButton"
+""
+1 450 418 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+218 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 450 350 650 425
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 8 Commands
+1 951 196 "" 103
+0
+1 953 197 "" 103
+0
+1 955 198 "" 103
+0
+1 957 199 "" 103
+0
+1 959 200 "" 103
+0
+1 961 201 "" 103
+0
+1 963 202 "" 103
+0
+1 965 203 "" 103
+0
+1 950 195 "" 0
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 919 172 "" 110
+0
+1 921 174 "" 110
+0
+1 923 175 "" 110
+0
+1 925 176 "" 110
+0
+1 927 177 "" 110
+0
+1 929 178 "" 110
+0
+1 931 179 "" 110
+0
+1 933 182 "" 110
+0
+1 935 183 "" 110
+0
+1 937 184 "" 110
+0
+1 939 185 "" 110
+0
+1 941 186 "" 110
+0
+1 943 187 "" 110
+0
+1 945 188 "" 110
+0
+1 947 189 "" 110
+0
+1 949 190 "" 110
+0
+1 952 196 "" 110
+0
+1 954 197 "" 110
+0
+1 956 198 "" 110
+0
+1 958 199 "" 110
+0
+1 960 200 "" 110
+0
+1 962 201 "" 110
+0
+1 964 202 "" 110
+0
+1 966 203 "" 110
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 172 ""
+"objects\\sgFwBitStateBlock.pnl" 98 109 T 199 0.693548387096774 0 0.272727272727273 -57.9677419354839 10.2727272727273
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_0\""
+"$SystemName""$SystemName"
+3 174 "Group20"
+"objects\\sgFwBitStateBlock.pnl" 91 70 T 201 0.693548387096774 0 0.272253787878788 -53.343946754761 125.952911467617
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_6\""
+"$SystemName""$SystemName"
+3 175 "Group17"
+"objects\\sgFwBitStateBlock.pnl" 100 190 T 201 0.693548387096774 0 0.272727272727273 -59.0427419354839 58.2727272727273
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_4\""
+"$SystemName""$SystemName"
+3 176 "Group19"
+"objects\\sgFwBitStateBlock.pnl" 100 190 T 202 0.693548387096774 0 0.272727272727273 590.957258064516 23.2727272727273
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_3\""
+"$SystemName""$SystemName"
+3 177 "Group21"
+"objects\\sgFwBitStateBlock.pnl" 100 190 T 203 0.693548387096774 0 0.272727272727273 -59.0427419354839 23.2727272727273
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_2\""
+"$SystemName""$SystemName"
+3 178 "Group23"
+"objects\\sgFwBitStateBlock.pnl" 100 310 T 204 0.693548387096774 0 0.272954735006445 590.957258064516 25.3396770035636
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_5\""
+"$SystemName""$SystemName"
+3 179 "Group25"
+"objects\\sgFwBitStateBlock.pnl" 100 230 T 205 0.693548387096774 0 0.272727272727273 590.957258064516 -22.7272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_1\""
+"$SystemName""$SystemName"
+3 182 "Group18"
+"objects\\sgFwBitStateBlock.pnl" 100 390 T 209 0.693548387096774 0 0.272253787878788 590.206053245239 38.9529114676174
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_7\""
+"$SystemName""$SystemName"
+3 183 "Group18"
+"objects\\sgFwBitStateBlock.pnl" 100 150 T 209 0.693548387096774 0 0.272727272727273 -59.0427419354839 139.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_8\""
+"$SystemName""$SystemName"
+3 184 "Group19"
+"objects\\sgFwBitStateBlock.pnl" 100 270 T 210 0.693548387096774 0 0.272253787878788 -59.793946754761 211.952911467617
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_14\""
+"$SystemName""$SystemName"
+3 185 "Group20"
+"objects\\sgFwBitStateBlock.pnl" 100 230 T 211 0.693548387096774 0 0.272727272727273 -59.0427419354839 187.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_12\""
+"$SystemName""$SystemName"
+3 186 "Group21"
+"objects\\sgFwBitStateBlock.pnl" 610 190 T 212 0.693548387096774 0 0.272727272727273 237.282258064516 163.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_11\""
+"$SystemName""$SystemName"
+3 187 "Group22"
+"objects\\sgFwBitStateBlock.pnl" 100 190 T 213 0.693548387096774 0 0.272727272727273 -59.0427419354839 163.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_10\""
+"$SystemName""$SystemName"
+3 188 "Group23"
+"objects\\sgFwBitStateBlock.pnl" 610 230 T 214 0.693548387096774 0 0.272954735006445 237.282258064516 187.339677003564
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_13\""
+"$SystemName""$SystemName"
+3 189 "Group24"
+"objects\\sgFwBitStateBlock.pnl" 610 150 T 215 0.693548387096774 0 0.272727272727273 237.282258064516 139.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_9\""
+"$SystemName""$SystemName"
+3 190 "Group25"
+"objects\\sgFwBitStateBlock.pnl" 610 270 T 216 0.693548387096774 0 0.272253787878788 236.531053245239 211.952911467617
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_15\""
+"$SystemName""$SystemName"
+3 195 ""
+"Navir\\Objects\\NavirCmdWindowBtn.pnl" 230 455 T 222 2.76923076923077 0 0.888888888888889 -176.923076923077 -32.4444444444444
+6
+"$ButtonIsVisible""$CommandEnable"
+"$HistoryName""$StationName + \".History\""
+"$LabelButtonCmd"""
+"$NavaidNr""$NavaidNr"
+"$StationName""$StationName"
+"$SystemName""$SystemName"
+3 196 "Group20"
+"objects\\sgFwBitStateBlock.pnl" 50 295 T 223 0.693548387096774 0 0.272253787878788 -24.4383911992054 274.952911467617
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_18\""
+"$SystemName""$SystemName"
+3 197 "Group21"
+"objects\\sgFwBitStateBlock.pnl" 50 260 T 224 0.693548387096774 0 0.272727272727273 -24.6427419354839 249.272727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_16\""
+"$SystemName""$SystemName"
+3 198 "Group24"
+"objects\\sgFwBitStateBlock.pnl" 50 355 T 225 0.693548387096774 0 0.272253787878788 625.561608800794 258.702911467617
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_19\""
+"$SystemName""$SystemName"
+3 199 "Group25"
+"objects\\sgFwBitStateBlock.pnl" 50 320 T 226 0.693548387096774 0 0.272727272727273 625.357258064516 233.022727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_17\""
+"$SystemName""$SystemName"
+3 200 "Group26"
+"objects\\sgFwBitStateBlock.pnl" 20 355 T 226 0.693548387096774 0 0.279441774882468 -3.41616897698317 325.934554383042
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_22\""
+"$SystemName""$SystemName"
+3 201 "Group27"
+"objects\\sgFwBitStateBlock.pnl" 20 320 T 227 0.693548387096774 0 0.272727272727273 -3.62051971326165 303.12987012987
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_20\""
+"$SystemName""$SystemName"
+3 202 "Group28"
+"objects\\sgFwBitStateBlock.pnl" 630 355 T 228 0.693548387096774 0 0.263178661616162 223.272719911906 331.912814418697
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_23\""
+"$SystemName""$SystemName"
+3 203 "Group29"
+"objects\\sgFwBitStateBlock.pnl" 630 320 T 229 0.693548387096774 0 0.272727272727273 223.068369175627 303.022727272727
+2
+"$BitState""$StationName + \".Structured.\"+ $ElementName + \".Bit_21\""
+"$SystemName""$SystemName"
+0

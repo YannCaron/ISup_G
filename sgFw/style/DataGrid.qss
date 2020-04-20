@@ -1,0 +1,41 @@
+/*
+see http://doc.qt.io/qt-5/stylesheet-syntax.html for description
+*/
+
+DataGrid {
+	qproperty-alternatingRow:0;
+	qproperty-sortingEnabled:1;
+	qproperty-selectionBehavior:SelectRows;
+	qproperty-selectionMode:NoSelection;
+	qproperty-rowDefaultSize:25;
+}
+
+DataGrid > QWidget {
+}
+
+DataGrid QTableView {
+	background-color: #ffffff;
+	font-size: 14px;
+	font: bold large "Tahoma";
+	border: 0px;
+	gridline-color: #e0e0e0;
+}
+
+
+DataGrid QHeaderView {
+	font-size: 14px;
+	font: bold large "Tahoma";
+}
+
+DataGrid FilterWidget {
+	qproperty-marginHeight:25;
+	qproperty-marginWidth:75;
+	qproperty-equalsColor: #00cc66;
+	qproperty-notEqualsColor: #ff9900;
+	qproperty-alpha: 75;
+}
+
+DataGrid FilterWidget QLabel {
+	font-size: 12px;
+	font: bold large "Tahoma";
+}

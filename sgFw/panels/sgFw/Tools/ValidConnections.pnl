@@ -1,0 +1,846 @@
+V 10
+1
+LANG:5 17 Valid Connections
+PANEL,317 114 798 770 N "_3DFace" 0
+"main()
+{
+
+	dyn_string dpeWAGO, dpeWAGOBus;
+
+	tbValue.text = 0;
+
+	dpeWAGO = getPointsOfType (WAGO_TYPE);
+	dpeWAGOBus = getPointsOfType (WAGO_BUS_TYPE);
+
+	for (int i=1; i<=dynlen(dpeWAGO); i++)
+	{
+		dynAppend (dpeWAGOStatus, dpeWAGO[i] + \".Status_A\");
+		dynAppend (dpeWAGOStatus, dpeWAGO[i] + \".Status_B\");
+		
+		dynAppend (dpeValues, makeDynInt(3, 3));
+	}
+
+	for (int j=1; j<=dynlen(dpeWAGOBus); j++)
+	{
+		dynAppend (dpeWAGOStatus, dpeWAGOBus[j] + \".Status_A\");
+		dynAppend (dpeWAGOStatus, dpeWAGOBus[j] + \".Status_B\");
+		
+		dynAppend (dpeValues, makeDynInt(3, 3));
+	}
+
+}" 0
+EE E E 1 -1 -1 0  70 50
+"" 0 1
+E"const char SUBSYSTEM_SEPARATOR = '.';
+const string WAGO_TYPE = \"sgWAGOExt\";
+const string WAGO_BUS_TYPE = \"sgWAGOBusExt\";
+const int WAGO_STATUS_DELAY = 3;
+
+bool bset = false;
+
+dyn_string dpeWAGOStatus;
+dyn_int dpeValues;
+dyn_string logicInputs;
+dyn_string logicOutputs;
+dyn_string connectionSystems, connectionInputs, connectionOutputs, connectionRules, connectionParams, connectionVerification;
+
+dyn_string getRootSystemDPEs()
+{
+
+	// string
+	dyn_string rootDPEs;
+	dyn_string returnRootDPEs;
+	string systemGlobal = SYSTEM_GLOBAL + LOGIC_INPUTS_POSTFIX;
+
+	// get all root DPes
+	if (dpExists(systemGlobal))
+		dpGet(systemGlobal, rootDPEs);
+	
+	// remove sub system (separator : \"+\")
+	for (int i=2; i<=dynlen(rootDPEs); i++)
+	{
+		returnRootDPEs[i-1] = strsplit(rootDPEs[i], SUBSYSTEM_SEPARATOR)[1];
+	}
+
+	return returnRootDPEs;
+
+}
+
+void setCbEntry()
+{
+
+	// variable
+	dyn_string logicText;
+	dyn_string output;
+	
+	// clear
+	dynClear(logicInputs);
+	dynClear(logicOutputs);
+	
+	if (dpExists(cbSystem.selectedText + \".Connections\"))
+	{
+	
+		// get values
+		dpGet (cbSystem.selectedText + \".Connections.Inputs\", logicInputs,
+					cbSystem.selectedText + \".Connections.Outputs\", logicOutputs);
+	
+		for (int i=1; i<=dynlen(logicOutputs); i++)
+		{
+			output = logicOutputs[i];
+			strreplace(logicOutputs[i], \".PreStatus\", \"\");
+			dynAppend(logicText, output);
+		}
+
+	}
+
+	cbEntry.items = logicText;
+	
+	if (dynlen(logicText) > 0)
+	{
+		cbEntry.selectedPos = 1;
+	}
+
+}
+
+string appendError(string &error, string message, string type)
+{
+
+	error += type;
+	error += \": \";
+	error += message;
+	error += '\\n';
+	
+}
+
+void completeConnections (dyn_string &cnnI, dyn_string &cnnO, dyn_string &cnnR, dyn_string &cnnP)
+{
+
+	// variable
+	int count;
+	
+	// determine count
+	count = dynlen(cnnI);
+	
+	if (count < dynlen(cnnO))
+	{
+		count = dynlen(cnnO);
+	}
+	
+	if (count < dynlen(cnnR))
+	{
+		count = dynlen(cnnR);
+	}
+	
+	if (count < dynlen(cnnP))
+	{
+		count = dynlen(cnnP);
+	}
+	
+	for (int i=1; i<=count; i++)
+	{
+
+		if (i > dynlen(cnnI))
+		{
+			cnnI[i] = \"\";
+		}
+
+		if (i > dynlen(cnnO))
+		{
+			cnnO[i] = \"\";
+		}
+		
+		if (i > dynlen(cnnR))
+		{
+			cnnR[i] = \"\";
+		}
+
+		if (i > dynlen(cnnP))
+		{
+			cnnP[i] = \"\";
+		}
+
+	}
+
+}
+
+bool dpTypeSimple(string dpe)
+{
+
+	int dpeType = dpElementType(dpe);
+
+	return (dpeType == DPEL_BIT32 || dpeType == DPEL_BLOB || dpeType == DPEL_BOOL || dpeType == DPEL_CHAR
+					|| dpeType == DPEL_DPID || dpeType == DPEL_FLOAT || dpeType == DPEL_INT || dpeType == DPEL_LANGSTRING
+					|| dpeType == DPEL_STRING || dpeType == DPEL_TIME || dpeType == DPEL_UINT);
+	
+}
+
+void verifyIntegrity(string type, string &error, string dpValue)
+{
+
+	if (dpValue == \"\")
+	{
+		appendError (error, type + \" is empty\", \"ERROR\");
+	}
+	else if (!dpExists (dpValue))
+	{
+		appendError (error, type + \" [\" + dpValue + \"] does not exist\", \"ERROR\");
+	}
+	else if (!dpTypeSimple(dpValue))
+	{
+		appendError (error, type + \" [\" + dpValue + \"] is not an entry\", \"ERROR\");
+	}
+
+}
+
+void verifyDuplicated(string type, string &error, dyn_string dyn, string index)
+{
+
+		int dup = dynContains(dyn, dyn[index]);
+		if (dup < index)
+		{
+			appendError (error, \"Duplicated \" + type + \" [\" + dyn[index] + \"] between : \" + connectionSystems[index] + \" and \" + connectionSystems[dup], \"WARNING\");
+		}
+
+}
+
+void verify()
+{
+
+	string error;
+	dyn_int inputIDs, outputIDs;
+	
+	// verify inputs integrity
+	for (int i=1; i<=dynlen(connectionInputs); i++)
+	{
+		error = \"\";
+
+		// verify integrity
+		verifyIntegrity(\"Input\", error, connectionInputs[i]);
+		verifyIntegrity(\"Output\", error, connectionOutputs[i]);
+
+		// empty
+		if (connectionRules[i] == \"\")
+		{
+			appendError (error, \"Rule is empty\", \"ERROR\");
+		}
+		
+		if (connectionParams[i] == \"\")
+		{
+			appendError (error, \"Param is empty\", \"ERROR\");
+		} 
+		else if (!dpExists (connectionParams[i]))
+		{
+			appendError (error, \"Param [\" + connectionParams[i] + \"] does not exist\", \"ERROR\");
+		}
+
+		// duplicated
+		verifyDuplicated (\"Input\", error, connectionInputs, i);
+		verifyDuplicated (\"Output\", error, connectionOutputs, i);
+
+		// finalize error
+		if (error == \"\")
+		{
+			error = \"OK\";
+		}
+
+		tConnections.updateLine (1, \"id\", i, \"verification\", error);
+		
+	}
+	
+}
+
+void setColor()
+{
+
+	string systemName, oldSystemName;
+	string bColor = false;
+
+	// loop on table lines
+	for (int i=0; i<tConnections.lineCount; i++)
+	{
+
+		getValue (\"tConnections\", \"cellValueRC\", i, \"system\", systemName);
+		
+		if (systemName != oldSystemName)
+		{
+			bColor = !bColor;
+			oldSystemName = systemName;
+		}
+		
+		if (bColor) 
+		{
+			for (int k=0; k<tConnections.columnCount; k++)
+			{
+				setValue (\"tConnections\", \"cellBackColRC\", i, tConnections.columnToName(k), \"{230, 230, 230}\");
+			}
+		}
+
+		for (int j=0; j<tConnections.columnCount; j++)
+		{
+
+			string value;
+			getValue (\"tConnections\", \"cellValueRC\", i, tConnections.columnToName(j), value);
+		
+			if (value == \"\" || value == \"empty !\")
+			{
+				setValue (\"tConnections\", \"cellValueRC\", i, tConnections.columnToName(j), \"empty !\");
+				setValue (\"tConnections\", \"cellBackColRC\", i, tConnections.columnToName(j), \"red\");
+			}
+			
+			if (tConnections.columnToName(j) == \"verification\")
+			{
+				if (value == \"OK\")
+				{
+					setValue (\"tConnections\", \"cellBackColRC\", i, tConnections.columnToName(j), \"green\");
+				}
+				else if (strpos(value, \"ERROR\") != -1)
+				{
+					setValue (\"tConnections\", \"cellBackColRC\", i, tConnections.columnToName(j), \"red\");
+				}
+				else if (strpos(value, \"WARNING\") != -1)
+				{
+					setValue (\"tConnections\", \"cellBackColRC\", i, tConnections.columnToName(j), \"yellow\");
+				}
+			}
+			
+		}
+	}
+
+}
+
+void verifyConnections()
+{
+
+	// variable
+	dyn_string rootDPEs;
+	int id;
+	dyn_int IDs;
+
+	// initialize
+	tConnections.tableMode = TABLE_SELECT_BROWSE;
+	tConnections.selectByClick = TABLE_SELECT_LINE;
+	
+	// clear
+	dynClear(connectionInputs);
+	dynClear(connectionOutputs);
+	dynClear(connectionRules);
+	dynClear(connectionParams);
+	tConnections.deleteLinesN(0, tConnections.lineCount);
+	
+	// get root DPEs
+	rootDPEs = getRootSystemDPEs();
+
+	for (int i=1; i<=dynlen(rootDPEs); i++)
+	{
+	
+		if (dpExists(rootDPEs[i] + \".Connections\"))
+		{
+	
+			dyn_string cnnI, cnnO, cnnR, cnnP;
+			
+			dpGet(rootDPEs[i] + \".Connections.Inputs\", cnnI,
+						rootDPEs[i] + \".Connections.Outputs\", cnnO,
+						rootDPEs[i] + \".Connections.Rules\", cnnR,
+						rootDPEs[i] + \".Connections.Params\", cnnP);
+	
+			if (dynlen(cnnI) == 0)
+			{
+				cnnI[1] = \"\";
+			}
+	
+			completeConnections(cnnI, cnnO, cnnR, cnnP);
+			
+			for (int j=1; j<=dynlen(cnnI); j++)
+			{
+				id++;
+				dynAppend (IDs, id);
+				dynAppend (connectionSystems, rootDPEs[i]);
+			}
+			
+			dynAppend (connectionInputs, cnnI);
+			dynAppend (connectionOutputs, cnnO);
+			dynAppend (connectionRules, cnnR);
+			dynAppend (connectionParams, cnnP);
+		
+		}
+
+	}
+	
+	tConnections.appendLines (dynlen (connectionInputs),
+														\"id\", IDs,
+														\"system\", connectionSystems,
+														\"inputs\", connectionInputs,
+														\"outputs\", connectionOutputs,
+														\"rules\", connectionRules,
+														\"params\", connectionParams);
+
+}" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 5
+"Text1"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 12 98 28
+0 2 0 "s" 0 0 0 64 0 0  12 12
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 System
+2 6
+"Text2"
+""
+1 220 10 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 222 12 308 28
+0 2 0 "s" 0 0 0 64 0 0  222 12
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 5 Entry
+2 7
+"Text3"
+""
+1 10 70 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 72 98 88
+0 2 0 "s" 0 0 0 64 0 0  12 72
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 5 Value
+4 17
+"Line1"
+""
+1 10 270 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  10 270 790 270
+2 20
+"txtNotification"
+""
+1 115 655 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 117 657 788 753
+1 2 0 "s" 0 0 0 64 0 0  117 657
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 0 
+22 2
+"cbSystem"
+""
+1 10 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 28 212 55
+0
+"main()
+{
+
+	cbSystem.items = getRootSystemDPEs();
+	cbSystem.selectedPos = 1; // default position
+
+	setCbEntry();
+	
+}" 0
+
+"main()
+{
+
+	setCbEntry();
+
+}" 0
+
+E
+ 0 0
+22 3
+"cbEntry"
+""
+1 220 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+218 28 792 55
+0
+E
+E
+E
+ 0 0
+14 8
+"tbValue"
+""
+1 10 90 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 88 312 115
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+13 9
+"btSet"
+""
+1 250 120 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+8 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+248 118 312 152
+T 
+1
+LANG:5 3 Set
+"main()
+{
+
+	// clear lines
+	tLog.deleteAllLines();
+
+	tLog.appendLine (\"log\", logicOutputs[cbEntry.selectedPos] + \" --> \" + logicInputs[cbEntry.selectedPos] + \" = \" + tbValue.text);
+	dpSet (logicInputs[cbEntry.selectedPos], tbValue.text);
+
+}" 0
+ E E E
+13 10
+"btSetAll"
+""
+1 330 120 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+328 118 462 152
+T 
+1
+LANG:5 15 Set all entries
+"main()
+{
+
+	// clear lines
+	tLog.deleteAllLines();
+
+	for (int i=1; i<=dynlen(logicInputs); i++)
+	{
+
+		tLog.appendLine (\"log\", logicOutputs[i] + \" --> \" + logicInputs[i] + \" = \" + tbValue.text);
+		dpSet (logicInputs[i], tbValue.text);
+	
+		if (cbDelay.state(0))
+		{
+			delay(1);
+		}
+	
+	}
+
+}" 0
+ E E E
+20 13
+"cbDelay"
+""
+1 330 90 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+12 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+328 88 432 112
+1
+T 
+1
+LANG:5 5 Delay
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+EE25 15
+"tLog"
+""
+1 10 170 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 106 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Arial
+0 ""
+8 168 792 262
+E E 0 0 1 1 1 "log" 0 1 -1 "s" 1
+LANG:5 3 log
+E1
+LANG:5 0 
+ 750 18 18 "" 1 1
+LANG:5 2 #1
+8 30 1
+LANG:5 106 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Arial
+0 ""
+0 1 1 3 0
+1 0
+13 16
+"btSetWAGO"
+""
+1 480 120 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+478 118 617 152
+T 
+1
+LANG:5 15 Set WAGO status
+"
+int threadID;
+
+void setWAGOStatus ()
+{
+
+	while (true)
+	{
+		dpSet (dpeWAGOStatus, dpeValues);
+		delay (WAGO_STATUS_DELAY);
+	}
+
+}
+
+main()
+{
+
+	if (!bset)
+	{
+		btSetWAGO.text = \"Unset WAGO status\";
+		threadID = startThread (\"setWAGOStatus\");
+	}
+	else
+	{
+		btSetWAGO.text = \"Set WAGO status\";
+		stopThread (threadID);
+	}
+	
+	bset = !bset;
+	
+}" 0
+ E E E
+25 18
+"tConnections"
+""
+1 10 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 108 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+8 278 792 642
+"main()
+{
+
+	verifyConnections();
+	verify();
+	setColor();
+	
+}" 0
+ "main(int row, string column, string value)
+{
+
+	string content;
+
+	getValue (\"tConnections\", \"cellValueRC\", row, \"verification\", content);
+
+	txtNotification.text = content;
+
+}" 0
+ 1 0 1 7 1 "id" 0 0 0 "s" 1
+LANG:5 2 ID
+E1
+LANG:5 0 
+ 40 "system" 0 1 0 "s" 1
+LANG:5 6 System
+E1
+LANG:5 0 
+ 128 "inputs" 0 1 0 "s" 1
+LANG:5 6 Inputs
+E1
+LANG:5 0 
+ 128 "outputs" 0 1 0 "s" 1
+LANG:5 7 Outputs
+E1
+LANG:5 0 
+ 128 "rules" 0 1 0 "s" 1
+LANG:5 5 Rules
+E1
+LANG:5 0 
+ 128 "params" 0 1 0 "s" 1
+LANG:5 6 Params
+E1
+LANG:5 0 
+ 128 "verification" 0 1 0 "s" 1
+LANG:5 12 Verification
+E1
+LANG:5 0 
+ 100 18 18 "" 1 1
+LANG:5 2 #1
+8 30 1
+LANG:5 108 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 3 0
+1 0
+13 19
+"btVerify"
+""
+1 10 655 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+17 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Arial-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Arial
+0 ""
+8 653 82 687
+T 
+1
+LANG:5 6 Verify
+"main()
+{
+
+	verifyConnections();
+	verify();
+	setColor();
+
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

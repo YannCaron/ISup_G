@@ -1,0 +1,247 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 1
+"$LANSystemName"
+"main()
+{
+  init();
+}  " 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "void init()
+{    
+  string pageLabel;
+  dpGet($LANSystemName + \".Components.MenuEntry.Name\", pageLabel);
+  PageLabel.text = pageLabel;
+  
+  dpConnect(\"listChangePanel\", $LANSystemName +\".Components.ErrorsList.Lists.Texts\");	
+}	
+
+void listChangePanel(string point, dyn_string texts)
+{
+	FailedObjectsList.items = texts;	
+}
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 14 $LANSystemName
+LANG:1 4 AFPS
+1 108 16 "" 46
+0
+1 111 17 "" 46
+0
+30 95
+"Frame1"
+""
+1 10 350 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+50 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 2.369477911646587 0 -136.9477911646587 0 E 10 100 1100 350
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 14 Failed objects
+17 44
+"FailedObjectsList"
+""
+1 20.00000000000004 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  18 118 1082 642
+0
+
+E
+E
+E
+
+0 0
+13 54
+"RemoveObject"
+""
+1 20 650 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0  18 648 252 682
+
+T 
+1
+LANG:5 22 Remove selected object
+"
+main()
+{
+	string text;
+	text = FailedObjectsList.selectedText;
+	
+	dyn_string textsList;
+	dpGet($LANSystemName + \".Components.ErrorsList.Lists.Texts\", textsList);
+	
+	int id;
+	id = dynContains(textsList, text);
+	
+	if (id > 0)
+	{
+		dyn_string objects;
+		dpGet($LANSystemName + \".Components.ErrorsList.Lists.Objects\", objects);
+		
+		dpSet($LANSystemName + \".Components.ErrorsList.Change.Object\", objects[id],
+	 			  $LANSystemName + \".Components.ErrorsList.Change.Status\", \"manually removed by the user\",
+	 			  $LANSystemName + \".Components.ErrorsList.Change.FullText\", \"\");
+	}
+}" 0
+ E E E
+1 114 19 "" 11
+0
+13 107
+"PUSH_BUTTON1"
+""
+1 260 650 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0  258 648 492 682
+
+T 
+1
+LANG:5 18 Remove all objects
+"  
+main()
+{
+	sgHistoryAddEvent($LANSystemName + \".Components.ErrorsList.History\", SEVERITY_COMMAND, \"Remove all failed objects\");
+        
+	dyn_string textsList;
+	dpGet($LANSystemName + \".Components.ErrorsList.Lists.Texts\", textsList);
+        //DebugTN(\"sgErrorsListPanel\", \"textsList\", textsList);
+
+ 	dyn_string objects;
+	dpGet($LANSystemName + \".Components.ErrorsList.Lists.Objects\", objects);
+        //DebugTN(\"sgErrorsListPanel\", \"objects\", objects);
+
+  for (int i=1; i<=dynlen(textsList); i++)
+  {
+  dpSet($LANSystemName + \".Components.ErrorsList.Change.Object\", objects[i],
+	 			  $LANSystemName + \".Components.ErrorsList.Change.Status\", \"manually removed by the user\",
+	 			  $LANSystemName + \".Components.ErrorsList.Change.FullText\", \"\");
+  //DebugTN(\"sgErrorsListPanel\", \"objects[i]\", objects[i]);
+	}
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 109 16 "" 51
+0
+1 110 16 "" 52
+0
+1 112 17 "" 51
+0
+1 113 17 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 16 "Group3" -1
+"objects\\sgFwBlock.pnl" 230 300 T 45 0.6 0 0.15 722.333333333333 14.9000000000001
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$LANSystemName + \".Components.TimeoutRef\""
+3 17 "Group5" -1
+"objects\\sgFwBlock.pnl" 230 300 T 46 0.6 0 0.15 712 605
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""$LANSystemName + \".Components.ErrorsList.GlobalStatus\""
+3 19 "" -1
+"objects\\sgFwHistory.pnl" 80 695 T 51 1 0 1 -80 5
+2
+"$SystemHistory""$LANSystemName + \".Components.ErrorsList.History\""
+"$SystemName"""
+0

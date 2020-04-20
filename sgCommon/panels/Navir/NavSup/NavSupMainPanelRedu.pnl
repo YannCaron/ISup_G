@@ -1,0 +1,1024 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 2
+"$SystemName"
+"$TWRClientFrameVisible"
+"main()
+{
+// To ever enable buttons P.W. november 2003
+	SwitchoverButton.enabled = true;
+	RestartA.enabled = true;
+	RestartB.enabled = true; 
+
+	setPageLabelNavSupName();
+
+  dpConnect(\"readActiveChain\", $SystemName + ACTIVE_CHAIN);
+        
+  if($TWRClientFrameVisible == \"0\")
+  {        
+    TWRClientsFrameA.visible = false;
+    TWRClientsFrameB.visible = false;
+  }
+  else
+  {
+    TWRClientsFrameA.visible = true;
+    TWRClientsFrameA.visible = true;
+  }
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "string activeChain;
+	
+string setPageLabelNavSupName()
+{
+	string navSupSystemDpName;
+
+	navSupSystemDpName = $SystemName + \"NavSup.General.NavSupName\";
+
+	if( dpExists(navSupSystemDpName) )
+	{
+		string navSupSystemName;
+		
+		dpGet(navSupSystemDpName, navSupSystemName);
+		if(navSupSystemName != \"\")
+		{
+			PageLabel.text = \"NavSup Navir \" + navSupSystemName;
+		}
+		else
+		{
+	 		PageLabel.text = \"NavSup\"; 
+	 		DebugTN(\"NavSup.pnl; \" + $SystemName + \"NavSup.General.NavSupName not correctly set!\");
+		}
+	}
+	else 
+	{
+	 	PageLabel.text = \"NavSup\";
+ 		DebugTN(\"NavSup.pnl; \" + $SystemName + \"NavSup.General.NavSupName does not exist!\");
+	}
+}
+
+void readActiveChain(string dpName, string dpValue)
+{	
+	activeChain = dpValue;
+	ActiveChainLabel.text = activeChain;
+	
+	if(activeChain == \"A\")
+	{
+		SwitchoverButton.text = \"Switchover to chain B\";
+	}
+	else
+	{
+		if(activeChain == \"B\")
+		{
+			SwitchoverButton.text = \"Switchover to chain A\";
+		}
+		else
+		{
+			SwitchoverButton.text = \"Switchover\";
+			DebugN(\"NavSupMainPanelRedu; Warning: No active chain defined for auto-supervision NavSup!\");
+		}
+	}
+}
+	" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 1105
+"Line10"
+""
+1 500 335 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+356 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  620 335 500 335
+4 1091
+"Line7"
+""
+1 500 300 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+352 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  635 300 500 300
+30 953
+"Frame8"
+""
+1 760 634 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+330 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 0.829694323144105 0 71.528384279476 0 E 760 420 1100 650
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 11  Central B 
+30 952
+"Frame7"
+""
+1 760 384 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+329 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 760 135 1100 390
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 15  PVSS Server B 
+4 1000
+"Line3"
+""
+1 1065 375 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+338 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  1065 500 1065 375
+30 865
+"Frame4"
+""
+1 10 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+302 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 0.829694323144105 0 71.528384279476 0 E 10 420 350 650
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 11  Central A 
+30 864
+"Frame3"
+""
+1 10 386 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+295 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 10 135 350 390
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 15  PVSS Server A 
+30 943
+"TWRClientsFrameA"
+""
+1 360 210 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+328 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.8740359897172239 0 1.101694915254237 -304.6529562982006 -110.2542372881356 0 E 360 150 750 210
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 24 Clients connections on A
+4 852
+"Line8"
+""
+1 330 240 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+289 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  790 240 330 240
+4 848
+"Line2"
+""
+1 315 370 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+285 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  315 500 315 370
+4 847
+"Line1"
+""
+1 340 270 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+284 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  810 270 340 270
+2 10
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 6 NavSup
+LANG:1 4 ISup
+2 252
+"ActiveChainLabel"
+""
+1 510 30 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 512 32 598 128
+0 2 0 "0s" 0 0 0 65 0 0  512 32 1
+2
+LANG:5 27 Tahoma,-1,96,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-870-100-100-*-*-iso8859-1|-96,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 1 X
+LANG:1 1 X
+1 1435 75 "" 46
+0
+1 1438 82 "" 46
+0
+1 1441 84 "" 46
+0
+1 1444 122 "" 46
+0
+1 1447 137 "" 46
+0
+2 846
+"Text1"
+""
+1 520 255 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+283 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 522 257 588 283
+1 2 0 "0s" 0 0 0 65 0 0  522 257 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 4 ISup
+1 1450 138 "" 46
+0
+1 1453 140 "" 46
+0
+1 1456 141 "" 46
+0
+1 1459 142 "" 46
+0
+1 1465 145 "" 46
+0
+1 1468 152 "" 46
+0
+1 1471 156 "" 46
+0
+1 1474 157 "" 46
+0
+1 1477 159 "" 46
+0
+1 1480 160 "" 46
+0
+1 1483 161 "" 46
+0
+1 1486 162 "" 46
+0
+1 1492 165 "" 46
+0
+1 1495 166 "" 46
+0
+1 1498 167 "" 46
+0
+1 1501 172 "" 46
+0
+1 1504 173 "" 46
+0
+1 1507 174 "" 46
+0
+1 1510 175 "" 46
+0
+1 1514 178 "" 46
+0
+1 1517 179 "" 46
+0
+1 1520 180 "" 46
+0
+1 1523 181 "" 46
+0
+2 1106
+"Text5"
+""
+1 520 290 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+357 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 522 292 588 343
+1 2 0 "0s" 0 0 0 65 0 0  522 292 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+4 743
+"Line6"
+""
+1 320 525 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+249 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 2 1 0 1 E  800 525 320 525
+1 1462 143 "" 46
+0
+1 1489 163 "" 46
+0
+1 1526 184 "" 46
+0
+1 1529 186 "" 46
+0
+2 1137
+"Text2"
+""
+1 520 303 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+362 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 522 305 588 343
+0 2 0 "0s" 0 0 0 65 0 0  522 305 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 4 INCH
+13 1026
+"RestartA"
+""
+1 50 675 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+347 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  48 673 341 707
+
+T 
+2
+LANG:5 21 Restart PVSS Server A
+LANG:1 15 Restart chain A
+"main()
+{
+	 dyn_string hostNamesData;
+  // Get hostName A
+  dpGet($SystemName + \"_Connections.Data.HostNames\", hostNamesData);
+  
+  pmonRestartConfirm($SystemName + \"NavSup.History\", hostNamesData[1]);
+
+}" 0
+ E E E
+13 1028
+"SwitchoverButton"
+""
+1 410 675 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+349 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  408 673 702 707
+
+T 
+1
+LANG:5 23 Switchover to the other
+"main()
+{
+
+	dyn_string ds;
+	dyn_string df;
+
+	if(activeChain == \"A\")
+	{
+
+		ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+			makeDynString(\"$1:Do you really want to switch to chain B?\", \"$2:Yes\", \"$3:No\"), df, ds);
+	
+		if(ds[1] == \"true\")
+		{	
+
+			// if we are on A, we go to B		
+			dpSet($SystemName + ACTIVE_CHAIN_SELECT, \"B\");
+			sgHistoryAddEvent($SystemName + \"NavSup.History\", SEVERITY_COMMAND, \"User request switchover to chain B by \" + getHostname());
+		}
+	}
+	else
+	{
+		if(activeChain == \"B\")
+		{
+
+			ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+				makeDynString(\"$1:Do you really want to switch to chain A?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+			if(ds[1] == \"true\")
+			{	
+
+
+	// if we are on B, we go to A		
+				dpSet($SystemName + ACTIVE_CHAIN_SELECT, \"A\");
+				sgHistoryAddEvent($SystemName + \"NavSup.History\", SEVERITY_COMMAND, \"User request switchover to chain A by \" + getHostname());
+			}
+		}
+		else // No selected active chain
+		{
+			DebugN(\"NavSupMainPanelRedu; SwitchButton_EventClick; Warning: No active chain defined !\");
+		}
+	}	
+
+	SwitchoverButton.enabled = false;
+	RestartA.enabled = false;
+	RestartB.enabled = false; 
+	delay(2);
+	sgFwNaviPanelOn();
+	delay(8);	
+	SwitchoverButton.enabled = true;
+	RestartA.enabled = true;
+	RestartB.enabled = true; 
+
+}
+" 0
+ E E E
+1 1513 177 "" 11
+0
+13 1336
+"RestartB"
+""
+1 770 675 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+367 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  768 673 1061 707
+
+T 
+2
+LANG:5 21 Restart PVSS Server B
+LANG:1 15 Restart chain A
+"main()
+{
+  dyn_string hostNamesData;
+  // Get hostName B
+  dpGet($SystemName + \"_Connections_2.Data.HostNames\", hostNamesData);
+  
+  pmonRestartConfirm($SystemName + \"NavSup.History\", hostNamesData[1]);
+  
+}" 0
+ E E E
+30 1434
+"TWRClientsFrameB"
+""
+1 360 210 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+368 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.8740359897172239 0 1.101694915254237 445.3470437017994 -110.2542372881356 0 E 360 150 750 210
+1
+LANG:5 27 Tahoma,-1,15,5,69,0,0,0,0,0
+0 1
+LANG:5 24 Clients connections on B
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1436 75 "" 51
+0
+1 1437 75 "" 52
+0
+1 1439 82 "" 51
+0
+1 1440 82 "" 52
+0
+1 1442 84 "" 51
+0
+1 1443 84 "" 52
+0
+1 1445 122 "" 51
+0
+1 1446 122 "" 52
+0
+1 1448 137 "" 51
+0
+1 1449 137 "" 52
+0
+1 1451 138 "" 51
+0
+1 1452 138 "" 52
+0
+1 1454 140 "" 51
+0
+1 1455 140 "" 52
+0
+1 1457 141 "" 51
+0
+1 1458 141 "" 52
+0
+1 1460 142 "" 51
+0
+1 1461 142 "" 52
+0
+1 1466 145 "" 51
+0
+1 1467 145 "" 52
+0
+1 1469 152 "" 51
+0
+1 1470 152 "" 52
+0
+1 1472 156 "" 51
+0
+1 1473 156 "" 52
+0
+1 1475 157 "" 51
+0
+1 1476 157 "" 52
+0
+1 1478 159 "" 51
+0
+1 1479 159 "" 52
+0
+1 1481 160 "" 51
+0
+1 1482 160 "" 52
+0
+1 1484 161 "" 51
+0
+1 1485 161 "" 52
+0
+1 1487 162 "" 51
+0
+1 1488 162 "" 52
+0
+1 1493 165 "" 51
+0
+1 1494 165 "" 52
+0
+1 1496 166 "" 51
+0
+1 1497 166 "" 52
+0
+1 1499 167 "" 51
+0
+1 1500 167 "" 52
+0
+1 1502 172 "" 51
+0
+1 1503 172 "" 52
+0
+1 1505 173 "" 51
+0
+1 1506 173 "" 52
+0
+1 1508 174 "" 51
+0
+1 1509 174 "" 52
+0
+1 1511 175 "" 51
+0
+1 1512 175 "" 52
+0
+1 1515 178 "" 51
+0
+1 1516 178 "" 52
+0
+1 1518 179 "" 51
+0
+1 1519 179 "" 52
+0
+1 1521 180 "" 51
+0
+1 1522 180 "" 52
+0
+1 1524 181 "" 51
+0
+1 1525 181 "" 52
+0
+1 1463 143 "" 51
+0
+1 1464 143 "" 52
+0
+1 1490 163 "" 51
+0
+1 1491 163 "" 52
+0
+1 1527 184 "" 51
+0
+1 1528 184 "" 52
+0
+1 1530 186 "" 51
+0
+1 1531 186 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 75 "Group15" -1
+"objects\\sgFwBlock.pnl" 55 145 T 196 0.25 0 0.15 6.25 53.25000000000003
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainA.Ui01"
+3 82 "Group28" -1
+"objects\\sgFwBlock.pnl" 60 610 T 203 0.8 0 0.125 -28 153.895833333333
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainA.Redu01"
+3 84 "Group33" -1
+"objects\\sgFwBlock.pnl" 50 445 T 205 0.8 0 0.125 -20 204.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainA.Dist01"
+3 122 "Group40" -1
+"objects\\sgFwBlock.pnl" 120 450 T 257 0.525 0 0.15 12.2010581523736 377.683333333333
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.GlobalStatus"
+3 137 "Group24" -1
+"objects\\sgFwBlock.pnl" 100 640 T 282 0.524999999999999 0 0.15 772.701058152374 63.7833333333334
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerB.GlobalStatus"
+3 138 "Group25" -1
+"objects\\sgFwBlock.pnl" 100 580 T 293 0.7999999999999991 0 0.125 -59.6936256725734 277.736111111111
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerA.Components.CentralIsAlive"
+3 140 "Group32" -1
+"objects\\sgFwBlock.pnl" 20 170 T 296 0.8 0 0.125 3.62790697674419 523.583333333333
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.Structured.BatteriesSupplyStatus"
+3 141 "Group33" -1
+"objects\\sgFwBlock.pnl" 20 220 T 297 0.4 0 0.125 11.8139534883721 547.75
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.Structured.IOCardsStatus"
+3 142 "Group34" -1
+"objects\\sgFwBlock.pnl" 20 270 T 298 0.4 0 0.125 171.813953488372 541.083333333333
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.Structured.ProgramS7Status"
+3 143 "Group35" -1
+"objects\\sgFwBlock.pnl" 20 320 T 299 0.8 0 0.125 3.62790697674421 475.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.Structured.LinkToOtherStatus"
+3 145 "Group37" -1
+"objects\\sgFwBlock.pnl" 20 120 T 301 0.8 0 0.125 3.62790697674419 470.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralA.Structured.LinkToServerStatus"
+3 152 "Group65" -1
+"objects\\sgFwBlock.pnl" 20 80 T 313 0.25 0 0.15 765 63
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainB.Ui01"
+3 156 "Group69" -1
+"objects\\sgFwBlock.pnl" 20 205 T 317 0.8 0 0.125 754 203.895833333333
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainB.Redu01"
+3 157 "Group70" -1
+"objects\\sgFwBlock.pnl" 20 235 T 318 0.8 0 0.125 754 230.267857142857
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""PVSSStatuses.ChainB.Dist01"
+3 159 "Group72" -1
+"objects\\sgFwBlock.pnl" 20 265 T 320 0.7999999999999991 0 0.125 754.306374327427 316.736111111111
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerB.Components.CentralIsAlive"
+3 160 "Group73" -1
+"objects\\sgFwBlock.pnl" 20 360 T 321 0.8 0 0.125 753.627906976744 499.583333333333
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.Structured.BatteriesSupplyStatus"
+3 161 "Group74" -1
+"objects\\sgFwBlock.pnl" 20 390 T 322 0.4 0 0.125 762 526.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.Structured.IOCardsStatus"
+3 162 "Group75" -1
+"objects\\sgFwBlock.pnl" 20 420 T 323 0.4 0 0.125 922 522.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.Structured.ProgramS7Status"
+3 163 "Group76" -1
+"objects\\sgFwBlock.pnl" 20 450 T 324 0.8 0 0.125 753.627906976744 458.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.Structured.LinkToOtherStatus"
+3 165 "Group78" -1
+"objects\\sgFwBlock.pnl" 20 330 T 326 0.8 0 0.125 753.627906976744 443.25
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.Structured.LinkToServerStatus"
+3 166 "Group42" -1
+"objects\\sgFwBlock.pnl" 40 540 T 332 0.525 0 0.15 804.201058152374 363.791530054645
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.CentralB.GlobalStatus"
+3 167 "Group44" -1
+"objects\\sgFwBlock.pnl" 590 140 T 333 0.524999999999999 0 0.15 -234.548941847626 138.783333333333
+5
+"$LabelsNum"""
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerA.GlobalStatus"
+3 172 "Group45" -1
+"objects\\sgFwBlock.pnl" 20 195 T 343 0.4 0 0.126689189189189 172 174.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""FwUtils.Framework.FwCheckerStatusA"
+3 173 "Group47" -1
+"objects\\sgFwBlock.pnl" 380 135 T 344 0.3875 0 0.126689189189189 -127.1875 182.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""FwUtils.Framework.FwStatusA"
+3 174 "Group50" -1
+"objects\\sgFwBlock.pnl" 180 195 T 345 0.4 0 0.126689189189189 858 174.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""FwUtils.Framework.FwCheckerStatusB"
+3 175 "Group51" -1
+"objects\\sgFwBlock.pnl" 20 195 T 346 0.3875 0 0.126689189189189 761.8125 174.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""FwUtils.Framework.FwStatusB"
+3 177 "" -1
+"objects\\sgFwHistory.pnl" 450 200 T 350 1 0 1 -450 505
+2
+"$SystemHistory""NavSup.History"
+"$SystemName""$SystemName"
+3 178 "Group41" -1
+"objects\\sgFwBlock.pnl" 180 200 T 350 0.375 0 0.125877079002079 292.5 264.989063582814
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerA.Components.INCHAConnection"
+3 179 "Group43" -1
+"objects\\sgFwBlock.pnl" 355 370 T 351 0.375 0 0.126689189189189 466.875 242.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerB.Components.INCHAConnection"
+3 180 "Group43" -1
+"objects\\sgFwBlock.pnl" 355 325 T 353 0.3747578125000001 0 0.126689189189189 227.0578515625 278.8277027027029
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerA.Components.INCHBConnection"
+3 181 "Group45" -1
+"objects\\sgFwBlock.pnl" 630 325 T 354 0.3748062500000001 0 0.126689189189189 363.8720625 278.827702702703
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerB.Components.INCHBConnection"
+3 184 "Group49" -1
+"objects\\sgFwBlock.pnl" 20 305 T 359 0.7999999999999991 0 0.276326679231705 3.99999999999977 205.520259316409
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerA.Components.LogsDiskSpace"
+3 186 "Group49" -1
+"objects\\sgFwBlock.pnl" 185 305 T 361 0.7999999999999991 0 0.276326679231705 621.8709677419361 205.520259316409
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""NavSup.ServerB.Components.LogsDiskSpace"
+0

@@ -1,0 +1,204 @@
+V 10
+1
+LANG:5 14 Datapoint view
+PANEL,-1 -1 862 657 N "_3DFace" 2
+"$pattern"
+"$type"
+"main()
+{
+	displayDp ();
+}" 0
+ E E E E 1 -1 -1 0  20 620
+""0  1
+E "// constant
+const string TABLE_COLUMN_DATAPOINT = \"c_dp\";
+const string TABLE_COLUMN_VALUE = \"c_value\";
+
+string getTypePattern()
+{
+	return $type;
+}
+
+string getPattern()
+{
+	return $pattern;
+}
+
+int getDpSelected()
+{
+	return t_dp.selectLineN;
+}
+
+void setCount (int value)
+{
+	a_count.text = (string)value;
+}
+
+void displayDp()
+{
+
+	// variable
+	int i;
+	dyn_string dps;
+	dyn_string dpValues;
+	
+	// get datapoints
+	dps = getDpElementsFromPattern (getTypePattern(), getPattern());
+	dpGet(dpAppend(dps, DP_VALUE), dpValues);
+
+	// set to table
+	t_dp.appendLines (dynlen(dps), TABLE_COLUMN_DATAPOINT, dps, TABLE_COLUMN_VALUE, dpValues);
+	
+	// set count
+	setCount (dynlen(dps));
+	
+	// set finished
+	tbFinish.text	= \"loaded !\";
+	
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 1
+"Text1"
+""
+1 20 620 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 22 622 68 638
+0 2 0 "0s" 0 0 0 64 0 0  22 622 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 7 Count :
+2 3
+"a_count"
+""
+1 70 620 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 72 622 178 638
+0 2 0 "0s" 0 0 0 64 0 0  72 622 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 0 
+2 6
+"tbFinish"
+""
+1 760 625 E E E 1 E 1 E N {255,0,0} E N "_Transparent" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 762 627 848 643
+0 2 0 "0s" 0 0 0 66 0 0  762 627 1
+1
+LANG:5 89 -*-Tahoma-bold-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,697,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 0 
+25 0
+"t_dp"
+""
+1 10 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 8 8 852 612
+"void initializeTable()
+{
+	t_dp.tableMode (TABLE_SELECT_BROWSE ) ;
+	t_dp.selectByClick (TABLE_SELECT_LINE);
+}
+
+main()
+{
+	initializeTable();
+}" 0
+E 1 0 1 2 1 "c_dp" 69 1 0 "s" 1
+LANG:5 9 Datapoint
+E
+1
+LANG:5 0 
+
+700 "c_value" 11 1 0 "s" 1
+LANG:5 5 Value
+E
+1
+LANG:5 0 
+
+120 
+16 16 "" 1 1
+LANG:5 2 #1
+8 30
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+0 1 1 1 7
+1 0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

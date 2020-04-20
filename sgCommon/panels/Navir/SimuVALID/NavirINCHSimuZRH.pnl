@@ -1,0 +1,1569 @@
+V 11
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 1221 824 N "_3DFace" 0
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  10 60
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1950 1 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1951 1 "0" 46
+0
+1 1952 1 "" 0
+0
+1 1953 1 "" 8
+0
+1 1956 2 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1957 2 "0" 46
+0
+1 1958 2 "" 0
+0
+1 1959 2 "" 8
+0
+1 1962 3 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1963 3 "0" 46
+0
+1 1964 3 "" 0
+0
+1 1965 3 "" 8
+0
+1 1968 5 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1969 5 "0" 46
+0
+1 1970 5 "" 0
+0
+1 1971 5 "" 8
+0
+1 1974 6 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1975 6 "0" 46
+0
+1 1976 6 "" 0
+0
+1 1977 6 "" 8
+0
+1 1980 7 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1981 7 "0" 46
+0
+1 1982 7 "" 0
+0
+1 1983 7 "" 8
+0
+1 1986 8 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1987 8 "0" 46
+0
+1 1988 8 "" 0
+0
+1 1989 8 "" 8
+0
+1 1992 9 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1993 9 "0" 46
+0
+1 1994 9 "" 0
+0
+1 1995 9 "" 8
+0
+1 1998 10 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 1999 10 "0" 46
+0
+1 2000 10 "" 0
+0
+1 2001 10 "" 8
+0
+1 2004 12 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2005 12 "0" 46
+0
+1 2006 12 "" 0
+0
+1 2007 12 "" 8
+0
+1 2010 13 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2011 13 "0" 46
+0
+1 2012 13 "" 0
+0
+1 2013 13 "" 8
+0
+2 138
+"PageLabel"
+""
+1 10.00000000000009 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.16326530612245 0 1 -1.63265306122449 0 1 E 12 12 988 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 21 Navir - INCH SIMU ZRH
+LANG:1 4 AFPS
+30 139
+"Frame1"
+""
+1 10 435 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+20 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.225740551583248 0 0.923482849604222 -2.257405515832439 -0.791556728232191 0 E 10 55 990 435
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 12 Navir Zürich
+30 268
+"Frame2"
+""
+1 10 700 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+36 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.225740551583248 0 0.598455598455598 -2.257405515832479 136.679536679537 0 E 10 440 990 700
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 16 Navir Duebendorf
+1 2016 40 "" 1
+0
+1 2017 40 "0" 46
+0
+1 2018 40 "" 0
+0
+1 2019 40 "" 8
+0
+1 2022 41 "" 1
+0
+1 2023 41 "0" 46
+0
+1 2024 41 "" 0
+0
+1 2025 41 "" 8
+0
+1 2028 42 "" 1
+0
+1 2029 42 "0" 46
+0
+1 2030 42 "" 0
+0
+1 2031 42 "" 8
+0
+1 2034 43 "" 1
+0
+1 2035 43 "0" 46
+0
+1 2036 43 "" 0
+0
+1 2037 43 "" 8
+0
+1 2040 50 "" 1
+0
+1 2041 50 "0" 46
+0
+1 2042 50 "" 0
+0
+1 2043 50 "" 8
+0
+1 2046 51 "" 1
+0
+1 2047 51 "0" 46
+0
+1 2048 51 "" 0
+0
+1 2049 51 "" 8
+0
+1 2052 52 "" 1
+0
+1 2053 52 "0" 46
+0
+1 2054 52 "" 0
+0
+1 2055 52 "" 8
+0
+1 2058 53 "" 1
+0
+1 2059 53 "0" 46
+0
+1 2060 53 "" 0
+0
+1 2061 53 "" 8
+0
+1 2064 54 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2065 54 "0" 46
+0
+1 2066 54 "" 0
+0
+1 2067 54 "" 8
+0
+1 2070 55 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2071 55 "0" 46
+0
+1 2072 55 "" 0
+0
+1 2073 55 "" 8
+0
+1 2076 56 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2077 56 "0" 46
+0
+1 2078 56 "" 0
+0
+1 2079 56 "" 8
+0
+1 2082 57 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2083 57 "0" 46
+0
+1 2084 57 "" 0
+0
+1 2085 57 "" 8
+0
+1 2088 58 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2089 58 "0" 46
+0
+1 2090 58 "" 0
+0
+1 2091 58 "" 8
+0
+1 2100 60 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2101 60 "0" 46
+0
+1 2102 60 "" 0
+0
+1 2103 60 "" 8
+0
+1 2106 61 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2107 61 "0" 46
+0
+1 2108 61 "" 0
+0
+1 2109 61 "" 8
+0
+13 422
+"WriteStatusesBtn"
+""
+1 780.0000000000002 515 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  778 513 1142 547
+
+T 
+1
+LANG:5 36 Write changed statuses (All systems)
+"main()
+{
+	writeStatuses();
+}" 0
+ E E E
+13 423
+"AllGVAOPSBtn"
+""
+1 930 365 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  928 363 1147 397
+
+T 
+1
+LANG:5 20 ZRH : Set all to OPS
+"main()
+{
+	setFullSystemSituation(\"Navir_Z\", 7);
+}" 0
+ E E E
+13 463
+"AllGVAU_SBtn"
+""
+1 930 325 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  928 323 1147 357
+
+T 
+1
+LANG:5 20 ZRH : Set all to U/S
+"main()
+{
+	setFullSystemSituation(\"Navir_Z\", 3);
+}" 0
+ E E E
+13 554
+"Button1"
+""
+1 210 515 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+70 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  208 513 392 547
+
+T 
+1
+LANG:5 20 DUB : Set all to OPS
+"main()
+{
+	setFullSystemSituation(\"Navir_D\", 7);
+}" 0
+ E E E
+13 555
+"Button2"
+""
+1 20 515 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+71 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  18 513 202 547
+
+T 
+1
+LANG:5 20 DUB : Set all to U/S
+"main()
+{
+	setFullSystemSituation(\"Navir_D\", 3);
+}" 0
+ E E E
+1 2112 62 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2113 62 "0" 46
+0
+1 2114 62 "" 0
+0
+1 2115 62 "" 8
+0
+30 730
+"FRAME1"
+""
+1 10 700 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+75 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.4698672114402452 0 1.003861003861 5.301327885597548 113.301158301158 0 E 10 440 990 700
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 10 Navir Bern
+1 2118 64 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2119 64 "0" 46
+0
+1 2120 64 "" 0
+0
+1 2121 64 "" 8
+0
+1 2124 65 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2125 65 "0" 46
+0
+1 2126 65 "" 0
+0
+1 2127 65 "" 8
+0
+1 2130 66 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2131 66 "0" 46
+0
+1 2132 66 "" 0
+0
+1 2133 66 "" 8
+0
+1 2136 69 "" 1
+0
+1 2137 69 "0" 46
+0
+1 2138 69 "" 0
+0
+1 2139 69 "" 8
+0
+1 2142 70 "" 1
+0
+1 2143 70 "0" 46
+0
+1 2144 70 "" 0
+0
+1 2145 70 "" 8
+0
+1 2148 71 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2149 71 "0" 46
+0
+1 2150 71 "" 0
+0
+1 2151 71 "" 8
+0
+1 2154 72 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2155 72 "0" 46
+0
+1 2156 72 "" 0
+0
+1 2157 72 "" 8
+0
+1 2160 73 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2161 73 "0" 46
+0
+1 2162 73 "" 0
+0
+1 2163 73 "" 8
+0
+1 2166 74 "" 1
+0
+1 2167 74 "0" 46
+0
+1 2168 74 "" 0
+0
+1 2169 74 "" 8
+0
+1 2172 75 "" 1
+0
+1 2173 75 "0" 46
+0
+1 2174 75 "" 0
+0
+1 2175 75 "" 8
+0
+1 2178 76 "" 1
+0
+1 2179 76 "0" 46
+0
+1 2180 76 "" 0
+0
+1 2181 76 "" 8
+0
+1 2184 77 "" 1
+0
+1 2185 77 "0" 46
+0
+1 2186 77 "" 0
+0
+1 2187 77 "" 8
+0
+1 2190 78 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2191 78 "0" 46
+0
+1 2192 78 "" 0
+0
+1 2193 78 "" 8
+0
+1 2196 79 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2197 79 "0" 46
+0
+1 2198 79 "" 0
+0
+1 2199 79 "" 8
+0
+1 2202 80 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2203 80 "0" 46
+0
+1 2204 80 "" 0
+0
+1 2205 80 "" 8
+0
+30 1013
+"FRAME2"
+""
+1 10 700 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+94 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.2502553626149131 0 1.003861003861 472.4974463738508 113.30115830116 0 E 10 440 990 700
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 12 Navir Lugano
+13 1014
+"PUSH_BUTTON1"
+""
+1 550 770 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+96 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  548 768 707 802
+
+T 
+1
+LANG:5 20 LUG : Set all to OPS
+"main()
+{
+	setFullSystemSituation(\"Navir_L\", 7);
+}" 0
+ E E E
+13 1015
+"PUSH_BUTTON2"
+""
+1 550 730 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+98 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  548 728 707 762
+
+T 
+1
+LANG:5 20 LUG : Set all to U/S
+"main()
+{
+	setFullSystemSituation(\"Navir_L\", 3);
+}" 0
+ E E E
+13 1016
+"PUSH_BUTTON3"
+""
+1 305 770 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  303 768 462 802
+
+T 
+1
+LANG:5 20 BRN : Set all to OPS
+"main()
+{
+	setFullSystemSituation(\"Navir_B\", 7);
+}" 0
+ E E E
+13 1017
+"PUSH_BUTTON4"
+""
+1 305 730 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  303 728 462 762
+
+T 
+1
+LANG:5 20 BRN : Set all to U/S
+"main()
+{
+	setFullSystemSituation(\"Navir_B\", 3);
+}" 0
+ E E E
+1 2208 81 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2209 81 "0" 46
+0
+1 2210 81 "" 0
+0
+1 2211 81 "" 8
+0
+1 2214 82 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2215 82 "0" 46
+0
+1 2216 82 "" 0
+0
+1 2217 82 "" 8
+0
+1 2220 83 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2221 83 "0" 46
+0
+1 2222 83 "" 0
+0
+1 2223 83 "" 8
+0
+1 2226 84 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2227 84 "0" 46
+0
+1 2228 84 "" 0
+0
+1 2229 84 "" 8
+0
+30 1300
+"FRAME3"
+""
+1 10 700 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+107 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.2451481103166496 0 1.003861003861 722.5485188968336 113.30115830116 0 E 10 440 990 700
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 11 Navir Emmen
+1 2232 85 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2233 85 "0" 46
+0
+1 2234 85 "" 0
+0
+1 2235 85 "" 8
+0
+1 2238 86 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2239 86 "0" 46
+0
+1 2240 86 "" 0
+0
+1 2241 86 "" 8
+0
+1 2244 87 "" 1
+19 "text" 0 0 1
+LANG:5 8 DVOR GVA
+
+0
+1 2245 87 "0" 46
+0
+1 2246 87 "" 0
+0
+1 2247 87 "" 8
+0
+13 1319
+"PUSH_BUTTON5"
+""
+1 795 730 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+111 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  793 728 952 762
+
+T 
+1
+LANG:5 20 EMM : Set all to U/S
+"main()
+{
+	setFullSystemSituation(\"Navir_EM\", 3);
+}" 0
+ E E E
+13 1320
+"PUSH_BUTTON6"
+""
+1 795 770 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+112 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  793 768 952 802
+
+T 
+1
+LANG:5 20 EMM : Set all to OPS
+"main()
+{
+	setFullSystemSituation(\"Navir_EM\", 7);
+}" 0
+ E E E
+13 1621
+"PUSH_BUTTON7"
+""
+1 980 770 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0  978 768 1202 802
+
+T 
+1
+LANG:5 21 GBAS_Z:Set all to OPS
+"main()
+{
+	//setFullSystemSituationGBAS(\"NavGB_Z\", 7);
+  
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts1Status\", 0);    // 0:OPS
+ // dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts2Status\", 0);    // 0:OPS
+    
+  dpSet(\"NavGB_Z:GBAS_Z.Structureds.INCH.GLS14AApproachStatus.Status\", OPS_STATUS);  // force to OPS after the delay
+}
+
+
+" 0
+ E E E
+30 1622
+"FRAME4"
+""
+1 10 700 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+117 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.2451481103166496 0 1.003861003861 967.5485188968335 113.30115830116 0 E 10 440 990 700
+1
+LANG:5 26 Arial,-1,16,5,69,0,0,0,0,0
+0 1
+LANG:5 10 Navir GBAS
+13 1635
+"PUSH_BUTTON8"
+""
+1 980.0000000000001 640 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+118 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+0  978 638 1137 667
+
+T 
+1
+LANG:5 21 GBAS_Z:Set SAT to U/S
+"main()
+{
+    dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts1Status\", 1);    // 1:U/S 
+    dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts2Status\", 1);    // 1:U/S
+    
+}" 0
+ E E E
+13 1942
+"PUSH_BUTTON9"
+""
+1 980.0000000000001 610 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+119 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+0  978 608 1137 637
+
+T 
+1
+LANG:5 21 GBAS_Z:Set SAT to DEG
+"main()
+{
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts1Status\", 2);    // 2:DEG
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts2Status\", 2);    // 2:DEG
+    
+}" 0
+ E E E
+1 2253 89 "" 46
+0
+1 2250 88 "" 46
+0
+13 1949
+"PUSH_BUTTON10"
+""
+1 1025 710 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+122 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 26 Arial,10,-1,5,75,0,0,0,0,0
+0  1023 708 1202 737
+
+T 
+1
+LANG:5 24 GBAS_Z:Set GLS 14 to U/S
+"main()
+{
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts1Status\", 1);    // 1:U/S 
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.ConstAlerts.ConstAlerts2Status\", 1);    // 1:U/S
+
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.Mode.Mode1Status\", 0);    // 0:U/S 
+  dpSet(\"NavGB_Z:GBAS_Z.RawDatas.Mode.Mode1Status\", 0);    // 0:U/S 
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1954 1 "0" 51
+0
+1 1955 1 "0" 52
+0
+1 1960 2 "0" 51
+0
+1 1961 2 "0" 52
+0
+1 1966 3 "0" 51
+0
+1 1967 3 "0" 52
+0
+1 1972 5 "0" 51
+0
+1 1973 5 "0" 52
+0
+1 1978 6 "0" 51
+0
+1 1979 6 "0" 52
+0
+1 1984 7 "0" 51
+0
+1 1985 7 "0" 52
+0
+1 1990 8 "0" 51
+0
+1 1991 8 "0" 52
+0
+1 1996 9 "0" 51
+0
+1 1997 9 "0" 52
+0
+1 2002 10 "0" 51
+0
+1 2003 10 "0" 52
+0
+1 2008 12 "0" 51
+0
+1 2009 12 "0" 52
+0
+1 2014 13 "0" 51
+0
+1 2015 13 "0" 52
+0
+1 2020 40 "0" 51
+0
+1 2021 40 "0" 52
+0
+1 2026 41 "0" 51
+0
+1 2027 41 "0" 52
+0
+1 2032 42 "0" 51
+0
+1 2033 42 "0" 52
+0
+1 2038 43 "0" 51
+0
+1 2039 43 "0" 52
+0
+1 2044 50 "0" 51
+0
+1 2045 50 "0" 52
+0
+1 2050 51 "0" 51
+0
+1 2051 51 "0" 52
+0
+1 2056 52 "0" 51
+0
+1 2057 52 "0" 52
+0
+1 2062 53 "0" 51
+0
+1 2063 53 "0" 52
+0
+1 2068 54 "0" 51
+0
+1 2069 54 "0" 52
+0
+1 2074 55 "0" 51
+0
+1 2075 55 "0" 52
+0
+1 2080 56 "0" 51
+0
+1 2081 56 "0" 52
+0
+1 2086 57 "0" 51
+0
+1 2087 57 "0" 52
+0
+1 2092 58 "0" 51
+0
+1 2093 58 "0" 52
+0
+1 2104 60 "0" 51
+0
+1 2105 60 "0" 52
+0
+1 2110 61 "0" 51
+0
+1 2111 61 "0" 52
+0
+1 2116 62 "0" 51
+0
+1 2117 62 "0" 52
+0
+1 2122 64 "0" 51
+0
+1 2123 64 "0" 52
+0
+1 2128 65 "0" 51
+0
+1 2129 65 "0" 52
+0
+1 2134 66 "0" 51
+0
+1 2135 66 "0" 52
+0
+1 2140 69 "0" 51
+0
+1 2141 69 "0" 52
+0
+1 2146 70 "0" 51
+0
+1 2147 70 "0" 52
+0
+1 2152 71 "0" 51
+0
+1 2153 71 "0" 52
+0
+1 2158 72 "0" 51
+0
+1 2159 72 "0" 52
+0
+1 2164 73 "0" 51
+0
+1 2165 73 "0" 52
+0
+1 2170 74 "0" 51
+0
+1 2171 74 "0" 52
+0
+1 2176 75 "0" 51
+0
+1 2177 75 "0" 52
+0
+1 2182 76 "0" 51
+0
+1 2183 76 "0" 52
+0
+1 2188 77 "0" 51
+0
+1 2189 77 "0" 52
+0
+1 2194 78 "0" 51
+0
+1 2195 78 "0" 52
+0
+1 2200 79 "0" 51
+0
+1 2201 79 "0" 52
+0
+1 2206 80 "0" 51
+0
+1 2207 80 "0" 52
+0
+1 2212 81 "0" 51
+0
+1 2213 81 "0" 52
+0
+1 2218 82 "0" 51
+0
+1 2219 82 "0" 52
+0
+1 2224 83 "0" 51
+0
+1 2225 83 "0" 52
+0
+1 2230 84 "0" 51
+0
+1 2231 84 "0" 52
+0
+1 2236 85 "0" 51
+0
+1 2237 85 "0" 52
+0
+1 2242 86 "0" 51
+0
+1 2243 86 "0" 52
+0
+1 2248 87 "0" 51
+0
+1 2249 87 "0" 52
+0
+1 2254 89 "" 51
+0
+1 2255 89 "" 52
+0
+1 2251 88 "" 51
+0
+1 2252 88 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 1 "Group3" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 370 240 T 4 0.956331877729258 0 1 346.157205240175 -120
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC28"
+"$SystemName""Navir_Z:"
+3 2 "Group4" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 50 110 T 4 0.960698689956332 0 1 196.965065502183 10
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC34"
+"$SystemName""Navir_Z:"
+3 3 "Group6" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 20 T 5 0.960698689956332 0 1 225.786026200873 150
+3
+"$Equipment""Navaid_2"
+"$StationName""GP34"
+"$SystemName""Navir_Z:"
+3 5 "Group10" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 80 T 7 0.960698689956332 0 1 225.786026200873 140
+3
+"$Equipment""Navaid_1"
+"$StationName""GP34"
+"$SystemName""Navir_Z:"
+3 6 "Group9" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 25 T 8 0.982532751091703 0 1 -4.65065502183404 95
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC16"
+"$SystemName""Navir_Z:"
+3 7 "Group10" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 85 T 9 0.982532751091703 0 1 -4.65065502183406 135
+3
+"$Equipment""Navaid_1"
+"$StationName""GP16"
+"$SystemName""Navir_Z:"
+3 8 "Group11" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 145 T 10 0.982532751091703 0 1 -4.65065502183406 25
+3
+"$Equipment""Navaid_2"
+"$StationName""GP16"
+"$SystemName""Navir_Z:"
+3 9 "Group13" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 230 T 11 0.956331877729258 0 1 680.873362445415 -60
+3
+"$Equipment""Navaid_2"
+"$StationName""GP28"
+"$SystemName""Navir_Z:"
+3 10 "Group16" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 230 T 12 0.956331877729258 0 1 680.873362445415 -10
+3
+"$Equipment""Navaid_1"
+"$StationName""GP28"
+"$SystemName""Navir_Z:"
+3 12 "Group22" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 230 T 14 0.956331877729258 0 1 905.873362445415 -110
+3
+"$Equipment""Navaid_1"
+"$StationName""KLO"
+"$SystemName""Navir_Z:"
+3 13 "Group23" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 290 T 15 0.956331877729258 0 1 905.873362445415 -120
+3
+"$Equipment""Navaid_2"
+"$StationName""KLO"
+"$SystemName""Navir_Z:"
+3 40 "Group35" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 255 T 45 0.982532751091703 0 1 -4.65065502183405 10
+3
+"$CATName""CATIIIStatus"
+"$ILSName""ILS16"
+"$SystemName""Navir_Z:"
+3 41 "Group36" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 305 T 46 0.982532751091703 0 1 -4.65065502183406 5
+3
+"$CATName""CATIIStatus"
+"$ILSName""ILS16"
+"$SystemName""Navir_Z:"
+3 42 "Group37" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 355 T 47 0.960698689956332 0 1 225.786026200873 9.769962616701381e-015
+3
+"$CATName""CATIStatus"
+"$ILSName""ILS34"
+"$SystemName""Navir_Z:"
+3 43 "Group38" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 405 T 48 0.960698689956332 0 1 225.786026200873 -4.99999999999999
+3
+"$CATName""LOCDMEStatus"
+"$ILSName""ILS34"
+"$SystemName""Navir_Z:"
+3 50 "Group40" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 325 T 58 0.982532751091703 0 1 -240.458515283843 30
+3
+"$CATName""CATIStatus"
+"$ILSName""ILS16"
+"$SystemName""Navir_Z:"
+3 51 "Group41" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 375 T 59 0.982532751091703 0 1 -240.458515283843 25
+3
+"$CATName""LOCDMEStatus"
+"$ILSName""ILS16"
+"$SystemName""Navir_Z:"
+3 52 "Group20" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 325 T 60 0.956331877729258 0 1 451.353711790393 30
+3
+"$CATName""CATIStatus"
+"$ILSName""ILS28"
+"$SystemName""Navir_Z:"
+3 53 "Group21" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 375 T 61 0.956331877729258 0 1 451.353711790393 25
+3
+"$CATName""LOCDMEStatus"
+"$ILSName""ILS28"
+"$SystemName""Navir_Z:"
+3 54 "Group22" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 750 75 T 62 0.786026200873363 0 1 -189.519650655022 390
+3
+"$Equipment""Navaid_1"
+"$StationName""GRE"
+"$SystemName""Navir_D:"
+3 55 "Group23" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 750 125 T 63 0.786026200873363 0 1 -189.519650655022 390
+3
+"$Equipment""Navaid_2"
+"$StationName""GRE"
+"$SystemName""Navir_D:"
+3 56 "Group26" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 64 0.786026200873363 0 1 -365.152838427948 -25
+3
+"$Equipment""Navaid_1"
+"$StationName""CVA"
+"$SystemName""Navir_D:"
+3 57 "Group27" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 540 T 65 0.786026200873363 0 1 -365.152838427948 -25
+3
+"$Equipment""Navaid_1"
+"$StationName""WFJ"
+"$SystemName""Navir_D:"
+3 58 "Group30" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 66 0.786026200873363 0 1 -175.152838427948 -25
+3
+"$Equipment""Navaid_1"
+"$StationName""HOC"
+"$SystemName""Navir_D:"
+3 60 "Group34" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 510 470 T 68 0.786026200873363 0 1 189.126637554585 -5
+3
+"$Equipment""Navaid_1"
+"$StationName""WIL"
+"$SystemName""Navir_D:"
+3 61 "Group35" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 510 520 T 69 0.786026200873363 0 1 189.126637554585 -5
+3
+"$Equipment""Navaid_2"
+"$StationName""WIL"
+"$SystemName""Navir_D:"
+3 62 "PANEL_REF63" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 72 1.00436681222707 0 1 -472.139737991266 135
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC14"
+"$SystemName""Navir_B:"
+3 64 "PANEL_REF65" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 76 1.00436681222707 0 1 -472.139737991266 185
+3
+"$Equipment""Navaid_1"
+"$StationName""GP14"
+"$SystemName""Navir_B:"
+3 65 "PANEL_REF66" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 77 1.00436681222707 0 1 -472.139737991266 235
+3
+"$Equipment""Navaid_2"
+"$StationName""LOC14"
+"$SystemName""Navir_B:"
+3 66 "PANEL_REF67" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 78 0.91703056768559 0 1 -194.3449781659391 135
+3
+"$Equipment""Navaid_1"
+"$StationName""NDBBRN"
+"$SystemName""Navir_B:"
+3 69 "PANEL_REF70" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 325 T 81 1.00436681222707 0 1 -241.135371179039 445
+3
+"$CATName""CATIStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_B:"
+3 70 "PANEL_REF71" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 375 T 82 1.00436681222707 0 1 -241.135371179039 440
+3
+"$CATName""LOCDMEStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_B:"
+3 71 "PANEL_REF72" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 370 240 T 82 0.982532751091703 0 1 106.46288209607 -120
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC14"
+"$SystemName""Navir_Z:"
+3 72 "PANEL_REF73" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 230 T 83 0.982532751091703 0 1 450.349344978166 -60
+3
+"$Equipment""Navaid_2"
+"$StationName""GP14"
+"$SystemName""Navir_Z:"
+3 73 "PANEL_REF74" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 20 230 T 84 0.978165938864629 0 1 450.436681222707 -10
+3
+"$Equipment""Navaid_1"
+"$StationName""GP14"
+"$SystemName""Navir_Z:"
+3 74 "PANEL_REF75" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 325 T 85 0.978165938864629 0 1 215.676855895196 30
+3
+"$CATName""CATIStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_Z:"
+3 75 "PANEL_REF76" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 260 375 T 86 0.982532751091703 0 1 214.541484716157 25
+3
+"$CATName""LOCDMEStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_Z:"
+3 76 "PANEL_REF77" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 305 T 87 0.982532751091703 0 1 450.349344978166 5
+3
+"$CATName""CATIIStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_Z:"
+3 77 "PANEL_REF78" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatusCAT.pnl" 20 255 T 88 0.982532751091703 0 1 450.349344978166 10
+3
+"$CATName""CATIIIStatus"
+"$ILSName""ILS14"
+"$SystemName""Navir_Z:"
+3 78 "PANEL_REF79" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 88 1.00436681222707 0 1 -7.139737991262617 135
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC01"
+"$SystemName""Navir_L:"
+3 79 "PANEL_REF80" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 89 1.00436681222707 0 1 -7.139737991264326 185.000000000002
+3
+"$Equipment""Navaid_1"
+"$StationName""GP01"
+"$SystemName""Navir_L:"
+3 80 "PANEL_REF81" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 90 1.00436681222707 0 1 -7.139737991264326 235.000000000002
+3
+"$Equipment""Navaid_2"
+"$StationName""LOC01"
+"$SystemName""Navir_L:"
+3 81 "PANEL_REF82" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 510 470 T 103 0.786026200873363 0 1 559.1266375545851 -5
+3
+"$Equipment""Navaid_1"
+"$StationName""ZUE"
+"$SystemName""Navir_D:"
+3 82 "PANEL_REF83" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 750 75 T 104 0.74235807860262 0 1 223.231441048035 390
+3
+"$Equipment""Navaid_1"
+"$StationName""TRA"
+"$SystemName""Navir_D:"
+3 83 "PANEL_REF84" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 750 125 T 105 0.74235807860262 0 1 223.231441048035 390
+3
+"$Equipment""Navaid_2"
+"$StationName""TRA"
+"$SystemName""Navir_D:"
+3 84 "PANEL_REF85" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 510 520 T 106 0.786026200873363 0 1 559.1266375545851 -5
+3
+"$Equipment""Navaid_2"
+"$StationName""ZUE"
+"$SystemName""Navir_D:"
+3 85 "PANEL_REF85" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 108 1.00436681222707 0 1 237.8602620087358 135
+3
+"$Equipment""Navaid_1"
+"$StationName""LOC22"
+"$SystemName""Navir_EM:"
+3 86 "PANEL_REF86" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 109 1.00436681222707 0 1 237.8602620087358 185
+3
+"$Equipment""Navaid_1"
+"$StationName""GP22"
+"$SystemName""Navir_EM:"
+3 87 "PANEL_REF87" -1
+"Navir\\SimuVALID\\NaviSimuForceOneStatus.pnl" 490 490 T 110 1.00436681222707 0 1 237.8602620087358 235
+3
+"$Equipment""Navaid_2"
+"$StationName""GP22"
+"$SystemName""Navir_EM:"
+3 88 "PANEL_REF120" -1
+"objects\\sgFwBlock.pnl" 910 380 T 120 0.3875 0 0.125 627.375 532.5
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""SAT.OperationalStatus"
+3 89 "PANEL_REF119" -1
+"objects\\sgFwBlock.pnl" 910 380 T 121 0.4375 0 0.125 626.8750000000002 627.5
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""NavGB_Z:"
+"$SystemStatus""GLS_14.OperationalStatus"
+0

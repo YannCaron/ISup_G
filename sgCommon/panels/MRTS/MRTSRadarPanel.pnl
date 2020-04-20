@@ -1,0 +1,498 @@
+V 11
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,-1 -1 1078 638 N "_3DFace" 2
+"$RadarName"
+"$SystemName"
+"main()
+{
+  gRadarName = $RadarName;
+  string radarFullName;
+		
+  dpGet($SystemName + \"MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".FullName\", radarFullName);
+
+  RadarLabel.text = radarFullName;
+  
+  bool gIsLineB = dpExists($SystemName + \"MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".Components.LineB.PreStatus\");
+
+  if (!gIsLineB)
+  {
+//   DebugTN(\"RadarPanel, EventInitialize >> dp: MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".Components.LineB doesn't exist\");
+
+    setValue(\"MRTS1AttachLineB\", \"visible\", false);
+    setValue(\"MRTS2AttachLineB\", \"visible\", false);
+    setValue(\"LineB1\", \"visible\", false);
+    setValue(\"LineB2\", \"visible\", false);
+  }
+  else
+  {
+    addSymbol( myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"MRTS1LineB\", 
+             makeDynString(\"$LabelsNum:3\", 
+                           \"$PanelName:\",
+                           \"$PanelParams:\",
+                           \"$SystemName:\" + $SystemName,
+                           \"$SystemStatus:\" + \"MRTS.Components.NodeA.Components.Radars.\" + $RadarName + \".Components.LineB\"),
+             330, 135, 0, 0.475, 0.475);
+
+    addSymbol( myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"MRTS2LineB\", 
+             makeDynString(\"$LabelsNum:3\", 
+                           \"$PanelName:\",
+                           \"$PanelParams:\",
+                           \"$SystemName:\" + $SystemName,
+                           \"$SystemStatus:\" + \"MRTS.Components.NodeB.Components.Radars.\" + $RadarName + \".Components.LineB\"),
+             825, 135, 0, 0.475, 0.475);
+            
+    setValue(\"MRTS1AttachLineB\", \"visible\", true);
+    setValue(\"MRTS2AttachLineB\", \"visible\", true);
+    setValue(\"LineB1\", \"visible\", true);
+    setValue(\"LineB2\", \"visible\", true);
+  }
+
+  bool gIsLineA = dpExists($SystemName + \"MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".Components.LineA.PreStatus\");
+
+  if (!gIsLineA) 
+  {
+//    DebugTN(\"RadarPanel, EventInitialize >> dp: MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".Components.LineA doesn't exist\");
+
+    setValue(\"MRTS1AttachLineA\", \"visible\", false);
+    setValue(\"MRTS2AttachLineA\", \"visible\", false);
+    setValue(\"LineA1\", \"visible\", false);
+    setValue(\"LineA2\", \"visible\", false);
+  }
+    else
+  {
+//    DebugTN(\"RadarPanel, EventInitialize >> dp: MRTS.Components.NodeA.Components.Radars.\" + gRadarName + \".Components.LineA exist\");      
+    addSymbol( myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"MRTS1LineB\", 
+             makeDynString(\"$LabelsNum:3\", 
+                           \"$PanelName:\",
+                           \"$PanelParams:\",
+                           \"$SystemName:\" + $SystemName,
+                           \"$SystemStatus:\" + \"MRTS.Components.NodeA.Components.Radars.\" + $RadarName + \".Components.LineA\"),
+             60, 135, 0, 0.475, 0.475);
+
+    addSymbol( myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"MRTS2LineB\", 
+             makeDynString(\"$LabelsNum:3\", 
+                           \"$PanelName:\",
+                           \"$PanelParams:\",
+                           \"$SystemName:\" + $SystemName,
+                           \"$SystemStatus:\" + \"MRTS.Components.NodeB.Components.Radars.\" + $RadarName + \".Components.LineA\"),
+             550, 135, 0, 0.475, 0.475);
+
+    setValue(\"MRTS1AttachLineA\", \"visible\", true);
+    setValue(\"MRTS2AttachLineA\", \"visible\", true);
+    setValue(\"LineA1\", \"visible\", true);
+    setValue(\"LineA2\", \"visible\", true);
+  }
+}" 0
+ E E E E 1 -1 -1 0  130 600
+""0  1
+E "bool gIsLineB;
+string gRadarName ;
+const string ATTACH_LINE_DP       = $SystemName + \"MRTS.Commands.LineAttach\";
+const string DETACH_LINE_DP      = $SystemName + \"MRTS.Commands.LineDetach\";
+// const string MRTS_COMMAND_SEP    = \"|\";
+const string ATTACH_DETACH_LINE  = \"MRTS\\\\MRTSAttachDetachLine.pnl\";
+const string ATTACH_DETACH_RADAR = \"MRTS\\\\MRTSAttachDetachRadar\";
+
+void callAttachDetachLine(string lineName)
+{
+	dyn_string parameters = makeDynString(\"$SystemName:\" + $SystemName,\"$RadarName:\" + gRadarName, \"$LineName:\" + lineName);
+	ChildPanelOnCentralModal(ATTACH_DETACH_LINE, \"Command Window\", parameters, 0, 0);
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 468
+"LineB2"
+""
+1 920 230 E E E 1 E 0 E N "_WindowText" E N "_Transparent" E E
+ E E
+251 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  920 230 920 425
+4 467
+"LineA2"
+""
+1 650 225 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+250 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  650 225 650 420
+4 465
+"LineA1"
+""
+1 150 230 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+248 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  150 230 150 425
+4 466
+"LineB1"
+""
+1 425 230 E E E 1 E 0 E N "_WindowText" E N "_Transparent" E E
+ E E
+249 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 4 1 0 1 E  425 230 425 425
+1 566 119 "" 1
+0
+1 567 119 "" 7
+0
+1 568 119 "" 8
+0
+1 569 119 "" 9
+0
+1 570 120 "" 1
+0
+1 571 120 "" 7
+0
+1 572 120 "" 8
+0
+1 573 120 "" 9
+0
+2 83
+"RadarLabel"
+""
+1 295 0 E E E 1 E 1 E N {0,0,0} E N "STD_param_panel_back" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 297 2 783 28
+1 2 0 "0s" 0 0 0 65 0 0  297 2 1
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 XXXX
+LANG:1 4 XXXX
+1 560 115 "" 46
+0
+1 563 118 "" 46
+0
+1 574 123 "" 46
+0
+1 577 124 "" 46
+0
+4 494
+"Line1"
+""
+1 535 105 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+258 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  535 605 535 105
+13 454
+"MRTS1AttachLineA"
+""
+1 15 135 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+237 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  13 133 57 232
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	callAttachDetachLine(\"A\");
+}" 0
+ E E E
+13 455
+"MRTS1AttachLineB"
+""
+1 285 135 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+238 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  283 133 327 232
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	callAttachDetachLine(\"B\");
+}" 0
+ E E E
+13 456
+"MRTS2AttachLineB"
+""
+1 1020 135 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+239 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  1018 133 1062 232
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	callAttachDetachLine(\"B\");
+}" 0
+ E E E
+13 457
+"MRTS2AttachLineA"
+""
+1 746 135 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+240 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0  744 133 788 232
+
+P 
+13434828
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main()
+{
+	callAttachDetachLine(\"A\");
+}" 0
+ E E E
+2 530
+"PRIMITIVE_TEXT2"
+""
+1 335 135 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+262 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 335 135 525 230
+0 2 2 "0s" 0 0 0 64 0 0  335 135 1
+1
+LANG:5 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:5 29 Block displayed at Initialize
+2 531
+"PRIMITIVE_TEXT3"
+""
+1 820 135 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+264 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 820 135 1010 230
+0 2 2 "0s" 0 0 0 64 0 0  820 135 1
+1
+LANG:5 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:5 29 Block displayed at Initialize
+2 558
+"PRIMITIVE_TEXT4"
+""
+1 62 137 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+265 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 62 137 252 232
+0 2 2 "0s" 0 0 0 64 0 0  62 137 1
+1
+LANG:5 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:5 29 Block displayed at Initialize
+2 559
+"PRIMITIVE_TEXT5"
+""
+1 547 137 E E E 1 E 0 E N "_WindowText" E N "_Window" E E
+ E E
+266 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 547 137 737 232
+0 2 2 "0s" 0 0 0 64 0 0  547 137 1
+1
+LANG:5 33 MS Shell Dlg,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:5 29 Block displayed at Initialize
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 561 115 "" 51
+0
+1 562 115 "" 52
+0
+1 564 118 "" 51
+0
+1 565 118 "" 52
+0
+1 575 123 "" 51
+0
+1 576 123 "" 52
+0
+1 578 124 "" 51
+0
+1 579 124 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 115 "Group38" -1
+"objects\\sgFwBlock.pnl" 60 135 T 193 1.25 0 0.475 -59.5879120879121 320.51747311828
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""\"MRTS.Components.NodeA.Components.Radars.\" + $RadarName + \".Components.Radar\""
+3 118 "Group46" -1
+"objects\\sgFwBlock.pnl" 10 255 T 196 1.265 0 0.475 542.803605166763 263.51747311828
+5
+"$LabelsNum""3"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""\"MRTS.Components.NodeB.Components.Radars.\" + $RadarName + \".Components.Radar\""
+3 119 "Group8" -1
+"objects\\ArrowOPS_SBY_Head.pnl" 530 560 T 251 0.5 0 0.5 -2.5 210
+4
+"$HeadVisibleValue""TRUE"
+"$OPSValue"""
+"$SBYValue"""
+"$SystemStatus"""
+3 120 "Group10" -1
+"objects\\ArrowOPS_SBY_Head.pnl" 530 560 T 252 0.5 0 0.5 537.5 210
+4
+"$HeadVisibleValue""TRUE"
+"$OPSValue"""
+"$SBYValue"""
+"$SystemStatus"""
+3 123 "Group14" -1
+"objects\\sgFwBlock.pnl" 100 444 T 255 0.725 0 0.15 47.7478070175439 483.447058823529
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeA.Components.NodeStatus"
+3 124 "Group16" -1
+"objects\\sgFwBlock.pnl" 685 445 T 257 0.725 0 0.15 163.747807017544 483.094117647059
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""MRTS.Components.NodeB.Components.NodeStatus"
+0

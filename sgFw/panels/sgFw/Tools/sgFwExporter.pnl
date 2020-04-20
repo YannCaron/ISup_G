@@ -1,0 +1,1266 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 750 616 N "_3DFace" 0
+"main()
+{
+export_kinds_map[\"Type Structure\"] 								= 1;
+export_kinds_map[\"Primary Data Points\"] 					= 2;
+export_kinds_map[\"Aliases & Comments\"] 						= 3;
+export_kinds_map[\"Data Point Element Values\"] 		= 4;
+export_kinds_map[\"SNMP and OPC Dependencies\"]			= 5;
+export_kinds_map[\"Alert Configs\"] 								= 6;
+export_kinds_map[\"Distribution Configs\"] 					= 7;
+export_kinds_map[\"Data Point Function Configs\"]		= 8;
+export_kinds_map[\"Peripheral Address Configs\"] 		= 9;
+export_kinds_map[\"Command Conversion Configs\"] 		= 10;
+
+global_kinds_map[\"All type structures\"]						= 1;
+global_kinds_map[\"UI datapoint names\"]						= 2;
+global_kinds_map[\"SNMP Manager datapoint names\"]	= 3;
+global_kinds_map[\"Alert Classes\"]									= 4;
+global_kinds_map[\"Archiving Configuration\"]				= 5;
+
+selected_sys_outs = mappingKeys(export_kinds_map);
+selected_global_outs = mappingKeys(global_kinds_map);
+
+SYSTEMS_INDEX = 0;
+GLOBALS_INDEX = 1;
+EXPORT_RADIO_STATE = 0;
+
+CONFIG_FILE_PATH = \"D:/ISup_G_1.25_DEV/scratch/ExporterConfig.txt\";
+
+PanelInitialise();
+}" 0
+ E E E E 1 -1 -1 0  40 150
+""0  1
+E "mapping export_kinds_map; //is filled with data in panel event-initialize
+mapping global_kinds_map;
+int SYSTEMS_INDEX;
+int GLOBALS_INDEX;
+int EXPORT_RADIO_STATE;
+string CONFIG_FILE_PATH;
+
+dyn_string selected_sys_outs;
+dyn_string selected_global_outs;
+
+
+void PanelInitialise()
+{
+dyn_string empty;
+dyn_string systems_list = sgExporter_getListOfSystemsFromScan();
+
+sgTree_CreateCheckList(getShape(\"SystemsList\"), systems_list, empty);
+
+OutputFolderText.text = getPath(DPLIST_REL_PATH);
+ExportConfigFilePathTextBox.text = getPath(DPLIST_REL_PATH) + \"ExporterConfig.txt\";
+
+sgTree_CreateCheckList(getShape(\"ExportKindsList\"), selected_sys_outs, selected_sys_outs);
+
+EXPORT_RADIO_STATE = 0;
+
+}
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+30 36
+"Frame2"
+""
+1 278 488 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+33 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 278 59 570 490
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 36                                     
+30 35
+"Frame1"
+""
+1 4 612 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+32 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 4 59 280 614
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 15                
+6 12
+"Border1"
+""
+1 10 50 E E E 1 E 1 E N "_WindowText" E N {204,204,204} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 10 10 740 50
+2 11
+"TitleText"
+""
+1 40 12 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 42 14 188 48
+0 2 0 "0s" 0 0 0 64 0 0  42 14 1
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-24-*-100-100-*-*-iso8859-1|-24,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 12 Exporter 1.0
+2 13
+"Text3"
+""
+1 14 54 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 16 56 122 72
+0 2 0 "0s" 0 0 0 64 0 0  16 56 1
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 8 Systems:
+2 19
+"Text4"
+""
+1 291 54 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 293 56 449 72
+0 2 0 "0s" 0 0 0 64 0 0  293 56 1
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 24 Kinds of data to export:
+2 23
+"ExpStatusText"
+""
+1 290 590 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 292 592 718 608
+0 2 0 "0s" 0 0 0 64 0 0  292 592 1
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 0 
+30 37
+"Frame3"
+""
+1 278 611 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+34 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 278 482 748 614
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 0 
+30 38
+"Frame4"
+""
+1 568 129 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+35 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 568 59 748 130
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 9  Export: 
+30 39
+"Frame5"
+""
+1 568 488 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+36 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 568 122 748 490
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 0 
+2 41
+"StatusText1"
+""
+1 290 530 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+38 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 292 532 618 548
+0 2 0 "0s" 0 0 0 64 0 0  292 532 1
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+1
+LANG:5 0 
+29 40
+"ProgressBar2"
+""
+1 -26 -67 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+ 290 500 738 520
+22 MSComctlLib.ProgCtrl.2
+14
+-605 "MouseDown" "(int Button, int Shift, long x, long y)"
+""
+-606 "MouseMove" "(int Button, int Shift, long x, long y)"
+""
+-607 "MouseUp" "(int Button, int Shift, long x, long y)"
+""
+-600 "Click" "()"
+""
+1550 "OLEStartDrag" "(anytype Data, long AllowedEffects)"
+""
+1551 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+1552 "OLESetData" "(anytype Data, int DataFormat)"
+""
+1553 "OLECompleteDrag" "(long Effect)"
+""
+1554 "OLEDragOver" "(anytype Data, long Effect, int Button, int Shift, float x, float y, int State)"
+""
+1555 "OLEDragDrop" "(anytype Data, long Effect, int Button, int Shift, float x, float y)"
+""
+0 "destroyed" "()"
+""
+0 "signal" "(string name, int argc, void argv)"
+""
+0 "propertyChanged" "(string name)"
+""
+0 "exception" "(int code, string source, string description, string help)"
+""
+E29 17
+"ProgressBar1"
+""
+1 290 557 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+ 290 557 714 577
+22 MSComctlLib.ProgCtrl.2
+14
+-605 "MouseDown" "(int Button, int Shift, long x, long y)"
+""
+-606 "MouseMove" "(int Button, int Shift, long x, long y)"
+""
+-607 "MouseUp" "(int Button, int Shift, long x, long y)"
+""
+-600 "Click" "()"
+""
+1550 "OLEStartDrag" "(anytype Data, long AllowedEffects)"
+""
+1551 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+1552 "OLESetData" "(anytype Data, int DataFormat)"
+""
+1553 "OLECompleteDrag" "(long Effect)"
+""
+1554 "OLEDragOver" "(anytype Data, long Effect, int Button, int Shift, float x, float y, int State)"
+""
+1555 "OLEDragDrop" "(anytype Data, long Effect, int Button, int Shift, float x, float y)"
+""
+0 "destroyed" "()"
+""
+0 "signal" "(string name, int argc, void argv)"
+""
+0 "propertyChanged" "(string name)"
+""
+0 "exception" "(int code, string source, string description, string help)"
+""
+E13 2
+"Button2"
+""
+1 390 10 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 388 8 492 42
+
+T 
+1
+LANG:5 15 Output Type IDs
+"main()
+{
+//dyn_string bob = saveCompleteExporterDPEList(\"D:/ISup_G_1.25_DEV/scratch/ExporterConfig.txt\");
+
+DebugN(
+
+1, ATIME_VAR, \"\\n\",
+2, BIT32_VAR, \"\\n\",
+3, BOOL_VAR, \"\\n\",
+4, BLOB_VAR, \"\\n\",
+5, CHAR_VAR, \"\\n\",
+6, DPIDENTIFIER_VAR, \"\\n\",
+//DYN_ATIME_VAR
+7, DYN_BIT32_VAR, \"\\n\",
+8, DYN_BOOL_VAR, \"\\n\",
+9, DYN_BLOB_VAR, \"\\n\",
+10, DYN_CHAR_VAR, \"\\n\",
+11, DYN_DPIDENTIFIER_VAR, \"\\n\",
+12, DYN_FLOAT_VAR, \"\\n\",
+13, DYN_INT_VAR, \"\\n\",
+//DYN_LANGSTRING
+14, DYN_STRING_VAR, \"\\n\",
+15, DYN_TIME_VAR, \"\\n\",
+16, DYN_UINT_VAR, \"\\n\",
+17, FILE_VAR, \"\\n\",
+18, FLOAT_VAR, \"\\n\",
+//FTIME_VAR
+19, INT_VAR, \"\\n\",
+//LANGSTRING
+20, STRING_VAR, \"\\n\",
+21, TIME_VAR, \"\\n\",
+22, UINT_VAR, \"\\n\",
+23, ANYTYPE_VAR, \"\\n\",
+24, DYN_ANYTYPE_VAR, \"\\n\",
+//DYN_DYN_ATIME_VAR
+25, DYN_DYN_ANYTYPE_VAR, \"\\n\",
+26, DYN_DYN_BIT32_VAR, \"\\n\",
+27, DYN_DYN_BOOL_VAR, \"\\n\",
+28, DYN_DYN_CHAR_VAR, \"\\n\",
+29, DYN_DYN_ERRCLASS_VAR, \"\\n\",
+30, DYN_DYN_FLOAT_VAR, \"\\n\",
+31, DYN_DYN_INT_VAR, \"\\n\",
+//DYN_DYN_LANGSTRING
+32, DYN_DYN_STRING_VAR, \"\\n\",
+33, DYN_DYN_TIME_VAR, \"\\n\",
+34, DYN_DYN_UINT_VAR, \"\\n\",
+//DYN_ERR_CLASS_VAR
+35, ERRCLASS_VAR
+);
+ 
+
+
+
+
+
+}
+" 0
+ E E E
+14 3
+"OutputFolderText"
+""
+1 289 500 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 287 498 741 525
+3 "0s" 0 0 0 0 0 -1  E E E
+13 8
+"Button4"
+""
+1 500 10 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 498 8 732 42
+
+T 
+1
+LANG:5 37 Compare this output to real Ascii Man
+"main()
+{
+
+string system_name = \"PRIMUS\";
+string export_folder_path = \"D:/ISup_G_1.25_DEV/dplist/\";
+
+/*
+dyn_dyn_string full_system_export, single_part_export;
+
+full_system_export[1] = makeDynString(\"# ascii dump of database\");
+
+sgExporter_appendPart(full_system_export, sgExporter_generateTypeStructureForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateDPsForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateAliasesCommentsForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateDPValuesForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateAlertValuesForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateDistribValuesForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateDPFunctionValuesForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generatePeriphAddressValuesForSystem(system_name));
+sgExporter_appendPart(full_system_export, sgExporter_generateCommandConvValuesForSystem(system_name));
+
+sgExporter_writeDynDynStringToTextFile(full_system_export, export_folder_path + system_name + \".dpl\");
+*/
+
+/*
+dyn_dyn_string generateTypeStructureForSystem(string system_name)
+dyn_dyn_string generateDPsForSystem(string system_name)
+dyn_dyn_string generateAliasesCommentsForSystem(string system_name)
+dyn_dyn_string generateDPValuesForSystem(string system_name)
+dyn_dyn_string generateAlertValuesForSystem(string system_name)
+dyn_dyn_string generateDistribValuesForSystem(string system_name)
+dyn_dyn_string generateDPFunctionValuesForSystem(string system_name)
+dyn_dyn_string generatePeriphAddressValuesForSystem(string system_name)
+dyn_dyn_string generateCommandConvValuesForSystem(system_name)
+*/
+
+dyn_string error_lines, el2, all_lines, file_lines;
+
+all_lines = sgExporter_readTextFileToDynString(export_folder_path + system_name + \".dpl\");
+file_lines = sgExporter_readTextFileToDynString(export_folder_path + system_name + \"2.dpl\");
+
+for (int i = 1; i<= dynlen(file_lines); i++)
+	{
+	int p = dynContains(all_lines, file_lines[i]);
+	
+	if (!p)
+		{
+	//	DebugN(all_lines[p], file_lines[i], (all_lines[p] == file_lines[i]));
+		dynAppend(error_lines, file_lines[i]);
+		}
+	}
+	
+for (int j = 1; j<= dynlen(all_lines); j++)
+	{
+	int l = dynContains(file_lines, all_lines[j]);
+	
+	if (l <= 0)
+		{
+		dynAppend(el2, all_lines[j]);
+		}
+	}	
+	
+sgExporter_writeDynStringToTextFile(error_lines, \"D:/ISup_G_1.25_DEV/scratch/error_lines.txt\");
+sgExporter_writeDynStringToTextFile(el2, \"D:/ISup_G_1.25_DEV/scratch/el2.txt\");
+
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+29 9
+"SystemsList"
+""
+1 10 80 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+ 10 80 270 565
+21 FlyTreeXCtrl.FlyTreeX
+63
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"sgTree_CheckListMouseDown(getShape(\"SystemsList\"), X);"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+0 "destroyed" "()"
+""
+0 "signal" "(string name, int argc, void argv)"
+""
+0 "propertyChanged" "(string name)"
+""
+0 "exception" "(int code, string source, string description, string help)"
+""
+0 "DataSourceChanged" "(DataSource* value)"
+""
+0 "DataMemberChanged" "(string value)"
+""
+E13 14
+"CloseBtn"
+""
+1 649 450 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 647 448 741 482
+
+T 
+1
+LANG:5 5 Close
+"main()
+{
+PanelOff();
+}" 0
+ E E E
+13 15
+"FolderSelectBtn"
+""
+1 290 527 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 288 525 442 553
+
+T 
+1
+LANG:5 20 Select Output Folder
+"main()
+{
+string folder_path = OutputFolderText.text;
+string initial_folder_path = folder_path;
+
+if (folderSelector(folder_path) == 1)
+	{
+	if (folder_path != \"\") //need to nest this if in case you press cancel in the dialog. it returns success but empty if you do
+		{
+		OutputFolderText.text = folder_path;
+		}
+	}
+}" 0
+ E E E
+13 16
+"ExportBtn"
+""
+1 580 140 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 87 -*-Arial-bold-r-normal-*-16-*-100-100-*-*-iso8859-1|-16,0,0,0,697,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 578 138 732 182
+
+T 
+1
+LANG:5 6 Export
+"main()
+{
+dyn_string systems_to_export, parts_to_export;
+float pstep;
+
+if (OutputFolderText.text != \"\")
+	{
+	ExportBtn.enabled = false;
+	FolderSelectBtn.visible = false;
+	OutputFolderText.visible = false;
+	ChangeConfigFileBtn.visible = false;
+	ExportConfigFilePathTextBox.visible = false;
+	
+	delay(0, 50); //to allow time for the screen to be updated before the cpu-heavy exporting starts
+	
+	if (EXPORT_RADIO_STATE == SYSTEMS_INDEX)
+		{
+		systems_to_export = sgTree_CheckedItemsInCheckList(getShape(\"SystemsList\"));
+		
+		if (dynlen(systems_to_export) > 0)
+			{			
+			parts_to_export = sgTree_CheckedItemsInCheckList(getShape(\"ExportKindsList\"));
+			if (dynlen(parts_to_export) > 0)
+				{
+				pstep = 100/(dynlen(parts_to_export)+1);
+				for (int x = 1; x <= dynlen(systems_to_export); x++)
+					{
+					StatusText1.text = \"Exporting System: \" + systems_to_export[x];
+					ProgressBar2.Value = pstep*x;
+					sgExporter_ExportFullSystem(systems_to_export[x], OutputFolderText.text, ExportConfigFilePathTextBox.text, parts_to_export, getShape(\"ProgressBar1\"), getShape(\"ExpStatusText\"), export_kinds_map);
+					}
+				ProgressBar2.Value = 100;
+				StatusText1.text = \"\";
+				}
+			else
+				{
+				ExpStatusText.text = \"Please select some kinds of data to export\";
+				delay(2);
+				ExpStatusText.text = \"\";	
+				}
+			}
+		else
+			{
+			OutputFolderText.visible = true;
+			FolderSelectBtn.visible = true;
+			string folder_text_temp = OutputFolderText.text;
+			OutputFolderText.text = \"No systems selected for export, please select some\";
+			OutputFolderText.backCol = \"Red\";
+			delay (2);
+			OutputFolderText.text = folder_text_temp;
+			OutputFolderText.backCol = \"White\";	
+			}
+		}
+	else if (EXPORT_RADIO_STATE == GLOBALS_INDEX)
+		{
+		dyn_string globals_to_export = sgTree_CheckedItemsInCheckList(getShape(\"ExportKindsList\"));
+		if (dynlen(globals_to_export) > 0)
+			{
+			sgExporter_ExportGlobals(globals_to_export, OutputFolderText.text, getShape(\"ProgressBar1\"), getShape(\"ExpStatusText\"), global_kinds_map);
+			}
+		else
+			{
+			ExpStatusText.text = \"Please select some kinds of data to export\";
+			delay(2);
+			ExpStatusText.text = \"\";	
+			}
+		}			
+	OutputFolderText.visible = true;
+	FolderSelectBtn.visible = true;
+	ExportBtn.enabled = true;
+	ChangeConfigFileBtn.visible = true;
+	ExportConfigFilePathTextBox.visible = true;
+	}
+else
+	{
+	OutputFolderText.backCol = \"Red\";
+	delay (0, 600);
+	OutputFolderText.backCol = \"White\";
+	}
+}" 0
+ E E E
+29 18
+"ExportKindsList"
+""
+1 290 80 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+ 290 80 560 485
+21 FlyTreeXCtrl.FlyTreeX
+63
+1 "OnMouseEnter" "()"
+""
+2 "OnMouseLeave" "()"
+""
+3 "OnStateChanging" "(long NodeId, bool AllowChange)"
+""
+4 "OnStateChange" "(long NodeId, long Oldindex)"
+""
+5 "OnRefreshState" "(long NodeId, long Mode, bool AllowRefresh)"
+""
+6 "OnGetNodeData" "(long NodeId, long Column, string aData, bool PwdChar, long MaxLength)"
+""
+7 "OnColumnClick" "(long Col, long Row, bool Down)"
+""
+8 "OnValidateNodeData" "(long NodeId, long Column, string aData, anytype Cancel)"
+""
+9 "OnEditButtonClick" "(long NodeId, long Column)"
+""
+10 "OnIsReadOnlyNode" "(long NodeId, long Column, anytype aReadOnly)"
+""
+11 "OnGetPicklist" "(long NodeId, long Column, anytype aPickList)"
+""
+12 "OnGetEditStyle" "(long NodeId, long Column, anytype aEditStyle)"
+""
+37 "OnGetNodeAttributes" "(long NodeId, long Col, idispatch Font, anytype ForeColor, anytype BkColor, anytype Alignment)"
+""
+18 "OnBeforeCustomize" "()"
+""
+19 "OnAfterCustomize" "()"
+""
+20 "OnBeforeApply" "()"
+""
+21 "OnAfterApply" "()"
+""
+-600 "Click" "()"
+""
+-603 "KeyPress" "(int Key)"
+""
+48 "OnColumnMoved" "(long FromIndex, long ToIndex)"
+""
+50 "OnGetEditMask" "(long aCol, long aRow, string Value)"
+""
+51 "OnGetEditText" "(long aCol, long aRow, string Value)"
+""
+52 "OnRowMoved" "(long FromIndex, long ToIndex)"
+""
+53 "OnSelectCell" "(long aCol, long aRow, anytype CanSelect)"
+""
+54 "OnSetEditText" "(long aCol, long aRow, string Value)"
+""
+55 "OnTopLeftChanged" "()"
+""
+-605 "MouseDown" "(int Button, int Shift, float X, float Y)"
+"sgTree_CheckListMouseDown(getShape(\"ExportKindsList\"), X);"
+-607 "MouseUp" "(int Button, int Shift, float X, float Y)"
+""
+-602 "KeyDown" "(int KeyCode, int Shift)"
+""
+-604 "KeyUp" "(int KeyCode, int Shift)"
+""
+-606 "MouseMove" "(int Button, int Shift, float X, float Y)"
+""
+-601 "DblClick" "()"
+""
+14 "OnCompare" "(long NodeId1, long NodeId2, anytype Compare)"
+""
+15 "OnDrawCell" "(long Col, long Row, float Left, float Top, float Right, float Bottom)"
+""
+16 "OnStartDrag" "()"
+""
+17 "OnDragOver" "(long SourceId, float X, float Y, long DragState, bool Accept)"
+""
+22 "OnDragDrop" "(long SourceId, float X, float Y)"
+""
+23 "OnEndDrag" "(long TargetId, float X, float Y)"
+""
+24 "OnColumnWidthChanging" "(long Col, anytype NewWidth)"
+""
+25 "OnColumnWidthChange" "(long Col, long NewWidth)"
+""
+26 "OnRowHeightChanging" "(long Row, anytype NewHeight)"
+""
+27 "OnRowHeightChange" "(long Row, long NewHeight)"
+""
+28 "OnSelChange" "(long Node)"
+""
+30 "OnSelChanging" "(long NewNode, anytype AllowChange)"
+""
+31 "OnEditing" "(long NodeId, anytype AllowEdit)"
+""
+32 "OnEdited" "(long NodeId, string S)"
+""
+33 "OnExpanding" "(long NodeId, anytype AllowExpansion)"
+""
+34 "OnExpanded" "(long NodeId)"
+""
+35 "OnCollapsing" "(long NodeId, anytype AllowCollapse)"
+""
+36 "OnCollapsed" "(long NodeId)"
+""
+13 "OnDeletion" "(long NodeId)"
+""
+29 "OLEDragOver" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y, int State)"
+""
+38 "OLEDragDrop" "(idispatch Data, long Effect, int Button, int Shift, float X, float Y)"
+""
+39 "OLEGiveFeedback" "(long Effect, bool DefaultCursors)"
+""
+40 "OLEStartDrag" "(idispatch Data, long AllowedEffects)"
+""
+41 "OLESetData" "(idispatch Data, int DataFormat)"
+""
+42 "OLECompleteDrag" "(long Effect)"
+""
+0 "destroyed" "()"
+""
+0 "signal" "(string name, int argc, void argv)"
+""
+0 "propertyChanged" "(string name)"
+""
+0 "exception" "(int code, string source, string description, string help)"
+""
+0 "DataSourceChanged" "(DataSource* value)"
+""
+0 "DataMemberChanged" "(string value)"
+""
+E13 27
+"SaveAsSetBtn"
+""
+1 110 575 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 108 573 202 607
+
+T 
+1
+LANG:5 11 Save As Set
+"main()
+{
+dyn_string selected_systems = sgTree_CheckedItemsInCheckList(getShape(\"SystemsList\"));
+
+string file_path = getPath(DPLIST_REL_PATH);
+string new_file_name;
+
+fileSelector(new_file_name, file_path, false, \"*.set\");
+
+if (new_file_name != \"\")
+	{
+	if (!(patternMatch(\"*.set\", new_file_name)))
+		{
+		new_file_name = new_file_name + \".set\";
+		}
+	//else
+	//	{
+	//	new_file_name = new_file_name;
+	//	}
+
+	sgExporter_writeDynStringToTextFile(selected_systems, new_file_name);
+	
+	}
+
+}" 0
+ E E E
+13 28
+"LoadSetBtn"
+""
+1 10 574 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 8 572 102 606
+
+T 
+1
+LANG:5 8 Load Set
+"main()
+
+{
+
+string folder_path = getPath(DPLIST_REL_PATH);
+
+string file_string;
+
+fileSelector(file_string, folder_path, false, \"*.set\");
+
+dyn_string selected_systems;
+
+if (file_string != \"\")
+	{
+	selected_systems = sgExporter_readTextFileToDynString(file_string);
+	sgTree_UntickAllCheckListItems(getShape(\"SystemsList\"));
+	sgTree_TickNamedCheckListItems(getShape(\"SystemsList\"), selected_systems);
+	}
+
+
+
+
+}" 0
+ E E E
+19 31
+"ExportModeRadioBtn"
+""
+1 577 74 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 575 72 739 126
+2
+T 
+1
+LANG:5 18 Individual Systems
+
+1 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+T 
+1
+LANG:5 22 Globally Relevant Data
+
+0 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+1
+E "main(int button)
+{
+ExportBtn.enabled = false;
+
+bool radio_state_changed = (EXPORT_RADIO_STATE != button);
+
+if (radio_state_changed)
+	{
+	EXPORT_RADIO_STATE = button;
+	
+	if (EXPORT_RADIO_STATE == SYSTEMS_INDEX)
+		{
+		selected_global_outs = sgTree_CheckedItemsInCheckList(getShape(\"ExportKindsList\"));		
+		sgTree_CreateCheckList(getShape(\"ExportKindsList\"), mappingKeys(export_kinds_map), selected_sys_outs);
+		SystemsList.Enabled = true;
+		}
+	else if (EXPORT_RADIO_STATE == GLOBALS_INDEX)
+		{
+		selected_sys_outs = sgTree_CheckedItemsInCheckList(getShape(\"ExportKindsList\"));
+		sgTree_CreateCheckList(getShape(\"ExportKindsList\"), mappingKeys(global_kinds_map), selected_global_outs);
+		SystemsList.Enabled = false;
+		}
+	else
+		{
+		DebugN(\"how did the button get such a funny value??\", EXPORT_RADIO_STATE);
+		}
+	}
+
+ExportBtn.enabled = true;
+}" 0
+
+13 32
+"OpenConfigurerBtn"
+""
+1 650 410 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 648 408 742 442
+
+T 
+1
+LANG:5 7 Options
+"main()
+{
+
+dyn_string empty;
+//getPath(PANELS_REL_PATH) +
+ChildPanelOn(\"ExporterConfigurer.pnl\", \"ExporterConfigurer\", empty, 400, 400);
+
+}" 0
+ E E E
+14 33
+"ExportConfigFilePathTextBox"
+""
+1 289 556 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 287 554 741 581
+3 "0s" 0 0 0 0 0 -1  E E E
+13 34
+"ChangeConfigFileBtn"
+""
+1 290 582 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 84 -*-Arial-*-r-normal-*-13-*-100-100-*-*-iso8859-1|-13,0,0,0,404,0,0,0,0,0,0,0,0,Arial
+0 ""
+ 288 580 442 607
+
+T 
+1
+LANG:5 18 Select Config File
+"main()
+{
+string newfilepath, folder_path;
+folder_path = strrtrim(ExportConfigFilePathTextBox.text, \".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYY0123456789!+-,_\");
+
+fileSelector(newfilepath, folder_path, false);
+
+if (newfilepath != \"\")
+	{
+	ExportConfigFilePathTextBox.text = newfilepath;
+	}
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

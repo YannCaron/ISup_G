@@ -1,0 +1,26 @@
+version 1
+
+auth "" ""
+#Manager         | Start  | SecKill | Restart# | ResetMin | Options
+PVSS00pmon       | manual |      30 |       99 |        1 |
+PVSS00data       | always |      30 |       99 |        1 |
+PVSS00event      | always |      30 |       99 |        1 |
+PVSS00redu       | always |      30 |       99 |        1 |
+PVSS00dist       | always |      30 |       99 |        1 |
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 1 -f sgFwScripts.lst
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 2 sgFwChecker.ctl
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 3 -f ISup_G_CommScripts.lst
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 4 -f ISup_G_ProcsScripts.lst
+PVSS00snmp       | always |      30 |       99 |        1 |-num 1 -log -file
+PVSS00snmp       | always |      30 |       99 |        1 |-num 2 -log -file
+PVSS00TCPComm    | always |      30 |       99 |        1 |-num 3
+PVSS00SerialModbus | always |      30 |       99 |        1 |-num 4
+PVSS00MQTTDriver   | always |      30 |        99 |        1 |-num 5
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 5 ServiceLauncher.ctl jar DriverService.jar -a 1 -c activemq.config.xml -l activemq.log4j.properties
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 6 ServiceLauncher.ctl jar nJamsAPIDriver.jar -a 2 -c njams.alerts.gva.config.xml -l njams.alerts.log4j.properties
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 7 ServiceLauncher.ctl jar nJamsAPIDriver.jar -a 3 -c njams.lifecycle.config.xml -l njams.lifecycle.log4j.properties
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 8 ServiceLauncher.ctl jar SmartSNMPDriver.jar -a 4 -c smartSNMPDriver-val.config.xml -l smartSNMPDriver.log4j.properties
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 9 ServiceLauncher.ctl net WMIDriver.exe -a 5 -c wmidriver.config-val.xml -l wmidriver.log4net.properties
+PVSS00ctrl       | always |      30 |       99 |        1 |-num 10 ServiceLauncher.ctl jar DriverService.jar -a 6 -c snmp-get.config.xml -l snmp-get.log4j.properties
+PVSS00ui         | always |      30 |       99 |        1 |-iconBar -menuBar -p sgBasePanel.pnl -m vision:ISup_1,1280x1024+0+0
+PVSS00ui         | manual |      30 |       99 |        1 |-m gedi -extend

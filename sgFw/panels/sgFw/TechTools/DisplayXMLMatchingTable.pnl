@@ -1,0 +1,239 @@
+V 10
+1
+LANG:5 0 
+PANEL,-1 -1 579 276 N "_3DFace" 0
+E E E E E 1 -1 -1 0  185 85
+""0  1
+E "void logInfo_clicked() {
+  loadSystem(tbSystem.text, tbXML.text);
+}
+
+void test_clicked() {
+  DebugTN(dpGet(dp.text));
+}
+
+void loadSystem(string systemName, string mTable) {
+  string result = \"\\n\";
+  dyn_string inputs, outputs, dps, descriptions;
+  dpGet(systemName + \".\" + mTable + \".Input\", inputs,
+        systemName + \".\" + mTable + \".Output\", outputs);
+  
+  DebugTN(inputs, outputs);
+
+  for (int i=1; i<= dynlen(outputs); i++) {
+    string pattern;
+    int pos = strpos(outputs[i], \"+\");
+    if (pos > 0) {
+      pattern = substr(outputs[i], 0, pos);
+    } else {
+      pattern = outputs[i];
+    }
+    
+    DebugTN(pattern);
+    dyn_string names = dpNames(pattern);
+    DebugTN(pattern + \".GlobalStatus\");
+    dpGetAllDescriptions(dps, descriptions, \"*\", pattern);
+    DebugTN(descriptions);
+    
+    result += inputs[i];
+    result += \"\\n\";
+    for (int j=1; j<= dynlen(names); j++) {
+      string dp = names [j];
+
+      result += dpGetDescription(dp);
+      result += \";\";
+      result += pattern;
+      result += \";\";
+      result += dp;
+      result +=\"\\n\" ;
+    }
+    
+  }
+  
+  DebugTN(result);
+  
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"PUSH_BUTTON1"
+""
+1 185 90 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 183 88 372 172
+
+T 
+1
+LANG:5 9 Log infos
+"main()
+{
+  logInfo_clicked();
+}" 0
+ E E E
+14 1
+"dp"
+""
+1 20 215 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 18 213 557 236
+3 "0s" 0 0 0 0 0 -1  E E E
+13 2
+"PUSH_BUTTON2"
+""
+1 460 245 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 458 243 557 272
+
+T 
+1
+LANG:5 7 Test dp
+"main()
+{
+  test_clicked();
+}" 0
+ E E E
+14 3
+"tbSystem"
+""
+1 95 15 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 93 13 312 36
+3 "0s" 0 0 0 0 0 -1  E E E
+2 4
+"PRIMITIVE_TEXT1"
+""
+1 15 20 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 15 20 86 34
+0 2 2 "0s" 0 0 0 192 0 0  15 20 1
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+1
+LANG:5 13 System Name :
+14 5
+"tbXML"
+""
+1 95 45 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 93 43 312 66
+3 "0s" 0 0 0 0 0 -1  E "main()
+{
+  this.text = \"XMLMatchingTable\";
+}" 0
+ E
+2 6
+"PRIMITIVE_TEXT2"
+""
+1 15 50 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 15 50 48 64
+0 2 2 "0s" 0 0 0 192 0 0  15 50 1
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+1
+LANG:5 7 Table :
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

@@ -1,0 +1,237 @@
+# ascii dump of database
+
+# DpType
+TypeName
+_SNMPAgent._SNMPAgent	1#1
+	Access	1#2
+		IPAddress	25#3
+		ReadCommunity	25#4
+		WriteCommunity	25#5
+		Timeout	20#6
+		Retries	20#7
+		Protocol	20#8
+		Port	20#9
+	Status	1#10
+		ErrorOID	9#11
+		QueueLength	20#12
+		Timeout	23#13
+		SanorsState	20#14
+		LastSanorsError	20#15
+	Redundancy	1#16
+		ReduAgent	20#17
+		FallBack	20#18
+		DataFromRedu	23#19
+	Command	20#20
+	Browse	1#21
+		Start	25#22
+		Result	9#23
+sgRadars.sgRadars	1#1
+	Params	41#20:sgParams
+	History	41#21:sgFwHistory
+	GlobalStatus	41#372:sgFwSystem
+	Components	1#537
+		GV2S	1#542
+			FaultOnRadar	41#543:sgFwSystem
+			WarningOnRadar	41#544:sgFwSystem
+		GV1P	1#551
+			FaultOnRadar	41#552:sgFwSystem
+			WarningOnRadar	41#553:sgFwSystem
+			GPSTimeServer	41#554:sgFwSystem
+			RadarStatus	41#2560:sgFwSystem
+		GV1S	1#1524
+			FaultOnRadar	41#1858:sgFwSystem
+			WarningOnRadar	41#1859:sgFwSystem
+		DOLS	1#1528
+			FaultOnRadar	41#1860:sgFwSystem
+			WarningOnRadar	41#1861:sgFwSystem
+		GV1S_N	1#2499
+			FaultOnRadar	41#2500:sgFwSystem
+			WarningOnRadar	41#2501:sgFwSystem
+	RawDatas	1#2338
+		DOLInput006	23#2339
+		DOLInput007	23#2340
+		RXInput015	23#2436
+		RXInput016	23#2437
+		RXInput017	23#2341
+		RXInput018	23#2342
+		RXInput019	23#2343
+		RXInput020	23#2344
+		RXInput021	23#2345
+		RXInput022	23#2346
+		RXInput023	23#2347
+		GV1P	1#2561
+			RMMS1LAN1	21#2562
+	WatchDogs	41#2348:sgWatchDogs
+	Connections	41#2349:sgFwConnections
+	MenuEntry	41#2365:sgFwMenuEntry
+
+# Datapoint/DpId
+DpName	TypeName	ID
+Radars	sgRadars	28947
+_1_SNMPAgent_30	_SNMPAgent	29356
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+Radars.Components.GV1S	""	lt:1 LANG:5 "GVA1S@%s@"
+Radars.GlobalStatus	""	lt:1 LANG:5 "RADARS@%s@"
+Radars.Components.GV2S.FaultOnRadar	""	lt:1 LANG:5 "GV2S: Fault On Radar@%s@"
+Radars.Components.GV2S.WarningOnRadar	""	lt:1 LANG:5 "GV2S: Warning On Radar@%s@"
+Radars.Components.GV1P.FaultOnRadar	""	lt:1 LANG:5 "GV1P: Fault On Radar@%s@"
+Radars.Components.GV1P.WarningOnRadar	""	lt:1 LANG:5 "GV1P: Warning On Radar@%s@"
+Radars.Components.GV1P.GPSTimeServer	""	lt:1 LANG:5 "GV1P: GPS Time Server@%s@"
+Radars.Components.GV1S.FaultOnRadar	""	lt:1 LANG:5 "GV1S: Fault On Radar@%s@"
+Radars.Components.GV1S.WarningOnRadar	""	lt:1 LANG:5 "GV1S: Warning On Radar@%s@"
+Radars.Components.DOLS.FaultOnRadar	""	lt:1 LANG:5 "DOLS: Fault On Radar@%s@"
+Radars.Components.DOLS.WarningOnRadar	""	lt:1 LANG:5 "DOLS: Warning On Radar@%s@"
+Radars.Components.GV1S_N.FaultOnRadar	""	lt:1 LANG:5 "GV1S (New): Fault On Radar@%s@"
+Radars.Components.GV1S_N.WarningOnRadar	""	lt:1 LANG:5 "GV1S (New): Warning On Radar@%s@"
+_1_SNMPAgent_30.	""	lt:1 LANG:5 "RMMS1SDCSALanE@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+Radars.Params.Histories	sgRadars	"Radars.History"	0x101	27.11.2017 10:00:44.816
+Radars.Params.AETable	sgRadars	"AETable01"	0x101	27.11.2017 10:00:44.819
+Radars.Params.GenerateEvents	sgRadars	1	0x101	27.11.2017 10:00:44.820
+Radars.History.Message	sgRadars	"22/05/18	07:51:12	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 "	0x300101	22.05.2018 07:51:12.513
+Radars.History.HistorySize	sgRadars	100	0x101	27.11.2017 10:00:44.822
+Radars.History.ShortHistory	sgRadars	"27/04/18	12:27:24	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "27/04/18	12:27:24	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "27/04/18	12:27:24	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "01/05/18	12:52:06	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "01/05/18	12:52:06	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "01/05/18	12:52:08	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "02/05/18	06:49:34	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "02/05/18	06:49:34	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "02/05/18	06:49:34	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	08:36:34	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	08:36:34	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	08:36:34	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	08:42:16	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	08:42:16	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	08:42:16	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	08:43:10	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	08:43:10	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	08:43:10	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	08:44:09	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	08:44:09	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	08:44:09	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	08:44:38	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	08:44:38	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	08:44:38	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "15/05/18	11:08:48	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "15/05/18	11:08:48	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "15/05/18	11:08:48	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 ", "16/05/18	08:08:35	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "16/05/18	08:08:35	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "16/05/18	13:14:51	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "16/05/18	13:14:51	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "18/05/18	12:27:21	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "18/05/18	12:27:21	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "18/05/18	12:28:57	WARNING: 	ISup Wago RX changed from UKN to U/S	 ", "18/05/18	12:28:57	WARNING: 	ISup Wago Dole changed from UKN to U/S	 ", "22/05/18	07:51:12	SOLVED:  	ISup Moxa LT changed from UKN to OPS	 "	0x101	22.05.2018 07:51:13.020
+Radars.GlobalStatus.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.GlobalStatus.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.GlobalStatus.Disabled	sgRadars	0	0x101	18.05.2018 12:28:56.369
+Radars.GlobalStatus.SubDisabled	sgRadars	0	0x100101	27.11.2017 10:12:07.817
+Radars.GlobalStatus.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.GlobalStatus.Alarms.GenerateAlarms	sgRadars	1	0x200101	27.11.2017 10:00:44.827
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars	1	0x200101	18.05.2018 12:28:56.420
+Radars.GlobalStatus.LogicConfig.LogicEnabled	sgRadars	1	0x101	27.11.2017 10:00:44.831
+Radars.GlobalStatus.LogicConfig.Rule	sgRadars	"TTWorstCase"	0x101	27.11.2017 10:00:44.833
+Radars.GlobalStatus.LogicConfig.Inputs	sgRadars	"Radars.Components.*.*"	0x101	27.11.2017 10:00:44.835
+Radars.GlobalStatus.Params	sgRadars	""	0x100101	04.08.2015 13:03:22.010
+Radars.GlobalStatus.AETable	sgRadars	"AETable02"	0x101	27.11.2017 10:00:44.836
+Radars.Components.GV2S.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV2S.FaultOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV2S.FaultOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV2S.FaultOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV2S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.838
+Radars.Components.GV2S.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV2S.WarningOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV2S.WarningOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV2S.WarningOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV2S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.840
+Radars.Components.GV1P.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.FaultOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.FaultOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1P.FaultOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1P.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.841
+Radars.Components.GV1P.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.WarningOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.WarningOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1P.WarningOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1P.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.842
+Radars.Components.GV1P.GPSTimeServer.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.GPSTimeServer.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1P.GPSTimeServer.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1P.GPSTimeServer.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1P.GPSTimeServer.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.844
+Radars.Components.GV1S.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S.FaultOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S.FaultOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1S.FaultOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1S.FaultOnRadar.Alarms.AlarmActive	sgRadars	0	0x101	22.11.2016 08:28:08.190
+Radars.Components.GV1S.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.844
+Radars.Components.GV1S.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S.WarningOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S.WarningOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1S.WarningOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1S.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.845
+Radars.Components.DOLS.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.DOLS.FaultOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.DOLS.FaultOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.DOLS.FaultOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.DOLS.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x200101	27.11.2017 10:00:44.846
+Radars.Components.DOLS.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.DOLS.WarningOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.DOLS.WarningOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.DOLS.WarningOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.DOLS.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x200101	27.11.2017 10:00:44.847
+Radars.RawDatas.DOLInput006	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.DOLInput007	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput017	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput018	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput019	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput020	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput021	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput022	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput023	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.WatchDogs.References	sgRadars	"_SerialModbus_12.Status.Heartbeat", "_SerialModbus_13.Status.Heartbeat"	0x101	27.11.2017 10:00:44.849
+Radars.WatchDogs.DefaultValues	sgRadars	"1", "1"	0x101	27.11.2017 10:00:44.849
+Radars.WatchDogs.Outputs	sgRadars	"Radars.RawDatas.DOL*:_original.._userbit1", "Radars.RawDatas.RX*:_original.._userbit1"	0x101	27.11.2017 10:00:44.851
+Radars.WatchDogs.Timeouts	sgRadars	12, 12	0x101	27.11.2017 10:00:44.852
+Radars.Connections.Inputs	sgRadars	"Radars.RawDatas.DOLInput006", "Radars.RawDatas.DOLInput007", "Radars.RawDatas.RXInput017", "Radars.RawDatas.RXInput018", "Radars.RawDatas.RXInput019", "Radars.RawDatas.RXInput020", "Radars.RawDatas.RXInput021", "Radars.RawDatas.RXInput022", "Radars.RawDatas.RXInput023", "Radars.RawDatas.RXInput015", "Radars.RawDatas.RXInput016"	0x101	27.11.2017 10:00:44.852
+Radars.Connections.Outputs	sgRadars	"Radars.Components.DOLS.FaultOnRadar.PreStatus", "Radars.Components.DOLS.WarningOnRadar.PreStatus", "Radars.Components.GV1S.FaultOnRadar.PreStatus", "Radars.Components.GV1S.WarningOnRadar.PreStatus", "Radars.Components.GV1P.FaultOnRadar.PreStatus", "Radars.Components.GV1P.WarningOnRadar.PreStatus", "Radars.Components.GV1P.GPSTimeServer.PreStatus", "Radars.Components.GV2S.FaultOnRadar.PreStatus", "Radars.Components.GV2S.WarningOnRadar.PreStatus", "Radars.Components.GV1S_N.FaultOnRadar.PreStatus", "Radars.Components.GV1S_N.WarningOnRadar.PreStatus"	0x101	27.11.2017 10:00:44.853
+Radars.Connections.Rules	sgRadars	"ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid", "ConnectWithConvertTableInvalid"	0x101	27.11.2017 10:00:44.854
+Radars.Connections.Params	sgRadars	"DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString", "InvertedTableString", "InvertedDEGString", "DirectTableString", "DirectTableString", "DirectDEGString", "DirectTableString", "DirectDEGString"	0x101	27.11.2017 10:00:44.857
+Radars.MenuEntry.Name	sgRadars	"RADARS"	0x200101	27.11.2017 10:00:44.857
+Radars.MenuEntry.Group	sgRadars	"SUR"	0x200101	27.11.2017 10:00:44.858
+Radars.MenuEntry.Panel	sgRadars	"Radars/RadarsMainPanel.pnl"	0x101	27.11.2017 10:00:44.859
+Radars.MenuEntry.Params	sgRadars	"SystemName:ISup_G"	0x101	27.11.2017 10:00:44.859
+Radars.MenuEntry.GlobalStatusPoint	sgRadars	"Radars.GlobalStatus"	0x101	27.11.2017 10:00:44.860
+Radars.RawDatas.RXInput015	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.RawDatas.RXInput016	sgRadars	0	0x1000141	18.05.2018 12:29:07.553
+Radars.Components.GV1S_N.FaultOnRadar.PreStatus	sgRadars	"UKN"	0x101	18.05.2018 12:28:44.231
+Radars.Components.GV1S_N.FaultOnRadar.Status	sgRadars	"UKN"	0x101	18.05.2018 12:28:44.231
+Radars.Components.GV1S_N.FaultOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1S_N.FaultOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1S_N.FaultOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.848
+Radars.Components.GV1S_N.WarningOnRadar.PreStatus	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S_N.WarningOnRadar.Status	sgRadars	"UKN"	0x200101	18.05.2018 12:28:44.231
+Radars.Components.GV1S_N.WarningOnRadar.Disabled	sgRadars	0	0x101	26.04.2018 15:09:18.405
+Radars.Components.GV1S_N.WarningOnRadar.Message	sgRadars	""	0x101	18.05.2018 12:28:44.538
+Radars.Components.GV1S_N.WarningOnRadar.Alarms.AlarmActive	sgRadars	0	0x101	27.11.2017 10:12:04.708
+Radars.Components.GV1S_N.WarningOnRadar.Params	sgRadars	"Radars.Params"	0x101	27.11.2017 10:00:44.848
+_1_SNMPAgent_30.Access.IPAddress	_SNMPAgent	"RMMS1SDCSALanE"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.ReadCommunity	_SNMPAgent	"public"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.WriteCommunity	_SNMPAgent	"admin"	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Timeout	_SNMPAgent	100	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Retries	_SNMPAgent	1	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Protocol	_SNMPAgent	2	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Access.Port	_SNMPAgent	8042	0x200101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Status.ErrorOID	_SNMPAgent	"-12#30_1.3.6.1.4.1.8173.4.0.30200.0 - error: SNMP++: Invalid Target"	0x101	22.05.2018 07:53:17.931
+_1_SNMPAgent_30.Status.QueueLength	_SNMPAgent	0	0x101	22.05.2018 07:53:17.931
+_1_SNMPAgent_30.Status.Timeout	_SNMPAgent	1	0x300101	22.05.2018 07:52:12.172
+_1_SNMPAgent_30.Status.SanorsState	_SNMPAgent	0	0x101	22.05.2018 07:53:17.931
+_1_SNMPAgent_30.Redundancy.ReduAgent	_SNMPAgent	0	0x101	22.05.2018 07:47:44.813
+_1_SNMPAgent_30.Redundancy.FallBack	_SNMPAgent	0	0x101	22.05.2018 07:47:44.813
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+Radars.GlobalStatus.Alarms.AlarmActive	sgRadars		12					"Radars/RadarsMainPanel.pnl"		lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on Radars"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+Radars.RawDatas.DOLInput006	sgRadars	56	\4
+Radars.RawDatas.DOLInput007	sgRadars	56	\4
+Radars.RawDatas.RXInput017	sgRadars	56	\4
+Radars.RawDatas.RXInput018	sgRadars	56	\4
+Radars.RawDatas.RXInput019	sgRadars	56	\4
+Radars.RawDatas.RXInput020	sgRadars	56	\4
+Radars.RawDatas.RXInput021	sgRadars	56	\4
+Radars.RawDatas.RXInput022	sgRadars	56	\4
+Radars.RawDatas.RXInput023	sgRadars	56	\4
+Radars.RawDatas.RXInput015	sgRadars	56	\4
+Radars.RawDatas.RXInput016	sgRadars	56	\4
+Radars.RawDatas.GV1P.RMMS1LAN1	sgRadars	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+Radars.RawDatas.DOLInput006	sgRadars	16	"12_1701_1.6"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.DOLInput007	sgRadars	16	"12_1701_1.7"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput017	sgRadars	16	"13_1701_1.17"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput018	sgRadars	16	"13_1701_1.18"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput019	sgRadars	16	"13_1701_1.19"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput020	sgRadars	16	"13_1701_1.20"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput021	sgRadars	16	"13_1701_1.21"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput022	sgRadars	16	"13_1701_1.22"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput023	sgRadars	16	"13_1701_1.23"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput015	sgRadars	16	"13_1701_1.15"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.RXInput016	sgRadars	16	"13_1701_1.16"	""	0	0	\4	0	0	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	1701	"SERIALMOD"
+Radars.RawDatas.GV1P.RMMS1LAN1	sgRadars	16	"30_1.3.6.1.4.1.8173.4.0.30200.0"	"_RMMSRadars"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

@@ -1,0 +1,404 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,0 0 1110 860 N "_3DFace" 0
+EEE E E 1 -1 -1 0  10 10
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U 1 E 12 12 1098 48
+1 2 0 "s" 0 0 0 65 0 0  12 12
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 26 INCH Lugano Clients Lugano
+LANG:1 4 AFPS
+1 0 33 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 33 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 39 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 39 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 41 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 41 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 43 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 43 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 44 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 44 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 45 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 45 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 129 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 9 INCH Z 01
+
+0
+1 0 129 "" 24
+20 "primitiveText" 0 0 2
+1
+LANG:5 18 TCZ/UAC Supervisor
+1
+LANG:5 18 TCZ/UAC Supervisor
+
+0
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+1 0 98 "" -1
+0
+1 0 99 "" -1
+0
+1 0 100 "" -1
+0
+1 0 101 "" -1
+0
+1 0 102 "" -1
+0
+1 0 103 "" -1
+0
+1 0 128 "" -1
+0
+1 0 130 "" -1
+0
+0
+3 33 "Group7"
+"objects\\sgFwBlock.pnl" 130 300 T 48 0.7625 0 0.25  325.6208333333331 75  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.002"
+3 39 "Group20"
+"objects\\sgFwBlock.pnl" 65 70 T 54 0.7625 0 0.25  375.1833333333331 197  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.003"
+3 41 "Group24"
+"objects\\sgFwBlock.pnl" 65 70 T 56 0.7625 0 0.25  375.1833333333331 262  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.004"
+3 43 "Group32"
+"objects\\sgFwBlock.pnl" 65 70 T 58 0.7625 0 0.25  375.1833333333331 327  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.005"
+3 44 "Group33"
+"objects\\sgFwBlock.pnl" 65 130 T 59 0.7625 0 0.25  375.1833333333331 377  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.006"
+3 45 "Group34"
+"objects\\sgFwBlock.pnl" 65 190 T 60 0.7625 0 0.25  375.1833333333331 427  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.011"
+3 98 ""
+"objects\\sgFwBtnCommand.pnl" 20 75 T 112 0.6666666666666666 0 1.25  366.6666666666667 56.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.002\""
+3 99 "Group65"
+"objects\\sgFwBtnCommand.pnl" 20 70 T 113 0.6666666666666666 0 1.25  366.6666666666667 127.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.003\""
+3 100 "Group68"
+"objects\\sgFwBtnCommand.pnl" 20 70 T 114 0.6666666666666666 0 1.25  366.6666666666667 192.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.004\""
+3 101 "Group69"
+"objects\\sgFwBtnCommand.pnl" 20 135 T 115 0.6666666666666666 0 1.25  366.6666666666667 176.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.005\""
+3 102 "Group72"
+"objects\\sgFwBtnCommand.pnl" 20 70 T 116 0.6666666666666666 0 1.25  366.6666666666667 322.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.006\""
+3 103 "Group73"
+"objects\\sgFwBtnCommand.pnl" 20 135 T 117 0.6666666666666666 0 1.25  366.6666666666667 306.25  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.011\""
+3 128 "Group63"
+"objects\\sgFwHistory.pnl" 10 710 T 141 1 0 1  -10 -10  
+2
+"$SystemHistory""INCH_L.History"
+"$SystemName"""
+3 129 "Group16"
+"objects\\sgFwBlock.pnl" 425 475 T 142 0.7625 0 0.25  101.1833333333331 421  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""INCH_L.Components.Clients.012"
+3 130 "Group17"
+"objects\\sgFwBtnCommand.pnl" 380 475 T 143 0.6666666666666666 0 1.25  126.6666666666667 -53.75  
+4
+"$PanelName""objects/DialRestartServices.pnl"
+"$PanelParams"""
+"$SystemName""INCH_L"
+"$SystemStatus""\"INCH_L.Components.Clients.012\""
+0

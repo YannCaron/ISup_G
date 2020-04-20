@@ -1,0 +1,510 @@
+V 10
+1
+LANG:5 16 RAM SGBD display
+PANEL,347 135 892 629 N "_3DFace" 0
+"main()
+{
+	dpConnect(\"tableListChanged\", false, \"FwUtils.sgDBTableList.TableList\");
+	dpConnect(\"keysChanged\", false, \"FwUtils.DBQuery.Keys\");
+	dpConnect(\"valuesChanged\", false, \"FwUtils.DBQuery.Values\");
+	
+	bool myformVisible = false;
+	
+	// Read tables name 
+	updateTablesName();
+	
+	while(1)
+	{
+		if (gUpdate)
+		{
+			updateKeys();
+		}
+		else
+			MyForm.visible = false;
+			
+		delay(0,500);	
+	}
+}
+" 0
+EE E E 1 -1 -1 0  10 10
+"" 0 1
+E"bool gUpdate, gSeparateValues = false;
+dyn_string gValues;
+
+void updateTablesName()
+{
+	dyn_string dummy, tableList;
+	// Reset the list
+	dpSet(\"FwUtils.sgDBTableList.TableList\", dummy);
+	TablesNameLB.deleteAllItems();
+	KeysLB.deleteAllItems();
+	ValuesLB.deleteAllItems();
+	// Refresh
+	dpSet(\"FwUtils.sgDBTableList.TableListUpdate\", TRUE);	
+}
+
+void updateValues(int keyPos)
+{
+	// DebugN(\"updateValues new keyPos: \" + keyPos);
+	if (keyPos > 0 && strpos(gValues[keyPos], '|') >= 0)	
+	{
+		//DebugN(\"updateValues() >> gSeparateValues = true\");
+		gSeparateValues = true;
+		string valuesStr = gValues[keyPos];
+		
+  	dyn_string dynValues;
+		string temp;
+		int posStr;
+		while (posStr < strlen(valuesStr))
+		{
+			if (valuesStr[posStr] == '|')
+			{
+				dynAppend(dynValues, temp);
+				temp = \"\";
+				posStr++;
+			}
+			else
+				temp += valuesStr[posStr];
+				
+			posStr++;	
+		} // while
+		dynAppend(dynValues, temp);
+					
+		ValuesLB.items = dynValues;	 
+	}
+	else
+	{
+		gSeparateValues = false;
+		ValuesLB.items = gValues;
+	}	
+	NbValues.text = ValuesLB.itemCount;
+	
+	if (gUpdate)
+		MyForm.visible = !MyForm.visible;		
+}
+
+void valuesChanged(string dpName, dyn_string values)
+{
+	string selectedTable = TablesNameLB.selectedText;
+	// DebugN(\"TablesNameLB_EventChange >> selected table: \" + selectedTable);
+	gValues = values;
+	int keyPos = KeysLB.selectedPos;
+	updateValues(keyPos);				
+}
+
+void tableListChanged(string dpName, dyn_string tableList)
+{
+	// sort the table
+	dyn_string sortedTable = tableList;
+	dynSortAsc(sortedTable);
+			
+	string filter;	
+	filter = strtoupper(PatternFilterTF.text);
+	if (filter != \"\" && filter != \"*\")
+	{
+		dyn_string output;
+		
+		for (int cpt = 1; cpt <= dynlen(sortedTable); cpt++)
+			if (strpos(strtoupper(sortedTable[cpt]), filter) >= 0)
+				dynAppend(output, sortedTable[cpt]);
+			
+		TablesNameLB.items = output;
+	}
+	else	
+		TablesNameLB.items = sortedTable;
+
+	TablesNameLB.selectedPos = 1;
+	updateKeys();
+}
+
+void updateKeys()
+{
+	dyn_string keys;
+	string selectedTable;
+	selectedTable = TablesNameLB.selectedText;
+	dpSet(\"FwUtils.DBQuery.Table\", selectedTable);
+}
+
+void keysChanged (string dpName, dyn_string keysValues)
+{
+	KeysLB.items = keysValues;
+	NbKeys.text = dynlen(keysValues);
+}" 0
+ 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 5
+"Text2"
+""
+1 10 350 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 352 138 368
+0 2 0 "s" 0 0 0 64 0 0  12 352
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 4 Keys
+2 8
+"Text4"
+""
+1 365 350 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 367 352 493 368
+0 2 0 "s" 0 0 0 64 0 0  367 352
+ 1
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 6 Values
+2 12
+"Text6"
+""
+1 225 130 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+13 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 227 132 403 148
+0 2 0 "s" 0 0 0 64 0 0  227 132
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 11 Tables name
+2 21
+"Text3"
+""
+1 10 70 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+21 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 72 273 93
+0 2 0 "s" 0 0 0 64 0 0  12 72
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 26 tables name pattern filter
+2 22
+"Text5"
+""
+1 10 570 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+22 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 12 572 93 588
+0 2 0 "s" 0 0 0 64 0 0  12 572
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 8 Nb keys:
+2 24
+"Text7"
+""
+1 370 570 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+24 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 372 572 453 588
+0 2 0 "s" 0 0 0 64 0 0  372 572
+ 1
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+1
+LANG:5 10 Nb values:
+6 26
+"MyForm"
+""
+1 670 582 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+26 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+1
+"dashclr"N "Schwarz"
+E E 0 3 1 0 0 E U  0 E 670 575 680 582
+2 27
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+27 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 883 48
+1 2 0 "s" 0 0 0 65 0 0  12 12
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+2
+LANG:5 16 RAM SGBD display
+LANG:1 45 skyguide's Framework - Advanced configuration
+17 4
+"KeysLB"
+""
+1 10 375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 373 332 552
+0
+E
+"main()
+{
+	updateValues(KeysLB.selectedPos);
+	if (gSeparateValues == false)
+		ValuesLB.selectedPos = KeysLB.selectedPos;		
+}" 0
+
+E
+
+3 1
+17 6
+"ValuesLB"
+""
+1 365 375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+363 373 882 552
+0
+E
+"main()
+{
+	if (gSeparateValues == false)
+		KeysLB.selectedPos = ValuesLB.selectedPos;
+}" 0
+
+E
+
+3 1
+17 14
+"TablesNameLB"
+""
+1 10 155 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 153 617 332
+0
+E
+"main()
+{
+	// DebugN(\"TablesNameLB_EventChange >> event change\");
+	updateKeys();
+}" 0
+
+E
+
+3 1
+20 19
+"AutomaticRefreshCB"
+""
+1 690 565 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+688 563 882 592
+1
+T 
+1
+LANG:5 17 Automatic refresh
+ 0
+1
+LANG:5 0 
+ E  E  0 0 0 0 0
+1
+E E 
+E"main(int button, bool state)
+{
+	if (state == true)
+		gUpdate = true;
+	else
+		gUpdate = false;
+	
+}" 0
+14 20
+"PatternFilterTF"
+""
+1 10 100 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+8 98 277 125
+3 "s" 0 0 0 0 0 0 
+"main()
+{
+	
+}" 0
+
+E
+"main()
+{
+	bool isAutoUpdate = gUpdate;
+	gUpdate = false;
+	dyn_string dummy;
+	dpSet(\"FwUtils.DBQuery.Keys\", dummy,
+			  \"FwUtils.DBQuery.Values\", dummy);
+	
+	gUpdate = isAutoUpdate;
+	updateTablesName();
+}" 0
+
+14 23
+"NbKeys"
+""
+1 95 570 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+93 568 227 597
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 25
+"NbValues"
+""
+1 455 570 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-140-100-100-*-*-iso8859-1|-15,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+453 568 587 597
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

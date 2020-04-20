@@ -1,0 +1,324 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 2
+"$Site"
+"$SystemName"
+"main()
+{
+  PageLabel.text = \"Rec Voice (AVRE \" + $Site + \")\";
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 647
+"LINE3"
+""
+1 357.3106162068397 148 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+175 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  757 148 357 148
+4 648
+"LINE4"
+""
+1 562.3106162068398 148 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+177 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  562 148 562 138
+4 569
+"Line1"
+" "
+1 925 140 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  925 570 925 140
+4 570
+"Line2"
+" "
+1 926 140 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+159 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  926 570 926 140
+2 571
+"Text1"
+""
+1 875.3106162068398 96 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+160 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 877.3106162068398 98 941.3106162068398 121
+0 2 0 "0s" 0 0 0 192 0 0  877.3106162068398 98 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 7 Chain B
+4 566
+"Line33"
+" "
+1 290 140 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  290 569 290 140
+4 567
+"Line30"
+" "
+1 291 140 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  291 570 291 140
+2 568
+"Text5"
+""
+1 240.3106162068397 96 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+157 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 242.3106162068397 98 306.3106162068397 121
+0 2 0 "0s" 0 0 0 192 0 0  242.3106162068397 98 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 7 Chain A
+1 1044 83 "" 11
+0
+1 1045 103 "" 46
+0
+1 1048 104 "5" 46
+0
+1 1051 105 "5" 46
+0
+2 1022
+"PageLabel"
+""
+1 11 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+195 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 13 12 1099 48
+1 2 0 "0s" 0 0 0 65 0 0  13 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,75,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 25 Rec Voice (AVRE + $Site )
+LANG:1 4 AFPS
+13 1043
+"PUSH_BUTTON2"
+""
+1 12 671 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+199 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  10 669 214 703
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	ForceToUnknown($SystemName, \"RecAVRE\" + $Site);
+	
+}" 0
+ E E E
+4 1063
+"LINE5"
+""
+1 358.3106162068398 253 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+203 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  758 253 358 253
+4 1064
+"LINE6"
+""
+1 563.3106162068398 253 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+204 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 0 1 E  563 253 563 243
+1 1067 106 "" 46
+0
+1 1068 107 "5" 46
+0
+1 1069 108 "5" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1046 103 "" 51
+0
+1 1047 103 "" 52
+0
+1 1049 104 "5" 51
+0
+1 1050 104 "5" 52
+0
+1 1052 105 "5" 51
+0
+1 1053 105 "5" 52
+0
+1 1070 106 "" 51
+0
+1 1071 106 "" 52
+0
+1 1072 107 "5" 51
+0
+1 1073 107 "5" 52
+0
+1 1074 108 "5" 51
+0
+1 1075 108 "5" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 83 "Group49" -1
+"objects\\sgFwHistory.pnl" 10 710 T 116 1 0 1 -10 -10
+2
+"$SystemHistory""\"RecAVRE\" + $Site + \".History\""
+"$SystemName""$SystemName"
+3 103 "PANEL_REF104" -1
+"objects\\sgFwBlock.pnl" 500 430 T 168 0.6 0 0.154411764705882 138.8613468556277 43.66176470588198
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.PairStatus.Logger01\""
+3 104 "PANEL_REF105" -1
+"RecVoice\\sgRecVoiceSystem.pnl" 130 405 T 169 1.16895649702649 0 0.603914891466332 577.0478774612477 -121.73146737725
+1
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.ChainB.Logger01\""
+3 105 "PANEL_REF106" -1
+"RecVoice\\sgRecVoiceSystem.pnl" 65 105 T 170 1.17501498743606 0 0.616531165311653 12.34883097998731 57.56910569105702
+1
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.ChainA.Logger01\""
+3 106 "PANEL_REF106" -1
+"objects\\sgFwBlock.pnl" 500 430 T 200 0.6 0 0.154411764705882 139.8613468556277 148.661764705882
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.PairStatus.Logger02\""
+3 107 "PANEL_REF107" -1
+"RecVoice\\sgRecVoiceSystem.pnl" 130 405 T 201 1.16895649702649 0 0.603914891466332 579.0478774612477 -16.73146737725
+1
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.ChainB.Logger02\""
+3 108 "PANEL_REF108" -1
+"RecVoice\\sgRecVoiceSystem.pnl" 65 105 T 202 1.17501498743606 0 0.616531165311653 13.34883097998728 162.569105691057
+1
+"$SystemStatus""\"RecAVRE\" + $Site+ \".Components.ChainA.Logger02\""
+0

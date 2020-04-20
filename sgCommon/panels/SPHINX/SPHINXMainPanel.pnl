@@ -1,0 +1,306 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 858 N "_3DFace" 1
+"$SystemName"
+"main()
+{
+  
+  string site, ServerAName, ServerBName;
+
+  dpGet(\"SPHINX.Config.Site\", site, \"SPHINX.Config.ServerAName\", ServerAName, \"SPHINX.Config.ServerBName\", ServerBName);
+  
+  PageLabel.text = \"SPHINX \" + site;
+  ServerAFrame.text = ServerAName;
+  ServerBFrame.text = ServerBName;
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+1 1209 83 "" 11
+0
+2 1022
+"PageLabel"
+""
+1 13 8 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+195 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 15 10 1101 46
+1 2 0 "0s" 0 0 0 65 0 0  15 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,75,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 14 SPHINX + $Site
+LANG:1 4 AFPS
+13 1043
+"PUSH_BUTTON2"
+""
+1 12 671 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+199 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  10 669 214 703
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+	ForceToUnknown($SystemName, \"SPHINX\");
+	
+}" 0
+ E E E
+30 1105
+"ServerAFrame"
+""
+1 135 239 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+212 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.810126582278481 0 0.8060109289617486 55.63291139240505 77.36338797814216 0 E 135 239 531 606
+1
+LANG:5 27 Tahoma,14,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 8 $ServerA
+30 1106
+"ServerBFrame"
+""
+1 135 239 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+213 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.810126582278481 0 0.8060109289617486 500.6329113924051 77.36338797814216 0 E 135 239 531 606
+1
+LANG:5 27 Tahoma,14,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 8 $ServerB
+1 1210 113 "" 46
+0
+1 1213 114 "" 46
+0
+1 1216 115 "" 46
+0
+1 1219 116 "" 46
+0
+1 1222 117 "" 46
+0
+1 1225 118 "" 46
+0
+1 1228 119 "" 46
+0
+1 1231 120 "" 46
+0
+1 1237 122 "" 46
+0
+1 1240 123 "" 46
+0
+30 1168
+"FRAME2"
+""
+1 135 239 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+225 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.936708860759494 0 0.2732240437158471 -96.45569620253167 94.69945355191257 0 E 135 239 531 606
+1
+LANG:5 27 Tahoma,14,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 13 SPHINX Agents
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 1211 113 "" 51
+0
+1 1212 113 "" 52
+0
+1 1214 114 "" 51
+0
+1 1215 114 "" 52
+0
+1 1217 115 "" 51
+0
+1 1218 115 "" 52
+0
+1 1220 116 "" 51
+0
+1 1221 116 "" 52
+0
+1 1223 117 "" 51
+0
+1 1224 117 "" 52
+0
+1 1226 118 "" 51
+0
+1 1227 118 "" 52
+0
+1 1229 119 "" 51
+0
+1 1230 119 "" 52
+0
+1 1232 120 "" 51
+0
+1 1233 120 "" 52
+0
+1 1238 122 "" 51
+0
+1 1239 122 "" 52
+0
+1 1241 123 "" 51
+0
+1 1242 123 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 83 "Group49" -1
+"objects\\sgFwHistory.pnl" 10 710 T 116 1 0 1 -10 -10
+2
+"$SystemHistory""\"SPHINX.History\""
+"$SystemName""$SystemName"
+3 113 "PANEL_REF94" -1
+"objects\\sgFwBlock.pnl" 340 305 T 214 0.6875000000000001 0 0.225 396.2499999999999 236.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainB.Netlogon"
+3 114 "PANEL_REF114" -1
+"objects\\sgFwBlock.pnl" 340 305 T 215 0.6875000000000001 0 0.225 396.2499999999999 301.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainB.ADDomain"
+3 115 "PANEL_REF115" -1
+"objects\\sgFwBlock.pnl" 340 305 T 216 0.6875000000000001 0 0.225 396.2499999999999 366.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainB.Kerberos"
+3 116 "PANEL_REF116" -1
+"objects\\sgFwBlock.pnl" 340 305 T 217 0.6875000000000001 0 0.225 396.2499999999999 431.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainB.SecurityAccMgmt"
+3 117 "PANEL_REF117" -1
+"objects\\sgFwBlock.pnl" 340 305 T 218 0.6875000000000001 0 0.225 -48.75000000000006 236.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainA.Netlogon"
+3 118 "PANEL_REF118" -1
+"objects\\sgFwBlock.pnl" 340 305 T 219 0.6875000000000001 0 0.225 -48.75000000000006 301.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainA.ADDomain"
+3 119 "PANEL_REF119" -1
+"objects\\sgFwBlock.pnl" 340 305 T 220 0.6875000000000001 0 0.225 -48.75000000000006 366.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainA.Kerberos"
+3 120 "PANEL_REF120" -1
+"objects\\sgFwBlock.pnl" 340 305 T 221 0.6875000000000001 0 0.225 -48.75000000000006 431.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.ChainA.SecurityAccMgmt"
+3 122 "PANEL_REF122" -1
+"objects\\sgFwBlock.pnl" 340 305 T 224 0.6875000000000001 0 0.225 -48.75000000000003 126.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.SphinxA"
+3 123 "PANEL_REF123" -1
+"objects\\sgFwBlock.pnl" 340 305 T 225 0.6875000000000001 0 0.225 396.2500000000001 126.3750000000001
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""SPHINX.Components.SphinxB"
+0

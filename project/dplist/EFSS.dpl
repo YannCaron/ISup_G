@@ -1,0 +1,365 @@
+# ascii dump of database
+
+# DpType
+TypeName
+sgEFSS.sgEFSS	1#1
+	GlobalStatus	41#2:sgFwSystem
+	Connections	1#3
+		Status	41#474:sgFwConnections
+	WatchDog	41#444:sgWatchDogs
+	History	41#445:sgFwHistory
+	Components	1#6
+		Dp1a	41#7:sgFwSystem
+		Dp1b	41#8:sgFwSystem
+		Ru1a	41#9:sgFwSystem
+		Ru1b	41#10:sgFwSystem
+		Cwp1a	41#11:sgFwSystem
+		Cwp2a	41#12:sgFwSystem
+		Cwp3a	41#13:sgFwSystem
+		Cwp4a	41#14:sgFwSystem
+		Cwp5a	41#832:sgFwSystem
+		Cwp6a	41#16:sgFwSystem
+		Cwp7a	41#833:sgFwSystem
+		Cwp8a	41#747:sgFwSystem
+		Cwp9a	41#748:sgFwSystem
+		SYCONT	41#896:sgFwSystem
+		SAMAX	41#500:sgFwSystem
+		MVNT	41#501:sgFwSystem
+		SKYVISU	41#502:sgFwSystem
+		INCH_A	41#680:sgFwSystem
+		INCH_B	41#681:sgFwSystem
+		DCL	41#504:sgFwSystem
+		STOPBAR	41#505:sgFwSystem
+	Params	41#489:sgParams
+	ConvTables	1#21
+		Status	41#480:sgConnectWithConvertTable
+	MenuEntry	41#447:sgFwMenuEntry
+	RawData	1#429
+		Dp1a	25#430
+		Dp1b	25#431
+		Ru1a	25#432
+		Ru1b	25#433
+		Cwp1a	25#434
+		Cwp2a	25#435
+		Cwp3a	25#436
+		Cwp4a	25#437
+		Cwp5a	25#834
+		Cwp6a	25#439
+		Cwp7a	25#835
+		Cwp8a	25#749
+		Cwp9a	25#750
+		SYCONT	25#926
+		SAMAX	25#740
+		MVNT	25#741
+		SKYVISU	25#742
+		INCH_A	25#743
+		INCH_B	25#744
+		DCL	25#745
+		STOPBAR	25#746
+	Commands	1#820
+		Dp1aReboot	21#821
+		Dp1bReboot	21#822
+		Dp1aUnitExec	21#823
+		Dp1bUnitExec	21#824
+		Cwp1aReboot	21#825
+		Cwp2aReboot	21#826
+		Cwp3aReboot	21#827
+		Cwp4aReboot	21#828
+		Cwp5aReboot	21#836
+		Cwp6aReboot	21#829
+		Cwp7aReboot	21#837
+		Cwp8aReboot	21#830
+		Cwp9aReboot	21#831
+
+# Datapoint/DpId
+DpName	TypeName	ID
+EFSS	sgEFSS	29392
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+EFSS.GlobalStatus	""	lt:1 LANG:5 "EFSS@%s@"
+EFSS.Components.Dp1a	""	lt:1 LANG:5 "Dp1a@%s@"
+EFSS.Components.Dp1b	""	lt:1 LANG:5 "Dp1b@%s@"
+EFSS.Components.Ru1a	""	lt:1 LANG:5 "Ru1a@%s@"
+EFSS.Components.Ru1b	""	lt:1 LANG:5 "Ru1b@%s@"
+EFSS.Components.Cwp1a	""	lt:1 LANG:5 "Cwp1a@%s@"
+EFSS.Components.Cwp2a	""	lt:1 LANG:5 "Cwp2a@%s@"
+EFSS.Components.Cwp3a	""	lt:1 LANG:5 "Cwp3a@%s@"
+EFSS.Components.Cwp4a	""	lt:1 LANG:5 "Cwp4a@%s@"
+EFSS.Components.Cwp6a	""	lt:1 LANG:5 "Cwp6a@%s@"
+EFSS.Components.SAMAX	""	lt:1 LANG:5 "SAMAX@%s@"
+EFSS.Components.MVNT	""	lt:1 LANG:5 "MV-NT@%s@"
+EFSS.Components.SKYVISU	""	lt:1 LANG:5 "SKYVISU@%s@"
+EFSS.Components.DCL	""	lt:1 LANG:5 "DCL@%s@"
+EFSS.Components.STOPBAR	""	lt:1 LANG:5 "STOPBAR@%s@"
+EFSS.Components.INCH_A	""	lt:1 LANG:5 "INCH A@%s@"
+EFSS.Components.INCH_B	""	lt:1 LANG:5 "INCH B@%s@"
+EFSS.Components.Cwp8a	""	lt:1 LANG:5 "Cwp8a@%s@"
+EFSS.Components.Cwp9a	""	lt:1 LANG:5 "Cwp9a@%s@"
+EFSS.Components.Cwp5a	""	lt:1 LANG:5 "Cwp5a@%s@"
+EFSS.Components.Cwp7a	""	lt:1 LANG:5 "Cwp7a@%s@"
+EFSS.Components.SYCONT	""	lt:1 LANG:5 "SYCO-NT@%s@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+EFSS.GlobalStatus.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.GlobalStatus.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.GlobalStatus.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.316
+EFSS.GlobalStatus.SubDisabled	sgEFSS	1	0x300101	28.10.2019 14:14:20.146
+EFSS.GlobalStatus.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.GlobalStatus.Alarms.GenerateAlarms	sgEFSS	1	0x101	28.10.2019 14:45:17.834
+EFSS.GlobalStatus.Alarms.AlarmActive	sgEFSS	1	0x200101	29.10.2019 07:26:44.511
+EFSS.GlobalStatus.LogicConfig.LogicEnabled	sgEFSS	1	0x101	28.10.2019 14:45:17.848
+EFSS.GlobalStatus.LogicConfig.Rule	sgEFSS	"TruthTable02"	0x300101	28.10.2019 14:45:17.851
+EFSS.GlobalStatus.LogicConfig.Inputs	sgEFSS	"EFSS.Components.*"	0x101	28.10.2019 14:45:17.854
+EFSS.GlobalStatus.AETable	sgEFSS	"AETable01"	0x101	28.10.2019 14:45:17.856
+EFSS.Components.Dp1a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Dp1a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Dp1a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.316
+EFSS.Components.Dp1a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Dp1a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 14:14:33.038
+EFSS.Components.Dp1a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.857
+EFSS.Components.Dp1b.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Dp1b.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Dp1b.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.316
+EFSS.Components.Dp1b.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Dp1b.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:35:04.863
+EFSS.Components.Dp1b.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.860
+EFSS.Components.Ru1a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Ru1a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Ru1a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.316
+EFSS.Components.Ru1a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Ru1a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:34:59.633
+EFSS.Components.Ru1a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.863
+EFSS.Components.Ru1b.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Ru1b.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Ru1b.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Ru1b.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Ru1b.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:35:02.276
+EFSS.Components.Ru1b.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.864
+EFSS.Components.Cwp1a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp1a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp1a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp1a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp1a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:32.870
+EFSS.Components.Cwp1a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.866
+EFSS.Components.Cwp2a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp2a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp2a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp2a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp2a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:36.111
+EFSS.Components.Cwp2a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.867
+EFSS.Components.Cwp3a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp3a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp3a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp3a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp3a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:37.727
+EFSS.Components.Cwp3a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.868
+EFSS.Components.Cwp4a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp4a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp4a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp4a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp4a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:39.458
+EFSS.Components.Cwp4a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.870
+EFSS.Components.Cwp6a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp6a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp6a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp6a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp6a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:34:56.948
+EFSS.Components.Cwp6a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.873
+EFSS.RawData.Dp1a	sgEFSS	""	0x141	14.11.2019 15:31:55.774
+EFSS.RawData.Dp1b	sgEFSS	""	0x141	14.11.2019 15:32:15.887
+EFSS.RawData.Ru1a	sgEFSS	""	0x141	14.11.2019 15:32:23.923
+EFSS.RawData.Ru1b	sgEFSS	""	0x141	14.11.2019 15:31:35.681
+EFSS.RawData.Cwp1a	sgEFSS	""	0x141	14.11.2019 15:31:23.627
+EFSS.RawData.Cwp2a	sgEFSS	""	0x141	14.11.2019 15:31:43.715
+EFSS.RawData.Cwp3a	sgEFSS	""	0x141	14.11.2019 15:32:03.827
+EFSS.RawData.Cwp4a	sgEFSS	""	0x141	14.11.2019 15:32:07.836
+EFSS.RawData.Cwp6a	sgEFSS	""	0x141	14.11.2019 15:32:27.938
+EFSS.WatchDog.References	sgEFSS	"EFSS.RawData.*"	0x101	28.10.2019 14:45:17.907
+EFSS.WatchDog.DefaultValues	sgEFSS	""	0x101	28.10.2019 14:45:17.908
+EFSS.WatchDog.Outputs	sgEFSS	"EFSS.RawData.*"	0x101	28.10.2019 14:45:17.909
+EFSS.WatchDog.Timeouts	sgEFSS	25	0x101	28.10.2019 14:45:17.911
+EFSS.History.Message	sgEFSS	""	0x101	07.11.2019 17:08:19.079
+EFSS.History.HistorySize	sgEFSS	100	0x101	28.10.2019 14:45:17.912
+EFSS.History.ShortHistory	sgEFSS		0x101	07.11.2019 17:08:19.187
+EFSS.MenuEntry.Name	sgEFSS	"EFSS"	0x101	28.10.2019 14:45:17.915
+EFSS.MenuEntry.Group	sgEFSS	"FDP"	0x101	28.10.2019 14:45:17.916
+EFSS.MenuEntry.Panel	sgEFSS	"EFSS/sgEFSSMainPanel.pnl"	0x101	28.10.2019 14:45:17.917
+EFSS.MenuEntry.GlobalStatusPoint	sgEFSS	""	0x101	28.10.2019 14:45:17.919
+EFSS.Connections.Status.Inputs	sgEFSS	"EFSS.RawData.*"	0x101	28.10.2019 14:45:17.920
+EFSS.Connections.Status.Outputs	sgEFSS	"EFSS.Components.*.PreStatus"	0x101	28.10.2019 14:45:17.922
+EFSS.Connections.Status.Rules	sgEFSS	"ConnectWithConvertTable"	0x101	28.10.2019 14:45:17.923
+EFSS.Connections.Status.Params	sgEFSS	"EFSS.ConvTables.Status"	0x101	28.10.2019 14:45:17.924
+EFSS.ConvTables.Status.Input	sgEFSS	"OK", "NOK", "standby", ""	0x101	28.10.2019 14:45:17.927
+EFSS.ConvTables.Status.Output	sgEFSS	"OPS", "U/S", "SBY", "UKN"	0x101	28.10.2019 14:45:17.931
+EFSS.Params.Histories	sgEFSS	"EFSS.History"	0x101	28.10.2019 14:45:17.936
+EFSS.Params.AETable	sgEFSS	"AETable02"	0x101	28.10.2019 14:45:17.946
+EFSS.Params.GenerateEvents	sgEFSS	1	0x101	28.10.2019 14:45:17.947
+EFSS.Components.SAMAX.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SAMAX.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SAMAX.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.SAMAX.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.SAMAX.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:42.386
+EFSS.Components.SAMAX.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.879
+EFSS.Components.MVNT.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.MVNT.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.MVNT.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.MVNT.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.MVNT.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:44.480
+EFSS.Components.MVNT.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.880
+EFSS.Components.SKYVISU.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SKYVISU.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SKYVISU.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.SKYVISU.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.SKYVISU.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:45.984
+EFSS.Components.SKYVISU.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.882
+EFSS.Components.DCL.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.DCL.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.DCL.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.DCL.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.DCL.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:53.981
+EFSS.Components.DCL.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.886
+EFSS.Components.STOPBAR.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.STOPBAR.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.STOPBAR.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.STOPBAR.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.STOPBAR.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:56.308
+EFSS.Components.STOPBAR.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.887
+EFSS.Components.INCH_A.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.INCH_A.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.INCH_A.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.INCH_A.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.INCH_A.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:47.572
+EFSS.Components.INCH_A.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.883
+EFSS.Components.INCH_B.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.INCH_B.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.INCH_B.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.INCH_B.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.INCH_B.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 09:33:49.367
+EFSS.Components.INCH_B.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.884
+EFSS.RawData.SAMAX	sgEFSS	""	0x141	14.11.2019 15:31:27.647
+EFSS.RawData.MVNT	sgEFSS	""	0x141	14.11.2019 15:31:47.735
+EFSS.RawData.SKYVISU	sgEFSS	""	0x141	14.11.2019 15:31:39.697
+EFSS.RawData.INCH_A	sgEFSS	""	0x141	14.11.2019 15:32:11.865
+EFSS.RawData.INCH_B	sgEFSS	""	0x141	14.11.2019 15:32:31.946
+EFSS.RawData.DCL	sgEFSS	""	0x141	14.11.2019 15:32:19.900
+EFSS.RawData.STOPBAR	sgEFSS	""	0x141	14.11.2019 15:31:31.662
+EFSS.RawData.Cwp8a	sgEFSS	""	0x141	14.11.2019 15:31:51.752
+EFSS.RawData.Cwp9a	sgEFSS	""	0x141	14.11.2019 15:31:59.803
+EFSS.Components.Cwp8a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp8a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp8a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp8a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp8a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.875
+EFSS.Components.Cwp9a.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp9a.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp9a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp9a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp9a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.877
+EFSS.Commands.Dp1aReboot	sgEFSS	1	0x101	28.10.2019 09:37:53.531
+EFSS.Commands.Dp1bReboot	sgEFSS	1	0x101	28.10.2019 09:37:56.131
+EFSS.Commands.Dp1aUnitExec	sgEFSS	1	0x101	28.10.2019 13:55:00.207
+EFSS.Commands.Dp1bUnitExec	sgEFSS	1	0x101	28.10.2019 13:55:34.842
+EFSS.Commands.Cwp1aReboot	sgEFSS	1	0x101	28.10.2019 09:38:06.127
+EFSS.Commands.Cwp2aReboot	sgEFSS	1	0x101	28.10.2019 09:38:08.372
+EFSS.Commands.Cwp3aReboot	sgEFSS	1	0x101	28.10.2019 09:38:10.247
+EFSS.Commands.Cwp4aReboot	sgEFSS	1	0x101	28.10.2019 09:38:12.060
+EFSS.Commands.Cwp6aReboot	sgEFSS	1	0x101	28.10.2019 09:37:58.972
+EFSS.RawData.Cwp5a	sgEFSS	""	0x101	28.10.2019 14:45:17.900
+EFSS.RawData.Cwp7a	sgEFSS	""	0x101	28.10.2019 14:45:17.903
+EFSS.Commands.Cwp5aReboot	sgEFSS	1	0x101	28.10.2019 09:38:02.951
+EFSS.Commands.Cwp7aReboot	sgEFSS	1	0x101	28.10.2019 09:41:39.404
+EFSS.Components.Cwp5a.PreStatus	sgEFSS	"UKN"	0x101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp5a.Status	sgEFSS	"UKN"	0x101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp5a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp5a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp5a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 14:14:21.560
+EFSS.Components.Cwp5a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.872
+EFSS.Components.Cwp7a.PreStatus	sgEFSS	"UKN"	0x101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp7a.Status	sgEFSS	"UKN"	0x101	07.11.2019 17:09:33.171
+EFSS.Components.Cwp7a.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.Cwp7a.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.Components.Cwp7a.Alarms.AlarmActive	sgEFSS	0	0x101	28.10.2019 14:14:20.070
+EFSS.Components.Cwp7a.Params	sgEFSS	"EFSS.Params"	0x101	28.10.2019 14:45:17.874
+EFSS.Components.SYCONT.PreStatus	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SYCONT.Status	sgEFSS	"UKN"	0x200101	07.11.2019 17:09:33.171
+EFSS.Components.SYCONT.Disabled	sgEFSS	0	0x101	07.11.2019 17:08:17.317
+EFSS.Components.SYCONT.Message	sgEFSS	""	0x101	07.11.2019 17:09:33.480
+EFSS.RawData.SYCONT	sgEFSS	""	0x141	14.11.2019 15:31:19.602
+
+# AlertValue
+StampSec	StampMSec	ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+1567522706	108	EFSS.GlobalStatus.Alarms.AlarmActive	sgEFSS		12					""		lt:1 LANG:5 ""	\0			0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 ""	lt:1 LANG:5 ""												0								
+1567522728	438	EFSS.GlobalStatus.Alarms.AlarmActive	sgEFSS		12					""	""	lt:1 LANG:5 ""	\0	alert.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on EFSS"	lt:1 LANG:5 ""												0								
+1567522728	439	EFSS.GlobalStatus.Alarms.AlarmActive	sgEFSS		12					""	""	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on EFSS"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+StampSec	StampMSec	ElementName	TypeName	_distrib.._type	_distrib.._driver
+1567521744	521	EFSS.RawData.Dp1a	sgEFSS	56	\1
+1567521744	521	EFSS.RawData.Dp1b	sgEFSS	56	\1
+1567521744	522	EFSS.RawData.Ru1a	sgEFSS	56	\1
+1567521744	522	EFSS.RawData.Ru1b	sgEFSS	56	\1
+1567521744	523	EFSS.RawData.Cwp1a	sgEFSS	56	\1
+1567521744	523	EFSS.RawData.Cwp2a	sgEFSS	56	\1
+1567521744	523	EFSS.RawData.Cwp3a	sgEFSS	56	\1
+1567521744	524	EFSS.RawData.Cwp4a	sgEFSS	56	\1
+1567521744	526	EFSS.RawData.Cwp6a	sgEFSS	56	\1
+1571668138	138	EFSS.RawData.SAMAX	sgEFSS	56	\1
+1571668138	139	EFSS.RawData.MVNT	sgEFSS	56	\1
+1571668138	139	EFSS.RawData.SKYVISU	sgEFSS	56	\1
+1571668138	141	EFSS.RawData.INCH_A	sgEFSS	56	\1
+1571668138	141	EFSS.RawData.INCH_B	sgEFSS	56	\1
+1571668138	143	EFSS.RawData.DCL	sgEFSS	56	\1
+1571668138	144	EFSS.RawData.STOPBAR	sgEFSS	56	\1
+1571821539	325	EFSS.RawData.Cwp8a	sgEFSS	56	\1
+1571821539	326	EFSS.RawData.Cwp9a	sgEFSS	56	\1
+1571830845	490	EFSS.Commands.Dp1aReboot	sgEFSS	56	\1
+1571830845	491	EFSS.Commands.Dp1bReboot	sgEFSS	56	\1
+1571830845	492	EFSS.Commands.Dp1aUnitExec	sgEFSS	56	\1
+1571830845	493	EFSS.Commands.Dp1bUnitExec	sgEFSS	56	\1
+1571830845	494	EFSS.Commands.Cwp1aReboot	sgEFSS	56	\1
+1571830845	495	EFSS.Commands.Cwp2aReboot	sgEFSS	56	\1
+1571830845	496	EFSS.Commands.Cwp3aReboot	sgEFSS	56	\1
+1571830845	497	EFSS.Commands.Cwp4aReboot	sgEFSS	56	\1
+1571830845	498	EFSS.Commands.Cwp6aReboot	sgEFSS	56	\1
+1571830845	499	EFSS.Commands.Cwp8aReboot	sgEFSS	56	\1
+1571830845	500	EFSS.Commands.Cwp9aReboot	sgEFSS	56	\1
+1571838076	586	EFSS.RawData.Cwp5a	sgEFSS	56	\1
+1571838076	587	EFSS.RawData.Cwp7a	sgEFSS	56	\1
+1571838076	598	EFSS.Commands.Cwp5aReboot	sgEFSS	56	\1
+1571838076	599	EFSS.Commands.Cwp7aReboot	sgEFSS	56	\1
+1572271330	727	EFSS.RawData.SYCONT	sgEFSS	56	\1
+
+# PeriphAddrMain
+StampSec	StampMSec	ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+1572273917	972	EFSS.RawData.Dp1a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.8.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	975	EFSS.RawData.Dp1b	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.9.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	981	EFSS.RawData.Ru1a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.10.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	984	EFSS.RawData.Ru1b	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.11.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	987	EFSS.RawData.Cwp1a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.1.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	989	EFSS.RawData.Cwp2a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.2.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	991	EFSS.RawData.Cwp3a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.3.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	992	EFSS.RawData.Cwp4a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.4.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	994	EFSS.RawData.Cwp6a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.5.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	1	EFSS.RawData.SAMAX	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.4.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	4	EFSS.RawData.MVNT	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.7.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	5	EFSS.RawData.SKYVISU	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.8.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	8	EFSS.RawData.INCH_A	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.5.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	12	EFSS.RawData.INCH_B	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.6.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	16	EFSS.RawData.DCL	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.3.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	20	EFSS.RawData.STOPBAR	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.17.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	996	EFSS.RawData.Cwp8a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.6.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273917	998	EFSS.RawData.Cwp9a	sgEFSS	16	"120_1.3.6.1.4.1.11776.2.3.7.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"
+1572273918	21	EFSS.Commands.Dp1aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	24	EFSS.Commands.Dp1bReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.4.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	26	EFSS.Commands.Dp1aUnitExec	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.2.5.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	30	EFSS.Commands.Dp1bUnitExec	sgEFSS	16	"120_1.3.6.1.4.1.11776.4.2.5.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	35	EFSS.Commands.Cwp1aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.7.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	40	EFSS.Commands.Cwp2aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.8.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	46	EFSS.Commands.Cwp3aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.9.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	50	EFSS.Commands.Cwp4aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.10.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	55	EFSS.Commands.Cwp6aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.11.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	61	EFSS.Commands.Cwp8aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.12.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	62	EFSS.Commands.Cwp9aReboot	sgEFSS	16	"120_1.3.6.1.4.1.11776.13.2.1.0"	"_EFSS"	0	0	\5	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+1572273918	0	EFSS.RawData.SYCONT	sgEFSS	16	"120_1.3.6.1.4.1.11776.3.3.9.1.0"	"_EFSS"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	666	"SNMP"

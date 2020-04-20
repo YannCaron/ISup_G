@@ -1,0 +1,704 @@
+V 10
+3
+LANG:5 11 Information
+LANG:1 11 Information
+LANG:0 11 Information
+PANEL,571 493 522 302 N "_3DFace" 3
+"$1"
+"$2"
+"$3"
+"main()
+{
+	returnValue = \"\";
+
+	setInputFocus(myModuleName(), myPanelName(), \"nok\");
+}" 0
+"main()
+{
+}" 0
+E E E 1 -1 -1 0  251 55
+"" 0 1
+E"
+string returnValue;" 0
+ 2
+"CBRef""0"
+"EClose""main()
+{
+	returnValue = \"false\";
+	PanelOffReturn(makeDynFloat(0),makeDynString(returnValue));  
+}" 0
+
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 9
+"text"
+""
+1 10 20 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+4 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 20 80 36
+0 0 0 "s" 0 0 0 192 0 0  10 20
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 12 Prestatus : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 13
+"Text1"
+""
+1 10 50 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 50 54 66
+0 0 0 "s" 0 0 0 192 0 0  10 50
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 7 Delay: 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 17
+"Text3"
+""
+1 10 140 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 140 57 156
+0 0 0 "s" 0 0 0 192 0 0  10 140
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 8 Event : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 20
+"Text4"
+""
+1 10 80 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+13 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 80 60 96
+0 0 0 "s" 0 0 0 192 0 0  10 80
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 8 Alarm : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 21
+"Text5"
+""
+1 10 110 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+14 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 110 89 126
+0 0 0 "s" 0 0 0 192 0 0  10 110
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 13 Alarm rule : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 23
+"Text6"
+""
+1 10 170 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+16 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 170 84 186
+0 0 0 "s" 0 0 0 192 0 0  10 170
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 14 Historie(s) : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 25
+"Text7"
+""
+1 10 200 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+18 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 200 90 216
+0 0 0 "s" 0 0 0 192 0 0  10 200
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 13 Logic Rule : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+2 27
+"Text8"
+""
+1 10 230 E E E 1 E 0 E N "_3DText" E N "_Transparent" E E
+ E E
+20 0 0 0 0 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+  	int w,h;
+
+	getValue(\"\",\"size\",w,h);
+  	setMultiValue(\"\",\"text\",makeCR($1,w),
+                \"\",\"visible\",true,
+                \"ok\",\"text\",$2,
+                \"nok\",\"text\",$3);
+
+   // PW modif FW june 2003
+   // if string is empty --> button is'nt visible
+    if($2 == \"\")
+    {
+    	ok.visible = false;
+    }
+    else
+    {
+    	ok.visible = true;
+    }
+	if($3 == \"\")
+    {
+    	nok.visible = false;
+    }
+    else
+    {
+    	nok.visible = true;
+    }
+       
+}
+" 0
+ E 0 1 1 0 1 E U  0 E 10 230 60 246
+0 0 0 "s" 0 0 0 192 0 0  10 230
+ 1
+3
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+3
+LANG:5 9 Inputs : 
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+13 8
+"ExitButton"
+""
+1 189 258 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+2 0 0 0 39 0
+EE E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+0
+3
+LANG:5 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+188 258 292 286
+T 
+3
+LANG:5 4 Exit
+LANG:1 6 Cancel
+LANG:0 9 Abbrechen
+"main()
+{
+	returnValue = \"false\";
+	PanelOffReturn(makeDynFloat(0),makeDynString(returnValue));
+}
+" 0
+ E E E
+14 12
+"PreStatusText"
+""
+1 110 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 8 172 35
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 14
+"DelayText"
+""
+1 110 40 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 38 172 65
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 16
+"AlarmText"
+""
+1 110 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 68 492 95
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 19
+"EventText"
+""
+1 110 130 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 128 492 155
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 22
+"AlarmRuleText"
+""
+1 110 100 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 98 492 125
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 24
+"HistoriesText"
+""
+1 110 160 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+17 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 158 492 185
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 26
+"TextField8"
+""
+1 110 190 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 188 492 215
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+14 28
+"TextField9"
+""
+1 110 220 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+EE E
+0
+1
+LANG:5 0 
+0
+1
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-110-100-100-*-*-iso8859-1|-12,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+108 218 492 245
+3 "s" 0 0 0 0 0 0 
+E
+E
+E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

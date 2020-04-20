@@ -1,0 +1,315 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 719 400 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "dyn_string empty;
+int x;
+const string WindowspanelPath = \"sgFw\\\\sgFwConfirmWindow.pnl\";" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 2
+"Button3"
+""
+1 20.0000000000001 40 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18.0000000000001 38 292 77
+
+T 
+1
+LANG:5 21 Get duplicated files
+
+"main()
+{
+  DebugTN(\"sgReleasePreparator.pnl; Check all sgFwsystems panel called\");
+  ChildPanelOn(\"sgFw/Tools/sgFwGetDuplicatedFiles.pnl\", \"sgFwGetDuplicatedFiles\", empty, x, x);
+}" 0
+ E E E
+13 6
+"Button1"
+""
+1 20 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 83 292 122
+
+T 
+1
+LANG:5 21 Check all sgFwSystems
+"main()
+{
+  DebugTN(\"sgReleasePreparator.pnl; Check all sgFwsystems panel called\");
+  ChildPanelOn(\"sgFw/Tools/sgFwCheckAllsgFwSystems.pnl\", \"sgFwCheckAllsgFwSystems\", empty, x, x);
+
+}" 0
+ E E E
+13 7
+"PUSH_BUTTON1"
+""
+1 20 175 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,505,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 173 292 212
+
+T 
+1
+LANG:5 23 Enable all sgFwSystems
+
+"main()
+{
+  dyn_string systems = getPointsOfType(\"sgFwSystem\");
+  dyn_string ds;
+  dyn_float df;  
+  
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+					makeDynString(\"$1:Do you really want to enable ALL sgFwSystems? \"                                                      
+                                                      \"\\n\" + \"(This operation ISN'T reversible!) ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+  if(ds[1] == \"true\")  // button ok
+  {
+
+
+    for (int i=1; i<=dynlen(systems); i++)
+	dpSet(systems[i] + \".Disabled\", FALSE);
+  }
+  DebugTN(\"sgReleasePreparator.pnl; Finished enabling all sgFwsystems\");
+}" 0
+ E E E
+13 8
+"PUSH_BUTTON2"
+""
+1 20 220 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,505,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 218 292 257
+
+T 
+1
+LANG:5 24 Clear all sgFwHistories
+
+"main()
+{
+	dyn_string histories, empty_ds;
+	histories = getPointsOfType(\"sgFwHistory\");
+	DebugTN(\"sgReleasePreparator.pnl;\" + histories);
+	for (int i=1; i<=dynlen(histories); i++)
+	{
+		dpSet(histories[i] + \".Message\",\"\");
+		dpSet(histories[i] + \".ShortHistory\", empty_ds);
+	}
+        DebugTN(\"sgReleasePreparator.pnl; Finished clearing all sgFwHistories\");
+}" 0
+ E E E
+30 9
+"FRAME1"
+""
+1 10 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+12 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 2.87128712871287 0 5.33333333333333 -18.7128712871287 -277.666666666667 0 E 10 53 112 114
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,505,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 25 Release Preparation Tools
+30 10
+"FRAME2"
+""
+1 10 53 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+14 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 2.87128712871287 0 5.33333333333333 391.287128712871 -277.666666666667 0 E 10 53 112 114
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,505,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+1
+LANG:5 11 Other Tools
+13 11
+"ScripterBtn"
+""
+1 430 40 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 428 38 702 77
+
+T 
+1
+LANG:5 8 Scripter
+"main()
+{
+	ChildPanelOn(\"sgFw/Tools/TestScript.pnl\", \"GenericConfigPanel\", empty, x, x);
+}" 0
+ E E E
+13 12
+"sgDBRamHelperBtn"
+""
+1 430 85 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 428 83 702 122
+
+T 
+1
+LANG:5 13 sgDBRamHelper
+"main()
+{
+	ChildPanelOn(\"sgFw/Tools/sgDbRamHelper.pnl\", \"GenericConfigPanel\", empty, x, x);
+}" 0
+ E E E
+13 13
+"Button5"
+""
+1 430 130 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 428 128 702 167
+
+T 
+1
+LANG:5 20 Histories file size
+
+"main()
+{
+	ChildPanelOn(\"sgFw/Tools/sgFwCheckHistoriesSize.pnl\", \"GenericConfigPanel\", empty, x, x);
+}" 0
+ E E E
+13 14
+"Button6"
+""
+1 20 130 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+0 ""
+ 18 128 292 167
+
+T 
+1
+LANG:5 19 Show IP/Port config
+"main()
+{
+	ChildPanelOn(\"sgFw/Tools/sgFwShowIP_PortsConfig.pnl\", \"Show IP/Port Configuration\", empty, x, x);
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

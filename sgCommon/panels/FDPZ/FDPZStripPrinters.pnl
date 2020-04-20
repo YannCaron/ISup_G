@@ -1,0 +1,184 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 19 FDPZ Strip Printers
+LANG:1 6 PRIMUS
+1 49 35 "" 46
+0
+1 65 41 "" 46
+0
+1 68 42 "" 46
+0
+1 64 40 "" 11
+0
+30 35
+"FRAME1"
+""
+1 30 153 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+54 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 5.24752475247525 0 9.66666666666667 -137.425742574257 -1379 0 E 30 153 132 214
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 23 FDPZ Printers on MOXA 1
+30 36
+"FRAME2"
+""
+1 30 153 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+56 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 5.24752475247525 0 9.66666666666667 402.574257425743 -1379 0 E 30 153 132 214
+1
+LANG:5 27 Tahoma,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:5 23 FDPZ Printers on MOXA 2
+1 71 43 "" 46
+0
+1 74 44 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 50 35 "" 51
+0
+1 51 35 "" 52
+0
+1 66 41 "" 51
+0
+1 67 41 "" 52
+0
+1 69 42 "" 51
+0
+1 70 42 "" 52
+0
+1 72 43 "" 51
+0
+1 73 43 "" 52
+0
+1 75 44 "" 51
+0
+1 76 44 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 "Group51" -1
+"objects\\sgFwBlock.pnl" 30 80 T 46 0.5901639344262301 0 0.25 277.2950819672131 465
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.StripPrinters.StripPrinter_AR"
+3 40 "Group12" -1
+"objects\\sgFwHistory.pnl" 10 710 T 51 1 0 1 -10 -10
+2
+"$SystemHistory""FDPZ.History"
+"$SystemName"""
+3 41 "Group12" -1
+"objects\\sgFwBlock.pnl" 435 525 T 51 0.5901639344262301 0 0.25 -221.7213114754101 353.75
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.StripPrinters.StripPrinter_NY"
+3 42 "Group14" -1
+"objects\\sgFwBlock.pnl" 435 525 T 53 0.5901639344262301 0 0.25 443.2786885245899 353.75
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.StripPrinters.StripPrinter_FD"
+3 43 "PANEL_REF44" -1
+"objects\\sgFwBlock.pnl" 30 110 T 57 0.593875657284256 0 0.230208333333333 147.1837302814723 119.6770833333333
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.SPMOXAs.SPMOXA_1"
+3 44 "PANEL_REF45" -1
+"objects\\sgFwBlock.pnl" 30 110 T 58 0.593875657284256 0 0.230208333333333 687.1837302814723 119.6770833333333
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.SPMOXAs.SPMOXA_2"
+0

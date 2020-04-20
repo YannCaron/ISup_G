@@ -1,0 +1,148 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 18 SCONE Connectivity
+LANG:1 4 AFPS
+1 709 45 "" 46
+0
+1 712 70 "" 46
+0
+1 715 76 "" 46
+0
+1 708 35 "" 11
+0
+1 718 79 "" 46
+0
+1 721 80 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 710 45 "" 51
+0
+1 711 45 "" 52
+0
+1 713 70 "" 51
+0
+1 714 70 "" 52
+0
+1 716 76 "" 51
+0
+1 717 76 "" 52
+0
+1 719 79 "" 51
+0
+1 720 79 "" 52
+0
+1 722 80 "" 51
+0
+1 723 80 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 "" -1
+"objects\\sgFwHistory.pnl" 165 140 T 97 1 0 1 -165 560
+2
+"$SystemHistory""Scone.History"
+"$SystemName"""
+3 45 "Group25" -1
+"objects\\sgFwBlock.pnl" 25 365 T 108 0.725 0 0.364304692018508 213.633333333333 188.591739264026
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.AFTN"
+3 70 "Group74" -1
+"objects\\sgFwBlock.pnl" 25 70 T 133 0.7249661032797991 0 0.355954142011835 573.634098542051 297.494206114399
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.EMail"
+3 76 "Group86" -1
+"objects\\sgFwBlock.pnl" 25 70 T 139 0.725 0 0.552884615384616 388.875 73.5096153846154
+5
+"$LabelsNum""4"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.Connectivity"
+3 79 "PANEL_REF80" -1
+"objects\\sgFwBlock.pnl" 25 365 T 294 0.725 0 0.355413816952279 213.633333333333 307.732575117191
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.USDomesticClientCA01"
+3 80 "PANEL_REF81" -1
+"objects\\sgFwBlock.pnl" 25 70 T 295 0.7249661032797991 0 0.355954142011835 573.634098542051 412.494206114399
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""Scone.Components.USDomesticClientCA02"
+0

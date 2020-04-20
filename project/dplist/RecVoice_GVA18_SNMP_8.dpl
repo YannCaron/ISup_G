@@ -1,0 +1,140 @@
+# ascii dump of database
+
+
+# Datapoint/DpId
+DpName	TypeName	ID
+_RecVoiceCH18	_PollGroup	1
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+_RecVoiceCH18.SyncTime	_PollGroup	01.01.1970 00:00:00.000	0x101	01.10.2018 12:49:50.121
+_RecVoiceCH18.SyncMode	_PollGroup	0	0x101	01.10.2018 12:49:50.121
+_RecVoiceCH18.Active	_PollGroup	1	0x200101	01.10.2018 12:49:50.121
+_RecVoiceCH18.PollInterval	_PollGroup	10000	0x200101	01.10.2018 12:49:50.121
+
+
+# DpType
+TypeName
+sgRecVoiceCoreServerCompChain.sgRecVoiceCoreServerCompChain	1#1
+	LoggerCore	41#1:sgFwSystem
+
+sgRecVoiceCoreServerRawDataChain.sgRecVoiceCoreServerRawDataChain	1#1
+	StatusCore	21#1
+	
+sgRecVoice.sgRecVoice	1#1
+	MenuEntry	41#1:sgFwMenuEntry
+	Config	1#1
+		Site	25#1
+	GlobalStatus	41#1:sgFwSystem
+	RawData	1#1
+		ChainA	41#1:sgRecVoiceCoreServerRawDataChain
+		ChainB	41#1:sgRecVoiceCoreServerRawDataChain
+	Components	1#1
+		PairStatus	41#1:sgRecVoiceCoreServerCompChain
+		ChainA	41#1:sgRecVoiceCoreServerCompChain
+		ChainB	41#1:sgRecVoiceCoreServerCompChain
+	Connections	41#1:sgFwConnections
+	WatchDogs	41#1:sgWatchDogs
+	History	41#1:sgFwHistory
+#	Params	41#1:sgParams
+	ChainParams	41#1:sgParams
+	PairParams	41#1:sgParams
+	TruthTables	1#1
+		GlobalTT	41#1:sgFwTruthTable
+		TTVoiceRecordingLogger	41#1:sgFwTruthTable
+	ConvTableStatus	41#1:sgConnectWithIntRange
+
+# Datapoint/DpId
+DpName	TypeName	ID
+RecVoice	sgRecVoice	1
+_1_SNMPV3Entity_10	_SNMPV3Entity	1
+_1_SNMPV3Entity_20	_SNMPV3Entity	1
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+RecVoice.GlobalStatus	""	lt:1 LANG:5 "RecVoice CH GVA 18@@"
+RecVoice.Components.PairStatus.LoggerCore	""	lt:1 LANG:5 "Logger Pair Core@@"
+RecVoice.Components.ChainA.LoggerCore	""	lt:1 LANG:5 "Core A@@"
+RecVoice.Components.ChainB.LoggerCore	""	lt:1 LANG:5 "Core B@@"
+_1_SNMPV3Entity_10.	""	lt:1 LANG:5 "RECGVACORA01@@"
+_1_SNMPV3Entity_20.	""	lt:1 LANG:5 "RECGVACORB02@@"
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
+RecVoice.History.HistorySize	sgRecVoice	100	0x101	25.11.2015 13:20:25.936
+RecVoice.GlobalStatus.Alarms.GenerateAlarms	sgRecVoice	1	0x101	25.11.2015 13:20:25.746
+RecVoice.GlobalStatus.Alarms.AlarmActive	sgRecVoice	1	0x200101	03.07.2018 08:14:56.458
+RecVoice.GlobalStatus.LogicConfig.LogicEnabled	sgRecVoice	1	0x101	25.11.2015 13:20:25.868
+RecVoice.GlobalStatus.LogicConfig.Rule	sgRecVoice	"RecVoice.TruthTables.GlobalTT"	0x101	25.11.2015 13:20:25.873
+RecVoice.GlobalStatus.LogicConfig.Inputs	sgRecVoice	"RecVoice.Components.PairStatus.Logger*"	0x101	25.11.2015 13:20:25.878
+RecVoice.GlobalStatus.AETable	sgRecVoice	"AETable01"	0x101	25.11.2015 13:20:25.881
+RecVoice.Components.PairStatus.LoggerCore.LogicConfig.LogicEnabled	sgRecVoice	1	0x101	25.11.2015 13:20:25.888
+RecVoice.Components.PairStatus.LoggerCore.LogicConfig.Rule	sgRecVoice	"RecVoice.TruthTables.TTVoiceRecordingLogger"	0x101	25.11.2015 13:20:25.909
+RecVoice.Components.PairStatus.LoggerCore.LogicConfig.Inputs	sgRecVoice	"RecVoice.Components.Chain*.LoggerCore"	0x101	25.11.2015 13:20:25.912
+RecVoice.Components.PairStatus.LoggerCore.Params	sgRecVoice	"RecVoice.PairParams"	0x101	25.11.2015 13:20:25.913
+RecVoice.Components.ChainA.LoggerCore.Params	sgRecVoice	"RecVoice.ChainParams"	0x101	25.11.2015 13:20:25.920
+RecVoice.Components.ChainB.LoggerCore.Params	sgRecVoice	"RecVoice.ChainParams"	0x101	25.11.2015 13:20:25.924
+RecVoice.Connections.Inputs	sgRecVoice	"RecVoice.RawData.ChainA.Status*", "RecVoice.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.927
+RecVoice.Connections.Outputs	sgRecVoice	"RecVoice.Components.ChainA.Logger*.PreStatus", "RecVoice.Components.ChainB.Logger*.PreStatus"	0x101	25.11.2015 13:20:25.928
+RecVoice.Connections.Rules	sgRecVoice	"ConnectWithIntRange", "ConnectWithIntRange"	0x101	11.04.2016 12:29:09.822
+RecVoice.Connections.Params	sgRecVoice	"RecVoice.ConvTableStatus", "RecVoice.ConvTableStatus"	0x101	25.11.2015 13:20:25.930
+RecVoice.ChainParams.Histories	sgRecVoice	"RecVoice.History"	0x101	25.11.2015 13:20:25.936
+RecVoice.ChainParams.AETable	sgRecVoice	"AETable01"	0x101	25.11.2015 13:20:25.937
+RecVoice.ChainParams.GenerateEvents	sgRecVoice	1	0x101	25.11.2015 13:20:25.938
+RecVoice.PairParams.Histories	sgRecVoice	"RecVoice.History"	0x101	25.11.2015 13:20:25.941
+RecVoice.PairParams.AETable	sgRecVoice	"AETable01"	0x101	25.11.2015 13:20:25.942
+RecVoice.PairParams.GenerateEvents	sgRecVoice	1	0x101	25.11.2015 13:20:25.943
+RecVoice.TruthTables.GlobalTT.Table	sgRecVoice	"OPS_---_OPS_0", "UKN_---_UKN_0", "DEG_---_DEG_0", "---_U/S_U/S_0", "---_UKN_U/S_0", "---_OPS_DEG_0", "---_ANY_UKN_0"	0x101	25.11.2015 13:20:25.944
+RecVoice.TruthTables.TTVoiceRecordingLogger.Table	sgRecVoice	"OPS_---_OPS_0", "DEG_---_OPS_0", "U/S_---_U/S_0", "UKN_---_UKN_0", "---_---_OPS_2_OPS+_DEG+", "---_---_DEG_2_OPS+_U/S+", "---_---_DEG_2_OPS+_UKN+", "---_---_OPS_2_DEG+_OPS+", "---_---_DEG_2_U/S+_OPS+", "---_---_DEG_2_UKN+_OPS+", "---_---_DEG_2_DEG+_U/S+", "---_---_DEG_2_DEG+_UKN+", "---_---_U/S_2_U/S+_UKN+", "---_---_DEG_2_U/S+_DEG+", "---_---_DEG_2_UKN+_DEG+", "---_---_U/S_2_UKN+_U/S+"	0x101	25.11.2015 13:20:25.946
+RecVoice.WatchDogs.References	sgRecVoice	"RecVoice.RawData.ChainA.Status*", "RecVoice.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.931
+RecVoice.WatchDogs.DefaultValues	sgRecVoice	"-1", "-1"	0x101	25.11.2015 13:20:25.932
+RecVoice.WatchDogs.Outputs	sgRecVoice	"RecVoice.RawData.ChainA.Status*", "RecVoice.RawData.ChainB.Status*"	0x101	25.11.2015 13:20:25.933
+RecVoice.WatchDogs.Timeouts	sgRecVoice	25, 25	0x101	03.12.2015 15:09:28.506
+RecVoice.ConvTableStatus.Input	sgRecVoice	-1, 0, 1, 999999	0x101	03.12.2015 15:08:46.181
+RecVoice.ConvTableStatus.Output	sgRecVoice	"UKN", "OPS", "U/S", "U/S"	0x101	03.12.2015 15:09:01.489
+RecVoice.MenuEntry.Name	sgRecVoice	"RECVOICE CH GVA 18"	0x200101	02.09.2016 08:08:42.937
+RecVoice.MenuEntry.Group	sgRecVoice	"REC"	0x101	02.09.2016 08:08:42.938
+RecVoice.MenuEntry.Panel	sgRecVoice	"RecVoice/sgRecVoice18MainPanel.pnl"	0x200101	02.09.2016 08:08:42.939
+RecVoice.MenuEntry.Params	sgRecVoice	"Site:GVA;SystemName:ISup_G:"	0x101	02.09.2016 08:08:42.940
+RecVoice.MenuEntry.Hidden	sgRecVoice	0	0x100101	02.06.2016 11:33:47.151
+RecVoice.MenuEntry.GlobalStatusPoint	sgRecVoice	"RecVoice.GlobalStatus"	0x101	22.06.2017 17:06:38.083
+
+_1_SNMPV3Entity_10.Access.IPAddress	_SNMPV3Entity	"RECGVACORA01"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.Port	_SNMPV3Entity	161	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.Timeout	_SNMPV3Entity	100	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.Retries	_SNMPV3Entity	1	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.SecurityName	_SNMPV3Entity	"public"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.SecurityLevel	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.ContextName	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.ContextEngineID	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.AuthProtocol	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.AuthPasswd	_SNMPV3Entity	"NiceNRXAuth"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.PrivProtocol	_SNMPV3Entity	2	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_10.Access.PrivPasswd	_SNMPV3Entity	"NiceNRXPriv"	0x101	30.03.2016 09:15:01.044
+
+_1_SNMPV3Entity_20.Access.IPAddress	_SNMPV3Entity	"RECGVACORB02"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.Port	_SNMPV3Entity	161	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.Timeout	_SNMPV3Entity	100	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.Retries	_SNMPV3Entity	1	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.SecurityName	_SNMPV3Entity	"public"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.SecurityLevel	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.ContextName	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.ContextEngineID	_SNMPV3Entity	""	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.AuthProtocol	_SNMPV3Entity	3	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.AuthPasswd	_SNMPV3Entity	"NiceNRXAuth"	0x101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.PrivProtocol	_SNMPV3Entity	2	0x200101	30.03.2016 09:15:01.044
+_1_SNMPV3Entity_20.Access.PrivPasswd	_SNMPV3Entity	"NiceNRXPriv"	0x101	30.03.2016 09:15:01.044
+
+# AlertValue
+ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._l_limit	_alert_hdl.._u_limit	_alert_hdl.._l_incl	_alert_hdl.._u_incl	_alert_hdl.._panel	_alert_hdl.._panel_param	_alert_hdl.._help	_alert_hdl.._min_prio	_alert_hdl.._class	_alert_hdl.._text	_alert_hdl.._active	_alert_hdl.._orig_hdl	_alert_hdl.._ok_range	_alert_hdl.._hyst_type	_alert_hdl.._hyst_time	_alert_hdl.._multi_instance	_alert_hdl.._l_hyst_limit	_alert_hdl.._u_hyst_limit	_alert_hdl.._text1	_alert_hdl.._text0	_alert_hdl.._ack_has_prio	_alert_hdl.._order	_alert_hdl.._dp_pattern	_alert_hdl.._dp_list	_alert_hdl.._prio_pattern	_alert_hdl.._abbr_pattern	_alert_hdl.._ack_deletes	_alert_hdl.._non_ack	_alert_hdl.._came_ack	_alert_hdl.._pair_ack	_alert_hdl.._both_ack	_alert_hdl.._impulse	_alert_hdl.._filter_threshold	_alert_hdl.._went_text	_alert_hdl.._add_text	_alert_hdl.._status64_pattern	_alert_hdl.._neg	_alert_hdl.._status64_match	_alert_hdl.._match	_alert_hdl.._set
+RecVoice.GlobalStatus.Alarms.AlarmActive	sgRecVoice		12					"RecVoice/sgRecVoice18MainPanel.pnl"	"$Site:GVA", "$SystemName:ISup_G:"	lt:1 LANG:5 ""	\0	alert.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Alarm on RecVoice CH GVA 18"	lt:1 LANG:5 ""												0								
+
+# DistributionInfo
+ElementName	TypeName	_distrib.._type	_distrib.._driver
+RecVoice.RawData.ChainA.StatusCore	sgRecVoice	56	\1
+RecVoice.RawData.ChainB.StatusCore	sgRecVoice	56	\1
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+RecVoice.RawData.ChainA.StatusCore	sgRecVoice	16	"A10_1.3.6.1.4.1.23491.1.7.1.0"	"_RecVoiceCH18"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"
+RecVoice.RawData.ChainB.StatusCore	sgRecVoice	16	"A11_1.3.6.1.4.1.23491.1.7.1.0"	"_RecVoiceCH18"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	661	"SNMP"

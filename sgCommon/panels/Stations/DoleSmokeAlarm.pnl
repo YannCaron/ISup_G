@@ -1,0 +1,524 @@
+V 10
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,258 160 1110 860 N "_3DFace" 0
+EEE E E 1 -1 -1 0  10 10
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "s" 0 0 0 65 0 0  12 12
+ 1
+2
+LANG:5 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8859-1|-32,0,0,0,700,0,0,0,0,3,2,1,49,Courier New
+0 ""
+2
+LANG:5 16 Dole Smoke Alarm
+LANG:1 4 AFPS
+1 1 21 "" 46
+0
+1 58 21 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 15 Alarme générale
+
+0
+1 59 21 "" 24
+0
+1 60 21 "" 47
+0
+1 61 21 "" 51
+0
+1 62 21 "" 52
+0
+1 61 26 "" 46
+0
+1 105 26 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 34 Rez de chaussée onduleur planchers
+
+0
+1 106 26 "" 24
+0
+1 107 26 "" 47
+0
+1 108 26 "" 51
+0
+1 109 26 "" 52
+0
+1 108 27 "" 46
+0
+1 111 27 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 29 Rez de chaussée radar turbine
+
+0
+1 112 27 "" 24
+0
+1 113 27 "" 47
+0
+1 114 27 "" 51
+0
+1 115 27 "" 52
+0
+1 114 28 "" 46
+0
+1 117 28 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 31 Rez de chaussée batteries radar
+
+0
+1 118 28 "" 24
+0
+1 119 28 "" 47
+0
+1 120 28 "" 51
+0
+1 121 28 "" 52
+0
+1 120 29 "" 46
+0
+1 123 29 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 37 Rez de chaussée hall rdr mach. téléph
+
+0
+1 124 29 "" 24
+0
+1 125 29 "" 47
+0
+1 126 29 "" 51
+0
+1 127 29 "" 52
+0
+1 126 30 "" 46
+0
+1 129 30 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 29 1er salle radar bureau Tx VHF
+
+0
+1 130 30 "" 24
+0
+1 131 30 "" 47
+0
+1 132 30 "" 51
+0
+1 133 30 "" 52
+0
+1 132 31 "" 46
+0
+1 135 31 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 27 1er local batteries VHF/UHF
+
+0
+1 136 31 "" 24
+0
+1 137 31 "" 47
+0
+1 138 31 "" 51
+0
+1 139 31 "" 52
+0
+1 138 32 "" 46
+0
+1 141 32 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 32 1er radar machinerie ventilation
+
+0
+1 142 32 "" 24
+0
+1 143 32 "" 47
+0
+1 144 32 "" 51
+0
+1 145 32 "" 52
+0
+1 150 34 "" 46
+0
+1 153 34 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 28 2eme étage radar local dépot
+
+0
+1 154 34 "" 24
+0
+1 155 34 "" 47
+0
+1 156 34 "" 51
+0
+1 157 34 "" 52
+0
+1 156 35 "" 46
+0
+1 159 35 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 29 2eme étage local base antenne
+
+0
+1 160 35 "" 24
+0
+1 161 35 "" 47
+0
+1 162 35 "" 51
+0
+1 163 35 "" 52
+0
+1 162 36 "" 46
+0
+1 165 36 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 28 Rez de chaussée batiment VHF
+
+0
+1 166 36 "" 24
+0
+1 167 36 "" 47
+0
+1 168 36 "" 51
+0
+1 169 36 "" 52
+0
+1 168 37 "" 46
+0
+1 171 37 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 27 1er batiment VHF equipement
+
+0
+1 172 37 "" 24
+0
+1 173 37 "" 47
+0
+1 174 37 "" 51
+0
+1 175 37 "" 52
+0
+1 174 38 "" 46
+0
+1 177 38 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 45 Rez de chaussée batiment habitation détection
+
+0
+1 178 38 "" 24
+0
+1 179 38 "" 47
+0
+1 180 38 "" 51
+0
+1 181 38 "" 52
+0
+1 180 39 "" 46
+0
+1 183 39 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 37 Rez de chaussée radar coffret turbine
+
+0
+1 184 39 "" 24
+0
+1 185 39 "" 47
+0
+1 186 39 "" 51
+0
+1 187 39 "" 52
+0
+1 186 40 "" 46
+0
+1 189 40 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 33 1er batiment habitation détection
+
+0
+1 190 40 "" 24
+0
+1 191 40 "" 47
+0
+1 192 40 "" 51
+0
+1 193 40 "" 52
+0
+1 194 41 "" 46
+0
+1 195 41 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 27 1er local batteries VHF/UHF
+
+0
+1 196 41 "" 24
+0
+1 197 41 "" 47
+0
+1 198 41 "" 51
+0
+1 199 41 "" 52
+0
+1 200 42 "" 46
+0
+1 201 42 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 32 1er radar machinerie ventilation
+
+0
+1 202 42 "" 24
+0
+1 203 42 "" 47
+0
+1 204 42 "" 51
+0
+1 205 42 "" 52
+0
+1 206 43 "" 46
+0
+1 207 43 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 37 Rez de chaussée radar coffret turbine
+
+0
+1 208 43 "" 24
+0
+1 209 43 "" 47
+0
+1 210 43 "" 51
+0
+1 211 43 "" 52
+0
+1 212 44 "" 46
+0
+1 213 44 "" 25
+20 "primitiveText" 0 0 1
+1
+LANG:5 33 1er batiment habitation détection
+
+0
+1 214 44 "" 24
+0
+1 215 44 "" 47
+0
+1 216 44 "" 51
+0
+1 217 44 "" 52
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 21 ""
+"objects\\sgFwBlock.pnl" 115 463 T 25 2.6225 0 0.2  -271.3377380952379 7.40000000000002  
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.AlarmeGenerale"
+3 26 "Group10"
+"objects\\sgFwBlock.pnl" 10 110 T 36 1.2875 0 0.2  16.94107142857153 148.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.RezOnduleursPlanchers"
+3 27 "Group12"
+"objects\\sgFwBlock.pnl" 10 110 T 37 1.2875 0 0.2  16.94107142857149 568.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.LocalDiesel"
+3 28 "Group14"
+"objects\\sgFwBlock.pnl" 20 200 T 38 1.2875 0 0.2  538.8136204481795 130.4  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.RezRadarBatteries"
+3 29 "Group16"
+"objects\\sgFwBlock.pnl" 30 230 T 39 1.2875 0 0.2  -8.304026610644192 194.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.RezHallRadarTelepherique"
+3 30 "Group18"
+"objects\\sgFwBlock.pnl" 30 230 T 40 1.2875 0 0.2  526.6959733893558 194.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.1erRadarBureauTXVHF"
+3 31 "Group20"
+"objects\\sgFwBlock.pnl" 30 230 T 41 1.2875 0 0.2  -8.304026610644192 264.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.1erBatteriesVHFUHF"
+3 32 "Group22"
+"objects\\sgFwBlock.pnl" 30 230 T 42 1.2875 0 0.2  526.6959733893558 264.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.2emeRadarMachinerieVentil"
+3 34 "Group26"
+"objects\\sgFwBlock.pnl" 560 110 T 44 1.2875 0 0.2  -690.9314775910365 358.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.2emeRadarLocalDepot"
+3 35 "Group28"
+"objects\\sgFwBlock.pnl" 560 110 T 45 1.2875 0 0.2  -155.9314775910364 358.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.2emeLocalBaseAntenne"
+3 36 "Group30"
+"objects\\sgFwBlock.pnl" 560 110 T 46 1.2875 0 0.2  -690.9314775910364 428.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.RezBatVHF"
+3 37 "Group32"
+"objects\\sgFwBlock.pnl" 560 110 T 47 1.2875 0 0.2  -155.9314775910363 428.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.1erBatimentVHFEquipement"
+3 38 "Group34"
+"objects\\sgFwBlock.pnl" 560 110 T 48 1.2875 0 0.2  -690.9314775910364 498.0666666666666  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.RezBatHabitationDetection"
+3 39 "Group36"
+"objects\\sgFwBlock.pnl" 560 110 T 49 1.2875 0 0.2  -155.9314775910364 708.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.Reserve3"
+3 40 "Group38"
+"objects\\sgFwBlock.pnl" 560 110 T 50 1.2875 0 0.2  -155.9314775910364 498.0666666666666  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.1erBatHabitationDetection"
+3 41 "Group20"
+"objects\\sgFwBlock.pnl" 30 520 T 51 1.2875 0 0.2  526.6959733893559 486.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.VHFVideSanitaire"
+3 42 "Group21"
+"objects\\sgFwBlock.pnl" 30 590 T 52 1.2875 0 0.2  526.6959733893558 542.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.Reserve1"
+3 43 "Group22"
+"objects\\sgFwBlock.pnl" 570 520 T 53 1.2875 0 0.2  -704.0589285714284 556.0666666666667  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.VHFGrenier"
+3 44 "Group23"
+"objects\\sgFwBlock.pnl" 570 590 T 54 1.2875 0 0.2  -704.0589285714284 612.0666666666666  
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""IOGw_G:"
+"$SystemStatus""Stations.Components.Dole.SmokeAlarm.Components.Reserve2"
+0

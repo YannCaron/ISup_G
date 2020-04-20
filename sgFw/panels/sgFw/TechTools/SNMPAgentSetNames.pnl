@@ -1,0 +1,179 @@
+V 10
+1
+LANG:5 20 SNMP Agent set Names
+PANEL,-1 -1 206 203 N "_3DFace" 0
+"main()
+{
+  frame_initialized();
+}" 0
+ E E E E 1 -1 -1 0  40 25
+""0  1
+E "void frame_initialized() {
+	tbPattern.text = \"**\";
+  tbType.text = \"sgFwSystem\";
+}
+
+void btGo_clicked() {
+  dyn_string dps = dpNames (\"**\", \"_SNMPAgent\");
+  dyn_string ipDps = makeDynString();
+  dyn_string ips;
+  
+  for (int i=1; i<=dynlen(dps); i++) {
+    dynAppend(ipDps, dps[i] + \".Access.IPAddress\");
+  }
+
+  dpGet(ipDps, ips); 
+  
+  for (int j=1; j<=dynlen(dps); j++) {
+  	dpSetDescription(dps[j] + \".\", ips[j]);
+    DebugTN(\"Set Description to [\" + dps[j] + \"] : \" + ips[j]);
+	}
+  
+}
+
+void btType_clicked() {
+  dyn_string dps = dpNames(tbPattern.text, tbType.text);
+  string table = \"\";
+  
+  if (dynlen(dps) > 0) {
+    
+    for (int i=1; i<=dynlen(dps); i++) {
+      dps[i] += \":_online.._value\";
+   	}
+    
+    for (int j=1; j<=dynlen(dps); j++) {
+      anytype value;
+      dpGet(dps[j], value);
+      table += dps[j] + \"\\n\";
+      table += value + \"\\n\\n\";
+    }
+  
+    DebugTN(\"\\n\" + table);
+	} else {
+  	DebugTN(\"Pattern error\");
+  }
+  
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+13 0
+"btGo"
+""
+1 35 20 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 33 18 172 67
+
+T 
+1
+LANG:5 9 Set Names
+"main()
+{
+  btGo_clicked();
+}" 0
+ E E E
+13 1
+"PUSH_BUTTON2"
+""
+1 35 80 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 33 78 172 127
+
+T 
+1
+LANG:5 18 GetAllPointsOfType
+"main()
+{
+  btType_clicked();
+}" 0
+ E E E
+14 2
+"tbType"
+""
+1 10 175 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 8 173 197 196
+3 "0s" 0 0 0 0 0 -1  E E E
+14 3
+"tbPattern"
+""
+1 10 145 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 98 -*-MS Shell Dlg-*-r-normal-*-11-*-100-100-*-*-iso8859-1|-11,0,0,0,505,0,0,0,0,0,0,0,0,MS Shell Dlg
+0 ""
+ 8 143 197 166
+3 "0s" 0 0 0 0 0 -1  E E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

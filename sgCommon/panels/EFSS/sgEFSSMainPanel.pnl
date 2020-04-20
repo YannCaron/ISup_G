@@ -1,0 +1,706 @@
+V 11
+2
+LANG:5 11 sgRootPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1111 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "string currentDp;
+
+cmdSwitch_onClick(string dp) {
+  dyn_string ds;
+  dyn_float df;
+
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+    	makeDynString(\"$1:Do you really want to \" + \"Switch to \" + dp + \" servers ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+  
+  if(ds[1] == \"true\")
+  {
+    sgHistoryAddEvent(\"EFSS.History\", SEVERITY_COMMAND, \"Switch to \" + dp + \" command sent\");
+    dpSet(\"EFSS.Commands.\" + dp + \"UnitExec\", 1);
+  }
+  
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 EFSS
+LANG:1 4 AFPS
+30 502
+"Frame1"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+145 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.7900943396226415 0 0.8882521489971345 -79.81132075471699 -55.03438395415463 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 499
+"Text1"
+""
+1 -19 200 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+142 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 35 202 75 225
+0 2 0 "0s" 0 0 0 194 0 0  75 202 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 3 TWR
+13 194
+"Button1"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+87 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  ForceToUnknown(\"\", \"EFSS\");
+}" 0
+ E E E
+1 780 35 "" 11
+0
+30 568
+"FRAME1"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+157 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.214622641509434 0 0.3610315186246417 -130.7547169811321 -47.50429799426929 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 569
+"PRIMITIVE_TEXT1"
+""
+1 5.99999999999983 55 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 38 57 99.99999999999983 80
+0 2 0 "0s" 0 0 0 194 0 0  99.99999999999983 57 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 7 Servers
+1 781 89 "" 46
+0
+30 574
+"FRAME2"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+162 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1.214622641509434 0 0.2406876790830946 439.2452830188679 -10.00286532951287 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 575
+"PRIMITIVE_TEXT2"
+""
+1 596 55 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+163 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 605 57 690 80
+0 2 0 "0s" 0 0 0 194 0 0  690 57 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 9 Recording
+1 784 90 "" 46
+0
+30 604
+"FRAME4"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+177 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.7900943396226415 0 0.487106017191977 300.188679245283 63.30372492836671 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 605
+"PRIMITIVE_TEXT4"
+""
+1 381 202 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+178 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 416 204 475 227
+0 2 0 "0s" 0 0 0 194 0 0  475 204 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 APRON
+30 618
+"FRAME5"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+181 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.7900943396226415 0 0.28080229226361 -79.81132075471697 449.1633237822351 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 619
+"PRIMITIVE_TEXT5"
+""
+1 -24 525 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+182 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 35 527 70 550
+0 2 0 "0s" 0 0 0 194 0 0  70 527 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 3 SCO
+30 626
+"FRAME6"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+187 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.7783018867924528 0 1.060171919770774 681.6037735849056 -105.7507163323783 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 627
+"PRIMITIVE_TEXT6"
+""
+1 751 202 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+188 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 794 204 845 227
+0 2 0 "0s" 0 0 0 194 0 0  845 204 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 LINKS
+1 787 97 "" 46
+0
+1 790 98 "" 46
+0
+1 793 99 "" 46
+0
+1 796 100 "" 46
+0
+1 799 101 "" 46
+0
+1 802 102 "" 46
+0
+1 805 103 "" 46
+0
+1 809 104 "0" 46
+0
+1 808 104 "" 3
+0
+1 813 105 "0" 46
+0
+1 812 105 "" 3
+0
+1 817 106 "0" 46
+0
+1 816 106 "" 3
+0
+1 821 107 "0" 46
+0
+1 820 107 "" 3
+0
+1 825 108 "0" 46
+0
+1 824 108 "" 3
+0
+1 829 109 "0" 46
+0
+1 828 109 "" 3
+0
+1 833 110 "0" 46
+0
+1 832 110 "" 3
+0
+1 837 111 "0" 46
+0
+1 836 111 "" 3
+0
+1 841 112 "0" 46
+0
+1 840 112 "" 3
+0
+13 714
+"CmdSwitch"
+""
+1 34.99999999999983 150 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+212 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  33 148 267 177
+
+T 
+1
+LANG:5 13 Activate Dp1a
+"main()
+{
+  cmdSwitch_onClick(\"Dp1a\");
+}" 0
+ E E E
+13 779
+"PUSH_BUTTON1"
+""
+1 279.9999999999998 150 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+213 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0  278 148 512 177
+
+T 
+1
+LANG:5 13 Activate Dp1b
+"main()
+{
+  cmdSwitch_onClick(\"Dp1b\");
+}" 0
+ E E E
+1 844 113 "" 46
+0
+1 848 114 "0" 46
+0
+1 847 114 "" 3
+0
+1 852 115 "0" 46
+0
+1 851 115 "" 3
+0
+1 856 116 "0" 46
+0
+1 855 116 "" 3
+0
+30 859
+"FRAME7"
+""
+1 120 638 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+216 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.7900943396226415 0 0.7020057306590259 300.188679245283 177.9083094555873 0 E 120 295 545 645
+1
+LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 0 
+2 860
+"PRIMITIVE_TEXT7"
+""
+1 380.9999999999999 380 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+217 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.9999999999999999 0 1 -8.881784197001252e-016 0 1 E 421 382 475 405
+0 2 0 "0s" 0 0 0 194 0 0  475 382 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 SPARE
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 782 89 "" 51
+0
+1 783 89 "" 52
+0
+1 785 90 "" 51
+0
+1 786 90 "" 52
+0
+1 788 97 "" 51
+0
+1 789 97 "" 52
+0
+1 791 98 "" 51
+0
+1 792 98 "" 52
+0
+1 794 99 "" 51
+0
+1 795 99 "" 52
+0
+1 797 100 "" 51
+0
+1 798 100 "" 52
+0
+1 800 101 "" 51
+0
+1 801 101 "" 52
+0
+1 803 102 "" 51
+0
+1 804 102 "" 52
+0
+1 806 103 "" 51
+0
+1 807 103 "" 52
+0
+1 810 104 "0" 51
+0
+1 811 104 "0" 52
+0
+1 814 105 "0" 51
+0
+1 815 105 "0" 52
+0
+1 818 106 "0" 51
+0
+1 819 106 "0" 52
+0
+1 822 107 "0" 51
+0
+1 823 107 "0" 52
+0
+1 826 108 "0" 51
+0
+1 827 108 "0" 52
+0
+1 830 109 "0" 51
+0
+1 831 109 "0" 52
+0
+1 834 110 "0" 51
+0
+1 835 110 "0" 52
+0
+1 838 111 "0" 51
+0
+1 839 111 "0" 52
+0
+1 842 112 "0" 51
+0
+1 843 112 "0" 52
+0
+1 845 113 "" 51
+0
+1 846 113 "" 52
+0
+1 849 114 "0" 51
+0
+1 850 114 "0" 52
+0
+1 853 115 "0" 51
+0
+1 854 115 "0" 52
+0
+1 857 116 "0" 51
+0
+1 858 116 "0" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 35 "" -1
+"objects\\sgFwHistory.pnl" 165 140 T 97 1 0 1 -165 560
+2
+"$SystemHistory""EFSS.History"
+"$SystemName"""
+3 89 "PANEL_REF89" -1
+"objects\\sgFwBlock.pnl" 25 490 T 160 0.5750000000000001 0 0.225 590.625 -21.25
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.Ru1a"
+3 90 "PANEL_REF90" -1
+"objects\\sgFwBlock.pnl" 25 490 T 161 0.5750000000000001 0 0.225 835.6249999999999 -21.25
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.Ru1b"
+3 97 "PANEL_REF97" -1
+"objects\\sgFwBlock.pnl" 25 490 T 189 0.7375 0 0.175 776.5625 146.25
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.SAMAX"
+3 98 "PANEL_REF98" -1
+"objects\\sgFwBlock.pnl" 25 490 T 191 0.7375 0 0.175 776.5625 191.25
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.MVNT"
+3 99 "PANEL_REF99" -1
+"objects\\sgFwBlock.pnl" 25 490 T 192 0.7375 0 0.175 776.5625 236.25
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.SKYVISU"
+3 100 "PANEL_REF100" -1
+"objects\\sgFwBlock.pnl" 25 490 T 193 0.35 0 0.2104838709677419 786.25 263.8629032258064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.INCH_A"
+3 101 "PANEL_REF101" -1
+"objects\\sgFwBlock.pnl" 25 490 T 194 0.7375 0 0.2104838709677419 776.5625 313.8629032258064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.DCL"
+3 102 "PANEL_REF102" -1
+"objects\\sgFwBlock.pnl" 25 490 T 195 0.7375 0 0.2104838709677419 776.5625 366.7661290322581
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.STOPBAR"
+3 103 "PANEL_REF103" -1
+"objects\\sgFwBlock.pnl" 25 490 T 197 0.35 0 0.2104838709677419 941.25 263.8629032258064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.INCH_B"
+3 104 "PANEL_REF104" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 203 1 0 1 -285.0000000000002 0
+1
+"$Name""Dp1a"
+3 105 "PANEL_REF105" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 204 1 0 1 -40.00000000000017 0
+1
+"$Name""Dp1b"
+3 106 "PANEL_REF106" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 204 1.282608695652174 0 1 -375.4347826086956 147
+1
+"$Name""Cwp1a"
+3 107 "PANEL_REF107" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 205 1.282608695652174 0 1 -375.4347826086956 217
+1
+"$Name""Cwp2a"
+3 108 "PANEL_REF108" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 206 1.282608695652174 0 1 -375.4347826086956 287
+1
+"$Name""Cwp3a"
+3 109 "PANEL_REF109" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 207 1.282608695652174 0 1 -375.4347826086956 357
+1
+"$Name""Cwp4a"
+3 110 "PANEL_REF110" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 208 1.282608695652174 0 1 4.565217391304373 147
+1
+"$Name""Cwp6a"
+3 111 "PANEL_REF111" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 209 1.282608695652174 0 1 4.565217391304373 217
+1
+"$Name""Cwp7a"
+3 112 "PANEL_REF112" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 210 1.282608695652174 0 1 -375.4347826086956 470
+1
+"$Name""Cwp5a"
+3 113 "PANEL_REF113" -1
+"objects\\sgFwBlock.pnl" 25 490 T 214 0.7375 0 0.2104838709677419 776.5625 418.8629032258064
+5
+"$LabelsNum""2"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""EFSS.Components.SYCONT"
+3 114 "PANEL_REF114" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 214 1.282608695652174 0 1 4.565217391304316 325
+1
+"$Name""Cwp8a"
+3 115 "PANEL_REF115" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 215 1.282608695652174 0 1 4.565217391304316 400
+1
+"$Name""Cwp9a"
+3 116 "PANEL_REF116" -1
+"EFSS\\sgEFSSComponent.pnl" 320 85 T 216 1.282608695652174 0 1 4.565217391304316 470
+1
+"$Name""Cwp10a"
+0

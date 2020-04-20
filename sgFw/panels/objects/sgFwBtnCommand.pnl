@@ -1,0 +1,97 @@
+V 10
+1
+LANG:5 8 (NoName)
+PANEL,-1 -1 120 61 N "_3DFace" 4
+"$PanelName"
+"$PanelParams"
+"$SystemName"
+"$SystemStatus"
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "void buttonCmd_clicked()
+{
+  dyn_string params = makeDynString(
+          \"$SystemName:\" + $SystemName, 
+          \"$SystemStatus:\" + $SystemStatus,
+          \"$PanelParams:\" + $PanelParams
+      );
+  
+  // add params
+	if($PanelParams != \"\") {
+		dyn_string panelParams = strsplit($PanelParams, \";\");
+    for (int i=1; i<=dynlen(panelParams); i++) {
+      dynAppend(params, \"$\" + panelParams[i]);
+    }
+  }
+        
+  ChildPanelOnCentralModal($PanelName, \"\", params);
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+13 0
+"ButtonCmd"
+""
+1 10 10 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+0
+2
+LANG:5 86 -*-Tahoma-*-r-normal-*-19-*-100-100-*-*-iso8859-1|-19,0,0,0,404,0,0,0,0,0,0,0,0,Tahoma
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 ""
+ 8 8 72 52
+
+P 
+4294967295
+"pictures/0.bmp"
+1
+LANG:5 0 
+"main() {
+  buttonCmd_clicked();
+}
+
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

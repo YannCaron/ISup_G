@@ -1,0 +1,321 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+"main()
+{
+	
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 9.999999999999741 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 11.99999999999987 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  11.99999999999987 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 4 FDPZ
+LANG:1 6 PRIMUS
+1 183 14 "" 46
+0
+1 186 15 "" 46
+0
+1 189 16 "" 46
+0
+1 192 17 "" 46
+0
+1 195 18 "" 46
+0
+1 198 19 "" 46
+0
+1 207 25 "" 46
+0
+1 216 28 "" 46
+0
+1 219 29 "" 46
+0
+1 222 30 "" 46
+0
+1 244 39 "" 46
+0
+1 247 40 "" 46
+0
+13 71
+"ForceToUKN"
+""
+1 10 665 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 663 212 697
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+
+		dyn_string names, ukn;
+		dyn_string labels, empty;
+		
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.MainServer*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.PrintServer*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.Switch*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.INIS.*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.StripPrinters.*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.Clients.*.PreStatus\"));
+		dynAppend(names, getPointsFromPattern(\"FDPZ.Components.Interfaces.*.PreStatus\"));
+                dynAppend(names, getPointsFromPattern(\"FDPZ.Components.SPMOXAs.SPMOXA_*.PreStatus\"));
+
+		for(int cpt = 1; cpt <= dynlen(names); cpt++)
+		{
+			ukn[cpt] = \"UKN\";
+		}
+
+		dpSet(names, ukn);
+
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.MainServer*.Label1\"));
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.MainServer*.Label2\"));
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.MainServer*.Label3\"));
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.MainServer*.Label4\"));
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.StripPrinters.*.Label1\"));
+		dynAppend(labels, getPointsFromPattern(\"FDPZ.Components.Interfaces.*.Label1\"));
+
+		for(int cpt = 1; cpt <= dynlen(labels); cpt++)
+		{
+			empty[cpt] = \" \";
+		}
+
+		dpSet(labels, empty);
+		
+		sgHistoryAddEvent(\"FDPZ.History\", SEVERITY_COMMAND,\"<<Force to UKN>> sent\");
+		sgXMLPrepareForceToUKN();		
+
+}
+" 0
+ E E E
+1 243 38 "" 11
+0
+1 250 41 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 184 14 "" 51
+0
+1 185 14 "" 52
+0
+1 187 15 "" 51
+0
+1 188 15 "" 52
+0
+1 190 16 "" 51
+0
+1 191 16 "" 52
+0
+1 193 17 "" 51
+0
+1 194 17 "" 52
+0
+1 196 18 "" 51
+0
+1 197 18 "" 52
+0
+1 199 19 "" 51
+0
+1 200 19 "" 52
+0
+1 208 25 "" 51
+0
+1 209 25 "" 52
+0
+1 217 28 "" 51
+0
+1 218 28 "" 52
+0
+1 220 29 "" 51
+0
+1 221 29 "" 52
+0
+1 223 30 "" 51
+0
+1 224 30 "" 52
+0
+1 245 39 "" 51
+0
+1 246 39 "" 52
+0
+1 248 40 "" 51
+0
+1 249 40 "" 52
+0
+1 251 41 "" 51
+0
+1 252 41 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 14 "Group9" -1
+"objects\\sgFwBlock.pnl" 50 120 T 25 0.875 0 0.15 -31.75 104
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.PrintServer_1"
+3 15 "Group11" -1
+"objects\\sgFwBlock.pnl" 20 60 T 26 0.875 0 0.15 734.93115942029 113
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.PrintServer_3"
+3 16 "Group13" -1
+"objects\\sgFwBlock.pnl" 30 60 T 27 0.875 0 0.15 355.75 113
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.PrintServer_2"
+3 17 "Group15" -1
+"objects\\sgFwBlock.pnl" 30 60 T 28 0.875 0 0.6 -14.25 131
+5
+"$LabelsNum""4"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.MainServer_1"
+3 18 "Group17" -1
+"objects\\sgFwBlock.pnl" 30 110 T 29 0.875 0 0.6 355.75 101
+5
+"$LabelsNum""4"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.MainServer_2"
+3 19 "Group19" -1
+"objects\\sgFwBlock.pnl" 30 110 T 30 0.875 0 0.6 725.75 101
+5
+"$LabelsNum""4"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.MainServer_3"
+3 25 "Group31" -1
+"objects\\sgFwBlock.pnl" 30 440 T 36 0.875 0 0.15 725.75 531
+5
+"$LabelsNum""0"
+"$PanelName""FDPZ/FDPZInterfaces.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.InterfacesGlobal"
+3 28 "Group19" -1
+"objects\\sgFwBlock.pnl" 30 95 T 41 0.875 0 0.15 -14.25 63
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.Switch_1"
+3 29 "Group20" -1
+"objects\\sgFwBlock.pnl" 780 95 T 42 0.875 0 0.15 69.93115942029 63
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.Switch_3"
+3 30 "Group21" -1
+"objects\\sgFwBlock.pnl" 410 95 T 43 0.875 0 0.15 23.25 63
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.Switch_2"
+3 38 "" -1
+"objects\\sgFwHistory.pnl" 170 760 T 61 1 0 1 -170 -60
+2
+"$SystemHistory""FDPZ.History"
+"$SystemName"""
+3 39 "Group25" -1
+"objects\\sgFwBlock.pnl" 10 595 T 61 0.877471751412429 0 0.15 372.729519774011 507.5
+5
+"$LabelsNum""0"
+"$PanelName""FDPZ/FDPZClients.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.ClientsGlobal"
+3 40 "Group27" -1
+"objects\\sgFwBlock.pnl" 380 595 T 62 0.875 0 0.15 -320.25 507.5
+5
+"$LabelsNum""0"
+"$PanelName""FDPZ/FDPZStripPrinters.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.StripPrintersGlobal"
+3 41 "PANEL_REF42" -1
+"objects\\sgFwBlock.pnl" 380 595 T 62 0.875 0 0.15 -320.25 462.5
+5
+"$LabelsNum""0"
+"$PanelName""FDPZ/FDPZStripPrinters.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""FDPZ.Components.SPMOXAsGlobal"
+0

@@ -1,0 +1,76 @@
+V 10
+2
+LANG:5 8 (NoName)
+LANG:1 8 (NoName)
+PANEL,686 100 99 166 N "_3DFace" 2
+"$BooleanPoint"
+"$TrueIsVisible"
+"main()
+{
+	bool isHidden;
+
+	dpGet($BooleanPoint, isHidden);
+
+	if ($TrueIsVisible)
+		Line.visible = isHidden;		
+	else
+		Line.visible = !isHidden;			
+}" 0
+EE E E 1 -1 -1 0  50 30
+"" 0 1
+EE 2
+"CBRef""1"
+"EClose"E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 9
+"Line"
+""
+1 50 155 E E E 1 E 0 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+EE E
+0
+2
+LANG:5 0 
+LANG:1 0 
+1
+"dashclr"N "_Transparent"
+"main()
+{
+
+}" 0
+ E 0 5 1 0 1 E  50 155 50 10
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+0

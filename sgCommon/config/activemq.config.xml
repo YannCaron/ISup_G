@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Service name="ActiveMQ" version="1.0.0" engine="groovy">
+
+    <root type="Node">
+        <element type="Script" src="global.groovy" />
+        <element type="Script" src="activemq.script.groovy" />
+        <element type="Shutdown" variantName="outShutdownAction" />
+        <element type="SocketWatcher" port="${monitoringPort}" variantName="inWatcher" />
+        
+        <element type="MQAgent" address="tcp://127.0.0.1:1883" clientName="activeMQClient">
+            <subscribers>
+                <subscriber topicName="ch/skyguide/isup/mqdriver/command" qos="0" variantName="mqInCommand" />
+                <subscriber topicName="ch/skyguide/isup/mqdriver/monitoring/redundancy" qos="0" variantName="mqInRedu" />
+            </subscribers>
+            <publishers>
+                <publisher topicName="ch/skyguide/isup/mqdriver/data" qos="0" variantName="mqOutData" />
+                <publisher topicName="ch/skyguide/isup/mqdriver/monitoring/heartbeat" qos="0" variantName="mqOutHeartbeat" />
+                <publisher topicName="ch/skyguide/isup/mqdriver/monitoring/status" qos="0" variantName="mqOutStatus" />
+            </publishers>
+        </element>
+
+        <element type="JMXAgent" uri="service:jmx:rmi:///jndi/rmi://127.0.0.1:1099/jmxrmi">
+            <element type="LoopExecutor" rate="10000">
+                <decorated type="node">
+                    <element type="SimpleQuery" objectName="org.apache.activemq:type=Broker,brokerName=localhost,service=Health" attributeName="CurrentStatus" variantName="activeMQStatus"  />
+                </decorated>
+            </element>
+        </element>
+
+    </root>
+    
+</Service>
+

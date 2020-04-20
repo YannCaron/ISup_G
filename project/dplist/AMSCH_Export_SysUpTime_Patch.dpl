@@ -1,0 +1,11 @@
+
+# PeriphAddrMain
+ElementName	TypeName	_address.._type	_address.._reference	_address.._poll_group	_address.._offset	_address.._subindex	_address.._direction	_address.._internal	_address.._lowlevel	_address.._active	_address.._start	_address.._interval	_address.._reply	_address.._datatype	_address.._drv_ident
+AMSCH.LT.RawDatas.CADAS1_TS_UpTime	sgAMSCH	16	"92_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.CADAS2_TS_UpTime	sgAMSCH	16	"93_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.CSSA_UpTime	sgAMSCH	16	"90_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.LT.RawDatas.CSSB_UpTime	sgAMSCH	16	"91_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CADAS1_TS_UpTime	sgAMSCH	16	"99_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CADAS2_TS_UpTime	sgAMSCH	16	"100_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CSSA_UpTime	sgAMSCH	16	"97_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"
+AMSCH.TWR.RawDatas.CSSB_UpTime	sgAMSCH	16	"98_1.3.6.1.2.1.25.1.1.0"	"_sgAMSCH"	0	0	\4	0	0	1	02.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	662	"SNMP"

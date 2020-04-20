@@ -1,0 +1,526 @@
+V 11
+2
+LANG:5 10 sgCTCPanel
+LANG:1 11 sgRootPanel
+PANEL,-1 -1 1110 860 N "_3DFace" 2
+"$SystemName"
+"$VDFName"
+"main()
+{
+
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+4 530
+"LINE8"
+""
+1 260 346 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+157 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  260 346 225 345
+1 538 55 "" 46
+0
+2 1
+"PageLabel"
+""
+1 8 6.228701715353536 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 1 0 1.05 0 -0.5 1 E 10 10 1096 46
+1 2 0 "0s" 0 0 0 65 0 0  10 10 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 7 VDF GVA
+LANG:1 4 AFPS
+13 2
+"ForceToUKN"
+""
+1 10 670 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+66 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  8 668 212 702
+
+T 
+1
+LANG:5 12 Force to UKN
+"main()
+{
+  sgHistoryAddEvent($SystemName+ $VDFName + \".History\", SEVERITY_COMMAND, \"<<Force to UKN>> sent\");
+  
+  dyn_string dpOutputs;
+  dyn_string dp_Names;		
+  dyn_string defaultValues;
+  dyn_string dp_Values;
+  dyn_string dp;
+  
+  dpGet($SystemName + $VDFName + \".WatchDogs.Outputs\", dpOutputs);
+  dpGet($SystemName + $VDFName + \".WatchDogs.DefaultValues\", defaultValues);
+	
+  for (int i = 1; i <= dynlen(dpOutputs); i++)      
+  {
+ //   DebugTN(\"3. force to UKN; dpOutputs: \" + dpOutputs)  ;
+    dp = getPointsFromPattern($SystemName + dpOutputs[i]); 
+//    DebugTN(\"3. force to UKN; dp: \" + dp)  ;
+    dyn_string allDP = dp;
+    dynAppend(dp_Names, allDP);
+
+    for (int j = 1; j <= dynlen(dp); j++)
+      dynAppend(dp_Values, defaultValues[i]);
+  }	
+
+  for (int i = 1; i <= dynlen(dp_Names); i++)      
+    dp_Names[i] = dp_Names[i];
+    
+//  DebugTN(\"3. force to UKN; \" + dp_Names + \" values: \" + dp_Values)  ;
+  
+  dpSet(dp_Names, dp_Values);	
+}
+" 0
+ E E E
+1 531 47 "" 11
+0
+30 4
+"FRAME1"
+""
+1 380 244 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+124 0 0 0 0 0
+E E E
+1
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.828571428571428 0 0.8823529411764709 -239.8571428571427 -100.2941176470589 0 E 380 244 731 551
+1
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 12 Station GP22
+4 5
+"LINE1"
+""
+1 569.9999999999998 145.0000000000001 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+128 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  570 145 570 520
+1 532 52 "" 46
+0
+13 7
+"PUSH_BUTTON2"
+""
+1 679.9999999999998 395 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0  678 393 882 432
+
+T 
+1
+LANG:5 19 Restart Link to VDF
+"main()
+{
+  string dpName = $SystemName + $VDFName + \".RawData.Commands.Restart\"; 
+  
+  dyn_float df;
+  dyn_string ds;
+
+  this.enabled = false;
+  
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+  makeDynString(\"$1:Do you really want to restart the Link to VDF?\", \"$2:Yes\", \"$3:No\"), df, ds);
+	
+  if(ds[1] == \"true\")
+  {
+    dpSet(dpName, 1);
+    string eventString = \"Restart \" + $VDFName + \" Data Server Link to VDF sent by \" + getHostname();
+    sgHistoryAddEvent($SystemName + $VDFName + \".History\", SEVERITY_COMMAND, eventString);  
+  }
+  this.enabled = true;
+}
+" 0
+ E E E
+1 541 56 "" 1
+0
+1 542 56 "" 7
+0
+1 543 56 "" 8
+0
+1 544 56 "" 9
+0
+1 535 54 "" 46
+0
+1 545 57 "" 46
+0
+1 548 58 "" 46
+0
+1 551 59 "" 46
+0
+4 16
+"LINE2"
+""
+1 610 345 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  610 345 375 344
+1 554 60 "" 46
+0
+1 557 61 "" 46
+0
+1 560 62 "" 46
+0
+1 563 63 "" 46
+0
+2 21
+"PRIMITIVE_TEXT4"
+""
+1 551.7999999999996 542.5372344083435 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+147 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.9999999999999999 0 1.020408163265306 11.99999999999999 -14.69387755102049 1 E 460 575 656 620
+1 2 0 "0s" 0 0 0 65 0 0  460 575 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 10 MV - SAMAX
+1 566 64 "" 1
+0
+1 567 64 "" 7
+0
+1 568 64 "" 8
+0
+1 569 64 "" 9
+0
+2 26
+"PRIMITIVE_TEXT5"
+""
+1 -90.09800387781864 126.7317302338418 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+150 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E 0.975 0 1.020408163265306 -12.425 -34.48979591836726 1 E 25 320 221 365
+1 2 0 "0s" 0 0 0 65 0 0  25 320 1
+1
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+0 1
+LANG:5 5 VISTA
+1 570 65 "" 46
+0
+4 526
+"LINE4"
+""
+1 445 285 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  445 285 375 284
+4 527
+"LINE5"
+""
+1 444.9999999999998 285 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+154 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  445 285 445 345
+4 528
+"LINE6"
+""
+1 260 285 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  260 285 225 284
+4 529
+"LINE7"
+""
+1 224.9999999999998 285 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 3 1 2 1 E  225 285 225 345
+1 573 66 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 533 52 "" 51
+0
+1 534 52 "" 52
+0
+1 536 54 "" 51
+0
+1 537 54 "" 52
+0
+1 546 57 "" 51
+0
+1 547 57 "" 52
+0
+1 549 58 "" 51
+0
+1 550 58 "" 52
+0
+1 552 59 "" 51
+0
+1 553 59 "" 52
+0
+1 555 60 "" 51
+0
+1 556 60 "" 52
+0
+1 558 61 "" 51
+0
+1 559 61 "" 52
+0
+1 561 62 "" 51
+0
+1 562 62 "" 52
+0
+1 564 63 "" 51
+0
+1 565 63 "" 52
+0
+1 539 55 "" 51
+0
+1 540 55 "" 52
+0
+1 571 65 "" 51
+0
+1 572 65 "" 52
+0
+1 574 66 "" 51
+0
+1 575 66 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 47 "" -1
+"objects\\sgFwHistory.pnl" 115 595 T 74 1 0 1 -115 110
+2
+"$SystemHistory""$VDFName + \".History\""
+"$SystemName""$SystemName"
+3 52 "PANEL_REF52" -1
+"objects\\sgFwBlock.pnl" 850 115 T 122 0.5 0 0.2499999999999998 44.99999999999996 411.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.DSStatus\""
+3 54 "PANEL_REF54" -1
+"objects\\sgFwBlock.pnl" 850 115 T 131 0.5 0 0.2499999999999998 44.99999999999997 471.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.Moxa\""
+3 55 "PANEL_REF55" -1
+"objects\\sgFwBlock.pnl" 850 115 T 132 0.475 0 0.25 276.2499999999999 171.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.DDF04E\""
+3 56 "PANEL_REF56" -1
+"objects\\ArrowOPS_SBY_Head.pnl" 168 558 T 137 0.5 0 0.5 485.9999999999999 231
+4
+"$HeadVisibleValue""TRUE"
+"$OPSValue"""
+"$SBYValue"""
+"$SystemStatus"""
+3 57 "PANEL_REF57" -1
+"objects\\sgFwBlock.pnl" 850 115 T 138 0.5 0 0.2499999999999998 44.99999999999996 231.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.EBD064\""
+3 58 "PANEL_REF58" -1
+"objects\\sgFwBlock.pnl" 850 115 T 139 0.5 0 0.2499999999999998 44.99999999999996 171.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.ET550\""
+3 59 "PANEL_REF59" -1
+"objects\\sgFwBlock.pnl" 850 115 T 140 0.5 0 0.2499999999999998 44.99999999999996 111.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.Antenna\""
+3 60 "PANEL_REF60" -1
+"objects\\sgFwBlock.pnl" 850 115 T 141 0.5 0 0.2499999999999998 -190 291.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.ADAM2\""
+3 61 "PANEL_REF61" -1
+"objects\\sgFwBlock.pnl" 850 115 T 142 0.5 0 0.2499999999999998 44.99999999999994 291.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.MCS\""
+3 62 "PANEL_REF62" -1
+"objects\\sgFwBlock.pnl" 850 115 T 144 0.5 0 0.2499999999999998 454.9999999999999 291.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.PowerSupply\""
+3 63 "PANEL_REF63" -1
+"objects\\sgFwBlock.pnl" 850 115 T 145 0.5 0 0.2499999999999998 454.9999999999999 231.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.EPowerSwitch\""
+3 64 "PANEL_REF64" -1
+"objects\\ArrowOPS_SBY_Head.pnl" 168 558 T 151 0.003023122435891423 -0.4999908606472098 0.4999908606472098 0.003023122435891423 -114.5029675974286 394.5393441599817
+4
+"$HeadVisibleValue""TRUE"
+"$OPSValue"""
+"$SBYValue"""
+"$SystemStatus"""
+3 65 "PANEL_REF65" -1
+"objects\\sgFwBlock.pnl" 850 115 T 151 0.5 0 0.1750000000000001 44.99999999999996 374.875
+5
+"$LabelsNum""0"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.LinkToVDF\""
+3 66 "PANEL_REF66" -1
+"objects\\sgFwBlock.pnl" 850 115 T 151 0.5 0 0.2499999999999998 -190 231.25
+5
+"$LabelsNum""1"
+"$PanelName"""
+"$PanelParams"""
+"$SystemName""$SystemName"
+"$SystemStatus""$VDFName + \".Structureds.ADAM1\""
+0
