@@ -11,7 +11,7 @@ PANEL,-1 -1 1090 710 N "_3DFace" 1
   
   if ($TimeoutMode == TRUE) {
     cbAll.visible = false;
-    dpConnect(\"load\", false, \"ISupDisabled.GlobalStatus.Status\");
+    dpConnect(\"disabledStatusChanged\", false, \"ISupDisabled.GlobalStatus.Status\");
   }
 	
 }" 0
@@ -110,6 +110,21 @@ string getDist()
 
 	return cbDistribution.selectedText;
 
+}
+
+void setSelectColor(int row)
+{
+
+	if (tblUnactive.cellBackColRC(row, TABLE_STATUS_COLUMN) == strplace(COLOR_STATUS, SELECT_STATUS_STANDBY_REPLACE))
+	{
+		// replace STANDBY status color by default fore color
+		tblUnactive.selectColors (tblUnactive.cellBackColRC	(row, TABLE_SYSTEM_COLUMN), COLOR_FORE_DEFAULT);
+	}
+	else
+	{
+		// set status color
+		tblUnactive.selectColors (tblUnactive.cellBackColRC	(row, TABLE_SYSTEM_COLUMN), tblUnactive.cellBackColRC(row, TABLE_STATUS_COLUMN));
+	}
 }
 
 void disableCommand()
@@ -488,7 +503,11 @@ void clearTable()
 	
 }
 
-public void load() 
+void disabledStatusChanged(string db, string value) {
+  load();
+}
+
+void load() 
 {
 
 	// variable
@@ -591,55 +610,26 @@ LANG:5 100 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
  "main()
 {
 	dyn_int selected = tblUnactive.getSelectedLines();
-	int select;
-	bool state, sure;
-	string systemDPE, systemEvent;
-	string stateText;
+	int select = selected[1];
+  string 	systemDPE = systemDPEs[select+1];
+	bool state = systemDisableds[select+1];
 	dyn_string ds, df;
-	
+  
+  string systemName = dpSubStr(systemDPE, DPSUB_SYS);
+  string systemStatus = dpSubStr(systemDPE, DPSUB_DP_EL);
+
 	tblUnactive.selectByClick(TABLE_SELECT_LINE);
-	select = selected[1];
-	systemDPE = systemDPEs[select+1];
-	state = systemDisableds[select+1];
-	systemEvent = systemEventTexts[select+1];
 
-	stateText = STATUS_DISABLE;
-	if (state) stateText = STATUS_ENABLE;
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisabled.pnl\", \"Disabled confirmation\", 
+                                 makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
 
-	ChildPanelOnCentralModalReturn(
-		MESSAGE_CHANGE_PANEL, 
-		MESSAGE_CHANGE_TITLE, 
-		makeDynString(strplace(MESSAGE_CHANGE_PARAM1, stateText, systemEvent), MESSAGE_CHANGE_PARAM2, MESSAGE_CHANGE_PARAM3), 
-		df, 
-		ds);
+	bool sure = ds[1];
 
-	sure = ds[1];
+  if (sure) {
+    systemDisableds[select+1] = !state;
+    load();
+  }
 
-	if (sure)
-	{
-		dpSet(systemDPE + DISABLED_POSTFIX, !state);
-		
-		if(state)
-		{
-			setTblEnable(select);
-		}
-		else
-		{
-			setTblDisable(select);
-			dpSet(systemDPE + ALARM_ACTIVE_POSTFIX, false);
-		}
-		
-		setSelectColor(select);
-		
-		sgHistoryAddEvent(
-			SYSTEM_HISTORY, SEVERITY_COMMAND, 
-			strplace(MESSAGE_HISTORY_EVENT, getHostname(), stateText, systemEvent, systemDPE)
-		);
-
-		systemDisableds[select+1] = !state;
-
-	}
-	
 }" 0
  "main()
 {
@@ -686,19 +676,19 @@ E
 1
 LANG:5 0 
 
-350 "dtime" 9 1 0 "[%y-%m-%d %H:%Mt,True,,ALIGNMENT_BEGINNING]" 1
+350 "dtime" 10 1 0 "[%y-%m-%d %H:%Mt,True,,ALIGNMENT_BEGINNING]" 1
 LANG:5 14 Disabled Until
 E
 1
 LANG:5 0 
 
-125 "comment" 44 1 0 "s" 1
+135 "comment" 42 1 0 "s" 1
 LANG:5 7 Comment
 E
 1
 LANG:5 0 
 
-540 
+520 
 20 20 "" 1 1
 LANG:5 2 #1
 8 30

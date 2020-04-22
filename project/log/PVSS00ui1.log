@@ -37223,3 +37223,103 @@
 LANG:5 "PUSH_BUTTON1"
 ]
 2020.04.20 17:01:01.170[0]
+2020.04.21 15:45:52.666["ENTER"]
+2020.04.21 15:46:00.615["ENTER"]
+2020.04.21 15:46:58.124["ENTER"]
+2020.04.21 15:47:33.329["ENTER"]
+2020.04.21 15:47:44.218["ENTER"]
+2020.04.21 15:47:57.301["ENTER"]
+2020.04.21 15:59:34.283[1]
+2020.04.21 15:59:42.644[9]
+2020.04.21 16:11:21.631[604800]
+2020.04.22 10:18:23.551["ISup.ServerB.Components.MQGlobalStatus"]
+2020.04.22 10:18:24.348["ISup.ServerB.Components.MQGlobalStatus"]
+2020.04.22 10:32:08.458["ISup.ServerB.Components.MQGlobalStatus"]
+2020.04.22 10:32:58.841["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:32:58.841[dyn_string 2 items
+     1: "Sup_G:ISupDisabled."
+     2: "GlobalStatus"
+]
+2020.04.22 10:33:00.396["sgHistoryAddEvent >> Sup_G:ISupDisabled.FwUtils.SystemHistory does not exist, message is:22/04/20	10:33:00	SYSTEM:  	Client: LAPTOP-AQTTEL91 disabled  (Sup_G:ISupDisabled.GlobalStatus)	 "]
+2020.04.22 10:33:02.302["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:33:02.302[dyn_string 2 items
+     1: "Sup_G:ISupDisabled."
+     2: "GlobalStatus"
+]
+2020.04.22 10:34:21.878["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:34:21.878[dyn_string 2 items
+     1: "Sup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:34:24.286["sgHistoryAddEvent >> Sup_G:ISupDisabledFwUtils.SystemHistory does not exist, message is:22/04/20	10:34:24	SYSTEM:  	Client: LAPTOP-AQTTEL91 disabled  (Sup_G:ISupDisabledGlobalStatus)	 "]
+2020.04.22 10:34:28.591["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:34:28.591[dyn_string 2 items
+     1: "Sup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:34:50.640["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:34:50.640[dyn_string 2 items
+     1: "Sup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:35:48.030["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:35:48.030[dyn_string 2 items
+     1: "Sup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:37:29.700["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:37:29.701[dyn_string 2 items
+     1: "ISup_G:ISupDisable"
+     2: "GlobalStatus"
+]
+2020.04.22 10:38:22.759["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:38:22.759[dyn_string 2 items
+     1: "ISup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:38:25.366["sgHistoryAddEvent >> ISup_G:ISupDisabledISup.History does not exist, message is:22/04/20	10:38:25	ENABLE:	ISup Disabled block enabled by Client: LAPTOP-AQTTEL91	 "]
+2020.04.22 10:40:42.513["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:40:42.513[dyn_string 2 items
+     1: "ISup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 10:40:45.881["sgHistoryAddEvent >> ISup_G:ISupDisabled.ISup.History does not exist, message is:22/04/20	10:40:45	ENABLE:	ISup Disabled block enabled by Client: LAPTOP-AQTTEL91	 "]
+2020.04.22 10:46:23.199["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 10:46:23.201[dyn_string 2 items
+     1: "ISup_G:ISupDisabled"
+     2: "GlobalStatus"
+]
+2020.04.22 11:24:28.749["ISup_G:"]
+2020.04.22 11:24:28.749["ISupDisabled.GlobalStatus"]
+2020.04.22 13:05:23.872["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 13:05:23.875["ISup_G:"]["ISupDisabled.GlobalStatus"]
+2020.04.22 13:05:23.909["ISup_G:."]
+2020.04.22 13:05:23.909["ISupDisabled.GlobalStatus"]
+2020.04.22 13:05:46.418["ISup_G:"]
+2020.04.22 13:05:46.418["ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:20.573["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:20.573["ISup_G:"]["ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:20.589["ISup_G:"]
+2020.04.22 13:06:20.590["ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:24.392["ISup_G:ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:24.392["ISup_G:"]["ISupDisabled.GlobalStatus"]
+2020.04.22 13:06:24.413["ISup_G:"]
+2020.04.22 13:06:24.413["ISupDisabled.GlobalStatus"]
+2020.04.22 13:09:44.163["ISup_G:"]
+2020.04.22 13:09:44.163["ISupDisabled.GlobalStatus"]
+2020.04.22 13:09:48.996["ISup_G:"]
+2020.04.22 13:09:48.996["ISupDisabled.GlobalStatus"]
+2020.04.22 13:10:26.057["ISup_G:"]
+2020.04.22 13:10:26.057["ISupDisabled.GlobalStatus"]
+2020.04.22 13:10:33.549["ISup_G:"]
+2020.04.22 13:10:33.549["ISupDisabled.GlobalStatus"]
+2020.04.22 13:11:56.980["SURE"][1][4]
+2020.04.22 13:11:56.980["SURE"][1][4]
+2020.04.22 13:16:20.053["SURE"][1][4]
+2020.04.22 13:16:20.053["SURE"][1][4]
+2020.04.22 13:16:22.989["SURE"][1][4]
+2020.04.22 13:16:22.989["SURE"][1][4]
+2020.04.22 13:16:29.687["SURE"][1][4]
+2020.04.22 13:16:29.687["SURE"][1][4]
+2020.04.22 13:16:32.555["SURE"][1][4]
+2020.04.22 13:16:32.555["SURE"][1][4]

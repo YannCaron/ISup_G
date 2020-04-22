@@ -9,6 +9,17 @@ const char PATTERN_OR_BEGIN = '{';
 const char PATTERN_OR_END = '}';
 const char PATTERN_OR_SEPARATOR = ',';
 
+dyn_string patternSplit(string pattern, int sep)
+{
+	int pos = 0;
+	for (int i = 1; i <= sep; i++) {
+		pos = strpos(pattern, DP_SEPARATOR, pos);
+	}
+
+	return makeDynString(substr(pattern, 0, pos), substr(pattern, pos + 1));
+
+}
+
 string patternConcat(dyn_string patterns)
 {
 

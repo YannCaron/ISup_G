@@ -59,6 +59,7 @@ const string SGFWSYTEM_PARAMS_POSTFIX = ".Params";
 const string SGFWSYSTEM_ALARM_CLASS = ".Alarms.AlarmActive:_alert_hdl.._class";
 
 const string ORIGINAL_STIME  = ":_original.._stime";
+const string ORIGINAL_USERBIT_1 = ":_original.._userbit1";
 
 // XML
 const string XML_HB_SYSTEM_POSTFIX = ".Address.System";
