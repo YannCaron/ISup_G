@@ -1,0 +1,184 @@
+V 11
+1
+LANG:5 20 Disable confirmation
+PANEL,-1 -1 332 106 N "_3DFace" 3
+"$eventText"
+"$systemName"
+"$systemStatus"
+"main()
+{
+  panel_onLoad();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "const string systemName = $systemName;
+const string systemStatus = $systemStatus;
+const string eventText = $eventText;
+  
+void panel_onLoad() {
+  lbConfirm.text = \"Do you really want to enable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> ?\";
+}
+
+void btOk_onClick() {
+  
+	dpSet(systemName + systemStatus + DISABLED_POSTFIX, FALSE,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX, 0,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, FALSE,
+        systemName + systemStatus + ALARM_ACTIVE_POSTFIX, FALSE);
+  
+  PanelOffReturn(makeDynFloat(0), makeDynBool(TRUE));
+
+}
+
+void btNok_onClick() {
+
+  PanelOffReturn(makeDynFloat(0), makeDynBool(FALSE));
+
+}" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+2 0
+"Text1"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  2  0 3  "0.png" 13434828 E 12 12 48 48
+0 2 0 "0s" 0 0 0 64 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,19,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-170-100-100-*-*-iso8859-1|-19,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 0 
+LANG:1 0 
+2 1
+"lbConfirm"
+""
+1 28 20 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 77 20 323 36
+0 0 0 "0s" 0 0 0 193 0 0  200 20 1
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 35 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+13 4
+"btNok"
+""
+1 188.7 68 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 39 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  188 68 322 96
+
+T 
+3
+LANG:5 2 No
+LANG:1 6 Cancel
+LANG:0 9 Abbrechen
+"main()
+{
+  btNok_onClick();
+}
+" 0
+ E E E
+13 5
+"btOk"
+""
+1 7.400000000000006 68 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 68 142 96
+
+T 
+3
+LANG:5 3 Yes
+LANG:1 2 OK
+LANG:0 2 OK
+"main()
+{
+  btOk_onClick	();
+}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

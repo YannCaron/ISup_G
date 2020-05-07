@@ -353,10 +353,45 @@ void onClick()
 
 void onRightClick()
 {
-	dyn_string ds, df;
+  bool disabled;
+  string eventText;
+  dyn_string histories;
+  string params;
+ 	dyn_string ds, df;
   
-	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisabled.pnl\", \"Disabled confirmation\", 
-					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
+ 	dpGet(systemName + systemStatus + DISABLED_POSTFIX, disabled,
+        systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
+	      systemName + systemStatus + EVENT_HISTORIES_POSTFIX, histories,
+				systemName + systemStatus + PARAMS_POSTFIX, params);
+
+  // 2006.09.29 aj as soon as params are configured, histories are not considered at al
+ 	if(params != \"\") dpGet(systemName + params + \".Histories\", histories);
+ 	for(int i = 1; i <= dynlen(histories); i++) {
+		histories[i] = systemName + histories[i];
+	}
+
+  if(eventText == \"\") eventText = dpGetDescription(systemName + systemStatus);
+
+  if (disabled) {
+  	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmEnable.pnl\", \"Enable confirmation\", 
+  					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus, \"$eventText:\" + eventText), df, ds);
+  } else {
+  	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disable confirmation\", 
+  					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus, \"$eventText:\" + eventText), df, ds);
+  } 
+ 
+ 	if(ds[1] == \"true\") { // button ok 
+    string clientName = getHostname();
+    string verb = disabled ? \"enabled\" : \"disabled\";
+  
+   	if(dynlen(histories) >= 1) {
+      // local history
+  		sgHistoryAddEvent(histories, disabled ? SEVERITY_ENABLE : SEVERITY_DISABLE, eventText + \" \" + verb + \" by Client: \" + clientName);			
+    }	else {
+      // system history
+  		sgHistoryAddEvent(systemName + SYSTEM_HISTORY, SEVERITY_SYSTEM, \"Client: \" + clientName + \" \" + verb + \" \" + eventText + \" (\" + systemName + systemStatus + \")\");			
+  	}
+  }
   
   return;  
   
@@ -365,8 +400,6 @@ void onRightClick()
 	string message;
 	dyn_string ds;
 	dyn_string df;
-	string s;
-	string s2;
 	string status;
 	string eventText;
 	dyn_string histories;
@@ -417,13 +450,13 @@ void onRightClick()
 		dpSet(systemName + systemStatus + DISABLED_POSTFIX, !disabled);
 		if(!disabled)
 		{
-			s = systemName + systemStatus + ALARM_ACTIVE_POSTFIX;
-			dpSet(s, false);
+			dpSet(systemName + systemStatus + ALARM_ACTIVE_POSTFIX, false);
+			dpSet(systemName + systemStatus + DISABLED_TIME_POSTFIX, 0);
+			dpSet(systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, false);
+      //DISABLED_TIME_POSTFIX
 		}
 		// reset / recreate alarms by reading and rewriting status
-		s = systemName + systemStatus + STATUS_POSTFIX;
-		
-		dpGet(s, status);
+		dpGet(systemName + systemStatus + STATUS_POSTFIX, status);
 		
 		if(historiesPresent) // save in his histories queue
 		{

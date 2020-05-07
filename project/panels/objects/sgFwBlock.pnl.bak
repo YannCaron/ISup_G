@@ -353,10 +353,124 @@ void onClick()
 
 void onRightClick()
 {
-	dyn_string ds, df;
+  bool disabled;
+  string eventText;
+  dyn_string histories;
+  string params;
+ 	dyn_string ds, df;
   
-	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisabled.pnl\", \"Disabled confirmation\", 
-					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
+ 	dpGet(systemName + systemStatus + DISABLED_POSTFIX, disabled,
+        systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
+	      systemName + systemStatus + EVENT_HISTORIES_POSTFIX, histories,
+				systemName + systemStatus + PARAMS_POSTFIX, params);
+
+  // 2006.09.29 aj as soon as params are configured, histories are not considered at al
+ 	if(params != \"\") dpGet(systemName + params + \".Histories\", histories);
+ 	for(int i = 1; i <= dynlen(histories); i++) {
+		histories[i] = systemName + histories[i];
+	}
+
+  if(eventText == \"\") eventText = dpGetDescription(systemName + systemStatus);
+
+  if (disabled) {
+  	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmEnable.pnl\", \"Enable confirmation\", 
+  					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
+  } else {
+  	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disable confirmation\", 
+  					makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
+  } 
+ 
+ 	if(ds[1] == \"true\") { // button ok 
+    string clientName = getHostname();
+    string verb = disabled ? \"enabled\" : \"disabled\";
+  
+   	if(dynlen(histories) >= 1) {
+      // local history
+  		sgHistoryAddEvent(histories, disabled ? SEVERITY_ENABLE : SEVERITY_DISABLE, eventText + \" \" + verb + \" by Client: \" + clientName);			
+    }	else {
+      // system history
+  		sgHistoryAddEvent(systemName + SYSTEM_HISTORY, SEVERITY_SYSTEM, \"Client: \" + clientName + \" \" + verb + \" \" + eventText + \" (\" + systemName + systemStatus + \")\");			
+  	}
+  }
+  
+  return;  
+  
+// On the right Click, we can disable the component
+	bool disabled;
+	string message;
+	dyn_string ds;
+	dyn_string df;
+	string status;
+	string eventText;
+	dyn_string histories;
+	string params;
+	bool historiesPresent;
+	string clientName;
+	
+// Get the disabled/enabled	point and the event text
+	dpGet(systemName + systemStatus + DISABLED_POSTFIX, disabled,
+	      systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
+	      systemName + systemStatus + EVENT_HISTORIES_POSTFIX, histories,
+				systemName + systemStatus + PARAMS_POSTFIX, params);
+
+	if(eventText == \"\")
+		eventText = description;
+
+// message for confirmation window; if the point is disabled -> \"enable\" if the point is enabled -> \"disable\"
+	if(disabled)
+		message = \"enable\";
+	else
+		message = \"disable\";
+	
+	clientName = getHostname();
+
+	// treat if configured with params
+	// 2006.09.29 aj as soon as params are configured, histories are not considered at al
+	// same functionality as framework!!
+	//	if(dynlen(histories) < 1 && params != \"\")
+	if(params != \"\")
+		dpGet(systemName + params + \".Histories\", histories);
+	
+	if(dynlen(histories) >= 1)
+	{
+		for(int i = 1; i <= dynlen(histories); i++)
+		{
+			histories[i] = systemName + histories[i];
+		}
+		historiesPresent = true;
+	}
+	else // case where no histories
+		historiesPresent = false;
+
+	ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmWindow.pnl\", \"Confirmation\", 
+					makeDynString(\"$1:Do you really want to \" + message + \" the point: \"+ \"\\n\" + \"<<\" + eventText + \">> ?\", \"$2:Yes\", \"$3:No\"), df, ds);
+		
+	if(ds[1] == \"true\")  // button ok
+	{
+		dpSet(systemName + systemStatus + DISABLED_POSTFIX, !disabled);
+		if(!disabled)
+		{
+			dpSet(systemName + systemStatus + ALARM_ACTIVE_POSTFIX, false);
+			dpSet(systemName + systemStatus + DISABLED_TIME_POSTFIX, 0);
+			dpSet(systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, false);
+      //DISABLED_TIME_POSTFIX
+		}
+		// reset / recreate alarms by reading and rewriting status
+		dpGet(systemName + systemStatus + STATUS_POSTFIX, status);
+		
+		if(historiesPresent) // save in his histories queue
+		{
+			if(disabled)
+				sgHistoryAddEvent(histories, SEVERITY_ENABLE, eventText + \" \" + message + \"d by Client: \" + clientName);			
+			else
+				sgHistoryAddEvent(histories, SEVERITY_DISABLE, eventText + \" \" + message + \"d by Client: \" + clientName);			
+		}
+		else // no histories configured, saved in system history
+		{
+			sgHistoryAddEvent(systemName + SYSTEM_HISTORY, SEVERITY_SYSTEM, \"Client: \" + clientName + \" \" + message + \"d \" + eventText + 
+											\" (\" + systemName + systemStatus + \")\");			
+		}
+	}
 }
 
 void connectSystemDP()
@@ -506,6 +620,7 @@ void initSystemName()
 		systemName = getSystemName();
 	}
 }
+
 
 " 0
  2

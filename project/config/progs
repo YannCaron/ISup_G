@@ -23,4 +23,4 @@ PVSS00ctrl       | manual |      30 |       99 |        1 |-num 8 ServiceLaunche
 PVSS00ctrl       | manual |      30 |       99 |        1 |-num 9 ServiceLauncher.ctl net WMIDriver.exe -a 5 -c wmidriver.config-dev.xml -l wmidriver.log4net.properties
 PVSS00ctrl       | manual |      30 |       99 |        1 |-num 10 ServiceLauncher.ctl jar DriverService.jar -a 6 -c snmp-get.config.xml -l snmp-get.log4j.properties
 PVSS00ui         | manual |      30 |       99 |        1 |-iconBar -menuBar -p sgBasePanel.pnl -m vision:ISup_1,1280x1024+0+0
-PVSS00ui         | always |      30 |       99 |        1 |-m gedi -extend
+PVSS00ui         | manual |      30 |       99 |        1 |-m gedi -extend

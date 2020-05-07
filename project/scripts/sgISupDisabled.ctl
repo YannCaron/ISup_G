@@ -1,15 +1,21 @@
+#uses "sgFwConstantsLib.ctl"
+
 private const string DISABLED_QUERY = "SELECT '_original.._value' FROM '*.**.Disabled' WHERE ('_original.._value' == 1)";
-private const string DISABLED_STATUS_DP = "ISupDisabled.GlobalStatus";
+private string DISABLED_STATUS_DP = "ISupDisabled.GlobalStatus.PreStatus";
 private const int DELAY = 10;
 
 private bool running = false;
 
 void checkDisabled() {
+
 	dyn_dyn_anytype disabledData, data;
 
 	dpQuery(DISABLED_QUERY, disabledData);
 
-	if (dynlen(disabledData) < 2) return;
+	if (dynlen(disabledData) < 2) {
+		dpSet(DISABLED_STATUS_DP, OPS_STATUS);
+		return;
+	}
 
 	string from = "{";  
 
@@ -26,7 +32,6 @@ void checkDisabled() {
 	// get all disabled system that timed out
 	string query = "SELECT '_original.._value', '_online.._userbyte1' FROM '" + from + "' WHERE ('_original.._value' > 0 AND '_original.._value' <= " + period(getCurrentTime()) + ")";
 
-	dyn_dyn_anytype data;
 	dpQuery(query, data);
 
 	// get if alarm must be raised
@@ -36,12 +41,12 @@ void checkDisabled() {
 	}
 
 	if (hasNewDisabled) {
-		dpSet(DISABLED_STATUS_DP + PRE_STATUS_POSTFIX, U_S_STATUS);
+		dpSet(DISABLED_STATUS_DP, U_S_STATUS);
 		acknowledgeDisabled(data);
-	} else if (dynlen(data) >= 2) {
-		dpSet(DISABLED_STATUS_DP + PRE_STATUS_POSTFIX, DEG_STATUS);
+	} else if (dynlen(data) < 2) {
+		dpSet(DISABLED_STATUS_DP, OPS_STATUS);
 	} else {
-		dpSet(DISABLED_STATUS_DP + PRE_STATUS_POSTFIX, OPS_STATUS);
+		dpSet(DISABLED_STATUS_DP, DEG_STATUS);
 	}
 
 }
@@ -59,11 +64,9 @@ void acknowledgeDisabled(dyn_dyn_anytype data) {
 
 	dpSet(dpNames, values);
 
-	DebugTN(dpNames);
-
 }
 
-void thread() {
+void disabledThread() {
 	running = true;
 
 	while(running) {
@@ -76,5 +79,5 @@ void thread() {
 }
 
 main() {
-	startThread("thread");
+	startThread("disabledThread");
 }
