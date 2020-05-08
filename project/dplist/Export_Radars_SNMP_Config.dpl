@@ -1,9 +1,0 @@
-
-# DpValue
-ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
-_1_SNMPAgent_30.Access.Port	_SNMPAgent	8042	0x200101	31.08.2018 12:09:18.369
-_1_SNMPAgent_31.Access.Port	_SNMPAgent	8053	0x200101	31.08.2018 12:09:30.561
-_1_SNMPAgent_32.Access.Port	_SNMPAgent	8062	0x200101	31.08.2018 12:09:52.299
-_1_SNMPAgent_33.Access.Port	_SNMPAgent	8073	0x200101	31.08.2018 12:10:00.564
-_1_SNMPAgent_34.Access.Port	_SNMPAgent	8082	0x300101	31.08.2018 12:10:07.342
-_1_SNMPAgent_35.Access.Port	_SNMPAgent	8093	0x200101	31.08.2018 12:10:25.264

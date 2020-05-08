@@ -1,0 +1,404 @@
+V 11
+2
+LANG:5 4 Root
+LANG:1 4 Root
+PANEL,-1 -1 1110 860 N "_3DFace" 0
+E E E E E 1 -1 -1 0  10 10
+""0  1
+E "private const string TOP_MENU_ENTRY = \"ISup\";
+private const int NBCOLUMNS = 3;
+private const int LEFT = 85;
+private const int TOP = 125;
+private const int STEP_WIDTH = 350;
+private const int STEP_HEIGHT = 43;
+private const float BLOCK_WIDTH = 0.6;
+private const float BLOCK_HEIGHT = 0.17;
+
+/*
+string extractSystemName(string raw) {
+  int begin = strpos(raw, \":\") + 1;
+  int end = strpos(raw, \".\");
+  return substr(raw, begin, end - begin);
+}
+*/
+
+void component_loaded() {
+  // TODO
+// 	 dyn_dyn_anytype data;
+//   dpQuery(\"SELECT '_original.._value' FROM '**.MenuEntry.{Group,Name,Panel,Params,Hidden,Separator,GlobalStatusPoint}'\", data);
+// 	 DebugTN(data);
+//    
+//    for (int i = 2; i <= dynlen(data); i++) { 
+//     DebugTN(\"Group: \" + data[i][1]);  
+//     DebugTN(\"Name: \" + data[i][2]);  
+//       }        
+  
+  // menu  
+  dyn_string menuEntries = getPointsOfType(\"sgFwMenuEntry\");
+  int pos = 0;
+  DebugTN(\"menuEntries: \"+ menuEntries);
+
+  
+  for (int i = 1; i <= dynlen(menuEntries); i++) {
+    string menuEntry = menuEntries[i];
+    string dpIdent = dpParent(menuEntry);
+    string name, group, panel, params, globalStatusPoint;
+    bool isHidden, separator;
+    
+    dpGet(menuEntry + \".Group\", group,
+          menuEntry + \".Name\", name,
+          menuEntry + \".Panel\", panel,
+          menuEntry + \".Params\", params,
+          menuEntry + \".Hidden\", isHidden,
+          menuEntry + \".Separator\", separator,
+          menuEntry + \".GlobalStatusPoint\", globalStatusPoint);
+    
+    if (globalStatusPoint == \"\") globalStatusPoint = name + \".GlobalStatus\";
+    
+    if (!isHidden && dpIdent != TOP_MENU_ENTRY) {
+	    if (name == \"\") {
+	      DebugTN(\"Menu entry not configured for [\" + menuEntry + \"]!\");
+	    } else {
+        int x = pos % NBCOLUMNS;
+        int y = pos / NBCOLUMNS;
+        addSymbol(myModuleName(), myPanelName(), \"objects/sgFwBlock.pnl\", \"System\" + pos, 
+                  makeDynString(
+                      \"$LabelsNum:0\",
+                      \"$PanelName:\" + panel, 
+                      \"$PanelParams:\" + params,
+                      \"$SystemName:\",
+                      \"$SystemStatus:\" + globalStatusPoint),
+                  LEFT + x * STEP_WIDTH,
+                  TOP + y * STEP_HEIGHT, 
+                  0, BLOCK_WIDTH, BLOCK_HEIGHT);
+
+        pos++;
+	    }
+	  }
+  }  
+
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+1
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 6 Layer1
+2 0
+"PageLabel"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N {204,204,204} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:5 0 
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  1 E 12 12 1098 48
+1 2 0 "0s" 0 0 0 65 0 0  12 12 1
+2
+LANG:5 27 Tahoma,-1,29,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-260-100-100-*-*-iso8859-1|-29,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+0 2
+LANG:5 9 Top panel
+LANG:1 9 Top panel
+1 453 7 "" 46
+0
+1 456 57 "" 46
+0
+4 359
+"Line1"
+""
+1 493.7052631578948 117.892857142857 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+129 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  603 118 494 118
+4 360
+"Line2"
+""
+1 494.6947368421053 118.892857142857 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  603 119 495 119
+4 394
+"Line21"
+""
+1 330 725.2500000000001 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+164 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  440 725 330 725
+4 395
+"Line22"
+""
+1 331 726.2500000000001 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+165 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  440 726 331 726
+1 459 64 "" 46
+0
+4 413
+"Line3"
+""
+1 330 795.2500000000001 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+168 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  440 795 330 795
+4 414
+"Line4"
+""
+1 331 796.2500000000001 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+169 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  440 796 331 796
+4 425
+"Line7"
+""
+1 675 725.2500000000001 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+173 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  785 725 675 725
+4 426
+"Line8"
+""
+1 676 726.2500000000001 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+174 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  785 726 676 726
+1 462 67 "" 46
+0
+4 432
+"Line5"
+""
+1 680 795.2500000000001 E E E 1 E 1 E N "_ButtonShadow" E N "_Transparent" E E
+ E E
+176 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  790 795 680 795
+4 433
+"Line6"
+""
+1 681 796.2500000000001 E E E 1 E 1 E N {255,255,255} E N "_Transparent" E E
+ E E
+177 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E  790 796 681 796
+1 465 77 "" 46
+0
+1 468 83 "" 46
+0
+2 452
+"Text2"
+""
+1 25 125 E E E 1 E 0 E N "_WindowText" E N {255,0,0} E E
+ E E
+184 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+"main() {
+  this.visible = false;
+  component_loaded();
+}
+" 0
+ E 0 1 1 0 1 E U  1 E 27 127 260 143
+0 2 0 "0s" 0 0 0 192 0 0  27 127 1
+1
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+0 1
+LANG:5 40 code to create the sgfwblocks at runtime
+1 471 84 "" 46
+0
+0
+LAYER, 1 
+1
+LANG:5 6 Layer2
+1 454 7 "" 51
+0
+1 455 7 "" 52
+0
+1 457 57 "" 51
+0
+1 458 57 "" 52
+0
+1 460 64 "" 51
+0
+1 461 64 "" 52
+0
+1 463 67 "" 51
+0
+1 464 67 "" 52
+0
+1 466 77 "" 51
+0
+1 467 77 "" 52
+0
+1 469 83 "" 51
+0
+1 470 83 "" 52
+0
+1 472 84 "" 51
+0
+1 473 84 "" 52
+0
+0
+LAYER, 2 
+1
+LANG:5 6 Layer3
+0
+LAYER, 3 
+1
+LANG:5 6 Layer4
+0
+LAYER, 4 
+1
+LANG:5 6 Layer5
+0
+LAYER, 5 
+1
+LANG:5 6 Layer6
+0
+LAYER, 6 
+1
+LANG:5 6 Layer7
+0
+LAYER, 7 
+1
+LANG:5 6 Layer8
+0
+3 7 "Group8" -1
+"objects\\sgFwBlock.pnl" 370 200 T 6 0.625 0 0.25 48.75 10
+5
+"$LabelsNum""0"
+"$PanelName""ISup_G_MainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISup.GlobalStatus"
+3 57 "Group64" -1
+"objects\\sgFwBlock.pnl" 105 470 T 118 0.625 0 0.25 364.375 687.5
+5
+"$LabelsNum""1"
+"$PanelName""Navir_S_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_S:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 64 "Group24" -1
+"objects\\sgFwBlock.pnl" 90 760 T 165 0.625 0 0.25 193.75 545
+5
+"$LabelsNum""1"
+"$PanelName""EMSup_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""EMSup_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 67 "Group20" -1
+"objects\\sgFwBlock.pnl" 770 670 T 174 0.625 0 0.25 -391.25 637.5
+5
+"$LabelsNum""1"
+"$PanelName""Navir_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 77 "PANEL_REF78" -1
+"objects\\sgFwBlock.pnl" 105 470 T 181 0.625 0 0.25 714.375 687.5
+5
+"$LabelsNum""1"
+"$PanelName""Navir_P_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Navir_P:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 83 "PANEL_REF83" -1
+"objects\\sgFwBlock.pnl" 770 760 T 183 0.625 0 0.25 128.75 545
+5
+"$LabelsNum""1"
+"$PanelName""Infra_G_RootPanel.pnl"
+"$PanelParams"""
+"$SystemName""Infra_G:"
+"$SystemStatus""SystemStatus.GlobalStatus"
+3 84 "PANEL_REF84" -1
+"objects\\sgFwBlock.pnl" 370 200 T 185 0.625 0 0.25 328.75 10
+5
+"$LabelsNum""0"
+"$PanelName""ADMIN\\sgDisabledMainPanel.pnl"
+"$PanelParams"""
+"$SystemName"""
+"$SystemStatus""ISupDisabled.GlobalStatus"
+0

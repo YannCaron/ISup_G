@@ -2,7 +2,7 @@
 
 private const string DISABLED_QUERY = "SELECT '_original.._value' FROM '*.**.Disabled' WHERE ('_original.._value' == 1)";
 private string DISABLED_STATUS_DP = "ISupDisabled.GlobalStatus.PreStatus";
-private const int DELAY = 10;
+private const int DELAY = 10; // 60;
 
 private bool running = false;
 

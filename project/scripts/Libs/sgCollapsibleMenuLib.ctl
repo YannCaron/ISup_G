@@ -23,7 +23,7 @@ void collapsibleMenu_panel_initialize() {
           menuEntry + ".Separator", separator,
           menuEntry + ".GlobalStatusPoint", globalStatusPoint);
     
-    if (!isHidden) {
+    if (!isHidden || group == "") {
 	    if (name == "") {
 	      DebugTN("Menu entry not configured for [" + menuEntry + "]!");
 	    } else {
