@@ -11,7 +11,7 @@ PANEL,-1 -1 1090 710 N "_3DFace" 1
   
   if ($TimeoutMode == TRUE) {
     cbAll.visible = false;
-    dpConnect(\"disabledStatusChanged\", false, \"ISupDisabled.GlobalStatus.Status\");
+    dpConnect(\"disabledStatusChanged\", false, \"SystemStatus.GlobalStatus.Status\", \"ISupDisabled.GlobalStatus.Status\");
   }
 	
 }" 0
