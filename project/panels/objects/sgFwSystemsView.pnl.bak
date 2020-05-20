@@ -96,9 +96,14 @@ void terminateProgress()
 }
 
 // ******* PROPERTIES ******
+bool getLTDVue()
+{
+	return rbLevel.number == 1;
+}
+
 bool getAllVue()
 {
-	return cbAll.state(0);
+	return rbLevel.number == 2;
 }
 
 string getDist()
@@ -112,7 +117,7 @@ void disableCommand()
 {
 	cbDistribution.enabled = false;
 	cbSystem.enabled = false;
-	cbAll.enabled = false;
+	rbLevel.enabled = false;
 	btLoad.enabled = false;
 }
 
@@ -120,7 +125,7 @@ void enableCommand()
 {
 	cbDistribution.enabled = true;
 	cbSystem.enabled = true;
-	cbAll.enabled = true;
+	rbLevel.enabled = true;
 	btLoad.enabled = true;
 }
 
@@ -287,6 +292,7 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	// variable
 	dyn_dyn_string logicInputsValues, notLogicInputsValues;
 	dyn_bool disabledValues, subDisabledValues;
+  dyn_time disabledTimes;
 	dyn_string dpes;
 
 	// get dpes of sub systems from pattern
@@ -301,6 +307,7 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	dpGet(dpAppend(dpes, LOGIC_INPUTS_POSTFIX), logicInputsValues,
 				dpAppend(dpes, NOTLOGIC_INPUTS_POSTFIX), notLogicInputsValues,
  				dpAppend(dpes, DISABLED_POSTFIX), disabledValues,
+ 				dpAppend(dpes, DISABLED_TIME_POSTFIX), disabledTimes,
 				dpAppend(dpes, SUB_DISABLED_POSTFIX), subDisabledValues);
 
         //DebugTN(logicInputsValues,\"------------------\");
@@ -311,9 +318,10 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	// loop on data point elements
 	for (int i=1; i<=dynlen(dpes); i++)
 	{
+    bool isLTD = (disabledTimes[i] == 0);
 
 		// verify that sub system as sub systems
-		if ((disabledValues[i] || subDisabledValues[i]) || getAllVue())
+		if ((disabledValues[i] && !isLTD) || subDisabledValues[i] || getAllVue())
 		{
 			appendList(dpes[i], depth);
 		}
@@ -485,7 +493,6 @@ void clearTable()
 }
 
 void disabledStatusChanged(string db, string value) {
-  DebugTN(\"vue all\", getAllVue());
   if (!getAllVue()) {
     load();
   }
@@ -680,37 +687,6 @@ LANG:5 2 #1
 LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
 0 0 1 1 0 7
 1 0
-20 4
-"cbAll"
-""
-1 380 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
- E E
-3 0 0 0 0 0
-E E E
-0
-1
-LANG:5 0 
-
-0
-1
-LANG:5 27 Tahoma,-1,16,5,40,0,0,0,0,0
-0  378 8 572 32
-1
-T 
-1
-LANG:5 20 Show enabled systems
-
-0 
-1
-LANG:5 0 
-E E
-0 0 0 0 0
-1
-E E
-E"main(int button, bool state)
-{
-	load();
-}" 0
 13 9
 "btLoad"
 ""
@@ -810,6 +786,56 @@ main()
 
 E
  0 0
+19 12
+"rbLevel"
+""
+1 370 10 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 30 Chose the disabled filter mode
+
+1
+"horizontal" ""
+1
+LANG:5 35 MS Shell Dlg 2,12,-1,5,50,0,0,0,0,0
+0  368 8 682 42
+3
+T 
+1
+LANG:5 13 Disabled only
+
+1 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+T 
+1
+LANG:5 14 With long term
+
+0 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+T 
+1
+LANG:5 3 All
+
+0 
+1
+LANG:5 0 
+E E
+0 0 0 0 0
+1
+E "main(int button)
+{
+  load();
+}" 0
+
 0
 LAYER, 1 
 1

@@ -2139,3 +2139,17 @@ PVSS00pmon   (1), 2020.05.20 14:48:19.061, SYS,  INFO,       11/pmon, Detected s
 PVSS00pmon   (1), 2020.05.20 14:48:19.079, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
 PVSS00pmon   (1), 2020.05.20 15:00:44.694, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
 PVSS00pmon   (1), 2020.05.20 15:00:44.724, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 15:28:21.210, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 15:28:21.226, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 15:41:32.073, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00data(0) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.075, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00event(0) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.077, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00ctrl(1) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.079, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00ctrl(2) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.081, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00ctrl(3) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.082, SYS,  WARNING,    36/pmon, Blocking Manager PVSS00ctrl(4) detected. No heartbeat since 30 seconds.
+PVSS00pmon   (1), 2020.05.20 15:41:32.087, SYS,  WARNING,    39/pmon, Manager PVSS00data(0) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 15:41:32.088, SYS,  WARNING,    39/pmon, Manager PVSS00event(0) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 15:41:32.371, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(2) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 15:41:32.372, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(3) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 15:41:32.374, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(4) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 15:41:32.678, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(1) is no longer blocking.
