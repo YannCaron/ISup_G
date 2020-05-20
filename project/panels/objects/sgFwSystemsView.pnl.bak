@@ -1,18 +1,14 @@
 V 11
 1
 LANG:5 15 sgFwSystemsView
-PANEL,-1 -1 1090 710 N "_3DFace" 1
-"$TimeoutMode"
+PANEL,-1 -1 1090 710 N "_3DFace" 0
 "main()
 {
 
 	tblUnactive.tableMode	(TABLE_SELECT_BROWSE);
 	tblUnactive.selectByClick(TABLE_SELECT_LINE);
   
-  if ($TimeoutMode == TRUE) {
-    cbAll.visible = false;
-    dpConnect(\"disabledStatusChanged\", false, \"SystemStatus.GlobalStatus.Status\", \"ISupDisabled.GlobalStatus.Status\");
-  }
+  dpConnect(\"disabledStatusChanged\", false, \"SystemStatus.GlobalStatus.Status\", \"ISupDisabled.GlobalStatus.Status\");
 	
 }" 0
  E E E E 1 -1 -1 0  10 10
@@ -489,7 +485,10 @@ void clearTable()
 }
 
 void disabledStatusChanged(string db, string value) {
-  load();
+  DebugTN(\"vue all\", getAllVue());
+  if (!getAllVue()) {
+    load();
+  }
 }
 
 void load() 

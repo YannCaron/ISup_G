@@ -485,7 +485,9 @@ void clearTable()
 }
 
 void disabledStatusChanged(string db, string value) {
-  load();
+  if (!getAllVue()) {
+    load();
+  }
 }
 
 void load() 

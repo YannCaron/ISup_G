@@ -96,6 +96,7 @@ void updateBlock(string fwOkDpName, int fwOkValue,
 
 	if(!componentHidden)
 	{
+    const bool isLongTerm = (disabledTime == 0);
 		wasHidden = false;
 	
 	// Write Component Text value
@@ -116,8 +117,8 @@ void updateBlock(string fwOkDpName, int fwOkValue,
         if ( (fabs($LabelsNum) > 3) && (h > 100) ) setValue(\"LT4\"  + x + y + \".LabelText\",\"visible\",true);
 		//LabelsText.visible = true;
 
-        	DecorationStatus.visible = true;
-        	CommentCorner.visible = true;
+    DecorationStatus.visible = true;
+    CommentCorner.visible = true;
 		Hatches.visible = true;
 	
 		if(fwOkValue == 0)
@@ -193,7 +194,7 @@ void updateBlock(string fwOkDpName, int fwOkValue,
 		}// test framework ok
 	
 	// disable / subdisabled management
-	setHatches(isDisabled, isSubDisabled); // Enable/Disable option is available if FW failed too!
+	setHatches(isDisabled, isSubDisabled, isLongTerm); // Enable/Disable option is available if FW failed too!
 	}
 	else  // case block hidden
 	{
@@ -270,19 +271,24 @@ void setComponentsColor(string statusColor, string commentText)
 	DecorationStatus.backCol = statusColor;
 	
 	if(commentText == \"\")
-		CommentCorner.backCol = statusColor;
+		CommentCorner.backCol = \"_Transparent\";
 	else
 		CommentCorner.backCol = \"{0,0,0}\";
 }
 
 
-void setHatches(bool isDisabled, bool isSubDisabled)
+void setHatches(bool isDisabled, bool isSubDisabled, bool isLongTerm)
 {
-	if(isDisabled)
+	if(isDisabled && !isLongTerm)
 	{
 		Hatches.backCol = \"{0,0,0}\";
 		setValue(\"Hatches\", \"fill\", \"[hatch,[cross,5,left]]\");
 	}
+  else if (isDisabled) 
+  {
+		Hatches.backCol = \"{240,240,240,184}\";
+		setValue(\"Hatches\", \"fill\", \"[solid]\");
+  }
 	else if(isSubDisabled)
 	{
 		Hatches.backCol = \"{0,0,0}\";
@@ -497,7 +503,7 @@ void checkSystemConnection(	string connDpNameA, dyn_string manNumsA, string conn
 
 			
 		// like disabled as there can't be an alarm
-		setHatches(1,0);
+		setHatches(true, false, false);
 	
 		setComponentsColor(\"sgStdUKNColor\", \"\");	
 	}
