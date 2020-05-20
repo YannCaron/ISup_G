@@ -12278,3 +12278,374 @@ PVSS00event  (0), 2020.05.20 10:36:12.472, PARAM,WARNING,    41, DP element is i
 PVSS00event  (0), 2020.05.20 10:36:12.472, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
 PVSS00event  (0), 2020.05.20 10:36:12.474, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
 PVSS00event  (0), 2020.05.20 10:36:12.474, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ui     (2), 2020.05.20 10:40:03.675, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (2), 2020.05.20 10:40:03.676, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.05.20 10:40:03.678, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:40:03.679, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 10:40:03.676, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:40:04.678, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:40:04.754, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 10:40:06.512, SYS,  INFO,       24/pmon, Got START command from ::1, starting the manager PVSS00ui(2) at index 20
+PVSS00pmon   (1), 2020.05.20 10:40:06.660, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.05.20 10:40:06.746, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.05.20 10:40:15.789, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.05.20 10:40:15.814, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.05.20 10:40:15.839, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.05.20 10:40:15.877, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 2 CONN: 1) initialised
+PVSS00ui     (2), 2020.05.20 10:40:15.904, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (2), 2020.05.20 10:40:15.909, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (2), 2020.05.20 10:40:15.922, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.05.20 10:40:15.945, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (2), 2020.05.20 10:40:15.949, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (2), 2020.05.20 10:40:15.954, SYS,  INFO,      103, User names/passwords initialized
+PVSS00ui     (2), 2020.05.20 10:40:24.277, CTRL, WARNING,    54, Unexpected state, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    Library: C:\Siemens\Automation\WinCC_OA\3.10\scripts\libs\panel.ctl
+    Line: 551, getPanelSize, Cannot open file 
+
+D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmEnable.pnl
+
+
+PVSS00ui     (2), 2020.05.20 10:40:24.278, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:40:24.278, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    Library: C:\Siemens\Automation\WinCC_OA\3.10\scripts\libs\panel.ctl
+    Line: 563, di, 2
+	Stacktrace:
+	     1: ChildPanelOnCentralModal(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", dyn_string Parameter = ({ 3 items })) at panel.ctl:563
+	     2: ChildPanelReturnValue(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", string ParentName = "", string ModuleName = "", dyn_string Parameter = ({ 3 items }), int x = 0, int y = 0, dyn_float & resultFloat = ({ 0 items }), dyn_string & resultText = ({ 0 items }), int typ = 10) at panel.ctl:886
+	     3: ChildPanelOnCentralModalReturn(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", dyn_string Parameter = ({ 3 items }), dyn_float & resultFloat = ({ 0 items }), dyn_string & resultText = ({ 0 items })) at panel.ctl:578
+	     4: onRightClick() at :316
+	     5: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:40:25.520, CTRL, WARNING,    54, Unexpected state, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    Library: C:\Siemens\Automation\WinCC_OA\3.10\scripts\libs\panel.ctl
+    Line: 551, getPanelSize, Cannot open file 
+
+D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmEnable.pnl
+
+
+PVSS00ui     (2), 2020.05.20 10:40:25.521, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:40:25.521, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    Library: C:\Siemens\Automation\WinCC_OA\3.10\scripts\libs\panel.ctl
+    Line: 563, di, 2
+	Stacktrace:
+	     1: ChildPanelOnCentralModal(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", dyn_string Parameter = ({ 3 items })) at panel.ctl:563
+	     2: ChildPanelReturnValue(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", string ParentName = "", string ModuleName = "", dyn_string Parameter = ({ 3 items }), int x = 0, int y = 0, dyn_float & resultFloat = ({ 0 items }), dyn_string & resultText = ({ 0 items }), int typ = 10) at panel.ctl:886
+	     3: ChildPanelOnCentralModalReturn(string FileName = "sgFw/sgFwC ...", string PanelName = "Enable con ...", dyn_string Parameter = ({ 3 items }), dyn_float & resultFloat = ({ 0 items }), dyn_string & resultText = ({ 0 items })) at panel.ctl:578
+	     4: onRightClick() at :316
+	     5: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:44:50.337, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (2), 2020.05.20 10:44:50.337, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00data   (0), 2020.05.20 10:44:50.337, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 10:44:50.337, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:44:50.337, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:44:51.338, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 10:44:51.396, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 10:44:53.932, SYS,  INFO,       29/pmon, Got PROP_PUT command from ::1, changing manager PVSS00ui(1) at index 20
+PVSS00pmon   (1), 2020.05.20 10:44:53.932, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 10:44:53.947, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.05.20 10:44:54.030, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.05.20 10:45:03.071, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.05.20 10:45:03.083, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.05.20 10:45:03.108, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.05.20 10:45:03.150, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 2 CONN: 1) initialised
+PVSS00ui     (2), 2020.05.20 10:45:03.178, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (2), 2020.05.20 10:45:03.182, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (2), 2020.05.20 10:45:03.195, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.05.20 10:45:03.217, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (2), 2020.05.20 10:45:03.230, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (2), 2020.05.20 10:45:03.240, SYS,  INFO,      103, User names/passwords initialized
+PVSS00ui     (2), 2020.05.20 10:45:06.392, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_6
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:06.393, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_6
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:06.393, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_6
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:08.070, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:45:08.070, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ISup_G_MainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 148 named: "Group75"
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwBlock.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwBlock.pnl]
+    Line: 318, ds, 1
+	Stacktrace:
+	     1: onRightClick() at :318
+	     2: main() at [Module: mainModule Panel: ISup_G_MainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:45:10.491, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_7
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:10.492, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_7
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:10.492, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_7
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00event  (0), 2020.05.20 10:45:14.223, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ui -num 2 CONN: 1)
+PVSS00event  (0), 2020.05.20 10:45:14.225, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ui     (2), 2020.05.20 10:45:18.090, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_8
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:18.091, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_8
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:18.092, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_8
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00event  (0), 2020.05.20 10:45:19.791, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ui -num 2 CONN: 1)
+PVSS00event  (0), 2020.05.20 10:45:19.793, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 10:45:19.794, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ui     (2), 2020.05.20 10:45:25.671, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_9
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:25.672, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_9
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:25.672, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_9
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:26.832, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:45:26.831, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 0 named: "tblUnactive" of type: TABLE
+
+    In reference: objects\sgFwSystemsView.pnl Group: 5 named: "panel_disabled"
+    Script: RightMousePressed
+    Line: 17, ds, 1
+	Stacktrace:
+	     1: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: tblUnactive Script: RightMousePressed]:17
+
+PVSS00ui     (2), 2020.05.20 10:45:27.930, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_10
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:27.931, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_10
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:27.932, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_10
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:29.190, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:45:29.190, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 0 named: "tblUnactive" of type: TABLE
+
+    In reference: objects\sgFwSystemsView.pnl Group: 5 named: "panel_disabled"
+    Script: RightMousePressed
+    Line: 17, ds, 1
+	Stacktrace:
+	     1: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: tblUnactive Script: RightMousePressed]:17
+
+PVSS00ui     (2), 2020.05.20 10:45:41.042, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_11
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:41.042, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_11
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:41.043, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $eventText. Location: 
+    Module: Vision_11
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\sgFw\sgFwConfirmDisable.pnl []
+    Script: ScopeLib
+    In panel scope library: sgFw\sgFwConfirmDisable.pnl []
+    Line: 8
+PVSS00ui     (2), 2020.05.20 10:45:42.567, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:45:42.567, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwBlock.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwBlock.pnl]
+    Line: 318, ds, 1
+	Stacktrace:
+	     1: onRightClick() at :318
+	     2: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:50:45.343, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:50:45.343, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwBlock.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwBlock.pnl]
+    Line: 318, ds, 1
+	Stacktrace:
+	     1: onRightClick() at :318
+	     2: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:50:50.932, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:50:50.932, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 6 named: "PANEL_REF245"
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwBlock.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwBlock.pnl]
+    Line: 318, ds, 1
+	Stacktrace:
+	     1: onRightClick() at :318
+	     2: main() at [Module: mainModule Panel: ADMIN\sgDisabledMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (2), 2020.05.20 10:50:59.978, CTRL, SEVERE,    176, Uncaught exception in thread started at main: 
+PVSS00ui     (2), 2020.05.20 10:50:59.978, CTRL, SEVERE,     79, Index out of range, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\sgCommon\panels\CPDLC\CPDLCMainPanel.pnl []
+    Object: 51 named: "Hatches" of type: RECTANGLE
+
+    In reference: objects\sgFwBlock.pnl Group: 89 named: "PANEL_REF89"
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwBlock.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwBlock.pnl]
+    Line: 318, ds, 1
+	Stacktrace:
+	     1: onRightClick() at :318
+	     2: main() at [Module: mainModule Panel: CPDLC\CPDLCMainPanel.pnl Object: Hatches Script: RightMousePressed]:3
+
+PVSS00ui     (1), 2020.05.20 10:55:32.559, CTRL, SEVERE,     17/ctrl, Cannot find dollar parameter $TimeoutMode. Location: 
+    Module: _QuickTest_
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl []
+    Script: Initialize
+    Line: 7
+PVSS00ui     (2), 2020.05.20 11:01:18.175, CTRL, WARNING,    13/uim, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgAdminMainPanel.pnl []
+    Object: 24 named: "btSave" of type: PUSH_BUTTON
+    Script: Clicked
+    Line: 21, In "cbDistribution()": Object "$3" does not exist
+PVSS00ui     (2), 2020.05.20 11:01:35.966, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (2), 2020.05.20 11:01:35.967, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:01:35.968, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 11:01:35.969, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 11:01:35.967, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 11:01:36.968, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 11:01:37.026, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 11:01:37.111, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(2) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 11:01:37.136, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.05.20 11:01:37.218, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.05.20 11:01:46.255, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.05.20 11:01:46.271, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.05.20 11:01:46.295, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.05.20 11:01:46.336, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 2 CONN: 1) initialised
+PVSS00ui     (2), 2020.05.20 11:01:46.364, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (2), 2020.05.20 11:01:46.368, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (2), 2020.05.20 11:01:46.380, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.05.20 11:01:46.402, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (2), 2020.05.20 11:01:46.418, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (2), 2020.05.20 11:01:46.421, SYS,  INFO,      103, User names/passwords initialized
+PVSS00event  (0), 2020.05.20 11:01:59.754, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:01:59.756, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:09.936, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:09.937, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:20.119, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:20.119, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:20.121, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:20.121, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:40.480, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:02:40.483, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:00.811, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:00.813, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:10.977, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:10.977, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:10.979, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:03:10.979, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:01.832, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:01.833, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:01.834, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:12.005, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:12.007, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:12.008, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.05.20 11:04:12.009, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ui     (2), 2020.05.20 11:05:15.194, CTRL, WARNING,    76, Invalid argument in function, 
+    Module: mainModule
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\ADMIN\sgDisabledMainPanel.pnl []
+    Object: 4 named: "cbAll" of type: CHECK_BOX
+
+    In reference: objects\sgFwSystemsView.pnl Group: 5 named: "panel_disabled"
+    Script: Clicked
+    In panel scope library: objects\sgFwSystemsView.pnl [D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl]
+    Line: 289, dpGet

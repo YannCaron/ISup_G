@@ -1,8 +1,7 @@
 V 11
 1
 LANG:5 20 Disable confirmation
-PANEL,-1 -1 332 363 N "_3DFace" 3
-"$eventText"
+PANEL,-1 -1 332 363 N "_3DFace" 2
 "$systemName"
 "$systemStatus"
 "main()
@@ -18,16 +17,23 @@ const int WEEK_PERIOD = 604800;
 
 const string systemName = $systemName;
 const string systemStatus = $systemStatus;
-const string eventText = $eventText;
+string eventText;
 
 bool changing = false;
   
 void panel_onLoad() {
-  lbConfirm.text = \"Please enable or disable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> ?\";
+  // get event text
+  dpGet(systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText);
+  if(eventText == \"\") eventText = dpGetDescription(systemName + systemStatus);
+
+  lbConfirm.text = \"Please enable or disable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> !\";
   
   time t = getCurrentTime();
   sbHour.text = hour(t);
   sbMinute.text = minute(t);
+  
+  cCalendar.selectedDate = t;
+  cCalendar.minimumDate = t;
 
 }
 

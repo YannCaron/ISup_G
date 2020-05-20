@@ -2082,3 +2082,10 @@ PVSS00pmon   (1), 2020.05.20 08:28:14.064, SYS,  INFO,       24/pmon, Got START 
 PVSS00pmon   (1), 2020.05.20 08:28:14.076, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 21 -m gedi -extend
 PVSS00pmon   (1), 2020.05.20 08:35:23.143, SYS,  INFO,       24/pmon, Got START command from ::1, starting the manager PVSS00ui(1) at index 20
 PVSS00pmon   (1), 2020.05.20 08:35:23.163, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 10:40:06.512, SYS,  INFO,       24/pmon, Got START command from ::1, starting the manager PVSS00ui(2) at index 20
+PVSS00pmon   (1), 2020.05.20 10:40:06.660, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 10:44:53.932, SYS,  INFO,       29/pmon, Got PROP_PUT command from ::1, changing manager PVSS00ui(1) at index 20
+PVSS00pmon   (1), 2020.05.20 10:44:53.932, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 10:44:53.947, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 11:01:37.111, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(2) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 11:01:37.136, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1

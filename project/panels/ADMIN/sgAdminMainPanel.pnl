@@ -4,8 +4,7 @@ LANG:5 8 (NoName)
 PANEL,-1 -1 1110 860 N "_3DFace" 0
 E E E E E 1 -1 -1 0  10 10
 ""0  1
-E "#uses \"sgDpPatternLib.ctl\"" 0
- 2
+E E 2
 "CBRef" "1"
 "EClose" E
 ""
@@ -36,24 +35,6 @@ LANG:1 117 -microsoft windows-Courier New-bold-r-normal-*-*-270-100-100-*-*-iso8
 0 2
 LANG:5 5 Admin
 LANG:1 4 AFPS
-30 1
-"Frame1"
-""
-1 10 780 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
- E E
-2 0 0 0 0 0
-E E E
-1
-1
-LANG:5 0 
-
-1
-"dashclr"N "_Transparent"
-E E 0 1 1 0 1 E U  0 E 10 60 1100 780
-1
-LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
-0 1
-LANG:5 16 Disabled systems
 30 25
 "Frame2"
 ""
@@ -67,29 +48,15 @@ LANG:5 0
 
 1
 "dashclr"N "_Transparent"
-E E 0 1 1 0 1 E U  0 E 10 790 1100 850
+E E 0 1 1 0 1 E 0.4866850321395775 0 4.237288135593221 285.1331496786042 -3047.457627118644 0 E 10 790 1100 850
 1
-LANG:5 26 Arial,-1,13,5,40,0,0,0,0,0
+LANG:5 26 Arial,14,-1,5,50,0,0,0,0,0
 0 1
 LANG:5 12 System Tools
-1 68 5 "" 2
-0
-1 69 5 "" 3
-0
-1 70 5 "" 0
-0
-1 71 5 "" 4
-0
-1 72 5 "" 9
-0
-1 73 5 "" 10
-0
-1 74 5 "" 11
-0
 2 40
 "tbBackup"
 ""
-1 310 815 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+1 618 348 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -103,8 +70,8 @@ LANG:5 0
 {
 	tbBackup.text = \"\";
 }" 0
- E 0 1 1 0 1 E U  0 E 312 817 478 843
-0 2 0 "0s" 0 0 0 64 0 0  312 817 1
+ E 0 1 1 0 1 E U  0 E 620 350 786 376
+0 2 0 "0s" 0 0 0 64 0 0  620 350 1
 1
 LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
 0 1
@@ -112,7 +79,7 @@ LANG:5 6 backup
 13 24
 "btSave"
 ""
-1 20 810 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 320 340 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 7 0 0 0 0 0
 E E E
@@ -123,7 +90,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
-0  18 808 292 842
+0  318 338 592 382
 
 T 
 1
@@ -172,7 +139,7 @@ main()
 13 42
 "TestSoundBtn"
 ""
-1 920 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+1 319.9999999999996 480 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
  E E
 12 0 0 0 0 0
 E E E
@@ -183,7 +150,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
-0  918 808 1092 842
+0  318 478 792 522
 
 T 
 1
@@ -224,7 +191,7 @@ LANG:5 10 Test Sound
 13 59
 "PUSH_BUTTON1"
 ""
-1 725 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+1 570 410 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -235,7 +202,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
-0  723 808 912 842
+0  568 408 792 452
 
 T 
 1
@@ -310,7 +277,7 @@ void setBtnLabel(string isNightModeDpName, bool isSMSMode)
 13 67
 "PUSH_BUTTON2"
 ""
-1 520 810 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
+1 320.0000000000001 410 E E E 1 E 0 E N "_ButtonText" E N "_Button" E E
  E E
 17 0 0 0 0 0
 E E E
@@ -321,7 +288,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,-1,16,5,69,0,0,0,0,0
-0  518 808 717 842
+0  318 408 547 452
 
 T 
 1
@@ -416,8 +383,5 @@ LANG:5 6 Layer7
 LAYER, 7 
 1
 LANG:5 6 Layer8
-0
-3 5 "" -1
-"objects\\sgFwSystemsView.pnl" 20 80 T 10 1 0 1 0 2.8421709430404e-014
 0
 0
