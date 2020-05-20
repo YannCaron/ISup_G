@@ -23,7 +23,7 @@ const string eventText = $eventText;
 bool changing = false;
   
 void panel_onLoad() {
-  lbConfirm.text = \"Do you really want to disable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> ?\";
+  lbConfirm.text = \"Please enable or disable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> ?\";
   
   time t = getCurrentTime();
   sbHour.text = hour(t);
@@ -82,7 +82,7 @@ sbMinute_onChanged() {
   resetCbTime();
 }
 
-void updateSystem(time disabledTime) {
+void disableSystem(time disabledTime) {
 	dpSet(systemName + systemStatus + DISABLED_POSTFIX, TRUE,
         systemName + systemStatus + DISABLED_TIME_POSTFIX, disabledTime,
         systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, false,
@@ -93,17 +93,25 @@ void updateSystem(time disabledTime) {
 void btOk_onClick() {
   
   int disabledTime = period(getTime());
-  updateSystem(disabledTime);
+  disableSystem(disabledTime);
   PanelOffReturn(makeDynFloat(0), makeDynBool(TRUE));
 
 }
 
 void btLimitless_onClick() {
-  updateSystem(0);
+  disableSystem(0);
   PanelOffReturn(makeDynFloat(0), makeDynBool(TRUE));
 }
 
+void enableSystem() {
+	dpSet(systemName + systemStatus + DISABLED_POSTFIX, FALSE,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX, 0,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, FALSE,
+        systemName + systemStatus + ALARM_ACTIVE_POSTFIX, FALSE);
+}
+
 void btNok_onClick() {
+  enableSystem();
   PanelOffReturn(makeDynFloat(0), makeDynBool(FALSE));
 }" 0
  2
@@ -183,7 +191,7 @@ LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859
 
 T 
 3
-LANG:5 2 No
+LANG:5 6 Enable
 LANG:1 6 Cancel
 LANG:0 9 Abbrechen
 "main()
@@ -214,7 +222,7 @@ LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859
 
 T 
 3
-LANG:5 3 Yes
+LANG:5 7 Disable
 LANG:1 2 OK
 LANG:0 2 OK
 "main()
@@ -299,7 +307,7 @@ LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
 E2 21
 "PRIMITIVE_TEXT1"
 ""
-1 13 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 142 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -309,16 +317,16 @@ LANG:5 0
 
 1
 "dashclr"N "_Transparent"
-E E 0 1 3 2 1 E U  0 E 13 285 51 301
-0 2 2 "0s" 0 0 0 192 0 0  13 285 1
+E E 0 1 3 2 1 E U  0 E 142 285 171 301
+0 2 2 "0s" 0 0 0 192 0 0  142 285 1
 1
 LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
 0 1
-LANG:5 5 Hours
+LANG:5 4 Time
 2 22
 "PRIMITIVE_TEXT2"
 ""
-1 203 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 249 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 25 0 0 0 0 0
 E E E
@@ -328,16 +336,16 @@ LANG:5 0
 
 1
 "dashclr"N "_Transparent"
-E E 0 1 3 2 1 E U  0 E 203 285 254 301
-0 2 2 "0s" 0 0 0 192 0 0  203 285 1
+E E 0 1 3 2 1 E U  0 E 249 285 254 301
+0 2 2 "0s" 0 0 0 192 0 0  249 285 1
 1
 LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
 0 1
-LANG:5 7 Minutes
+LANG:5 1 :
 21 23
 "sbHour"
 ""
-1 58 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 187 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 26 0 0 0 0 0
 E E E
@@ -348,7 +356,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
-0  56 278 120 312
+0  185 278 249 312
 0
 
 E
@@ -363,7 +371,7 @@ N 0 23 1 0 1 1
 21 24
 "sbMinute"
 ""
-1 258 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 259 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 27 0 0 0 0 0
 E E E
@@ -374,7 +382,7 @@ LANG:5 0
 0
 1
 LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
-0  256 278 320 312
+0  257 278 321 312
 0
 
 E

@@ -605,7 +605,7 @@ LANG:5 100 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 	tblUnactive.selectByClick(TABLE_SELECT_LINE);
 
-  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisabled.pnl\", \"Disabled confirmation\", 
+  ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disabled confirmation\", 
                                  makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
 
 	bool sure = ds[1];
