@@ -286,7 +286,7 @@ int appendSystems()
 
 }
 
-void appendSubSystems(string systemDP, int depth, string pattern)
+bool appendSubSystems(string systemDP, int depth, string pattern)
 {
 	
 	// variable
@@ -294,6 +294,9 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	dyn_bool disabledValues, subDisabledValues;
   dyn_time disabledTimes;
 	dyn_string dpes;
+  bool result = false;
+  bool hasChildren = false;
+  int count = 0;
 
 	// get dpes of sub systems from pattern
 	dpes = getPointsFromPattern(pattern);
@@ -321,18 +324,24 @@ void appendSubSystems(string systemDP, int depth, string pattern)
     bool isLTD = (disabledTimes[i] == 0);
 
 		// verify that sub system as sub systems
-		if ((disabledValues[i] && !isLTD) || subDisabledValues[i] || getAllVue())
+		if ((disabledValues[i] && (!isLTD || getLTDVue())) || subDisabledValues[i] || getAllVue())
 		{
 			appendList(dpes[i], depth);
+      result = true;
+      count++;
 		}
 	
 		// recursive
     // 20071015 aj only if subsystems exist!! added \"&& dynlen checks\" otherwise error message
 		if ( (subDisabledValues[i] || getAllVue()) && ((dynlen(logicInputsValues[i]) > 0) || (dynlen(notLogicInputsValues[i]) > 0)) ) {
-			appendSubSystems(dpes[i], depth + 1, patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])));
+			hasChildren = hasChildren || appendSubSystems(dpes[i], depth + 1, patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])));
 		}
 
 	}
+  
+  DebugTN(\"has children\", systemDP, hasChildren, count);
+  
+  return result || hasChildren;
 	
 }
 

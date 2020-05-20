@@ -2153,3 +2153,22 @@ PVSS00pmon   (1), 2020.05.20 15:41:32.371, SYS,  WARNING,    39/pmon, Manager PV
 PVSS00pmon   (1), 2020.05.20 15:41:32.372, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(3) is no longer blocking.
 PVSS00pmon   (1), 2020.05.20 15:41:32.374, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(4) is no longer blocking.
 PVSS00pmon   (1), 2020.05.20 15:41:32.678, SYS,  WARNING,    39/pmon, Manager PVSS00ctrl(1) is no longer blocking.
+PVSS00pmon   (1), 2020.05.20 17:59:32.196, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 17:59:32.210, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 17:59:38.360, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #2
+PVSS00pmon   (1), 2020.05.20 17:59:38.372, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.05.20 17:59:42.283, SYS,  INFO,       21/pmon, Got STOP_ALL command from ::1, stopping the project
+PVSS00pmon   (1), 2020.05.20 17:59:42.284, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ui(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.285, SYS,  INFO,       17/pmon, Stopping Manager PVSS00MQTTDriver(5) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.286, SYS,  INFO,       17/pmon, Stopping Manager PVSS00snmp(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.286, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(4) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.287, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(3) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.288, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(2) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.289, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.290, SYS,  INFO,       17/pmon, Stopping Manager PVSS00dist(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:47.522, SYS,  INFO,       17/pmon, Stopping Manager PVSS00event(0) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:47.723, SYS,  INFO,       17/pmon, Stopping Manager PVSS00data(0) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:53.682, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands
+PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
+PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
+PVSS00pmon   (1), 2020.05.20 18:00:04.369, SYS,  INFO,        2, Manager Stop

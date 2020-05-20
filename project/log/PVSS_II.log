@@ -16285,3 +16285,164 @@ PVSS00ui     (2), 2020.05.20 17:33:52.878, CTRL, WARNING,    76, Invalid argumen
     Script: Clicked
     In panel scope library: objects\sgFwSystemsView.pnl []
     Line: 296, dpGet
+PVSS00ui     (2), 2020.05.20 17:58:45.394, CTRL, WARNING,    76, Invalid argument in function, 
+    Module: _QuickTest_
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl []
+    Object: 12 named: "rbLevel" of type: RADIO_BOX
+    Script: Clicked
+    In panel scope library: objects\sgFwSystemsView.pnl []
+    Line: 296, dpGet
+PVSS00ui     (2), 2020.05.20 17:58:54.947, CTRL, WARNING,    76, Invalid argument in function, 
+    Module: _QuickTest_
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl []
+    Object: 12 named: "rbLevel" of type: RADIO_BOX
+    Script: Clicked
+    In panel scope library: objects\sgFwSystemsView.pnl []
+    Line: 296, dpGet
+PVSS00ui     (2), 2020.05.20 17:58:57.783, CTRL, WARNING,    76, Invalid argument in function, 
+    Module: _QuickTest_
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl []
+    Object: 12 named: "rbLevel" of type: RADIO_BOX
+    Script: Clicked
+    In panel scope library: objects\sgFwSystemsView.pnl []
+    Line: 296, dpGet
+PVSS00ui     (2), 2020.05.20 17:59:12.321, CTRL, WARNING,    76, Invalid argument in function, 
+    Module: _QuickTest_
+    Panel: D:\projects\wincc\ISup_G_2.26\project\panels\objects\sgFwSystemsView.pnl []
+    Object: 0 named: "tblUnactive" of type: TABLE
+    Script: RightMousePressed
+    In panel scope library: objects\sgFwSystemsView.pnl []
+    Line: 296, dpGet
+PVSS00ui     (1), 2020.05.20 17:59:32.087, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (1), 2020.05.20 17:59:32.088, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00data   (0), 2020.05.20 17:59:32.088, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:32.089, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:32.089, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:32.089, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:32.149, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 17:59:32.196, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #1
+PVSS00pmon   (1), 2020.05.20 17:59:32.210, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.05.20 17:59:32.320, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.05.20 17:59:32.352, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.05.20 17:59:32.379, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.05.20 17:59:32.404, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.05.20 17:59:32.432, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 1 CONN: 1) initialised
+PVSS00ui     (1), 2020.05.20 17:59:32.460, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (1), 2020.05.20 17:59:32.464, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (1), 2020.05.20 17:59:32.477, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.05.20 17:59:32.499, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (1), 2020.05.20 17:59:32.505, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (1), 2020.05.20 17:59:32.508, SYS,  INFO,      103, User names/passwords initialized
+PVSS00ui     (2), 2020.05.20 17:59:35.836, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (2), 2020.05.20 17:59:35.836, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.05.20 17:59:35.837, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 17:59:35.838, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:35.837, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 17:59:36.837, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ui     (2), 2020.05.20 17:59:36.919, SYS,  INFO,        2, Manager Stop
+PVSS00ui     (1), 2020.05.20 17:59:37.222, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (1), 2020.05.20 17:59:37.222, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.05.20 17:59:37.223, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:37.224, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:37.222, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:38.223, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:38.278, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 17:59:38.360, SYS,  INFO,       11/pmon, Detected stopped manager PVSS00ui(1) - restarting it #2
+PVSS00pmon   (1), 2020.05.20 17:59:38.372, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.05.20 17:59:38.453, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.05.20 17:59:38.478, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.05.20 17:59:38.490, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.05.20 17:59:38.515, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.05.20 17:59:38.541, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 1 CONN: 1) initialised
+PVSS00ui     (1), 2020.05.20 17:59:38.567, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (1), 2020.05.20 17:59:38.571, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (1), 2020.05.20 17:59:38.585, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.05.20 17:59:38.590, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (1), 2020.05.20 17:59:38.600, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (1), 2020.05.20 17:59:38.603, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.05.20 17:59:42.283, SYS,  INFO,       21/pmon, Got STOP_ALL command from ::1, stopping the project
+PVSS00pmon   (1), 2020.05.20 17:59:42.284, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ui(1) with signal SIGTERM
+PVSS00ui     (1), 2020.05.20 17:59:42.285, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.05.20 17:59:42.285, SYS,  INFO,       17/pmon, Stopping Manager PVSS00MQTTDriver(5) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.286, SYS,  INFO,       17/pmon, Stopping Manager PVSS00snmp(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.286, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(4) with signal SIGTERM
+PVSS00pmon   (1), 2020.05.20 17:59:42.287, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(3) with signal SIGTERM
+PVSS00ctrl   (4), 2020.05.20 17:59:42.287, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.05.20 17:59:42.288, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(2) with signal SIGTERM
+PVSS00ctrl   (3), 2020.05.20 17:59:42.288, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.05.20 17:59:42.289, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(1) with signal SIGTERM
+PVSS00ctrl   (1), 2020.05.20 17:59:42.290, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00ctrl   (2), 2020.05.20 17:59:42.289, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.05.20 17:59:42.290, SYS,  INFO,       17/pmon, Stopping Manager PVSS00dist(1) with signal SIGTERM
+PVSS00data   (0), 2020.05.20 17:59:44.291, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 1 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.05.20 17:59:44.295, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00MQTTDriver(5), 2020.05.20 17:59:44.296, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00ui     (1), 2020.05.20 17:59:44.342, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ui     (1), 2020.05.20 17:59:44.343, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00ctrl   (1), 2020.05.20 17:59:44.371, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (1), 2020.05.20 17:59:44.372, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00ctrl   (3), 2020.05.20 17:59:45.006, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (3), 2020.05.20 17:59:45.007, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00ctrl   (4), 2020.05.20 17:59:45.163, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (4), 2020.05.20 17:59:45.163, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.05.20 17:59:44.291, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 1 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:44.296, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 5 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:45.298, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 1 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:45.299, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 3 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:45.299, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 4 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.05.20 17:59:45.299, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:45.300, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:45.301, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.305, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 1 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.317, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 3 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.05.20 17:59:45.317, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.320, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 4 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.322, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 5 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.326, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.05.20 17:59:45.326, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.05.20 17:59:45.342, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00dist   (1), 2020.05.20 17:59:45.342, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00data   (0), 2020.05.20 17:59:45.342, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Dist -num 1 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:45.342, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Dist -num 1 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.05.20 17:59:45.342, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.05.20 17:59:45.343, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.05.20 17:59:45.343, SYS,  INFO,        2, Manager Stop
+PVSS00data   (0), 2020.05.20 17:59:45.345, SYS,  SEVERE,    161, Lost connection to all systems
+PVSS00ui     (1), 2020.05.20 17:59:45.388, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (3), 2020.05.20 17:59:45.437, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (2), 2020.05.20 17:59:46.172, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (2), 2020.05.20 17:59:46.172, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00data   (0), 2020.05.20 17:59:46.173, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 2 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:46.173, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 2 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.05.20 17:59:45.297, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.05.20 17:59:46.299, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (4), 2020.05.20 17:59:45.300, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (4), 2020.05.20 17:59:46.301, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.05.20 17:59:46.406, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (4), 2020.05.20 17:59:46.415, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (2), 2020.05.20 17:59:46.173, SYS,  SEVERE,    161, Lost connection to all systems
+PVSS00ctrl   (2), 2020.05.20 17:59:47.174, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (2), 2020.05.20 17:59:47.175, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (2), 2020.05.20 17:59:47.289, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (1), 2020.05.20 17:59:45.299, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (1), 2020.05.20 17:59:47.301, SYS,  WARNING,    39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection reset by peer (10054)
+PVSS00ctrl   (1), 2020.05.20 17:59:47.444, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 17:59:47.522, SYS,  INFO,       17/pmon, Stopping Manager PVSS00event(0) with signal SIGTERM
+PVSS00event  (0), 2020.05.20 17:59:47.522, SYS,  INFO,        2, Manager Stop, received signal 15, exiting
+PVSS00event  (0), 2020.05.20 17:59:47.588, SYS,  INFO,        2, Manager Stop, start cleanup
+PVSS00event  (0), 2020.05.20 17:59:47.589, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00data   (0), 2020.05.20 17:59:47.589, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.05.20 17:59:47.629, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 17:59:47.723, SYS,  INFO,       17/pmon, Stopping Manager PVSS00data(0) with signal SIGTERM
+PVSS00data   (0), 2020.05.20 17:59:48.591, SYS,  INFO,        0, , DataManager, stopBgMgr, Stopping PVSS00databg
+PVSS00data   (0), 2020.05.20 17:59:48.591, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 1 CONN: 1)
+PVSS00databg (1), 2020.05.20 17:59:48.592, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.05.20 17:59:48.594, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 1 CONN: 1), Connection closed
+PVSS00databg (1), 2020.05.20 17:59:48.594, SYS,  SEVERE,     39, Connection lost, (SYS: 1 Data -num 0 CONN: 1), exiting ...
+PVSS00databg (1), 2020.05.20 17:59:50.601, SYS,  INFO,        2, Manager Stop
+PVSS00data   (0), 2020.05.20 17:59:53.600, SYS,  INFO,        0, , Loading DpIdentification
+PVSS00data   (0), 2020.05.20 17:59:53.637, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.05.20 17:59:53.682, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands
+PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
+PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
+PVSS00pmon   (1), 2020.05.20 18:00:04.369, SYS,  INFO,        2, Manager Stop
