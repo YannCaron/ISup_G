@@ -2199,3 +2199,6 @@ PVSS00pmon   (1), 2020.06.05 16:37:17.971, SYS,  INFO,       17/pmon, Stopping M
 PVSS00pmon   (1), 2020.06.05 16:37:24.092, SYS,  INFO,       17/pmon, Stopping Manager PVSS00event(0) with signal SIGTERM
 PVSS00pmon   (1), 2020.06.05 16:37:24.194, SYS,  INFO,       17/pmon, Stopping Manager PVSS00data(0) with signal SIGTERM
 PVSS00pmon   (1), 2020.06.05 16:37:30.252, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands
+PVSS00pmon   (1), 2020.06.05 16:38:40.601, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
+PVSS00pmon   (1), 2020.06.05 16:38:40.602, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
+PVSS00pmon   (1), 2020.06.05 16:38:40.603, SYS,  INFO,        2, Manager Stop

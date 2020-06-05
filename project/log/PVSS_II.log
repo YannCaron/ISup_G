@@ -16728,3 +16728,6 @@ PVSS00databg (1), 2020.06.05 16:37:27.130, SYS,  INFO,        2, Manager Stop
 PVSS00data   (0), 2020.06.05 16:37:30.128, SYS,  INFO,        0, , Loading DpIdentification
 PVSS00data   (0), 2020.06.05 16:37:30.153, SYS,  INFO,        2, Manager Stop
 PVSS00pmon   (1), 2020.06.05 16:37:30.252, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands
+PVSS00pmon   (1), 2020.06.05 16:38:40.601, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
+PVSS00pmon   (1), 2020.06.05 16:38:40.602, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
+PVSS00pmon   (1), 2020.06.05 16:38:40.603, SYS,  INFO,        2, Manager Stop
