@@ -16446,3 +16446,285 @@ PVSS00pmon   (1), 2020.05.20 17:59:53.682, SYS,  INFO,       13/pmon, Completely
 PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
 PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
 PVSS00pmon   (1), 2020.05.20 18:00:04.369, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.06.05 16:29:15.498, SYS,  INFO,        1, Manager Start, WAIT_MODE
+PVSS00pmon   (1), 2020.06.05 16:29:15.673, SYS,  INFO,       20/pmon, Got START_ALL command from ::1, starting the project
+PVSS00pmon   (1), 2020.06.05 16:29:15.684, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00data.exe -PROJ project -pmonIndex 1 
+PVSS00data   (0), 2020.06.05 16:29:15.753, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 03:28:35
+PVSS00data   (0), 2020.06.05 16:29:15.761, SYS,  INFO,        0, , (Re)Opening databases in single user mode without transaction logging.
+PVSS00data   (0), 2020.06.05 16:29:16.331, SYS,  INFO,        0, , Initialize archive smoothing
+PVSS00data   (0), 2020.06.05 16:29:16.334, SYS,  INFO,        0, , Initialize archive smoothing
+PVSS00data   (0), 2020.06.05 16:29:16.334, SYS,  INFO,        0, , Loading DpIdentification
+PVSS00data   (0), 2020.06.05 16:29:19.683, SYS,  INFO,        0, , Initializing last value cache
+PVSS00data   (0), 2020.06.05 16:29:22.236, SYS,  INFO,        0, , Loading internal datapoints
+PVSS00data   (0), 2020.06.05 16:29:22.237, SYS,  INFO,        0, , Initializing ID history
+PVSS00data   (0), 2020.06.05 16:29:22.239, SYS,  INFO,        0, , Initializing Alert history
+PVSS00data   (0), 2020.06.05 16:29:22.325, SYS,  INFO,        0, , Initializing Alert Class cache
+PVSS00data   (0), 2020.06.05 16:29:22.331, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00data   (0), 2020.06.05 16:29:22.382, SYS,  INFO,        0, , Initializing Value Archives
+PVSS00data   (0), 2020.06.05 16:29:24.114, SYS,  INFO,        0, , ValueArchive will be used...
+PVSS00pmon   (1), 2020.06.05 16:29:24.214, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00event.exe -PROJ project -pmonIndex 2 
+PVSS00event  (0), 2020.06.05 16:29:24.388, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 02:21:12
+PVSS00event  (0), 2020.06.05 16:29:24.412, SYS,  INFO,      108, License information, Host information
+Hostname:   LAPTOP-AQTTEL91
+HW-code:    30591475789
+HW-version: 31000002
+
+PVSS00event  (0), 2020.06.05 16:29:24.415, SYS,  INFO,      108, License information, Using license file C:\Siemens\Automation\WinCC_OA\3.10\shield.txt
+version     = 30600002
+sn          = "061_8211_Skyguide_DEV_GVA_SIM_NRD_LAPTOP-AQTTEL91"
+expire      = 0000.00.00;00:00:00,000 
+redundancy  = 1
+ui          = 10
+para        = 10
+dde         = 10
+event       = 1
+ios         = 2000000000
+ssi         = 1
+update      = 1
+api         = 10
+javaui      = 10
+uifix       = 10
+distributed = 32
+parafix     = 10
+pararemote  = 1
+rdb_archive = 1
+http        = 2000000000
+kerberos    = 3
+ctrlext     = 1
+iec101      = 1
+iec104      = 1
+s7          = 1
+tls         = 1
+excelreport = 255
+comcenter   = 2000000000
+maintenance = 1
+scheduler   = 1
+aqua        = 1
+recipe      = 1
+infoserver  = 2000000000
+
+
+PVSS00event  (0), 2020.06.05 16:29:24.418, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00event  (0), 2020.06.05 16:29:24.423, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:24.427, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:25.678, SYS,  INFO,        0, , Manager (SYS: 1 Event -num 0 CONN: 1) initialised
+PVSS00event  (0), 2020.06.05 16:29:25.679, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00event  (0), 2020.06.05 16:29:25.679, SYS,  INFO,      169, Initialize 20 dp-functions
+PVSS00event  (0), 2020.06.05 16:29:25.681, SYS,  INFO,      168, Initialize 86 alerts
+PVSS00pmon   (1), 2020.06.05 16:29:25.718, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00dist.exe -PROJ project -pmonIndex 4 
+PVSS00dist   (0), 2020.06.05 16:29:25.785, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 04:44:03
+PVSS00event  (0), 2020.06.05 16:29:25.786, SYS,  INFO,      103, User names/passwords initialized
+PVSS00dist   (0), 2020.06.05 16:29:25.791, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00dist   (0), 2020.06.05 16:29:25.797, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:25.798, SYS,  INFO,        4, Connected to, (SYS: 1 Dist -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:25.817, SYS,  INFO,        0, , Manager (SYS: 1 Dist -num 1 CONN: 1) initialised
+PVSS00dist   (1), 2020.06.05 16:29:25.843, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00dist   (1), 2020.06.05 16:29:25.843, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00dist   (1), 2020.06.05 16:29:25.854, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:25.857, SYS,  INFO,        4, Connected to, (SYS: 1 Dist -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00pmon   (1), 2020.06.05 16:29:25.933, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 5 -num 1 -f sgFwScripts.lst
+PVSS00ctrl   (1), 2020.06.05 16:29:26.006, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 16:10:16
+PVSS00ctrl   (1), 2020.06.05 16:29:26.011, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ctrl   (1), 2020.06.05 16:29:26.017, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.018, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.037, SYS,  INFO,        0, , Manager (SYS: 1 Ctrl -num 1 CONN: 1) initialised
+PVSS00ctrl   (1), 2020.06.05 16:29:26.062, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ctrl   (1), 2020.06.05 16:29:26.062, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ctrl   (1), 2020.06.05 16:29:26.074, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:26.076, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ctrl   (1), 2020.06.05 16:29:26.077, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ctrl   (1), 2020.06.05 16:29:26.078, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.06.05 16:29:26.147, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 6 -num 2 sgFwChecker.ctl
+PVSS00ctrl   (2), 2020.06.05 16:29:26.216, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 16:10:16
+PVSS00ctrl   (2), 2020.06.05 16:29:26.222, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ctrl   (2), 2020.06.05 16:29:26.228, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.301, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.320, SYS,  INFO,        0, , Manager (SYS: 1 Ctrl -num 2 CONN: 1) initialised
+PVSS00ctrl   (2), 2020.06.05 16:29:26.348, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ctrl   (2), 2020.06.05 16:29:26.349, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ctrl   (2), 2020.06.05 16:29:26.360, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:26.362, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ctrl   (2), 2020.06.05 16:29:26.364, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ctrl   (2), 2020.06.05 16:29:26.364, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.06.05 16:29:26.460, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 7 -num 3 -f ISup_G_CommScripts.lst
+PVSS00ctrl   (3), 2020.06.05 16:29:26.541, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 16:10:16
+PVSS00ctrl   (3), 2020.06.05 16:29:26.548, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ctrl   (3), 2020.06.05 16:29:26.556, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.593, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 3 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.614, SYS,  INFO,        0, , Manager (SYS: 1 Ctrl -num 3 CONN: 1) initialised
+PVSS00ctrl   (3), 2020.06.05 16:29:26.644, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ctrl   (3), 2020.06.05 16:29:26.644, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ctrl   (3), 2020.06.05 16:29:26.646, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:26.650, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 3 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ctrl   (3), 2020.06.05 16:29:26.652, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ctrl   (3), 2020.06.05 16:29:26.653, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.06.05 16:29:26.674, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 8 -num 4 -f ISup_G_ProcsScripts.lst
+PVSS00ctrl   (4), 2020.06.05 16:29:26.747, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 16:10:16
+PVSS00ctrl   (4), 2020.06.05 16:29:26.753, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ctrl   (4), 2020.06.05 16:29:26.760, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.761, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 4 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:26.781, SYS,  INFO,        0, , Manager (SYS: 1 Ctrl -num 4 CONN: 1) initialised
+PVSS00ctrl   (4), 2020.06.05 16:29:26.811, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ctrl   (4), 2020.06.05 16:29:26.811, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ctrl   (4), 2020.06.05 16:29:26.821, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:26.824, SYS,  INFO,        4, Connected to, (SYS: 1 Ctrl -num 4 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ctrl   (4), 2020.06.05 16:29:26.825, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ctrl   (4), 2020.06.05 16:29:26.826, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.06.05 16:29:26.888, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00snmp.exe -PROJ project -pmonIndex 9 -num 1 -log -file -dbg 6
+PVSS00data   (0), 2020.06.05 16:29:27.071, SYS,  INFO,        4, Connected to, (SYS: 1 Driver -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:27.381, SYS,  INFO,        0, , Manager (SYS: 1 Driver -num 1 CONN: 1) initialised
+PVSS00event  (0), 2020.06.05 16:29:27.395, SYS,  INFO,        4, Connected to, (SYS: 1 Driver -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00pmon   (1), 2020.06.05 16:29:27.429, SYS,  INFO,        1, Manager Start, D:\projects\wincc\ISup_G_2.26\sgFw\bin\PVSS00MQTTDriver.exe -PROJ project -pmonIndex 13 -num 5
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.499, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP1 linked at Mar 23 2020 09:37:37
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.505, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.511, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:27.512, SYS,  INFO,        4, Connected to, (SYS: 1 Driver -num 5 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:27.822, SYS,  INFO,        0, , Manager (SYS: 1 Driver -num 5 CONN: 1) initialised
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.822, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.825, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.837, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:27.840, SYS,  INFO,        4, Connected to, (SYS: 1 Driver -num 5 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00MQTTDriver(5), 2020.06.05 16:29:27.844, SYS,  INFO,      156, Driver initialization finished.
+PVSS00pmon   (1), 2020.06.05 16:29:27.943, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00ui     (0), 2020.06.05 16:29:28.027, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.06.05 16:29:28.053, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.06.05 16:29:28.062, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:28.087, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:29:28.118, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 1 CONN: 1) initialised
+PVSS00ui     (1), 2020.06.05 16:29:28.146, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (1), 2020.06.05 16:29:28.149, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (1), 2020.06.05 16:29:28.163, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:29:28.168, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (1), 2020.06.05 16:29:28.176, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (1), 2020.06.05 16:29:28.178, SYS,  INFO,      103, User names/passwords initialized
+PVSS00pmon   (1), 2020.06.05 16:29:28.245, SYS,  INFO,        9/pmon, The project is up and running. Entering monitor mode
+PVSS00event  (0), 2020.06.05 16:29:37.324, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:37.325, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:37.328, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:37.329, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ctrl   (3), 2020.06.05 16:29:39.134, CTRL, WARNING,    54, Unexpected state, ISup_G_TrapsDispatcher.ctl    Library: D:\projects\wincc\ISup_G_2.26\sgCommon\scripts\libs\sgTrapsDispatcherLib.ctl
+    Line: 13, scNetNMS1, getaddrinfo()
+PVSS00ctrl   (4), 2020.06.05 16:29:39.477, CTRL, WARNING,     2/ctrl, sgConnectionsManager.ctl    Line: 93: tcpRead: Socket number (0) illegal or socket not open.
+PVSS00ctrl   (4), 2020.06.05 16:29:39.478, CTRL, WARNING,     2/ctrl, sgConnectionsManager.ctl    Line: 100: tcpClose: Socket number (0) illegal or socket not open.
+PVSS00ctrl   (3), 2020.06.05 16:29:40.149, CTRL, WARNING,    54, Unexpected state, ISup_G_TrapsDispatcher.ctl    Library: D:\projects\wincc\ISup_G_2.26\sgCommon\scripts\libs\sgTrapsDispatcherLib.ctl
+    Line: 13, scNetNMS2, getaddrinfo()
+PVSS00event  (0), 2020.06.05 16:29:42.248, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ui -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:42.251, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:47.487, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:47.488, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:52.511, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ui -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:52.514, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:57.668, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:29:57.672, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00ctrl   (1), 2020.06.05 16:30:01.847, CTRL, SEVERE,    114, Values were discarded, sgFw2.ctl, sgHistoryAddEventCore, function has 1000 pending runs -> DISCARDING!
+PVSS00pmon   (1), 2020.06.05 16:30:08.563, SYS,  INFO,       24/pmon, Got START command from ::1, starting the manager PVSS00ui(2) at index 21
+PVSS00pmon   (1), 2020.06.05 16:30:08.576, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 21 -m gedi -extend
+PVSS00ui     (0), 2020.06.05 16:30:08.654, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 06:13:04
+PVSS00ui     (0), 2020.06.05 16:30:17.686, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00ui     (0), 2020.06.05 16:30:17.699, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:30:17.723, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:30:17.756, SYS,  INFO,        0, , Manager (SYS: 1 Ui -num 2 CONN: 1) initialised
+PVSS00ui     (2), 2020.06.05 16:30:17.783, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00ui     (2), 2020.06.05 16:30:17.787, SYS,  INFO,        3, Trying to connect to, (SYS: 1 Event -num 0 CONN: 1) @ localhost:21027
+PVSS00ui     (2), 2020.06.05 16:30:17.801, SYS,  INFO,        4, Connected to, (SYS: 1 Event -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00event  (0), 2020.06.05 16:30:17.825, SYS,  INFO,        4, Connected to, (SYS: 1 Ui -num 2 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00ui     (2), 2020.06.05 16:30:17.830, SYS,  INFO,      102, Waiting for user names/passwords
+PVSS00ui     (2), 2020.06.05 16:30:17.833, SYS,  INFO,      103, User names/passwords initialized
+PVSS00event  (0), 2020.06.05 16:31:08.839, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:31:08.840, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00data   (0), 2020.06.05 16:31:17.784, SYS,  INFO,        0, , Loading DpIdentification
+PVSS00data   (0), 2020.06.05 16:31:17.905, SYS,  INFO,        0, , (Re)Opening databases in multi user mode without transaction logging.
+PVSS00data   (0), 2020.06.05 16:31:18.980, SYS,  INFO,        0, , DataManager, startBgMgr, (Re)starting PVSS00databg
+PVSS00event  (0), 2020.06.05 16:31:19.006, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:31:19.008, PARAM,WARNING,    41, DP element is inactive, DP: ISup_G:ISupDisabled.GlobalStatus.Alarms.AlarmActive:_original.._value, MAN: (SYS: 1 Ctrl -num 1 CONN: 1)
+PVSS00databg (1), 2020.06.05 16:31:19.069, SYS,  INFO,        1, Manager Start, PROJ, project, V 3.10 - 3.10  SP2 linked at May  5 2012 02:36:43
+PVSS00databg (1), 2020.06.05 16:31:19.076, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ localhost:11027
+PVSS00databg (1), 2020.06.05 16:31:19.082, SYS,  INFO,        4, Connected to, (SYS: 0 Data -num 0 CONN: 1) @ LAPTOP-AQTTEL91 (127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:31:19.083, SYS,  INFO,        4, Connected to, (SYS: 1 Data -num 1 CONN: 1) @ LAPTOP-AQTTEL91 (::ffff:127.0.0.1)
+PVSS00data   (0), 2020.06.05 16:31:19.106, SYS,  INFO,        0, , Manager (SYS: 1 Data -num 1 CONN: 1) initialised
+PVSS00databg (1), 2020.06.05 16:31:19.982, SYS,  INFO,        6, Initialization by Data Manager finished
+PVSS00event  (0), 2020.06.05 16:32:33.103, SYS,  WARNING,    39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection reset by peer (10054)
+PVSS00data   (0), 2020.06.05 16:32:42.311, SYS,  WARNING,    39, Connection lost, MAN: (SYS: 1 Ui -num 2 CONN: 1), Connection reset by peer (10054)
+PVSS00pmon   (1), 2020.06.05 16:37:17.966, SYS,  INFO,       21/pmon, Got STOP_ALL command from ::1, stopping the project
+PVSS00pmon   (1), 2020.06.05 16:37:17.966, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ui(1) with signal SIGTERM
+PVSS00ui     (1), 2020.06.05 16:37:17.967, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.06.05 16:37:17.967, SYS,  INFO,       17/pmon, Stopping Manager PVSS00MQTTDriver(5) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.968, SYS,  INFO,       17/pmon, Stopping Manager PVSS00snmp(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.969, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(4) with signal SIGTERM
+PVSS00ctrl   (4), 2020.06.05 16:37:17.969, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.06.05 16:37:17.969, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(3) with signal SIGTERM
+PVSS00ctrl   (3), 2020.06.05 16:37:17.970, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.06.05 16:37:17.970, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(2) with signal SIGTERM
+PVSS00ctrl   (2), 2020.06.05 16:37:17.970, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.06.05 16:37:17.970, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(1) with signal SIGTERM
+PVSS00ctrl   (1), 2020.06.05 16:37:17.971, SYS,  INFO,      170, Signal SIGTERM received - exiting ...
+PVSS00pmon   (1), 2020.06.05 16:37:17.971, SYS,  INFO,       17/pmon, Stopping Manager PVSS00dist(1) with signal SIGTERM
+PVSS00MQTTDriver(5), 2020.06.05 16:37:19.975, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00MQTTDriver(5), 2020.06.05 16:37:19.975, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00data   (0), 2020.06.05 16:37:19.976, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 5 CONN: 1), Connection closed
+PVSS00event  (0), 2020.06.05 16:37:19.976, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 5 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.06.05 16:37:19.976, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.06.05 16:37:19.977, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 1 CONN: 1), Connection closed
+PVSS00event  (0), 2020.06.05 16:37:19.983, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Driver -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.06.05 16:37:20.002, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00dist   (1), 2020.06.05 16:37:20.002, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00data   (0), 2020.06.05 16:37:20.002, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ctrl   (1), 2020.06.05 16:37:20.003, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (1), 2020.06.05 16:37:20.003, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:37:20.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 1 CONN: 1), Connection closed
+PVSS00data   (0), 2020.06.05 16:37:20.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Dist -num 1 CONN: 1), Connection closed
+PVSS00data   (0), 2020.06.05 16:37:20.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 1 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.06.05 16:37:20.571, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (3), 2020.06.05 16:37:20.572, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:37:20.573, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 3 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.06.05 16:37:20.573, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (4), 2020.06.05 16:37:20.938, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (4), 2020.06.05 16:37:20.939, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:37:20.939, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 4 CONN: 1), Connection closed
+PVSS00ctrl   (4), 2020.06.05 16:37:20.940, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (2), 2020.06.05 16:37:20.943, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00ctrl   (2), 2020.06.05 16:37:20.943, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00event  (0), 2020.06.05 16:37:20.945, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 2 CONN: 1), Connection closed
+PVSS00ctrl   (2), 2020.06.05 16:37:20.945, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.06.05 16:37:19.977, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.06.05 16:37:20.002, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00dist   (1), 2020.06.05 16:37:21.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (1), 2020.06.05 16:37:20.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (1), 2020.06.05 16:37:21.004, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00MQTTDriver(5), 2020.06.05 16:37:21.081, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (1), 2020.06.05 16:37:21.095, SYS,  INFO,        2, Manager Stop
+PVSS00data   (0), 2020.06.05 16:37:20.572, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 3 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.06.05 16:37:21.574, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00data   (0), 2020.06.05 16:37:21.579, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 2 CONN: 1), Connection closed
+PVSS00data   (0), 2020.06.05 16:37:21.580, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ctrl -num 4 CONN: 1), Connection closed
+PVSS00ctrl   (4), 2020.06.05 16:37:21.580, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (3), 2020.06.05 16:37:21.632, SYS,  INFO,        2, Manager Stop
+PVSS00ctrl   (4), 2020.06.05 16:37:21.633, SYS,  INFO,        2, Manager Stop
+PVSS00event  (0), 2020.06.05 16:37:21.003, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Dist -num 1 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.06.05 16:37:22.004, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00dist   (1), 2020.06.05 16:37:22.004, SYS,  INFO,        2, Manager Stop
+PVSS00data   (0), 2020.06.05 16:37:22.006, SYS,  SEVERE,    161, Lost connection to all systems
+PVSS00ctrl   (2), 2020.06.05 16:37:21.580, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00ctrl   (2), 2020.06.05 16:37:22.654, SYS,  INFO,        2, Manager Stop
+PVSS00ui     (1), 2020.06.05 16:37:20.002, SYS,  INFO,      181, Closing connection to (SYS: 1 Event -num 0 CONN: 1)
+PVSS00ui     (1), 2020.06.05 16:37:23.005, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.06.05 16:37:23.007, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Ui -num 1 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.06.05 16:37:23.007, SYS,  SEVERE,    161, Lost connection to all systems
+PVSS00ui     (1), 2020.06.05 16:37:24.008, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00ui     (1), 2020.06.05 16:37:24.060, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.06.05 16:37:24.092, SYS,  INFO,       17/pmon, Stopping Manager PVSS00event(0) with signal SIGTERM
+PVSS00event  (0), 2020.06.05 16:37:24.093, SYS,  INFO,        2, Manager Stop, received signal 15, exiting
+PVSS00event  (0), 2020.06.05 16:37:24.120, SYS,  INFO,        2, Manager Stop, start cleanup
+PVSS00event  (0), 2020.06.05 16:37:24.120, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 0 CONN: 1)
+PVSS00data   (0), 2020.06.05 16:37:24.120, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Event -num 0 CONN: 1), Connection closed
+PVSS00event  (0), 2020.06.05 16:37:24.145, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.06.05 16:37:24.194, SYS,  INFO,       17/pmon, Stopping Manager PVSS00data(0) with signal SIGTERM
+PVSS00data   (0), 2020.06.05 16:37:25.122, SYS,  INFO,        0, , DataManager, stopBgMgr, Stopping PVSS00databg
+PVSS00data   (0), 2020.06.05 16:37:25.122, SYS,  INFO,      181, Closing connection to (SYS: 1 Data -num 1 CONN: 1)
+PVSS00databg (1), 2020.06.05 16:37:25.122, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 0 CONN: 1), Connection closed
+PVSS00databg (1), 2020.06.05 16:37:25.125, SYS,  SEVERE,     39, Connection lost, (SYS: 1 Data -num 0 CONN: 1), exiting ...
+PVSS00data   (0), 2020.06.05 16:37:25.125, SYS,  INFO,       39, Connection lost, MAN: (SYS: 1 Data -num 1 CONN: 1), Connection closed
+PVSS00databg (1), 2020.06.05 16:37:27.130, SYS,  INFO,        2, Manager Stop
+PVSS00data   (0), 2020.06.05 16:37:30.128, SYS,  INFO,        0, , Loading DpIdentification
+PVSS00data   (0), 2020.06.05 16:37:30.153, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.06.05 16:37:30.252, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands

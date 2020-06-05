@@ -2172,3 +2172,30 @@ PVSS00pmon   (1), 2020.05.20 17:59:53.682, SYS,  INFO,       13/pmon, Completely
 PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,        3/pmon, Got shutdown command - stopping the project and terminating
 PVSS00pmon   (1), 2020.05.20 18:00:04.368, SYS,  INFO,       15/pmon, Completely stopped the project - terminating
 PVSS00pmon   (1), 2020.05.20 18:00:04.369, SYS,  INFO,        2, Manager Stop
+PVSS00pmon   (1), 2020.06.05 16:29:15.498, SYS,  INFO,        1, Manager Start, WAIT_MODE
+PVSS00pmon   (1), 2020.06.05 16:29:15.673, SYS,  INFO,       20/pmon, Got START_ALL command from ::1, starting the project
+PVSS00pmon   (1), 2020.06.05 16:29:15.684, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00data.exe -PROJ project -pmonIndex 1 
+PVSS00pmon   (1), 2020.06.05 16:29:24.214, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00event.exe -PROJ project -pmonIndex 2 
+PVSS00pmon   (1), 2020.06.05 16:29:25.718, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00dist.exe -PROJ project -pmonIndex 4 
+PVSS00pmon   (1), 2020.06.05 16:29:25.933, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 5 -num 1 -f sgFwScripts.lst
+PVSS00pmon   (1), 2020.06.05 16:29:26.147, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 6 -num 2 sgFwChecker.ctl
+PVSS00pmon   (1), 2020.06.05 16:29:26.460, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 7 -num 3 -f ISup_G_CommScripts.lst
+PVSS00pmon   (1), 2020.06.05 16:29:26.674, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ctrl.exe -PROJ project -pmonIndex 8 -num 4 -f ISup_G_ProcsScripts.lst
+PVSS00pmon   (1), 2020.06.05 16:29:26.888, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00snmp.exe -PROJ project -pmonIndex 9 -num 1 -log -file -dbg 6
+PVSS00pmon   (1), 2020.06.05 16:29:27.429, SYS,  INFO,        1, Manager Start, D:\projects\wincc\ISup_G_2.26\sgFw\bin\PVSS00MQTTDriver.exe -PROJ project -pmonIndex 13 -num 5
+PVSS00pmon   (1), 2020.06.05 16:29:27.943, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 20 -iconBar -menuBar -centered -extend -p sgBasePanel.pnl -m vision:ISup_1
+PVSS00pmon   (1), 2020.06.05 16:29:28.245, SYS,  INFO,        9/pmon, The project is up and running. Entering monitor mode
+PVSS00pmon   (1), 2020.06.05 16:30:08.563, SYS,  INFO,       24/pmon, Got START command from ::1, starting the manager PVSS00ui(2) at index 21
+PVSS00pmon   (1), 2020.06.05 16:30:08.576, SYS,  INFO,        1, Manager Start, C:\Siemens\Automation\WinCC_OA\3.10\bin\PVSS00ui.exe -PROJ project -pmonIndex 21 -m gedi -extend
+PVSS00pmon   (1), 2020.06.05 16:37:17.966, SYS,  INFO,       21/pmon, Got STOP_ALL command from ::1, stopping the project
+PVSS00pmon   (1), 2020.06.05 16:37:17.966, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ui(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.967, SYS,  INFO,       17/pmon, Stopping Manager PVSS00MQTTDriver(5) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.968, SYS,  INFO,       17/pmon, Stopping Manager PVSS00snmp(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.969, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(4) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.969, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(3) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.970, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(2) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.970, SYS,  INFO,       17/pmon, Stopping Manager PVSS00ctrl(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:17.971, SYS,  INFO,       17/pmon, Stopping Manager PVSS00dist(1) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:24.092, SYS,  INFO,       17/pmon, Stopping Manager PVSS00event(0) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:24.194, SYS,  INFO,       17/pmon, Stopping Manager PVSS00data(0) with signal SIGTERM
+PVSS00pmon   (1), 2020.06.05 16:37:30.252, SYS,  INFO,       13/pmon, Completely stopped the project - waiting for commands
