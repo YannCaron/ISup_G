@@ -1,0 +1,352 @@
+error: invalid config name: Motor01.*
+valid are:
+_default
+ersatz
+_pv_range
+pv_bereich
+_u_range
+b_bereich
+_alert_class
+meld_klass
+_alert_hdl
+meld_beh
+_distrib
+verteil
+_dp_fct
+dp_fkt
+_auth
+berecht
+_general
+_general
+_msg_conv
+m_urech
+_cmd_conv
+b_urech
+_smooth
+glaett
+_address
+adresse
+_logger
+logger
+_archiv_class
+archiv_klass
+_archive
+archiv
+error: invalid config name: Motor01.*
+valid are:
+_default
+ersatz
+_pv_range
+pv_bereich
+_u_range
+b_bereich
+_alert_class
+meld_klass
+_alert_hdl
+meld_beh
+_distrib
+verteil
+_dp_fct
+dp_fkt
+_auth
+berecht
+_general
+_general
+_msg_conv
+m_urech
+_cmd_conv
+b_urech
+_smooth
+glaett
+_address
+adresse
+_logger
+logger
+_archiv_class
+archiv_klass
+_archive
+archiv
+error: invalid config name: Motor01.*
+valid are:
+_default
+ersatz
+_pv_range
+pv_bereich
+_u_range
+b_bereich
+_alert_class
+meld_klass
+_alert_hdl
+meld_beh
+_distrib
+verteil
+_dp_fct
+dp_fkt
+_auth
+berecht
+_general
+_general
+_msg_conv
+m_urech
+_cmd_conv
+b_urech
+_smooth
+glaett
+_address
+adresse
+_logger
+logger
+_archiv_class
+archiv_klass
+_archive
+archiv
+error: unknown filter character: *
+  [-filter TDACOPH] [-localTime] [-outputVersion version] [-langList list] -out filename
+  [-wait] [-inactivateAlert] [-localTime] [-yes] -commit commitCnt -in filename
+  [-localTime] -set dpname value
+  [-localTime] -get dpname
+  -out filename                     ... output mode
+  -outputVersion                    ... output version
+                                        1 - old (human readable)
+                                        2 - new (full multilang support)
+                                        3 - Format 3 (MASS_PARA) 
+                                        4 - Format 4 (MASS_PARA) 
+  -PowerConfig                      ... Mass param 
+  -langList                         ... list of languages to export (default all)
+  -in  [filename[{Wildcards}]       ... input mode (WildCards for format 3)
+  -set dpname value                 ... direct set mode
+  -get dpname                       ... direct get mode
+  -commit commitCnt                 ... wait for answer after commitCnt messages
+  -filter TDACOPH                   ... use specified filter for output
+                                        T-types, D-datapoints
+                                        A-aliases and comments
+                                        C-cns views
+                                        O-original values, P-parametering (Configs)
+                                        H-history (modifier to P)
+  -filterDp                         ... limit output to specified Dp (may occur more than once)
+  -filterDpType                     ... limit output to specified DpType (may occur more than once)
+  -filterFile filterfilename        ... limit output to Dps and DpTypes in specified file
+  -filterCNS                        ... limit output to specified CNS view, tree or subtree
+                                        (may occur more than once)
+  -younger DD.[MM.[YYYY]][:HH[:MM]] |  
+           DD.[MM.[YY]][:HH[:MM]]   |  
+           HH[:MM]                  ... limit output to data not older than date/time 
+  -forceScan                        ... switch to scan mode (used for filters only)
+  -localTime                        ... use local time (GMT, if not specified)
+  -wait                             ... don't exit after reading file
+  -system                           ... keep system name in referenced DPEs
+  -inactivateAlert                  ... inactivate AlertValue configs
+  -noAlertConfigHist                ... overwrite last entry in configuration history
+  -yes                              ... change types without confirmation
+  -noVerbose                        ... suppress progress output (only errors will be printed)
+  -alwaysSendCommon                 ... send alias and description even if not changed
+  dpname                            ... DP name (attribute) to get/set
+  value                             ... value to set
+  filterfilename                    ... file with filter specifications
+error: unknown filter character: *
+  [-filter TDACOPH] [-localTime] [-outputVersion version] [-langList list] -out filename
+  [-wait] [-inactivateAlert] [-localTime] [-yes] -commit commitCnt -in filename
+  [-localTime] -set dpname value
+  [-localTime] -get dpname
+  -out filename                     ... output mode
+  -outputVersion                    ... output version
+                                        1 - old (human readable)
+                                        2 - new (full multilang support)
+                                        3 - Format 3 (MASS_PARA) 
+                                        4 - Format 4 (MASS_PARA) 
+  -PowerConfig                      ... Mass param 
+  -langList                         ... list of languages to export (default all)
+  -in  [filename[{Wildcards}]       ... input mode (WildCards for format 3)
+  -set dpname value                 ... direct set mode
+  -get dpname                       ... direct get mode
+  -commit commitCnt                 ... wait for answer after commitCnt messages
+  -filter TDACOPH                   ... use specified filter for output
+                                        T-types, D-datapoints
+                                        A-aliases and comments
+                                        C-cns views
+                                        O-original values, P-parametering (Configs)
+                                        H-history (modifier to P)
+  -filterDp                         ... limit output to specified Dp (may occur more than once)
+  -filterDpType                     ... limit output to specified DpType (may occur more than once)
+  -filterFile filterfilename        ... limit output to Dps and DpTypes in specified file
+  -filterCNS                        ... limit output to specified CNS view, tree or subtree
+                                        (may occur more than once)
+  -younger DD.[MM.[YYYY]][:HH[:MM]] |  
+           DD.[MM.[YY]][:HH[:MM]]   |  
+           HH[:MM]                  ... limit output to data not older than date/time 
+  -forceScan                        ... switch to scan mode (used for filters only)
+  -localTime                        ... use local time (GMT, if not specified)
+  -wait                             ... don't exit after reading file
+  -system                           ... keep system name in referenced DPEs
+  -inactivateAlert                  ... inactivate AlertValue configs
+  -noAlertConfigHist                ... overwrite last entry in configuration history
+  -yes                              ... change types without confirmation
+  -noVerbose                        ... suppress progress output (only errors will be printed)
+  -alwaysSendCommon                 ... send alias and description even if not changed
+  dpname                            ... DP name (attribute) to get/set
+  value                             ... value to set
+  filterfilename                    ... file with filter specifications
+error: unknown filter character: *
+  [-filter TDACOPH] [-localTime] [-outputVersion version] [-langList list] -out filename
+  [-wait] [-inactivateAlert] [-localTime] [-yes] -commit commitCnt -in filename
+  [-localTime] -set dpname value
+  [-localTime] -get dpname
+  -out filename                     ... output mode
+  -outputVersion                    ... output version
+                                        1 - old (human readable)
+                                        2 - new (full multilang support)
+                                        3 - Format 3 (MASS_PARA) 
+                                        4 - Format 4 (MASS_PARA) 
+  -PowerConfig                      ... Mass param 
+  -langList                         ... list of languages to export (default all)
+  -in  [filename[{Wildcards}]       ... input mode (WildCards for format 3)
+  -set dpname value                 ... direct set mode
+  -get dpname                       ... direct get mode
+  -commit commitCnt                 ... wait for answer after commitCnt messages
+  -filter TDACOPH                   ... use specified filter for output
+                                        T-types, D-datapoints
+                                        A-aliases and comments
+                                        C-cns views
+                                        O-original values, P-parametering (Configs)
+                                        H-history (modifier to P)
+  -filterDp                         ... limit output to specified Dp (may occur more than once)
+  -filterDpType                     ... limit output to specified DpType (may occur more than once)
+  -filterFile filterfilename        ... limit output to Dps and DpTypes in specified file
+  -filterCNS                        ... limit output to specified CNS view, tree or subtree
+                                        (may occur more than once)
+  -younger DD.[MM.[YYYY]][:HH[:MM]] |  
+           DD.[MM.[YY]][:HH[:MM]]   |  
+           HH[:MM]                  ... limit output to data not older than date/time 
+  -forceScan                        ... switch to scan mode (used for filters only)
+  -localTime                        ... use local time (GMT, if not specified)
+  -wait                             ... don't exit after reading file
+  -system                           ... keep system name in referenced DPEs
+  -inactivateAlert                  ... inactivate AlertValue configs
+  -noAlertConfigHist                ... overwrite last entry in configuration history
+  -yes                              ... change types without confirmation
+  -noVerbose                        ... suppress progress output (only errors will be printed)
+  -alwaysSendCommon                 ... send alias and description even if not changed
+  dpname                            ... DP name (attribute) to get/set
+  value                             ... value to set
+  filterfilename                    ... file with filter specifications
+error: unknown filter character: :
+  [-filter TDACOPH] [-localTime] [-outputVersion version] [-langList list] -out filename
+  [-wait] [-inactivateAlert] [-localTime] [-yes] -commit commitCnt -in filename
+  [-localTime] -set dpname value
+  [-localTime] -get dpname
+  -out filename                     ... output mode
+  -outputVersion                    ... output version
+                                        1 - old (human readable)
+                                        2 - new (full multilang support)
+                                        3 - Format 3 (MASS_PARA) 
+                                        4 - Format 4 (MASS_PARA) 
+  -PowerConfig                      ... Mass param 
+  -langList                         ... list of languages to export (default all)
+  -in  [filename[{Wildcards}]       ... input mode (WildCards for format 3)
+  -set dpname value                 ... direct set mode
+  -get dpname                       ... direct get mode
+  -commit commitCnt                 ... wait for answer after commitCnt messages
+  -filter TDACOPH                   ... use specified filter for output
+                                        T-types, D-datapoints
+                                        A-aliases and comments
+                                        C-cns views
+                                        O-original values, P-parametering (Configs)
+                                        H-history (modifier to P)
+  -filterDp                         ... limit output to specified Dp (may occur more than once)
+  -filterDpType                     ... limit output to specified DpType (may occur more than once)
+  -filterFile filterfilename        ... limit output to Dps and DpTypes in specified file
+  -filterCNS                        ... limit output to specified CNS view, tree or subtree
+                                        (may occur more than once)
+  -younger DD.[MM.[YYYY]][:HH[:MM]] |  
+           DD.[MM.[YY]][:HH[:MM]]   |  
+           HH[:MM]                  ... limit output to data not older than date/time 
+  -forceScan                        ... switch to scan mode (used for filters only)
+  -localTime                        ... use local time (GMT, if not specified)
+  -wait                             ... don't exit after reading file
+  -system                           ... keep system name in referenced DPEs
+  -inactivateAlert                  ... inactivate AlertValue configs
+  -noAlertConfigHist                ... overwrite last entry in configuration history
+  -yes                              ... change types without confirmation
+  -noVerbose                        ... suppress progress output (only errors will be printed)
+  -alwaysSendCommon                 ... send alias and description even if not changed
+  dpname                            ... DP name (attribute) to get/set
+  value                             ... value to set
+  filterfilename                    ... file with filter specifications
+error: unknown filter character: :
+  [-filter TDACOPH] [-localTime] [-outputVersion version] [-langList list] -out filename
+  [-wait] [-inactivateAlert] [-localTime] [-yes] -commit commitCnt -in filename
+  [-localTime] -set dpname value
+  [-localTime] -get dpname
+  -out filename                     ... output mode
+  -outputVersion                    ... output version
+                                        1 - old (human readable)
+                                        2 - new (full multilang support)
+                                        3 - Format 3 (MASS_PARA) 
+                                        4 - Format 4 (MASS_PARA) 
+  -PowerConfig                      ... Mass param 
+  -langList                         ... list of languages to export (default all)
+  -in  [filename[{Wildcards}]       ... input mode (WildCards for format 3)
+  -set dpname value                 ... direct set mode
+  -get dpname                       ... direct get mode
+  -commit commitCnt                 ... wait for answer after commitCnt messages
+  -filter TDACOPH                   ... use specified filter for output
+                                        T-types, D-datapoints
+                                        A-aliases and comments
+                                        C-cns views
+                                        O-original values, P-parametering (Configs)
+                                        H-history (modifier to P)
+  -filterDp                         ... limit output to specified Dp (may occur more than once)
+  -filterDpType                     ... limit output to specified DpType (may occur more than once)
+  -filterFile filterfilename        ... limit output to Dps and DpTypes in specified file
+  -filterCNS                        ... limit output to specified CNS view, tree or subtree
+                                        (may occur more than once)
+  -younger DD.[MM.[YYYY]][:HH[:MM]] |  
+           DD.[MM.[YY]][:HH[:MM]]   |  
+           HH[:MM]                  ... limit output to data not older than date/time 
+  -forceScan                        ... switch to scan mode (used for filters only)
+  -localTime                        ... use local time (GMT, if not specified)
+  -wait                             ... don't exit after reading file
+  -system                           ... keep system name in referenced DPEs
+  -inactivateAlert                  ... inactivate AlertValue configs
+  -noAlertConfigHist                ... overwrite last entry in configuration history
+  -yes                              ... change types without confirmation
+  -noVerbose                        ... suppress progress output (only errors will be printed)
+  -alwaysSendCommon                 ... send alias and description even if not changed
+  dpname                            ... DP name (attribute) to get/set
+  value                             ... value to set
+  filterfilename                    ... file with filter specifications
+error: invalid config name: *.**.Message
+valid are:
+_default
+ersatz
+_pv_range
+pv_bereich
+_u_range
+b_bereich
+_alert_class
+meld_klass
+_alert_hdl
+meld_beh
+_distrib
+verteil
+_dp_fct
+dp_fkt
+_auth
+berecht
+_general
+_general
+_msg_conv
+m_urech
+_cmd_conv
+b_urech
+_smooth
+glaett
+_address
+adresse
+_logger
+logger
+_archiv_class
+archiv_klass
+_archive
+archiv
+doAsciiOut returned error code: -10
