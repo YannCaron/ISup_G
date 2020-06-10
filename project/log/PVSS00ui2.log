@@ -42546,3 +42546,12 @@
 2020.05.20 17:55:45.967["has children"]["ISup_G:AMSCH.GlobalStatus"][1][1]
 2020.05.20 17:55:45.984["has children"]["ISup_G:SYLEX.GlobalStatus"][0][0]
 2020.05.20 17:55:46.019["has children"]["ISup_G:TELGATE.GlobalStatus"][0][0]
+2020.06.08 14:02:05.607["Normally 1"]
+2020.06.08 14:03:54.185[dyn_string 0 items
+]
+2020.06.08 14:04:03.022[dyn_string 1 items
+     1: "TRUE"
+]
+2020.06.08 14:05:01.706[dyn_string 1 items
+     1: "TRUE"
+]

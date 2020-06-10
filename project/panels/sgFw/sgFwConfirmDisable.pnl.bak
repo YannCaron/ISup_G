@@ -1,0 +1,569 @@
+V 11
+1
+LANG:5 20 Disable confirmation
+PANEL,-1 -1 332 410 N "_3DFace" 2
+"$systemName"
+"$systemStatus"
+"main()
+{
+  panel_onLoad();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "const int HOUR_PERIOD = 3600;
+const int DAY_PERIOD = 86400;
+const int WEEK_PERIOD = 604800;
+// const int MONTH_PERDIOD = 2592000;
+
+const string systemName = $systemName;
+const string systemStatus = $systemStatus;
+string eventText;
+time disabledTime;
+string commentText;
+string dateText;
+
+bool changing = false;
+  
+void panel_onLoad() {
+  // get event text
+  dpGet(systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX, disabledTime,
+        systemName + systemStatus + COMMENT_POSTFIX, commentText);
+  if(eventText == \"\") eventText = dpGetDescription(systemName + systemStatus);
+
+  lbConfirm.text = \"Please enable or disable the point: \"+ \"\\n\" + \"<<\" + eventText + \">> !\";
+
+  if (commentText == \"\") {
+    clearComment();
+  } else {
+    tbComment.text = commentText;
+  }
+
+  time t = disabledTime != 0 ? disabledTime : getCurrentTime();
+  sbHour.text = hour(t);
+  sbMinute.text = minute(t);
+  
+  cCalendar.minimumDate = getCurrentTime();
+  cCalendar.selectedDate = t;
+
+}
+
+void btClear_onClicked() {
+  clearComment();
+}
+
+int getDurationSeconds() {
+  switch (cbTime.selectedPos) {
+    case 2 : return HOUR_PERIOD;
+    case 3 : return HOUR_PERIOD * 4;
+    case 4 : return DAY_PERIOD;
+    case 5 : return DAY_PERIOD * 2;
+    case 6 : return WEEK_PERIOD;
+    case 7 : return WEEK_PERIOD * 2;
+  }
+}
+
+time getTime() {
+  time t = cCalendar.selectedDate;
+  
+  return makeTime(year(t), month(t), day(t), sbHour.text, sbMinute.text);
+}
+
+clearComment() {
+  	time date = getCurrentTime();
+  	sprintf(dateText, \"%04d-%02d-%02d %02d:%02d \", year(date), month(date), day(date), hour(date), minute(date));
+    tbComment.text = dateText;
+}
+
+void tbComment_onTextChanged(string newText) {
+  if (strpos(newText, dateText) == -1) {
+    DebugTN(\"enter\");
+    clearComment();
+  }
+}
+
+cbTime_onChanged() {
+  
+  if (cbTime.selectedPos == 1) return;
+ 
+  time t;
+  changing = true;
+ 
+  setPeriod(t, getCurrentTime() + getDurationSeconds()); 
+
+  cCalendar.selectedDate = t;
+  sbHour.text = hour(t);
+  sbMinute.text = minute(t);
+  
+  changing = false;
+}
+
+void resetCbTime() {
+  if (!changing) {
+    cbTime.selectedPos = 1;
+  }
+}
+
+string getComment() {
+  return strlen(tbComment.text) <= 17 ? \"\" : tbComment.text;
+}
+
+cCalendar_onClicked() {
+  cbTime.selectedPos = 1;
+}
+
+sbHoure_onChanged() {
+  resetCbTime();
+}
+
+sbMinute_onChanged() {
+  resetCbTime();
+}
+
+void disableSystem(time disabledTime) {
+	dpSet(systemName + systemStatus + DISABLED_POSTFIX, TRUE,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX, disabledTime,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, false,
+        systemName + systemStatus + ALARM_ACTIVE_POSTFIX, false,
+        systemName + systemStatus + COMMENT_POSTFIX, getComment());
+  
+  sgHistoryAddEvent($systemName + SYSTEM_HISTORY, SEVERITY_INFO, \"Comment:<<\" + getComment() + \">> for :\" + $systemName + $systemStatus + \" modified by \" + getHostname());			
+
+  
+}
+
+void btOk_onClick() {
+  
+  if (getComment() == \"\") {
+     	dyn_string ds, df;
+      ChildPanelOnCentralModalReturn(\"sgFw/sgFwErrorMessage.pnl\", \"Error\", makeDynString(\"$message:Disabled comment is mandatory!\"), df, ds);
+      return;
+  }
+  
+  int disabledTime = period(getTime());
+  disableSystem(disabledTime);
+  PanelOffReturn(makeDynFloat(0), makeDynBool(TRUE));
+
+}
+
+void btLimitless_onClick() {
+  
+  disableSystem(0);
+  PanelOffReturn(makeDynFloat(0), makeDynBool(TRUE));
+  
+}
+
+void enableSystem() {
+	dpSet(systemName + systemStatus + DISABLED_POSTFIX, FALSE,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX, 0,
+        systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, FALSE,
+        systemName + systemStatus + ALARM_ACTIVE_POSTFIX, FALSE,
+        systemName + systemStatus + COMMENT_POSTFIX, getComment());
+}
+
+void btNok_onClick() {
+  enableSystem();
+  PanelOffReturn(makeDynFloat(0), makeDynBool(FALSE));
+}
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+29 20
+"cCalendar"
+""
+1 10 110 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"firstDayOfWeek" "enum 1"
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  10 110 320 270
+8 Calendar
+1
+0 "clicked" "(time date)"
+"  cCalendar_onClicked();"
+E2 1
+"lbConfirm"
+""
+1 28 20 E E E 1 E 1 E N "_3DText" E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 0 1 E U  0 E 77 20 323 36
+0 0 0 "0s" 0 0 0 193 0 0  200 20 1
+3
+LANG:5 27 Tahoma,-1,13,5,69,0,0,0,0,0
+LANG:1 107 -microsoft windows-Tahoma-bold-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,700,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0 3
+LANG:5 35 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:1 44 Questionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LANG:0 45 Fragexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+13 4
+"btNok"
+""
+1 239.2 378 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 39 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  238 378 322 406
+
+T 
+3
+LANG:5 6 Enable
+LANG:1 6 Cancel
+LANG:0 9 Abbrechen
+"main()
+{
+  btNok_onClick();
+}
+" 0
+ E E E
+13 5
+"btOk"
+""
+1 8.200000000000005 378 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  8 378 102 406
+
+T 
+3
+LANG:5 7 Disable
+LANG:1 2 OK
+LANG:0 2 OK
+"main()
+{
+  btOk_onClick	();
+}
+" 0
+ E E E
+22 6
+"cbTime"
+""
+1 89.99999999999999 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  88 68 322 92
+7
+1
+LANG:5 7 curstom
+
+0
+1
+LANG:5 6 1 hour
+
+0
+1
+LANG:5 7 4 hours
+
+0
+1
+LANG:5 5 1 day
+
+0
+1
+LANG:5 6 2 days
+
+0
+1
+LANG:5 6 1 week
+
+0
+1
+LANG:5 7 2 weeks
+
+0
+
+E
+"main()
+{
+  cbTime_onChanged();
+}" 0
+
+E
+ 0 0
+2 21
+"PRIMITIVE_TEXT1"
+""
+1 142 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 3 2 1 E U  0 E 142 285 171 301
+0 2 2 "0s" 0 0 0 192 0 0  142 285 1
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 4 Time
+2 22
+"PRIMITIVE_TEXT2"
+""
+1 249 285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 3 2 1 E U  0 E 249 285 254 301
+0 2 2 "0s" 0 0 0 192 0 0  249 285 1
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 1 :
+21 23
+"sbHour"
+""
+1 187 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0  185 278 249 312
+0
+
+E
+"main()
+{
+  sbHoure_onChanged();
+}" 0
+
+E
+
+N 0 23 1 0 1 1
+21 24
+"sbMinute"
+""
+1 259 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0  257 278 321 312
+0
+
+E
+"main()
+{
+  sbMinute_onChanged();
+}" 0
+
+E
+
+N 0 59 1 0 1 1
+2 25
+"PRIMITIVE_TEXT3"
+""
+1 12 72 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 3 2 1 E U  0 E 12 72 81 88
+0 2 2 "0s" 0 0 0 192 0 0  12 72 1
+1
+LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:5 11 Duration : 
+13 26
+"btLimitless"
+""
+1 108.2 378 E E E 1 E 1 E N "_ButtonText" E N "sgStdTECColor" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+3
+LANG:5 0 
+LANG:1 0 
+LANG:0 0 
+
+0
+3
+LANG:5 27 Tahoma,-1,13,5,40,0,0,0,0,0
+LANG:1 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+LANG:0 109 -microsoft windows-Tahoma-normal-r-normal-*-*-120-100-100-*-*-iso8859-1|-13,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma
+0  108 378 202 406
+
+T 
+3
+LANG:5 9 Limitless
+LANG:1 2 OK
+LANG:0 2 OK
+"main()
+{
+  btLimitless_onClick();
+}
+" 0
+ E E E
+14 27
+"tbComment"
+""
+1 10 330 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"textChangedCB" "main(string newText)
+{
+  tbComment_onTextChanged(newText);
+}"
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  8 328 282 362
+3 "0s" 0 0 0 0 0 -1  E E E
+13 28
+"btClear"
+""
+1 290 330 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 32 Wingdings 2,14,-1,5,50,0,0,0,0,0
+0  288 328 322 362
+
+T 
+1
+LANG:5 1 Ò
+"main()
+{
+  btClear_onClicked();
+}" 0
+ E E E
+2 32
+"PRIMITIVE_TEXT4"
+""
+1 10.14282880380877 10.14811657520379 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 3 2 1 E 0.2122594723269193 0 0.2200436890617508 7.595715135885736 7.507592306462784 2  1 0  "pictures/msgBoxWarning.png" 4294967295 E 12 12 292 282
+0 2 2 "0s" 0 0 0 64 0 0  12 12 1
+1
+LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 1
+LANG:5 0 
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

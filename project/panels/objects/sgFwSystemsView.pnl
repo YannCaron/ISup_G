@@ -614,12 +614,7 @@ LANG:5 100 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disabled confirmation\", 
                                  makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
 
-	bool sure = ds[1];
-
-  if (sure) {
-    systemDisableds[select+1] = !state;
-    load();
-  }
+  load();
 
 }" 0
  "main()

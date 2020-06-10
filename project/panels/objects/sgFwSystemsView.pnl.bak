@@ -286,7 +286,7 @@ int appendSystems()
 
 }
 
-bool appendSubSystems(string systemDP, int depth, string pattern)
+void appendSubSystems(string systemDP, int depth, string pattern)
 {
 	
 	// variable
@@ -294,9 +294,6 @@ bool appendSubSystems(string systemDP, int depth, string pattern)
 	dyn_bool disabledValues, subDisabledValues;
   dyn_time disabledTimes;
 	dyn_string dpes;
-  bool result = false;
-  bool hasChildren = false;
-  int count = 0;
 
 	// get dpes of sub systems from pattern
 	dpes = getPointsFromPattern(pattern);
@@ -327,21 +324,15 @@ bool appendSubSystems(string systemDP, int depth, string pattern)
 		if ((disabledValues[i] && (!isLTD || getLTDVue())) || subDisabledValues[i] || getAllVue())
 		{
 			appendList(dpes[i], depth);
-      result = true;
-      count++;
 		}
 	
 		// recursive
     // 20071015 aj only if subsystems exist!! added \"&& dynlen checks\" otherwise error message
 		if ( (subDisabledValues[i] || getAllVue()) && ((dynlen(logicInputsValues[i]) > 0) || (dynlen(notLogicInputsValues[i]) > 0)) ) {
-			hasChildren = hasChildren || appendSubSystems(dpes[i], depth + 1, patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])));
+			appendSubSystems(dpes[i], depth + 1, patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])));
 		}
 
 	}
-  
-  DebugTN(\"has children\", systemDP, hasChildren, count);
-  
-  return result || hasChildren;
 	
 }
 
@@ -623,7 +614,8 @@ LANG:5 100 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disabled confirmation\", 
                                  makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
 
-	bool sure = ds[1];
+  DebugTN(ds);
+	bool sure = dynlen(ds) >= 1 ? ds[1] : FALSE;
 
   if (sure) {
     systemDisableds[select+1] = !state;
