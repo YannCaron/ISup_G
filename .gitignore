@@ -1,0 +1,9 @@
+# Wincc project specifics
+db/
+log/
+xml/
+
+*.dpl
+!all-meta.dpl
+!all-data.dpl
+*.bak

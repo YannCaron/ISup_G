@@ -237,11 +237,13 @@ dyn_string getRootSystemDPEs()
 
 }
 
-void appendSystem(string rootDPE, string pattern, bool disabledValue, bool subDisabledValue)
+void appendSystem(string rootDPE, string pattern, bool disabledValue, bool subDisabledValue, time disabledTime)
 {
 
+  bool isLTD = (disabledTime == 0);
+  
 	// verify if has sub systems and append system
-	if ((disabledValue || subDisabledValue) || getAllVue())
+	if ((disabledValue && (!isLTD || getLTDVue()) || subDisabledValue) || getAllVue())
 		appendList(rootDPE, 0);
 	
 	// verify if has sub systems and get subsystems
@@ -274,7 +276,7 @@ int appendSystems()
 	// loop on root system
 	for (int i=1; i<=dynlen(rootDPEs); i++)
 	{
-		appendSystem(rootDPEs[i], patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])), disabledValues[i], subDisabledValues[i]);
+		appendSystem(rootDPEs[i], patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])), disabledValues[i], subDisabledValues[i], disabledTimeValues[i]);
 		progress();
 
 	}
