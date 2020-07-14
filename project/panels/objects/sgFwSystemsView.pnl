@@ -526,7 +526,7 @@ void load()
 		res = appendSystems();
 		
 		if (res == 0) 
-    	appendSystem(getDist() + \".DistributedStatus\", \"\", true, true);
+    	appendSystem(getDist() + \".DistributedStatus\", \"\", true, true, 0);
 
 	}
 	else
@@ -536,13 +536,15 @@ void load()
 		string rootDPE = cbSystemItemValues[cbSystem.selectedPos];
 		dyn_string logicInputsValues, notLogicInputsValues;
 		bool disabledValue, subDisabledValue;
+    time disabledTime;
                 
 		dpGet(rootDPE + LOGIC_INPUTS_POSTFIX, logicInputsValues,
 				rootDPE + NOTLOGIC_INPUTS_POSTFIX, notLogicInputsValues,
 				rootDPE + DISABLED_POSTFIX, disabledValue,
+        rootDPE + DISABLED_TIME_POSTFIX, disabledTime,
 				rootDPE + SUB_DISABLED_POSTFIX, subDisabledValue);
                 
-		appendSystem(rootDPE, patternConcat(appendPatterns(logicInputsValues, notLogicInputsValues)), disabledValue, true);
+		appendSystem(rootDPE, patternConcat(appendPatterns(logicInputsValues, notLogicInputsValues)), disabledValue, subDisabledValue, disabledTime);
 	}
 	
   if (res != -1) {
