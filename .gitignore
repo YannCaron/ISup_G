@@ -1,9 +1,10 @@
 # Wincc project specifics
-db/
-log/
 xml/
 
+snmpv3_boot_counter
+
 *.dpl
+*.log
 !all-meta.dpl
 !all-data.dpl
 *.bak
