@@ -360,14 +360,12 @@ void onClick()
 
 void onRightClick()
 {
-  bool disabled;
   string eventText;
   dyn_string histories;
   string params;
  	dyn_string ds, df;
   
- 	dpGet(systemName + systemStatus + DISABLED_POSTFIX, disabled,
-        systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
+ 	dpGet(systemName + systemStatus + EVENT_TEXT_POSTFIX, eventText,
 	      systemName + systemStatus + EVENT_HISTORIES_POSTFIX, histories,
 				systemName + systemStatus + PARAMS_POSTFIX, params);
 
@@ -382,18 +380,20 @@ void onRightClick()
   ChildPanelOnCentralModalReturn(\"sgFw/sgFwConfirmDisable.pnl\", \"Disabled confirmation\", 
                                makeDynString(\"$systemName:\" + systemName, \"$systemStatus:\" + systemStatus), df, ds);
 
- 	if(ds[1] == \"true\") { // button ok 
+  if(dynlen(ds) == 1) {
+    bool enabled = (ds[1] == \"true\");
     string clientName = getHostname();
-    string verb = disabled ? \"enabled\" : \"disabled\";
+    string verb = enabled ? \"enabled\" : \"disabled\";
   
    	if(dynlen(histories) >= 1) {
       // local history
-  		sgHistoryAddEvent(histories, disabled ? SEVERITY_ENABLE : SEVERITY_DISABLE, eventText + \" \" + verb + \" by Client: \" + clientName);			
+  		sgHistoryAddEvent(histories, enabled ? SEVERITY_ENABLE : SEVERITY_DISABLE, eventText + \" \" + verb + \" by Client: \" + clientName, verb);			
     }	else {
       // system history
-  		sgHistoryAddEvent(systemName + SYSTEM_HISTORY, SEVERITY_SYSTEM, \"Client: \" + clientName + \" \" + verb + \" \" + eventText + \" (\" + systemName + systemStatus + \")\");			
+  		sgHistoryAddEvent(systemName + SYSTEM_HISTORY, SEVERITY_SYSTEM, \"Client: \" + clientName + \" \" + verb + \" \" + eventText + \" (\" + systemName + systemStatus + \")\", verb);			
   	}
   }
+  
 }
 
 void connectSystemDP()
@@ -544,6 +544,9 @@ void initSystemName()
 		systemName = getSystemName();
 	}
 }
+
+
+
 
 
 " 0

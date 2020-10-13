@@ -1,5 +1,8 @@
 # Wincc project specifics
 xml/
+db.*
+data/
+log/
 
 snmpv3_boot_counter
 

@@ -1,0 +1,106 @@
+V 11
+1
+LANG:5 5 panel
+PANEL,-1 -1 500 483 N "_3DFace" 0
+"main()
+{
+  log(\"Change DP Type\");
+  
+  int n;
+
+  dyn_dyn_string sgFwSystem;
+  dyn_dyn_int sgFwSystemTypes;
+
+
+  // Create the data type
+  int i = 1;
+  int j = 1;
+  
+  sgFwSystem[i++] = makeDynString (\"sgFwSystem\",\"\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (DPEL_STRUCT);
+  sgFwSystem[i++] = makeDynString (\"\",\"PreStatus\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"Status\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"StatusDelay\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_INT);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Label1\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"Label2\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"Label3\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"Label4\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Disabled\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_BOOL);
+  sgFwSystem[i++] = makeDynString (\"\",\"SubDisabled\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_BOOL);
+  sgFwSystem[i++] = makeDynString (\"\",\"Hidden\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_BOOL);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Message\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"Comment\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Events\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0, DPEL_STRUCT);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"LastStatus\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"GenerateEvents\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_BOOL);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"EventText\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"Histories\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_DYN_STRING);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Alarms\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0, DPEL_STRUCT);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"GenerateAlarms\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_BOOL);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"AlarmActive\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_BOOL);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"LogicConfig\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0, DPEL_STRUCT);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"LogicEnabled\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_BOOL);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"Rule\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"Inputs\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_DYN_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"\",\"NotLogicInputs\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,0,DPEL_DYN_STRING);
+
+  sgFwSystem[i++] = makeDynString (\"\",\"Params\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"AETable\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+  sgFwSystem[i++] = makeDynString (\"\",\"CommandOut\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_STRING);
+
+  //sgFwSystem[i++] = makeDynString (\"\",\"DisabledTime\",\"\",\"\"); sgFwSystemTypes[j++] = makeDynInt (0,DPEL_TIME);
+
+  // Create the datapoint type
+
+  n = dpTypeChange (sgFwSystem,sgFwSystemTypes);
+
+  DebugN (\"sgFwSystem datapoint type changed, result: \", n);
+
+  
+  
+}" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E E 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:5 0 
+0
+LAYER, 1 
+1
+LANG:5 0 
+0
+LAYER, 2 
+1
+LANG:5 0 
+0
+LAYER, 3 
+1
+LANG:5 0 
+0
+LAYER, 4 
+1
+LANG:5 0 
+0
+LAYER, 5 
+1
+LANG:5 0 
+0
+LAYER, 6 
+1
+LANG:5 0 
+0
+LAYER, 7 
+1
+LANG:5 0 
+0
+0

@@ -1,7 +1,7 @@
 V 11
 1
 LANG:5 20 Disable confirmation
-PANEL,-1 -1 332 410 N "_3DFace" 2
+PANEL,-1 -1 333 410 N "_3DFace" 2
 "$systemName"
 "$systemStatus"
 "main()
@@ -107,16 +107,29 @@ string getComment() {
   return strlen(tbComment.text) <= 17 ? \"\" : tbComment.text;
 }
 
-cCalendar_onClicked() {
-  cbTime.selectedPos = 1;
+bool checkTime() {
+  time now = getCurrentTime();
+  time selectedDate = getTime();
+  if (selectedDate < now) {
+    cCalendar.selectedDate(now);
+    sbHour.text = hour(now);
+    sbMinute.text = minute(now);
+  }
 }
 
-sbHoure_onChanged() {
+cCalendar_onClicked() {
+  cbTime.selectedPos = 1;
+  checkTime();
+}
+
+sbHour_onChanged() {
   resetCbTime();
+  checkTime();
 }
 
 sbMinute_onChanged() {
   resetCbTime();
+  checkTime();
 }
 
 void disableSystem(time disabledTime) {
@@ -138,6 +151,8 @@ void btOk_onClick() {
       ChildPanelOnCentralModalReturn(\"sgFw/sgFwErrorMessage.pnl\", \"Error\", makeDynString(\"$message:Disabled comment is mandatory!\"), df, ds);
       return;
   }
+  
+  checkTime();
   
   int disabledTime = period(getTime());
   disableSystem(disabledTime);
@@ -303,7 +318,7 @@ LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
 0  88 68 322 92
 7
 1
-LANG:5 7 curstom
+LANG:5 6 custom
 
 0
 1
@@ -377,32 +392,6 @@ E E 0 1 3 2 1 E U  0 E 249 285 254 301
 LANG:5 27 Tahoma,10,-1,5,75,0,0,0,0,0
 0 1
 LANG:5 1 :
-21 23
-"sbHour"
-""
-1 187 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
- E E
-26 0 0 0 0 0
-E E E
-0
-1
-LANG:5 0 
-
-0
-1
-LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
-0  185 278 249 312
-0
-
-E
-"main()
-{
-  sbHoure_onChanged();
-}" 0
-
-E
-
-N 0 23 1 0 1 1
 21 24
 "sbMinute"
 ""
@@ -526,7 +515,7 @@ LANG:5 1 Ò
 2 32
 "PRIMITIVE_TEXT4"
 ""
-1 10.14282880380877 10.14811657520379 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 9.748626625684464 9.740621314699325 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 35 0 0 0 0 0
 E E E
@@ -542,6 +531,32 @@ E E 0 1 3 2 1 E 0.2122594723269193 0 0.2200436890617508 7.595715135885736 7.5075
 LANG:5 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
 0 1
 LANG:5 0 
+21 23
+"sbHour"
+""
+1 190 280 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:5 0 
+
+0
+1
+LANG:5 27 Tahoma,10,-1,5,50,0,0,0,0,0
+0  188 278 252 312
+0
+
+E
+"main()
+{
+  sbHour_onChanged();
+}" 0
+
+E
+
+N 0 23 1 0 1 1
 0
 LAYER, 1 
 1
