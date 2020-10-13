@@ -5703,7 +5703,6 @@ sgISupDisabled.sgISupDisabled	1#1
 	GlobalStatus	41#2:sgFwSystem
 	MenuEntry	41#3:sgFwMenuEntry
 	WatchDogs	41#42:sgWatchDogs
-	AETable	41#48:sgAETable
 sgSYLEXServer.sgSYLEXServer	1#1
 	ServerStatus	41#2:sgFwSystem
 	InterfaceAStatus	41#193:sgFwSystem
@@ -10675,8 +10674,6 @@ StampSec	StampMSec	ElementName	TypeName	DetailNr	_alert_hdl.._type	_alert_hdl.._
 1588579482	43	ISupDisabled.GlobalStatus.Alarms.AlarmActive	sgISupDisabled		12					"ADMIN\\sgDisabledMainPanel.pnl"	""	lt:1 LANG:5 ""	\0	alert.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Some disabled timeout reached!"	lt:1 LANG:5 ""												0								
 1588585258	839	ISupDisabled.GlobalStatus.Alarms.AlarmActive	sgISupDisabled		12					""		lt:1 LANG:5 ""	\0			0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 ""	lt:1 LANG:5 ""												0								
 1588585324	191	ISupDisabled.GlobalStatus.Alarms.AlarmActive	sgISupDisabled		12					""	""	lt:1 LANG:5 ""	\0	S7_Alarm.		1	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Some disabled systems must be considered !"	lt:1 LANG:5 ""												0								
-1591866295	933	ISupDisabled.GlobalStatus.Alarms.AlarmActive	sgISupDisabled		12					""	""	lt:1 LANG:5 ""	\0	S7_Alarm.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Some disabled systems must be considered !"	lt:1 LANG:5 ""												0								
-1591866297	886	ISupDisabled.GlobalStatus.Alarms.AlarmActive	sgISupDisabled		12					""	""	lt:1 LANG:5 ""	\0	S7_Alarm.		0	1	0	0	01.01.1970 00:00:00.000	0			lt:1 LANG:5 "Some disabled systems must be considered !"	lt:1 LANG:5 ""												0								
 
 # DistributionInfo
 StampSec	StampMSec	ElementName	TypeName	_distrib.._type	_distrib.._driver
