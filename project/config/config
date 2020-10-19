@@ -13,7 +13,7 @@ ctrlMaxPendings = 1000
 
 dataPort = 11027
 eventPort = 21027
-pmonPort = 4999
+pmonPort = 4998
 
 [redu]
 portNr = 31027
