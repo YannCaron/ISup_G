@@ -11,3 +11,5 @@ snmpv3_boot_counter
 !all-meta.dpl
 !all-data.dpl
 *.bak
+
+.history/
