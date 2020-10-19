@@ -83,8 +83,9 @@ bool wasHidden; // to know if it was hidden before disconnection
 void updateBlock(string fwOkDpName, int fwOkValue,
 					string statusDpName, string statusDpValue,
 				 	string disabledDpName, bool isDisabled,
-          string disabledTimeDpName, time disabledTime,
 				 	string subdisabledDpName, bool isSubDisabled,
+				 	string disabledLTDDpName, bool isDisabledLTD,
+				 	string subdisabledLTDDpName, bool isSubDisabledLTD,
 				 	string Label1Name, string Label1Value,
 				 	string Label2Name, string Label2Value,
 				 	string Label3Name, string Label3Value,				  
@@ -96,7 +97,6 @@ void updateBlock(string fwOkDpName, int fwOkValue,
 
 	if(!componentHidden)
 	{
-    const bool isLongTerm = (disabledTime == 0);
 		wasHidden = false;
 	
 	// Write Component Text value
@@ -194,7 +194,7 @@ void updateBlock(string fwOkDpName, int fwOkValue,
 		}// test framework ok
 	
 	// disable / subdisabled management
-	setHatches(isDisabled, isSubDisabled, isLongTerm); // Enable/Disable option is available if FW failed too!
+	setHatches(isDisabled, isSubDisabled, isDisabledLTD, isSubDisabledLTD); // Enable/Disable option is available if FW failed too!
 	}
 	else  // case block hidden
 	{
@@ -277,9 +277,9 @@ void setComponentsColor(string statusColor, string commentText)
 }
 
 
-void setHatches(bool isDisabled, bool isSubDisabled, bool isLongTerm)
+void setHatches(bool isDisabled, bool isSubDisabled, bool isDisabledLTD, bool isSubDisabledLTD)
 {
-	if(isDisabled && !isLongTerm)
+	if(isDisabled && !isDisabledLTD)
 	{
 		Hatches.backCol = \"{0,0,0}\";
 		setValue(\"Hatches\", \"fill\", \"[hatch,[cross,5,left]]\");
@@ -289,7 +289,7 @@ void setHatches(bool isDisabled, bool isSubDisabled, bool isLongTerm)
 		Hatches.backCol = \"{240,240,240,184}\";
 		setValue(\"Hatches\", \"fill\", \"[solid]\");
   }
-	else if(isSubDisabled)
+	else if(isSubDisabled && !isSubDisabledLTD)
 	{
 		Hatches.backCol = \"{0,0,0}\";
 		setValue(\"Hatches\", \"fill\", \"[hatch,[parallel,5,right]]\");
@@ -474,8 +474,9 @@ void checkSystemConnection(	string connDpNameA, dyn_string manNumsA, string conn
 									systemName + ACTIVE_FW_OK + \":_alert_hdl.._act_prior\",
 								  systemName + systemStatus + STATUS_POSTFIX,
 							 	  systemName + systemStatus + DISABLED_POSTFIX,
-                  systemName + systemStatus + DISABLED_TIME_POSTFIX,
 							 	  systemName + systemStatus + SUB_DISABLED_POSTFIX,
+							 	  systemName + systemStatus + DISABLED_POSTFIX + ORIGINAL_USERBIT_1,
+							 	  systemName + systemStatus + SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1,
 								  systemName + systemStatus + LABEL1_POSTFIX,
 								  systemName + systemStatus + LABEL2_POSTFIX,
 								  systemName + systemStatus + LABEL3_POSTFIX,
@@ -503,7 +504,7 @@ void checkSystemConnection(	string connDpNameA, dyn_string manNumsA, string conn
 
 			
 		// like disabled as there can't be an alarm
-		setHatches(true, false, false);
+		setHatches(true, false, false, false);
 	
 		setComponentsColor(\"sgStdUKNColor\", \"\");	
 	}

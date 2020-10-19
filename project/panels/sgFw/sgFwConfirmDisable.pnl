@@ -133,7 +133,10 @@ sbMinute_onChanged() {
 }
 
 void disableSystem(time disabledTime) {
+  bool isLongTerm = (disabledTime == 0);
+  
 	dpSet(systemName + systemStatus + DISABLED_POSTFIX, TRUE,
+        systemName + systemStatus + DISABLED_POSTFIX + ORIGINAL_USERBIT_1, isLongTerm,
         systemName + systemStatus + DISABLED_TIME_POSTFIX, disabledTime,
         systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, false,
         systemName + systemStatus + ALARM_ACTIVE_POSTFIX, false,
@@ -175,6 +178,7 @@ void btLimitless_onClick() {
 
 void enableSystem() {
 	dpSet(systemName + systemStatus + DISABLED_POSTFIX, FALSE,
+        systemName + systemStatus + DISABLED_POSTFIX + ORIGINAL_USERBIT_1, FALSE,
         systemName + systemStatus + DISABLED_TIME_POSTFIX, 0,
         systemName + systemStatus + DISABLED_TIME_POSTFIX + ORIGINAL_USERBIT_1, FALSE,
         systemName + systemStatus + ALARM_ACTIVE_POSTFIX, FALSE,
@@ -515,7 +519,7 @@ LANG:5 1 Ò
 2 32
 "PRIMITIVE_TEXT4"
 ""
-1 9.748626625684464 9.740621314699325 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 9.664953479365677 9.650954554302745 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 35 0 0 0 0 0
 E E E
