@@ -505,12 +505,12 @@ LANG:5 0
 
 0
 1
-LANG:5 32 Wingdings 2,14,-1,5,50,0,0,0,0,0
+LANG:5 27 Tahoma,12,-1,5,75,0,0,0,0,0
 0  288 328 322 362
 
 T 
 1
-LANG:5 1 Ò
+LANG:5 1 X
 "main()
 {
   btClear_onClicked();
@@ -519,7 +519,7 @@ LANG:5 1 Ò
 2 32
 "PRIMITIVE_TEXT4"
 ""
-1 9.664953479365677 9.650954554302745 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 9.647193061480117 9.631223949558866 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 35 0 0 0 0 0
 E E E

@@ -237,17 +237,19 @@ dyn_string getRootSystemDPEs()
 
 }
 
-void appendSystem(string rootDPE, string pattern, bool disabledValue, bool subDisabledValue, time disabledTime)
+void appendSystem(string rootDPE, string pattern, bool disabledValue, bool subDisabledValue, bool disabledValueLTD, bool subDisabledValueLTD)
 {
-
-  bool isLTD = (disabledTime == 0);
   
+  bool hasDisabled = disabledValue && (!disabledValueLTD || getLTDVue());
+  bool hasSubDisabled = subDisabledValue && (!subDisabledValueLTD || getLTDVue());
+
 	// verify if has sub systems and append system
-	if ((disabledValue && (!isLTD || getLTDVue()) || subDisabledValue) || getAllVue())
+	//if ((disabledValue && (!disabledValueLTD || getLTDVue()) || subDisabledValue) || getAllVue())
+  if (getAllVue() || hasDisabled || hasSubDisabled)
 		appendList(rootDPE, 0);
 	
 	// verify if has sub systems and get subsystems
-	if (subDisabledValue || getAllVue())
+	if (getAllVue() || hasSubDisabled)
 		appendSubSystems(rootDPE, 1, pattern);
 
 }
@@ -258,8 +260,7 @@ int appendSystems()
 	// variable
 	dyn_string rootDPEs;
 	dyn_dyn_string logicInputsValues, notLogicInputsValues;
-	dyn_bool disabledValues, subDisabledValues;
-  dyn_time disabledTimeValues;
+	dyn_bool disabledValues, subDisabledValues, disabledValuesLTD, subDisabledValuesLTD;
 
 	// get root and initialize
 	rootDPEs = getRootSystemDPEs();
@@ -270,13 +271,14 @@ int appendSystems()
 	dpGet(dpAppend(rootDPEs, LOGIC_INPUTS_POSTFIX), logicInputsValues,
 				dpAppend(rootDPEs, NOTLOGIC_INPUTS_POSTFIX), notLogicInputsValues,
 				dpAppend(rootDPEs, DISABLED_POSTFIX), disabledValues,
-				dpAppend(rootDPEs, DISABLED_TIME_POSTFIX), disabledTimeValues,
-				dpAppend(rootDPEs, SUB_DISABLED_POSTFIX), subDisabledValues);
+				dpAppend(rootDPEs, SUB_DISABLED_POSTFIX), subDisabledValues,
+				dpAppend(rootDPEs, DISABLED_POSTFIX + ORIGINAL_USERBIT_1), disabledValuesLTD,
+				dpAppend(rootDPEs, SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1), subDisabledValuesLTD);
 
 	// loop on root system
 	for (int i=1; i<=dynlen(rootDPEs); i++)
 	{
-		appendSystem(rootDPEs[i], patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])), disabledValues[i], subDisabledValues[i], disabledTimeValues[i]);
+		appendSystem(rootDPEs[i], patternConcat(appendPatterns(logicInputsValues[i], notLogicInputsValues[i])), disabledValues[i], subDisabledValues[i], disabledValuesLTD[i], subDisabledValuesLTD[i]);
 		progress();
 
 	}
@@ -293,7 +295,7 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	
 	// variable
 	dyn_dyn_string logicInputsValues, notLogicInputsValues;
-	dyn_bool disabledValues, subDisabledValues;
+	dyn_bool disabledValues, subDisabledValues, disabledValuesLTD, subDisabledValuesLTD;
   dyn_time disabledTimes;
 	dyn_string dpes;
 
@@ -309,8 +311,9 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	dpGet(dpAppend(dpes, LOGIC_INPUTS_POSTFIX), logicInputsValues,
 				dpAppend(dpes, NOTLOGIC_INPUTS_POSTFIX), notLogicInputsValues,
  				dpAppend(dpes, DISABLED_POSTFIX), disabledValues,
- 				dpAppend(dpes, DISABLED_TIME_POSTFIX), disabledTimes,
-				dpAppend(dpes, SUB_DISABLED_POSTFIX), subDisabledValues);
+				dpAppend(dpes, SUB_DISABLED_POSTFIX), subDisabledValues,
+        dpAppend(dpes, DISABLED_POSTFIX + ORIGINAL_USERBIT_1), disabledValuesLTD,
+				dpAppend(dpes, SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1), subDisabledValuesLTD);
 
         //DebugTN(logicInputsValues,\"------------------\");
         //DebugTN(notLogicInputsValues,\"------------------\");
@@ -320,11 +323,12 @@ void appendSubSystems(string systemDP, int depth, string pattern)
 	// loop on data point elements
 	for (int i=1; i<=dynlen(dpes); i++)
 	{
-    bool isLTD = (disabledTimes[i] == 0);
+    
+    bool hasDisabled = disabledValues[i] && (!disabledValuesLTD[i] || getLTDVue());
+    bool hasSubDisabled = subDisabledValues[i] && (!subDisabledValuesLTD[i] || getLTDVue());
 
 		// verify that sub system as sub systems
-		if ((disabledValues[i] && (!isLTD || getLTDVue())) || subDisabledValues[i] || getAllVue())
-		{
+		if (getAllVue() || hasDisabled || hasSubDisabled)	{
 			appendList(dpes[i], depth);
 		}
 	
@@ -526,7 +530,7 @@ void load()
 		res = appendSystems();
 		
 		if (res == 0) 
-    	appendSystem(getDist() + \".DistributedStatus\", \"\", true, true, 0);
+    	appendSystem(getDist() + \".DistributedStatus\", \"\", true, true, false, false);
 
 	}
 	else
@@ -535,16 +539,16 @@ void load()
 		// append system
 		string rootDPE = cbSystemItemValues[cbSystem.selectedPos];
 		dyn_string logicInputsValues, notLogicInputsValues;
-		bool disabledValue, subDisabledValue;
-    time disabledTime;
+		bool disabledValue, subDisabledValue, disabledValueLTD, subDisabledValueLTD;
                 
 		dpGet(rootDPE + LOGIC_INPUTS_POSTFIX, logicInputsValues,
-				rootDPE + NOTLOGIC_INPUTS_POSTFIX, notLogicInputsValues,
-				rootDPE + DISABLED_POSTFIX, disabledValue,
-        rootDPE + DISABLED_TIME_POSTFIX, disabledTime,
-				rootDPE + SUB_DISABLED_POSTFIX, subDisabledValue);
+				  rootDPE + NOTLOGIC_INPUTS_POSTFIX, notLogicInputsValues,
+				  rootDPE + DISABLED_POSTFIX, disabledValue,
+				  rootDPE + SUB_DISABLED_POSTFIX, subDisabledValue,
+				  rootDPE + DISABLED_POSTFIX + ORIGINAL_USERBIT_1, disabledValueLTD,
+				  rootDPE + SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1, subDisabledValueLTD);
                 
-		appendSystem(rootDPE, patternConcat(appendPatterns(logicInputsValues, notLogicInputsValues)), disabledValue, subDisabledValue, disabledTime);
+		appendSystem(rootDPE, patternConcat(appendPatterns(logicInputsValues, notLogicInputsValues)), disabledValue, subDisabledValue, disabledValueLTD, subDisabledValueLTD);
 	}
 	
   if (res != -1) {

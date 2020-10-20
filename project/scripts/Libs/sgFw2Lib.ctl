@@ -954,10 +954,13 @@ bool sgFwComputeLogic()
 
 			}
 
-			if(!parentsSubDisabled[cpt] || parentsSubDisabledLTD[cpt] != allDisabledLTD) {
+			if(!parentsSubDisabled[cpt] && disabledInputFound) {
 				sgHistoryAddEvent("FwUtils.SystemHistory", SEVERITY_SYSTEM, "System " + parents[cpt] + " sub-disabled because input " + input + " is disabled or sub-disabled");
-				dpSet(	parents[cpt] + SUB_DISABLED_POSTFIX, true,
-						parents[cpt] + SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1, allDisabledLTD);
+				dpSet(	parents[cpt] + SUB_DISABLED_POSTFIX, true);
+			}
+
+			if (disabledInputFound && parentsSubDisabledLTD[cpt] != allDisabledLTD) {
+				dpSet(parents[cpt] + SUB_DISABLED_POSTFIX + ORIGINAL_USERBIT_1, allDisabledLTD);
 			}
 
 			if((parentsSubDisabled[cpt]) && !disabledInputFound) {
